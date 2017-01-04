@@ -1,7 +1,7 @@
 
 ## RStudio Cheat Sheets
 
-<img src="output/ggplot2.png" width=364 height=197 align="right"/>
+<img src="output/ggplot2.png" width=364 height=288 align="right"/>
 
 The cheat sheets make it easy to learn about and use some of our favorite packages. They are published in their respective PDF versions here: https://www.rstudio.com/resources/cheatsheets/, some are also available in the RStudio IDE under Help-Cheatsheets.
 
