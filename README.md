@@ -19,19 +19,17 @@ Keep these tips in mind when creating a new cheet sheat:
 
 1. RStudio cheat sheets are hosted at https://github.com/rstudio/cheatsheets. You can submit new cheat sheets to the repository with a pull request.
 
-.
-
-3. The files `keynotes/0-template.key` and `powerpoints/0-template.ppt` are official templates that contains some helpful tips.
+1. The files `keynotes/0-template.key` and `powerpoints/0-template.ppt` are official templates that contains some helpful tips.
 
     > Tip. You may find it easier to create a new cheat sheet by duplicating the most recent Keynote / Powerpoint cheat sheet.
 
-4. The cheat sheets are not meant to be text documents. Ideally, they are scannable visual aids that use layout and visual mnemonics to help people zoom into the functions they need. As an analogy, think of a cheat sheet as more like a well organized computer menu bar than an article.
+1. The cheat sheets are not meant to be text documents. Ideally, they are scannable visual aids that use layout and visual mnemonics to help people zoom into the functions they need. As an analogy, think of a cheat sheet as more like a well organized computer menu bar than an article.
 
-5. The cheat sheets use a cohesive, black and white printer friendly theme (which is what you see in the sheets), so please stay close to the appearance of the existing sheets.
+1. The cheat sheets use a cohesive, black and white printer friendly theme (which is what you see in the sheets), so please stay close to the appearance of the existing sheets.
 
-6. It's already baked into every cheat sheet and the template, but you should include a [Creative Commons](https://creativecommons.org/) Copyright on each side of the sheet to make them easy to repurpose.
+1. It's already baked into every cheat sheet and the template, but you should include a [Creative Commons](https://creativecommons.org/) Copyright on each side of the sheet to make them easy to repurpose.
 
-7. Budget more time than you expect to make the sheets. So far, I've found this process to be the least time consuming:
+1. Budget more time than you expect to make the sheets. So far, I've found this process to be the least time consuming:
 
     * Use the package web page and any vignettes to identify which functions to include (I try to include anything that doesn't seem trivial.)
 
@@ -48,5 +46,7 @@ Keep these tips in mind when creating a new cheet sheat:
     * Making the visuals is the most time consuming part, so I usually save them for here.
 
     * Tweak until happy. 
+
+1. Pay attention to the details!
 
 > Final tip: Edit the text to be very concise - rely on diagrams where possible.
