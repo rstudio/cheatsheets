@@ -15,7 +15,7 @@ If you wish to contribute to this effort by translating a cheat sheet, please fe
 
 ## Tips for making a new cheat sheet
 
-Keep these tips in mind when creating a new cheet sheat:
+Keep these tips in mind when creating a new cheat sheet:
 
 1. RStudio cheat sheets are hosted at https://github.com/rstudio/cheatsheets. You can submit new cheat sheets to the repository with a pull request.
 
