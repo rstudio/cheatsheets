@@ -19,11 +19,11 @@ Keep these tips in mind when creating a new cheat sheet:
 
 1. RStudio cheat sheets are hosted at https://github.com/rstudio/cheatsheets. You can submit new cheat sheets to the repository with a pull request.
 
-1. The files `keynotes/0-template.key` and `powerpoints/0-template.ppt` are official templates that contains some helpful tips.
+1. The files `keynotes/0-template.key` and `powerpoints/0-template.ppt` are official templates that contain some helpful tips.
 
     > Tip. You may find it easier to create a new cheat sheet by duplicating the most recent Keynote / Powerpoint cheat sheet.
 
-1. The cheat sheets are not meant to be text documents. Ideally, they are scannable visual aids that use layout and visual mnemonics to help people zoom into the functions they need. As an analogy, think of a cheat sheet as more like a well organized computer menu bar than an article.
+1. The cheat sheets are not meant to be text documents. Ideally, they are scannable visual aids that use layout and visual mnemonics to help people zoom into the functions they need. As an analogy, think of a cheat sheet as more like a well organized computer menu bar that leads you to a command than a manual that documents each command.
 
 1. The cheat sheets use a cohesive, black and white printer friendly theme (which is what you see in the sheets), so please stay close to the appearance of the existing sheets.
 
@@ -41,9 +41,9 @@ Keep these tips in mind when creating a new cheat sheet:
 
     * Sketch out several possible layouts for the sheet. Take care to put the more basic and/or pre-requisite content above and to the left of other content. Try to keep related content on the same side of the page.
 
-    * Type out all of the explanations and function definitions. Lay them out. Verify that everything fits. White space is very important  here to make the sheet scannable, even if it means smaller text.
+    * Type out all of the explanations and function definitions. Lay them out. Verify that everything fits. White space is very important. Use it to make the sheet scannable, even if it means smaller text.
 
-    * Making the visuals is the most time consuming part, so I usually save them for here.
+    * Making the visuals is the most time consuming part, so I usually save them for last.
 
     * Tweak until happy. 
 
