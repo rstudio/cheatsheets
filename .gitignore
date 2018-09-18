@@ -6,3 +6,5 @@ wip
 .Rproj.user
 cheatsheets.Rproj
 .Rhistory
+.RData
+rsconnect/
