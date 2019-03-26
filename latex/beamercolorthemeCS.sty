@@ -1,0 +1,43 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamercolorthemeCS}
+
+\definecolor{secondary}{RGB}{237, 237, 238}
+\definecolor{main}{RGB}{167, 170, 169}
+\definecolor{darkgray}{RGB}{84, 88, 94}
+\definecolor{blue}{RGB}{35, 78, 129}
+\definecolor{tertiary}{RGB}{185, 207, 233}
+\definecolor{green}{RGB}{59, 133, 56}
+\definecolor{orange}{RGB}{209, 112, 46}
+\definecolor{red}{RGB}{216, 54, 30}
+
+% Hyperlinks colors
+\colorlet{linkcolor}{black}
+\colorlet{citecolor}{blue}
+\colorlet{filecolor}{blue}
+\colorlet{urlcolor}{blue}
+
+% Code coloring
+\colorlet{stringsty}{blue}
+\colorlet{numbersty}{red}
+\colorlet{identifiersty}{green}
+\colorlet{namestyle}{blue}
+\colorlet{condstyle}{red}
+\colorlet{varstyle}{green}
+\colorlet{loopstyle}{orange}
+\colorlet{codebg}{blue}
+
+
+\setbeamercolor{structure}{fg = white, bg = main}
+
+\setbeamercolor{block body}{fg = black, bg = secondary}
+\setbeamercolor{title page}{fg = darkgray}
+\setbeamerfont{title page}{size = \Huge}
+\setbeamercolor{subtitle}{fg = darkgray}
+\setbeamerfont{subtitle}{size = \Large}
+\setbeamercolor{normal text}{fg = black, bg = white}
+
+\setbeamercolor{block body example}{fg = white, bg = codebg}
+\setbeamercolor{block title example}{fg = main}
+\setbeamerfont{block title example}{series = \bf}
+
+\setbeamercolor{alerted text}{fg = black, bg = tertiary}

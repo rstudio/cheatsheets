@@ -1,0 +1,121 @@
+% !TEX root = base-r.tex
+
+\begin{block}{Programming}
+  \vskip-2ex
+  \begin{columns}[t]\hfill\hfill\hfill
+    \begin{column}{.48\linewidth}
+      \begin{subblock}{For Loop}
+        \begin{code}
+          \begin{Pseudo}
+for (variable in sequence) {
+    Do something
+}
+          \end{Pseudo}
+        \end{code}
+        
+        \begin{exampleblock}{Example}
+          \begin{Rbg}
+for (i in 1:4) {
+    j <- i + 10
+    print(j)
+}
+          \end{Rbg}
+        \end{exampleblock}
+      \end{subblock}
+      \begin{subblock}{If Statement}
+        \begin{code}
+          \begin{Pseudo}
+if (condition) {
+    Do something
+} else {
+    Do something
+} 
+          \end{Pseudo}
+        \end{code}
+        
+        \begin{exampleblock}{Example}
+          \begin{Rbg}
+if (i > 3) {
+    printf('Yes')
+} else {
+    printf('No')
+} 
+          \end{Rbg}
+        \end{exampleblock}
+      \end{subblock}
+    \end{column}\hfill
+    \begin{column}{.48\linewidth}
+      \begin{subblock}{While Loop}
+        
+        \begin{code}
+          \begin{Pseudo}
+while (condition) {
+    Do something
+}
+          \end{Pseudo}
+        \end{code}
+        
+        \begin{exampleblock}{Example}
+        
+          \begin{Rbg}
+while (i < 5) {
+    print(i)
+    i <- i + 1
+}
+          \end{Rbg}
+        \end{exampleblock}
+        
+        \end{subblock}
+        
+        \begin{subblock}{Functions}
+          \begin{code}
+            \begin{Pseudo}
+funct_name <- function(var) {
+    Do something
+    return(new_variable)
+}
+            \end{Pseudo}
+          \end{code}
+          
+          \begin{exampleblock}{Example}
+          
+            \begin{Rbg}
+square <- function(x) {
+    squared <- x*x
+    return(squared)
+}
+            \end{Rbg}
+          \end{exampleblock}
+          
+        \end{subblock}
+      \end{column}\hfill\hfill\hfill
+    \end{columns}
+    
+    \vskip-1.5ex
+    \begin{seesubblock}{Reading and Writing Data}{readr}
+      \vskip1ex
+      \begin{tableau}{| >{\color{black}\centering\small}m{0.27\linewidth} | >{\color{black}\centering\small}m{0.27\linewidth} | >{\color{black}\centering\arraybackslash}m{0.36\linewidth} |}
+        \hline
+        {\normalfont\textbf{Input}} & {\normalfont\textbf{Output}} & \textbf{Description}\\\hline
+        \rowcolor{secondary} \inl{df <- read.table('file.txt')} & \inl{write.table(df, 'file.txt')} & Read and write a delimited text file.\\\hline
+        \inl{df <- read.csv('file.csv')} & \inl{write.csv(df, 'file.csv')} & Read and write a comma separated value file. This is a special case of \inl{read.table/write.table}.\\\hline
+        \rowcolor{secondary} \inl{load('file.RData')} & \inl{save(df, file = 'file.RData')} & Read and write a n R data file, a file type special for R.\\\hline
+      \end{tableau}
+      \vskip-1ex
+    \end{seesubblock}
+    
+    \vskip1ex
+    \begin{subblock}{}
+      \small\hspace{0.25ex}\begin{beamercolorbox}[ht = 3.5ex, dp = 3ex, wd = 0.09\linewidth, center, rounded = true]{block title}
+      \textbf{\footnotesize Conditions}
+    \end{beamercolorbox}
+    \hspace{1ex}
+    \footnotesize
+    \begin{tableau}{| >{\color{black}}c | >{\color{black}\cellcolor{secondary}}c | >{\color{black}}c | >{\color{black}\centering\cellcolor{secondary}}m{0.075\linewidth} | >{\color{black}}c | >{\color{black}\cellcolor{secondary}\centering\arraybackslash}m{0.1\linewidth} | >{\color{black}}c | >{\color{black}\cellcolor{secondary}}c |}
+      \hline
+      \inl{a == b} & Are equal & \inl{a > b} & Greater than & \inl{a >= b} & Greater than or equal to & \inl{is.na(a)} & Is missing\\\hline
+      \inl{a \!= b} & Not equal & \inl{a < b} & Less than & \inl{a <= b} & Less than or equal to & \inl{is.null(a)} & Is null\\\hline
+    \end{tableau}
+    \vskip-1ex
+  \end{subblock}
+\end{block}
