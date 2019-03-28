@@ -1,0 +1,50 @@
+% !TEX root = base-r.tex
+
+\begin{block}{Vectors}
+  \begin{subblock}{Creating Vectors}
+    \scriptsize\vspace{5pt}\hspace{-8pt}
+    \begin{tableau}{| >{\color{black}}m{2.2cm} | >{\color{white}\cellcolor{codebg}}m{1.401cm} | >{\color{black}\centering\arraybackslash}m{1.45cm} |}
+      \hline
+      \inl{c(2, 4, 6)} & \inl{2 4 6} & Join elements into a vector\\\hline
+      \rowcolor{secondary} \inl{2:6} & \inl{2 3 4 5 6} & An integer sequence\\\hline
+      \inl{seq(2, 3, by=0.5)} & \inl{2.0 2.5 3.0} & A complex sequence\\\hline
+      \rowcolor{secondary} \inl{rep(1:2, times=3)} & \inl{1 2 1 2 1 2} & Repeat a vector\\\hline
+      \inl{rep(1:2, each=3)} & \inl{1 1 1 2 2 2} & Repeat elements of a vector\\\hline
+    \end{tableau}
+    \vskip-1ex
+  \end{subblock}
+  
+  \begin{subblock}{Vectors Functions}
+    \begin{columns}[t]
+      \hspace{4ex}
+      \begin{column}{0.55\linewidth}
+        \inlc{sort(x)}\\Return x sorted.\br
+        \inlc{table(x)}\\See counts of values.
+      \end{column}
+      \begin{column}{0.49\linewidth}
+        \inlc{rev(x)}\\Return x reversed.\br
+        \inlc{unique(x)}\\See unique values.
+      \end{column}
+      \hspace{4ex}
+    \end{columns}
+  \end{subblock}
+  
+  \begin{subblock}{Selecting Vector Elements}
+    \renewcommand{\arraystretch}{1.411}\hspace{-17.5pt}
+    \begin{tabular}{>{\centering}m{0.48\linewidth} >{\centering\arraybackslash}m{0.47\linewidth}}
+      \multicolumn{2}{c}{\textcolor{gray}{\textbf{By Position}}}\\
+      \inlc{x[4]} & The fourth element.\\
+      \inlc{x[-4]} & All but the fourth.\\
+      \inlc{x[2:4]} & Elements two to four.\\
+      \inlc{x[-(2:4)]} & All elements except two to four.\\
+      \inlc{x[c(1, 5)]} & Elements one and five.\\
+      \multicolumn{2}{c}{\textcolor{gray}{\textbf{By Value}}}\\
+      \inlc{x[x == 10]} & Element which are equal to 10.\\
+      \inlc{x[which(x == 10)]} & Element which are equal to 10.\\
+      \inlc{x[x < 0]} & All elements less than zero.\\
+      \inlc{x[x \%in\% c(1, 2, 5)]} & Elements in the set \{1, 2, 5\}.\\
+      \multicolumn{2}{c}{\textcolor{gray}{\textbf{Named Vectors}}}\\
+      \inlc{x['apple']} & Element with name 'apple".
+    \end{tabular}
+  \end{subblock}
+\end{block}

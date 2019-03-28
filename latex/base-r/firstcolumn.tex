@@ -1,0 +1,26 @@
+% !TEX root = base-r.tex
+
+\begin{block}{Getting Help}
+  
+  \blocksubtitle{Accessing the help files}
+  \inline{?mean}\\Get help of a particular function.\br
+  \inline{help.search('weighted mean')}\\Search the help files for a word or phrase.\br
+  \inline{help(package = 'dplyr')}\\Find help for a package.
+  
+  \blocksubtitle{More about an object}
+  \inline{str(iris)}\\Get a summary of an object's structure.\br
+  \inline{class(iris)}\\Find the class an object belongs to.
+\end{block}
+
+\begin{block}{Using Packages}
+  \inline{install.packages('dplyr')}\\Download and install a package from CRAN.\br
+  \inline{library(dplyr)}\\Load the package into the session, making all its functions available to use.\br
+  \inline{dplyr::select}\\Use a particular function from a package.\br
+  \inline{data(iris)}
+\end{block}
+
+\begin{block}{Working Directory}
+  \inline{getwd()}\\Find the current working directory (where inputs are found and outputs are sent).\br
+  \inline{setwd('C://file/path')}\\Change the current working directory.\br
+  \textbf{Use projects in RStudio to set the working directory to the folder you are working in.}
+\end{block}
