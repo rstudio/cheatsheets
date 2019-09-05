@@ -1,0 +1,22 @@
+```{r setup, include = FALSE}
+library(reticulate)
+virtualenv_create("fmri-proj")
+py_install("seaborn", envname = "fmri-proj")
+use_virtualenv("fmri-proj")
+```
+
+```{python, echo = FALSE}
+import seaborn as sns
+fmri = sns.load_dataset("fmri")
+```
+
+```{r}
+f1 <- subset(py$fmri, region == "parietal")
+```
+
+```{python}
+import matplotlib as mpl
+sns.lmplot("timepoint","signal", data=r.f1)
+mpl.pyplot.show()
+```
+
