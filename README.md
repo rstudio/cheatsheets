@@ -11,7 +11,7 @@ The cheat sheets use the creative commons copyright. Please see the LICENSE docu
 
 ## Translations
 
-If you wish to contribute to this effort by translating a cheat sheet, please feel free to use the source Keynote file. To submit a translation, please use a Pull Request via GitHub or email it to us at [info@rstudio.com](mailto:info@rstudio.com) with the subject "Translated Cheatsheet".
+If you wish to contribute to this effort by translating a cheat sheet, please feel free to use the source Keynote file. To submit a translation, please use a Pull Request via GitHub or email it to us at [info@rstudio.com](mailto:info@rstudio.com) with the subject "Translated Cheat Sheet".
 
 ## Tips for making a new RStudio cheat sheet
 
