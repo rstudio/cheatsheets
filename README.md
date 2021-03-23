@@ -3,7 +3,7 @@
 
 <img src="pngs/rstudio-ide.png" width=364 height=288 align="right"/>
 
-The cheat sheets make it easy to learn about and use some of our favorite packages. They are published in their respective PDF versions here: https://www.rstudio.com/resources/cheatsheets/, some are also available in the RStudio IDE under Help-Cheatsheets.
+The cheat sheets make it easy to learn about and use some of our favorite packages. They are published in their respective PDF versions here: https://www.rstudio.com/resources/cheatsheets/, some are also available in the RStudio IDE under Help > Cheat Sheets.
 
 This repository contains the source files of the current, archived and translated versions.
 
@@ -11,13 +11,13 @@ The cheat sheets use the creative commons copyright. Please see the LICENSE docu
 
 ## Translations
 
-If you wish to contribute to this effort by translating a cheat sheet, please feel free to use the source Keynote file. To submit a translation, please use a Pull Request via GitHub or email it to us at [info@rstudio.com](mailto:info@rstudio.com) with the subject "Translated Cheatsheet".
+If you wish to contribute to this effort by translating a cheat sheet, please feel free to use the source Keynote file. To submit a translation, please use a Pull Request via GitHub or email it to us at [info@rstudio.com](mailto:info@rstudio.com) with the subject "Translated Cheat Sheet".
 
 ## Tips for making a new RStudio cheat sheet
 
 **RStudio cheat sheets are not meant to be text or documentation!** They are scannable visual aids that use layout and visual mnemonics to help people zoom to the functions they need. Think of cheat sheets as a quick reference, with the emphasis on quick. Here's an analogy:
 
-> A cheat sheet is more like a well-organized computer menu bar that leads you to a command than like a manual that documents each command. 
+> A cheat sheet is more like a well-organized computer menu bar that leads you to a command than like a manual that documents each command.
 
 Everything about your cheat sheet should be designed to lead users to essential information _quickly_.  If you are summarizing the documentation manual, you are doing it wrong! Here are some tips to help you do it right:
 
@@ -51,11 +51,11 @@ Budget more time than you expect to make the sheets. So far, I've found this pro
 
 ### Visual Design
 
-1. **Use the existing theme** that you see in the cheatsheets. It is cohesive and black and white printer friendly.
+1. **Use the existing theme** that you see in the cheat sheets. It is cohesive and black and white printer friendly.
 
-1. **Choose a highlight color** to use throughout your cheat sheet, and repeat this highlight color in the background of the top right corner.  Ideally you could find a color that is different enough from the other cheat sheets that you can quickly tell yours apart when flipping through a booklet of cheatsheets.
+1. **Choose a highlight color** to use throughout your cheat sheet, and repeat this highlight color in the background of the top right corner.  Ideally you could find a color that is different enough from the other cheat sheets that you can quickly tell yours apart when flipping through a booklet of cheat sheets.
 
-1. **Use a second color sparingly or not at all** to draw attention to where it is needed and to differentiate different groupings of content. 
+1. **Use a second color sparingly or not at all** to draw attention to where it is needed and to differentiate different groupings of content.
 
 1. **Include lots of white space.**
 
@@ -91,4 +91,4 @@ Budget more time than you expect to make the sheets. So far, I've found this pro
 
 Your cheat sheet has two goals. First, to help users find essential information quickly, and second, to prevent confusion while doing the above. Your best strategy will be to limit the amount of information you put into the cheat sheet and to lay that information out intuitively and visually. This approach will make your cheat sheet equally useful as a teaching tool, programming tool, or marketing tool.
 
-p.s. Cheat sheets fall squarely on the _human-facing side of software design_. They focus on human attention. What does that mean? When you write documentation, your job is to fill in all of the relevant details—that's a software facing job, you need to know the software to do it. You assume that interested humans will find their way to your details on their own (and understand them when they do!). When you make a cheatsheet, your job flips. You assume that the relevant details already exist in the documentation. Your job is to help interested humans find them and understand them.  Your job is to guide the human's attention. Don't just write, design.
+p.s. Cheat sheets fall squarely on the _human-facing side of software design_. They focus on human attention. What does that mean? When you write documentation, your job is to fill in all of the relevant details—that's a software facing job, you need to know the software to do it. You assume that interested humans will find their way to your details on their own (and understand them when they do!). When you make a cheat sheet, your job flips. You assume that the relevant details already exist in the documentation. Your job is to help interested humans find them and understand them.  Your job is to guide the human's attention. Don't just write, design.
