@@ -29,7 +29,7 @@ Cheat sheet pull requests and issues tend be handled in bursts, and we may wait 
 To submit a translation of a cheat sheet, open a pull request!
 
 We ask that you include:
-* A PDF file of your cheat sheet named FOMRAT?
+* A PDF file of your cheat sheet, include the language in the file name
 * Your translated keynote or powerpoint file
 
 Cheat sheet pull requests and issues tend be handled in bursts, and we may wait for several to accumulate before sorting through them so don't worry if your submission sits for a while!
