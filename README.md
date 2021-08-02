@@ -11,7 +11,7 @@ The cheat sheets use the creative commons copyright. Please see the LICENSE docu
 
 ## Translations
 
-If you wish to contribute to this effort by translating a cheat sheet, please feel free to use the source Keynote file. To submit a translation, please use a Pull Request via GitHub or email it to us at [info@rstudio.com](mailto:info@rstudio.com) with the subject "Translated Cheat Sheet".
+If you wish to contribute to this effort by translating a cheat sheet, please feel free to use the source Keynote file. To submit a translation, please use a Pull Request via GitHub. See the [contributing guidelines](https://github.com/rstudio/cheatsheets/blob/master/.github/CONTRIBUTING.md) for more information.
 
 ## Tips for making a new RStudio cheat sheet
 
@@ -23,7 +23,7 @@ Everything about your cheat sheet should be designed to lead users to essential 
 
 ### Getting Started
 
-1. RStudio cheat sheets are hosted at https://github.com/rstudio/cheatsheets. You can submit new cheat sheets to the repository with a pull request.
+1. RStudio cheat sheets are hosted at https://github.com/rstudio/cheatsheets. You can submit new cheat sheets to the repository with a pull request. See the [contributing guidelines](https://github.com/rstudio/cheatsheets/blob/master/.github/CONTRIBUTING.md) for more information.
 
 1. The files [keynotes/0-template.key](https://github.com/rstudio/cheatsheets/blob/master/keynotes/0-template.key) and [powerpoints/0-template.ppt](https://github.com/rstudio/cheatsheets/blob/master/powerpoints/0-template.pptx) are official templates that contain some helpful tips.
 
