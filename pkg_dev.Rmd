@@ -1,0 +1,317 @@
+---
+title: "Package Development Cheat Sheet"
+output: html_document
+---
+# General Ideas
+Organize into setup and initialization vs. daily workflow vs. maintenance  
+
+Who is the main audience? For example someone new to package development looking for a summary/overview vs someone more experienced who's looking for quick reference of what goes in tests again?, etc
+
+
+### General Other Resources
+Github: https://happygitwithr.com/  
+
+Mention pkgdown anywhere? https://pkgdown.r-lib.org/  
+
+
+# Package Structure
+A package is a convention for organizing files into directories. This sheet shows how to work with the 7 most common parts of an R package:  
+
+The contents of a package can be stored on disk as a:  
+- source - a directory with sub-directories (as above)  
+- bundle - a single compressed file (.tar.gz)  
+- binary - a single compressed file optimized for a specific OS  
+Or installed into an R library (loaded into memory during an R session) or archived online in a repository. Use the functions below to move between these states.  
+
+
+# Getting Started
+`create_package(path)` Create a new package at the specified location, creating a new directory if needed. Automatically create DESCRIPTION, NAMESPACE, and R/.  
+
+
+# Basic Workflow
+Once you've created your package, it's time to add your code! There are four main steps:  
+
+1. Write or edit code in the R/ directory. Use devtools::load_all() to make code available to test drive interactively.  
+2. Run checks with devtools::check(). Check often to catch errors early.  
+3. Add or edit documentation in your .R files. Run devtools::document() to update the documentation files in man/ and the NAMESPACE.  
+4. Add tests for your code to tests/. Run devtools::test() to run all tests.  
+
+Add longer instructional documents to vignettes/ or add data to your package in data/.  
+
+
+# DESCRIPTION
+### SETUP
+Description: Provides metadata about your package.
+
+Initial Set Up:  
+created by `create_package()`  
+`use_*_license()` Select a license and add the associated files.  
+
+Periodic Maintenance:  
+`use_package(package, type, min_version)` Add a package to Imports or Suggests. Use package functions in  your code with pkg::fun(...) e.g. dplyr::summarise(...).  
+
+Import packages that your package must have to work. R will install them when it installs your package.  
+Suggest packages that are not very essential to yours. Users can install them manually, or not, as they like.  
+
+Daily Workflow:  
+
+Other Info:  
+https://r-pkgs.org/license.html  
+
+Example Description:  
+```
+Package: mypackage
+Title: Title of Package
+Version: 0.1.0
+Authors@R: person("Hadley", "Wickham", email = 
+    "hadley@me.com", role = c("aut", "cre"))
+Description: What the package does (one paragraph)
+Depends: R (>= 3.1.0)
+License: GPL-2
+LazyData: true
+Imports: 
+    dplyr (>= 0.4.0),
+    ggvis (>= 0.2)
+Suggests:
+    knitr (>= 0.1.0)
+```
+
+
+# R/ 
+### Write Code
+Description: All of the R code in your package goes in R/
+
+Initial Set Up:  
+created by `create_package()`  
+
+Periodic Maintenance:  
+`use_r(name)` Add a .R file to R/. More info on how to organize code?  
+
+Daily Workflow:  
+1. Write or edit code in .R files.
+2. Load code quickly with `load_all()` or Ctrl/Cmd+Shift+L
+3. Run/test code interactively
+
+Other Info:  
+Tidyverse style guide: style.tidyverse.org/  
+styler package: styler.r-lib.org/  
+
+
+# tests/ 
+### TEST
+Description: Write formal tests for your code and automate testing.     
+
+Initial Set Up:  
+`use_testthat()` Adds a `tests/testthat` directory
+
+Periodic Maintenance:  
+`use_test(name)` Create a test file.  
+Write new tests.  
+Include an example test file.  
+The current example is:  
+```
+# test-arithmetic.R
+context("Arithmetic")
+
+test_that("Math works", {
+  expect_equal(1 + 1, 2)
+  expect_equal(1 + 2, 3)
+})
+```
+
+Daily Workflow:  
+1. Modify code or tests  
+2. Run all tests with `test()` of Ctrl/Cmd + Shift + T  
+3. Repeat
+
+Other Info:  
+Table of expect statements:  
+```
+expect_equal()
+expect_identical()
+expect_match()
+expect_output()
+expect_message()
+expect_warning()
+expect_error()
+expect_is()
+expect_false()
+expect_true()
+```
+
+# man/ 
+### Document
+Description: Contains the documentation for your functions, the help pages in your package. Use roxygen comments to document each function.  
+
+Initial Set Up:  
+Running `document()` handles everything.
+
+Periodic Maintenance:  
+
+Daily Workflow:  
+1. Add roxygen comments in your .R files. Generate a template in the RStudio IDE with Code > Insert Roxygen Skeleton or Keyboard Shortcut?.  
+2. Use devtools::document() or Ctrl/Cmd+Shift+D to create man/ if needed, convert roxygen comments to .Rd files and place them in man/, and automatically update NAMESPACE.  
+3. Open help pages with ? to preview documentation.  
+4. Repeat.  
+
+Other Info:  
+Overview of .Rd Formatting tags. The following are included.  
+Do people edit these by hand or are they auto generated?  
+```
+\emph{italic text}
+\strong{bold text}
+\code{function(args)}
+\pkg{package}
+
+\dontrun{code}
+\dontshow{code}
+\donttest{code}
+
+\deqn{a + b (block)}
+\eqn{a + b (inline)}
+
+\email{name@@foo.com}
+\href{url}{display}
+\url{url}
+
+\link[=dest]{display}
+\linkS4class{class}
+\code{\link{function}}
+\code{\link[package]{function}}
+
+\tabular{lcr}{
+    left \tab centered \tab right \cr
+    cell \tab cell            \tab cell   \cr
+}
+```
+
+Overview of roxygen2 that currently exists:  
+The roxygen2 package lets you write documentation inline in your .R files with a shorthand syntax. devtools implements roxygen2 to make documentation.  
+- Add roxygen documentation as comment lines that begin with #’.   
+- Place comment lines directly above the code that defines the object documented.   
+- Place a roxygen @ tag (right) after #’ to supply a specific section of documentation.   
+- Untagged lines will be used to generate a title, description, and details section (in that order)  
+
+Example:  
+```
+#' Add together two numbers.
+#' 
+#' @param x A number.
+#' @param y A number.
+#'
+#' @return The sum of \code{x} and \code{y}.
+#' @export
+#'
+#' @examples
+#' add(1, 1)
+add <- function(x, y) {
+  x + y
+}
+```
+
+Example roxygen tags:  
+```
+@aliases
+@concepts
+@describeIn
+@examples
+@export
+@family
+@inheritParams
+@keywords
+@param
+@rdname
+@return
+@section
+@seealso
+@format
+@source
+@include
+@slot
+@field
+```
+
+
+# vignettes/
+### TEACH
+Description: vigenttes/  holds documents that teach your users how to solve real problems with your tools.
+
+Initial Set Up:  
+`use_vignette("my-vignette")` Create the vignettes/ directory and add a template vignette, my-vignette.Rmd.  
+Append YAML headers to your vignettes (see example).
+
+Periodic Maintenance:  
+
+Daily Workflow:  
+
+Other Info:  
+rmarkdown.rstudio.com/  
+Example header:  
+```
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+```
+
+
+# data/
+### ADD DATA
+
+Description: Include data with your package.  
+
+Initial Set Up:  
+Save data as .Rdata files.  
+Include LazyData: true in DESCRIPTION.  
+Store data in:  
+- data/ to make data available to package users. Use usethis::use_data() to create the directory and add data stored as an .rda file.  
+- R/sysdata.rda to keep data internal for use by your functions. Use usethis::use_data(internal = TRUE).  
+- inst/extdata to make raw data available, for example for loading and parsing examples. Access this data with system.file(). Use usethis::use_data_raw() to add data to data-raw/ and include data-raw/ in .Rbuildignore.  
+
+Periodic Maintenance:  
+
+Daily Workflow:  
+
+Other Info:  
+Documenting data sets with roxygen in a separate .R file in R/.  
+```
+#' Title
+#' Description
+#' @format
+#' \describe{
+#'   \item{name}{description}
+#' }
+#' @source \url{url}
+"data_name"
+```
+
+
+# NAMESPACE
+### ORGANIZE
+Description: The NAMESPACE file helps you make your package self-contained: it won’t interfere with other packages, and other packages won’t interfere with it.  
+
+Initial Set Up:  
+
+Periodic Maintenance:  
+Export functions for users by placing `@export` in their roxygen comments.  
+Import objects from other packages with `package::object` (recommended) or `@import`, `@importFrom`, `@importClassesFrom`, `@importMethodsFrom` (not always recommended).    
+
+Daily Workflow:  
+1. Modify your code or tests.  
+2. Document your package with `document()`  
+3. Check NAMESPACE  
+4. Repeat until NAMESPACE is correct  
+
+Other Info:  
+
+
+# Release Your Package  
+See more at r-pkgs.org/release.html.
+
+
