@@ -12,7 +12,7 @@ We’d like to help you make and share high quality cheatsheets on R topics. The
 
 [Download Template for Powerpoint](https://github.com/rstudio/cheatsheets/raw/master/powerpoints/0-template.pptx)
 
-If you make a cheatsheet, we encourage you to share it here with us! We accept and post cheatsheets on a volunteer basis. Each cheatsheet must be licensed under the [creative commons 4.0 license](https://creativecommons.org/licenses/by/4.0/) and be attributed to you, the author.
+If you make a cheatsheet, we encourage you to share it here with us! We accept and post cheatsheets on a volunteer basis. Each cheatsheet must be licensed under the [creative commons 4.0 license](https://creativecommons.org/licenses/by/4.0/) and be attributed to you, the author. Include "CC-BY-SA Your Name" somewhere on the cheat sheet.
 
 To submit a finished cheat sheet, open a pull request!
 
