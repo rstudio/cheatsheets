@@ -4,7 +4,7 @@
 
 Want to contribute a cheat sheet of your own?
 
-We’d like to help you make and share high quality cheatsheets on R topics. The template below provides a useful starting place. It contains tips for designing a three or four column cheatsheet, as well as reusable elements to build your sheet with.
+We’d like to help you make and share high quality cheatsheets on R topics. The template below provides a useful starting place. It contains tips for designing a three or four column cheatsheet, as well as reusable elements to build your sheet with. Check out the [README](https://github.com/rstudio/cheatsheets/blob/master/README.md) for more tips on making good cheat sheets.
 
 <img src="https://github.com/rstudio/cheatsheets/blob/master/pngs/0-template.png" width="500"/>
 
