@@ -21,7 +21,7 @@ Date created/updated (Month YYYY format):
 #### Check that you have done the following:
 - [ ] Used descriptive file names, something like package-name.pdf or task-name.pdf.
 - [ ] Included a PDF file of entire cheat sheet.
-- [ ] Included a PNG file of the first page 1100 x 850 in the pngs folder (for the website thumbnail).
+- [ ] Included a PNG file of the first page size 1100 x 850 in the pngs folder (for the website thumbnail).
 - [ ] Included a Keynote or PowerPoint or similar file in the relevent folder (helps translators who want to translate your cheat sheet).
  
  
@@ -35,7 +35,7 @@ Date created/updated (Month YYYY format):
 
 <!-- Please keep the below portion in your issue, and check `[x]` the applicable boxes. -->
 #### Check that you have done the following:
-- [ ] Added the [language abbreviation](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) to the file name (ex. data-transformation-es.pdf).
+- [ ] Added the [language abbreviation](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) to the file name (ex. data-transformation_es.pdf).
 - [ ] Included a PDF file of your translated cheat sheet to the translation folders.
 - [ ] Included a Keynote or PowerPoint file for your translated cheat sheet to the translation folder.
 - [ ] Not duplicated an existing translation. If an existing translation exists, I have edited it.
