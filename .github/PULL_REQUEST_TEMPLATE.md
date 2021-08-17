@@ -1,6 +1,6 @@
 <!-- Thank you for contributing a cheat sheet! 🎉   
 Cheat sheets are usually added in bursts so don't worry if your pull request sits for a little bit! 
-Please fill out whichever section is relevent below and feel free to delete the irrelevent option. -->
+Please fill out whichever section is relevant below and feel free to delete the irrelevant option. -->
 
 
 <!-- NEW OR UPDATED CONTRIBUTED CHEAT SHEETS -->
@@ -11,10 +11,10 @@ Cheat Sheet Name:
 1 sentence description of the contents:  
 Your Name (as you want to be credited on the website):  
 A link to your github/website (optional):  
-A link to relevent package documentaion (optional):  
+A link to relevant package documentation (optional):  
 Date created/updated (Month YYYY format):  
 
-<!-- Please keep the below portion in your pull reuqest, and check `[x]` the applicable boxes. -->
+<!-- Please keep the below portion in your pull request, and check `[x]` the applicable boxes. -->
 #### Please be sure you've included the [Creative Commons License](https://creativecommons.org/licenses/by/4.0/):
 - [ ] Add CC-BY-SA Your Name to copywrite under the Creative Commons on the cheat sheet
 
@@ -22,7 +22,7 @@ Date created/updated (Month YYYY format):
 - [ ] Used descriptive file names, something like package-name.pdf or task-name.pdf.
 - [ ] Included a PDF file of entire cheat sheet.
 - [ ] Included a PNG file of the first page size 1100 x 850 in the pngs folder (for the website thumbnail).
-- [ ] Included a Keynote or PowerPoint or similar file in the relevent folder (helps translators who want to translate your cheat sheet).
+- [ ] Included a Keynote or PowerPoint or similar file in the relevant folder (helps translators who want to translate your cheat sheet).
  
  
 <!-- NEW OR UPDATED TRANSLATIONS -->
