@@ -19,7 +19,7 @@ Date created/updated (Month YYYY format):
 - [ ] Add CC-BY-SA Your Name to copywrite under the Creative Commons on the cheat sheet
 
 #### Check that you have done the following:
-- [ ] Used descriptive file names, something like package-name.pdf or task-name.pdf.
+- [ ] Used descriptive file names, something like package-name.pdf or task-name.pdf and did not include "cheat sheet" in the title.
 - [ ] Included a PDF file of entire cheat sheet.
 - [ ] Included a PNG file of the first page size 1100 x 850 in the pngs folder (for the website thumbnail).
 - [ ] Included a Keynote or PowerPoint or similar file in the relevant folder (helps translators who want to translate your cheat sheet).
