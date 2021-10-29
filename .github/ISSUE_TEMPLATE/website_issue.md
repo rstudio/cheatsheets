@@ -8,6 +8,6 @@ title : "Website: <brief description of issue/question>"
 Thank you for taking the time to ask a question or give feedback!
 
 If you're looking to submit a new cheat sheet or a translation, read the contributing guidelines at 
-https://github.com/rstudio/cheatsheets/blob/master/.github/CONTRIBUTING.md and submit a pull request.
+https://github.com/rstudio/cheatsheets/blob/main/.github/CONTRIBUTING.md and submit a pull request.
 You do not need to open an issue to do so.
 -->
