@@ -11,7 +11,7 @@ The cheatsheets use the creative commons copyright. Please see the LICENSE docum
 
 ## Translations
 
-If you wish to contribute to this effort by translating a cheatsheet, please feel free to use the source Keynote file. To submit a translation, please use a Pull Request via GitHub. See the [contributing guidelines](https://github.com/rstudio/cheatsheets/blob/master/.github/CONTRIBUTING.md) for more information.
+If you wish to contribute to this effort by translating a cheatsheet, please feel free to use the source Keynote file. To submit a translation, please use a Pull Request via GitHub. See the [contributing guidelines](https://github.com/rstudio/cheatsheets/blob/main/.github/CONTRIBUTING.md) for more information.
 
 ## Tips for making a new RStudio cheatsheet
 
@@ -23,9 +23,9 @@ Everything about your cheatsheet should be designed to lead users to essential i
 
 ### Getting Started
 
-1. RStudio cheatsheets are hosted at https://github.com/rstudio/cheatsheets. You can submit new cheatsheets to the repository with a pull request. See the [contributing guidelines](https://github.com/rstudio/cheatsheets/blob/master/.github/CONTRIBUTING.md) for more information.
+1. RStudio cheatsheets are hosted at https://github.com/rstudio/cheatsheets. You can submit new cheatsheets to the repository with a pull request. See the [contributing guidelines](https://github.com/rstudio/cheatsheets/blob/main/.github/CONTRIBUTING.md) for more information.
 
-1. The files [keynotes/0-template.key](https://github.com/rstudio/cheatsheets/blob/master/keynotes/0-template.key) and [powerpoints/0-template.ppt](https://github.com/rstudio/cheatsheets/blob/master/powerpoints/0-template.pptx) are official templates that contain some helpful tips.
+1. The files [keynotes/0-template.key](https://github.com/rstudio/cheatsheets/blob/main/keynotes/0-template.key) and [powerpoints/0-template.ppt](https://github.com/rstudio/cheatsheets/blob/main/powerpoints/0-template.pptx) are official templates that contain some helpful tips.
 
 1. You may find it easiest to create a new cheatsheet by duplicating the most recent Keynote / Powerpoint cheatsheet and then heavily editing it—that's what I do!
 

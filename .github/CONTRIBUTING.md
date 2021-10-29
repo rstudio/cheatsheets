@@ -4,13 +4,13 @@
 
 Want to contribute a cheat sheet of your own?
 
-We’d like to help you make and share high quality cheat sheets on R topics. The template below provides a useful starting place. It contains tips for designing a three or four column cheat sheet, as well as reusable elements to build your sheet with. Check out the [README](https://github.com/rstudio/cheatsheets/blob/master/README.md) for more tips on making good cheat sheets.
+We’d like to help you make and share high quality cheat sheets on R topics. The template below provides a useful starting place. It contains tips for designing a three or four column cheat sheet, as well as reusable elements to build your sheet with. Check out the [README](https://github.com/rstudio/cheatsheets/blob/main/README.md) for more tips on making good cheat sheets.
 
-<img src="https://github.com/rstudio/cheatsheets/blob/master/pngs/0-template.png" width="500"/>
+<img src="https://github.com/rstudio/cheatsheets/blob/main/pngs/0-template.png" width="500"/>
 
-[Download Template for Keynote](https://github.com/rstudio/cheatsheets/raw/master/keynotes/0-template.key)
+[Download Template for Keynote](https://github.com/rstudio/cheatsheets/raw/main/keynotes/0-template.key)
 
-[Download Template for Powerpoint](https://github.com/rstudio/cheatsheets/raw/master/powerpoints/0-template.pptx)
+[Download Template for Powerpoint](https://github.com/rstudio/cheatsheets/raw/main/powerpoints/0-template.pptx)
 
 If you make a cheat sheet, we encourage you to share it here with us! We accept and post cheat sheets on a volunteer basis. Each cheat sheet must be licensed under the [creative commons 4.0 license](https://creativecommons.org/licenses/by/4.0/) and be attributed to you, the author. Include "CC-BY-SA Your Name" somewhere on the cheat sheet.
 
