@@ -1,4 +1,4 @@
 sparklyr
 --------
 
-https://docs.google.com/presentation/d/1jqjGg8Yp4sQH4y0xpxYy20J-hmhxbIV1VJaojbx9PNY/edit?usp=sharing
+https://docs.google.com/presentation/d/1G3qwf6wFViYqf2zp12LSqfawkcQYBXtMVeEwMBppLuY/edit?usp=sharing
