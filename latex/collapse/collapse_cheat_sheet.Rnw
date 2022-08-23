@@ -386,7 +386,7 @@ collap(wlddev, country + PCGDP + LIFEEX ~ income, w = ~ POP)
 \vspace{-5mm}
 \textcolor{lightgray}{\hrulefill}\\
 {\scriptsize \vspace{-0.5mm}
- Page 1 of 2 \hfill \textcopyright\ Sebastian Krantz\ \textbullet\ Learn more at \href{https://sebkrantz.github.io/collapse/}{sebkrantz.github.io/collapse}\ \textbullet\ Source code at \href{https://github.com/SebKrantz/collapse}{github.com/SebKrantz/collapse}\ \textbullet\ Updates announced at \href{https://twitter.com/collapse\_R}{twitter.com/collapse\_R} - \#rcollapse\ \textbullet\ Cheatsheet created for \emph{collapse} version 1.8.8\ \textbullet\ Updated: 2022-08
+ Page 1 of 2 \hfill \href{https://creativecommons.org/licenses/by-sa/4.0/}{CC-BY-SA}\ Sebastian Krantz\ \textbullet\ Learn more at \href{https://sebkrantz.github.io/collapse/}{sebkrantz.github.io/collapse}\ \textbullet\ Source code at \href{https://github.com/SebKrantz/collapse}{github.com/SebKrantz/collapse}\ \textbullet\ Updates announced at \href{https://twitter.com/collapse\_R}{twitter.com/collapse\_R} - \#rcollapse\ \textbullet\ Cheatsheet created for \emph{collapse} version 1.8.8\ \textbullet\ Updated: 2022-08
 }
 
 \newpage
@@ -678,7 +678,7 @@ The best way to set this option is inside an \code{.Rprofile} file placed in the
 \vspace{-5.5mm}
 \textcolor{lightgray}{\hrulefill}\\
 {\scriptsize \vspace{-0.5mm}
- Page 2 of 2 \hfill \textcopyright\ Sebastian Krantz\ \textbullet\ Learn more at \href{https://sebkrantz.github.io/collapse/}{sebkrantz.github.io/collapse}\ \textbullet\ Source code at \href{https://github.com/SebKrantz/collapse}{github.com/SebKrantz/collapse}\ \textbullet\ Updates announced at \href{https://twitter.com/collapse\_R}{twitter.com/collapse\_R} - \#rcollapse\ \textbullet\ Cheatsheet created for \emph{collapse} version 1.8.8\ \textbullet\ Updated: 2022-08
+ Page 2 of 2 \hfill \href{https://creativecommons.org/licenses/by-sa/4.0/}{CC-BY-SA}\ Sebastian Krantz\ \textbullet\ Learn more at \href{https://sebkrantz.github.io/collapse/}{sebkrantz.github.io/collapse}\ \textbullet\ Source code at \href{https://github.com/SebKrantz/collapse}{github.com/SebKrantz/collapse}\ \textbullet\ Updates announced at \href{https://twitter.com/collapse\_R}{twitter.com/collapse\_R} - \#rcollapse\ \textbullet\ Cheatsheet created for \emph{collapse} version 1.8.8\ \textbullet\ Updated: 2022-08
 }
 
 \end{document}
