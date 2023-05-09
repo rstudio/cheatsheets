@@ -336,6 +336,8 @@ Some features require v1.4+.
 ::: {.callout-note appearance="minimal" icon="false" collapse="true"}
 ## Expand to read about reticulate features in the RStudio IDE {aria-hidden="true"}
 
+### reticulate features in the RStudio IDE
+
 -   Syntax highlighting for Python scripts and chunks.
 -   Tab completion for Python functions and objects (and Python modules imported in R scripts).
 -   Source Python scripts.

@@ -43,7 +43,7 @@ execute:
 ::: {.callout-note appearance="minimal" icon="false" collapse="true"}
 ## Expand to read about the features in the Source Editor {aria-hidden="true"}
 
-Features within the Source Editor
+### Features within the Source Editor
 
 1.  New File
 2.  Embed Code
@@ -70,7 +70,7 @@ Features within the Source Editor
 ::: {.callout-note appearance="minimal" icon="false" collapse="true"}
 ## Expand to read about the features in the Visual Editor {aria-hidden="true"}
 
-Features within the Visual Editor
+### Features within the Visual Editor
 
 -   Insert citations
 -   Style options
@@ -85,7 +85,7 @@ Features within the Visual Editor
 ::: {.callout-note appearance="minimal" icon="false" collapse="true"}
 ## Expand to read about the features in the Rendered Output Window {aria-hidden="true"}
 
-Features within the Rendered Output Window
+### Features within the Rendered Output Window
 
 -   File path to output document
 -   Find in document

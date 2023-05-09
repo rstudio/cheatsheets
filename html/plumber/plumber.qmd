@@ -173,6 +173,8 @@ This runs the API on the host machine supported by the current R session.
 ::: {.callout-note appearance="minimal" icon="false" collapse="true"}
 ## Expand to read about plumber features in the RStudio IDE {aria-hidden="true"}
 
+### plumber features in the RStudio IDE 
+
 -   Create new Plumber API
 -   Publish API to RStudio Connect
 -   Run API in current R session
@@ -187,7 +189,9 @@ The default interface is generated via Swagger
 ![](images/plumber-documentation.png){fig-align="center"}
 
 ::: {.callout-note appearance="minimal" icon="false" collapse="true"}
-## Expand to read about the Swagger user-interface
+## Expand to read about the Swagger user interface
+
+### Features in the Swagger user interface
 
 -   Endpoint details
 -   Parameter details

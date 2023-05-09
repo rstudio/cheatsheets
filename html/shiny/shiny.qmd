@@ -158,6 +158,8 @@ Call a reactive value from within the arguments of one of these functions to avo
 ::: {.callout-note appearance="minimal" icon="false" collapse="true"}
 ## Expand to read about the reactivity diagram {aria-hidden="true"}
 
+### Phases in the reactivity diagram
+
 -   Create your own reactive values
     -   `reactiveValues()`
     -   `reactiveFileReader()`
