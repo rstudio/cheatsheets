@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data transformation with dplyr :: Cheat Sheet</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="data-transformation_files/libs/clipboard/clipboard.min.js"></script>
+<script src="data-transformation_files/libs/quarto-html/quarto.js"></script>
+<script src="data-transformation_files/libs/quarto-html/popper.min.js"></script>
+<script src="data-transformation_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="data-transformation_files/libs/quarto-html/anchor.min.js"></script>
+<link href="data-transformation_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="data-transformation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="data-transformation_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="data-transformation_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="data-transformation_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+<link rel="stylesheet" href="css/cheatsheet.css">
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#summarize-cases" id="toc-summarize-cases" class="nav-link active" data-scroll-target="#summarize-cases">Summarize Cases</a></li>
+  <li><a href="#group-cases" id="toc-group-cases" class="nav-link" data-scroll-target="#group-cases">Group Cases</a></li>
+  <li><a href="#manipulate-cases" id="toc-manipulate-cases" class="nav-link" data-scroll-target="#manipulate-cases">Manipulate Cases</a>
+  <ul class="collapse">
+  <li><a href="#extract-cases" id="toc-extract-cases" class="nav-link" data-scroll-target="#extract-cases">Extract Cases</a></li>
+  <li><a href="#arrange-cases" id="toc-arrange-cases" class="nav-link" data-scroll-target="#arrange-cases">Arrange cases</a></li>
+  <li><a href="#add-cases" id="toc-add-cases" class="nav-link" data-scroll-target="#add-cases">Add Cases</a></li>
+  </ul></li>
+  <li><a href="#manipulate-variables" id="toc-manipulate-variables" class="nav-link" data-scroll-target="#manipulate-variables">Manipulate Variables</a>
+  <ul class="collapse">
+  <li><a href="#extract-variables" id="toc-extract-variables" class="nav-link" data-scroll-target="#extract-variables">Extract Variables</a></li>
+  <li><a href="#manipulate-multiple-variables-at-once" id="toc-manipulate-multiple-variables-at-once" class="nav-link" data-scroll-target="#manipulate-multiple-variables-at-once">Manipulate Multiple Variables at Once</a></li>
+  <li><a href="#make-new-variables" id="toc-make-new-variables" class="nav-link" data-scroll-target="#make-new-variables">Make New Variables</a></li>
+  </ul></li>
+  <li><a href="#vectorized-functions" id="toc-vectorized-functions" class="nav-link" data-scroll-target="#vectorized-functions">Vectorized Functions</a>
+  <ul class="collapse">
+  <li><a href="#to-use-with-mutate" id="toc-to-use-with-mutate" class="nav-link" data-scroll-target="#to-use-with-mutate">To Use with <code>mutate()</code></a></li>
+  <li><a href="#offset" id="toc-offset" class="nav-link" data-scroll-target="#offset">Offset</a></li>
+  <li><a href="#cumulative-aggregate" id="toc-cumulative-aggregate" class="nav-link" data-scroll-target="#cumulative-aggregate">Cumulative Aggregate</a></li>
+  <li><a href="#ranking" id="toc-ranking" class="nav-link" data-scroll-target="#ranking">Ranking</a></li>
+  <li><a href="#math" id="toc-math" class="nav-link" data-scroll-target="#math">Math</a></li>
+  <li><a href="#miscellaneous" id="toc-miscellaneous" class="nav-link" data-scroll-target="#miscellaneous">Miscellaneous</a></li>
+  </ul></li>
+  <li><a href="#summary-functions" id="toc-summary-functions" class="nav-link" data-scroll-target="#summary-functions">Summary Functions</a>
+  <ul class="collapse">
+  <li><a href="#to-use-with-summarize" id="toc-to-use-with-summarize" class="nav-link" data-scroll-target="#to-use-with-summarize">To Use with <code>summarize()</code></a></li>
+  <li><a href="#count" id="toc-count" class="nav-link" data-scroll-target="#count">Count</a></li>
+  <li><a href="#position" id="toc-position" class="nav-link" data-scroll-target="#position">Position</a></li>
+  <li><a href="#logical" id="toc-logical" class="nav-link" data-scroll-target="#logical">Logical</a></li>
+  <li><a href="#order" id="toc-order" class="nav-link" data-scroll-target="#order">Order</a></li>
+  <li><a href="#rank" id="toc-rank" class="nav-link" data-scroll-target="#rank">Rank</a></li>
+  <li><a href="#spread" id="toc-spread" class="nav-link" data-scroll-target="#spread">Spread</a></li>
+  </ul></li>
+  <li><a href="#row-names" id="toc-row-names" class="nav-link" data-scroll-target="#row-names">Row Names</a></li>
+  <li><a href="#combine-tables" id="toc-combine-tables" class="nav-link" data-scroll-target="#combine-tables">Combine Tables</a>
+  <ul class="collapse">
+  <li><a href="#combine-variables" id="toc-combine-variables" class="nav-link" data-scroll-target="#combine-variables">Combine Variables</a></li>
+  <li><a href="#combine-cases" id="toc-combine-cases" class="nav-link" data-scroll-target="#combine-cases">Combine Cases</a></li>
+  <li><a href="#relational-data" id="toc-relational-data" class="nav-link" data-scroll-target="#relational-data">Relational Data</a></li>
+  <li><a href="#column-matching-for-joins" id="toc-column-matching-for-joins" class="nav-link" data-scroll-target="#column-matching-for-joins">Column Matching for Joins</a></li>
+  <li><a href="#set-operations" id="toc-set-operations" class="nav-link" data-scroll-target="#set-operations">Set Operations</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data transformation with dplyr :: Cheat Sheet</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<!-- PAGE 1 -->
+<p><strong>dplyr</strong> functions work with pipes and expect <strong>tidy data</strong>. In tidy data:</p>
+<ul>
+<li>Each <strong>variable</strong> is in its own <strong>column</strong></li>
+<li>Each <strong>observation</strong>, or <strong>case</strong>, is in its own <strong>row</strong></li>
+<li><strong>pipes</strong> <code>x |&gt; f(y)</code> becomes <code>f(x,y)</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="summarize-cases" class="level2">
+<h2 class="anchored" data-anchor-id="summarize-cases">Summarize Cases</h2>
+<p>Apply <strong>summary</strong> functions to columns to create a new table of summary statistics. Summary functions take vectors as input and return one value back (see Summary Functions).</p>
+<ul>
+<li><p><code>summarize(.data, ...)</code>: Compute table of summaries.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="at">avg =</span> <span class="fu">mean</span>(mpg))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><code>count(.data, ..., wt = NULL, sort = FLASE, name = NULL)</code>: Count number of rows in each group defined by the variables in <code>...</code>. Also <code>tally()</code>, <code>add_count()</code>, and <code>add_tally()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">summarize</span>(cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+</section>
+<section id="group-cases" class="level2">
+<h2 class="anchored" data-anchor-id="group-cases">Group Cases</h2>
+<ul>
+<li><p>Use <code>group_by(.data, ..., .add = FALSE, .drop = TRUE)</code> to created a “grouped” copy of a table grouped by columns in <code>...</code>. dplyr functions will manipulate each “group” separately and combine the results.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg =</span> <span class="fu">mean</span>(mpg))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Use <code>rowwise(.data, ...)</code> to group data into individual rows. dplyr functions will compute results for each row. Also apply functions to list-columns. See tidyr cheat sheet for list-column workflow.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">film_count =</span> <span class="fu">length</span>(films))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><code>ungroup(x, ...)</code>: Returns ungrouped copy of table.</p></li>
+</ul>
+</section>
+<section id="manipulate-cases" class="level2">
+<h2 class="anchored" data-anchor-id="manipulate-cases">Manipulate Cases</h2>
+<section id="extract-cases" class="level3">
+<h3 class="anchored" data-anchor-id="extract-cases">Extract Cases</h3>
+<p>Row functions return a subset of rows as a new table.</p>
+<ul>
+<li><p><code>filter(.data, ..., .preserve = FALSE)</code>: Extract rows that meet logical criteria.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">filter</span>(mpg <span class="sc">&gt;</span> <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><code>distinct(.data, ..., .keep_all = FALSE)</code>: Remove rows with duplicate values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">distinct</span>(gear)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><code>slice(.data, ...,, .preserve = FALSE)</code>: Select rows by position.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">slice</span>(<span class="dv">10</span><span class="sc">:</span><span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><code>slice_sample(.data, ..., n, prop, weight_by = NULL, replace = FALSE)</code>: Randomly select rows. Use <code>n</code> to select a number of rows and <code>prop</code> to select a fraction of rows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><code>slice_min(.data, order_by, ..., n, prop, with_ties = TRUE)</code> and <code>slice_max()</code>: Select rows with the lowest and highest values.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">slice_min</span>(mpg, <span class="at">prop =</span> <span class="fl">0.25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><code>slice_head(.data, ..., n, prop)</code> and <code>slice_tail()</code>: Select the first or last rows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+<section id="logical-and-boolean-operations-to-use-with-filter" class="level4">
+<h4 class="anchored" data-anchor-id="logical-and-boolean-operations-to-use-with-filter">Logical and boolean operations to use with <code>filter()</code></h4>
+<ul>
+<li><code>==</code></li>
+<li><code>&lt;</code></li>
+<li><code>&lt;=</code></li>
+<li><code>is.na()</code></li>
+<li><code>%in%</code></li>
+<li><code>|</code></li>
+<li><code>xor()</code></li>
+<li><code>!=</code></li>
+<li><code>&gt;</code></li>
+<li><code>&gt;=</code></li>
+<li><code>!is.na()</code></li>
+<li><code>!</code></li>
+<li><code>&amp;</code></li>
+<li>See <code>?base::Logic</code> and <code>?Comparison</code> for help.</li>
+</ul>
+</section>
+</section>
+<section id="arrange-cases" class="level3">
+<h3 class="anchored" data-anchor-id="arrange-cases">Arrange cases</h3>
+<ul>
+<li><p><code>arrange(.data, ..., .by_group = FALSE)</code>: Order rows by values of a column or columns (low to high), use with <code>desc()</code> to order from high to low.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">arrange</span>(mpg)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(mpg))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+</section>
+<section id="add-cases" class="level3">
+<h3 class="anchored" data-anchor-id="add-cases">Add Cases</h3>
+<ul>
+<li><p><code>add_row(.data, ..., .before = NULL, .after = NULL)</code>: Add one or more rows to a table.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>cars <span class="sc">|&gt;</span> <span class="fu">add_row</span>(<span class="at">speed =</span> <span class="dv">1</span>, <span class="at">dist =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+</section>
+</section>
+<section id="manipulate-variables" class="level2">
+<h2 class="anchored" data-anchor-id="manipulate-variables">Manipulate Variables</h2>
+<section id="extract-variables" class="level3">
+<h3 class="anchored" data-anchor-id="extract-variables">Extract Variables</h3>
+<p>Column functions return a set of columns as a new vector or table.</p>
+<ul>
+<li><p><code>pull(.data, var = -1, name = NULL, ...)</code>: Extract column values as a vector, by name or index.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">pull</span>(wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><code>select(.data, ...)</code>: Extract columns as a table.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">select</span>(mpg, wt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><code>relocate(.data, ..., .before = NULL, .after = NULL)</code>: Move columns to new position.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">relocate</span>(mpg, cyl, <span class="at">after =</span> <span class="fu">last_col</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+<section id="use-these-helpers-with-select-and-across" class="level4">
+<h4 class="anchored" data-anchor-id="use-these-helpers-with-select-and-across">Use these helpers with <code>select()</code> and <code>across()</code></h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">select</span>(mpg<span class="sc">:</span>cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>contains(match)</code></li>
+<li><code>num_range(prefix, range)</code></li>
+<li><code>:</code>, e.g., <code>mpg:cyl</code></li>
+<li><code>ends_with(match)</code></li>
+<li><code>all_of(x)</code> or <code>any_of(x, ..., vars)</code></li>
+<li><code>!</code>, e.g., <code>!gear</code></li>
+<li><code>starts_with(match)</code></li>
+<li><code>matches(match)</code></li>
+<li><code>everything()</code></li>
+</ul>
+</section>
+</section>
+<section id="manipulate-multiple-variables-at-once" class="level3">
+<h3 class="anchored" data-anchor-id="manipulate-multiple-variables-at-once">Manipulate Multiple Variables at Once</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x_1 =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">x_2 =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>across(.cols, .fun, ..., .name = NULL)</code>: summarize or mutate multiple columns in the same way.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><code>c_across(.cols)</code>: Compute across columns in row-wise data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">x_total =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+</section>
+<section id="make-new-variables" class="level3">
+<h3 class="anchored" data-anchor-id="make-new-variables">Make New Variables</h3>
+<p>Apply <strong>vectorized functions</strong> to columns. Vectorized functions take vectors as input and return vectors of the same length as output (see Vectorized Functions).</p>
+<ul>
+<li><p><code>mutate(.data, ..., .keep = "all", .before = NULL, .after = NULL)</code>: Compute new column(s). Also <code>add_column()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">gpm =</span> <span class="dv">1</span> <span class="sc">/</span> mpg)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">mutate</span>(mtcars, <span class="at">gpm =</span> <span class="dv">1</span> <span class="sc">/</span> mpg, <span class="at">.keep =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><code>rename(.data, ...)</code>: Rename columns. Use <code>rename_with()</code> to rename with a function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span> <span class="fu">rename</span>(<span class="at">miles_per_gallon =</span> mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+<!-- PAGE 2 -->
+</section>
+</section>
+<section id="vectorized-functions" class="level2">
+<h2 class="anchored" data-anchor-id="vectorized-functions">Vectorized Functions</h2>
+<section id="to-use-with-mutate" class="level3">
+<h3 class="anchored" data-anchor-id="to-use-with-mutate">To Use with <code>mutate()</code></h3>
+<p><code>mutate()</code> applies vectorized functions to columns to create new columns. Vectorized functions take vectors as input and return vectors of the same length as output.</p>
+</section>
+<section id="offset" class="level3">
+<h3 class="anchored" data-anchor-id="offset">Offset</h3>
+<ul>
+<li><code>dplyr::lag()</code>: offset elements by 1</li>
+<li><code>dplyr::lead()</code>: offset elements by -1</li>
+</ul>
+</section>
+<section id="cumulative-aggregate" class="level3">
+<h3 class="anchored" data-anchor-id="cumulative-aggregate">Cumulative Aggregate</h3>
+<ul>
+<li><code>dplyr::cumall()</code>: cumulative <code>all()</code></li>
+<li><code>dply::cumany()</code>: cumulative <code>any()</code></li>
+<li><code>cummax()</code>: cumulative <code>max()</code></li>
+<li><code>dplyr::cummean()</code>: cumulative <code>mean()</code></li>
+<li><code>cummin()</code>: cumulative <code>min()</code></li>
+<li><code>cumprod()</code>: cumulative <code>prod()</code></li>
+<li><code>cumsum()</code>: cumulative <code>sum()</code></li>
+</ul>
+</section>
+<section id="ranking" class="level3">
+<h3 class="anchored" data-anchor-id="ranking">Ranking</h3>
+<ul>
+<li><code>dplyr::cume_dist()</code>: proportion of all values &lt;=</li>
+<li><code>dplyr::dense_rank()</code>: rank with ties = min, no gaps</li>
+<li><code>dplyr::min_rank()</code>: rank with ties = min</li>
+<li><code>dplyr::ntile()</code>: bins into n bins</li>
+<li><code>dplyr::percent_rank()</code>: <code>min_rank()</code> scaled to [0,1]</li>
+<li><code>dplyr::row_number()</code>: rank with ties = “first”</li>
+</ul>
+</section>
+<section id="math" class="level3">
+<h3 class="anchored" data-anchor-id="math">Math</h3>
+<ul>
+<li><code>+</code>, <code>-</code>, <code>/</code>, <code>^</code>, <code>%/%</code>, <code>%%</code>: arithmetic ops</li>
+<li><code>log()</code>, <code>log2()</code>, <code>log10()</code>: logs</li>
+<li><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, <code>!=</code>, <code>==</code>: logical comparisons</li>
+<li><code>dplyr::between()</code>: x &gt;= left &amp; x &lt;= right</li>
+<li><code>dplyr::near()</code>: safe <code>==</code> for floating point numbers</li>
+</ul>
+</section>
+<section id="miscellaneous" class="level3">
+<h3 class="anchored" data-anchor-id="miscellaneous">Miscellaneous</h3>
+<ul>
+<li><p><code>dplyr::case_when()</code>: multi-case <code>if_else()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">type =</span> <span class="fu">case_when</span>(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    height <span class="sc">&gt;</span> <span class="dv">200</span> <span class="sc">|</span> mass <span class="sc">&gt;</span> <span class="dv">200</span> <span class="sc">~</span> <span class="st">"large"</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    species <span class="sc">==</span> <span class="st">"Droid"</span> <span class="sc">~</span> <span class="st">"robot"</span>,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"other"</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><code>dplyr::coalesce()</code>: first non-NA values by element across a set of vectors</p></li>
+<li><p><code>dplyr::if_else()</code>: element-wise if() + else()</p></li>
+<li><p><code>dplyr::na_if()</code>: replace specific values with NA</p></li>
+<li><p><code>pmax()</code>: element-wise max()</p></li>
+<li><p><code>pmin()</code>: element-wise min()</p></li>
+</ul>
+</section>
+</section>
+<section id="summary-functions" class="level2">
+<h2 class="anchored" data-anchor-id="summary-functions">Summary Functions</h2>
+<section id="to-use-with-summarize" class="level3">
+<h3 class="anchored" data-anchor-id="to-use-with-summarize">To Use with <code>summarize()</code></h3>
+<p><code>summarize()</code> applies summary functions to columns to create a new table. Summary functions take vectors as input and return single values as output.</p>
+</section>
+<section id="count" class="level3">
+<h3 class="anchored" data-anchor-id="count">Count</h3>
+<ul>
+<li><code>dplyr::n()</code>: number of values/rows</li>
+<li><code>dplyr::n_distinct()</code>: # of uniques</li>
+<li><code>sum(!is.na())</code>: # of non-NAs</li>
+</ul>
+</section>
+<section id="position" class="level3">
+<h3 class="anchored" data-anchor-id="position">Position</h3>
+<ul>
+<li><code>mean()</code>: mean, also <code>mean(!is.na())</code></li>
+<li><code>median()</code>: median</li>
+</ul>
+</section>
+<section id="logical" class="level3">
+<h3 class="anchored" data-anchor-id="logical">Logical</h3>
+<ul>
+<li><code>mean()</code>: proportion of TRUEs</li>
+<li><code>sum()</code>: # of TRUEs</li>
+</ul>
+</section>
+<section id="order" class="level3">
+<h3 class="anchored" data-anchor-id="order">Order</h3>
+<ul>
+<li><code>dplyr::first()</code>: first value</li>
+<li><code>dplyr::last()</code>: last value</li>
+<li><code>dplyr::nth()</code>: value in the nth location of vector</li>
+</ul>
+</section>
+<section id="rank" class="level3">
+<h3 class="anchored" data-anchor-id="rank">Rank</h3>
+<ul>
+<li><code>quantile()</code>: nth quantile</li>
+<li><code>min()</code>: minimum value</li>
+<li><code>max()</code>: maximum value</li>
+</ul>
+</section>
+<section id="spread" class="level3">
+<h3 class="anchored" data-anchor-id="spread">Spread</h3>
+<ul>
+<li><code>IQR()</code>: Inter-Quartile Range</li>
+<li><code>mad()</code>: median absolute deviation</li>
+<li><code>sd()</code>: standard deviation</li>
+<li><code>var()</code>: variance</li>
+</ul>
+</section>
+</section>
+<section id="row-names" class="level2">
+<h2 class="anchored" data-anchor-id="row-names">Row Names</h2>
+<p>Tidy data does not use rownames, which store a variable outside of the columns. To work with the rownames, first move them into a column.</p>
+<ul>
+<li><p><code>tibble::rownames_to_column()</code>: Move row names into col.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rownames_to_column</span>(mtcars, <span class="at">var =</span> <span class="st">"C"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><code>tibble::columns_to_rownames()</code>: Move col into row names.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">column_to_rownames</span>(a, <span class="at">var =</span> <span class="st">"C"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Also <code>tibble::has_rownames()</code> and <code>tibble::remove_rownames()</code>.</p></li>
+</ul>
+</section>
+<section id="combine-tables" class="level2">
+<h2 class="anchored" data-anchor-id="combine-tables">Combine Tables</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>   <span class="sc">~</span>A,  <span class="sc">~</span>B, <span class="sc">~</span>C,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"a"</span>, <span class="st">"t"</span>,  <span class="dv">1</span>,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"b"</span>, <span class="st">"u"</span>,  <span class="dv">2</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"c"</span>, <span class="st">"v"</span>,  <span class="dv">3</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>   <span class="sc">~</span>A,  <span class="sc">~</span>B, <span class="sc">~</span>D,</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"a"</span>, <span class="st">"t"</span>,  <span class="dv">3</span>,</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"b"</span>, <span class="st">"u"</span>,  <span class="dv">2</span>,</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"d"</span>, <span class="st">"w"</span>,  <span class="dv">1</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="combine-variables" class="level3">
+<h3 class="anchored" data-anchor-id="combine-variables">Combine Variables</h3>
+<ul>
+<li><code>bind_cols(..., .name_repair)</code>: Returns tables placed side by side as a single table. Column lengths must be equal. Columns will NOT be matched by id (to do that look at Relational Data below), so be sure to check that both tables are ordered the way you want before binding.</li>
+</ul>
+</section>
+<section id="combine-cases" class="level3">
+<h3 class="anchored" data-anchor-id="combine-cases">Combine Cases</h3>
+<ul>
+<li><code>bind_rows(..., .id = NULL)</code>: Returns tables one on top of the other as a single table. Set <code>.id</code> to a column name to add a column of the original table names.</li>
+</ul>
+</section>
+<section id="relational-data" class="level3">
+<h3 class="anchored" data-anchor-id="relational-data">Relational Data</h3>
+<p>Use a <strong>“Mutating Join”</strong> to join one table to columns from another, matching values with the rows that the correspond to. Each join retains a different combination of values from the tables.</p>
+<ul>
+<li><code>left_join(x, y, by = NULL, copy = FALSE, suffix = c(".x", ".y"), ..., keep = FALSE, na_matches = "na")</code>: Join matching values from <code>y</code> to <code>x</code>.</li>
+<li><code>right_join(x, y, by = NULL, copy = FALSE, suffix = c(".x", ".y"), ..., keep = FALSE, na_matches = "na")</code>: Join matching values from <code>x</code> to <code>y</code>.</li>
+<li><code>inner_join(x, y, by = NULL, copy = FALSE, suffix = c(".x", ".y"), ..., keep = FALSE, na_matches = "na")</code>: Join data. retain only rows with matches.</li>
+<li><code>full_join(x, y, by = NULL, copy = FALSE, suffix = c(".x", ".y"), ..., keep = FALSE, na_matches = "na")</code>: Join data. Retain all values, all rows.</li>
+</ul>
+<p>Use a <strong>“Filtering Join”</strong> to filter one table against the rows of another.</p>
+<ul>
+<li><code>semi_join(x, y, by = NULL, copy = FALSE, ..., na_matches = "na")</code>: Return rows of <code>x</code> that have a match in <code>y</code>. Use to see what will be included in a join.</li>
+<li><code>anti_join(x, y, by = NULL, copy = FALSE, ..., na_matches = "na")</code>: Return rows of <code>x</code> that do not have a match in <code>y</code>. Use to see what will not be included in a join.</li>
+</ul>
+<p>Use a <strong>“Nest Join”</strong> to inner join one table to another into a nested data frame.</p>
+<ul>
+<li><code>nest_join(x, y, by = NULL, copy = FALSE, keep = FALSE, name = NULL, ...)</code>: Join data, nesting matches from <code>y</code> in a single new data frame column.</li>
+</ul>
+</section>
+<section id="column-matching-for-joins" class="level3">
+<h3 class="anchored" data-anchor-id="column-matching-for-joins">Column Matching for Joins</h3>
+<ul>
+<li><p>Use <code>by = c("col1", "col2", ...)</code> to specify one or more common columns to match on.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(x, y, <span class="at">by =</span> <span class="st">"A"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Use a named vector, <code>by = c("col1" = "col2")</code>, to match on columns that have different names in each table.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(x, y, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"C"</span> <span class="ot">=</span> <span class="st">"D"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p>Use <code>suffix</code> to specify the suffix to give to unmatched columns that have the same name in both tables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(x, y, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"C"</span> <span class="ot">=</span> <span class="st">"D"</span>), <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+</section>
+<section id="set-operations" class="level3">
+<h3 class="anchored" data-anchor-id="set-operations">Set Operations</h3>
+<ul>
+<li><code>intersect(x, y, ...)</code>: Rows that appear in both <code>x</code> and <code>y</code>.</li>
+<li><code>setdiff(x, y, ...)</code>: Rows that appear in <code>x</code> but not <code>y</code>.</li>
+<li><code>union(x, y, ...)</code>: Rows that appear in x or y, duplicates removed. <code>union_all()</code> retains duplicates.</li>
+<li>Use <code>setequal()</code> to test whether two data sets contain the exact same rows (in any order).</li>
+</ul>
+<hr>
+<p>CC BY SA Posit Software, PBC • <a href="mailto:info@posit.co">info@posit.co</a> • <a href="https://posit.co">posit.co</a></p>
+<p>Learn more at <a href="https://dplyr.tidyverse.org">dplyr.tidyverse.org</a>.</p>
+<p>Updated: 2023-05.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"dplyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] '1.1.2'</code></pre>
+</div>
+</div>
+<hr>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
