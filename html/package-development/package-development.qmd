@@ -141,7 +141,7 @@ The DESCRIPTION file describes your package, sets up how your package will work 
 
 -   Add packages that you need with `use_package()`.
 
-**Import** packages that your package requires to function.
+**Import** packages that your package requires to work.
 R will install them when it installs your package.
 Add with `use_package(pkgname, type = "imports")`
 
@@ -179,6 +179,8 @@ The documentation will become the help pages in your package.
 -   Document each data set with an roxygen block above the name of the data set in quotes.
 
 -   Document the package with `use_package_doc()`.
+
+-   Build documentation in man/ from Roxygen blocks with `document()`.
 
 ### roxygen2
 

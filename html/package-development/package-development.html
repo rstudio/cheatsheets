@@ -231,7 +231,7 @@ writing documentation, and checking your package." width="1059">
 <li><p>Pick a license with <code>use_mit_license()</code>, <code>use_gpl3_license()</code>, <code>use_proprietary_license()</code>.</p></li>
 <li><p>Add packages that you need with <code>use_package()</code>.</p></li>
 </ul>
-<p><strong>Import</strong> packages that your package requires to function. R will install them when it installs your package. Add with <code>use_package(pkgname, type = "imports")</code></p>
+<p><strong>Import</strong> packages that your package requires to work. R will install them when it installs your package. Add with <code>use_package(pkgname, type = "imports")</code></p>
 <p><strong>Suggest</strong> packages that developers of your package need. Users can install or not, as they like. Add with <code>use_package(pkgname, type = "suggests")</code></p>
 </section>
 <section id="namespace" class="level2">
@@ -274,6 +274,7 @@ writing documentation, and checking your package." width="1059">
 <li><p>Document each function with a roxygen block above its definition in R/. In RStudio, <strong>Code &gt; Insert Roxygen Skeleton</strong> (Keyboard shortcut: Mac <code>Shift+Option+Cmd+R</code>, Windows/Linux <code>Shift+Alt+Ctrl+R</code>) helps.</p></li>
 <li><p>Document each data set with an roxygen block above the name of the data set in quotes.</p></li>
 <li><p>Document the package with <code>use_package_doc()</code>.</p></li>
+<li><p>Build documentation in man/ from Roxygen blocks with <code>document()</code>.</p></li>
 </ul>
 <section id="roxygen2" class="level3">
 <h3 class="anchored" data-anchor-id="roxygen2">roxygen2</h3>
@@ -425,7 +426,7 @@ writing documentation, and checking your package." width="1059">
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"testthat"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] '3.1.7'</code></pre>
+<pre><code>[1] '3.1.7.9000'</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"roxygen2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
