@@ -1,0 +1,39 @@
+---
+title: "Printable Cheat Sheets (pdf)"
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+PDF versions of our popular cheat sheets.
+HTML versions are also available on the [home page](index.html).
+
+::: {layout-ncol="3"}
+[![RStudio IDE](html/rstudio-ide/images/logo.png)](rstudio-ide.pdf)
+
+[![Shiny](html/shiny/images/logo.png)](shiny.pdf)
+
+[![rmarkdown](html/rmarkdown/images/logo.png)](rmarkdown.pdf)
+
+[![Data Import with the tidyverse](html/data-import/images/logo.png)](data-import.pdf)
+
+[![Data Transformation with dplyr](html/data-transformation/images/logo.png)](data-transformation.pdf)
+
+[![Data Tidying with tidyr](html/tidyr/images/logo.png)](tidyr.pdf)
+
+[![Apply Functions with purrr](html/purrr/images/logo.png)](purrr.pdf)
+
+[![Factors with forcats](html/factors/images/logo.png)](factors.pdf)
+
+[![Dates & Times with lubridate](html/lubridate/images/logo.png)](lubridate.pdf)
+
+[![Strings with stringr](html/strings/images/logo.png)](strings.pdf)
+
+[![Package Development](html/package-development/images/logo.png)](package-development.pdf)
+
+[![Deep Learning with Keras](html/keras/images/logo.png)](keras.pdf)
+
+[![Rest APIs](html/plumber/images/logo.png)](plumber.pdf)
+
+[![Python with R](html/reticulate/images/logo.png)](reticulate.pdf)
+:::

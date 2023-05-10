@@ -1,0 +1,20 @@
+project:
+  type: website
+  render: 
+    - "*.qmd"
+
+website:
+  title: "Posit Cheat Sheets"
+  navbar:
+    left:
+      - href: index.qmd
+        text: HTML Cheat Sheets
+      - href: pdf-cheatsheets.qmd
+        text: PDF Cheat Sheets
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
