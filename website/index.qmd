@@ -1,0 +1,16 @@
+---
+title: "Posit Cheatsheets"
+listing:
+  contents:
+    - "rstudio-ide/rstudio-ide-eng.qmd"
+    - "data-import/data-import.qmd"
+    - "data-transformation/data-transformation.qmd"
+    - "tidyr/tidyr.qmd"
+    - "purrr/purrr.qmd"
+    - "package-development/package-development.qmd"
+  type: grid
+  sort: false
+---
+
+HTML versions of our popular cheatsheets. PDF versions are also available to 
+download on each page.
