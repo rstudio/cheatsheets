@@ -21,4 +21,4 @@ listing:
   sort: false
 ---
 
-HTML versions of our popular cheat sheets.
+HTML versions of our popular cheat sheets. PDF versions are available to download on each cheat sheet page.
