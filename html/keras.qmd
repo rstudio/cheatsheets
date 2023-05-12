@@ -1,5 +1,6 @@
 ---
 title: "Deep Learning with Keras :: Cheat Sheet"
+description: " "
 execute:
   eval: false
   output: true

@@ -1,5 +1,6 @@
 ---
 title: "Data import with the tidyverse :: Cheat Sheet"
+description: " "
 execute:
   eval: true
   output: false
@@ -26,6 +27,7 @@ Data is often stored in tabular formats, like csv files or spreadsheets.
 
 -   The first half of this cheatsheet shows how to import and save text files into R using **readr**.
 -   The second half shows how to import spreadsheet data from Excel files using **readxl** or Google Sheets using **googlesheets4**.
+
 
 ```{r}
 library(readr)

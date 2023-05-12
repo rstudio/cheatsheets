@@ -1,5 +1,6 @@
 ---
 title: "REST APIs with plumber :: Cheat Sheet"
+description: " "
 execute:
   eval: true
   output: false

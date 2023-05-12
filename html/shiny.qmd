@@ -1,5 +1,6 @@
 ---
 title: "Shiny :: Cheat Sheet"
+description: " "
 execute:
   eval: true
   output: false

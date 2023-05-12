@@ -1,5 +1,6 @@
 ---
 title: "Dates and times with lubridate :: Cheat Sheet"
+description: " "
 execute:
   eval: true
   output: false

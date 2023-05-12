@@ -1,5 +1,6 @@
 ---
 title: "RStudio IDE :: Cheat Sheet"
+description: " "
 execute:
   eval: true
   output: false

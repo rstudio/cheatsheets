@@ -17,6 +17,7 @@ listing:
     - "plumber.qmd"
     - "reticulate.qmd"
   type: grid
+  image-height: "278px"
   sort: false
 ---
 

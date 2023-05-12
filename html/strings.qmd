@@ -1,5 +1,6 @@
 ---
 title: "String manipulation with stringr :: Cheat Sheet"
+description: " "
 execute:
   eval: true
   output: false
