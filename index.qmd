@@ -1,5 +1,5 @@
 ---
-title: "Posit Cheat Sheets (HTML)"
+title: "Posit Cheat Sheets"
 listing:
   contents:
     - "rstudio-ide-eng.qmd"
@@ -20,5 +20,4 @@ listing:
   sort: false
 ---
 
-HTML versions of our popular cheat sheets. PDF versions are also available to 
-[download](pdf-cheatsheets.html).
+HTML versions of our popular cheat sheets.

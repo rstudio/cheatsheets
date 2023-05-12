@@ -4,13 +4,13 @@ project:
     - "*.qmd"
 
 website:
-  title: "Posit Cheat Sheets"
+  title: "Cheat Sheets"
   navbar:
     left:
       - href: index.qmd
         text: HTML Cheat Sheets
-      - href: pdf-cheatsheets.qmd
-        text: PDF Cheat Sheets
+      - href: contributed-cheatsheets.qmd
+        text: Contributed Cheat Sheets
 format:
   html:
     theme:
