@@ -14,12 +14,13 @@ website:
 format:
   html:
     theme:
-      light: flatly
-      dark: darkly
+      light: [flatly, html/css/style.scss]
+      dark: [darkly, html/css/style.scss]
     toc: true
     toc-location: left
     highlight-style: a11y-dark
     css: html/css/cheatsheet.css
+    mainfont: "Atkinson Hyperlegible"
     
 editor: visual
 
