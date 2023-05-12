@@ -1,11 +1,5 @@
 ---
 title: "RStudio IDE :: Cheat Sheet"
-format: 
-  html:
-    toc: true
-    highlight-style: a11y-dark
-    css: css/cheatsheet.css
-editor: visual
 execute:
   eval: true
   output: false
@@ -16,9 +10,17 @@ engine: knitr
 ```{r}
 #| output: asis
 #| echo: false
+#| column: margin
 source("common.R")
 use_cheatsheet_logo("RStudio")
 ```
+
+::: {.column-margin}
+<a href="../rstudio-ide.pdf">
+<i class="bi bi-file-pdf"></i>
+Download PDF
+</a>
+:::
 
 ## Documents and Apps
 

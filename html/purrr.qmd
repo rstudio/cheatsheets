@@ -1,11 +1,5 @@
 ---
 title: "Apply functions with purrr :: Cheat Sheet"
-format: 
-  html:
-    toc: true
-    highlight-style: a11y-dark
-    css: css/cheatsheet.css
-editor: visual
 execute:
   eval: true
   output: false
@@ -15,9 +9,17 @@ execute:
 ```{r}
 #| output: asis
 #| echo: false
+#| column: margin
 source("common.R")
 use_cheatsheet_logo("purrr")
 ```
+
+::: {.column-margin}
+<a href="../purrr.pdf">
+<i class="bi bi-file-pdf"></i>
+Download PDF
+</a>
+:::
 
 purrr enhances R's functional programming (FP) toolkit by providing a complete and consistent set of tools for working with functions and vectors.
 If you've never heard of FP before, the best place to start is the family of [`map()`](https://purrr.tidyverse.org/reference/map.html) functions which allow you to replace many for loops with code that is both more succinct and easier to read.

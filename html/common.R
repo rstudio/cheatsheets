@@ -26,6 +26,6 @@ use_cheatsheet_logo <- function(pkg, geometry = "240x278", retina = TRUE) {
   }
 
   cat(glue::glue(
-    "<img src=\"images/logo-{pkg}.png\" align=\"right\" height=\"{height}\" alt=\"\" />"
+    "<img src=\"images/logo-{pkg}.png\" height=\"{height}\" alt=\"\" />"
   ))
 }

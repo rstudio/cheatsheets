@@ -1,11 +1,5 @@
 ---
 title: "Factors with forcats :: Cheat Sheet"
-format: 
-  html:
-    toc: true
-    highlight-style: a11y-dark
-    css: css/cheatsheet.css
-editor: visual
 execute:
   eval: true
   output: false
@@ -15,9 +9,17 @@ execute:
 ```{r}
 #| output: asis
 #| echo: false
+#| column: margin
 source("common.R")
 use_cheatsheet_logo("forcats")
 ```
+
+::: {.column-margin}
+<a href="../factors.pdf">
+<i class="bi bi-file-pdf"></i>
+Download PDF
+</a>
+:::
 
 The **forcats** package provides tools for working with factors, which are R's data structure for categorical data.
 

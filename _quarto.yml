@@ -16,5 +16,12 @@ format:
     theme:
       light: flatly
       dark: darkly
-    css: styles.css
     toc: true
+    toc-location: left
+    highlight-style: a11y-dark
+    css: html/css/cheatsheet.css
+    
+editor: visual
+
+execute: 
+  freeze: auto

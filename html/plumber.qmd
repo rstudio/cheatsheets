@@ -1,11 +1,5 @@
 ---
 title: "REST APIs with plumber :: Cheat Sheet"
-format: 
-  html:
-    toc: true
-    highlight-style: a11y-dark
-    css: css/cheatsheet.css
-editor: visual
 execute:
   eval: true
   output: false
@@ -15,9 +9,17 @@ execute:
 ```{r}
 #| output: asis
 #| echo: false
+#| column: margin
 source("common.R")
 use_cheatsheet_logo("plumber")
 ```
+
+::: {.column-margin}
+<a href="../plumber.pdf">
+<i class="bi bi-file-pdf"></i>
+Download PDF
+</a>
+:::
 
 ## Introduction to REST APIs
 
@@ -310,7 +312,7 @@ Each object has several components, the most helpful of which are outlined below
 **Request Objects**
 
 | Name                 | Example              | Description                                   |
-|-------------------|-------------------|-----------------------------------|
+|-------------------|-------------------|----------------------------------|
 | `req$pr`             | `plumber::pr()`      | The Plumber router processing the request     |
 | `req$body`           | `list(a = 1)`        | Typically the same as `argsBody`              |
 | `req$argsBody`       | `list(a = 1)`        | The parsed body output                        |

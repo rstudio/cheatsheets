@@ -1,11 +1,5 @@
 ---
 title: "Deep Learning with Keras :: Cheat Sheet"
-format: 
-  html:
-    toc: true
-    highlight-style: a11y-dark
-    css: css/cheatsheet.css
-editor: visual
 execute:
   eval: false
   output: true
@@ -16,9 +10,17 @@ execute:
 #| eval: true
 #| output: asis
 #| echo: false
+#| column: margin
 source("common.R")
 use_cheatsheet_logo("tensorflow")
 ```
+
+::: {.column-margin}
+<a href="../keras.pdf">
+<i class="bi bi-file-pdf"></i>
+Download PDF
+</a>
+:::
 
 ## Intro
 

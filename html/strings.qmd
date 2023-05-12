@@ -1,12 +1,5 @@
 ---
 title: "String manipulation with stringr :: Cheat Sheet"
-format: 
-  html:
-    toc: true
-    highlight-style: a11y-dark
-    tbl-cap-location: bottom
-    css: css/cheatsheet.css
-editor: visual
 execute:
   eval: true
   output: false
@@ -16,9 +9,18 @@ execute:
 ```{r}
 #| output: asis
 #| echo: false
+#| column: margin
 source("common.R")
 use_cheatsheet_logo("stringr")
 ```
+
+
+::: {.column-margin}
+<a href="../strings.pdf">
+<i class="bi bi-file-pdf"></i>
+Download PDF
+</a>
+:::
 
 <!-- Page 1 -->
 

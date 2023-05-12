@@ -1,11 +1,5 @@
 ---
 title: "Data tidying with tidyr :: Cheat Sheet"
-format: 
-  html:
-    toc: true
-    highlight-style: a11y-dark
-    css: css/cheatsheet.css
-editor: visual
 execute:
   eval: true
   output: false
@@ -15,9 +9,17 @@ execute:
 ```{r}
 #| output: asis
 #| echo: false
+#| column: margin
 source("common.R")
 use_cheatsheet_logo("tidyr")
 ```
+
+::: {.column-margin}
+<a href="../tidyr.pdf">
+<i class="bi bi-file-pdf"></i>
+Download PDF
+</a>
+:::
 
 <!-- Page 1 -->
 

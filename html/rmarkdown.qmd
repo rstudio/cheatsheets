@@ -1,11 +1,5 @@
 ---
 title: "rmarkdown :: Cheat Sheet"
-format: 
-  html:
-    toc: true
-    highlight-style: a11y-dark
-    css: css/cheatsheet.css
-editor: visual
 execute:
   eval: true
   output: false
@@ -15,9 +9,17 @@ execute:
 ```{r}
 #| output: asis
 #| echo: false
+#| column: margin
 source("common.R")
 use_cheatsheet_logo("rmarkdown")
 ```
+
+::: {.column-margin}
+<a href="../rmarkdown.pdf">
+<i class="bi bi-file-pdf"></i>
+Download PDF
+</a>
+:::
 
 ## What is rmarkdown?
 
@@ -137,25 +139,43 @@ will render as "Built with `r getRversion()`" in the output file.
 
 ### Chunk Options
 
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | Option                   | Default     | Effects                                                                                                      |
-|--------------------------|-------------|--------------------------------------------------------------------------------------------------------------|
++==========================+=============+==============================================================================================================+
 | `echo`                   | `TRUE`      | display code in output document                                                                              |
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | `error`                  | `FALSE`     | TRUE (display error messages in doc), FALSE (stop render when error occurs)                                  |
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | `eval`                   | `TRUE`      | run code in chunk                                                                                            |
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | `include`                | `TRUE`      | include chunk in doc after running                                                                           |
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | `message`                | `TRUE`      | display code messages in document                                                                            |
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | `warning`                | `TRUE`      | display code warnings in document                                                                            |
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | `results`                | `"markup"`  | `"asis"` (pass through results), `"hide"` (don't display results), `"hold"` (put all results below all code) |
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | `fig.align`              | `"default"` | `"left"`, `"right"`, or `"center"`                                                                           |
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | `fig.alt`                | `NULL`      | alt text for a figure                                                                                        |
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | `fig.cap`                | `NULL`      | figure caption as a character string                                                                         |
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | `fig.path`               | `"figure/"` | prefix for generating file paths                                                                             |
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | `fig.width & fig.height` | `7`         | plot dimensions in inches                                                                                    |
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | `out.width`              |             | rescales output width, e.g. `"75%"`, `"300px"`                                                               |
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | `collapse`               | `FALSE`     | collapse all sources & output into a single block                                                            |
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | `comment`                | `"##"`      | prefix for each line of results                                                                              |
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | `child`                  | `NULL`      | file(s) to knit and then include                                                                             |
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 | `purl`                   | `TRUE`      | include or exclude a code chunk when extracting source code with `knitr::purl()`                             |
++--------------------------+-------------+--------------------------------------------------------------------------------------------------------------+
 
 : Table of chunk options. The first column is the option name, the second column is the option's default value, the third column describes what the option does.
 
@@ -366,7 +386,8 @@ title: "My Document"
 author: "Author Name"
 output:
   html_document: 
-    toc: TRUE
+    toc: true
+    toc-location: left
 ---
 ```
 
@@ -396,26 +417,45 @@ Also see **flexdashboard**, **bookdown**, **distill**, and **blogdown**.
 
 ### Output Options Table
 
-| Important Options    | Description                                                                            | HTML | PDF | MS Word | MS PPT |
-|----------------------|----------------------------------------------------------------------------------------|------|-----|---------|--------|
-| anchor_sections      | Show section anchors on mouse hover (TRUE or FALSE)                                    | X    |     |         |        |
-| citation_package     | The LaTeX package to process citations ("default", "natbib", biblatex")                |      |     |         |        |
-| code_download        | Give readers an option to download the .Rmd source code (TRUE or FALSE)                | X    |     |         |        |
-| code_folding         | Let readers toggle the display of R code ("none", "hide", or "show")                   | X    |     |         |        |
-| css                  | CSS or SCSS file to use to style the document (e.g. "style.css")                       | X    |     |         |        |
-| dev                  | Graphics device to use for figure output (e.g. "png", "pdf")                           | X    | X   |         |        |
-| df_print             | Method for printing data frames ("default", "kable", "tibble", "paged")                | X    | X   | X       | X      |
-| fig_caption          | Should figures be rendered with captions (TRUE or FALSE)                               | X    | X   | X       | X      |
-| highlight            | Syntax highlighting ("tango", "pygments", "kate", "zenburn", "textmate")               | X    | X   | X       |        |
-| includes             | File of content to place in doc ("in_header", "before_body", "after_body")             | X    | X   |         |        |
-| keep_md              | Keep the Markdown .md file generated by knitting (TRUE or FALSE)                       | X    | X   | X       | X      |
-| keep_tex             | Keep the intermediate TEX file used to convert to PDF (TRUE or FALSE)                  |      | X   |         |        |
-| latex_engine         | LaTeX engine for producing PDF output ("pdflatex", "xelatex", or "lualatex")           |      | X   |         |        |
-| reference_docx/\_doc | docx/pptx file containing styles to copy in the output (e.g. "file.docx", "file.pptx") |      |     | X       | X      |
-| theme                | Theme options (see Bootswatch and Custom Themes below)                                 | X    |     |         |        |
-| toc                  | Add a table of contents at start of document (TRUE or FALSE)                           | X    | X   | X       | X      |
-| toc_depth            | The lowest level of headings to add to table of contents (e.g. 2, 3)                   | X    | X   | X       | X      |
-| toc_float            | Float the table of contents to the left of the main document content (TRUE or FALSE)   | X    |     |         |        |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| Important Options    | Description                                                                            | HTML | PDF  | MS Word | MS PPT |
++======================+========================================================================================+======+======+=========+========+
+| anchor_sections      | Show section anchors on mouse hover (TRUE or FALSE)                                    | X    |      |         |        |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| citation_package     | The LaTeX package to process citations ("default", "natbib", biblatex")                |      |      |         |        |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| code_download        | Give readers an option to download the .Rmd source code (TRUE or FALSE)                | X    |      |         |        |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| code_folding         | Let readers toggle the display of R code ("none", "hide", or "show")                   | X    |      |         |        |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| css                  | CSS or SCSS file to use to style the document (e.g. "style.css")                       | X    |      |         |        |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| dev                  | Graphics device to use for figure output (e.g. "png", "pdf")                           | X    | X    |         |        |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| df_print             | Method for printing data frames ("default", "kable", "tibble", "paged")                | X    | X    | X       | X      |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| fig_caption          | Should figures be rendered with captions (TRUE or FALSE)                               | X    | X    | X       | X      |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| highlight            | Syntax highlighting ("tango", "pygments", "kate", "zenburn", "textmate")               | X    | X    | X       |        |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| includes             | File of content to place in doc ("in_header", "before_body", "after_body")             | X    | X    |         |        |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| keep_md              | Keep the Markdown .md file generated by knitting (TRUE or FALSE)                       | X    | X    | X       | X      |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| keep_tex             | Keep the intermediate TEX file used to convert to PDF (TRUE or FALSE)                  |      | X    |         |        |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| latex_engine         | LaTeX engine for producing PDF output ("pdflatex", "xelatex", or "lualatex")           |      | X    |         |        |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| reference_docx/\_doc | docx/pptx file containing styles to copy in the output (e.g. "file.docx", "file.pptx") |      |      | X       | X      |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| theme                | Theme options (see Bootswatch and Custom Themes below)                                 | X    |      |         |        |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| toc                  | Add a table of contents at start of document (TRUE or FALSE)                           | X    | X    | X       | X      |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| toc_depth            | The lowest level of headings to add to table of contents (e.g. 2, 3)                   | X    | X    | X       | X      |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
+| toc_float            | Float the table of contents to the left of the main document content (TRUE or FALSE)   | X    |      |         |        |
++----------------------+----------------------------------------------------------------------------------------+------+------+---------+--------+
 
 : Table of output options. The first column is the option name, the second column is the description and possible values, and then remaining columns show what file types each option can be applied to.
 
