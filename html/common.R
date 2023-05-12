@@ -12,7 +12,7 @@ use_cheatsheet_logo <- function(pkg, geometry = "240x278", retina = TRUE) {
     stop("Please install the magick package to use this function")
   }
 
-  logo_path <- fs::path("images", "logo.png")
+  logo_path <- fs::path("images", glue::glue("logo-{pkg}.png"))
 
   fs::dir_create("images", recurse = TRUE)
 
@@ -26,6 +26,6 @@ use_cheatsheet_logo <- function(pkg, geometry = "240x278", retina = TRUE) {
   }
 
   cat(glue::glue(
-    "<img src=\"images/logo.png\" align=\"right\" height=\"{height}\" alt=\"\" />"
+    "<img src=\"images/logo-{pkg}.png\" align=\"right\" height=\"{height}\" alt=\"\" />"
   ))
 }
