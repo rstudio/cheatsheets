@@ -29,3 +29,19 @@ use_cheatsheet_logo <- function(pkg, geometry = "240x278", retina = TRUE) {
     "<img src=\"images/logo-{pkg}.png\" height=\"{height}\" alt=\"\" />"
   ))
 }
+
+translation_list <- function(sheet_name) {
+  f <- fs::dir_ls(
+    "../translations", 
+    regex = glue::glue("{sheet_name}.+\\.pdf"), 
+    recurse = 1, # old versions are in subfolders
+    )
+  
+  if (length(f) == 0) 
+    return(invisible())
+  
+  lang <- tools::toTitleCase(vapply(fs::path_split(f), `[[`, 3, FUN.VALUE = character(1)))
+  
+  cat("Translations (PDF)\n\n")
+  cat(glue::glue('* <a href="{f}"><i class="bi bi-file-pdf"></i>{lang}</a>'), sep = "\n")
+}

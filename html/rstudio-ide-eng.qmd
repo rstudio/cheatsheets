@@ -23,6 +23,13 @@ Download PDF
 </a>
 :::
 
+```{r}
+#| output: asis
+#| echo: false
+#| column: margin
+translation_list("rstudio-ide")
+```
+
 ## Documents and Apps
 
 Open Shiny, R Markdown, knitr, Sweave, LaTeX, .Rd files and more in Source Pane.

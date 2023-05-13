@@ -23,6 +23,13 @@ Download PDF
 </a>
 :::
 
+```{r}
+#| output: asis
+#| echo: false
+#| column: margin
+translation_list("strings")
+```
+
 <!-- Page 1 -->
 
 The **stringr** package provides a set of internally consistent tools for working with character strings, i.e. sequences of characters surrounded by quotation marks.

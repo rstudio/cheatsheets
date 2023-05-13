@@ -23,6 +23,14 @@ Download PDF
 </a>
 :::
 
+```{r}
+#| eval: true
+#| output: asis
+#| echo: false
+#| column: margin
+translation_list("reticulate")
+```
+
 The **reticulate** package lets you use Python and R together seamlessly in R code, in R Markdown documents, and in the RStudio IDE.
 
 ```{r}

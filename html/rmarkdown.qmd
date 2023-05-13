@@ -22,6 +22,13 @@ Download PDF
 </a>
 :::
 
+```{r}
+#| output: asis
+#| echo: false
+#| column: margin
+translation_list("rmarkdown")
+```
+
 ## What is rmarkdown?
 
 -   **.Rmd files:** Develop your code and ideas side-by-side in a single document. Run code as individual chunks or as an entire document.
