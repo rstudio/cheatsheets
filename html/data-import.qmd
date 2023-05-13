@@ -22,6 +22,19 @@ Download PDF
 </a>
 :::
 
+::: {.column-margin}
+Translations:
+
+* <a href="../translations/bengali/data-import_bn.pdf"><i class="bi bi-file-pdf"></i>Bengali</a>
+* <a href="../translations/persian/data-import_fa.pdf"><i class="bi bi-file-pdf"></i>Persian</a>
+* <a href="../translations/russian/data-import_ru.pdf"><i class="bi bi-file-pdf"></i>Russian</a>
+* <a href="../translations/spanish/data-import_es.pdf"><i class="bi bi-file-pdf"></i>Spanish</a>
+* <a href="../translations/turkish/data-import_tr.pdf"><i class="bi bi-file-pdf"></i>Turkish</a>
+* <a href="../translations/ukrainian/data-import_uk.pdf"><i class="bi bi-file-pdf"></i>Ukrainian</a>
+* <a href="../translations/uzbek/data-import_uz.pdf"><i class="bi bi-file-pdf"></i>Uzbek</a>
+
+:::
+
 One of the first steps of a project is to import outside data into R.
 Data is often stored in tabular formats, like csv files or spreadsheets.
 
