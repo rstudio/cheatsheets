@@ -1,67 +1,115 @@
 ---
 title: "Contributed Cheat Sheets"
-listing:
-  contents:
-    - "arrow.pdf"
-    - "base-r.pdf"
-    - "bayesplot.pdf"
-    - "bcea.pdf"
-    - "caret.pdf"
-    - "cartography.pdf"
-    - "collapse.pdf"
-    - "datatable.pdf"
-    - "declaredesign.pdf"
-    - "distr6.pdf"
-    - "estimatr.pdf"
-    - "eurostat.pdf"
-    - "gganimate.pdf"
-    - "git-github.pdf"
-    - "golem.pdf"
-    - "gtsummary.pdf"
-    - "gwasrapidd.pdf"
-    - "h2o.pdf"
-    - "how-big-is-your-graph.pdf"
-    - "imputeTS.pdf"
-    - "jfa.pdf"
-    - "labelled.pdf"
-    - "leaflet.pdf"
-    - "Machine Learning Modelling in R.pdf"
-    - "mapsf.pdf"
-    - "mlr.pdf"
-    - "mosaic.pdf"
-    - "nardl.pdf"
-    - "nimble.pdf"
-    - "oSCR.pdf"
-    - "overviewR.pdf"
-    - "packagefinder.pdf"
-    - "parallel_computation.pdf"
-    - "quanteda.pdf"
-    - "quincunx.pdf"
-    - "randomizr.pdf"
-    - "regex.pdf"
-    - "rphylopic.pdf"
-    - "SamplingStrata.pdf"
-    - "sas-r.pdf"
-    - "sf.pdf"
-    - "sjmisc.pdf"
-    - "slackr.pdf"
-    - "stata2r.pdf"
-    - "survminer.pdf"
-    - "syntax.pdf"
-    - "teachR.pdf"
-    - "tidyeval.pdf"
-    - "tidyr.pdf"
-    - "time-series.pdf"
-    - "torch.pdf"
-    - "tsbox.pdf"
-    - "vegan.pdf"
-    - "vtree.pdf"
-    - "xplain.pdf"
-  type: table
-  fields: 
-    - filename
 ---
 
 Cheat sheets contributed by the community
 
+::: {layout-ncol="3"}
+[![arrow](pngs/arrow.png)](arrow.pdf)
 
+[![Base R](pngs/base-r.png)](base-r.pdf)
+
+[![bayesplot](pngs/bayesplot.png)](bayesplot.pdf)
+
+[![bcea](pngs/bcea.png)](bcea.pdf)
+
+[![caret](pngs/caret.png)](caret.pdf)
+
+[![cartography](pngs/cartography.png)](cartography.pdf)
+
+[![collapse](pngs/collapse.png)](collapse.pdf)
+
+[![datatable](pngs/datatable.png)](datatable.pdf)
+
+[![declaredesign](pngs/declaredesign.png)](declaredesign.pdf)
+
+[![distr6](pngs/distr6.png)](distr6.pdf)
+
+[![estimatr](pngs/estimatr.png)](estimatr.pdf)
+
+[![eurostat](pngs/eurostat.png)](eurostat.pdf)
+
+[![gganimate](pngs/gganimate.png)](gganimate.pdf)
+
+[![Git & GitHub](pngs/git-github.png)](git-github.pdf)
+
+[![golem](pngs/golem.png)](golem.pdf)
+
+[![gtsummary](pngs/gtsummary.png)](gtsummary.pdf)
+
+[![gwasrapidd](pngs/gwasrapidd.png)](gwasrapidd.pdf)
+
+[![h2o](pngs/h2o.png)](h2o.pdf)
+
+[![How big is your graph?](pngs/how-big-is-your-graph.png)](how-big-is-your-graph.pdf)
+
+[![imputeTS](pngs/imputeTS.png)](imputeTS.pdf)
+
+[![jfa](pngs/jfa.png)](jfa.pdf)
+
+[![labelled](pngs/labelled.png)](labelled.pdf)
+
+[![leaflet](pngs/leaflet.png)](leaflet.pdf)
+
+[![Machine learning modelling in R](pngs/Machine Learning Modelling in R.png)](Machine Learning Modelling in R.pdf)
+
+[![mapsf](pngs/mapsf.png)](mapsf.pdf)
+
+[![mlr](pngs/mlr.png)](mlr.pdf)
+
+[![mosaic](pngs/mosaic.png)](mosaic.pdf)
+
+[![nardl](pngs/nardl.png)](nardl.pdf)
+
+[![nimble](pngs/nimble.png)](nimble.pdf)
+
+[![oSCR](pngs/oSCR.png)](oSCR.pdf)
+
+[![overviewR](pngs/overviewR.png)](overviewR.pdf)
+
+[![packagefinder](pngs/packagefinder.png)](packagefinder.pdf)
+
+[![Parallel computation](pngs/parallel_computation.png)](parallel_computation.pdf)
+
+[![quanteda](pngs/quanteda.png)](quanteda.pdf)
+
+[![quincunx](pngs/quincunx.png)](quincunx.pdf)
+
+[![randomizr](pngs/randomizr.png)](randomizr.pdf)
+
+[![Regular Expressions](pngs/regular-expressions.png)](regex.pdf)
+
+[![rphylopic](pngs/rphylopic.png)](rphylopic.pdf)
+
+[![SamplingStrata](pngs/SamplingStrata.png)](SamplingStrata.pdf)
+
+[![SAS <-> R](pngs/sas-r.png)](sas-r.pdf)
+
+[![sf](pngs/sf.png)](sf.pdf)
+
+[![sjmisc](pngs/sjmisc.png)](sjmisc.pdf)
+
+[![slackr](pngs/slackr.png)](slackr.pdf)
+
+[![stata2r](pngs/stata2r.png)](stata2r.pdf)
+
+[![survminer](pngs/survminer.png)](survminer.pdf)
+
+[![R syntax comparison](pngs/syntax.png)](syntax.pdf)
+
+[![teachR](pngs/teachR.png)](teachR.pdf)
+
+[![tidyeval](pngs/tidyeval.png)](tidyeval.pdf)
+
+[![time-series](pngs/time-series.png)](time-series.pdf)
+
+[![torch](pngs/torch.png)](torch.pdf)
+
+[![tsbox](pngs/tsbox.png)](tsbox.pdf)
+
+[![vegan](pngs/vegan.png)](vegan.pdf)
+
+[![vtree](pngs/vtree.png)](vtree.pdf)
+
+[![xplain](pngs/xplain.png)](xplain.pdf)
+:::
