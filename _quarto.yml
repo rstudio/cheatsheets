@@ -13,9 +13,7 @@ website:
         text: Contributed Cheat Sheets
 format:
   html:
-    theme:
-      light: [flatly, html/css/style.scss]
-      dark: [darkly, html/css/style.scss]
+    theme: [flatly, html/css/style.scss]
     toc: true
     toc-location: left
     highlight-style: a11y-dark

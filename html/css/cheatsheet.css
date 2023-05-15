@@ -135,3 +135,7 @@ kbd {
 div.callout-note.callout {
   border-left-color: #4D7AA4;
 }
+
+h1, h2, h3, h4 {
+  opacity: 1;
+}
