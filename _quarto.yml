@@ -1,0 +1,26 @@
+project:
+  type: website
+  render: 
+    - "*.qmd"
+
+website:
+  title: "Cheat Sheets"
+  navbar:
+    left:
+      - href: index.qmd
+        text: HTML Cheat Sheets
+      - href: contributed-cheatsheets.qmd
+        text: Contributed Cheat Sheets
+format:
+  html:
+    theme: [flatly, html/css/style.scss]
+    toc: true
+    toc-location: left
+    highlight-style: a11y-dark
+    css: html/css/cheatsheet.css
+    mainfont: "Atkinson Hyperlegible"
+    
+editor: visual
+
+execute: 
+  freeze: auto

@@ -1,0 +1,11 @@
+/* css styles */
+.panel-caption,caption,.figure-caption {
+  text-align: center;
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.figure-img {
+  margin-bottom: 0.25rem;
+  margin-top: 2rem;
+}

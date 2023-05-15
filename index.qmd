@@ -1,0 +1,24 @@
+---
+title: "Posit Cheat Sheets"
+listing:
+  contents:
+    - "rstudio-ide-eng.qmd"
+    - "shiny.qmd"
+    - "rmarkdown.qmd"
+    - "data-import.qmd"
+    - "data-transformation.qmd"
+    - "tidyr.qmd"
+    - "purrr.qmd"
+    - "factors.qmd"
+    - "lubridate.qmd"
+    - "strings.qmd"
+    - "package-development.qmd"
+    - "keras.qmd"
+    - "plumber.qmd"
+    - "reticulate.qmd"
+  type: grid
+  image-height: "278px"
+  sort: false
+---
+
+HTML versions of our popular cheat sheets. PDF versions are available to download on each cheat sheet page.  There are also non-English translations available for many cheat sheets, contributed by the community.

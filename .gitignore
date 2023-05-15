@@ -7,3 +7,6 @@ cheatsheets.Rproj
 .Rhistory
 .RData
 rsconnect/
+
+/.quarto/
+_site
