@@ -1,0 +1,21 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/html/rstudio-ide-eng.html",
+      "/html/shiny.html",
+      "/html/rmarkdown.html",
+      "/html/data-import.html",
+      "/html/data-transformation.html",
+      "/html/tidyr.html",
+      "/html/purrr.html",
+      "/html/factors.html",
+      "/html/lubridate.html",
+      "/html/strings.html",
+      "/html/package-development.html",
+      "/html/keras.html",
+      "/html/plumber.html",
+      "/html/reticulate.html"
+    ]
+  }
+]
