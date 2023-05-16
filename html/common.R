@@ -8,10 +8,6 @@ use_cheatsheet_logo <- function(pkg, geometry = "240x278", retina = TRUE) {
     .accept = "application/vnd.github.v3.raw"
   )
 
-  if (!requireNamespace("magick", quietly = TRUE)) {
-    stop("Please install the magick package to use this function")
-  }
-
   logo_path <- fs::path("images", glue::glue("logo-{pkg}.png"))
 
   fs::dir_create("images", recurse = TRUE)
