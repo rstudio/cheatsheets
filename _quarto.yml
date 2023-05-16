@@ -21,6 +21,3 @@ format:
     mainfont: "Atkinson Hyperlegible"
     
 editor: visual
-
-execute: 
-  freeze: auto
