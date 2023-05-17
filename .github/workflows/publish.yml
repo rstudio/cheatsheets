@@ -22,7 +22,7 @@ jobs:
         with:
           r-version: '4.3.0'
           
-       - name: Install pdflatex
+       - name: Install magick
          run: sudo apt-get install libmagick++-dev
 
 
