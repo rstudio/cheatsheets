@@ -22,8 +22,8 @@ jobs:
         with:
           r-version: '4.3.0'
           
-       - name: Install magick
-         run: sudo apt-get install libmagick++-dev
+      - name: Install magick
+        run: sudo apt-get install libmagick++-dev
 
 
       - name: Install R Dependencies
