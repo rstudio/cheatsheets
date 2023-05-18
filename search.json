@@ -4,7 +4,7 @@
     "href": "contributed-cheatsheets.html",
     "title": "Contributed Cheat Sheets",
     "section": "",
-    "text": "Cheat sheets contributed by the community\n\n\n\n\n\narrow\n\n\n\n\n\nBase R\n\n\n\n\n\nbayesplot\n\n\n\n\n\n\n\nbcea\n\n\n\n\n\ncaret\n\n\n\n\n\ncartography\n\n\n\n\n\n\n\ncollapse\n\n\n\n\n\ndatatable\n\n\n\n\n\ndeclaredesign\n\n\n\n\n\n\n\ndistr6\n\n\n\n\n\nestimatr\n\n\n\n\n\neurostat\n\n\n\n\n\n\n\ngganimate\n\n\n\n\n\nGit & GitHub\n\n\n\n\n\ngolem\n\n\n\n\n\n\n\ngtsummary\n\n\n\n\n\ngwasrapidd\n\n\n\n\n\nh2o\n\n\n\n\n\n\n\nHow big is your graph?\n\n\n\n\n\nimputeTS\n\n\n\n\n\njfa\n\n\n\n\n\n\n\nlabelled\n\n\n\n\n\nleaflet\n\n\n\n\n\nMachine learning modelling in R\n\n\n\n\n\n\n\nmapsf\n\n\n\n\n\nmlr\n\n\n\n\n\nmosaic\n\n\n\n\n\n\n\nnardl\n\n\n\n\n\nnimble\n\n\n\n\n\noSCR\n\n\n\n\n\n\n\noverviewR\n\n\n\n\n\npackagefinder\n\n\n\n\n\nParallel computation\n\n\n\n\n\n\n\nquanteda\n\n\n\n\n\nquincunx\n\n\n\n\n\nrandomizr\n\n\n\n\n\n\n\nRegular Expressions\n\n\n\n\n\nrphylopic\n\n\n\n\n\nSamplingStrata\n\n\n\n\n\n\n\nSAS &lt;-&gt; R\n\n\n\n\n\nsf\n\n\n\n\n\nsjmisc\n\n\n\n\n\n\n\nslackr\n\n\n\n\n\nstata2r\n\n\n\n\n\nsurvminer\n\n\n\n\n\n\n\nR syntax comparison\n\n\n\n\n\nteachR\n\n\n\n\n\ntidyeval\n\n\n\n\n\n\n\ntime-series\n\n\n\n\n\ntorch\n\n\n\n\n\ntsbox\n\n\n\n\n\n\n\nvegan\n\n\n\n\n\nvtree\n\n\n\n\n\nxplain"
+    "text": "Cheat sheets contributed by the community. Several of these cheat sheets also have non-English translations, available on the Translated Cheat Sheets page.\n\n\n\n\n\narrow\n\n\n\n\n\nBase R\n\n\n\n\n\nbayesplot\n\n\n\n\n\n\n\nbcea\n\n\n\n\n\ncaret\n\n\n\n\n\ncartography\n\n\n\n\n\n\n\ncollapse\n\n\n\n\n\ndatatable\n\n\n\n\n\ndeclaredesign\n\n\n\n\n\n\n\ndistr6\n\n\n\n\n\nestimatr\n\n\n\n\n\neurostat\n\n\n\n\n\n\n\ngganimate\n\n\n\n\n\nGit & GitHub\n\n\n\n\n\ngolem\n\n\n\n\n\n\n\ngtsummary\n\n\n\n\n\ngwasrapidd\n\n\n\n\n\nh2o\n\n\n\n\n\n\n\nHow big is your graph?\n\n\n\n\n\nimputeTS\n\n\n\n\n\njfa\n\n\n\n\n\n\n\nlabelled\n\n\n\n\n\nleaflet\n\n\n\n\n\nMachine learning modelling in R\n\n\n\n\n\n\n\nmapsf\n\n\n\n\n\nmlr\n\n\n\n\n\nmosaic\n\n\n\n\n\n\n\nnardl\n\n\n\n\n\nnimble\n\n\n\n\n\noSCR\n\n\n\n\n\n\n\noverviewR\n\n\n\n\n\npackagefinder\n\n\n\n\n\nParallel computation\n\n\n\n\n\n\n\nquanteda\n\n\n\n\n\nquincunx\n\n\n\n\n\nrandomizr\n\n\n\n\n\n\n\nRegular Expressions\n\n\n\n\n\nrphylopic\n\n\n\n\n\nSamplingStrata\n\n\n\n\n\n\n\nSAS &lt;-&gt; R\n\n\n\n\n\nsf\n\n\n\n\n\nsjmisc\n\n\n\n\n\n\n\nslackr\n\n\n\n\n\nstata2r\n\n\n\n\n\nsurvminer\n\n\n\n\n\n\n\nR syntax comparison\n\n\n\n\n\nteachR\n\n\n\n\n\ntidyeval\n\n\n\n\n\n\n\ntime-series\n\n\n\n\n\ntorch\n\n\n\n\n\ntsbox\n\n\n\n\n\n\n\nvegan\n\n\n\n\n\nvtree\n\n\n\n\n\nxplain"
   },
   {
     "objectID": "html/data-import.html",
@@ -845,5 +845,131 @@
     "title": "Posit Cheat Sheets",
     "section": "",
     "text": "HTML versions of our popular cheat sheets. PDF versions are available to download on each cheat sheet page. There are also non-English translations available for many cheat sheets, contributed by the community.\n\n\n\n\n\n\n\n\n\n\n\n\nRStudio IDE :: Cheat Sheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShiny :: Cheat Sheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrmarkdown :: Cheat Sheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData import with the tidyverse :: Cheat Sheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData transformation with dplyr :: Cheat Sheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData tidying with tidyr :: Cheat Sheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nApply functions with purrr :: Cheat Sheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFactors with forcats :: Cheat Sheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDates and times with lubridate :: Cheat Sheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nString manipulation with stringr :: Cheat Sheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPackage Development :: Cheat Sheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeep Learning with Keras :: Cheat Sheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nREST APIs with plumber :: Cheat Sheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUse Python with R with reticulate :: Cheat Sheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "translations.html",
+    "href": "translations.html",
+    "title": "Translated Cheat Sheets",
+    "section": "",
+    "text": "Non-English translations of both Posit and community-contributed cheat sheets."
+  },
+  {
+    "objectID": "translations.html#bengali",
+    "href": "translations.html#bengali",
+    "title": "Translated Cheat Sheets",
+    "section": "Bengali",
+    "text": "Bengali\n\n\n\n\ndata import"
+  },
+  {
+    "objectID": "translations.html#chinese",
+    "href": "translations.html#chinese",
+    "title": "Translated Cheat Sheets",
+    "section": "Chinese",
+    "text": "Chinese\n\n\n\n\nbase R\ndata transformation (cn)\ndata visualization\nkeras (cn)\nsparklyr (cn)\nsparklyr (tw)\ntidyr (cn)"
+  },
+  {
+    "objectID": "translations.html#dutch",
+    "href": "translations.html#dutch",
+    "title": "Translated Cheat Sheets",
+    "section": "Dutch",
+    "text": "Dutch\n\n\n\n\ndata visualization\ndata wrangling\npackage development\nrmarkdown"
+  },
+  {
+    "objectID": "translations.html#french",
+    "href": "translations.html#french",
+    "title": "Translated Cheat Sheets",
+    "section": "French",
+    "text": "French\n\n\n\n\ncaret\ndata visualization\ndata wrangling\nquanteda\nregex\nrstudio ide\nshiny"
+  },
+  {
+    "objectID": "translations.html#german",
+    "href": "translations.html#german",
+    "title": "Translated Cheat Sheets",
+    "section": "German",
+    "text": "German\n\n\n\n\nbase R\ndata transformation\ndata visualization\ndata wrangling\npackage development\nrmarkdown\nshiny\nsparklyr"
+  },
+  {
+    "objectID": "translations.html#greek",
+    "href": "translations.html#greek",
+    "title": "Translated Cheat Sheets",
+    "section": "Greek",
+    "text": "Greek\n\n\n\n\nbase R\nrstudio ide"
+  },
+  {
+    "objectID": "translations.html#italian",
+    "href": "translations.html#italian",
+    "title": "Translated Cheat Sheets",
+    "section": "Italian",
+    "text": "Italian\n\n\n\n\npackage development\nrmarkdown\nrstudio ide"
+  },
+  {
+    "objectID": "translations.html#japanese",
+    "href": "translations.html#japanese",
+    "title": "Translated Cheat Sheets",
+    "section": "Japanese",
+    "text": "Japanese\n\n\n\n\nbase R\ndata visualization\ndata wrangling\nfactors\nkeras\nrmarkdown\nrstudio ide\nsparklyr"
+  },
+  {
+    "objectID": "translations.html#korean",
+    "href": "translations.html#korean",
+    "title": "Translated Cheat Sheets",
+    "section": "Korean",
+    "text": "Korean\n\n\n\n\ncaret\npackage development\npurrr\nrmarkdown\nsyntax"
+  },
+  {
+    "objectID": "translations.html#persian",
+    "href": "translations.html#persian",
+    "title": "Translated Cheat Sheets",
+    "section": "Persian",
+    "text": "Persian\n\n\n\n\ndata import"
+  },
+  {
+    "objectID": "translations.html#portuguese",
+    "href": "translations.html#portuguese",
+    "title": "Translated Cheat Sheets",
+    "section": "Portuguese",
+    "text": "Portuguese\n\n\n\n\nbase R (br)\ncaret\ndata visualization\ndata wrangling\ndatatable (br)\nrstudio ide"
+  },
+  {
+    "objectID": "translations.html#russian",
+    "href": "translations.html#russian",
+    "title": "Translated Cheat Sheets",
+    "section": "Russian",
+    "text": "Russian\n\n\n\n\ndata import\ndata transformation\nlubridate\npurrr"
+  },
+  {
+    "objectID": "translations.html#spanish",
+    "href": "translations.html#spanish",
+    "title": "Translated Cheat Sheets",
+    "section": "Spanish",
+    "text": "Spanish\n\n\n\n\nbase R\ncaret\ndata import\ndata transformation\ndata visualization\ndata wrangling\nestadistica descriptiva con R\nfactors\nintroduccion a R\nkeras\nlubridate\npackage development\npurrr\nreticulate\nrmarkdown\nrstudio ide\nshiny\nsparklyr\nstrings\nsurvminer\nsyntax\ntidyeval"
+  },
+  {
+    "objectID": "translations.html#turkish",
+    "href": "translations.html#turkish",
+    "title": "Translated Cheat Sheets",
+    "section": "Turkish",
+    "text": "Turkish\n\n\n\n\nbase R\ncaret\ndata import\ndata transformation\ndata visualization\nregex\nrmarkdown\nshiny"
+  },
+  {
+    "objectID": "translations.html#ukrainian",
+    "href": "translations.html#ukrainian",
+    "title": "Translated Cheat Sheets",
+    "section": "Ukrainian",
+    "text": "Ukrainian\n\n\n\n\ndata import\ndata transformation\nlubridate\npurrr"
+  },
+  {
+    "objectID": "translations.html#uzbek",
+    "href": "translations.html#uzbek",
+    "title": "Translated Cheat Sheets",
+    "section": "Uzbek",
+    "text": "Uzbek\n\n\n\n\ndata import\ndata transformation"
+  },
+  {
+    "objectID": "translations.html#vietnamese",
+    "href": "translations.html#vietnamese",
+    "title": "Translated Cheat Sheets",
+    "section": "Vietnamese",
+    "text": "Vietnamese\n\n\n\n\nbase R\ndata visualization\ndata wrangling\nlubridate\npackage development\npurrr\nrmarkdown\nshiny\nstrings"
   }
 ]
