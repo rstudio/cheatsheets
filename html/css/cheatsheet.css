@@ -139,3 +139,11 @@ div.callout-note.callout {
 h1, h2, h3, h4 {
   opacity: 1;
 }
+
+.quarto-grid-item p.card-img-top>img {
+  object-fit: contain;
+}
+
+.quarto-grid-item div.post-contents {
+  padding-bottom: 0;
+}

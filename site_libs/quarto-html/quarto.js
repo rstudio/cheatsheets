@@ -5,7 +5,52 @@ const sectionChanged = new CustomEvent("quarto-sectionChanged", {
   composed: false,
 });
 
+const layoutMarginEls = () => {
+  // Find any conflicting margin elements and add margins to the
+  // top to prevent overlap
+  const marginChildren = window.document.querySelectorAll(
+    ".column-margin.column-container > * "
+  );
+
+  let lastBottom = 0;
+  for (const marginChild of marginChildren) {
+    if (marginChild.offsetParent !== null) {
+      // clear the top margin so we recompute it
+      marginChild.style.marginTop = null;
+      const top = marginChild.getBoundingClientRect().top + window.scrollY;
+      console.log({
+        childtop: marginChild.getBoundingClientRect().top,
+        scroll: window.scrollY,
+        top,
+        lastBottom,
+      });
+      if (top < lastBottom) {
+        const margin = lastBottom - top;
+        marginChild.style.marginTop = `${margin}px`;
+      }
+      const styles = window.getComputedStyle(marginChild);
+      const marginTop = parseFloat(styles["marginTop"]);
+
+      console.log({
+        top,
+        height: marginChild.getBoundingClientRect().height,
+        marginTop,
+        total: top + marginChild.getBoundingClientRect().height + marginTop,
+      });
+      lastBottom = top + marginChild.getBoundingClientRect().height + marginTop;
+    }
+  }
+};
+
 window.document.addEventListener("DOMContentLoaded", function (_event) {
+  // Recompute the position of margin elements anytime the body size changes
+  if (window.ResizeObserver) {
+    const resizeObserver = new window.ResizeObserver(
+      throttle(layoutMarginEls, 50)
+    );
+    resizeObserver.observe(window.document.body);
+  }
+
   const tocEl = window.document.querySelector('nav.toc-active[role="doc-toc"]');
   const sidebarEl = window.document.getElementById("quarto-sidebar");
   const leftTocEl = window.document.getElementById("quarto-sidebar-toc-left");
@@ -431,32 +476,6 @@ window.document.addEventListener("DOMContentLoaded", function (_event) {
     };
   };
 
-  // Find any conflicting margin elements and add margins to the
-  // top to prevent overlap
-  const marginChildren = window.document.querySelectorAll(
-    ".column-margin.column-container > * "
-  );
-
-  const layoutMarginEls = () => {
-    let lastBottom = 0;
-    for (const marginChild of marginChildren) {
-      if (marginChild.offsetParent !== null) {
-        // clear the top margin so we recompute it
-        marginChild.style.marginTop = null;
-        const top = marginChild.getBoundingClientRect().top + window.scrollY;
-        if (top < lastBottom) {
-          const margin = lastBottom - top;
-          marginChild.style.marginTop = `${margin}px`;
-        }
-        const styles = window.getComputedStyle(marginChild);
-        const marginTop = parseFloat(styles["marginTop"]);
-        lastBottom =
-          top + marginChild.getBoundingClientRect().height + marginTop;
-      }
-    }
-  };
-  nexttick(layoutMarginEls);
-
   const tabEls = document.querySelectorAll('a[data-bs-toggle="tab"]');
   for (const tabEl of tabEls) {
     const id = tabEl.getAttribute("data-bs-target");
@@ -466,7 +485,6 @@ window.document.addEventListener("DOMContentLoaded", function (_event) {
       );
       if (columnEl)
         tabEl.addEventListener("shown.bs.tab", function (event) {
-
           const el = event.srcElement;
           if (el) {
             const visibleCls = `${el.id}-margin-content`;
