@@ -8,9 +8,8 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: HTML Cheat Sheets
       - href: contributed-cheatsheets.qmd
-        text: Contributed Cheat Sheets
+      - href: translations.qmd
 format:
   html:
     theme: [flatly, html/css/style.scss]
@@ -21,3 +20,6 @@ format:
     mainfont: "Atkinson Hyperlegible"
     
 editor: visual
+
+execute: 
+  freeze: auto

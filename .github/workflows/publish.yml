@@ -22,14 +22,16 @@ jobs:
         with:
           r-version: '4.3.0'
           
-      - name: Install magick
-        run: sudo apt-get install libmagick++-dev
-
+      - name: Install magick libs
+        run: |
+          sudo apt-get -qq update
+          sudo apt-get -y install libmagick++-dev
+          sudo ldconfig /usr/local/lib
 
       - name: Install R Dependencies
         uses: r-lib/actions/setup-renv@v2
         with:
-          cache-version: 1
+          cache-version: 2
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
