@@ -1,6 +1,7 @@
 ---
 title: "String manipulation with stringr :: Cheat Sheet"
 description: " "
+image-alt: ""
 execute:
   eval: true
   output: false
@@ -15,12 +16,8 @@ source("common.R")
 use_cheatsheet_logo("stringr")
 ```
 
-
-::: {.column-margin}
-<a href="../strings.pdf">
-<i class="bi bi-file-pdf"></i>
-Download PDF
-</a>
+::: column-margin
+<a href="../strings.pdf"> <i class="bi bi-file-pdf"></i> Download PDF </a>
 :::
 
 ```{r}

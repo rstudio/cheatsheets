@@ -1,6 +1,7 @@
 ---
 title: "REST APIs with plumber :: Cheat Sheet"
 description: " "
+image-alt: ""
 execute:
   eval: true
   output: false
@@ -15,11 +16,8 @@ source("common.R")
 use_cheatsheet_logo("plumber")
 ```
 
-::: {.column-margin}
-<a href="../plumber.pdf">
-<i class="bi bi-file-pdf"></i>
-Download PDF
-</a>
+::: column-margin
+<a href="../plumber.pdf"> <i class="bi bi-file-pdf"></i> Download PDF </a>
 :::
 
 ```{r}
@@ -337,7 +335,7 @@ Each object has several components, the most helpful of which are outlined below
 **Response Objects**
 
 | Name                 | Example                   | Description                               |
-|------------------|----------------------|--------------------------------|
+|-------------------|----------------------|--------------------------------|
 | `res$headers`        | `list(header = "abc")`    | HTTP headers to include in the response   |
 | `res$setHeader()`    | `setHeader("foo", "bar")` | Sets an HTTP header                       |
 | `res$setCookie()`    | `setCookie("foo", "bar")` | Sets an HTTP cookie on the client         |

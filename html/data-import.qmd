@@ -1,6 +1,7 @@
 ---
 title: "Data import with the tidyverse :: Cheat Sheet"
 description: " "
+image-alt: ""
 execute:
   eval: true
   output: false
@@ -15,11 +16,8 @@ source("common.R")
 use_cheatsheet_logo("readr")
 ```
 
-::: {.column-margin}
-<a href="../data-import.pdf">
-<i class="bi bi-file-pdf"></i>
-Download PDF
-</a>
+::: column-margin
+<a href="../data-import.pdf"> <i class="bi bi-file-pdf"></i> Download PDF </a>
 :::
 
 ```{r}
@@ -34,7 +32,6 @@ Data is often stored in tabular formats, like csv files or spreadsheets.
 
 -   The first half of this cheatsheet shows how to import and save text files into R using **readr**.
 -   The second half shows how to import spreadsheet data from Excel files using **readxl** or Google Sheets using **googlesheets4**.
-
 
 ```{r}
 library(readr)

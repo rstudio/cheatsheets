@@ -1,6 +1,7 @@
 ---
 title: "Use Python with R with reticulate :: Cheat Sheet"
 description: " "
+image-alt: ""
 execute:
   eval: false
   output: false
@@ -16,11 +17,8 @@ source("common.R")
 use_cheatsheet_logo("reticulate")
 ```
 
-::: {.column-margin}
-<a href="../reticulate.pdf">
-<i class="bi bi-file-pdf"></i>
-Download PDF
-</a>
+::: column-margin
+<a href="../reticulate.pdf"> <i class="bi bi-file-pdf"></i> Download PDF </a>
 :::
 
 ```{r}
@@ -43,8 +41,7 @@ library(reticulate)
 
 Add `knitr::knit_engires$set(python = reticulate::eng_python)` to the setup chunk to set up the reticulate Python engine (not required for knitr \>= 1.18).
 
-````         
-```{{r}}
+```{{{r}}}
 #| label: setup
 #| include: false
 
@@ -53,35 +50,36 @@ virtualenv_create("fmri-proj")
 py_install("seaborn", envname = "fmri-proj") 
 use_virtualenv("fmri-proj")`
 ```
-````
 
 Begin Python chunks with ```` ```{python} ````.
 Chunk options like `echo`, `include`, etc. all work as expected.
 
-````         
-```{{python}} 
+```{{{python}}} 
 #| echo: false
 
 import seaborn as sns 
 fmri = sns.load_dataset("fmri")`
 ```
-````
 
 Use the `py` object the access objects created in Python chunks from R chunks.
 
+````         
 ``` {{r}}
 f1 <- subset(py$fmri, region = "parietal")
 ```
+````
 
 Python chunks all execute within a **single** Python session so you have access to all objects created in previous chunks.
 
 Use the `r` object to access objects created in R chunks from Python chunks.
 
+````         
 ``` {{python}}
 import matplotlib as mpl
 sns.lmplot("timepoint", "signal", data=r.f1)
 mpl.pyplot.show()
 ```
+````
 
 ## Python in R
 

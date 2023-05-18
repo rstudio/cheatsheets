@@ -1,6 +1,7 @@
 ---
 title: "Deep Learning with Keras :: Cheat Sheet"
 description: " "
+image-alt: ""
 execute:
   eval: false
   output: true
@@ -16,11 +17,8 @@ source("common.R")
 use_cheatsheet_logo("tensorflow")
 ```
 
-::: {.column-margin}
-<a href="../keras.pdf">
-<i class="bi bi-file-pdf"></i>
-Download PDF
-</a>
+::: column-margin
+<a href="../keras.pdf"> <i class="bi bi-file-pdf"></i> Download PDF </a>
 :::
 
 ```{r}
