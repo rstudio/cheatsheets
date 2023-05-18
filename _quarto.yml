@@ -10,6 +10,13 @@ website:
       - href: index.qmd
       - href: contributed-cheatsheets.qmd
       - href: translations.qmd
+    right:
+      - icon: github
+        href: https://github.com/rstudio-education/datascience-box
+        aria-label: GitHub
+  repo-url: https://github.com/rstudio/cheatsheets
+  repo-actions: [edit, issue]
+  
 format:
   html:
     theme: [flatly, html/css/style.scss]
