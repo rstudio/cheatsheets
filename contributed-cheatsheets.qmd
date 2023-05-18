@@ -2,7 +2,8 @@
 title: "Contributed Cheat Sheets"
 ---
 
-Cheat sheets contributed by the community
+Cheat sheets contributed by the community. Several of these cheat sheets
+also have non-English translations, available on the [Translated Cheat Sheets](translations.html) page.
 
 ::: {layout-ncol="3"}
 [![arrow](pngs/arrow.png)](arrow.pdf)
@@ -51,7 +52,7 @@ Cheat sheets contributed by the community
 
 [![leaflet](pngs/leaflet.png)](leaflet.pdf)
 
-[![Machine learning modelling in R](pngs/Machine Learning Modelling in R.png)](Machine Learning Modelling in R.pdf)
+[![Machine learning modelling in R](pngs/Machine%20Learning%20Modelling%20in%20R.png)](Machine%20Learning%20Modelling%20in%20R.pdf)
 
 [![mapsf](pngs/mapsf.png)](mapsf.pdf)
 
@@ -83,7 +84,7 @@ Cheat sheets contributed by the community
 
 [![SamplingStrata](pngs/SamplingStrata.png)](SamplingStrata.pdf)
 
-[![SAS <-> R](pngs/sas-r.png)](sas-r.pdf)
+[![SAS \<-\> R](pngs/sas-r.png)](sas-r.pdf)
 
 [![sf](pngs/sf.png)](sf.pdf)
 
