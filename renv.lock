@@ -3,8 +3,8 @@
     "Version": "4.3.0",
     "Repositories": [
       {
-        "Name": "RSPM",
-        "URL": "https://packagemanager.rstudio.com/all/latest"
+        "Name": "CRAN",
+        "URL": "https://cran.rstudio.com"
       }
     ]
   },
@@ -1289,6 +1289,18 @@
       ],
       "Hash": "7ce2733a9826b3aeb1775d56fd305472"
     },
+    "maps": {
+      "Package": "maps",
+      "Version": "3.4.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "graphics",
+        "utils"
+      ],
+      "Hash": "644a88fb036ab50cee0b715394eefa1a"
+    },
     "memoise": {
       "Package": "memoise",
       "Version": "2.0.1",
@@ -1848,13 +1860,7 @@
       "Package": "renv",
       "Version": "0.17.3",
       "Source": "Repository",
-      "Repository": "RSPM",
-      "RemoteType": "standard",
-      "RemotePkgRef": "renv",
-      "RemoteRef": "renv",
-      "RemoteRepos": "https://cran.rstudio.com",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "0.17.3",
+      "Repository": "CRAN",
       "Requirements": [
         "utils"
       ],
