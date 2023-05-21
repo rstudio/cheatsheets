@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Cheat Sheets - Data visualization with ggplot2 :: Cheat Sheet</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../html/css/cheatsheet.css">
+</head>
+
+<body class="floating nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Cheat Sheets</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Posit Cheat Sheets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../contributed-cheatsheets.html" rel="" target="">
+ <span class="menu-text">Contributed Cheat Sheets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../translations.html" rel="" target="">
+ <span class="menu-text">Translated Cheat Sheets</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rstudio-education/datascience-box" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#basics" id="toc-basics" class="nav-link active" data-scroll-target="#basics">Basics</a></li>
+  <li><a href="#aes" id="toc-aes" class="nav-link" data-scroll-target="#aes">Aes</a></li>
+  <li><a href="#geoms" id="toc-geoms" class="nav-link" data-scroll-target="#geoms">Geoms</a>
+  <ul class="collapse">
+  <li><a href="#graphical-primitives" id="toc-graphical-primitives" class="nav-link" data-scroll-target="#graphical-primitives">Graphical Primitives</a></li>
+  <li><a href="#one-variable---continuous" id="toc-one-variable---continuous" class="nav-link" data-scroll-target="#one-variable---continuous">One Variable - Continuous</a></li>
+  <li><a href="#one-variable---discrete" id="toc-one-variable---discrete" class="nav-link" data-scroll-target="#one-variable---discrete">One Variable - Discrete</a></li>
+  <li><a href="#two-variables---both-continuous" id="toc-two-variables---both-continuous" class="nav-link" data-scroll-target="#two-variables---both-continuous">Two Variables - Both Continuous</a></li>
+  <li><a href="#two-variables---one-discrete-one-continuous" id="toc-two-variables---one-discrete-one-continuous" class="nav-link" data-scroll-target="#two-variables---one-discrete-one-continuous">Two Variables - One Discrete, One Continuous</a></li>
+  <li><a href="#two-variables---both-discrete" id="toc-two-variables---both-discrete" class="nav-link" data-scroll-target="#two-variables---both-discrete">Two Variables - Both Discrete</a></li>
+  <li><a href="#two-variables---continuous-bivariate-distribution" id="toc-two-variables---continuous-bivariate-distribution" class="nav-link" data-scroll-target="#two-variables---continuous-bivariate-distribution">Two Variables - Continuous Bivariate Distribution</a></li>
+  <li><a href="#two-variables---continuous-function" id="toc-two-variables---continuous-function" class="nav-link" data-scroll-target="#two-variables---continuous-function">Two Variables - Continuous Function</a></li>
+  <li><a href="#two-variables---visualizing-error" id="toc-two-variables---visualizing-error" class="nav-link" data-scroll-target="#two-variables---visualizing-error">Two Variables - Visualizing Error</a></li>
+  <li><a href="#two-variables---maps" id="toc-two-variables---maps" class="nav-link" data-scroll-target="#two-variables---maps">Two Variables - Maps</a></li>
+  <li><a href="#three-variables" id="toc-three-variables" class="nav-link" data-scroll-target="#three-variables">Three Variables</a></li>
+  </ul></li>
+  <li><a href="#stats" id="toc-stats" class="nav-link" data-scroll-target="#stats">Stats</a></li>
+  <li><a href="#scales" id="toc-scales" class="nav-link" data-scroll-target="#scales">Scales</a>
+  <ul class="collapse">
+  <li><a href="#general-purpose-scales" id="toc-general-purpose-scales" class="nav-link" data-scroll-target="#general-purpose-scales">General Purpose Scales</a></li>
+  <li><a href="#x-y-location-scales" id="toc-x-y-location-scales" class="nav-link" data-scroll-target="#x-y-location-scales">X &amp; Y Location Scales</a></li>
+  <li><a href="#color-and-fill-scales-discrete" id="toc-color-and-fill-scales-discrete" class="nav-link" data-scroll-target="#color-and-fill-scales-discrete">Color and Fill Scales (Discrete)</a></li>
+  <li><a href="#color-and-fill-scales-continuous" id="toc-color-and-fill-scales-continuous" class="nav-link" data-scroll-target="#color-and-fill-scales-continuous">Color and Fill Scales (Continuous)</a></li>
+  <li><a href="#shape-and-size-scales" id="toc-shape-and-size-scales" class="nav-link" data-scroll-target="#shape-and-size-scales">Shape and Size Scales</a></li>
+  </ul></li>
+  <li><a href="#coordinate-systems" id="toc-coordinate-systems" class="nav-link" data-scroll-target="#coordinate-systems">Coordinate Systems</a></li>
+  <li><a href="#position-adjustments" id="toc-position-adjustments" class="nav-link" data-scroll-target="#position-adjustments">Position Adjustments</a></li>
+  <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes">Themes</a></li>
+  <li><a href="#faceting" id="toc-faceting" class="nav-link" data-scroll-target="#faceting">Faceting</a></li>
+  <li><a href="#labels-and-legends" id="toc-labels-and-legends" class="nav-link" data-scroll-target="#labels-and-legends">Labels and Legends</a></li>
+  <li><a href="#zooming" id="toc-zooming" class="nav-link" data-scroll-target="#zooming">Zooming</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/rstudio/cheatsheets/edit/main/html/ggplot2.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data visualization with ggplot2 :: Cheat Sheet</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+
+<div class="no-row-height column-margin column-container"><div class="cell">
+<p><img src="images/logo-ggplot2.png" height="138" alt=""></p>
+</div><div class="">
+<p><a href="../data-visualization.pdf"> <i class="bi bi-file-pdf"></i> Download PDF </a></p>
+</div><div class="cell">
+<p>Translations (PDF)</p>
+<ul>
+<li><a href="../translations/chinese/data-visualization_zh.pdf"><i class="bi bi-file-pdf"></i>Chinese</a></li>
+<li><a href="../translations/dutch/data-visualization_nl.pdf"><i class="bi bi-file-pdf"></i>Dutch</a></li>
+<li><a href="../translations/french/data-visualization_fr.pdf"><i class="bi bi-file-pdf"></i>French</a></li>
+<li><a href="../translations/german/data-visualization_de.pdf"><i class="bi bi-file-pdf"></i>German</a></li>
+<li><a href="../translations/japanese/data-visualization_ja.pdf"><i class="bi bi-file-pdf"></i>Japanese</a></li>
+<li><a href="../translations/portuguese/data-visualization_pt.pdf"><i class="bi bi-file-pdf"></i>Portuguese</a></li>
+<li><a href="../translations/spanish/data-visualization_es.pdf"><i class="bi bi-file-pdf"></i>Spanish</a></li>
+<li><a href="../translations/turkish/data-visualization_tr.pdf"><i class="bi bi-file-pdf"></i>Turkish</a></li>
+<li><a href="../translations/vietnamese/data-visualization_vi.pdf"><i class="bi bi-file-pdf"></i>Vietnamese</a></li>
+</ul>
+</div></div>
+
+<!-- Page 1 -->
+<section id="basics" class="level2">
+<h2 class="anchored" data-anchor-id="basics">Basics</h2>
+<p><strong>ggplot2</strong> is based on the <strong>grammar of graphics</strong>, the idea that you can build every graph from the same components: a <strong>data</strong> set, a <strong>coordinate system</strong>, and <strong>geoms</strong>—visual marks that represent data points.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To display values, map variables in the data to visual properties of the geom (<strong>aesthetics</strong>) like <strong>size</strong>, <strong>color</strong>, and <strong>x</strong> and <strong>y</strong> locations.</p>
+<p>Complete the template below to build a graph.</p>
+<pre><code>ggplot(data = &lt;Data&gt;) +
+  &lt;Geom_Function&gt;(mapping = aes(&lt;Mappings&gt;),
+  stat = &lt;Stat&gt;,
+  position = &lt;Position&gt;) +
+  &lt;Coordinate_Function&gt; +
+  &lt;Facet_Function&gt; +
+  &lt;Scale_Function&gt; +
+  &lt;Theme_Function&gt;</code></pre>
+<p>Data, a Geom Function, and Aes Mappings are required. Stat, Position, and the Coordinate, Facet, Scale, and Theme functions are not required and will supply sensible defaults.</p>
+<ul>
+<li><p><code>ggplot(data = mpg, aes(x = cty, y = hwy))</code>: Begins a plot that you finish by adding layers to. Add one geom function per layer.</p></li>
+<li><p><code>last_plot()</code>: Returns the last plot.</p></li>
+<li><p><code>ggsave("plot.png", width = 5, height = 5)</code>: Saves last plot as 5’ x 5’ file named “plot.png” in working directory. Matches file type to file extension.</p></li>
+</ul>
+</section>
+<section id="aes" class="level2">
+<h2 class="anchored" data-anchor-id="aes">Aes</h2>
+<p>Common aesthetic values.</p>
+<ul>
+<li><p><code>color</code> and <code>fill</code>: String (<code>"red"</code>, <code>"#RRGGBB"</code>).</p></li>
+<li><p><code>linetype</code>: Integer or string (0 = <code>"blank"</code>, 1 = <code>"solid"</code>, 2 = <code>"dashed"</code>, 3 = <code>"dotted"</code>, 4 = <code>"dotdash"</code>, 5 = <code>"longdash"</code>, 6 = <code>"twodash"</code>).</p></li>
+<li><p><code>lineend</code>: String (<code>"round"</code>, <code>"butt"</code>, or <code>"square"</code>).</p></li>
+<li><p><code>linejoin</code>: String (<code>"round"</code>, <code>"mitre"</code>, or <code>"bevel"</code>).</p></li>
+<li><p><code>size</code>: Integer (line width in mm).</p></li>
+<li><p><code>shape</code>: Integer/shape name or a single character (<code>"a"</code>).</p>
+<ul>
+<li><code>shape</code> integer/name pairs: 0 = <code>"square open"</code>, 1 = <code>"circle open"</code>, 2 = <code>"triangle open"</code>, 3 = <code>"plus"</code>, 4 = <code>"cross"</code>, 5 = <code>"diamond open"</code>, 6 = <code>"triangle down open"</code>, 7 = <code>"square cross"</code>, 8 = <code>"asterisk"</code>, 9 = <code>"diamond plus"</code>, 10 = <code>"circle plus"</code>, 11 = <code>"star"</code>, 12 = <code>"square plus"</code>, 13 = <code>"circle cross"</code>, 14 = <code>"square triangle"</code>, 15 = <code>"square"</code>, 16 = <code>"circle"</code>, 17 = <code>"triangle"</code>, 18 = <code>"diamond"</code>, 19 = <code>"circle small"</code>, 20 = <code>"bullet"</code>, 21 = <code>"circle filled"</code>, 22 = <code>"square filled"</code>, 23 = <code>"diamond filled"</code>, 24 = <code>"triangle filled"</code>, 25 = <code>"triangle down filled"</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="geoms" class="level2">
+<h2 class="anchored" data-anchor-id="geoms">Geoms</h2>
+<p>Use a geom function to represent data points, use the geom’s aesthetic properties to represent variables. Each function returns a layer.</p>
+<section id="graphical-primitives" class="level3">
+<h3 class="anchored" data-anchor-id="graphical-primitives">Graphical Primitives</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics, <span class="fu">aes</span>(date, unemploy))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(seals, <span class="fu">aes</span>(<span class="at">x =</span> long, <span class="at">y =</span> lat))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>a + geom_blank()</code> and <code>a + expand_limits()</code>: Ensure limits include values across all plots.</p></li>
+<li><p><code>b + geom_curve(aes(yend = lat + 1, xend = long + 1), curvature = 1)</code>: Draw a curved line from <code>(x, y)</code> to <code>(xend, yend)</code>. <code>aes()</code> arguments: <code>x</code>, <code>xend</code>, <code>y</code>, <code>yend</code>, <code>alpha</code>, <code>angle</code>, <code>color</code>, <code>curvature</code>, <code>linetype</code>, <code>size</code>.</p></li>
+<li><p><code>a + geom_path(lineend = "butt", linejoin = "round", linemitre = 1)</code>: Connect observations in the order they appear. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>size</code>.</p></li>
+<li><p><code>a + geom_polygon(aes(alpha = 50))</code>: Connect points into polygons. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>subgroup</code>, <code>linetype</code>, <code>size</code>.</p></li>
+<li><p><code>b + geom_rect(aes(xmin = long, ymin = lat, xmax = long + 1, ymax = lat + 1))</code>: Draw a rectangle by connecting four corners (<code>xmin</code>, <code>xmax</code>, <code>ymin</code>, <code>ymax</code>). <code>aes()</code> arguments: <code>xmax</code>, <code>xmin</code>, <code>ymax</code>, <code>ymin</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>size</code>.</p></li>
+<li><p><code>a + geom_ribbon(aes(ymin = unemploy - 900, ymax = unemploy + 900)</code>: For each <code>x</code>, plot an interval from <code>ymin</code> to <code>ymax</code>. <code>aes()</code> arguments: <code>x</code>, <code>ymax</code>, <code>ymin</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>size</code>.</p></li>
+</ul>
+<section id="line-segments" class="level4">
+<h4 class="anchored" data-anchor-id="line-segments">Line Segments</h4>
+<p>Common aesthetics: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>linetype</code>, <code>size</code>.</p>
+<ul>
+<li><p><code>b + geom_abline(aes(intercept = 0, slope = 1))</code>: Draw a diagonal reference line with a given <code>slope</code> and <code>intercept</code>.</p></li>
+<li><p><code>b + geom_hline(aes(yintercept = lat))</code>: Draw a horizontal reference line with a given <code>yintercept</code>.</p></li>
+<li><p><code>b + geom_vline(aes(xintercept = long))</code>: Draw a vertical reference line with a given <code>xintercept</code>.</p></li>
+<li><p><code>b + geom_segment(aes(yend = lat + 1, xend = long + 1))</code>: Draw a straight line from <code>(x, y)</code> to <code>(xend, yend)</code>.</p></li>
+<li><p><code>b + geom_spoke(aes(angle = 1:1155, radius = 1))</code>: Draw line segments using polar coordinates (<code>angle</code> and <code>radius</code>).</p></li>
+</ul>
+</section>
+</section>
+<section id="one-variable---continuous" class="level3">
+<h3 class="anchored" data-anchor-id="one-variable---continuous">One Variable - Continuous</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(hwy))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>c + geom_area(stat = "bin")</code>: Draw an area plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>size</code>.</p></li>
+<li><p><code>c + geom_density(kernel = "gaussian")</code>: Compute and draw kernel density estimates. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</p></li>
+<li><p><code>c + geom_dotplot()</code>: Draw a dot plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>.</p></li>
+<li><p><code>c + geom_freqpoly()</code>: Draw a frequency polygon. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>size</code>.</p></li>
+<li><p><code>c + geom_histogram(binwidth = 5)</code>: Draw a histogram. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</p></li>
+<li><p><code>c2 + geom_qq(aes(sample = hwy))</code>: Draw a quantile-quantile plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</p></li>
+</ul>
+</section>
+<section id="one-variable---discrete" class="level3">
+<h3 class="anchored" data-anchor-id="one-variable---discrete">One Variable - Discrete</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(fl))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>d + geom_bar()</code>: Draw a bar chart. <code>aes()</code> arguments: <code>x</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</li>
+</ul>
+</section>
+<section id="two-variables---both-continuous" class="level3">
+<h3 class="anchored" data-anchor-id="two-variables---both-continuous">Two Variables - Both Continuous</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>e <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>e + geom_label(aes(label = cty), nudge_x = 1, nudge_y = 1)</code>: Add text with a rectangle background. <code>aes()</code> arguments: - <code>x</code>, <code>y</code>, <code>label</code>, <code>alpha</code>, <code>angle</code>, <code>color</code>, <code>family</code>, <code>fontface</code>, <code>hjust</code>, <code>lineheight</code>, <code>size</code>, <code>vjust</code>.</p></li>
+<li><p><code>e + geom_point()</code>: Draw a scatter plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>shape</code>, <code>size</code>, <code>stroke</code>.</p></li>
+<li><p><code>e + geom_quantile()</code>: Fit and draw quantile regression for the plot data. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</p></li>
+<li><p><code>e + geom_rug(sides = "bl")</code>: Draw a rug plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>linetype</code>, <code>size</code>.</p></li>
+<li><p><code>e + geom_smooth(method = lm)</code>: Plot smoothed conditional means. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</p></li>
+<li><p><code>e + geom_text(aes(label = cty), nudge_x = 1, nudge_y = 1)</code>: Add text to a plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>label</code>, <code>alpha</code>, <code>angle</code>, <code>color</code>, <code>family</code>, <code>fontface</code>, <code>hjust</code>, <code>lineheight</code>, <code>size</code>, <code>vjust</code>.</p></li>
+</ul>
+</section>
+<section id="two-variables---one-discrete-one-continuous" class="level3">
+<h3 class="anchored" data-anchor-id="two-variables---one-discrete-one-continuous">Two Variables - One Discrete, One Continuous</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(class, hwy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>f + geom_col()</code>: Draw a bar plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>size</code>.</p></li>
+<li><p><code>f + geom_boxplot()</code>: Draw a box plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>lower</code>, <code>middle</code>, <code>upper</code>, <code>ymax</code>, <code>ymin</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>shape</code>, <code>size</code>, <code>weight</code>.</p></li>
+<li><p><code>f + geom_dotplot(binaxis ="y", stackdir = "center")</code>: Draw a dot plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>.</p></li>
+<li><p><code>f + geom_violin(scale = "area")</code>: Draw a violin plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</p></li>
+</ul>
+</section>
+<section id="two-variables---both-discrete" class="level3">
+<h3 class="anchored" data-anchor-id="two-variables---both-discrete">Two Variables - Both Discrete</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(cut, color))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>g + geom_count()</code>: Plot a count of points in an area to address over plotting. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>shape</code>, <code>size</code>, <code>stroke</code>.</p></li>
+<li><p><code>e + geom_jitter(height = 2, width = 2)</code>: Jitter points in a plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>shape</code>, <code>size</code>.</p></li>
+</ul>
+</section>
+<section id="two-variables---continuous-bivariate-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="two-variables---continuous-bivariate-distribution">Two Variables - Continuous Bivariate Distribution</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(diamonds, <span class="fu">aes</span>(carat, price))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>h + geom_bin2d(binwidth = c(0.25, 500))</code>: Draw a heatmap of 2D rectangular bin counts. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</p></li>
+<li><p><code>h + geom_density_2d()</code>: Plot contours from 2D kernel density estimation. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>size</code>.</p></li>
+<li><p><code>h + geom_hex()</code>: Draw a heatmap of 2D hexagonal bin counts. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>size</code>.</p></li>
+</ul>
+</section>
+<section id="two-variables---continuous-function" class="level3">
+<h3 class="anchored" data-anchor-id="two-variables---continuous-function">Two Variables - Continuous Function</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics, <span class="fu">aes</span>(date, unemploy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>i + geom_area()</code>: Draw an area plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>size</code>.</p></li>
+<li><p><code>i + geom_line()</code>: Connect data points, ordered by the x axis variable. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>size</code>.</p></li>
+<li><p><code>i + geom_step(direction = "hv"</code>: Draw a stairstep plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>size</code>.</p></li>
+</ul>
+</section>
+<section id="two-variables---visualizing-error" class="level3">
+<h3 class="anchored" data-anchor-id="two-variables---visualizing-error">Two Variables - Visualizing Error</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">grp =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>), <span class="at">fit =</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">se =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>j <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(grp, fit, <span class="at">ymin =</span> fit <span class="sc">-</span> se, <span class="at">ymax =</span> fit <span class="sc">+</span> se))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>j + geom_crossbar(fatten = 2)</code>: Draw a crossbar. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>ymax</code>, <code>ymin</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>size</code>.</p></li>
+<li><p><code>j + geom_errorbar()</code>: Draw an errorbar. Also <code>geom_errorbarh()</code>. <code>aes()</code> arguments: <code>x</code>, <code>ymax</code>, <code>ymin</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>size</code>, <code>width</code>.</p></li>
+<li><p><code>j + geom_linerange()</code>: Draw a line range. <code>aes()</code> arguments: <code>x</code>, <code>ymin</code>, <code>ymax</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>size</code>.</p></li>
+<li><p><code>j + geom_pointrange()</code>: Draw a point range. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>ymin</code>, <code>ymax</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>shape</code>, <code>size</code>.</p></li>
+</ul>
+</section>
+<section id="two-variables---maps" class="level3">
+<h3 class="anchored" data-anchor-id="two-variables---maps">Two Variables - Maps</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>murder_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">murder =</span> USArrests<span class="sc">$</span>Murder, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="fu">tolower</span>(<span class="fu">rownames</span>(USArrests))</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>map <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">"state"</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(murder_data, <span class="fu">aes</span>(<span class="at">fill =</span> murder))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><code>k + geom_map(aes(map_id = state), map = map) + expand_limits(x = map$long, y = map$lat)</code>: Draw polygons as a map. <code>aes()</code> arguments: <code>map_id</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>size</code>.</li>
+</ul>
+</section>
+<section id="three-variables" class="level3">
+<h3 class="anchored" data-anchor-id="three-variables">Three Variables</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>seals<span class="sc">$</span>z <span class="ot">&lt;-</span> <span class="fu">with</span>(seals, <span class="fu">sqrt</span>(delta_long<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> delta_lat<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(seals, <span class="fu">aes</span>(long, lat))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>l + geom_contour(aes(z = z))</code>: Draw 2D contour plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>z</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</p></li>
+<li><p><code>l + geom_contour_filled(aes(fill = z))</code>: Draw 2D contour plot with the space between lines filled. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>size</code>, <code>subgroup</code>.</p></li>
+<li><p><code>l + geom_raster(aes(fill = z), hjust = 0.5, vjust = 0.5, interpolate = FALSE)</code>: Draw a raster plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>fill</code>.</p></li>
+<li><p><code>l + geom_tile(aes(fill = z))</code>: Draw a tile plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>size</code>, <code>width</code>.</p></li>
+</ul>
+<!-- Page 2 -->
+</section>
+</section>
+<section id="stats" class="level2">
+<h2 class="anchored" data-anchor-id="stats">Stats</h2>
+<p>An alternative way to build a layer.</p>
+<p>A stat builds new variables to plot (e.g., count, prop).</p>
+<p>Visualize a stat by changing the default stat of a geom function, <code>geom_bar(stat = "count")</code>, or by using a stat function, <code>stat_count(geom = "bar")</code>, which calls a default geom to make a layer (equivalent to a geom function). Use <code>..name..</code> syntax to map stat variables to aesthetics.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>i <span class="sc">+</span> <span class="fu">stat_density_2d</span>(<span class="fu">aes</span>(<span class="at">fill =</span> ..level..), <span class="at">geom =</span> <span class="st">"polygon"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In this example, <code>"polygon"</code> is the geom to use, <code>stat_density_2d()</code> is the stat function, <code>aes()</code> contains the geom mappings, and <code>..level..</code> is the variable created by stat.</p>
+<ul>
+<li><p><code>c + stat_bin(binwidth = 1, boundary = 10)</code>: <code>x</code>, <code>y</code> | <code>..count..</code>, <code>..ncount..</code>, <code>..density..</code>, <code>..ndensity..</code></p></li>
+<li><p><code>c + stat_count(width = 1)</code>: <code>x</code>, <code>y</code> | <code>..count..</code>, <code>..density..</code></p></li>
+<li><p><code>c + stat_density(adjust = 1, kernel = "gaussian")</code>: <code>x</code>, <code>y</code> | <code>..count..</code>, <code>..density..</code>, <code>..scaled..</code></p></li>
+<li><p><code>e + stat_bin_2d(bins = 30, drop = T)</code>: <code>x</code>, <code>y</code>, <code>fill</code> | <code>..count..</code>, <code>..density..</code></p></li>
+<li><p><code>e + stat_bin_hex(bins =30)</code>: <code>x</code>, <code>y</code>, <code>fill</code> | <code>..count..</code>, <code>..density..</code></p></li>
+<li><p><code>e + stat_density_2d(contour = TRUE, n = 100)</code>: <code>x</code>, <code>y</code>, <code>color</code>, <code>size</code> | <code>..level..</code></p></li>
+<li><p><code>e + stat_ellipse(level = 0.95, segments = 51, type = "t")</code></p></li>
+<li><p><code>l + stat_contour(aes(z = z))</code>: <code>x</code>, <code>y</code>, <code>z</code>, <code>order</code> | <code>..level..</code></p></li>
+<li><p><code>l + stat_summary_hex(aes(z = z), bins = 30, fun = max)</code>: <code>x</code>, <code>y</code>, <code>z</code>, <code>fill</code> | <code>..value..</code></p></li>
+<li><p><code>l + stat_summary_2d(aes(z = z), bins = 30, fun = mean)</code>: <code>x</code>, <code>y</code>, <code>z</code>, <code>fill</code> | <code>..value..</code></p></li>
+<li><p><code>f + stat_boxplot(coef = 1.5)</code>: <code>x</code>, <code>y</code> | <code>..lower..</code>, <code>..middle..</code>, <code>..upper..</code>, <code>..width..</code>, <code>..ymin..</code>, <code>..ymax..</code></p></li>
+<li><p><code>f + stat_ydensity(kernel = "gaussian", scale = "area")</code>: <code>x</code>, <code>y</code> | <code>..density..</code>, <code>..scaled..</code>, <code>..count..</code>, <code>..n..</code>, <code>..violinwidth..</code>, <code>..width..</code></p></li>
+<li><p><code>e + stat_ecdf(n = 40)</code>: <code>x</code>, <code>y</code> | <code>..x..</code>, <code>..y..</code></p></li>
+<li><p><code>e + stat_quantile(quantiles = c(0.1, 0.9), formula = y ~ log(x), method = "rq")</code>: <code>x</code>, <code>y</code> | <code>..quantile..</code></p></li>
+<li><p><code>e + stat_smooth(method = "lm", formula = y ~ x, se = T, level = 0.95)</code>: <code>x</code>, <code>y</code> | <code>..se..</code>, <code>..x..</code>, <code>..y..</code>, <code>..ymin..</code>, <code>..ymax..</code></p></li>
+<li><p><code>ggplot() + xlim(-5, 5) + stat_function(fun = dnorm, n = 20, geom = "point")</code>: <code>x</code> | <code>..x..</code>, <code>..y..</code></p></li>
+<li><p><code>ggplot() + stat_qq(aes(sample = 1:100))</code>: <code>x</code>, <code>y</code>, <code>sample</code> | <code>..sample..</code>, <code>..theoretical..</code></p></li>
+<li><p><code>e + stat_sum()</code>: <code>x</code>, <code>y</code>, <code>size</code> | <code>..n..</code>, <code>..prop..</code></p></li>
+<li><p><code>e + stat_summary(fun.data = "mean_cl_boot")</code></p></li>
+<li><p><code>h + stat_summary_bin(fun = "mean", geom = "bar")</code></p></li>
+<li><p><code>e + stat_identity()</code></p></li>
+<li><p><code>e + stat_unique()</code></p></li>
+</ul>
+</section>
+<section id="scales" class="level2">
+<h2 class="anchored" data-anchor-id="scales">Scales</h2>
+<p>Override defaults with <strong>scales</strong> package.</p>
+<p><strong>Scales</strong> map data values to the visual values of an aesthetic. To change a mapping, add a new scale.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> d <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> fl))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>n <span class="sc">+</span> <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> <span class="fu">c</span>(),</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">limits =</span> <span class="fu">c</span>(), </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> <span class="fu">c</span>(),</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"fuel"</span>, </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"D"</span>, <span class="st">"E"</span>, <span class="st">"P"</span>, <span class="st">"R"</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In this example, <code>scale_</code> specifies a scale function, <code>fill</code> is the aesthetic to adjust, and <code>manual</code> is the prepackaged scale to use.</p>
+<p><code>values</code> contains scale-specific arguments, <code>limits</code> specifies the range of values to include in mappings, <code>breaks</code> specifies the breaks to use in legend/axis, and <code>name</code> and <code>labels</code> specify the title and labels to use in the legend/axis.</p>
+<section id="general-purpose-scales" class="level3">
+<h3 class="anchored" data-anchor-id="general-purpose-scales">General Purpose Scales</h3>
+<p>Use with most aesthetics.</p>
+<ul>
+<li><p><code>scale_*_continuous()</code>: Map continuous values to visual ones.</p></li>
+<li><p><code>scale_*_discrete()</code>: Map discrete values to visual ones.</p></li>
+<li><p><code>scale_*_binned()</code>: Map continuous values to discrete bins.</p></li>
+<li><p><code>scale_*_identity()</code>: Use data values as visual ones.</p></li>
+<li><p><code>scale_*_manual(values = c())</code>: Map discrete values to manually chosen visual ones.</p></li>
+<li><p><code>scale_*_date(date_labels = "%m/%d", date_breaks = "2 weeks")</code>: Treat data values as dates.</p></li>
+<li><p><code>scale_*_datetime()</code>: Treat data values as date times. Same as <code>scale_*_date()</code>. See <code>?strptime</code> for label formats.</p></li>
+</ul>
+</section>
+<section id="x-y-location-scales" class="level3">
+<h3 class="anchored" data-anchor-id="x-y-location-scales">X &amp; Y Location Scales</h3>
+<p>Use with x or y aesthetics (x shown here).</p>
+<ul>
+<li><p><code>scale_x_log10()</code>: Plot <code>x</code> on log10 scale.</p></li>
+<li><p><code>scale_x_reverse()</code>: Reverse the direction of the x axis.</p></li>
+<li><p><code>scale_x_sqrt()</code>: Plot <code>x</code> on square root scale.</p></li>
+</ul>
+</section>
+<section id="color-and-fill-scales-discrete" class="level3">
+<h3 class="anchored" data-anchor-id="color-and-fill-scales-discrete">Color and Fill Scales (Discrete)</h3>
+<ul>
+<li><p><code>n + scale_fill_brewer(palette = "Blues")</code>: Use color scales from ColorBrewer. For palette choices <code>RColorBrewer::display.brewer.all()</code>.</p></li>
+<li><p><code>n + scale_fill_grey(start = 0.2, end = 0.8, na.value = "red")</code>: Use a grey gradient color scale.</p></li>
+</ul>
+</section>
+<section id="color-and-fill-scales-continuous" class="level3">
+<h3 class="anchored" data-anchor-id="color-and-fill-scales-continuous">Color and Fill Scales (Continuous)</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>o <span class="ot">&lt;-</span> c <span class="sc">+</span> <span class="fu">geom_dotplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> ..x..))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>o + scale_fill_distiller(palette = "Blues")</code>: Interpolate a palette into a continuous scale.</p></li>
+<li><p><code>o + scale_fill_gradient(low = "red", high = "yellow")</code>: Create a two color gradient.</p></li>
+<li><p><code>o + scale_fill_gradient2(low = "red", high = "blue", mid = "white", midpoint = 25)</code>: Create a diverging color gradient.</p></li>
+<li><p><code>o + scale_fill_gradientn(colors = topo.colors(6))</code>: Create a n-color gradient. Also <code>rainbow()</code>, <code>heat.colors()</code>, <code>terrain.colors()</code>, <code>cm.colors()</code>, <code>RColorBrewer::brewer.pal()</code>.</p></li>
+</ul>
+</section>
+<section id="shape-and-size-scales" class="level3">
+<h3 class="anchored" data-anchor-id="shape-and-size-scales">Shape and Size Scales</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> e <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape =</span> fl, <span class="at">size =</span> cyl))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>p + scale_shape() + scale_size()</code>: Map discrete values to shape and size aesthetics.</p></li>
+<li><p><code>p + scale_shape_manual(values = c(3:7))</code>: Map discrete values to specified shape values.</p></li>
+<li><p><code>p + scale_radius(range = c(1,6))</code>: Map values to a shape’s radius.</p></li>
+<li><p><code>p + scale_size_area(max_size = 6)</code>: Like <code>scale_size()</code> but maps zero values to zero size.</p></li>
+</ul>
+<p>Shapes used here are the same as the ones listed in the Aes section.</p>
+</section>
+</section>
+<section id="coordinate-systems" class="level2">
+<h2 class="anchored" data-anchor-id="coordinate-systems">Coordinate Systems</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> d <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>u + coord_cartesian(xlim = c(0, 5))</code>: <code>xlim</code>, <code>ylim</code>. The default Cartesian coordinate system.</p></li>
+<li><p><code>u + coord_fixed(ratio = 1/2)</code>: <code>ratio</code>, <code>xlim</code>, <code>ylim</code>. Cartesian coordinates with fixed aspect ration between x and y units.</p></li>
+<li><p><code>ggplot(mpg, aes(y = fl)) + geom_bar()</code>: Flip Cartesian coordinates by switching x and y aesthetic mappings.</p></li>
+<li><p><code>u + coord_polar(theta = "x", direction = 1)</code>: <code>theta</code>, <code>start</code>, <code>direction</code>. Polar coordinates.</p></li>
+<li><p><code>u + coord_trans(y = "sqrt")</code>: <code>x</code>, <code>y</code>, <code>xlim</code>, <code>ylim</code>. Transformed Cartesian coordinates. Set <code>xtrans</code> and <code>ytrans</code> to the name of a window function.</p></li>
+<li><p><code>π + coord_quickmap(); π + coord_map(projection = "ortho", orientation = c(41, -74, 0))</code>: <code>projection</code>, <code>xlim</code>, <code>ylim</code>. Map projections from the <strong>mapproj</strong> packages (<code>mercator</code> (default), <code>azequalarea</code>, <code>lagrange</code>, etc.).</p></li>
+</ul>
+</section>
+<section id="position-adjustments" class="level2">
+<h2 class="anchored" data-anchor-id="position-adjustments">Position Adjustments</h2>
+<p>Position adjustments determine how to arrange geoms that would otherwise occupy the same space.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(fl, <span class="at">fill =</span> drv))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>s + geom_bar(position = "dodge")</code>: Arrange elements side by side.</p></li>
+<li><p><code>s + geom_bar(position = "fill")</code>: Stack elements on top of one another, normalize height.</p></li>
+<li><p><code>e + geom_point(position = "jitter")</code>: Add random noise to X and Y position of each element to avoid over plotting.</p></li>
+<li><p><code>e + geom_label(position = "nudge")</code>: Nudge labels away from points.</p></li>
+<li><p><code>s + geom_bar(position = "stack")</code>: Stack elements on top of one another.</p></li>
+</ul>
+<p>Each position adjustment can be recast as a function with manual <code>width</code> and <code>height</code> arguments:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>s <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="themes" class="level2">
+<h2 class="anchored" data-anchor-id="themes">Themes</h2>
+<ul>
+<li><p><code>u + theme_bw()</code>: White background with grid lines.</p></li>
+<li><p><code>u + theme_gray()</code>: Grey background with white grid lines (default theme).</p></li>
+<li><p><code>u + theme_dark()</code>: Dark grey background and grid lines for contrast.</p></li>
+<li><p><code>u + theme_classic()</code>: No grid lines.</p></li>
+<li><p><code>u + theme_light()</code>: Light grey axes and grid lines.</p></li>
+<li><p><code>u + theme_linedraw()</code>: Uses only black lines.</p></li>
+<li><p><code>u + theme_minimal()</code>: Minimal theme.</p></li>
+<li><p><code>u + theme_void()</code>: Empty theme.</p></li>
+<li><p><code>u + theme()</code>: Customize aspects of the theme such as axis, legend, panel, and facet properties.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>r <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Title"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title.postion =</span> <span class="st">"plot"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>r <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"blue"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+</section>
+<section id="faceting" class="level2">
+<h2 class="anchored" data-anchor-id="faceting">Faceting</h2>
+<p>Facets divide a plot into subplots based on the values of one or more discrete variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>t + facet_grid(cols = vars(fl))</code>: Facet into a column based on fl.</p></li>
+<li><p><code>t + facet_grid(rows = vars(year))</code>: Facet into rows based on year.</p></li>
+<li><p><code>t + facet_grid(rows = vars(year), cols = vars(fl))</code>: Facet into both rows and columns.</p></li>
+<li><p><code>t_facet_wrap(vars(fl))</code>: Wrap facets into a rectangular layout.</p></li>
+<li><p><code>t + facet_grid(rows = vars(drv), cols = vars(fl), scales = "free")</code>: Set <strong>scales</strong> to let axis limits vary across facets. Also <code>"free_x"</code> for x axis limits adjust to individual facets and <code>"free_y"</code> for y axis limits adjust to individual facets.</p></li>
+</ul>
+<p>Set <strong>labeller</strong> to adjust facet label:</p>
+<ul>
+<li><p><code>t + facet_grid(cols = vars(fl), labeller = label_both)</code>: Labels each facet as “fl: c”, “fl: d”, etc.</p></li>
+<li><p><code>t + facet_grid(rows = vars(fl), labeller = label_bquote(alpha ^ .(fl)))</code>: Labels each facet as “𝛼<sup>c</sup>”, “𝛼<sup>d</sup>”, etc.</p></li>
+</ul>
+</section>
+<section id="labels-and-legends" class="level2">
+<h2 class="anchored" data-anchor-id="labels-and-legends">Labels and Legends</h2>
+<p>Use <code>labs()</code> to label elements of your plot.</p>
+<pre><code>t + labs(x = "New x axis label", 
+  y = "New y axis label",
+  title ="Add a title above the plot",
+  subtitle = "Add a subtitle below title",
+  caption = "Add a caption below plot",
+  alt = "Add alt text to the plot",
+  &lt;Aes&gt; = "New &lt;Aes&gt; legend title")</code></pre>
+<ul>
+<li><p><code>t + annotate(geom = "text", x = 8, y = 9, label = "A")</code>: Places a geom with manually selected aesthetics.</p></li>
+<li><p><code>p + guides(x = guide_axis(n.dodge = 2))</code>: Avoid crowded or overlapping labels with <code>guide_axis(n.dodge or angle)</code>.</p></li>
+<li><p><code>n + guides(fill = "none")</code>: Set legend type for each aesthetic: <code>colorbar</code>, <code>legend</code>, or <code>none</code> (no legend).</p></li>
+<li><p><code>n + theme(legend.position = "bottom")</code>: Place legend at “bottom”, “top”, “left”, or “right”.</p></li>
+<li><p><code>n + scale_fill_discrete(name = "Title", labels = c("A", "B", "C", "D", "E"))</code>: Set legend title and labels with a scale function.</p></li>
+</ul>
+</section>
+<section id="zooming" class="level2">
+<h2 class="anchored" data-anchor-id="zooming">Zooming</h2>
+<ul>
+<li><p><code>t + coord_cartesian(xlim = c(0, 100), ylim = c(10,20))</code>: Zoom without clipping (preferred).</p></li>
+<li><p><code>t + xlim(0, 100) + ylim(10, 20)</code> or <code>t + scale_x_continuous(limits = c(0, 100)) + scale_y_continuous(limits = c(0, 100))</code>: Zoom with clipping (removes unseen data points).</p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
