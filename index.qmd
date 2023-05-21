@@ -16,7 +16,7 @@ listing:
     - "keras.qmd"
     - "plumber.qmd"
     - "reticulate.qmd"
-    - "ggplot2.qmd"
+    - "data-visualization.qmd"
   type: grid
   image-height: "200px"
   sort: false
