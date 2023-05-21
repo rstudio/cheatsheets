@@ -2,21 +2,21 @@
 title: "Posit Cheat Sheets"
 listing:
   contents:
-    - "rstudio-ide-eng.qmd"
-    - "shiny.qmd"
-    - "rmarkdown.qmd"
-    - "data-import.qmd"
+    - "data-visualization.qmd"
     - "data-transformation.qmd"
+    - "data-import.qmd"
     - "tidyr.qmd"
     - "purrr.qmd"
     - "factors.qmd"
     - "lubridate.qmd"
     - "strings.qmd"
+    - "shiny.qmd"
     - "package-development.qmd"
+    - "rstudio-ide-eng.qmd"
     - "keras.qmd"
     - "plumber.qmd"
     - "reticulate.qmd"
-    - "data-visualization.qmd"
+    - "rmarkdown.qmd"
   type: grid
   image-height: "200px"
   sort: false
