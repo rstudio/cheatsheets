@@ -2,21 +2,21 @@
   {
     "listing": "/index.html",
     "items": [
-      "/html/rstudio-ide-eng.html",
-      "/html/shiny.html",
-      "/html/rmarkdown.html",
-      "/html/data-import.html",
+      "/html/data-visualization.html",
       "/html/data-transformation.html",
+      "/html/data-import.html",
       "/html/tidyr.html",
       "/html/purrr.html",
       "/html/factors.html",
       "/html/lubridate.html",
       "/html/strings.html",
+      "/html/shiny.html",
       "/html/package-development.html",
+      "/html/rstudio-ide-eng.html",
       "/html/keras.html",
       "/html/plumber.html",
       "/html/reticulate.html",
-      "/html/ggplot2.html"
+      "/html/rmarkdown.html"
     ]
   }
 ]
