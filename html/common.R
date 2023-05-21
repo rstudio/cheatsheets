@@ -1,4 +1,4 @@
-use_cheatsheet_logo <- function(pkg, geometry = "240x278", retina = TRUE) {
+use_cheatsheet_logo <- function(pkg, geometry = "240x278", alt, retina = TRUE) {
   tf <- withr::local_tempfile(fileext = ".png")
 
   gh::gh(
@@ -22,22 +22,22 @@ use_cheatsheet_logo <- function(pkg, geometry = "240x278", retina = TRUE) {
   }
 
   cat(glue::glue(
-    "<img src=\"images/logo-{pkg}.png\" height=\"{height}\" alt=\"\" />"
+    "<img src=\"images/logo-{pkg}.png\" height=\"{height}\" alt=\"{alt}\" />"
   ))
 }
 
 translation_list <- function(sheet_name) {
   f <- fs::dir_ls(
-    "../translations", 
-    regex = glue::glue("{sheet_name}.+\\.pdf"), 
+    "../translations",
+    regex = glue::glue("{sheet_name}.+\\.pdf"),
     recurse = 1, # old versions are in subfolders
     )
-  
-  if (length(f) == 0) 
+
+  if (length(f) == 0)
     return(invisible())
-  
+
   lang <- tools::toTitleCase(vapply(fs::path_split(f), `[[`, 3, FUN.VALUE = character(1)))
-  
+
   cat("Translations (PDF)\n\n")
   cat(glue::glue('* <a href="{f}"><i class="bi bi-file-pdf"></i>{lang}</a>'), sep = "\n")
 }
