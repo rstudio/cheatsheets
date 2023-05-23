@@ -33,3 +33,10 @@ We ask that you include:
 * Your translated Keynote or PowerPoint file
 
 Cheatsheet pull requests and issues tend be handled in bursts, and we may wait for several to accumulate before sorting through them so don't worry if your submission sits for a while!
+
+## HTML cheatsheets
+
+If you wish to provide an HTML cheatsheet version, please create a Pull Request 
+with a new `.qmd` file in the `html/` directory of this repository. Use one of 
+the existing `qmd` files there as a starting point/template. These should not be duplicates of the pdf versions - they should be text-based so they are more accessible
+to people with visual impairments. Use of images should be minimized, and any images should include appropriate alternative text.
