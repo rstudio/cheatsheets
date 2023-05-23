@@ -12,7 +12,7 @@ website:
       - href: translations.qmd
     right:
       - icon: github
-        href: https://github.com/rstudio-education/datascience-box
+        href: https://github.com/rstudio/cheatsheets
         aria-label: GitHub
   repo-url: https://github.com/rstudio/cheatsheets
   repo-actions: [edit, issue]
