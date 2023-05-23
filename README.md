@@ -1,9 +1,11 @@
 
-## RStudio Cheatsheets
+## Posit Cheatsheets
 
 <img src="pngs/rstudio-ide.png" width=364 height=288 align="right"/>
 
-The cheatsheets make it easy to learn about and use some of our favorite packages. They are published in their respective PDF versions here: https://www.rstudio.com/resources/cheatsheets/, some are also available in the RStudio IDE under Help > Cheatsheets.
+The cheatsheets make it easy to learn about and use some of our favorite packages. They are published in their respective PDF versions here: https://posit.co/resources/cheatsheets/, some are also available in the RStudio IDE under Help > Cheatsheets.
+
+We are also starting to make some cheatsheets available in a more accessible, text-based HTML format. These are available at https://rstudio.github.io/cheatsheets/.
 
 This repository contains the source files of the current, archived and translated versions.
 
@@ -13,9 +15,16 @@ The cheatsheets use the creative commons copyright. Please see the LICENSE docum
 
 If you wish to contribute to this effort by translating a cheatsheet, please feel free to use the source Keynote file. To submit a translation, please use a Pull Request via GitHub. See the [contributing guidelines](https://github.com/rstudio/cheatsheets/blob/main/.github/CONTRIBUTING.md) for more information.
 
-## Tips for making a new RStudio cheatsheet
+## HTML cheatsheets
 
-**RStudio cheatsheets are not meant to be text or documentation!** They are scannable visual aids that use layout and visual mnemonics to help people zoom to the functions they need. Think of cheatsheets as a quick reference, with the emphasis on quick. Here's an analogy:
+If you wish to provide an HTML cheatsheet version, please create a Pull Request 
+with a new `.qmd` file in the `html/` directory of this repository. Use one of 
+the existing `qmd` files there as a starting point/template. These should not be duplicates of the pdf versions - they should be text-based so they are more accessible
+to people with visual impairments. Use of images should be minimized, and any images should include appropriate alternative text.
+
+## Tips for making a new cheatsheet
+
+**Cheatsheets are not meant to be text or documentation!** They are scannable visual aids that use layout and visual mnemonics to help people zoom to the functions they need. Think of cheatsheets as a quick reference, with the emphasis on quick. Here's an analogy:
 
 > A cheatsheet is more like a well-organized computer menu bar that leads you to a command than like a manual that documents each command.
 
