@@ -1,5 +1,5 @@
 ---
-title: "Package Development :: Cheat Sheet"
+title: "Package Development :: Cheatsheet"
 description: " "
 image-alt: ""
 execute:
@@ -46,7 +46,7 @@ library(roxygen2)
 ## Package Structure
 
 A package is a convention for organizing files into directories, and creates a shareable, installable collection of functions, sample data, and documentation.
-This cheat sheet shows you how to work with the 7 most common parts of an R package:
+This cheatsheet shows you how to work with the 7 most common parts of an R package:
 
 -   R/: Write R code for your package
 -   DESCRIPTION: Set up metadata and organize package functions

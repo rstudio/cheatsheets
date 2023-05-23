@@ -1,5 +1,5 @@
 ---
-title: "RStudio IDE :: Cheat Sheet"
+title: "RStudio IDE :: Cheatsheet"
 description: " "
 image-alt: ""
 execute:

@@ -1,5 +1,5 @@
 ---
-title: "Data transformation with dplyr :: Cheat Sheet"
+title: "Data transformation with dplyr :: Cheatsheet"
 description: " "
 image-alt: ""
 execute:
@@ -79,7 +79,7 @@ Summary functions take vectors as input and return one value back (see Summary F
 -   Use `rowwise(.data, ...)` to group data into individual rows.
     dplyr functions will compute results for each row.
     Also apply functions to list-columns.
-    See tidyr cheat sheet for list-column workflow.
+    See tidyr cheatsheet for list-column workflow.
 
     ```{r}
     starwars |>

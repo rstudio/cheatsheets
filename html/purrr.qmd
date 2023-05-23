@@ -1,5 +1,5 @@
 ---
-title: "Apply functions with purrr :: Cheat Sheet"
+title: "Apply functions with purrr :: Cheatsheet"
 description: " "
 image-alt: ""
 execute:

@@ -1,5 +1,5 @@
 ---
-title: "REST APIs with plumber :: Cheat Sheet"
+title: "REST APIs with plumber :: Cheatsheet"
 description: " "
 image-alt: ""
 execute:
@@ -335,7 +335,7 @@ Each object has several components, the most helpful of which are outlined below
 **Response Objects**
 
 | Name                 | Example                   | Description                               |
-|-------------------|----------------------|--------------------------------|
+|-------------------|----------------------|-------------------------------|
 | `res$headers`        | `list(header = "abc")`    | HTTP headers to include in the response   |
 | `res$setHeader()`    | `setHeader("foo", "bar")` | Sets an HTTP header                       |
 | `res$setCookie()`    | `setCookie("foo", "bar")` | Sets an HTTP cookie on the client         |

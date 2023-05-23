@@ -1,5 +1,5 @@
 ---
-title: "Dates and times with lubridate :: Cheat Sheet"
+title: "Dates and times with lubridate :: Cheatsheet"
 description: " "
 image-alt: ""
 execute:

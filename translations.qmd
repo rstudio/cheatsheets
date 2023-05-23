@@ -1,8 +1,8 @@
 ---
-title: "Translated Cheat Sheets"
+title: "Translated Cheatsheets"
 ---
 
-Non-English translations of both Posit and community-contributed cheat sheets.
+Non-English translations of both Posit and community-contributed cheatsheets.
 
 ```{r}
 #| output: asis

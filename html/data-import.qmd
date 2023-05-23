@@ -1,5 +1,5 @@
 ---
-title: "Data import with the tidyverse :: Cheat Sheet"
+title: "Data import with the tidyverse :: Cheatsheet"
 description: " "
 image-alt: ""
 execute:

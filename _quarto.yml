@@ -4,7 +4,7 @@ project:
     - "*.qmd"
 
 website:
-  title: "Cheat Sheets"
+  title: "Cheatsheets"
   navbar:
     left:
       - href: index.qmd

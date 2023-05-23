@@ -1,5 +1,5 @@
 ---
-title: "rmarkdown :: Cheat Sheet"
+title: "rmarkdown :: Cheatsheet"
 description: " "
 image-alt: ""
 execute:

@@ -1,9 +1,9 @@
 ---
-title: "Contributed Cheat Sheets"
+title: "Contributed Cheatsheets"
 ---
 
-Cheat sheets contributed by the community. Several of these cheat sheets
-also have non-English translations, available on the [Translated Cheat Sheets](translations.html) page.
+Cheatsheets contributed by the community. Several of these cheatsheets
+also have non-English translations, available on the [Translated Cheatsheets](translations.html) page.
 
 ::: {layout-ncol="3"}
 [![arrow](pngs/arrow.png)](arrow.pdf)
