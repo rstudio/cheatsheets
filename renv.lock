@@ -11,7 +11,7 @@
   "Packages": {
     "MASS": {
       "Package": "MASS",
-      "Version": "7.3-60",
+      "Version": "7.3-58.4",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -22,7 +22,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "a56a6365b3fa73293ea8d084be0d9bb0"
+      "Hash": "a3142b2a022b8174ca675bc8b80cdc4e"
     },
     "Matrix": {
       "Package": "Matrix",
@@ -121,6 +121,22 @@
         "sys"
       ],
       "Hash": "e8a22846fff485f0be3770c2da758713"
+    },
+    "backports": {
+      "Package": "backports",
+      "Version": "1.4.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "RemoteType": "standard",
+      "RemotePkgRef": "backports",
+      "RemoteRef": "backports",
+      "RemoteRepos": "https://cran.rstudio.com",
+      "RemotePkgPlatform": "aarch64-apple-darwin20",
+      "RemoteSha": "1.4.1",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "c39fbec8a30d23e721980b8afb31984c"
     },
     "base64enc": {
       "Package": "base64enc",
@@ -345,6 +361,22 @@
       "RemotePkgPlatform": "aarch64-apple-darwin20",
       "RemoteSha": "1.9.0",
       "Hash": "d691c61bff84bd63c383874d2d0c3307"
+    },
+    "config": {
+      "Package": "config",
+      "Version": "0.3.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "RemoteType": "standard",
+      "RemotePkgRef": "config",
+      "RemoteRef": "config",
+      "RemoteRepos": "https://cran.rstudio.com",
+      "RemotePkgPlatform": "aarch64-apple-darwin20",
+      "RemoteSha": "0.3.1",
+      "Requirements": [
+        "yaml"
+      ],
+      "Hash": "31d77b09f63550cee9ecb5a08bf76e8f"
     },
     "cpp11": {
       "Package": "cpp11",
@@ -1026,7 +1058,7 @@
     },
     "httpuv": {
       "Package": "httpuv",
-      "Version": "1.6.10",
+      "Version": "1.6.9",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1037,11 +1069,11 @@
         "promises",
         "utils"
       ],
-      "Hash": "503490b202c9ae28e7f58b9b5ae21d9f"
+      "Hash": "1046aa31a57eae8b357267a56a0b6d8b"
     },
     "httr": {
       "Package": "httr",
-      "Version": "1.4.6",
+      "Version": "1.4.5",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1052,11 +1084,11 @@
         "mime",
         "openssl"
       ],
-      "Hash": "7e5e3cbd2a7bc07880c94e22348fb661"
+      "Hash": "f6844033201269bec3ca0097bc6c97b3"
     },
     "httr2": {
       "Package": "httr2",
-      "Version": "0.2.3",
+      "Version": "0.2.2",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1071,7 +1103,7 @@
         "rlang",
         "withr"
       ],
-      "Hash": "193bb297368afbbb42dc85784a46b36e"
+      "Hash": "5c09fe33064978ede54de42309c8b532"
     },
     "ids": {
       "Package": "ids",
@@ -1151,6 +1183,32 @@
         "methods"
       ],
       "Hash": "a4269a09a9b865579b2635c77e572374"
+    },
+    "keras": {
+      "Package": "keras",
+      "Version": "2.11.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "RemoteType": "standard",
+      "RemotePkgRef": "keras",
+      "RemoteRef": "keras",
+      "RemoteRepos": "https://cran.rstudio.com",
+      "RemotePkgPlatform": "aarch64-apple-darwin20",
+      "RemoteSha": "2.11.1",
+      "Requirements": [
+        "R",
+        "R6",
+        "generics",
+        "glue",
+        "magrittr",
+        "methods",
+        "reticulate",
+        "rlang",
+        "tensorflow",
+        "tfruns",
+        "zeallot"
+      ],
+      "Hash": "e6291f0b61e3ba4e1f4a9d24151d5e50"
     },
     "knitr": {
       "Package": "knitr",
@@ -1530,6 +1588,36 @@
       ],
       "Hash": "6b0c222c5071efe0f3baf3dae9aa40e2"
     },
+    "plumber": {
+      "Package": "plumber",
+      "Version": "1.2.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "RemoteType": "standard",
+      "RemotePkgRef": "plumber",
+      "RemoteRef": "plumber",
+      "RemoteRepos": "https://cran.rstudio.com",
+      "RemotePkgPlatform": "aarch64-apple-darwin20",
+      "RemoteSha": "1.2.1",
+      "Requirements": [
+        "R",
+        "R6",
+        "crayon",
+        "ellipsis",
+        "httpuv",
+        "jsonlite",
+        "lifecycle",
+        "magrittr",
+        "mime",
+        "promises",
+        "rlang",
+        "sodium",
+        "stringi",
+        "swagger",
+        "webutils"
+      ],
+      "Hash": "8b65a7a00ef8edc5ddc6fabf0aff1194"
+    },
     "png": {
       "Package": "png",
       "Version": "0.1-8",
@@ -1848,7 +1936,7 @@
       "Package": "renv",
       "Version": "0.17.3",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "RemoteType": "standard",
       "RemotePkgRef": "renv",
       "RemoteRef": "renv",
@@ -2110,6 +2198,19 @@
       ],
       "Hash": "c2eae3d8c670fa9dfa35a12066f4a1d5"
     },
+    "sodium": {
+      "Package": "sodium",
+      "Version": "1.2.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "RemoteType": "standard",
+      "RemotePkgRef": "sodium",
+      "RemoteRef": "sodium",
+      "RemoteRepos": "https://cran.rstudio.com",
+      "RemotePkgPlatform": "aarch64-apple-darwin20",
+      "RemoteSha": "1.2.1",
+      "Hash": "3606bb09e0914edd4fc8313b500dcd5e"
+    },
     "sourcetools": {
       "Package": "sourcetools",
       "Version": "0.1.7-1",
@@ -2168,6 +2269,19 @@
       ],
       "Hash": "671a4d384ae9d32fc47a14e98bfa3dc8"
     },
+    "swagger": {
+      "Package": "swagger",
+      "Version": "3.33.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "RemoteType": "standard",
+      "RemotePkgRef": "swagger",
+      "RemoteRef": "swagger",
+      "RemoteRepos": "https://cran.rstudio.com",
+      "RemotePkgPlatform": "aarch64-apple-darwin20",
+      "RemoteSha": "3.33.1",
+      "Hash": "f28d25ed70c903922254157c11b0081d"
+    },
     "sys": {
       "Package": "sys",
       "Version": "3.4.1",
@@ -2197,6 +2311,31 @@
         "cpp11"
       ],
       "Hash": "90b28393209827327de889f49935140a"
+    },
+    "tensorflow": {
+      "Package": "tensorflow",
+      "Version": "2.11.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "RemoteType": "standard",
+      "RemotePkgRef": "tensorflow",
+      "RemoteRef": "tensorflow",
+      "RemoteRepos": "https://cran.rstudio.com",
+      "RemotePkgPlatform": "aarch64-apple-darwin20",
+      "RemoteSha": "2.11.0",
+      "Requirements": [
+        "R",
+        "config",
+        "grDevices",
+        "processx",
+        "reticulate",
+        "rstudioapi",
+        "tfautograph",
+        "tfruns",
+        "utils",
+        "yaml"
+      ],
+      "Hash": "34fddd59db96f799164f802ab7e0de8d"
     },
     "testthat": {
       "Package": "testthat",
@@ -2251,6 +2390,51 @@
         "systemfonts"
       ],
       "Hash": "1ab6223d3670fac7143202cb6a2d43d5"
+    },
+    "tfautograph": {
+      "Package": "tfautograph",
+      "Version": "0.3.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "RemoteType": "standard",
+      "RemotePkgRef": "tfautograph",
+      "RemoteRef": "tfautograph",
+      "RemoteRepos": "https://cran.rstudio.com",
+      "RemotePkgPlatform": "aarch64-apple-darwin20",
+      "RemoteSha": "0.3.2",
+      "Requirements": [
+        "R",
+        "backports",
+        "reticulate"
+      ],
+      "Hash": "f49f95df7561c477ac2370809fde9d61"
+    },
+    "tfruns": {
+      "Package": "tfruns",
+      "Version": "1.5.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "RemoteType": "standard",
+      "RemotePkgRef": "tfruns",
+      "RemoteRef": "tfruns",
+      "RemoteRepos": "https://cran.rstudio.com",
+      "RemotePkgPlatform": "aarch64-apple-darwin20",
+      "RemoteSha": "1.5.1",
+      "Requirements": [
+        "R",
+        "base64enc",
+        "config",
+        "jsonlite",
+        "magrittr",
+        "reticulate",
+        "rlang",
+        "rstudioapi",
+        "tidyselect",
+        "utils",
+        "whisker",
+        "yaml"
+      ],
+      "Hash": "8bcc55965444ca8a44bdb8ba7505be51"
     },
     "tibble": {
       "Package": "tibble",
@@ -2366,12 +2550,6 @@
       "Version": "0.3.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "RemoteType": "standard",
-      "RemotePkgRef": "tzdb",
-      "RemoteRef": "tzdb",
-      "RemoteRepos": "https://cran.rstudio.com",
-      "RemotePkgPlatform": "aarch64-apple-darwin20",
-      "RemoteSha": "0.3.0",
       "Requirements": [
         "R",
         "cpp11"
@@ -2400,9 +2578,16 @@
     },
     "usethis": {
       "Package": "usethis",
-      "Version": "2.1.6",
-      "Source": "Repository",
-      "Repository": "CRAN",
+      "Version": "2.1.6.9000",
+      "Source": "GitHub",
+      "Remotes": "r-lib/testthat",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "usethis",
+      "RemoteUsername": "r-lib",
+      "RemotePkgRef": "r-lib/usethis",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "e05947f0e49244d7dcb13105a48e32718eb59db5",
       "Requirements": [
         "R",
         "cli",
@@ -2427,7 +2612,7 @@
         "withr",
         "yaml"
       ],
-      "Hash": "a67a22c201832b12c036cc059f1d137d"
+      "Hash": "3f2fc491bf18519d508e704fa2f15ce1"
     },
     "utf8": {
       "Package": "utf8",
@@ -2525,7 +2710,7 @@
     },
     "waldo": {
       "Package": "waldo",
-      "Version": "0.5.1",
+      "Version": "0.5.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -2538,7 +2723,24 @@
         "rlang",
         "tibble"
       ],
-      "Hash": "2c993415154cdb94649d99ae138ff5e5"
+      "Hash": "57ddc85f4e22b2d4054f7db2962e3170"
+    },
+    "webutils": {
+      "Package": "webutils",
+      "Version": "1.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "RemoteType": "standard",
+      "RemotePkgRef": "webutils",
+      "RemoteRef": "webutils",
+      "RemoteRepos": "https://cran.rstudio.com",
+      "RemotePkgPlatform": "aarch64-apple-darwin20",
+      "RemoteSha": "1.1",
+      "Requirements": [
+        "curl",
+        "jsonlite"
+      ],
+      "Hash": "75d8b5b05fe22659b54076563f83f26a"
     },
     "whisker": {
       "Package": "whisker",
@@ -2653,6 +2855,19 @@
       "RemotePkgPlatform": "aarch64-apple-darwin20",
       "RemoteSha": "2.3.7",
       "Hash": "0d0056cc5383fbc240ccd0cb584bf436"
+    },
+    "zeallot": {
+      "Package": "zeallot",
+      "Version": "0.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "RemoteType": "standard",
+      "RemotePkgRef": "zeallot",
+      "RemoteRef": "zeallot",
+      "RemoteRepos": "https://cran.rstudio.com",
+      "RemotePkgPlatform": "aarch64-apple-darwin20",
+      "RemoteSha": "0.1.0",
+      "Hash": "ee9b643aa8331c45d8d82eb3a137c9bc"
     },
     "zip": {
       "Package": "zip",
