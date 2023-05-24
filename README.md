@@ -108,3 +108,8 @@ This repo is deployed as a quarto website at https://rstudio.github.io/cheatshee
 It uses [renv](https://rstudio.github.io/renv/) to manage the dependencies to render
 the site (in particular the `html/*.qmd` files that generate the HTML cheatsheets). Packages that are required to render these cheatsheets should be list in `DESCRIPTION`
 so that they are reliably discovered by `renv::snapshot()`.
+
+We prefer the Quarto cheatsheets to set `eval: true` and `output: false` in the
+`execute` options (vs `eval: false`) as this helps to ensure the code in them still works when they are rerun.
+Exceptions can be made on a per-chunk basis, and some (e.g., keras) are not 
+really feasible to run all the time due to complex installation.
