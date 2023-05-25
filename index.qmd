@@ -2,6 +2,7 @@
 title: "Posit Cheatsheets"
 listing:
   contents:
+    - "rstudio-ide.qmd"
     - "data-visualization.qmd"
     - "data-transformation.qmd"
     - "data-import.qmd"
@@ -12,11 +13,10 @@ listing:
     - "strings.qmd"
     - "shiny.qmd"
     - "package-development.qmd"
-    - "rstudio-ide.qmd"
+    - "rmarkdown.qmd"
     - "keras.qmd"
     - "plumber.qmd"
     - "reticulate.qmd"
-    - "rmarkdown.qmd"
   type: grid
   image-height: "200px"
   sort: false
