@@ -2,10 +2,10 @@
 title: "Contributed Cheatsheets"
 ---
 
-Cheatsheets contributed by the community. Several of these cheatsheets
-also have non-English translations, available on the [Translated Cheatsheets](translations.html) page.
+Cheatsheets contributed by the community.
+Several of these cheatsheets also have non-English translations, available on the [Translated Cheatsheets](translations.html) page.
 
-::: {layout-ncol="3"}
+::: {layout-ncol="3" layout-valign="bottom"}
 [![arrow](pngs/arrow.png)](arrow.pdf)
 
 [![Base R](pngs/base-r.png)](base-r.pdf)
