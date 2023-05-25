@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/html/rstudio-ide.html",
       "/html/data-visualization.html",
       "/html/data-transformation.html",
       "/html/data-import.html",
@@ -12,11 +13,10 @@
       "/html/strings.html",
       "/html/shiny.html",
       "/html/package-development.html",
-      "/html/rstudio-ide.html",
+      "/html/rmarkdown.html",
       "/html/keras.html",
       "/html/plumber.html",
-      "/html/reticulate.html",
-      "/html/rmarkdown.html"
+      "/html/reticulate.html"
     ]
   }
 ]
