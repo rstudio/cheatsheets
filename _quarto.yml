@@ -19,6 +19,7 @@ website:
         aria-label: GitHub
   repo-url: https://github.com/rstudio/cheatsheets
   repo-actions: [edit, issue]
+  favicon: html/images/posit-favicon.png
   
 format:
   html:
