@@ -197,12 +197,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<!--
+Keyboard shortcuts can be expressed better with the `kbd` element: eg. 
+ 
+however the accessibility of them is being worked on, so for now better to just
+use text.
+-->
 <div class="no-row-height column-margin column-container"><div class="cell">
-<p><img src="images/logo-devtools.png" height="138" alt=""></p>
-</div><div class="">
-<p><a href="../package-development.pdf"> <i class="bi bi-file-pdf"></i> Download PDF </a></p>
-</div><div class="cell">
-<p>Translations (PDF)</p>
+<img src="images/logo-devtools.png" height="138" alt=""> <br><br><a href="../package-development.pdf">
+<p>
+<i class="bi bi-file-pdf"></i> Download PDF
+</p>
+<img src="../pngs/package-development.png" width="200"> </a> <br><br>
+<p>
+Translations (PDF)
+</p>
 <ul>
 <li><a href="../translations/dutch/package-development_nl.pdf"><i class="bi bi-file-pdf"></i>Dutch</a></li>
 <li><a href="../translations/german/package-development_de.pdf"><i class="bi bi-file-pdf"></i>German</a></li>
@@ -211,15 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="../translations/spanish/package-development_es.pdf"><i class="bi bi-file-pdf"></i>Spanish</a></li>
 <li><a href="../translations/vietnamese/package-development_vi.pdf"><i class="bi bi-file-pdf"></i>Vietnamese</a></li>
 </ul>
-</div></div>
-
-<!--
-Keyboard shortcuts can be expressed better with the `kbd` element: eg. 
- 
-however the accessibility of them is being worked on, so for now better to just
-use text.
--->
-<p>Visit <a href="https://r-pkgs.org">r-pkgs.org</a> to learn more about writing and publishing packages for R.</p>
+</div></div><p>Visit <a href="https://r-pkgs.org">r-pkgs.org</a> to learn more about writing and publishing packages for R.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(testthat)</span>
