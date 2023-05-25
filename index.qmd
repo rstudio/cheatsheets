@@ -12,7 +12,7 @@ listing:
     - "strings.qmd"
     - "shiny.qmd"
     - "package-development.qmd"
-    - "rstudio-ide-eng.qmd"
+    - "rstudio-ide.qmd"
     - "keras.qmd"
     - "plumber.qmd"
     - "reticulate.qmd"

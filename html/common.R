@@ -22,7 +22,22 @@ use_cheatsheet_logo <- function(pkg, geometry = "240x278", retina = TRUE) {
   }
 
   cat(glue::glue(
-    "<img src=\"images/logo-{pkg}.png\" height=\"{height}\" alt=\"\" />"
+    '
+    <img src="images/logo-{pkg}.png" height="{height}" alt="" />
+    <br><br>
+    '
+  ))
+}
+
+pdf_preview_link <- function(sheet_name) {
+  cat(glue::glue(
+    '
+    <a href="../{sheet_name}.pdf">
+    <p><i class="bi bi-file-pdf"></i> Download PDF</p>
+    <img src="../pngs/{sheet_name}.png" width="200" />
+    </a>
+    <br><br>
+    '
   ))
 }
 
@@ -37,7 +52,9 @@ translation_list <- function(sheet_name) {
     return(invisible())
   
   lang <- tools::toTitleCase(vapply(fs::path_split(f), `[[`, 3, FUN.VALUE = character(1)))
-  
-  cat("Translations (PDF)\n\n")
-  cat(glue::glue('* <a href="{f}"><i class="bi bi-file-pdf"></i>{lang}</a>'), sep = "\n")
+  cat(
+    '<p>Translations (PDF)</p>',
+    glue::glue('* <a href="{f}"><i class="bi bi-file-pdf"></i>{lang}</a>'), 
+    sep = "\n")
 }
+
