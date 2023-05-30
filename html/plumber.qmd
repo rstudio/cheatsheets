@@ -37,9 +37,7 @@ Requests and responses are specially formatted text containing details and data 
 
 `Request Body` -\> Message body
 
-```{r}
-#| eval: false
-
+```
 curl -v "http://httpbin.org/get"
 
 #> GET / get HTTP/1.1
@@ -289,10 +287,12 @@ function(msg = "") {
 #* @plumber
 function(pr) {
   pr |>
-    pr_set_api_spec(function(spec)) {
-      spec$paths[["echo"]]$get$summary <- "Echo back the input"
-      spec # Return the updated specification
-    }
+    pr_set_api_spec(
+      function(spec) {
+        spec$paths[["echo"]]$get$summary <- "Echo back the input"
+        spec # Return the updated specification
+      }
+    )
 }
 ```
 
