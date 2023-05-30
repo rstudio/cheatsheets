@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Contribute a Cheat Sheet
+  - name: Contribute a Cheatsheet
     url: https://github.com/rstudio/cheatsheets/blob/main/.github/CONTRIBUTING.md
-    about: Do you have a cheat sheet or translation to contribute? Read the contributing guidelines and open a pull request.
+    about: Do you have a cheatsheet or translation to contribute? Read the contributing guidelines and open a pull request.

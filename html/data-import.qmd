@@ -1,5 +1,5 @@
 ---
-title: "Data import with the tidyverse :: Cheat Sheet"
+title: "Data import with the tidyverse :: Cheatsheet"
 description: " "
 image-alt: ""
 execute:
@@ -14,17 +14,9 @@ execute:
 #| column: margin
 source("common.R")
 use_cheatsheet_logo("readr")
-```
-
-::: column-margin
-<a href="../data-import.pdf"> <i class="bi bi-file-pdf"></i> Download PDF </a>
-:::
-
-```{r}
-#| output: asis
-#| echo: false
-#| column: margin
-translation_list("data-import")
+sheet_name <- tools::file_path_sans_ext(knitr::current_input())
+pdf_preview_link(sheet_name)
+translation_list(sheet_name)
 ```
 
 One of the first steps of a project is to import outside data into R.
@@ -58,9 +50,7 @@ library(readr)
 
 See `?read_delim`.
 
-```{r}
-#| eval: false
-
+```r
 read_*(
   file, 
   col_names = TRUE, col_types = NULL, col_select = NULL, 
@@ -282,9 +272,7 @@ write_file("A,B,C\n7,8,9\nNA,11,12", file = "file3.csv")
 
 ### Save data with readr
 
-```{r}
-#| eval: false
-
+```r
 write_*(
   x, file, 
   na = "NA", 
@@ -335,26 +323,20 @@ Each column type has a function and corresponding string abbreviation.
 
 -   Hide col spec message:
 
-    ```{r}
-    #| eval: false
-
+    ```r
     read_*(file, show_col_types = FALSE)
     ```
 
 -   Select columns to import: Use names, position, or selection helpers.
 
-    ```{r}
-    #| eval: false
-
+    ```r
     read_*(file, col_select = c(age, earn))
     ```
 
 -   Guess column types: To guess a column type, `read_ *()` looks at the first 1000 rows of data.
     Increase with `guess_max`.
 
-    ```{r}
-    #| eval: false
-
+    ```r
     read_*(file, guess_max = Inf)
     ```
 
