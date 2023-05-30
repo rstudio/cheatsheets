@@ -1,4 +1,4 @@
-use_cheatsheet_logo <- function(pkg, geometry = "240x278", alt, retina = TRUE) {
+use_cheatsheet_logo <- function(pkg, geometry = "240x278", alt = "", retina = TRUE) {
   tf <- withr::local_tempfile(fileext = ".png")
 
   gh::gh(
