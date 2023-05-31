@@ -1,8 +1,6 @@
 ---
 title: "Data visualization with ggplot2 :: Cheat Sheet"
 description: " "
-image: "images/logo-ggplot2.png"
-image-alt: "Hex logo for ggplot2 - Six points following an overall increasing trend filled with colors going from light blue to dark blue, connected with a black line, on a light gray background with white grid lines."
 execute:
   eval: true
   output: false
