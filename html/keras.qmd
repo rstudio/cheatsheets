@@ -14,7 +14,9 @@ execute:
 #| echo: false
 #| column: margin
 source("common.R")
-use_cheatsheet_logo("tensorflow")
+use_cheatsheet_logo(
+  "tensorflow", 
+  alt = "Hex logo for tensorflow - A red hexagon with a stylized 'TFR' (denoting TensorFlow for R) in a lighter shade of red, with the 'F' joined to the 'R'.")
 sheet_name <- tools::file_path_sans_ext(knitr::current_input())
 pdf_preview_link(sheet_name)
 translation_list(sheet_name)
