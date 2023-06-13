@@ -17,6 +17,7 @@ listing:
     - "keras.qmd"
     - "plumber.qmd"
     - "reticulate.qmd"
+    - "sparklyr.qmd"
   type: grid
   image-height: "200px"
   sort: false
