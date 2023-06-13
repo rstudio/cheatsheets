@@ -16,7 +16,8 @@
       "/html/rmarkdown.html",
       "/html/keras.html",
       "/html/plumber.html",
-      "/html/reticulate.html"
+      "/html/reticulate.html",
+      "/html/sparklyr.html"
     ]
   }
 ]

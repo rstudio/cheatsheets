@@ -812,6 +812,13 @@
     "text": "Themes\nUse the bslib pacage to add existing themes to your Shiny app ui, or make your own.\n\nlibrary(bslib)\nui &lt;- fluidPage(\n  theme = bs_theme(\n    boothswatch = \"darkly\",\n    ...\n  )\n)\n\n\nbootswatch_themes(): Get a list of themes.\n\nBuild your own theme by customizing individual arguments.\n\nbs_theme(bg = \"#558AC5\",\n         fg = \"#F9B02D\",\n         ...)\n\n\n?bs_theme for a full list of arguments.\nbs_themer(): Place within the server function ot use the interactive theming widget.\n\n\nCC BY SA Posit Software, PBC • info@posit.co • posit.co\nLearn more at shiny.rstudio.com\nUpdated: 2023-06.\n\npackageVersion(\"shiny\")\n\n[1] '1.7.4'"
   },
   {
+    "objectID": "html/sparklyr.html",
+    "href": "html/sparklyr.html",
+    "title": "Data science in Spark with sparklyr :: Cheatsheet",
+    "section": "",
+    "text": "Download PDF\n\n  \n\nTranslations (PDF)\n\n\nChinese\nChinese\nGerman\nJapanese\nSpanish\n\nHTML version coming soon! The PDF is available to download here."
+  },
+  {
     "objectID": "html/strings.html",
     "href": "html/strings.html",
     "title": "String manipulation with stringr :: Cheatsheet",
@@ -928,7 +935,7 @@
     "href": "index.html",
     "title": "Posit Cheatsheets",
     "section": "",
-    "text": "HTML versions of our popular cheatsheets. PDF versions are available to download on each cheatsheet page. There are also non-English translations available for many cheatsheets, contributed by the community.\n\n\n\n\n\n\n\n\n\n\n\n\nRStudio IDE :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData visualization with ggplot2 :: Cheat Sheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData transformation with dplyr :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData import with the tidyverse :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData tidying with tidyr :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nApply functions with purrr :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFactors with forcats :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDates and times with lubridate :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nString manipulation with stringr :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShiny :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPackage Development :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrmarkdown :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeep Learning with Keras :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nREST APIs with plumber :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUse Python with R with reticulate :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "HTML versions of our popular cheatsheets. PDF versions are available to download on each cheatsheet page. There are also non-English translations available for many cheatsheets, contributed by the community.\n\n\n\n\n\n\n\n\n\n\n\n\nRStudio IDE :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData visualization with ggplot2 :: Cheat Sheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData transformation with dplyr :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData import with the tidyverse :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData tidying with tidyr :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nApply functions with purrr :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFactors with forcats :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDates and times with lubridate :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nString manipulation with stringr :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nShiny :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPackage Development :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nrmarkdown :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDeep Learning with Keras :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nREST APIs with plumber :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUse Python with R with reticulate :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData science in Spark with sparklyr :: Cheatsheet\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "translations.html",
