@@ -1,0 +1,579 @@
+---
+title: "quarto :: Cheatsheet"
+description: ".qmd Version "
+image-alt: ""
+execute:
+  eval: true
+  output: false
+  warning: false
+---
+
+::: {.column-margin}
+```{=html}
+<img src="images/logo-quarto.png" height="138" alt="Hex logo for Quarto - a white circle segmented into quarters next to the text Quarto on a blue background." />
+<br><br>
+```
+
+```{=html}
+<p><i class="bi bi-file-pdf"></i>PDF Coming Soon...</p>
+<br><br>
+```
+:::
+
+## What is Quarto?
+
+-   **.qmd files:** Develop your code and ideas side-by-side in a single document. Run code as individual chunks or as an entire document.
+
+-   **Dynamic Documents:** Knit together plots, tables, and results with narrative text. Render to a variety of formats like HTML, PDF, MS Word, or MS PowerPoint.
+
+-   **Reproducible Research:** Upload, link to, or attach your report to share. Anyone can read or run your code to reproduce your work.
+
+## Workflow
+
+1.  Open a **new .qmd file**.
+
+2.  **Embed code** in chunks. Run code by line, by chunk, or all at once.
+
+3.  **Write** text, and add tables, figures, images, and citations. Format with Markdown syntax or use a Visual Editor in RStudio or VS Code.
+
+4.  **Set output format(s) and options** in the YAML header. 
+
+5.  **Save and render** the whole document. Render periodically to preview your work as you write.
+
+6.  **Share your work!**
+
+### Source Editor
+
+Screenshot Here
+
+Expand to read about the features in the Source Editor
+
+#### Features within the Source Editor
+
+1.  New File
+2.  Embed Code
+3.  Write Text
+4.  Set Output Format(s) and Options
+5.  Save and Render
+6.  Share
+
+-   Set preview location
+-   Insert code chunk
+-   Go to code chunk
+-   Run code chunk(s)
+-   Show outline
+-   Modify chunk options
+-   Run all previous chunks
+-   Run current chunk
+-   Switch to visual editor
+
+### Visual Editor
+
+Screenshot Here
+
+Expand to read about the features in the Visual Editor
+
+#### Features within the Visual Editor
+
+-   Insert citations
+-   Style options
+-   Add/edit attributes
+-   Switch to source editor
+-   Insert Anything
+
+### Rendered Output
+
+Screenshot Here
+
+Expand to read about the features in the Rendered Output Window
+
+#### Features within the Rendered Output Window
+
+-   File path to output document
+-   Find in document
+-   Publish to Posit Connect, Posit Cloud, or RPubs.com.
+-   Reload document
+
+## Embed Code With knitr
+
+### Code Chunks
+
+Surround code chunks with ```` ```{r} ```` and ```` ``` ```` or use the Insert Code Chunk button. Add YAML code chunk options using `#|` comments inside the chunk.
+
+```{{{r}}}
+#| label: chunk-label
+#| include: true
+```
+
+### Set Global Options
+
+Set options for the execution of code in the YAML header.
+
+``` yaml
+---
+execute:
+  include: true
+---
+```
+
+Set global knitr options in the YAML header.
+
+``` yaml
+---
+knitr:
+  opts_chunk: 
+    message: false
+---
+```
+
+### Inline Code
+
+Insert `` `r knitr::inline_expr("<code>")` `` into text sections. Code is evaluated at render and results appear as text.
+
+The markdown text
+
+```         
+Built with `r knitr::inline_expr("getRversion()")` 
+```
+
+will render as "Built with `r getRversion()`" in the output file.
+
+### Chunk Options
+
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| Option                 | Default          | Effects                                                                                                         |
++========================+==================+=================================================================================================================+
+| label                  |                  | unique label for code cell                                                                                      |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| echo                   | `true`           | display code in output document                                                                                 |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| eval                   | `true`           | run code in chunk                                                                                               |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| include                | `true`           | include chunk in doc after running                                                                              |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| error                  | `false`          | TRUE (display error messages in doc), FALSE (stop render when error occurs)                                     |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| warning                | `true`           | display code warnings in document                                                                               |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| message                | `true`           | display code messages in document                                                                               |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| results                | `markup`         | `asis` (pass through results), `hide`/`false` ( don't display results), `hold` (put all results below all code) |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| collapse               | `false`          | collapse all sources & output into a single block                                                               |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| fig-align              | `default`        | `left`, `right`, or `center`                                                                                    |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| fig-alt                |                  | alt text for a figure                                                                                           |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| fig-cap                |                  | figure caption as a character string                                                                            |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| fig-width & fig-height | varies by format | plot dimensions in inches                                                                                       |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| out-width              |                  | rescales output width, e.g. `75%`, `300px`                                                                      |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| comment                | `##`             | prefix for each line of results                                                                                 |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| child                  |                  | file(s) to knit and then include                                                                                |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| file                   |                  | file containing code to execute for this chunk                                                                  |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+| purl                   | `true`           | include or exclude a code chunk when extracting source code with knitr::purl()                                  |
++------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
+
+: Table of chunk options. The first column is the option name, the second column is the option's default value, the third column describes what the option does.
+
+See more options and defaults at https://quarto.org/docs/reference/cells/cells-knitr.html
+
+## Insert Citations
+
+Create citations from a bibliography file, a Zotero library, or from DOI references.
+
+### Build Your Bibliography
+
+-   Add BibTex or CSL bibliographies to the YAML header.
+
+    ``` yaml
+    ---
+    title: "My Document"
+    bibliography: references.bib
+    link-citations: true
+    ---
+    ```
+
+-   If Zotero is installed locally, your main library will automatically be available.
+
+-   Add citations by DOI by searching "from DOI" in the **Insert Citation** dialog.
+
+### Insert Citations
+
+-   Access the **Insert Citations** dialog in the Visual Editor by clicking the **\@** symbol in the toolbar or by clicking **Insert \> Citation.**
+-   Add citations with markdown syntax by typing `[@cite]` or `@cite`.
+
+## Insert Tables
+
+Output data frames as tables using `kable(data, caption)`.
+
+````         
+``` {{r}}
+data <- faithful[1:4,]
+knitr::kable(data,
+             caption = "Tables with kable")
+```
+````
+
+Other table packages include **flextable**, **gt**, and **kableExtra**.
+
+## Write With Markdown
+
+The syntax on the left renders as the output on the right.
+
++---------------------------------------------+--------------------------------------------------------------------------+
+| Markdown Syntax                             | Rendered Output                                                          |
++=============================================+==========================================================================+
+| ```                                         | Plain text.                                                              |
+| Plain text.                                 |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | End a line with two spaces to                                            |
+| End a line with two spaces to               |                                                                          |
+| start a new paragraph.                      | start a new paragraph.                                                   |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | Also end a line with a backslash                                         |
+| Also end a line with a backslash\           |                                                                          |
+| to make a new line.                         | to make a new line.                                                      |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | *italics* and **bold**                                                   |
+| *italics* and **bold**                      |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | superscript^2^ /subscript~2~                                             |
+| superscript^2^/subscript~2~                 |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | ~~strike through~~                                                       |
+| ~~strike through~~                          |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | escaped: \* \_ \\                                                        |
+| escaped: \* \_ \\                           |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | en dash: --, em dash: ---                                                |
+| en dash: --, em dash: ---                   |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | # Header 1                                                               |
+| # Header 1                                  |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | ## Header 2                                                              |
+| ## Header 2                                 |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | ...                                                                      |
+| ...                                         |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | ###### Header 6                                                          |
+| ###### Header 6                             |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | -   unordered list                                                       |
+| - unordered list                            |                                                                          |
+| - item 2                                    | -   item 2                                                               |
+|     - item 2a (indent 1 tab)                |                                                                          |
+|     - item 2b                               |     -   item 2a (indent 1 tab)                                           |
+| ```                                         |                                                                          |
+|                                             |     -   item 2b                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | 1.  ordered list                                                         |
+| 1. ordered list                             |                                                                          |
+| 2. item 2                                   | 2.  item 2                                                               |
+|   - item 2a (indent 1 tab)                  |                                                                          |
+|   - item 2b                                 |     -   item 2a                                                          |
+| ```                                         |                                                                          |
+|                                             |     -   item 2b                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | <https://posit.co/>                                                      |
+| <link url>                                  |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | [This is a link.](https://posit.co/)                                     |
+| [This is a link.](link url)                 |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | [This is another link.](https://posit.co/)                               |
+| [This is another link.][id].                |                                                                          |
+|                                             |                                                                          |
+| At the end of the document:                 |                                                                          |
+| [id]: link url                              |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | TODO Image                                                               |
+| ![Caption](image.png)                       |                                                                          |
+|                                             |                                                                          |
+| or                                          |                                                                          |
+|                                             |                                                                          |
+| ![Caption][id2]                             |                                                                          |
+|                                             |                                                                          |
+| At the end of the document include:         |                                                                          |
+| [id2]: image.png                            |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | `verbatim code`                                                          |
+| `verbatim code`                             |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ````                                        | ```                                                                      |
+| ```                                         | multiple lines                                                           |
+| multiple lines                              | of verbatim code                                                         |
+| of verbatim code                            | ```                                                                      |
+| ```                                         |                                                                          |
+| ````                                        |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | > block quotes                                                           |
+| > block quotes                              |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | equation: $e^{i \pi} + 1 = 0$                                            |
+| equation: $e^{i \pi} + 1 = 0$               |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | equation block:                                                          |
+| equation block:                             |                                                                          |
+| $$E = mc^{2}$$                              | $$                                                                       |
+| ```                                         | E = mc^{2}                                                               |
+|                                             | $$                                                                       |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | horizontal rule:                                                         |
+| horizontal rule:                            |                                                                          |
+| ---                                         | ------------------------------------------------------------------------ |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| ```                                         | | Right | Left | Default | Center |                                      |
+| |Right|Left|Default|Center|                 | |------:|:-----|---------|:------:|                                      |
+| |----:|:---|-------|:----:|                 | |    12 | 12   | 12      |   12   |                                      |
+| |12   |12  |12     |12    |                 | |   123 | 123  | 123     |  123   |                                      |
+| |123  |123 |123    |123   |                 | |     1 | 1    | 1       |   1    |                                      |
+| |1    |1   |1      |1     |                 |                                                                          |
+|                                             | : Caption text, example rendered table.                                  |
+| Table: Caption text, example rendered table |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+| HTML Tabsets                                | ::: panel-tabset                                                         |
+|                                             | ## Plots                                                                 |
+| ```                                         |                                                                          |
+| ::: panel-tabset                            | text                                                                     |
+| ## Plots                                    |                                                                          |
+| text                                        | ## Tables                                                                |
+|                                             |                                                                          |
+| ## Tables                                   | more text                                                                |
+| more text                                   | :::                                                                      |
+| :::                                         |                                                                          |
+| ```                                         |                                                                          |
++---------------------------------------------+--------------------------------------------------------------------------+
+
+: Table of markdown syntax and rendered examples. The syntax in the first column renders to the output in the second column.
+
+<!-- Page 2 -->
+
+## Set Output Formats and Their Options in YAML
+
+Use the document's YAML header to set a **format** and customize it with **options**. Indent format 2 characters, indent options 4 characters.
+
+``` yaml
+---
+title: "My Document"
+author: "Author Name"
+format:
+  html: 
+    toc: true
+---
+```
+
+### Output Format Table
+
+| Format   | Creates                             |
+|----------|-------------------------------------|
+| html     | HTML                                |
+| pdf\*    | PDF                                 |
+| docx     | Microsoft Word (.docx)              |
+| odt      | OpenDocument Text                   |
+| rtf      | Rich Text Format                    |
+| md       | Markdown                            |
+| gfm      | Markdown for Github                 |
+| pptx     | Microsoft PowerPoint (.pptx) slides |
+| revealjs | revealjs HTML slides                |
+| beamer\* | Beamer slides                       |
+
+: Table of output formats. The output format in the first column creates the file type in the second column.
+
+\*PDFs and Beamer slides require LaTeX, use `tinytex::install_tinytex()`
+
+### Output Options Table
+
++------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+---------+--------+
+| Important Options                                          | Description                                                                                                                                                 | HTML | PDF  | MS Word | MS PPT |
++============================================================+=============================================================================================================================================================+======+======+=========+========+
+| anchor-sections                                            | Show section anchors on mouse hover (`true` or `false`)                                                                                                     | X    |      |         |        |
++------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+---------+--------+
+| cite-method                                                | Method used to format citations (`citeproc`, `natbib`, `biblatex`)                                                                                          |      | X    |         |        |
++------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+---------+--------+
+| code-tools                                                 | Include a code tools menu for hiding, showing, and downloading code) (`true` or `false`; use sub-properties `source`, `toggle`, and `caption` to customize) | X    |      |         |        |
++------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+---------+--------+
+| code-fold                                                  | Let readers toggle the display of R code (`false`, `true`, or `show`)                                                                                       | X    |      |         |        |
++------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+---------+--------+
+| css                                                        | CSS or SCSS file to use to style the document (e.g. "style.css")                                                                                            | X    |      |         |        |
++------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+---------+--------+
+| fig-format                                                 | Default format for figures generated by Matplotlib or R graphics (`retina`, `png`, `jpeg`, `svg`, or `pdf`)                                                 | X    | X    | X       | X      |
++------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+---------+--------+
+| df-print                                                   | Method for printing data frames (`default`, `kable`, `tibble`, `paged`)                                                                                     | X    | X    | X       | X      |
++------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+---------+--------+
+| highlight-style                                            | Syntax highlighting (e.g. `arrow`, `pygments`, `kate`, `zenburn`)                                                                                           | X    | X    | X       |        |
++------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+---------+--------+
+| include-in-header, include-before-body, include-after-body | Files of content to include in output document                                                                                                              | X    | X    |         |        |
++------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+---------+--------+
+| keep-md                                                    | Keep the Markdown .md file generated by knitting (`true` or `false`)                                                                                        | X    | X    | X       | X      |
++------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+---------+--------+
+| keep-tex                                                   | Keep the intermediate TEX file used to convert to PDF (`true` or `false`)                                                                                   |      | X    |         |        |
++------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+---------+--------+
+| pdf-engine                                                 | LaTeX engine for producing PDF output (`xelatex`, `pdflatex`, `lualatex`)                                                                                   |      | X    |         |        |
++------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+---------+--------+
+| reference-doc                                              | docx/pptx file containing styles to copy in the output (e.g. `file.docx`, `file.pptx`)                                                                      |      |      | X       | X      |
++------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+---------+--------+
+| theme                                                      | Theme options (see Bootswatch and Custom Themes below)                                                                                                      | X    |      |         |        |
++------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+---------+--------+
+| toc                                                        | Add a table of contents at start of document (`true` or `false`)                                                                                            | X    | X    | X       | X      |
++------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+---------+--------+
+| toc-depth                                                  | The lowest level of headings to add to table of contents (e.g. 2, 3)                                                                                        | X    | X    | X       | X      |
++------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------+------+------+---------+--------+
+
+: Table of output options. The first column is the option name, the second column is the description and possible values, and then remaining columns show what file types each option can be applied to.
+
+Visit <https://quarto.org/docs/reference/> to see all of a format's options
+
+## More Header Options
+
+### Parameters
+
+Parameterize your documents to reuse with new inputs (e.g. data, values, etc.).
+
+1.  **Add parameters** in the header as sub-values of `params`.
+
+    ``` yaml
+    ---
+    params:
+      state: "hawaii"
+    ---
+    ```
+
+2.  **Call parameters** in code using `params$name`.
+
+    ````         
+    ``` {{r}}
+    data <- df[,params$state]
+    summary(data)
+    ```
+    ````
+
+3.  **Set parameters** with the `-P` option to `quarto render`
+
+    ``` {.bash filename="Terminal"}
+    quarto render report.qmd -P state:"colorado"
+    ```
+
+### Bootswatch Themes
+
+Customize HTML documents with Bootswatch themes, <https://bootswatch.com/>, using the theme output option.
+
+``` yaml
+---
+title: "My Document"
+author: "Author Name"
+format:
+  html:
+    theme: solar
+---
+```
+
+### Customize Appearance
+
+Customize the theme with options, full list at <https://quarto.org/docs/output-formats/html-themes.html#basic-options>
+
+``` yaml
+---
+format:
+  html:
+    theme: solar
+    backgroundcolor: "#121212"
+    fontcolor: "#E4E4E4"
+---
+```
+
+### Customize with SCSS
+
+For fine grained control, pass an SCSS file to `theme`. Refer to any of the Bootstrap variables.
+
+``` yaml
+---
+title: "My Document"
+author: "Author Name"
+format:
+  html:
+    theme: 
+      - solar
+      - custom.scss"
+---
+```
+
+### Interactivity
+
+Turn your report into an interactive Shiny document in 4 steps:
+
+1.  Add `server: shiny` to the YAML header.
+
+    ``` yaml
+    ---
+    format: html
+    server: shiny
+    ---
+    ```
+
+2.  Define your user interface (e.g. Shiny input and output functions) in regular R chunks.
+
+    ```{{{r}}}
+    numericInput("n", "How many cars?", 5)
+    tableOutput("cars_table")
+    ```
+
+3.  Define your server logic in R chunks with the chunk option `context: server`:
+
+    ```{{{r}}}
+    #| context: server
+    output$cars_table <- renderTable({
+      head(cars, input$n)
+    })
+    ```
+
+4.  Render with `quarto serve` or click **Run Document** in RStudio IDE.
+
+## Render
+
+When you render a document, Quarto:
+
+1.  Runs the code and embeds results and text into an .md file with knitr.
+2.  Converts the .md file into the output format with Pandoc.
+
+**Save,** then **Render** to preview the document output. The resulting HTML/PDF/MS Word/etc. document will be created and saved in the same directory as the .Rmd file.
+
+Use `quarto::quarto_render()` to render/knit in the R console. See `?quarto::quarto_render` for available options.
+
+Use `quarto render` to render in the Terminal. See `quarto render --help`.
+
+## Share
+
+**Publish on Posit Connect** to share Quarto documents securely, schedule automatic updates, and interact with parameters in real time. <https://posit.co/products/enterprise/connect/>.
+
+
