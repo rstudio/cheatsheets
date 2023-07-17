@@ -9,12 +9,11 @@ execute:
   warning: false
 ---
 
-::: {.column-margin}
+::: column-margin
 ```{=html}
 <img src="images/logo-quarto.png" height="138" alt="Hex logo for Quarto - a white circle segmented into quarters next to the text Quarto on a blue background." />
 <br><br>
 ```
-
 ```{=html}
 <p><i class="bi bi-file-pdf"></i>PDF Coming Soon...</p>
 <br><br>
@@ -37,7 +36,7 @@ execute:
 
 3.  **Write** text, and add tables, figures, images, and citations. Format with Markdown syntax or use a Visual Editor in RStudio or VS Code.
 
-4.  **Set output format(s) and options** in the YAML header. 
+4.  **Set output format(s) and options** in the YAML header.
 
 5.  **Save and render** the whole document. Render periodically to preview your work as you write.
 
@@ -95,35 +94,66 @@ Expand to read about the features in the Rendered Output Window
 -   Publish to Posit Connect, Posit Cloud, or RPubs.com.
 -   Reload document
 
-## Embed Code With knitr
+## Embed Code
 
-### Code Chunks
+### Code Cells
 
-Surround code chunks with ```` ```{r} ```` and ```` ``` ```` or use the Insert Code Chunk button. Add YAML code chunk options using `#|` comments inside the chunk.
+Code cells start with ```` ```{r} ````, or ```` ```{python} ````, and end with ```` ``` ````.
 
-```{{{r}}}
+Or use **Insert Code Chunk**.
+
+Add YAML code chunk options using `#|` comments inside the chunk.
+
+::: {layout-ncol="2"}
+```{{r}}
 #| label: chunk-label
-#| include: true
 ```
 
-### Set Global Options
+```{{python}}
+#| label: chunk-label
+```
+:::
 
-Set options for the execution of code in the YAML header.
+Can also use `{ojs}` or `{julia}`.
+
+### Execution Options
+
++-----------+----------+----------------------------------------------------------+
+| Option    | Default  | Effects                                                  |
++===========+==========+==========================================================+
+| `echo`    | `true`   | `false`: hide code in output\                            |
+|           |          | `fenced`: show code cell syntax along with code          |
++-----------+----------+----------------------------------------------------------+
+| `eval`    | `true`   | `false`: don't run code                                  |
++-----------+----------+----------------------------------------------------------+
+| `include` | `true`   | `false`: don't include code or results in output         |
++-----------+----------+----------------------------------------------------------+
+| `output`  | `true`   | `false`: don't include results \                         |
+|           |          | `asis`: treat results as raw markdown                    |
++-----------+----------+----------------------------------------------------------+
+| `warning` | `true`   | `false`: don't include warnings in output                |
++-----------+----------+----------------------------------------------------------+
+| `error`   | `false`  | `true`: include error in output and continue with render |
++-----------+----------+----------------------------------------------------------+
+
+Set at the chunk level:
+
+::: {layout-ncol="2"}
+```{{r}}
+#| echo: false
+```
+
+```{{python}}
+#| echo: false
+```
+:::
+
+Or globally in the YAML header with the `execute` option:
 
 ``` yaml
 ---
 execute:
-  include: true
----
-```
-
-Set global knitr options in the YAML header.
-
-``` yaml
----
-knitr:
-  opts_chunk: 
-    message: false
+  echo: false
 ---
 ```
 
@@ -139,51 +169,13 @@ Built with `r knitr::inline_expr("getRversion()")`
 
 will render as "Built with `r getRversion()`" in the output file.
 
-### Chunk Options
+## Other chunk options
 
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| Option                 | Default          | Effects                                                                                                         |
-+========================+==================+=================================================================================================================+
-| label                  |                  | unique label for code cell                                                                                      |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| echo                   | `true`           | display code in output document                                                                                 |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| eval                   | `true`           | run code in chunk                                                                                               |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| include                | `true`           | include chunk in doc after running                                                                              |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| error                  | `false`          | TRUE (display error messages in doc), FALSE (stop render when error occurs)                                     |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| warning                | `true`           | display code warnings in document                                                                               |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| message                | `true`           | display code messages in document                                                                               |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| results                | `markup`         | `asis` (pass through results), `hide`/`false` ( don't display results), `hold` (put all results below all code) |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| collapse               | `false`          | collapse all sources & output into a single block                                                               |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| fig-align              | `default`        | `left`, `right`, or `center`                                                                                    |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| fig-alt                |                  | alt text for a figure                                                                                           |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| fig-cap                |                  | figure caption as a character string                                                                            |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| fig-width & fig-height | varies by format | plot dimensions in inches                                                                                       |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| out-width              |                  | rescales output width, e.g. `75%`, `300px`                                                                      |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| comment                | `##`             | prefix for each line of results                                                                                 |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| child                  |                  | file(s) to knit and then include                                                                                |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| file                   |                  | file containing code to execute for this chunk                                                                  |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-| purl                   | `true`           | include or exclude a code chunk when extracting source code with knitr::purl()                                  |
-+------------------------+------------------+-----------------------------------------------------------------------------------------------------------------+
-
-: Table of chunk options. The first column is the option name, the second column is the option's default value, the third column describes what the option does.
+Engines?
 
 See more options and defaults at https://quarto.org/docs/reference/cells/cells-knitr.html
+
+See more options and defaults at https://quarto.org/docs/reference/cells/cells-jupyter.html
 
 ## Insert Citations
 
@@ -576,5 +568,3 @@ Use `quarto render` to render in the Terminal. See `quarto render --help`.
 ## Share
 
 **Publish on Posit Connect** to share Quarto documents securely, schedule automatic updates, and interact with parameters in real time. <https://posit.co/products/enterprise/connect/>.
-
-
