@@ -2,6 +2,7 @@
 title: "quarto :: Cheatsheet"
 description: ".qmd Version "
 image-alt: ""
+engine: knitr
 execute:
   eval: true
   output: false
