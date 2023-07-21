@@ -938,6 +938,11 @@
       ],
       "Hash": "fd7b97bd862a14297b0bb7ed28a3dada"
     },
+    "gt": {
+      "Package": "gt",
+      "Version": "0.9.0",
+      "Source": "Repository"
+    },
     "gtable": {
       "Package": "gtable",
       "Version": "0.3.3",
