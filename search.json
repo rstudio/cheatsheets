@@ -263,7 +263,7 @@
     "href": "html/rstudio-ide.html#run-remote-jobs",
     "title": "RStudio IDE :: Cheatsheet",
     "section": "Run Remote Jobs",
-    "text": "Run Remote Jobs\nRun R on remote clusters (Kubernetes/Slurm) via the Job Launcher\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the Job Launcher\n\n\n\n\n\nFeatures within the Job Launcher\n\nLaunch a job\nMonitor launcher jobs\nRun launcher jobs remotely\n\n\n\n\n\nCC BY SA Posit Software, PBC • info@posit.co • posit.co\nLearn more at docs.posit.co/ide/user.\nUpdated: 2023-06.\nRStudio IDE 2023.3.0.386."
+    "text": "Run Remote Jobs\nRun R on remote clusters (Kubernetes/Slurm) via the Job Launcher\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the Job Launcher\n\n\n\n\n\nFeatures within the Job Launcher\n\nLaunch a job\nMonitor launcher jobs\nRun launcher jobs remotely\n\n\n\n\n\nCC BY SA Posit Software, PBC • info@posit.co • posit.co\nLearn more at docs.posit.co/ide/user.\nUpdated: 2023-07.\nRStudio IDE 2023.3.0.386."
   },
   {
     "objectID": "html/reticulate.html",
