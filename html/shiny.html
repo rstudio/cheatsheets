@@ -218,15 +218,18 @@ Translations (PDF)
 </div>
 <p>Users can manipulate the UI, which will cause the server to update the UI’s display (by running R code).</p>
 <p>Save your template as <code>app.R</code>. Keep your app in a directory along with optional extra files.</p>
-<p><strong>app-name:</strong> The directory name is the app name</p>
+<ul>
+<li><strong>app-name:</strong> The directory name is the app name</li>
+</ul>
+<!-- -->
 <ul>
 <li><p><strong>app.R</strong></p></li>
 <li><p>DESCRIPTION and README: (optional) used in showcase mode</p></li>
-<li><p>R/: (optional) directory of supplemental .R files that are sources automatically, must be named <code>R</code></p></li>
-<li><p>www/: (optional) directory of giles to share with web browsers (images, CSS, .js, etc.), must be named <code>www</code></p></li>
+<li><p>R/: (optional) directory of supplemental .R files that are sourced automatically, must be named <code>R</code></p></li>
+<li><p>www/: (optional) directory of files to share with web browsers (images, CSS, .js, etc.), must be named <code>www</code></p></li>
 </ul>
 <p>Launch apps stored in a directory with <code>runApp(&lt;path to directory&gt;)</code>.</p>
-<p>To generate the template, type <code>shinyApp</code> and press <code>Tab</code> in the RStudio IDE or go to <strong>File &gt; New Project &gt; New Directory &gt; Shiny Web Applications</strong>.</p>
+<p>To generate the template, type <code>shinyApp</code> and press <code>Tab</code> in the RStudio IDE or go to <strong>File &gt; New Project &gt; New Directory &gt; Shiny Application</strong>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># app.R </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
@@ -315,7 +318,7 @@ Translations (PDF)
 </tr>
 </tbody>
 </table>
-<p>These are the core output types. See <a href="htmlwidgets.org">htmlwidgets.org</a> for many more options.</p>
+<p>These are the core output types. See <a href="https://www.htmlwidgets.org/">htmlwidgets.org</a> for many more options.</p>
 </section>
 <section id="inputs" class="level2">
 <h2 class="anchored" data-anchor-id="inputs">Inputs</h2>
@@ -334,14 +337,13 @@ Translations (PDF)
 <li><p><code>radioButtons(inputId, label, choices, selected, inline, width, choiceNames, choiceValues)</code></p></li>
 <li><p><code>selectInput(inputId, label, choices, selected, multiple, selectize, width, size)</code>: Also <code>selectizeInput()</code></p></li>
 <li><p><code>sliderInput(inputId, label, min, max, value, step, round, format, locale, ticks, animate, width, sep, pre, post, timeFormat, timezone, dragRange)</code></p></li>
-<li><p><code>submitButton(text, icon, width)</code>: Prevent reactions for entire app</p></li>
 <li><p><code>textInput(inputId, label, value, width, placeholder)</code>: Also <code>textAreaInput()</code></p></li>
 </ul>
 <!-- page 2 -->
 </section>
 <section id="reactivity" class="level2">
 <h2 class="anchored" data-anchor-id="reactivity">Reactivity</h2>
-<p>Reactive values work together with reactive functions. Call a reactive value from within the arguments of one of these functions to avoid the error. <strong>Operation not allowed without an active reactive context.</strong></p>
+<p>Reactive values work together with reactive functions. Call a reactive value from within the arguments of one of these functions to avoid the error <code>Operation not allowed without an active reactive context</code><strong>.</strong></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/reactivity-diagram.png" class="img-fluid figure-img"></p>
@@ -370,8 +372,8 @@ Expand to read about the reactivity diagram
 </ul></li>
 <li>Perform side effects
 <ul>
-<li><p><code>observeEvent()</code></p></li>
-<li><p><code>observe()</code></p></li>
+<li><code>observeEvent()</code></li>
+<li><code>observe()</code></li>
 </ul></li>
 <li>Schedule updates
 <ul>
@@ -400,16 +402,17 @@ Expand to read about the reactivity diagram
 <section id="create-your-own-reactive-values" class="level3">
 <h3 class="anchored" data-anchor-id="create-your-own-reactive-values">Create Your own Reactive Values</h3>
 <ul>
-<li><p><code>*Input()</code> functions: (see front page) Each input function creates a reactive value stored as input$<inputid>.</inputid></p>
+<li><p><code>*Input()</code> functions: Each input function creates a reactive value stored as <code>input$&lt;inputId&gt;</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># *Input() example</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">"a"</span>,<span class="st">""</span>,<span class="st">"A"</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
-<li><p><code>reactiveValues(...)</code>: Creates a list of reactive values whose values you can set.</p>
+<li><p><code>reactiveVal():</code> Creates a single reactive values object.</p>
+<p><code>reactiveValues(...)</code>: Creates a list of reactive values whose values you can set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#reactiveValues example</span></span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reactiveVal example</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input,output){</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  rv <span class="ot">&lt;-</span> <span class="fu">reactiveValues</span>() </span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  rv<span class="sc">$</span>number <span class="ot">&lt;-</span> <span class="dv">5</span></span>
@@ -429,7 +432,7 @@ Expand to read about the reactivity diagram
 <li><p>notify dependencies when invalidated</p></li>
 </ul></li>
 </ul>
-<p>Call the expression with function sytrax, e.g.&nbsp;<code>re()</code>.</p>
+<p>Call the expression with function syntax, e.g.&nbsp;<code>re()</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -440,13 +443,14 @@ Expand to read about the reactivity diagram
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input,output){</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  re <span class="ot">&lt;-</span> <span class="fu">reactive</span>({ </span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(input<span class="sc">$</span>a,input<span class="sc">$</span>z)})</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>b <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">re</span>()</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  }) </span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(input<span class="sc">$</span>a,input<span class="sc">$</span>z)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>b <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">re</span>()</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  }) </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ul>
 </section>
@@ -465,11 +469,12 @@ Expand to read about the reactivity diagram
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input,output){</span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  re <span class="ot">&lt;-</span> <span class="fu">eventReactive</span>(</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    input<span class="sc">$</span>go,{input<span class="sc">$</span>a})</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>b <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">re</span>()</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  }) </span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    input<span class="sc">$</span>go,{input<span class="sc">$</span>a}</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>b <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">re</span>()</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  }) </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ul>
 </section>
@@ -499,7 +504,8 @@ Expand to read about the reactivity diagram
 <section id="perform-side-effects" class="level3">
 <h3 class="anchored" data-anchor-id="perform-side-effects">Perform Side Effects</h3>
 <ul>
-<li><p><code>observeEvent(eventExpr, handlerExpr, event.env, event.quoted, handler.env, handler.quoted, ..., label, suspended, priority, domain, autoDestroy, ignoreNULL, ignoreInit, once)</code>: Runs code in 2nd argument when reactive values in 1st argument change. See <code>observe()</code> for alternative.</p>
+<li><p><code>observe(x, env)</code>: Creates an observer from the given expression.</p></li>
+<li><p><code>observeEvent(eventExpr, handlerExpr, event.env, event.quoted, handler.env, handler.quoted, ..., label, suspended, priority, domain, autoDestroy, ignoreNULL, ignoreInit, once)</code>: Runs code in 2nd argument when reactive values in 1st argument change. Alternative to <code>observe``()</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -621,7 +627,7 @@ Expand to read about the reactivity diagram
 <li><code>titlePanel()</code></li>
 <li><code>wellPanel()</code></li>
 </ul>
-<p>Organize panels and elements into a layout with a layour function. Add elements as arguments of the layout functions.</p>
+<p>Organize panels and elements into a layout with a layout function. Add elements as arguments of the layout functions.</p>
 <ul>
 <li><p><code>sidebarLayout()</code></p>
 <div class="cell">
@@ -672,7 +678,7 @@ Expand to read about the reactivity diagram
 </section>
 <section id="themes" class="level2">
 <h2 class="anchored" data-anchor-id="themes">Themes</h2>
-<p>Use the <strong>bslib</strong> pacage to add existing themes to your Shiny app ui, or make your own.</p>
+<p>Use the <strong>bslib</strong> package to add existing themes to your Shiny app ui, or make your own.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bslib)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
@@ -698,11 +704,11 @@ Expand to read about the reactivity diagram
 <hr>
 <p>CC BY SA Posit Software, PBC • <a href="mailto:info@posit.co">info@posit.co</a> • <a href="https://posit.co">posit.co</a></p>
 <p>Learn more at <a href="https://shiny.rstudio.com/">shiny.rstudio.com</a></p>
-<p>Updated: 2023-06.</p>
+<p>Updated: 2023-07.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"shiny"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] '1.7.4'</code></pre>
+<pre><code>[1] '1.7.4.1'</code></pre>
 </div>
 </div>
 <hr>
