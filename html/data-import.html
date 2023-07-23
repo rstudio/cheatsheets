@@ -508,12 +508,14 @@ NA,11,12</code></pre>
 <ol type="1">
 <li><p>Get a vector of sheet names from the file path.</p></li>
 <li><p>Set the vector names to be the sheet names.</p></li>
-<li><p>Use <code>purrr::map_dfr()</code> to read multiple files into one data frame.</p>
+<li><p>Use <code>purrr::map()</code> and <code>purrr::list_rbind()</code> to read multiple files into one data frame.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>path <span class="ot">&lt;-</span> <span class="st">"your_file_path.xlsx"</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>path <span class="sc">|&gt;</span> <span class="fu">excel_sheets</span>() <span class="sc">|&gt;</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">set_names</span>() <span class="sc">|&gt;</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">map_dfr</span>(read_excel, <span class="at">path =</span> path)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>path <span class="sc">|&gt;</span> </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">excel_sheets</span>() <span class="sc">|&gt;</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_names</span>() <span class="sc">|&gt;</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(read_excel, <span class="at">path =</span> path) <span class="sc">|&gt;</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list_rbind</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ol></li>
 </ul>
@@ -713,7 +715,7 @@ NA,11,12</code></pre>
 <li>readxl: <a href="https://readxl.tidyverse.org/">readxl.tidyverse.org</a></li>
 <li>googlesheets4: <a href="https://googlesheets4.tidyverse.org/">googlesheets4.tidyverse.org</a></li>
 </ul>
-<p>Updated: 2023-06.</p>
+<p>Updated: 2023-07.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"readr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
