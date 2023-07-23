@@ -78,7 +78,9 @@ Common aesthetic values.
 
 -   `linejoin`: String (`"round"`, `"mitre"`, or `"bevel"`).
 
--   `size`: Integer (line width in mm).
+-   `size`: Integer (line width in mm for outlines).
+
+-   `linewidth`: Integer (line width in mm for lines).
 
 -   `shape`: Integer/shape name or a single character (`"a"`).
 
@@ -116,7 +118,7 @@ b <- ggplot(seals, aes(x = long, y = lat))
 
 #### Line Segments
 
-Common aesthetics: `x`, `y`, `alpha`, `color`, `linetype`, `size`.
+Common aesthetics: `x`, `y`, `alpha`, `color`, `linetype`, `size`, `linewidth`.
 
 -   `b + geom_abline(aes(intercept = 0, slope = 1))`: Draw a diagonal reference line with a given `slope` and `intercept`.
 
@@ -136,19 +138,19 @@ c2 <- ggplot(mpg)
 ```
 
 -   `c + geom_area(stat = "bin")`: Draw an area plot.
-    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `linetype`, `size`.
+    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `linetype`, `linewidth`.
 
 -   `c + geom_density(kernel = "gaussian")`: Compute and draw kernel density estimates.
-    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `group`, `linetype`, `size`, `weight`.
+    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `group`, `linetype`, `linewidth`, `weight`.
 
 -   `c + geom_dotplot()`: Draw a dot plot.
     `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`.
 
 -   `c + geom_freqpoly()`: Draw a frequency polygon.
-    `aes()` arguments: `x`, `y`, `alpha`, `color`, `group`, `linetype`, `size`.
+    `aes()` arguments: `x`, `y`, `alpha`, `color`, `group`, `linetype`, `linewidth`.
 
 -   `c + geom_histogram(binwidth = 5)`: Draw a histogram.
-    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `linetype`, `size`, `weight`.
+    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `linetype`, `linewidth`, `weight`.
 
 -   `c2 + geom_qq(aes(sample = hwy))`: Draw a quantile-quantile plot.
     `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `linetype`, `size`, `weight`.
@@ -159,7 +161,7 @@ c2 <- ggplot(mpg)
 d <- ggplot(mpg, aes(fl))
 ```
 
--   `d + geom_bar()`: Draw a bar chart. `aes()` arguments: `x`, `alpha`, `color`, `fill`, `linetype`, `size`, `weight`.
+-   `d + geom_bar()`: Draw a bar chart. `aes()` arguments: `x`, `alpha`, `color`, `fill`, `linetype`, `linewidth`, `weight`.
 
 ### Two Variables - Both Continuous
 
@@ -170,17 +172,17 @@ e <- ggplot(mpg, aes(cty, hwy))
 -   `e + geom_label(aes(label = cty), nudge_x = 1, nudge_y = 1)`: Add text with a rectangle background.
     `aes()` arguments: - `x`, `y`, `label`, `alpha`, `angle`, `color`, `family`, `fontface`, `hjust`, `lineheight`, `size`, `vjust`.
 
--   `e + geom_point()`: Draw a scatter plot.
+-   `e +``geom_point``()`: Draw a scatter plot.
     `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `shape`, `size`, `stroke`.
 
 -   `e + geom_quantile()`: Fit and draw quantile regression for the plot data.
-    `aes()` arguments: `x`, `y`, `alpha`, `color`, `group`, `linetype`, `size`, `weight`.
+    `aes()` arguments: `x`, `y`, `alpha`, `color`, `group`, `linetype`, `linewidth`, `weight`.
 
 -   `e + geom_rug(sides = "bl")`: Draw a rug plot.
-    `aes()` arguments: `x`, `y`, `alpha`, `color`, `linetype`, `size`.
+    `aes()` arguments: `x`, `y`, `alpha`, `color`, `linetype`, `linewidth`.
 
 -   `e + geom_smooth(method = lm)`: Plot smoothed conditional means.
-    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `group`, `linetype`, `size`, `weight`.
+    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `group`, `linetype`, `linewidth`, `weight`.
 
 -   `e + geom_text(aes(label = cty), nudge_x = 1, nudge_y = 1)`: Add text to a plot.
     `aes()` arguments: `x`, `y`, `label`, `alpha`, `angle`, `color`, `family`, `fontface`, `hjust`, `lineheight`, `size`, `vjust`.
@@ -192,16 +194,16 @@ f <- ggplot(mpg, aes(class, hwy))
 ```
 
 -   `f + geom_col()`: Draw a bar plot.
-    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `group`, `linetype`, `size`.
+    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `group`, `linetype`, `linewidth`.
 
 -   `f + geom_boxplot()`: Draw a box plot.
-    `aes()` arguments: `x`, `y`, `lower`, `middle`, `upper`, `ymax`, `ymin`, `alpha`, `color`, `fill`, `group`, `linetype`, `shape`, `size`, `weight`.
+    `aes()` arguments: `x`, `y`, `lower`, `middle`, `upper`, `ymax`, `ymin`, `alpha`, `color`, `fill`, `group`, `linetype`, `shape`, `linewidth`, `weight`.
 
 -   `f + geom_dotplot(binaxis ="y", stackdir = "center")`: Draw a dot plot.
     `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `group`.
 
 -   `f + geom_violin(scale = "area")`: Draw a violin plot.
-    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `group`, `linetype`, `size`, `weight`.
+    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `group`, `linetype`, `linewidth`, `weight`.
 
 ### Two Variables - Both Discrete
 
@@ -225,10 +227,10 @@ h <- ggplot(diamonds, aes(carat, price))
     `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `linetype`, `size`, `weight`.
 
 -   `h + geom_density_2d()`: Plot contours from 2D kernel density estimation.
-    `aes()` arguments: `x`, `y`, `alpha`, `color`, `group`, `linetype`, `size`.
+    `aes()` arguments: `x`, `y`, `alpha`, `color`, `group`, `linetype`, `linewidth`.
 
 -   `h + geom_hex()`: Draw a heatmap of 2D hexagonal bin counts.
-    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `size`.
+    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `linewidth`.
 
 ### Two Variables - Continuous Function
 
@@ -237,12 +239,12 @@ i <- ggplot(economics, aes(date, unemploy))
 ```
 
 -   `i + geom_area()`: Draw an area plot.
-    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `linetype`, `size`.
+    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `linetype`, `linewidth`.
 
 -   `i + geom_line()`: Connect data points, ordered by the x axis variable.
-    `aes()` arguments: `x`, `y`, `alpha`, `color`, `group`, `linetype`, `size`.
+    `aes()` arguments: `x`, `y`, `alpha`, `color`, `group`, `linetype`, `linewidth`.
 
--   `i + geom_step(direction = "hv"`: Draw a stairstep plot. `aes()` arguments: `x`, `y`, `alpha`, `color`, `group`, `linetype`, `size`.
+-   `i + geom_step(direction = "hv"`: Draw a stairstep plot. `aes()` arguments: `x`, `y`, `alpha`, `color`, `group`, `linetype`, `linewidth`.
 
 ### Two Variables - Visualizing Error
 
@@ -252,17 +254,17 @@ j <- ggplot(df, aes(grp, fit, ymin = fit - se, ymax = fit + se))
 ```
 
 -   `j + geom_crossbar(fatten = 2)`: Draw a crossbar.
-    `aes()` arguments: `x`, `y`, `ymax`, `ymin`, `alpha`, `color`, `fill`, `group`, `linetype`, `size`.
+    `aes()` arguments: `x`, `y`, `ymax`, `ymin`, `alpha`, `color`, `fill`, `group`, `linetype`, `linewidth`.
 
 -   `j + geom_errorbar()`: Draw an errorbar.
     Also `geom_errorbarh()`.
-    `aes()` arguments: `x`, `ymax`, `ymin`, `alpha`, `color`, `group`, `linetype`, `size`, `width`.
+    `aes()` arguments: `x`, `ymax`, `ymin`, `alpha`, `color`, `group`, `linetype`, `linewidth`, `width`.
 
 -   `j + geom_linerange()`: Draw a line range.
-    `aes()` arguments: `x`, `ymin`, `ymax`, `alpha`, `color`, `group`, `linetype`, `size`.
+    `aes()` arguments: `x`, `ymin`, `ymax`, `alpha`, `color`, `group`, `linetype`, `linewidth`.
 
 -   `j + geom_pointrange()`: Draw a point range.
-    `aes()` arguments: `x`, `y`, `ymin`, `ymax`, `alpha`, `color`, `fill`, `group`, `linetype`, `shape`, `size`.
+    `aes()` arguments: `x`, `y`, `ymin`, `ymax`, `alpha`, `color`, `fill`, `group`, `linetype`, `shape`, `linewidth`.
 
 ### Two Variables - Maps
 
@@ -275,7 +277,7 @@ map <- map_data("state")
 k <- ggplot(murder_data, aes(fill = murder))
 ```
 
--   `k + geom_map(aes(map_id = state), map = map) + expand_limits(x = map$long, y = map$lat)`: Draw polygons as a map. `aes()` arguments: `map_id`, `alpha`, `color`, `fill`, `linetype`, `size`.
+-   `k + geom_map(aes(map_id = state), map = map) + expand_limits(x = map$long, y = map$lat)`: Draw polygons as a map. `aes()` arguments: `map_id`, `alpha`, `color`, `fill`, `linetype`, `linewidth`.
 
 ### Three Variables
 
@@ -285,16 +287,16 @@ l <- ggplot(seals, aes(long, lat))
 ```
 
 -   `l + geom_contour(aes(z = z))`: Draw 2D contour plot.
-    `aes()` arguments: `x`, `y`, `z`, `alpha`, `color`, `group`, `linetype`, `size`, `weight`.
+    `aes()` arguments: `x`, `y`, `z`, `alpha`, `color`, `group`, `linetype`, `linewidth`, `weight`.
 
 -   `l + geom_contour_filled(aes(fill = z))`: Draw 2D contour plot with the space between lines filled.
-    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `group`, `linetype`, `size`, `subgroup`.
+    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `group`, `linetype`, `linewidth`, `subgroup`.
 
 -   `l + geom_raster(aes(fill = z), hjust = 0.5, vjust = 0.5, interpolate = FALSE)`: Draw a raster plot.
     `aes()` arguments: `x`, `y`, `alpha`, `fill`.
 
 -   `l + geom_tile(aes(fill = z))`: Draw a tile plot.
-    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `linetype`, `size`, `width`.
+    `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `linetype`, `linewidth`, `width`.
 
 <!-- Page 2 -->
 
@@ -324,7 +326,7 @@ In this example, `"polygon"` is the geom to use, `stat_density_2d()` is the stat
 
 -   `e + stat_bin_hex(bins =30)`: `x`, `y`, `fill` \| `..count..`, `..density..`
 
--   `e + stat_density_2d(contour = TRUE, n = 100)`: `x`, `y`, `color`, `size` \| `..level..`
+-   `e + stat_density_2d(contour = TRUE, n = 100)`: `x`, `y`, `color`, `linewidth` \| `..level..`
 
 -   `e + stat_ellipse(level = 0.95, segments = 51, type = "t")`
 
