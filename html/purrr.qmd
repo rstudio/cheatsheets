@@ -5,7 +5,9 @@ image-alt: ""
 execute:
   eval: true
   output: false
-  message: true
+  warning: false
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r}
@@ -23,7 +25,7 @@ translation_list(sheet_name)
 
 purrr enhances R's functional programming (FP) toolkit by providing a complete and consistent set of tools for working with functions and vectors.
 If you've never heard of FP before, the best place to start is the family of [`map()`](https://purrr.tidyverse.org/reference/map.html) functions which allow you to replace many for loops with code that is both more succinct and easier to read.
-The best place to learn about the [`map()`](https://purrr.tidyverse.org/reference/map.html) functions is the [iteration chapter](https://r4ds.had.co.nz/iteration.html) in R for Data Science.
+The best place to learn about the [`map()`](https://purrr.tidyverse.org/reference/map.html) functions is the [iteration](https://r4ds.hadley.nz/iteration.html)[chapter](https://r4ds.had.co.nz/iteration.html) in R for Data Science.
 
 ```{r}
 library(purrr)
