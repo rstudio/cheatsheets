@@ -6,6 +6,8 @@ execute:
   eval: true
   output: false
   warning: false
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r}
@@ -57,7 +59,7 @@ Summary functions take vectors as input and return one value back (see Summary F
     Also `tally()`, `add_count()`, and `add_tally()`.
 
     ```{r}
-    mtcars |> summarize(cyl)
+    mtcars |> count(cyl)
     ```
 
 ## Group Cases
@@ -420,22 +422,26 @@ Use a **"Nest Join"** to inner join one table to another into a nested data fram
 
 ### Column Matching for Joins
 
--   Use `by = c("col1", "col2", ...)` to specify one or more common columns to match on.
+-   Use `by = join_by(col1, col2, …)` to specify one or more common columns to match on.
 
     ```{r}
-    left_join(x, y, by = "A")
+    left_join(x, y, by = join_by(A))
+    left_join(x, y, by = join_by(A, B))
     ```
 
--   Use a named vector, `by = c("col1" = "col2")`, to match on columns that have different names in each table.
+```{=html}
+<!-- -->
+```
+-   Use a logical statement, `by = join_by(col1 == col2)`, to match on columns that have different names in each table.
 
     ```{r}
-    left_join(x, y, by = c("C" = "D"))
+    left_join(x, y, by = join_by(C == D))
     ```
 
 -   Use `suffix` to specify the suffix to give to unmatched columns that have the same name in both tables.
 
     ```{r}
-    left_join(x, y, by = c("C" = "D"), suffix = c("1", "2"))
+    left_join(x, y, by = join_by(C == D), suffix = c("1", "2"))
     ```
 
 ### Set Operations
