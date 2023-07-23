@@ -57,7 +57,7 @@ Load and install `devtools` which wraps together several of these packages to ac
 
 Once per machine:
 
--   Get set up with `use_r_profile()` so devtools is always loaded in interactive R sessions.
+-   Get set up with `use_devtools()` so devtools is always loaded in interactive R sessions.
 
     ```{r}
     if (interactive()) {
