@@ -364,9 +364,9 @@ Translations (PDF)
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_conv</span>(fruit, <span class="st">"ISO-8859-1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
-<li><p><code>str_view_all(string, pattern, match = NA)</code>: View HTML rendering of all regex matches. Also <code>str_view()</code> to see only the first match.</p>
+<li><p><code>str_view(string, pattern, match = NA)</code>: View HTML rendering of all regex matches. Also <code>str_view()</code> to see only the first match.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view_all</span>(sentences, <span class="st">"[aeiou]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str_view</span>(sentences, <span class="st">"[aeiou]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><code>str_equal(x, y, locale = "en", ignore_case = FALSE, ...)</code><sup>1</sup>: Determine if two strings are equivalent.</p>
 <div class="cell">
@@ -418,7 +418,7 @@ Translations (PDF)
 <section id="match-characters" class="level3">
 <h3 class="anchored" data-anchor-id="match-characters">Match Characters</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>see <span class="ot">&lt;-</span> <span class="cf">function</span>(rx) <span class="fu">str_view_all</span>(<span class="st">"abc ABC 123</span><span class="sc">\t</span><span class="st">.!?</span><span class="sc">\\</span><span class="st">(){}</span><span class="sc">\n</span><span class="st">"</span>, rx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>see <span class="ot">&lt;-</span> <span class="cf">function</span>(rx) <span class="fu">str_view</span>(<span class="st">"abc ABC 123</span><span class="sc">\t</span><span class="st">.!?</span><span class="sc">\\</span><span class="st">(){}</span><span class="sc">\n</span><span class="st">"</span>, rx)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <table class="table">
 <caption>1Many base R functions require classes to be wrapped in a second set of [ ], e.g.&nbsp;<strong>[[:digit:]]</strong></caption>
@@ -648,11 +648,11 @@ Translations (PDF)
 </section>
 <section id="alternates" class="level3">
 <h3 class="anchored" data-anchor-id="alternates">Alternates</h3>
-<p><code>alt &lt;- function(rx) str_view_all("abcde", rx)</code></p>
+<p><code>alt &lt;- function(rx) str_view("abcde", rx)</code></p>
 <table class="table">
 <caption>Alternates</caption>
 <colgroup>
-<col style="width: 14%">
+<col style="width: 15%">
 <col style="width: 17%">
 <col style="width: 20%">
 <col style="width: 44%">
@@ -696,11 +696,11 @@ Translations (PDF)
 </section>
 <section id="anchors" class="level3">
 <h3 class="anchored" data-anchor-id="anchors">Anchors</h3>
-<p><code>anchor &lt;- function(rx) str_view_all("aaa", rx)</code></p>
+<p><code>anchor &lt;- function(rx) str_view("aaa", rx)</code></p>
 <table class="table">
 <caption>Anchors</caption>
 <colgroup>
-<col style="width: 101%">
+<col style="width: 100%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -720,7 +720,7 @@ Translations (PDF)
 </section>
 <section id="look-arounds" class="level3">
 <h3 class="anchored" data-anchor-id="look-arounds">Look Arounds</h3>
-<p><code>look &lt;- function(rx) str_view_all("bacad", rx)</code></p>
+<p><code>look &lt;- function(rx) str_view("bacad", rx)</code></p>
 <table class="table">
 <caption>Look arounds</caption>
 <colgroup>
@@ -768,7 +768,7 @@ Translations (PDF)
 </section>
 <section id="quantifiers" class="level3">
 <h3 class="anchored" data-anchor-id="quantifiers">Quantifiers</h3>
-<p><code>quant &lt;- function(rx) str_view_all(".a.aa.aaa", rx)</code></p>
+<p><code>quant &lt;- function(rx) str_view(".a.aa.aaa", rx)</code></p>
 <table class="table">
 <caption>Quantifiers</caption>
 <colgroup>
@@ -828,7 +828,7 @@ Translations (PDF)
 </section>
 <section id="groups" class="level3">
 <h3 class="anchored" data-anchor-id="groups">Groups</h3>
-<p><code>ref &lt;- function(rx) str_view_all("abbaab", rx)</code></p>
+<p><code>ref &lt;- function(rx) str_view("abbaab", rx)</code></p>
 <p>Use parentheses to set precedent (order of evaluation) and create groups</p>
 <table class="table">
 <caption>Groups</caption>
@@ -893,7 +893,7 @@ Translations (PDF)
 <hr>
 <p>CC BY SA Posit Software, PBC • <a href="mailto:info@posit.co">info@posit.co</a> • <a href="https://posit.co">posit.co</a></p>
 <p>Learn more at <a href="https://stringr.tidyverse.org">stringr.tidyverse.org</a>.</p>
-<p>Updated: 2023-06.</p>
+<p>Updated: 2023-07.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"stringr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
