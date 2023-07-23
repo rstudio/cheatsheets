@@ -246,7 +246,7 @@ Translations (PDF)
 <h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
 <p>Once per machine:</p>
 <ul>
-<li><p>Get set up with <code>use_r_profile()</code> so devtools is always loaded in interactive R sessions.</p>
+<li><p>Get set up with <code>use_devtools()</code> so devtools is always loaded in interactive R sessions.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">interactive</span>()) {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">require</span>(<span class="st">"devtools"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>)</span>
@@ -489,7 +489,7 @@ writing documentation, and checking your package." width="1059">
 <p>From those states, a package can be installed into an R <strong>library</strong> and then loaded into <strong>memory</strong> for use during an R session.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="images/install-load.png" class="img-fluid" alt="A diagram describing the functions that move a package between different states. The description below describes this in detail. " width="1013"></p>
+<p><img src="images/install-load.png" class="img-fluid" alt="A diagram describing the functions that move a package between different states. The description below describes this in detail. "></p>
 </div>
 </div>
 <!-- this description does the job of the diagram for screen readers -->
@@ -507,7 +507,7 @@ writing documentation, and checking your package." width="1059">
 <hr>
 <p>CC BY SA Posit Software, PBC • <a href="mailto:info@posit.co">info@posit.co</a> • <a href="https://posit.co">posit.co</a></p>
 <p>Learn more at <a href="https://r-pkgs.org">r-pkgs.org</a>.</p>
-<p>Updated: 2023-06.</p>
+<p>Updated: 2023-07.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"devtools"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -515,11 +515,11 @@ writing documentation, and checking your package." width="1059">
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"usethis"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] '2.1.6.9000'</code></pre>
+<pre><code>[1] '2.2.2'</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"testthat"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] '3.1.8'</code></pre>
+<pre><code>[1] '3.1.10'</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"roxygen2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
