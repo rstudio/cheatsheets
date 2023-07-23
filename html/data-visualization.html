@@ -261,7 +261,8 @@ Translations (PDF)
 <li><p><code>linetype</code>: Integer or string (0 = <code>"blank"</code>, 1 = <code>"solid"</code>, 2 = <code>"dashed"</code>, 3 = <code>"dotted"</code>, 4 = <code>"dotdash"</code>, 5 = <code>"longdash"</code>, 6 = <code>"twodash"</code>).</p></li>
 <li><p><code>lineend</code>: String (<code>"round"</code>, <code>"butt"</code>, or <code>"square"</code>).</p></li>
 <li><p><code>linejoin</code>: String (<code>"round"</code>, <code>"mitre"</code>, or <code>"bevel"</code>).</p></li>
-<li><p><code>size</code>: Integer (line width in mm).</p></li>
+<li><p><code>size</code>: Integer (line width in mm for outlines).</p></li>
+<li><p><code>linewidth</code>: Integer (line width in mm for lines).</p></li>
 <li><p><code>shape</code>: Integer/shape name or a single character (<code>"a"</code>).</p>
 <ul>
 <li><code>shape</code> integer/name pairs: 0 = <code>"square open"</code>, 1 = <code>"circle open"</code>, 2 = <code>"triangle open"</code>, 3 = <code>"plus"</code>, 4 = <code>"cross"</code>, 5 = <code>"diamond open"</code>, 6 = <code>"triangle down open"</code>, 7 = <code>"square cross"</code>, 8 = <code>"asterisk"</code>, 9 = <code>"diamond plus"</code>, 10 = <code>"circle plus"</code>, 11 = <code>"star"</code>, 12 = <code>"square plus"</code>, 13 = <code>"circle cross"</code>, 14 = <code>"square triangle"</code>, 15 = <code>"square"</code>, 16 = <code>"circle"</code>, 17 = <code>"triangle"</code>, 18 = <code>"diamond"</code>, 19 = <code>"circle small"</code>, 20 = <code>"bullet"</code>, 21 = <code>"circle filled"</code>, 22 = <code>"square filled"</code>, 23 = <code>"diamond filled"</code>, 24 = <code>"triangle filled"</code>, 25 = <code>"triangle down filled"</code></li>
@@ -288,7 +289,7 @@ Translations (PDF)
 </ul>
 <section id="line-segments" class="level4">
 <h4 class="anchored" data-anchor-id="line-segments">Line Segments</h4>
-<p>Common aesthetics: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>linetype</code>, <code>size</code>.</p>
+<p>Common aesthetics: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>linetype</code>, <code>size</code>, <code>linewidth</code>.</p>
 <ul>
 <li><p><code>b + geom_abline(aes(intercept = 0, slope = 1))</code>: Draw a diagonal reference line with a given <code>slope</code> and <code>intercept</code>.</p></li>
 <li><p><code>b + geom_hline(aes(yintercept = lat))</code>: Draw a horizontal reference line with a given <code>yintercept</code>.</p></li>
@@ -305,11 +306,11 @@ Translations (PDF)
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><p><code>c + geom_area(stat = "bin")</code>: Draw an area plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>size</code>.</p></li>
-<li><p><code>c + geom_density(kernel = "gaussian")</code>: Compute and draw kernel density estimates. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</p></li>
+<li><p><code>c + geom_area(stat = "bin")</code>: Draw an area plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>linewidth</code>.</p></li>
+<li><p><code>c + geom_density(kernel = "gaussian")</code>: Compute and draw kernel density estimates. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>, <code>weight</code>.</p></li>
 <li><p><code>c + geom_dotplot()</code>: Draw a dot plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>.</p></li>
-<li><p><code>c + geom_freqpoly()</code>: Draw a frequency polygon. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>size</code>.</p></li>
-<li><p><code>c + geom_histogram(binwidth = 5)</code>: Draw a histogram. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</p></li>
+<li><p><code>c + geom_freqpoly()</code>: Draw a frequency polygon. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>.</p></li>
+<li><p><code>c + geom_histogram(binwidth = 5)</code>: Draw a histogram. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>linewidth</code>, <code>weight</code>.</p></li>
 <li><p><code>c2 + geom_qq(aes(sample = hwy))</code>: Draw a quantile-quantile plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</p></li>
 </ul>
 </section>
@@ -319,7 +320,7 @@ Translations (PDF)
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(fl))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><code>d + geom_bar()</code>: Draw a bar chart. <code>aes()</code> arguments: <code>x</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</li>
+<li><code>d + geom_bar()</code>: Draw a bar chart. <code>aes()</code> arguments: <code>x</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>linewidth</code>, <code>weight</code>.</li>
 </ul>
 </section>
 <section id="two-variables---both-continuous" class="level3">
@@ -329,10 +330,10 @@ Translations (PDF)
 </div>
 <ul>
 <li><p><code>e + geom_label(aes(label = cty), nudge_x = 1, nudge_y = 1)</code>: Add text with a rectangle background. <code>aes()</code> arguments: - <code>x</code>, <code>y</code>, <code>label</code>, <code>alpha</code>, <code>angle</code>, <code>color</code>, <code>family</code>, <code>fontface</code>, <code>hjust</code>, <code>lineheight</code>, <code>size</code>, <code>vjust</code>.</p></li>
-<li><p><code>e + geom_point()</code>: Draw a scatter plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>shape</code>, <code>size</code>, <code>stroke</code>.</p></li>
-<li><p><code>e + geom_quantile()</code>: Fit and draw quantile regression for the plot data. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</p></li>
-<li><p><code>e + geom_rug(sides = "bl")</code>: Draw a rug plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>linetype</code>, <code>size</code>.</p></li>
-<li><p><code>e + geom_smooth(method = lm)</code>: Plot smoothed conditional means. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</p></li>
+<li><p><code>e +``geom_point``()</code>: Draw a scatter plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>shape</code>, <code>size</code>, <code>stroke</code>.</p></li>
+<li><p><code>e + geom_quantile()</code>: Fit and draw quantile regression for the plot data. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>, <code>weight</code>.</p></li>
+<li><p><code>e + geom_rug(sides = "bl")</code>: Draw a rug plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>linetype</code>, <code>linewidth</code>.</p></li>
+<li><p><code>e + geom_smooth(method = lm)</code>: Plot smoothed conditional means. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>, <code>weight</code>.</p></li>
 <li><p><code>e + geom_text(aes(label = cty), nudge_x = 1, nudge_y = 1)</code>: Add text to a plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>label</code>, <code>alpha</code>, <code>angle</code>, <code>color</code>, <code>family</code>, <code>fontface</code>, <code>hjust</code>, <code>lineheight</code>, <code>size</code>, <code>vjust</code>.</p></li>
 </ul>
 </section>
@@ -342,10 +343,10 @@ Translations (PDF)
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(class, hwy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><p><code>f + geom_col()</code>: Draw a bar plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>size</code>.</p></li>
-<li><p><code>f + geom_boxplot()</code>: Draw a box plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>lower</code>, <code>middle</code>, <code>upper</code>, <code>ymax</code>, <code>ymin</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>shape</code>, <code>size</code>, <code>weight</code>.</p></li>
+<li><p><code>f + geom_col()</code>: Draw a bar plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>.</p></li>
+<li><p><code>f + geom_boxplot()</code>: Draw a box plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>lower</code>, <code>middle</code>, <code>upper</code>, <code>ymax</code>, <code>ymin</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>shape</code>, <code>linewidth</code>, <code>weight</code>.</p></li>
 <li><p><code>f + geom_dotplot(binaxis ="y", stackdir = "center")</code>: Draw a dot plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>.</p></li>
-<li><p><code>f + geom_violin(scale = "area")</code>: Draw a violin plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</p></li>
+<li><p><code>f + geom_violin(scale = "area")</code>: Draw a violin plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>, <code>weight</code>.</p></li>
 </ul>
 </section>
 <section id="two-variables---both-discrete" class="level3">
@@ -365,8 +366,8 @@ Translations (PDF)
 </div>
 <ul>
 <li><p><code>h + geom_bin2d(binwidth = c(0.25, 500))</code>: Draw a heatmap of 2D rectangular bin counts. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</p></li>
-<li><p><code>h + geom_density_2d()</code>: Plot contours from 2D kernel density estimation. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>size</code>.</p></li>
-<li><p><code>h + geom_hex()</code>: Draw a heatmap of 2D hexagonal bin counts. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>size</code>.</p></li>
+<li><p><code>h + geom_density_2d()</code>: Plot contours from 2D kernel density estimation. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>.</p></li>
+<li><p><code>h + geom_hex()</code>: Draw a heatmap of 2D hexagonal bin counts. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linewidth</code>.</p></li>
 </ul>
 </section>
 <section id="two-variables---continuous-function" class="level3">
@@ -375,9 +376,9 @@ Translations (PDF)
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(economics, <span class="fu">aes</span>(date, unemploy))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><p><code>i + geom_area()</code>: Draw an area plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>size</code>.</p></li>
-<li><p><code>i + geom_line()</code>: Connect data points, ordered by the x axis variable. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>size</code>.</p></li>
-<li><p><code>i + geom_step(direction = "hv"</code>: Draw a stairstep plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>size</code>.</p></li>
+<li><p><code>i + geom_area()</code>: Draw an area plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>linewidth</code>.</p></li>
+<li><p><code>i + geom_line()</code>: Connect data points, ordered by the x axis variable. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>.</p></li>
+<li><p><code>i + geom_step(direction = "hv"</code>: Draw a stairstep plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>.</p></li>
 </ul>
 </section>
 <section id="two-variables---visualizing-error" class="level3">
@@ -387,10 +388,10 @@ Translations (PDF)
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>j <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(grp, fit, <span class="at">ymin =</span> fit <span class="sc">-</span> se, <span class="at">ymax =</span> fit <span class="sc">+</span> se))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><p><code>j + geom_crossbar(fatten = 2)</code>: Draw a crossbar. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>ymax</code>, <code>ymin</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>size</code>.</p></li>
-<li><p><code>j + geom_errorbar()</code>: Draw an errorbar. Also <code>geom_errorbarh()</code>. <code>aes()</code> arguments: <code>x</code>, <code>ymax</code>, <code>ymin</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>size</code>, <code>width</code>.</p></li>
-<li><p><code>j + geom_linerange()</code>: Draw a line range. <code>aes()</code> arguments: <code>x</code>, <code>ymin</code>, <code>ymax</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>size</code>.</p></li>
-<li><p><code>j + geom_pointrange()</code>: Draw a point range. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>ymin</code>, <code>ymax</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>shape</code>, <code>size</code>.</p></li>
+<li><p><code>j + geom_crossbar(fatten = 2)</code>: Draw a crossbar. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>ymax</code>, <code>ymin</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>.</p></li>
+<li><p><code>j + geom_errorbar()</code>: Draw an errorbar. Also <code>geom_errorbarh()</code>. <code>aes()</code> arguments: <code>x</code>, <code>ymax</code>, <code>ymin</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>, <code>width</code>.</p></li>
+<li><p><code>j + geom_linerange()</code>: Draw a line range. <code>aes()</code> arguments: <code>x</code>, <code>ymin</code>, <code>ymax</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>.</p></li>
+<li><p><code>j + geom_pointrange()</code>: Draw a point range. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>ymin</code>, <code>ymax</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>shape</code>, <code>linewidth</code>.</p></li>
 </ul>
 </section>
 <section id="two-variables---maps" class="level3">
@@ -404,7 +405,7 @@ Translations (PDF)
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(murder_data, <span class="fu">aes</span>(<span class="at">fill =</span> murder))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><code>k + geom_map(aes(map_id = state), map = map) + expand_limits(x = map$long, y = map$lat)</code>: Draw polygons as a map. <code>aes()</code> arguments: <code>map_id</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>size</code>.</li>
+<li><code>k + geom_map(aes(map_id = state), map = map) + expand_limits(x = map$long, y = map$lat)</code>: Draw polygons as a map. <code>aes()</code> arguments: <code>map_id</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>linewidth</code>.</li>
 </ul>
 </section>
 <section id="three-variables" class="level3">
@@ -414,10 +415,10 @@ Translations (PDF)
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(seals, <span class="fu">aes</span>(long, lat))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><p><code>l + geom_contour(aes(z = z))</code>: Draw 2D contour plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>z</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>size</code>, <code>weight</code>.</p></li>
-<li><p><code>l + geom_contour_filled(aes(fill = z))</code>: Draw 2D contour plot with the space between lines filled. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>size</code>, <code>subgroup</code>.</p></li>
+<li><p><code>l + geom_contour(aes(z = z))</code>: Draw 2D contour plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>z</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>, <code>weight</code>.</p></li>
+<li><p><code>l + geom_contour_filled(aes(fill = z))</code>: Draw 2D contour plot with the space between lines filled. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>, <code>subgroup</code>.</p></li>
 <li><p><code>l + geom_raster(aes(fill = z), hjust = 0.5, vjust = 0.5, interpolate = FALSE)</code>: Draw a raster plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>fill</code>.</p></li>
-<li><p><code>l + geom_tile(aes(fill = z))</code>: Draw a tile plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>size</code>, <code>width</code>.</p></li>
+<li><p><code>l + geom_tile(aes(fill = z))</code>: Draw a tile plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>linewidth</code>, <code>width</code>.</p></li>
 </ul>
 <!-- Page 2 -->
 </section>
@@ -437,7 +438,7 @@ Translations (PDF)
 <li><p><code>c + stat_density(adjust = 1, kernel = "gaussian")</code>: <code>x</code>, <code>y</code> | <code>..count..</code>, <code>..density..</code>, <code>..scaled..</code></p></li>
 <li><p><code>e + stat_bin_2d(bins = 30, drop = T)</code>: <code>x</code>, <code>y</code>, <code>fill</code> | <code>..count..</code>, <code>..density..</code></p></li>
 <li><p><code>e + stat_bin_hex(bins =30)</code>: <code>x</code>, <code>y</code>, <code>fill</code> | <code>..count..</code>, <code>..density..</code></p></li>
-<li><p><code>e + stat_density_2d(contour = TRUE, n = 100)</code>: <code>x</code>, <code>y</code>, <code>color</code>, <code>size</code> | <code>..level..</code></p></li>
+<li><p><code>e + stat_density_2d(contour = TRUE, n = 100)</code>: <code>x</code>, <code>y</code>, <code>color</code>, <code>linewidth</code> | <code>..level..</code></p></li>
 <li><p><code>e + stat_ellipse(level = 0.95, segments = 51, type = "t")</code></p></li>
 <li><p><code>l + stat_contour(aes(z = z))</code>: <code>x</code>, <code>y</code>, <code>z</code>, <code>order</code> | <code>..level..</code></p></li>
 <li><p><code>l + stat_summary_hex(aes(z = z), bins = 30, fun = max)</code>: <code>x</code>, <code>y</code>, <code>z</code>, <code>fill</code> | <code>..value..</code></p></li>
