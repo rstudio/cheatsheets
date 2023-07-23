@@ -383,7 +383,7 @@ Translations (PDF)
 6 China       2000  213766/1280428583</code></pre>
 </div>
 </div></li>
-<li><p><code>separate(data, col, into, sep = "[^[:alnum:]]+", remove = TRUE, convert = FALSE, extra = "warn", fill = "warn", ...)</code>: Separate each cell in a column into several columns. Also <code>extract()</code>.</p>
+<li><p><code>separate_wider_delim(data, cols, delim, ..., names = NULL, names_sep = NULL, names_repair = "check unique", too_few, too_many, cols_remove = TRUE)</code>: Separate each cell in a column into several columns. Also <code>extract()</code>.</p>
 <ul>
 <li>The initial <code>table3</code> looks like the following:</li>
 </ul>
@@ -402,10 +402,10 @@ Translations (PDF)
 </div>
 </div>
 <ul>
-<li>The output of <code>separate()</code> will look like the following:</li>
+<li>The output of <code>separate_wider_delim()</code> will look like the following:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">separate</span>(table3, rate, <span class="at">sep =</span> <span class="st">"/"</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"cases"</span>, <span class="st">"pop"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">separate_wider_delim</span>(table3, rate, <span class="at">delim =</span> <span class="st">"/"</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"cases"</span>, <span class="st">"pop"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 4
   country      year cases  pop       
@@ -418,7 +418,7 @@ Translations (PDF)
 6 China        2000 213766 1280428583</code></pre>
 </div>
 </div></li>
-<li><p><code>separate_rows(data, ..., sep = "[^[:alnum:].]+", convert = FALSE)</code>: Separate each cell in a column into several rows.</p>
+<li><p><code>separate_longer_delim(data, cols, delim, .., width, keep_empty)</code>: Separate each cell in a column into several rows.</p>
 <ul>
 <li>The initial <code>table3</code> looks like the following:</li>
 </ul>
@@ -437,10 +437,10 @@ Translations (PDF)
 </div>
 </div>
 <ul>
-<li>The output of <code>separate_rows()</code> will look like the following:</li>
+<li>The output of <code>separate_longer_delim()</code> will look like the following:</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">separate_rows</span>(table3, rate, <span class="at">sep =</span> <span class="st">"/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">separate_longer_delim</span>(table3, rate, <span class="at">delim =</span> <span class="st">"/"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 12 × 3
    country      year rate      
@@ -634,7 +634,7 @@ Translations (PDF)
 <hr>
 <p>CC BY SA Posit Software, PBC • <a href="mailto:info@posit.co">info@posit.co</a> • <a href="https://posit.co">posit.co</a></p>
 <p>Learn more at <a href="https://tidyr.tidyverse.org">tidyr.tidyverse.org</a>.</p>
-<p>Updated: 2023-06.</p>
+<p>Updated: 2023-07.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"tidyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
