@@ -172,7 +172,7 @@ e <- ggplot(mpg, aes(cty, hwy))
 -   `e + geom_label(aes(label = cty), nudge_x = 1, nudge_y = 1)`: Add text with a rectangle background.
     `aes()` arguments: - `x`, `y`, `label`, `alpha`, `angle`, `color`, `family`, `fontface`, `hjust`, `lineheight`, `size`, `vjust`.
 
--   `e +``geom_point``()`: Draw a scatter plot.
+-   ``` e +``geom_point``() ```: Draw a scatter plot.
     `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `shape`, `size`, `stroke`.
 
 -   `e + geom_quantile()`: Fit and draw quantile regression for the plot data.
@@ -582,3 +582,19 @@ t + labs(x = "New x axis label",
 -   `t + coord_cartesian(xlim = c(0, 100), ylim = c(10,20))`: Zoom without clipping (preferred).
 
 -   `t + xlim(0, 100) + ylim(10, 20)` or `t + scale_x_continuous(limits = c(0, 100)) + scale_y_continuous(limits = c(0, 100))`: Zoom with clipping (removes unseen data points).
+
+------------------------------------------------------------------------
+
+CC BY SA Posit Software, PBC • [info\@posit.co](mailto:info@posit.co) • [posit.co](https://posit.co)
+
+Learn more at [dplyr.tidyverse.org](https://dplyr.tidyverse.org).
+
+Updated: `r format(Sys.Date(), "%Y-%m")`.
+
+```{r}
+#| output: true
+
+packageVersion("ggplot2")
+```
+
+------------------------------------------------------------------------
