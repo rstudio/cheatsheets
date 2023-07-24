@@ -74,10 +74,6 @@ Common aesthetic values.
 
 -   `linetype`: Integer or string (0 = `"blank"`, 1 = `"solid"`, 2 = `"dashed"`, 3 = `"dotted"`, 4 = `"dotdash"`, 5 = `"longdash"`, 6 = `"twodash"`).
 
--   `lineend`: String (`"round"`, `"butt"`, or `"square"`).
-
--   `linejoin`: String (`"round"`, `"mitre"`, or `"bevel"`).
-
 -   `size`: Integer (line width in mm for outlines).
 
 -   `linewidth`: Integer (line width in mm for lines).
@@ -307,50 +303,50 @@ An alternative way to build a layer.
 A stat builds new variables to plot (e.g., count, prop).
 
 Visualize a stat by changing the default stat of a geom function, `geom_bar(stat = "count")`, or by using a stat function, `stat_count(geom = "bar")`, which calls a default geom to make a layer (equivalent to a geom function).
-Use `..name..` syntax to map stat variables to aesthetics.
+Use `after_stat(name)` syntax to map the stat variable `name` to an aesthetics.
 
 ```{r}
 #| eval: false
-i + stat_density_2d(aes(fill = ..level..), geom = "polygon")
+i + stat_density_2d(aes(fill = after_stat(level)), geom = "polygon")
 ```
 
-In this example, `"polygon"` is the geom to use, `stat_density_2d()` is the stat function, `aes()` contains the geom mappings, and `..level..` is the variable created by stat.
+In this example, `"polygon"` is the geom to use, `stat_density_2d()` is the stat function, `aes()` contains the geom mappings, and `level` is the variable created by stat.
 
--   `c + stat_bin(binwidth = 1, boundary = 10)`: `x`, `y` \| `..count..`, `..ncount..`, `..density..`, `..ndensity..`
+-   `c + stat_bin(binwidth = 1, boundary = 10)`: `x`, `y` \| `count`, `ncount`, `density`, `ndensity`
 
--   `c + stat_count(width = 1)`: `x`, `y` \| `..count..`, `..density..`
+-   `c + stat_count(width = 1)`: `x`, `y` \| `count`, `density`
 
--   `c + stat_density(adjust = 1, kernel = "gaussian")`: `x`, `y` \| `..count..`, `..density..`, `..scaled..`
+-   `c + stat_density(adjust = 1, kernel = "gaussian")`: `x`, `y` \| `count`, `density`, `scaled`
 
--   `e + stat_bin_2d(bins = 30, drop = T)`: `x`, `y`, `fill` \| `..count..`, `..density..`
+-   `e + stat_bin_2d(bins = 30, drop = T)`: `x`, `y`, `fill` \| `count`, `density`
 
--   `e + stat_bin_hex(bins =30)`: `x`, `y`, `fill` \| `..count..`, `..density..`
+-   `e + stat_bin_hex(bins =30)`: `x`, `y`, `fill` \| `count`, `density`
 
--   `e + stat_density_2d(contour = TRUE, n = 100)`: `x`, `y`, `color`, `linewidth` \| `..level..`
+-   `e + stat_density_2d(contour = TRUE, n = 100)`: `x`, `y`, `color`, `linewidth` \| `level`
 
 -   `e + stat_ellipse(level = 0.95, segments = 51, type = "t")`
 
--   `l + stat_contour(aes(z = z))`: `x`, `y`, `z`, `order` \| `..level..`
+-   `l + stat_contour(aes(z = z))`: `x`, `y`, `z`, `order` \| `level`
 
--   `l + stat_summary_hex(aes(z = z), bins = 30, fun = max)`: `x`, `y`, `z`, `fill` \| `..value..`
+-   `l + stat_summary_hex(aes(z = z), bins = 30, fun = max)`: `x`, `y`, `z`, `fill` \| `value`
 
--   `l + stat_summary_2d(aes(z = z), bins = 30, fun = mean)`: `x`, `y`, `z`, `fill` \| `..value..`
+-   `l + stat_summary_2d(aes(z = z), bins = 30, fun = mean)`: `x`, `y`, `z`, `fill` \| `value`
 
--   `f + stat_boxplot(coef = 1.5)`: `x`, `y` \| `..lower..`, `..middle..`, `..upper..`, `..width..`, `..ymin..`, `..ymax..`
+-   `f + stat_boxplot(coef = 1.5)`: `x`, `y` \| `lower`, `middle`, `upper`, `width`, `ymin`, `ymax`
 
--   `f + stat_ydensity(kernel = "gaussian", scale = "area")`: `x`, `y` \| `..density..`, `..scaled..`, `..count..`, `..n..`, `..violinwidth..`, `..width..`
+-   `f + stat_ydensity(kernel = "gaussian", scale = "area")`: `x`, `y` \| `density`, `scaled`, `count`, `n`, `violinwidth`, `width`
 
--   `e + stat_ecdf(n = 40)`: `x`, `y` \| `..x..`, `..y..`
+-   `e + stat_ecdf(n = 40)`: `x`, `y` \| `x`, `y`
 
--   `e + stat_quantile(quantiles = c(0.1, 0.9), formula = y ~ log(x), method = "rq")`: `x`, `y` \| `..quantile..`
+-   `e + stat_quantile(quantiles = c(0.1, 0.9), formula = y ~ log(x), method = "rq")`: `x`, `y` \| `quantile`
 
--   `e + stat_smooth(method = "lm", formula = y ~ x, se = T, level = 0.95)`: `x`, `y` \| `..se..`, `..x..`, `..y..`, `..ymin..`, `..ymax..`
+-   `e + stat_smooth(method = "lm", formula = y ~ x, se = T, level = 0.95)`: `x`, `y` \| `se`, `x`, `y`, `ymin`, `ymax`
 
--   `ggplot() + xlim(-5, 5) + stat_function(fun = dnorm, n = 20, geom = "point")`: `x` \| `..x..`, `..y..`
+-   `ggplot() + xlim(-5, 5) + stat_function(fun = dnorm, n = 20, geom = "point")`: `x` \| `x`, `y`
 
--   `ggplot() + stat_qq(aes(sample = 1:100))`: `x`, `y`, `sample` \| `..sample..`, `..theoretical..`
+-   `ggplot() + stat_qq(aes(sample = 1:100))`: `x`, `y`, `sample` \| `sample`, `theoretical`
 
--   `e + stat_sum()`: `x`, `y`, `size` \| `..n..`, `..prop..`
+-   `e + stat_sum()`: `x`, `y`, `size` \| `n`, `prop`
 
 -   `e + stat_summary(fun.data = "mean_cl_boot")`
 
