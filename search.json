@@ -669,7 +669,7 @@
     "href": "html/data-visualization.html#zooming",
     "title": "Data visualization with ggplot2 :: Cheat Sheet",
     "section": "Zooming",
-    "text": "Zooming\n\nt + coord_cartesian(xlim = c(0, 100), ylim = c(10,20)): Zoom without clipping (preferred).\nt + xlim(0, 100) + ylim(10, 20) or t + scale_x_continuous(limits = c(0, 100)) + scale_y_continuous(limits = c(0, 100)): Zoom with clipping (removes unseen data points)."
+    "text": "Zooming\n\nt + coord_cartesian(xlim = c(0, 100), ylim = c(10,20)): Zoom without clipping (preferred).\nt + xlim(0, 100) + ylim(10, 20) or t + scale_x_continuous(limits = c(0, 100)) + scale_y_continuous(limits = c(0, 100)): Zoom with clipping (removes unseen data points).\n\n\nCC BY SA Posit Software, PBC • info@posit.co • posit.co\nLearn more at dplyr.tidyverse.org.\nUpdated: 2023-07.\n\npackageVersion(\"ggplot2\")\n\n[1] '3.4.2'"
   },
   {
     "objectID": "html/keras.html",
