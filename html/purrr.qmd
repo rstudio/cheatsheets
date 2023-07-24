@@ -33,9 +33,18 @@ library(purrr)
 
 <!-- Page 1 -->
 
-## Map Functions
+<!-- 
+TODO:
+* Replace all `~` with `\(x)`
+* Add some explanation for map functions 
+* Add row for `_vec`
+* Need to introduce `list_c()` and friends (https://www.tidyverse.org/blog/2022/12/purrr-1-0-0/#flattening-and-simplification)
+* Filter -> predicate functions
+* Add `keep_at` and `discard_at`
+* `flatten` -> `list_flatten()`, `transpose()` -> `list_transpose()`
+--->
 
-### One List
+## Map Functions
 
 -   `map(.x, .f, ...)`: Apply a function to each element of a list of vector, and return a list.
 
@@ -44,50 +53,6 @@ library(purrr)
     l1 <- list(x = c("a", "b"), y = c("c", "d"))
     map(l1, sort, decreasing = TRUE)
     ```
-
--   `map_dbl(.x, .f, ...)`: Return a double vector.
-
-    ```{r}
-    map_dbl(x, mean)
-    ```
-
--   `map_int(.x, .f, ...)`: Return an integral vector.
-
-    ```{r}
-    map_int(x, length)
-    ```
-
--   `map_chr(.x, .f, ...)`: Return a character vector.
-
-    ```{r}
-    map_chr(l1, paste, collapse = "")
-    ```
-
--   `map_lgl(.x, .f, ...)`: Return a logical vector.
-
-    ```{r}
-    map_lgl(x, is.integer)
-    ```
-
--   `map_dfc(.x, .f, ...)`: Return a data frame created by column-binding.
-
-    ```{r}
-    map_dfc(l1, rep, 3)
-    ```
-
--   `map_dfr(.x, .f, ...)`: Return a data frame created by row-binding.
-
-    ```{r}
-    map_dfr(x, summary)
-    ```
-
--   `walk(.x, .f, ...)`: Trigger side effects, return invisibly.
-
-    ```{r}
-    walk(x, print)
-    ```
-
-### Two Lists
 
 -   `map2(.x, .y, .f, ...)`: Apply a function pairs of elements from two lists or vectors, return a list.
 
@@ -98,51 +63,7 @@ library(purrr)
     map2(x, y, ~ .x * .y)
     ```
 
--   `map2_dbl(.x, .y, .f, ...)`: Return a double vector.
-
-    ```{r}
-    map2_dbl(y, z, ~ .x / .y)
-    ```
-
--   `map2_int(.x, .y, .f, ...)`: Return an integral vector.
-
-    ```{r}
-    map2_int(y, z, `+`)
-    ```
-
--   `map2_chr(.x, .y, .f, ...)`: Return a character vector.
-
-    ```{r}
-    map2_chr(l1, l2, paste, collapse = ",", sep = ":")
-    ```
-
--   `map2_lgl(.x, .y, .f, ...)`: Return a logical vector.
-
-    ```{r}
-    map2_lgl(l2, l1, `%in%`)
-    ```
-
--   `map2_dfc(.x, .y, .f, ...)`: Return a data frame created by column-binding.
-
-    ```{r}
-    map2_dfc(l1, l2, ~ as.data.frame(c(.x, .y)))
-    ```
-
--   `map2_dfr(.x, .y, .f, ...)`: Return a data frame created by row-binding.
-
-    ```{r}
-    map2_dfr(l1, l2, ~ as.data.frame(c(.x, .y)))
-    ```
-
--   `walk2(.x, .y, .f, ...)`: Trigger side effects, return invisibly.
-
-    ```{r}
-    #| eval: false
-
-    walk2(objs, paths, save)
-    ```
-
-### Many Lists
+    `imap(.x, .f, ...)` is shorthand for `map2(.x, names(.x), .f)` or `imap(.x, seq_along(.x), .f)` depending on whether `.x` is named or not.
 
 -   `pmap(.l, .f, ...)`: Apply a function to groups of elements from a list of lists or vectors, return a list.
 
@@ -150,99 +71,13 @@ library(purrr)
     pmap(list(x, y, z), ~ ..1 * (..2 + ..3))
     ```
 
--   `pmap_dbl(.l, .f, ...)`: Return a double vector.
-
-    ```{r}
-    pmap_dbl(list(y, z), ~ .x / .y)
-    ```
-
--   `pmap_int(.l, .f, ...)`: Return an integral vector.
-
-    ```{r}
-    pmap_int(list(y, z), `+`)
-    ```
-
--   `pmap_chr(.l, .f, ...)`: Return a character vector.
-
-    ```{r}
-    pmap_chr(list(l1, l2), paste, collapse = ",", sep = ":")
-    ```
-
--   `pmap_lgl(.l, .f, ...)`: Return a logical vector.
-
-    ```{r}
-    pmap_lgl(list(l2, l1), `%in%`)
-    ```
-
--   `pmap_dfc(.l, .f, ...)`: Return a data frame created by column-binding.
-
-    ```{r}
-    pmap_dfc(list(l1, l2), ~ as.data.frame(c(.x, .y)))
-    ```
-
--   `pmap_dfr(.l, .f, ...)`: Return a data frame created by row-binding.
-
-    ```{r}
-    pmap_dfr(list(l1, l2), ~ as.data.frame(c(.x, .y)))
-    ```
-
--   `pwalk(.l, .f, ...)`: Trigger side effects, return invisibly.
-
-    ```{r}
-    #| eval: false
-
-    pwalk(list(objs, paths), save)
-    ```
-
-### Lists and Indexes
-
--   `imap(.x, .f, ...)`: Apply `.f` to each element and its index, return a list.
-
-    ```{r}
-    imap(y, ~ paste0(.y, ": ", .x))
-    ```
-
--   `imap_dbl(.x, .f, ...)`: Return a double vector.
-
-    ```{r}
-    imap_dbl(y, ~ .y)
-    ```
-
--   `imap_int(.x, .f, ...)`: Return an integral vector.
-
-    ```{r}
-    imap_int(y, ~ .y)
-    ```
-
--   `imap_chr(.x, .f, ...)`: Return a character vector.
-
-    ```{r}
-    imap_chr(y, ~ paste0(.y, ": ", .x))
-    ```
-
--   `imap_lgl(.x, .f, ...)`: Return a logical vector.
-
-    ```{r}
-    imap_lgl(l1, ~ is.character(.y))
-    ```
-
--   `imap_dfc(.x, .f, ...)`: Return a data frame created by column-binding.
-
-    ```{r}
-    imap_dfc(l2, ~ as.data.frame(c(.x, .y)))
-    ```
-
--   `imap_dfr(.x, .f, ...)`: Return a data frame created by row-binding.
-
-    ```{r}
-    imap_dfr(l2, ~ as.data.frame(c(.x, .y)))
-    ```
-
--   `iwalk(.x, .f, ...)`: Trigger side effects, return invisibly.
-
-    ```{r}
-    iwalk(z, ~ print(paste0(.y, ": ", .x)))
-    ```
+|           | One list                            | Two lists                                            | Many lists                                                 |
+|-----------|-------------------------------------|------------------------------------------------------|------------------------------------------------------------|
+| Logical   | `map_lgl(x, is.integer)`            | `` map2_lgl(l2, l1, `%in%`) ``                       | `` pmap_lgl(list(l2, l1), `%in%`) ``                       |
+| Integer   | `map_int(x, length)`                | `` map2_int(y, z, `+`) ``                            | `` pmap_int(list(y, z), `+`) ``                            |
+| Double    | `map_dbl(x, mean)`                  | `map2_dbl(y, z, ~ .x / .y)`                          | `pmap_dbl(list(y, z), ~ .x / .y)`                          |
+| Character | `map_chr(l1, paste, collapse = "")` | `map2_chr(l1, l2, paste, collapse = ",", sep = ":")` | `pmap_chr(list(l1, l2), paste, collapse = ",", sep = ":")` |
+| No output | `walk(x, print)`                    | `walk2(objs, paths, save)`                           | `pwalk(list(objs, paths), save)`                           |
 
 ## Function Shortcuts
 
@@ -360,14 +195,6 @@ library(purrr)
 
     ```{r}
     flatten(x)
-    ```
-
--   `array_tree(array, margin = NULL)`: Turn array into list.
-    Also `array_branch()`.
-
-    ```{r}
-    z <- array(1:12, c(2, 2, 2))
-    array_tree(z, margin = 3)
     ```
 
 -   `transpose(.l, .names = NULL)`: Transposes the index order in a multi-level list.
