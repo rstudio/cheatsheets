@@ -23,4 +23,5 @@ translation_list(sheet_name)
 
 <!-- Page 1 -->
 
-HTML version coming soon! The PDF is available to download [here](../sparklyr.pdf).
+HTML version coming soon!
+The PDF is available to download [here](../sparklyr.pdf).
