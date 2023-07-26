@@ -4,7 +4,7 @@ description: " "
 image-alt: ""
 execute:
   eval: true
-  output: true
+  output: false
   warning: true
 editor_options: 
   chunk_output_type: console
