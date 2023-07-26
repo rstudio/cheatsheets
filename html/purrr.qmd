@@ -55,7 +55,7 @@ l2 <- list(x = "a", y = "z")
     map2(x, y, \(x, y) x*y)
     ```
 
-    `imap(.x, .f, ...)` is shorthand for `map2(.x, names(.x), .f)` or `imap(.x, seq_along(.x), .f)` depending on whether `.x` is named or not.
+    `imap(.x, .f, ...)` is shorthand for `map2(.x, names(.x), .f)` or `map2(.x, seq_along(.x), .f)` depending on whether `.x` is named or not.
 
 -   `pmap(.l, .f, ...)`: Apply a function to groups of elements from a list of lists or vectors, return a list.
 
@@ -64,7 +64,7 @@ l2 <- list(x = "a", y = "z")
     ```
 
 |           |                                                       | One list                            | Two lists                                            | Many lists                                                 |
-|-----------|-------------------------------------------------------|-------------------------------------|------------------------------------------------------|------------------------------------------------------------|
+|--------------|---------------|--------------|--------------|----------------|
 | Logical   | Returns a logical vector.                             | `map_lgl(x, is.integer)`            | `` map2_lgl(l2, l1, `%in%`) ``                       | `` pmap_lgl(list(l2, l1), `%in%`) ``                       |
 | Integer   | Returns an integer vector.                            | `map_int(x, length)`                | `` map2_int(y, z, `+`) ``                            | `` pmap_int(list(y, z), `+`) ``                            |
 | Double    | Returns a double vector.                              | `map_dbl(x, mean)`                  | `map2_dbl(y, z, ~ .x / .y)`                          | `pmap_dbl(list(y, z), ~ .x / .y)`                          |
