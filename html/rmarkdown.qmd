@@ -109,14 +109,14 @@ translation_list(sheet_name)
 Surround code chunks with ```` ```{r} ```` and ```` ``` ```` or use the Insert Code Chunk button.
 Add a chunk label and/or chunk options inside the curly braces after `r`.
 
-```{{{r chunk-label, include = FALSE}}}
+```{{r chunk-label, include = FALSE}}
 ```
 
 ### Set Global Options
 
 Set options for the entire document in the first chunk.
 
-```{{{r include = FALSE}}}
+```{{r include = FALSE}}
 knitr::opts_chunk$set(message = FALSE)
 ```
 
@@ -338,17 +338,17 @@ The syntax on the left renders as the output on the right.
 | Table: Caption text, example rendered table |                                                                          |
 | ```                                         |                                                                          |
 +---------------------------------------------+--------------------------------------------------------------------------+
-| HTML Tabsets                                | ::: panel-tabset                                                         |
-|                                             | ## Plots                                                                 |
-| ```                                         |                                                                          |
-| ::: panel-tabset                            | text                                                                     |
-| ## Plots text                               |                                                                          |
-| text                                        | ## Tables                                                                |
+| HTML Tabsets                                | ## Results                                                               |
 |                                             |                                                                          |
-| ## Tables                                   | more text                                                                |
-| more text                                   | :::                                                                      |
-| :::                                         |                                                                          |
-| ```                                         |                                                                          |
+| ```                                         | ::: panel-tabset                                                         |
+| ## Results {.tabset}                        | ## Plots                                                                 |
+| ### Plots                                   |                                                                          |
+| text                                        | text                                                                     |
+|                                             |                                                                          |
+| ### Tables                                  | ## Tables                                                                |
+| more text                                   |                                                                          |
+| ```                                         | more text                                                                |
+|                                             | :::                                                                      |
 +---------------------------------------------+--------------------------------------------------------------------------+
 
 : Table of markdown syntax and rendered examples. The syntax in the first column renders to the output in the second column.
