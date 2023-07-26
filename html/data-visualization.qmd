@@ -303,7 +303,7 @@ An alternative way to build a layer.
 A stat builds new variables to plot (e.g., count, prop).
 
 Visualize a stat by changing the default stat of a geom function, `geom_bar(stat = "count")`, or by using a stat function, `stat_count(geom = "bar")`, which calls a default geom to make a layer (equivalent to a geom function).
-Use `after_stat(name)` syntax to map the stat variable `name` to an aesthetics.
+Use `after_stat(name)` syntax to map the stat variable `name` to an aesthetic.
 
 ```{r}
 #| eval: false
@@ -538,7 +538,7 @@ t <- ggplot(mpg, aes(cty, hwy)) + geom_point()
 
 -   `t + facet_grid(year ~ fl)`: Facet into both rows and columns.
 
--   `t + facet_wrap(~fl)`: Wrap facets into a rectangular layout.
+-   `t + facet_wrap(~ fl)`: Wrap facets into a rectangular layout.
 
 -   `t + facet_grid(drv ~ fl, scales = "free")`: Set **scales** to let axis limits vary across facets.
     Also `"free_x"` for x axis limits adjust to individual facets and `"free_y"` for y axis limits adjust to individual facets.
