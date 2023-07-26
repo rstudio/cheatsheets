@@ -150,21 +150,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#map-functions" id="toc-map-functions" class="nav-link active" data-scroll-target="#map-functions">Map Functions</a>
-  <ul class="collapse">
-  <li><a href="#one-list" id="toc-one-list" class="nav-link" data-scroll-target="#one-list">One List</a></li>
-  <li><a href="#two-lists" id="toc-two-lists" class="nav-link" data-scroll-target="#two-lists">Two Lists</a></li>
-  <li><a href="#many-lists" id="toc-many-lists" class="nav-link" data-scroll-target="#many-lists">Many Lists</a></li>
-  <li><a href="#lists-and-indexes" id="toc-lists-and-indexes" class="nav-link" data-scroll-target="#lists-and-indexes">Lists and Indexes</a></li>
-  </ul></li>
+  <li><a href="#map-functions" id="toc-map-functions" class="nav-link active" data-scroll-target="#map-functions">Map Functions</a></li>
   <li><a href="#function-shortcuts" id="toc-function-shortcuts" class="nav-link" data-scroll-target="#function-shortcuts">Function Shortcuts</a></li>
   <li><a href="#work-with-lists" id="toc-work-with-lists" class="nav-link" data-scroll-target="#work-with-lists">Work with Lists</a>
   <ul class="collapse">
-  <li><a href="#filter" id="toc-filter" class="nav-link" data-scroll-target="#filter">Filter</a></li>
-  <li><a href="#index" id="toc-index" class="nav-link" data-scroll-target="#index">Index</a></li>
+  <li><a href="#predicate-functionals" id="toc-predicate-functionals" class="nav-link" data-scroll-target="#predicate-functionals">Predicate functionals</a></li>
+  <li><a href="#pluck" id="toc-pluck" class="nav-link" data-scroll-target="#pluck">Pluck</a></li>
   <li><a href="#reshape" id="toc-reshape" class="nav-link" data-scroll-target="#reshape">Reshape</a></li>
   <li><a href="#modify" id="toc-modify" class="nav-link" data-scroll-target="#modify">Modify</a></li>
   <li><a href="#reduce" id="toc-reduce" class="nav-link" data-scroll-target="#reduce">Reduce</a></li>
+  <li><a href="#concatenation" id="toc-concatenation" class="nav-link" data-scroll-target="#concatenation">Concatenation</a></li>
   <li><a href="#list-columns" id="toc-list-columns" class="nav-link" data-scroll-target="#list-columns">List-Columns</a></li>
   </ul></li>
   </ul>
@@ -218,257 +213,188 @@ Translations (PDF)
 <!-- Page 1 -->
 <section id="map-functions" class="level2">
 <h2 class="anchored" data-anchor-id="map-functions">Map Functions</h2>
-<section id="one-list" class="level3">
-<h3 class="anchored" data-anchor-id="one-list">One List</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">b =</span> <span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">c =</span> <span class="dv">21</span><span class="sc">:</span><span class="dv">30</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>l1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"c"</span>, <span class="st">"d"</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>l2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"a"</span>, <span class="at">y =</span> <span class="st">"z"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
 <li><p><code>map(.x, .f, ...)</code>: Apply a function to each element of a list of vector, and return a list.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">b =</span> <span class="dv">11</span><span class="sc">:</span><span class="dv">20</span>, <span class="at">c =</span> <span class="dv">21</span><span class="sc">:</span><span class="dv">30</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>l1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"c"</span>, <span class="st">"d"</span>))</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(l1, sort, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map</span>(l1, sort, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
-<li><p><code>map_dbl(.x, .f, ...)</code>: Return a double vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dbl</span>(x, mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>map_int(.x, .f, ...)</code>: Return an integral vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_int</span>(x, length)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>map_chr(.x, .f, ...)</code>: Return a character vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_chr</span>(l1, paste, <span class="at">collapse =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>map_lgl(.x, .f, ...)</code>: Return a logical vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_lgl</span>(x, is.integer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>map_dfc(.x, .f, ...)</code>: Return a data frame created by column-binding.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfc</span>(l1, rep, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>map_dfr(.x, .f, ...)</code>: Return a data frame created by row-binding.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map_dfr</span>(x, summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>walk(.x, .f, ...)</code>: Trigger side effects, return invisibly.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">walk</span>(x, print)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ul>
-</section>
-<section id="two-lists" class="level3">
-<h3 class="anchored" data-anchor-id="two-lists">Two Lists</h3>
-<ul>
 <li><p><code>map2(.x, .y, .f, ...)</code>: Apply a function pairs of elements from two lists or vectors, return a list.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>l2 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"a"</span>, <span class="at">y =</span> <span class="st">"z"</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(x, y, <span class="sc">~</span> .x <span class="sc">*</span> .y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>map2_dbl(.x, .y, .f, ...)</code>: Return a double vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dbl</span>(y, z, <span class="sc">~</span> .x <span class="sc">/</span> .y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>map2_int(.x, .y, .f, ...)</code>: Return an integral vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_int</span>(y, z, <span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>map2_chr(.x, .y, .f, ...)</code>: Return a character vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_chr</span>(l1, l2, paste, <span class="at">collapse =</span> <span class="st">","</span>, <span class="at">sep =</span> <span class="st">":"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>map2_lgl(.x, .y, .f, ...)</code>: Return a logical vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_lgl</span>(l2, l1, <span class="st">`</span><span class="at">%in%</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>map2_dfc(.x, .y, .f, ...)</code>: Return a data frame created by column-binding.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dfc</span>(l1, l2, <span class="sc">~</span> <span class="fu">as.data.frame</span>(<span class="fu">c</span>(.x, .y)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>map2_dfr(.x, .y, .f, ...)</code>: Return a data frame created by row-binding.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map2_dfr</span>(l1, l2, <span class="sc">~</span> <span class="fu">as.data.frame</span>(<span class="fu">c</span>(.x, .y)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>walk2(.x, .y, .f, ...)</code>: Trigger side effects, return invisibly.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">walk2</span>(objs, paths, save)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ul>
-</section>
-<section id="many-lists" class="level3">
-<h3 class="anchored" data-anchor-id="many-lists">Many Lists</h3>
-<ul>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(x, y, \(x, y) x<span class="sc">*</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>imap(.x, .f, ...)</code> is shorthand for <code>map2(.x, names(.x), .f)</code> or <code>imap(.x, seq_along(.x), .f)</code> depending on whether <code>.x</code> is named or not.</p></li>
 <li><p><code>pmap(.l, .f, ...)</code>: Apply a function to groups of elements from a list of lists or vectors, return a list.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap</span>(<span class="fu">list</span>(x, y, z), <span class="sc">~</span> ..<span class="dv">1</span> <span class="sc">*</span> (..<span class="dv">2</span> <span class="sc">+</span> ..<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>pmap_dbl(.l, .f, ...)</code>: Return a double vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap_dbl</span>(<span class="fu">list</span>(y, z), <span class="sc">~</span> .x <span class="sc">/</span> .y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>pmap_int(.l, .f, ...)</code>: Return an integral vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap_int</span>(<span class="fu">list</span>(y, z), <span class="st">`</span><span class="at">+</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>pmap_chr(.l, .f, ...)</code>: Return a character vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap_chr</span>(<span class="fu">list</span>(l1, l2), paste, <span class="at">collapse =</span> <span class="st">","</span>, <span class="at">sep =</span> <span class="st">":"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>pmap_lgl(.l, .f, ...)</code>: Return a logical vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap_lgl</span>(<span class="fu">list</span>(l2, l1), <span class="st">`</span><span class="at">%in%</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>pmap_dfc(.l, .f, ...)</code>: Return a data frame created by column-binding.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap_dfc</span>(<span class="fu">list</span>(l1, l2), <span class="sc">~</span> <span class="fu">as.data.frame</span>(<span class="fu">c</span>(.x, .y)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>pmap_dfr(.l, .f, ...)</code>: Return a data frame created by row-binding.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap_dfr</span>(<span class="fu">list</span>(l1, l2), <span class="sc">~</span> <span class="fu">as.data.frame</span>(<span class="fu">c</span>(.x, .y)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>pwalk(.l, .f, ...)</code>: Trigger side effects, return invisibly.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pwalk</span>(<span class="fu">list</span>(objs, paths), save)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pmap</span>(<span class="fu">list</span>(x, y, z), <span class="cf">function</span>(first, second, third) first <span class="sc">*</span> (second <span class="sc">+</span> third))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ul>
-</section>
-<section id="lists-and-indexes" class="level3">
-<h3 class="anchored" data-anchor-id="lists-and-indexes">Lists and Indexes</h3>
-<ul>
-<li><p><code>imap(.x, .f, ...)</code>: Apply <code>.f</code> to each element and its index, return a list.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imap</span>(y, <span class="sc">~</span> <span class="fu">paste0</span>(.y, <span class="st">": "</span>, .x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>imap_dbl(.x, .f, ...)</code>: Return a double vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imap_dbl</span>(y, <span class="sc">~</span> .y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>imap_int(.x, .f, ...)</code>: Return an integral vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imap_int</span>(y, <span class="sc">~</span> .y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>imap_chr(.x, .f, ...)</code>: Return a character vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imap_chr</span>(y, <span class="sc">~</span> <span class="fu">paste0</span>(.y, <span class="st">": "</span>, .x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>imap_lgl(.x, .f, ...)</code>: Return a logical vector.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imap_lgl</span>(l1, <span class="sc">~</span> <span class="fu">is.character</span>(.y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>imap_dfc(.x, .f, ...)</code>: Return a data frame created by column-binding.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imap_dfc</span>(l2, <span class="sc">~</span> <span class="fu">as.data.frame</span>(<span class="fu">c</span>(.x, .y)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>imap_dfr(.x, .f, ...)</code>: Return a data frame created by row-binding.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">imap_dfr</span>(l2, <span class="sc">~</span> <span class="fu">as.data.frame</span>(<span class="fu">c</span>(.x, .y)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>iwalk(.x, .f, ...)</code>: Trigger side effects, return invisibly.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">iwalk</span>(z, <span class="sc">~</span> <span class="fu">print</span>(<span class="fu">paste0</span>(.y, <span class="st">": "</span>, .x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ul>
-</section>
+<table class="table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 19%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th></th>
+<th>One list</th>
+<th>Two lists</th>
+<th>Many lists</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Logical</td>
+<td>Returns a logical vector.</td>
+<td><code>map_lgl(x, is.integer)</code></td>
+<td><code>map2_lgl(l2, l1, `%in%`)</code></td>
+<td><code>pmap_lgl(list(l2, l1), `%in%`)</code></td>
+</tr>
+<tr class="even">
+<td>Integer</td>
+<td>Returns an integer vector.</td>
+<td><code>map_int(x, length)</code></td>
+<td><code>map2_int(y, z, `+`)</code></td>
+<td><code>pmap_int(list(y, z), `+`)</code></td>
+</tr>
+<tr class="odd">
+<td>Double</td>
+<td>Returns a double vector.</td>
+<td><code>map_dbl(x, mean)</code></td>
+<td><code>map2_dbl(y, z, ~ .x / .y)</code></td>
+<td><code>pmap_dbl(list(y, z), ~ .x / .y)</code></td>
+</tr>
+<tr class="even">
+<td>Character</td>
+<td>Returns a character vector.</td>
+<td><code>map_chr(l1, paste, collapse = "")</code></td>
+<td><code>map2_chr(l1, l2, paste, collapse = ",", sep = ":")</code></td>
+<td><code>pmap_chr(list(l1, l2), paste, collapse = ",", sep = ":")</code></td>
+</tr>
+<tr class="odd">
+<td>Vector</td>
+<td>Returns a vector that is of the simplest common type.</td>
+<td><code>map_vec(l1, paste, collapse = "")</code></td>
+<td><code>map2_vec(l1, l2, paste, collapse = ",", sep = ":")</code></td>
+<td><code>pmap_chr(list(l1, l2), paste, collapse = ",", sep = ":")</code></td>
+</tr>
+<tr class="even">
+<td>No output</td>
+<td>Calls <code>.f</code> for its side-effect.</td>
+<td><code>walk(x, print)</code></td>
+<td><code>walk2(objs, paths, save)</code></td>
+<td><code>pwalk(list(objs, paths), save)</code></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="function-shortcuts" class="level2">
 <h2 class="anchored" data-anchor-id="function-shortcuts">Function Shortcuts</h2>
 <ul>
-<li><p>Use <code>~ .</code> with functions like <code>map()</code> that have single arguments. <code>map(l, ~ . + 2)</code> becomes <code>map(l, function(x) x + 2)</code>.</p></li>
-<li><p>Use <code>~ .x .y</code> with functions like <code>map2()</code> that have two arguments. <code>map2(l, p, ~ .x + .y)</code> becomes <code>map2(l, p, function(l, p) l + p)</code>.</p></li>
-<li><p>Use <code>~ ..1 ..2 ..3</code> etc with functions like <code>pmap()</code> that have many arguments. <code>pmap(list(a, b, c), ~ ..3 + ..1 - ..2)</code> becomes <code>pmap(list(a,b,c), function(a, b, c) c + a - b)</code>.</p></li>
-<li><p>Use <code>~ .x .y</code> with functions like <code>imap()</code>. <code>.x</code> will get the list value and <code>.y</code> with get the index, or name if available. <code>imap(list(a, b, c), ~ paste0(.y, ": ", .x))</code> outputs <code>index: value</code> for each item.</p></li>
+<li><p>Use <code>\(x)</code> with functions like <code>map()</code> that have single arguments. <code>map(l, \(x) x + 2)</code> becomes <code>map(l, function(x) x + 2)</code>.</p></li>
+<li><p>Use <code>\(x, y)</code> with functions like <code>map2()</code> that have two arguments. <code>map2(l, p, \(x, y) x + y)</code> becomes <code>map2(l, p, function(l, p) l + p)</code>.</p></li>
+<li><p>Use <code>\(x, y, z)</code> etc. with functions like <code>pmap()</code> that have many arguments. <code>pmap(list(x, y, z), ⁠\(x, y, z) x + y / z)</code> becomes <code>pmap(list(x, y, z), function(x, y, z) x * (y + z))</code>.</p></li>
+<li><p>Use <code>\(x, y)</code> with functions like <code>imap()</code>. <code>x</code> will get the list value and <code>y</code> with get the index, or name if available. <code>imap(list("a", "b", "c"), \(x, y) paste0(y, ": ", x))</code> outputs <code>index: value</code> for each item.</p></li>
 <li><p>Use a <code>string</code> or <code>integer</code> with any map function to index list elements by name or position. <code>map(l, "name")</code> becomes <code>map(l, function(x) x[["name"]])</code>.</p></li>
 </ul>
 <!-- Page 2 -->
 </section>
 <section id="work-with-lists" class="level2">
 <h2 class="anchored" data-anchor-id="work-with-lists">Work with Lists</h2>
-<section id="filter" class="level3">
-<h3 class="anchored" data-anchor-id="filter">Filter</h3>
+<section id="predicate-functionals" class="level3">
+<h3 class="anchored" data-anchor-id="predicate-functionals">Predicate functionals</h3>
 <ul>
-<li><p><code>keep(.x, .p, ...)</code>: Select elements that pass a logical test. Conversely <code>discard()</code>.</p>
+<li><p><code>keep(.x, .p, ...)</code>: Keep elements that pass a logical test. Conversely <code>discard()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">keep</span>(x, is.numeric)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">keep</span>(x, is.numeric)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
-<li><p><code>compact(.x, .p = identity)</code>: Drop empty elements.</p>
+<li><p><code>compact(.x, .p = identity)</code>: Discard empty elements.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compact</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compact</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><code>keep_at()</code>: Keep/discard elements based by name or position.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">keep_at</span>(x, <span class="st">"a"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">keep_at</span>(x, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><code>head_while(.x, .p, ...)</code>: Return head elements until one does not pass. Also <code>tail_while()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head_while</span>(x, is.character)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head_while</span>(x, is.character)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><code>detect(.x, .f, ..., dir = c("forward", "backward"), .right = NULL)</code>: Find first element to pass.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detect</span>(x, is.character)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detect</span>(x, is.character)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><code>detect_index(.x, .f, ..., dir = c("forward", "backward"), .right = NULL)</code>: Find index of first element to pass.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detect_index</span>(x, is.character)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">detect_index</span>(x, is.character)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><code>every(.x, .p, ...)</code>: Do all elements pass a test?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">every</span>(x, is.character)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">every</span>(x, is.character)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><code>some(.x, .p, ...)</code>: Do some elements pass a test?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">some</span>(x, is.character)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">some</span>(x, is.character)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><code>none(.x, .p, ...)</code>: Do no elements pass a test?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">none</span>(x, is.character)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">none</span>(x, is.character)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><code>has_element(.x, .y)</code>: Does a list contain an element?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">has_element</span>(x, <span class="st">"foo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>pluck_depth(x)</code>: Return depth (number of levels of indexes).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pluck_depth</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">has_element</span>(x, <span class="st">"foo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ul>
 </section>
-<section id="index" class="level3">
-<h3 class="anchored" data-anchor-id="index">Index</h3>
+<section id="pluck" class="level3">
+<h3 class="anchored" data-anchor-id="pluck">Pluck</h3>
 <ul>
 <li><p><code>pluck(.x, ..., .deault = NULL)</code>: Select an element by name or index. Also <code>attr_getter()</code> and <code>chuck()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pluck</span>(x, <span class="st">"b"</span>)</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="st">"b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pluck</span>(x, <span class="st">"b"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">|&gt;</span> <span class="fu">pluck</span>(<span class="st">"b"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><code>pluck_depth(x)</code>: Return depth (number of levels of indexes).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pluck_depth</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><code>assign_in(x, where, value)</code>: Assign a value to a location using pluck selection.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">assign_in</span>(x, <span class="st">"b"</span>, <span class="dv">5</span>)</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">|&gt;</span> <span class="fu">assign_in</span>(<span class="st">"b"</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">assign_in</span>(x, <span class="st">"b"</span>, <span class="dv">5</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">|&gt;</span> <span class="fu">assign_in</span>(<span class="st">"b"</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><code>modify_in(.x, .where,, .f)</code>: Apply a function to a value at a selected location.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modify_in</span>(x, <span class="st">"b"</span>, abs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modify_in</span>(x, <span class="st">"b"</span>, abs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ul>
 </section>
 <section id="reshape" class="level3">
 <h3 class="anchored" data-anchor-id="reshape">Reshape</h3>
 <ul>
-<li><p><code>flatten(.x)</code>: Remove a level of indexes from a list. Also <code>flatten_chr()</code> etc.</p>
+<li><p><code>list_flatten(x)</code>: Remove a level of indexes from a list.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">flatten</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list_flatten</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
-<li><p><code>array_tree(array, margin = NULL)</code>: Turn array into list. Also <code>array_branch()</code>.</p>
+<li><p><code>list_transpose(x)</code>: Transposes the index order in a multi-level list.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">array_tree</span>(z, <span class="at">margin =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>transpose(.l, .names = NULL)</code>: Transposes the index order in a multi-level list.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">transpose</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list_transpose</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><code>set_names(x, nm = x)</code>: Set the names of a vector/list directly or with a function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_names</span>(x, <span class="fu">c</span>(<span class="st">"p"</span>, <span class="st">"q"</span>, <span class="st">"r"</span>))</span>
-<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set_names</span>(x, tolower)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set_names</span>(x, <span class="fu">c</span>(<span class="st">"p"</span>, <span class="st">"q"</span>, <span class="st">"r"</span>))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set_names</span>(x, tolower)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ul>
 </section>
@@ -477,19 +403,19 @@ Translations (PDF)
 <ul>
 <li><p><code>modify(.x, .f, ...)</code>: Apply a function to each element. Also <code>modify2()</code> and <code>imodify()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modify</span>(x, <span class="sc">~</span> . <span class="sc">+</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modify</span>(x, <span class="sc">~</span> . <span class="sc">+</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><code>modify_at(.x, .at, .f, ...)</code>: Apply a function to selected elements. Also <code>map_at()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modify_at</span>(x, <span class="st">"b"</span>, <span class="sc">~</span> . <span class="sc">+</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modify_at</span>(x, <span class="st">"b"</span>, <span class="sc">~</span> . <span class="sc">+</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><code>modify_if(.x, .p, .f, ...)</code>: Apply a function to elements that pass a test. Also <code>map_if()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modify_if</span>(x, is.numeric, <span class="sc">~</span> . <span class="sc">+</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modify_if</span>(x, is.numeric, <span class="sc">~</span> . <span class="sc">+</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><code>modify_depth(.x, .depth, .f, ...)</code>: Apply function to each element at a given level of a list. Also <code>map_depth()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modify_depth</span>(x, <span class="dv">1</span>, <span class="sc">~</span> . <span class="sc">+</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modify_depth</span>(x, <span class="dv">1</span>, <span class="sc">~</span> . <span class="sc">+</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ul>
 </section>
@@ -498,13 +424,37 @@ Translations (PDF)
 <ul>
 <li><p><code>reduce(.x, .f, ..., .init, .dir = c("forward", "backward"))</code>: Apply function recursively to each element of a list of vector. Also <code>reduce2()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(a, sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(a, sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><code>accumulate(.x, .f, ..., .init)</code>: Reduce a list, but also return intermediate results in a list. Also <code>accumulate2()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
-<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">accumulate</span>(a, sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">accumulate</span>(a, sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+</section>
+<section id="concatenation" class="level3">
+<h3 class="anchored" data-anchor-id="concatenation">Concatenation</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">2</span>, <span class="at">c =</span> <span class="dv">3</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>x2 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">a =</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>),</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">b =</span> <span class="fu">data.frame</span>(<span class="at">y =</span> <span class="st">"a"</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p><code>list_c()</code>: Combines elements into a vector by concatenating them together.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list_c</span>(x1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><code>list_rbind()</code>: Combines elements into a data frame by row-binding them together.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list_rbind</span>(x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+<li><p><code>list_cbind()</code>: Combines elements into a data frame by column-binding them together.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list_cbind</span>(x2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ul>
 </section>
@@ -517,13 +467,13 @@ Translations (PDF)
 <ul>
 <li><p><code>map()</code>, <code>map2()</code>, or <code>pmap()</code> return lists and will <strong>create new list-columns</strong>. In this example, <code>transmute()</code> is a column function, <code>map2()</code> is a list function which returns a list, and <code>vehicles</code> and <code>starships</code> are list-columns.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span>starwars <span class="sc">|&gt;</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">ships =</span> <span class="fu">map2</span>(vehicles, starships, append))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span>starwars <span class="sc">|&gt;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">ships =</span> <span class="fu">map2</span>(vehicles, starships, append))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p>Suffixed map functions like <code>map_int()</code> return an atomic data type and will <strong>simplify list-columns into regular columns</strong>. In this example, <code>mutate()</code> is a column function, <code>map_int()</code> is a list function which returns a column vector, and <code>films</code> is a list column.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span>starwars <span class="sc">|&gt;</span></span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">n_films =</span> <span class="fu">map_int</span>(films, length))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span>starwars <span class="sc">|&gt;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">n_films =</span> <span class="fu">map_int</span>(films, length))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ul>
 <hr>
@@ -531,7 +481,7 @@ Translations (PDF)
 <p>Learn more at <a href="https://purrr.tidyverse.org">purrr.tidyverse.org</a>.</p>
 <p>Updated: 2023-07.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"purrr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"purrr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] '1.0.1'</code></pre>
 </div>
