@@ -168,7 +168,7 @@ e <- ggplot(mpg, aes(cty, hwy))
 -   `e + geom_label(aes(label = cty), nudge_x = 1, nudge_y = 1)`: Add text with a rectangle background.
     `aes()` arguments: - `x`, `y`, `label`, `alpha`, `angle`, `color`, `family`, `fontface`, `hjust`, `lineheight`, `size`, `vjust`.
 
--   ``` e +``geom_point``() ```: Draw a scatter plot.
+-   `e + geom_point()`: Draw a scatter plot.
     `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `shape`, `size`, `stroke`.
 
 -   `e + geom_quantile()`: Fit and draw quantile regression for the plot data.
@@ -532,22 +532,22 @@ Facets divide a plot into subplots based on the values of one or more discrete v
 t <- ggplot(mpg, aes(cty, hwy)) + geom_point()
 ```
 
--   `t + facet_grid(cols = vars(fl))`: Facet into a column based on fl.
+-   `t + facet_grid(. ~ fl)`: Facet into a column based on fl.
 
--   `t + facet_grid(rows = vars(year))`: Facet into rows based on year.
+-   `t + facet_grid(year ~ .)`: Facet into rows based on year.
 
--   `t + facet_grid(rows = vars(year), cols = vars(fl))`: Facet into both rows and columns.
+-   `t + facet_grid(year ~ fl)`: Facet into both rows and columns.
 
--   `t_facet_wrap(vars(fl))`: Wrap facets into a rectangular layout.
+-   `t + facet_wrap(~fl)`: Wrap facets into a rectangular layout.
 
--   `t + facet_grid(rows = vars(drv), cols = vars(fl), scales = "free")`: Set **scales** to let axis limits vary across facets.
+-   `t + facet_grid(drv ~ fl, scales = "free")`: Set **scales** to let axis limits vary across facets.
     Also `"free_x"` for x axis limits adjust to individual facets and `"free_y"` for y axis limits adjust to individual facets.
 
 Set **labeller** to adjust facet label:
 
--   `t + facet_grid(cols = vars(fl), labeller = label_both)`: Labels each facet as "fl: c", "fl: d", etc.
+-   `t + facet_grid(. ~ fl, labeller = label_both)`: Labels each facet as "fl: c", "fl: d", etc.
 
--   `t + facet_grid(rows = vars(fl), labeller = label_bquote(alpha ^ .(fl)))`: Labels each facet as "𝛼^c^", "𝛼^d^", etc.
+-   `t + facet_grid(fl ~ ., labeller = label_bquote(alpha ^ .(fl)))`: Labels each facet as "𝛼^c^", "𝛼^d^", etc.
 
 ## Labels and Legends
 
