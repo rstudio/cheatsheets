@@ -259,26 +259,27 @@ l2 <- list(x = "a", y = "z")
 
 ### Concatenation
 
-`list_c()`, `list_cbind()`, and `list_rbind()` concatenate all elements together.
+```{r}
+x1 <- list(a = 1, b = 2, c = 3)
+x2 <- list(
+  a = data.frame(x = 1:2),
+  b = data.frame(y = "a")
+)
+```
 
--   `list_c()` combines elements into a vector by concatenating them together.
+-   `list_c()`: Combines elements into a vector by concatenating them together.
 
     ```{r}
-    x1 <- list(a = 1, b = 2, c = 3)
     list_c(x1)
     ```
 
--   `list_rbind()` combines elements into a data frame by row-binding them together.
+-   `list_rbind()`: Combines elements into a data frame by row-binding them together.
 
     ```{r}
-    x2 <- list(
-      a = data.frame(x = 1:2),
-      b = data.frame(y = "a")
-    )
     list_rbind(x2)
     ```
 
--   `list_cbind()` combines elements into a data frame by column-binding them together.
+-   `list_cbind()`: Combines elements into a data frame by column-binding them together.
 
     ```{r}
     list_cbind(x2)
