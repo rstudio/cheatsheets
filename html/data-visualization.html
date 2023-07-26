@@ -259,8 +259,6 @@ Translations (PDF)
 <ul>
 <li><p><code>color</code> and <code>fill</code>: String (<code>"red"</code>, <code>"#RRGGBB"</code>).</p></li>
 <li><p><code>linetype</code>: Integer or string (0 = <code>"blank"</code>, 1 = <code>"solid"</code>, 2 = <code>"dashed"</code>, 3 = <code>"dotted"</code>, 4 = <code>"dotdash"</code>, 5 = <code>"longdash"</code>, 6 = <code>"twodash"</code>).</p></li>
-<li><p><code>lineend</code>: String (<code>"round"</code>, <code>"butt"</code>, or <code>"square"</code>).</p></li>
-<li><p><code>linejoin</code>: String (<code>"round"</code>, <code>"mitre"</code>, or <code>"bevel"</code>).</p></li>
 <li><p><code>size</code>: Integer (line width in mm for outlines).</p></li>
 <li><p><code>linewidth</code>: Integer (line width in mm for lines).</p></li>
 <li><p><code>shape</code>: Integer/shape name or a single character (<code>"a"</code>).</p>
@@ -330,7 +328,7 @@ Translations (PDF)
 </div>
 <ul>
 <li><p><code>e + geom_label(aes(label = cty), nudge_x = 1, nudge_y = 1)</code>: Add text with a rectangle background. <code>aes()</code> arguments: - <code>x</code>, <code>y</code>, <code>label</code>, <code>alpha</code>, <code>angle</code>, <code>color</code>, <code>family</code>, <code>fontface</code>, <code>hjust</code>, <code>lineheight</code>, <code>size</code>, <code>vjust</code>.</p></li>
-<li><p><code>e +``geom_point``()</code>: Draw a scatter plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>shape</code>, <code>size</code>, <code>stroke</code>.</p></li>
+<li><p><code>e + geom_point()</code>: Draw a scatter plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>shape</code>, <code>size</code>, <code>stroke</code>.</p></li>
 <li><p><code>e + geom_quantile()</code>: Fit and draw quantile regression for the plot data. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>, <code>weight</code>.</p></li>
 <li><p><code>e + geom_rug(sides = "bl")</code>: Draw a rug plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>linetype</code>, <code>linewidth</code>.</p></li>
 <li><p><code>e + geom_smooth(method = lm)</code>: Plot smoothed conditional means. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>, <code>weight</code>.</p></li>
@@ -427,30 +425,30 @@ Translations (PDF)
 <h2 class="anchored" data-anchor-id="stats">Stats</h2>
 <p>An alternative way to build a layer.</p>
 <p>A stat builds new variables to plot (e.g., count, prop).</p>
-<p>Visualize a stat by changing the default stat of a geom function, <code>geom_bar(stat = "count")</code>, or by using a stat function, <code>stat_count(geom = "bar")</code>, which calls a default geom to make a layer (equivalent to a geom function). Use <code>..name..</code> syntax to map stat variables to aesthetics.</p>
+<p>Visualize a stat by changing the default stat of a geom function, <code>geom_bar(stat = "count")</code>, or by using a stat function, <code>stat_count(geom = "bar")</code>, which calls a default geom to make a layer (equivalent to a geom function). Use <code>after_stat(name)</code> syntax to map the stat variable <code>name</code> to an aesthetic.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>i <span class="sc">+</span> <span class="fu">stat_density_2d</span>(<span class="fu">aes</span>(<span class="at">fill =</span> ..level..), <span class="at">geom =</span> <span class="st">"polygon"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>i <span class="sc">+</span> <span class="fu">stat_density_2d</span>(<span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">after_stat</span>(level)), <span class="at">geom =</span> <span class="st">"polygon"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In this example, <code>"polygon"</code> is the geom to use, <code>stat_density_2d()</code> is the stat function, <code>aes()</code> contains the geom mappings, and <code>..level..</code> is the variable created by stat.</p>
+<p>In this example, <code>"polygon"</code> is the geom to use, <code>stat_density_2d()</code> is the stat function, <code>aes()</code> contains the geom mappings, and <code>level</code> is the variable created by stat.</p>
 <ul>
-<li><p><code>c + stat_bin(binwidth = 1, boundary = 10)</code>: <code>x</code>, <code>y</code> | <code>..count..</code>, <code>..ncount..</code>, <code>..density..</code>, <code>..ndensity..</code></p></li>
-<li><p><code>c + stat_count(width = 1)</code>: <code>x</code>, <code>y</code> | <code>..count..</code>, <code>..density..</code></p></li>
-<li><p><code>c + stat_density(adjust = 1, kernel = "gaussian")</code>: <code>x</code>, <code>y</code> | <code>..count..</code>, <code>..density..</code>, <code>..scaled..</code></p></li>
-<li><p><code>e + stat_bin_2d(bins = 30, drop = T)</code>: <code>x</code>, <code>y</code>, <code>fill</code> | <code>..count..</code>, <code>..density..</code></p></li>
-<li><p><code>e + stat_bin_hex(bins =30)</code>: <code>x</code>, <code>y</code>, <code>fill</code> | <code>..count..</code>, <code>..density..</code></p></li>
-<li><p><code>e + stat_density_2d(contour = TRUE, n = 100)</code>: <code>x</code>, <code>y</code>, <code>color</code>, <code>linewidth</code> | <code>..level..</code></p></li>
+<li><p><code>c + stat_bin(binwidth = 1, boundary = 10)</code>: <code>x</code>, <code>y</code> | <code>count</code>, <code>ncount</code>, <code>density</code>, <code>ndensity</code></p></li>
+<li><p><code>c + stat_count(width = 1)</code>: <code>x</code>, <code>y</code> | <code>count</code>, <code>density</code></p></li>
+<li><p><code>c + stat_density(adjust = 1, kernel = "gaussian")</code>: <code>x</code>, <code>y</code> | <code>count</code>, <code>density</code>, <code>scaled</code></p></li>
+<li><p><code>e + stat_bin_2d(bins = 30, drop = T)</code>: <code>x</code>, <code>y</code>, <code>fill</code> | <code>count</code>, <code>density</code></p></li>
+<li><p><code>e + stat_bin_hex(bins =30)</code>: <code>x</code>, <code>y</code>, <code>fill</code> | <code>count</code>, <code>density</code></p></li>
+<li><p><code>e + stat_density_2d(contour = TRUE, n = 100)</code>: <code>x</code>, <code>y</code>, <code>color</code>, <code>linewidth</code> | <code>level</code></p></li>
 <li><p><code>e + stat_ellipse(level = 0.95, segments = 51, type = "t")</code></p></li>
-<li><p><code>l + stat_contour(aes(z = z))</code>: <code>x</code>, <code>y</code>, <code>z</code>, <code>order</code> | <code>..level..</code></p></li>
-<li><p><code>l + stat_summary_hex(aes(z = z), bins = 30, fun = max)</code>: <code>x</code>, <code>y</code>, <code>z</code>, <code>fill</code> | <code>..value..</code></p></li>
-<li><p><code>l + stat_summary_2d(aes(z = z), bins = 30, fun = mean)</code>: <code>x</code>, <code>y</code>, <code>z</code>, <code>fill</code> | <code>..value..</code></p></li>
-<li><p><code>f + stat_boxplot(coef = 1.5)</code>: <code>x</code>, <code>y</code> | <code>..lower..</code>, <code>..middle..</code>, <code>..upper..</code>, <code>..width..</code>, <code>..ymin..</code>, <code>..ymax..</code></p></li>
-<li><p><code>f + stat_ydensity(kernel = "gaussian", scale = "area")</code>: <code>x</code>, <code>y</code> | <code>..density..</code>, <code>..scaled..</code>, <code>..count..</code>, <code>..n..</code>, <code>..violinwidth..</code>, <code>..width..</code></p></li>
-<li><p><code>e + stat_ecdf(n = 40)</code>: <code>x</code>, <code>y</code> | <code>..x..</code>, <code>..y..</code></p></li>
-<li><p><code>e + stat_quantile(quantiles = c(0.1, 0.9), formula = y ~ log(x), method = "rq")</code>: <code>x</code>, <code>y</code> | <code>..quantile..</code></p></li>
-<li><p><code>e + stat_smooth(method = "lm", formula = y ~ x, se = T, level = 0.95)</code>: <code>x</code>, <code>y</code> | <code>..se..</code>, <code>..x..</code>, <code>..y..</code>, <code>..ymin..</code>, <code>..ymax..</code></p></li>
-<li><p><code>ggplot() + xlim(-5, 5) + stat_function(fun = dnorm, n = 20, geom = "point")</code>: <code>x</code> | <code>..x..</code>, <code>..y..</code></p></li>
-<li><p><code>ggplot() + stat_qq(aes(sample = 1:100))</code>: <code>x</code>, <code>y</code>, <code>sample</code> | <code>..sample..</code>, <code>..theoretical..</code></p></li>
-<li><p><code>e + stat_sum()</code>: <code>x</code>, <code>y</code>, <code>size</code> | <code>..n..</code>, <code>..prop..</code></p></li>
+<li><p><code>l + stat_contour(aes(z = z))</code>: <code>x</code>, <code>y</code>, <code>z</code>, <code>order</code> | <code>level</code></p></li>
+<li><p><code>l + stat_summary_hex(aes(z = z), bins = 30, fun = max)</code>: <code>x</code>, <code>y</code>, <code>z</code>, <code>fill</code> | <code>value</code></p></li>
+<li><p><code>l + stat_summary_2d(aes(z = z), bins = 30, fun = mean)</code>: <code>x</code>, <code>y</code>, <code>z</code>, <code>fill</code> | <code>value</code></p></li>
+<li><p><code>f + stat_boxplot(coef = 1.5)</code>: <code>x</code>, <code>y</code> | <code>lower</code>, <code>middle</code>, <code>upper</code>, <code>width</code>, <code>ymin</code>, <code>ymax</code></p></li>
+<li><p><code>f + stat_ydensity(kernel = "gaussian", scale = "area")</code>: <code>x</code>, <code>y</code> | <code>density</code>, <code>scaled</code>, <code>count</code>, <code>n</code>, <code>violinwidth</code>, <code>width</code></p></li>
+<li><p><code>e + stat_ecdf(n = 40)</code>: <code>x</code>, <code>y</code> | <code>x</code>, <code>y</code></p></li>
+<li><p><code>e + stat_quantile(quantiles = c(0.1, 0.9), formula = y ~ log(x), method = "rq")</code>: <code>x</code>, <code>y</code> | <code>quantile</code></p></li>
+<li><p><code>e + stat_smooth(method = "lm", formula = y ~ x, se = T, level = 0.95)</code>: <code>x</code>, <code>y</code> | <code>se</code>, <code>x</code>, <code>y</code>, <code>ymin</code>, <code>ymax</code></p></li>
+<li><p><code>ggplot() + xlim(-5, 5) + stat_function(fun = dnorm, n = 20, geom = "point")</code>: <code>x</code> | <code>x</code>, <code>y</code></p></li>
+<li><p><code>ggplot() + stat_qq(aes(sample = 1:100))</code>: <code>x</code>, <code>y</code>, <code>sample</code> | <code>sample</code>, <code>theoretical</code></p></li>
+<li><p><code>e + stat_sum()</code>: <code>x</code>, <code>y</code>, <code>size</code> | <code>n</code>, <code>prop</code></p></li>
 <li><p><code>e + stat_summary(fun.data = "mean_cl_boot")</code></p></li>
 <li><p><code>h + stat_summary_bin(fun = "mean", geom = "bar")</code></p></li>
 <li><p><code>e + stat_identity()</code></p></li>
@@ -587,16 +585,16 @@ Translations (PDF)
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><p><code>t + facet_grid(cols = vars(fl))</code>: Facet into a column based on fl.</p></li>
-<li><p><code>t + facet_grid(rows = vars(year))</code>: Facet into rows based on year.</p></li>
-<li><p><code>t + facet_grid(rows = vars(year), cols = vars(fl))</code>: Facet into both rows and columns.</p></li>
-<li><p><code>t_facet_wrap(vars(fl))</code>: Wrap facets into a rectangular layout.</p></li>
-<li><p><code>t + facet_grid(rows = vars(drv), cols = vars(fl), scales = "free")</code>: Set <strong>scales</strong> to let axis limits vary across facets. Also <code>"free_x"</code> for x axis limits adjust to individual facets and <code>"free_y"</code> for y axis limits adjust to individual facets.</p></li>
+<li><p><code>t + facet_grid(. ~ fl)</code>: Facet into a column based on fl.</p></li>
+<li><p><code>t + facet_grid(year ~ .)</code>: Facet into rows based on year.</p></li>
+<li><p><code>t + facet_grid(year ~ fl)</code>: Facet into both rows and columns.</p></li>
+<li><p><code>t + facet_wrap(~ fl)</code>: Wrap facets into a rectangular layout.</p></li>
+<li><p><code>t + facet_grid(drv ~ fl, scales = "free")</code>: Set <strong>scales</strong> to let axis limits vary across facets. Also <code>"free_x"</code> for x axis limits adjust to individual facets and <code>"free_y"</code> for y axis limits adjust to individual facets.</p></li>
 </ul>
 <p>Set <strong>labeller</strong> to adjust facet label:</p>
 <ul>
-<li><p><code>t + facet_grid(cols = vars(fl), labeller = label_both)</code>: Labels each facet as “fl: c”, “fl: d”, etc.</p></li>
-<li><p><code>t + facet_grid(rows = vars(fl), labeller = label_bquote(alpha ^ .(fl)))</code>: Labels each facet as “𝛼<sup>c</sup>”, “𝛼<sup>d</sup>”, etc.</p></li>
+<li><p><code>t + facet_grid(. ~ fl, labeller = label_both)</code>: Labels each facet as “fl: c”, “fl: d”, etc.</p></li>
+<li><p><code>t + facet_grid(fl ~ ., labeller = label_bquote(alpha ^ .(fl)))</code>: Labels each facet as “𝛼<sup>c</sup>”, “𝛼<sup>d</sup>”, etc.</p></li>
 </ul>
 </section>
 <section id="labels-and-legends" class="level2">
