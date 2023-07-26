@@ -64,7 +64,7 @@ l2 <- list(x = "a", y = "z")
     ```
 
 |           |                                                       | One list                            | Two lists                                            | Many lists                                                 |
-|--------------|---------------|---------------|--------------|--------------|
+|-----------|-------------------------------------------------------|-------------------------------------|------------------------------------------------------|------------------------------------------------------------|
 | Logical   | Returns a logical vector.                             | `map_lgl(x, is.integer)`            | `` map2_lgl(l2, l1, `%in%`) ``                       | `` pmap_lgl(list(l2, l1), `%in%`) ``                       |
 | Integer   | Returns an integer vector.                            | `map_int(x, length)`                | `` map2_int(y, z, `+`) ``                            | `` pmap_int(list(y, z), `+`) ``                            |
 | Double    | Returns a double vector.                              | `map_dbl(x, mean)`                  | `map2_dbl(y, z, ~ .x / .y)`                          | `pmap_dbl(list(y, z), ~ .x / .y)`                          |
