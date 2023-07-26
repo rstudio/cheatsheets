@@ -90,7 +90,6 @@ l2 <- list(x = "a", y = "z")
 -   Use a `string` or `integer` with any map function to index list elements by name or position.
     `map(l, "name")` becomes `map(l, function(x) x[["name"]])`.
 
-
 ### Modify
 
 -   `modify(.x, .f, ...)`: Apply a function to each element.
@@ -139,7 +138,6 @@ l2 <- list(x = "a", y = "z")
     accumulate(a, sum)
     ```
 
-
 <!-- Page 2 -->
 
 ## Vectors
@@ -166,17 +164,17 @@ l2 <- list(x = "a", y = "z")
 
 ### Predicate functions
 
-A predicate function returns a single `TRUE` or `FALSE` and purrr provides 
+A predicate function returns a single `TRUE` or `FALSE` and purrr provides
 
--   `keep(.x, .p, ...)` retains elements where the predicate is `TRUE`;
-    `discard(.x, .p, ...)` drops elements where the predicate is `TRUE`.
+-   `keep(.x, .p, ...)` retains elements where the predicate is `TRUE`; `discard(.x, .p, ...)` drops elements where the predicate is `TRUE`.
 
     ```{r}
     keep(x, is.numeric)
     discard(x, is.numeric)
     ```
 
--   `head_while(.x, .p, ...)` keeps the first elements until one fails the predicate. Also `tail_while()`.
+-   `head_while(.x, .p, ...)` keeps the first elements until one fails the predicate.
+    Also `tail_while()`.
 
     ```{r}
     head_while(x, is.character)
