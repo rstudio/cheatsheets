@@ -72,7 +72,7 @@ l2 <- list(x = "a", y = "z")
 | Vector    | Returns a vector that is of the simplest common type. | `map_vec(l1, paste, collapse = "")` | `map2_vec(l1, l2, paste, collapse = ",", sep = ":")` | `pmap_chr(list(l1, l2), paste, collapse = ",", sep = ":")` |
 | No output | Calls `.f` for its side-effect.                       | `walk(x, print)`                    | `walk2(objs, paths, save)`                           | `pwalk(list(objs, paths), save)`                           |
 
-## Function Shortcuts
+### Function Shortcuts
 
 -   Use `\(x)` with functions like `map()` that have single arguments.
     `map(l, \(x) x + 2)` becomes `map(l, function(x) x + 2)`.
@@ -90,18 +90,59 @@ l2 <- list(x = "a", y = "z")
 -   Use a `string` or `integer` with any map function to index list elements by name or position.
     `map(l, "name")` becomes `map(l, function(x) x[["name"]])`.
 
-<!-- Page 2 -->
 
-## Work with Lists
+### Modify
 
-### Predicate functionals
-
--   `keep(.x, .p, ...)`: Keep elements that pass a logical test.
-    Conversely `discard()`.
+-   `modify(.x, .f, ...)`: Apply a function to each element.
+    Also `modify2()` and `imodify()`.
 
     ```{r}
-    keep(x, is.numeric)
+    modify(x, ~ . + 2)
     ```
+
+-   `modify_at(.x, .at, .f, ...)`: Apply a function to selected elements.
+    Also `map_at()`.
+
+    ```{r}
+    modify_at(x, "b", ~ . + 2)
+    ```
+
+-   `modify_if(.x, .p, .f, ...)`: Apply a function to elements that pass a test.
+    Also `map_if()`.
+
+    ```{r}
+    modify_if(x, is.numeric, ~ . + 2)
+    ```
+
+-   `modify_depth(.x, .depth, .f, ...)`: Apply function to each element at a given level of a list.
+    Also `map_depth()`.
+
+    ```{r}
+    modify_depth(x, 1, ~ . + 2)
+    ```
+
+### Reduce
+
+-   `reduce(.x, .f, ..., .init, .dir = c("forward", "backward"))`: Apply function recursively to each element of a list of vector.
+    Also `reduce2()`.
+
+    ```{r}
+    a <- list(1, 2, 3, 4)
+    reduce(a, sum)
+    ```
+
+-   `accumulate(.x, .f, ..., .init)`: Reduce a list, but also return intermediate results in a list.
+    Also `accumulate2()`.
+
+    ```{r}
+    a <- list(1, 2, 3, 4)
+    accumulate(a, sum)
+    ```
+
+
+<!-- Page 2 -->
+
+## Vectors
 
 -   `compact(.x, .p = identity)`: Discard empty elements.
 
@@ -116,8 +157,26 @@ l2 <- list(x = "a", y = "z")
     keep_at(x, 2)
     ```
 
--   `head_while(.x, .p, ...)`: Return head elements until one does not pass.
-    Also `tail_while()`.
+-   `set_names(x, nm = x)`: Set the names of a vector/list directly or with a function.
+
+    ```{r}
+    set_names(x, c("p", "q", "r"))
+    set_names(x, tolower)
+    ```
+
+### Predicate functions
+
+A predicate function returns a single `TRUE` or `FALSE` and purrr provides 
+
+-   `keep(.x, .p, ...)` retains elements where the predicate is `TRUE`;
+    `discard(.x, .p, ...)` drops elements where the predicate is `TRUE`.
+
+    ```{r}
+    keep(x, is.numeric)
+    discard(x, is.numeric)
+    ```
+
+-   `head_while(.x, .p, ...)` keeps the first elements until one fails the predicate. Also `tail_while()`.
 
     ```{r}
     head_while(x, is.character)
@@ -169,12 +228,6 @@ l2 <- list(x = "a", y = "z")
     x |> pluck("b")
     ```
 
--   `pluck_depth(x)`: Return depth (number of levels of indexes).
-
-    ```{r}
-    pluck_depth(x)
-    ```
-
 -   `assign_in(x, where, value)`: Assign a value to a location using pluck selection.
 
     ```{r}
@@ -202,62 +255,7 @@ l2 <- list(x = "a", y = "z")
     list_transpose(x)
     ```
 
--   `set_names(x, nm = x)`: Set the names of a vector/list directly or with a function.
-
-    ```{r}
-    set_names(x, c("p", "q", "r"))
-    set_names(x, tolower)
-    ```
-
-### Modify
-
--   `modify(.x, .f, ...)`: Apply a function to each element.
-    Also `modify2()` and `imodify()`.
-
-    ```{r}
-    modify(x, ~ . + 2)
-    ```
-
--   `modify_at(.x, .at, .f, ...)`: Apply a function to selected elements.
-    Also `map_at()`.
-
-    ```{r}
-    modify_at(x, "b", ~ . + 2)
-    ```
-
--   `modify_if(.x, .p, .f, ...)`: Apply a function to elements that pass a test.
-    Also `map_if()`.
-
-    ```{r}
-    modify_if(x, is.numeric, ~ . + 2)
-    ```
-
--   `modify_depth(.x, .depth, .f, ...)`: Apply function to each element at a given level of a list.
-    Also `map_depth()`.
-
-    ```{r}
-    modify_depth(x, 1, ~ . + 2)
-    ```
-
-### Reduce
-
--   `reduce(.x, .f, ..., .init, .dir = c("forward", "backward"))`: Apply function recursively to each element of a list of vector.
-    Also `reduce2()`.
-
-    ```{r}
-    a <- list(1, 2, 3, 4)
-    reduce(a, sum)
-    ```
-
--   `accumulate(.x, .f, ..., .init)`: Reduce a list, but also return intermediate results in a list.
-    Also `accumulate2()`.
-
-    ```{r}
-    a <- list(1, 2, 3, 4)
-    accumulate(a, sum)
-    ```
-
-### Concatenation
+### Concatenate
 
 ```{r}
 x1 <- list(a = 1, b = 2, c = 3)
