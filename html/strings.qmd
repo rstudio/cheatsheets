@@ -31,7 +31,7 @@ library(stringr)
 
 ```{r}
 #| include: false
-see <- function(rx) str_view_all("abc ABC 123\t.!?\\(){}\n", rx)
+see <- function(rx) str_view("abc ABC 123\t.!?\\(){}\n", rx)
 ```
 
 ## Detect Matches
@@ -233,11 +233,11 @@ see <- function(rx) str_view_all("abc ABC 123\t.!?\\(){}\n", rx)
     str_conv(fruit, "ISO-8859-1")
     ```
 
--   `str_view_all(string, pattern, match = NA)`: View HTML rendering of all regex matches.
+-   `str_view(string, pattern, match = NA)`: View HTML rendering of all regex matches.
     Also `str_view()` to see only the first match.
 
     ```{r}
-    str_view_all(sentences, "[aeiou]")
+    str_view(sentences, "[aeiou]")
     ```
 
 -   `str_equal(x, y, locale = "en", ignore_case = FALSE, ...)`^1^: Determine if two strings are equivalent.
@@ -310,7 +310,7 @@ To change this default, wrap the pattern in one of:
 ### Match Characters
 
 ```{r}
-see <- function(rx) str_view_all("abc ABC 123\t.!?\\(){}\n", rx)
+see <- function(rx) str_view("abc ABC 123\t.!?\\(){}\n", rx)
 ```
 
 +-------------+----------------+-----------------------------------+----------------------+-------------------------------------------------------------------+
@@ -440,53 +440,49 @@ see <- function(rx) str_view_all("abc ABC 123\t.!?\\(){}\n", rx)
 
 ### Alternates
 
-`alt <- function(rx) str_view_all("abcde", rx)`
+`alt <- function(rx) str_view("abcde", rx)`
 
-+------------+--------------+-----------------+--------------------------------------+
-| regexp     | matches      | example         | example output\                      |
-|            |              |                 | (highlighted characters are in \<\>) |
-+============+==============+=================+======================================+
-| `ab|d`     | or           | `alt("ab|d")`   | ```                                  |
-|            |              |                 | <ab>c<d>e                            |
-|            |              |                 | ```                                  |
-+------------+--------------+-----------------+--------------------------------------+
-| `[abe]`    | one of       | `alt("[abe]"`   | ```                                  |
-|            |              |                 | <a><b>cd<e>                          |
-|            |              |                 | ```                                  |
-+------------+--------------+-----------------+--------------------------------------+
-| `[^abe]`   | anything but | `alt("[^abe]")` | ```                                  |
-|            |              |                 | ab<c><d>e                            |
-|            |              |                 | ```                                  |
-+------------+--------------+-----------------+--------------------------------------+
-| `[a-c]`    | range        | `alt("[a-c]")`  | ```                                  |
-|            |              |                 | <a><b><c>de                          |
-|            |              |                 | ```                                  |
-+------------+--------------+-----------------+--------------------------------------+
++-------------+--------------+-----------------+--------------------------------------+
+| regexp      | matches      | example         | example output\                      |
+|             |              |                 | (highlighted characters are in \<\>) |
++=============+==============+=================+======================================+
+| `ab|d`      | or           | `alt("ab|d")`   | ```                                  |
+|             |              |                 | <ab>c<d>e                            |
+|             |              |                 | ```                                  |
++-------------+--------------+-----------------+--------------------------------------+
+| `[abe]`     | one of       | `alt("[abe]"`   | ```                                  |
+|             |              |                 | <a><b>cd<e>                          |
+|             |              |                 | ```                                  |
++-------------+--------------+-----------------+--------------------------------------+
+| `[^abe]`    | anything but | `alt("[^abe]")` | ```                                  |
+|             |              |                 | ab<c><d>e                            |
+|             |              |                 | ```                                  |
++-------------+--------------+-----------------+--------------------------------------+
+| `[a-c]`     | range        | `alt("[a-c]")`  | ```                                  |
+|             |              |                 | <a><b><c>de                          |
+|             |              |                 | ```                                  |
++-------------+--------------+-----------------+--------------------------------------+
 
 : Alternates
 
 ### Anchors
 
-`anchor <- function(rx) str_view_all("aaa", rx)`
+`anchor <- function(rx) str_view("aaa", rx)`
 
-+------------+-----------------+----------------+--------------------------------------+
-| regexp      | matches         | example        | example output\                      |
-|             |                 |                | (highlighted characters are in \<\>) |
-+============+=================+================+======================================+
-| `^a`        | start of string | `anchor("^a")` | ```                                  |
-|             |                 |                | <a>aa                                |
-|             |                 |                | ```                                  |
-+------------+-----------------+----------------+--------------------------------------+
-| `a$`        | end of string   | `anchor("a$")` | ```                                  |
-|             |                 |                | aa<a>                                |
-|             |                 |                | ```                                  |
-+------------+-----------------+----------------+--------------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------+
+| regexp \| matches \| example \| example output\                                                                                            |
+| \| \| \| (highlighted characters are in \<\>)                                                                                              |
++============================================================================================================================================+
+| `^a` \| start of string \| `anchor("^a")` \| `|                 |                | <a>aa             |                 |                |` |
++--------------------------------------------------------------------------------------------------------------------------------------------+
+| `a$` \| end of string \| `anchor("a$")` \| `|                 |                | aa<a>             |                 |                |`   |
++--------------------------------------------------------------------------------------------------------------------------------------------+
 
 : Anchors
 
 ### Look Arounds
 
-`look <- function(rx) str_view_all("bacad", rx)`
+`look <- function(rx) str_view("bacad", rx)`
 
 +-------------+-----------------+-------------------+--------------------------------------+
 | regexp      | matches         | example           | example output\                      |
@@ -513,7 +509,7 @@ see <- function(rx) str_view_all("abc ABC 123\t.!?\\(){}\n", rx)
 
 ### Quantifiers
 
-`quant <- function(rx) str_view_all(".a.aa.aaa", rx)`
+`quant <- function(rx) str_view(".a.aa.aaa", rx)`
 
 +-------------+---------------------+-------------------+--------------------------------------+
 | regexp      | matches             | example           | example output\                      |
@@ -548,7 +544,7 @@ see <- function(rx) str_view_all("abc ABC 123\t.!?\\(){}\n", rx)
 
 ### Groups
 
-`ref <- function(rx) str_view_all("abbaab", rx)`
+`ref <- function(rx) str_view("abbaab", rx)`
 
 Use parentheses to set precedent (order of evaluation) and create groups
 

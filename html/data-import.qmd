@@ -428,15 +428,17 @@ read_excel(path, sheet = NULL, range = NULL)
 
     2.  Set the vector names to be the sheet names.
 
-    3.  Use `purrr::map_dfr()` to read multiple files into one data frame.
+    3.  Use `purrr::map()` and `purrr::list_rbind()` to read multiple files into one data frame.
 
         ```{r}
         #| eval: false
 
         path <- "your_file_path.xlsx"
-        path |> excel_sheets() |>
-            set_names() |>
-            map_dfr(read_excel, path = path)
+        path |> 
+          excel_sheets() |>
+          set_names() |>
+          map(read_excel, path = path) |>
+          list_rbind()
         ```
 
 ### readxl column specification

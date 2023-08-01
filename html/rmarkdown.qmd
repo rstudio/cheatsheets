@@ -109,16 +109,20 @@ translation_list(sheet_name)
 Surround code chunks with ```` ```{r} ```` and ```` ``` ```` or use the Insert Code Chunk button.
 Add a chunk label and/or chunk options inside the curly braces after `r`.
 
-```{{{r chunk-label, include = FALSE}}}
+````{verbatim}
+```{r chunk-label, include = FALSE}
 ```
+````
 
 ### Set Global Options
 
 Set options for the entire document in the first chunk.
 
-```{{{r include = FALSE}}}
+````{verbatim}
+```{r include = FALSE}
 knitr::opts_chunk$set(message = FALSE)
 ```
+````
 
 ### Inline Code
 
@@ -175,7 +179,7 @@ will render as "Built with `r getRversion()`" in the output file.
 
 : Table of chunk options. The first column is the option name, the second column is the option's default value, the third column describes what the option does.
 
-See more options and defaults by running `str(knitr::opts_chunk$get())`
+See more options and defaults by running `str(knitr::opts_chunk$get())`.
 
 ## Insert Citations
 
@@ -206,8 +210,8 @@ Create citations from a bibliography file, a Zotero library, or from DOI referen
 
 Output data frames as tables using `kable(data, caption)`.
 
-````         
-``` {{r}}
+````{verbatim}
+```{r}
 data <- faithful[1:4,]
 knitr::kable(data, caption = "Tables with kable")
 ```
@@ -356,17 +360,17 @@ The syntax on the left renders as the output on the right.
 | Table: Caption text, example rendered table |                                                                          |
 | ```                                         |                                                                          |
 +---------------------------------------------+--------------------------------------------------------------------------+
-| HTML Tabsets                                | ::: panel-tabset                                                         |
-|                                             | ## Plots                                                                 |
-| ```                                         |                                                                          |
-| ::: panel-tabset                            | text                                                                     |
-| ## Plots text                               |                                                                          |
-| text                                        | ## Tables                                                                |
+| HTML Tabsets                                | ## Results                                                               |
 |                                             |                                                                          |
-| ## Tables                                   | more text                                                                |
-| more text                                   | :::                                                                      |
-| :::                                         |                                                                          |
-| ```                                         |                                                                          |
+| ```                                         | ::: panel-tabset                                                         |
+| ## Results {.tabset}                        | ## Plots                                                                 |
+| ### Plots                                   |                                                                          |
+| text                                        | text                                                                     |
+|                                             |                                                                          |
+| ### Tables                                  | ## Tables                                                                |
+| more text                                   |                                                                          |
+| ```                                         | more text                                                                |
+|                                             | :::                                                                      |
 +---------------------------------------------+--------------------------------------------------------------------------+
 
 : Table of markdown syntax and rendered examples. The syntax in the first column renders to the output in the second column.
@@ -476,8 +480,8 @@ Parameterize your documents to ruse with new inputs (e.g. data, values, etc.).
 
 2.  **Call parameters** in code using `params$name`.
 
-    ````         
-    ``` {{r}}
+    ````{verbatim}
+    ```{r}
     data <- df[,params$state]
     summary(data)
     ```
@@ -592,13 +596,15 @@ Turn your report into an interactive Shiny document in 4 steps:
 
 3.  Call Shiny output functions to embed reactive output.
 
-    ```{{{r echo = FALSE}}}
+    ````{verbatim}
+    ```{r echo = FALSE}
     numericInput("n", "How many cars?", 5)
 
     renderTable({
       head(cars, input$n)
     })
     ```
+    ````
 
 4.  Render with `rmarkdown::run()` or click **Run Document** in RStudio IDE.
 

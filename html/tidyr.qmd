@@ -6,6 +6,8 @@ execute:
   eval: true
   output: false
   warning: false
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r}
@@ -153,7 +155,7 @@ Use these functions to split or combine cells into individual, isolated values.
     unite(table5, century, year, col = "year", sep = "")
     ```
 
--   `separate(data, col, into, sep = "[^[:alnum:]]+", remove = TRUE, convert = FALSE, extra = "warn", fill = "warn", ...)`: Separate each cell in a column into several columns.
+-   `separate_wider_delim(data, cols, delim, ..., names = NULL, names_sep = NULL, names_repair = "check unique", too_few, too_many, cols_remove = TRUE)`: Separate each cell in a column into several columns.
     Also `extract()`.
 
     -   The initial `table3` looks like the following:
@@ -164,15 +166,15 @@ Use these functions to split or combine cells into individual, isolated values.
     table3
     ```
 
-    -   The output of `separate()` will look like the following:
+    -   The output of `separate_wider_delim()` will look like the following:
 
     ```{r}
     #| output: true
 
-    separate(table3, rate, sep = "/", into = c("cases", "pop"))
+    separate_wider_delim(table3, rate, delim = "/", names = c("cases", "pop"))
     ```
 
--   `separate_rows(data, ..., sep = "[^[:alnum:].]+", convert = FALSE)`: Separate each cell in a column into several rows.
+-   `separate_longer_delim(data, cols, delim, .., width, keep_empty)`: Separate each cell in a column into several rows.
 
     -   The initial `table3` looks like the following:
 
@@ -182,12 +184,12 @@ Use these functions to split or combine cells into individual, isolated values.
     table3
     ```
 
-    -   The output of `separate_rows()` will look like the following:
+    -   The output of `separate_longer_delim()` will look like the following:
 
     ```{r}
     #| output: true
 
-    separate_rows(table3, rate, sep = "/")
+    separate_longer_delim(table3, rate, delim = "/")
     ```
 
 ## Expand Tables
