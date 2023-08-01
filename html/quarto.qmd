@@ -1,5 +1,5 @@
 ---
-title: "quarto :: Cheatsheet"
+title: "Publish and Share with Quarto :: Cheatsheet"
 description: "QMD Edition"
 image-alt: ""
 engine: knitr
@@ -7,6 +7,7 @@ execute:
   eval: true
   output: false
   warning: false
+code-overflow: wrap
 ---
 
 ::: column-margin
@@ -20,161 +21,200 @@ execute:
 ```
 :::
 
-## What is Quarto?
+## Overview
 
-Quarto is an **open-source scientific and technical publishing system**:
+![](images/quarto-illustration.png){fig-alt="A schematic representing the multi-language input (e.g. Python, R, Observable, Julia) and multi-format output (e.g. PDF, html, Word documents, and more) versatility of Quarto."}[^credit] 
 
--   Create dynamic content with Python, R, Julia, and Observable.
+[^credit]: Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by [Allison Horst](https://allisonhorst.com/allison-horst).
 
--   Publish reproducible, production quality articles, presentations, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more.
+* **Author**: Write and code in plain text. Author documents as .qmd files, or Jupyter notebooks. Write in a rich Markdown syntax.
 
--   Share knowledge and insights organization-wide by publishing to Posit Connect, Confluence, or other publishing systems.
+* **Render**: Generate documents, presentations and more. Produce HTML, PDF, MS Word, reveal.js, MS Powerpoint, Beamer, websites, blogs, books...
+
+* **Share**: Share your work with the world. Quickly deploy to GitHub Pages, Netlify, Quarto Pub, Posit Cloud, or Posit Connect.
+
+### Get Quarto
 
 Get Quarto from: <https://quarto.org/docs/download/>
 
-Or, use version bundled with RStudio.
+Or, use version **bundled with RStudio.**
 
-## Workflow
+### Get Started
 
-### Author
+<https://quarto.org/docs/get-started>
 
-(Screenshot of .qmd in source editor)
+## Author
 
-Highlight:
+### Source File: hello.qmd
 
--   `.qmd`: plain text, use any text editor
--   YAML Header
-    -   Set Output Format(s) and Options
--   Markdown
-    -   Write Text
--   Code cells
-    -   Embed Code
+````{.markdown}
+---
+title: "Hello, Penguins"
+format: html
+execute:
+  echo: false
+---
 
-#### Authoring Tools
+## Meet the penguins
 
-Rich authoring experience in:
+The `penguins` data contains size measurements for 
+penguins from three islands in the Palmer Archipelago, 
+Antarctica.
 
--   RStudio
--   VS Code with the Quarto extension (quarto-vscode)
+The three species of penguins have quite distinct 
+distributions of physical dimensions (@fig-penguins).
 
-*Is this useful? Maybe as a Useful Shortcuts table, and use general language for command.*
+```{{r}}
+#| label: fig-penguins
+#| fig-cap: "Dimensions of penguins across three species."
+#| warning: false
+library(tidyverse, quietly = TRUE)
+library(palmerpenguins)
+penguins |>
+  ggplot(aes(x = flipper_length_mm, y = bill_length_mm)) +
+  geom_point(aes(color = species)) +
+  scale_color_manual(
+    values = c("darkorange", "purple", "cyan4")) +
+  theme_minimal()
+```
+````
 
-::: {layout-ncol="2"}
-+----------------------------------------+---------------+
-| RStudio                                | Shortcut      |
-+========================================+===============+
-| Create a new Quarto document           |               |
-+----------------------------------------+---------------+
-| Render Current Document                |               |
-+----------------------------------------+---------------+
-| Insert a new code chunk                |               |
-+----------------------------------------+---------------+
-| Run current code chunk                 |               |
-+----------------------------------------+---------------+
-| Run all chunks above the current chunk |               |
-+----------------------------------------+---------------+
-| Restart R Session and Run All Chunks   |               |
-+----------------------------------------+---------------+
+### Highlights in the source file
 
-+-----------------------------+---------------+
-| VS Code                     | Shortcut      |
-+=============================+===============+
-| Quarto: New Document        |               |
-+-----------------------------+---------------+
-| Quarto: Render              |               |
-+-----------------------------+---------------+
-| Quarto: Insert Code Cell    |               |
-+-----------------------------+---------------+
-| Quarto: Run Current Cell    |               |
-+-----------------------------+---------------+
-| Quarto: Run All Cells Above |               |
-+-----------------------------+---------------+
-| Quarto: Run All Cells       |               |
-+-----------------------------+---------------+
-:::
+*   Set format(s) and options. Use YAML Syntax.
+    
+    ```` markdown
+    ---
+    title: "Hello, Penguins"
+    format: html
+    execute:
+      echo: false
+    ---
+    ````
 
-#### Visual Editor
+*   `## Write with **Markdown**` 
+    
+    **RStudio**: Help > Markdown Quick Reference
+    
+    RStudio & VS Code: Use the **Visual Editor**
 
-(Screenshot of Visual Editor toolbar, with callouts for features below)
+    ```` markdown
+    ## Meet the penguins
+    
+    The `penguins` data contains size measurements for 
+    penguins from three islands in the Palmer Archipelago, 
+    Antarctica.
+    
+    The three species of penguins have quite distinct 
+    distributions of physical dimensions (@fig-penguins).
+    ````
+    
+*   Include code. R, Python, Julia, Observable, or any language with a Jupyter kernel.
 
-##### Features within the Visual Editor
-
--   Insert citations
--   Insert and edit tables
--   Style options
--   Add/edit attributes
--   Insert Anything
-
-### Render
-
-**Save,** then **Render** to preview the document output. The resulting HTML/PDF/MS Word/etc. document will be created and saved in the same directory as the .qmd file.
-
-**Render**:
-
--   Render button (Screenshot RStudio and VS Code)
-
--   On command line:
-
-    ``` {.bash filename="Terminal"}
-    quarto preview document.qmd
+    ````markdown
+    ```{{r}}
+    #| label: fig-penguins
+    #| fig-cap: "Dimensions of penguins across three species."
+    #| warning: false
+    library(tidyverse, quietly = TRUE)
+    library(palmerpenguins)
+    penguins |>
+      ggplot(aes(x = flipper_length_mm, y = bill_length_mm)) +
+      geom_point(aes(color = species)) +
+      scale_color_manual(
+        values = c("darkorange", "purple", "cyan4")) +
+      theme_minimal()
     ```
+    ````
+
+### Use a tool with a rich authoring experience
+
+[RStudio](https://posit.co/products/open-source/rstudio/), or   
+[Visual Studio Code](https://code.visualstudio.com/) + [Quarto extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto)
+
+*   **Run** code cells as you write
+*   **Render** with a button or keyboard shortcut
+*   Edit Quarto documents with a **Visual Editor** 
+    
+    ![](images/quarto-visual-editor.png){fig-alt="Screenshot of the Visual Editor toolbar. Toolbar shows menu items: Normal with dropdown, bold, italics, code, bulleted list, numbered list, link, image, Format dropdown, Insert dropdown and Table dropdown."}
+    
+    -   Apply formatting in Visual Editor. Saved as Markdown in source.
+    
+    -   Insert elements like code cells, cross references, and more.
+
+### Or any text editor
+
+Quarto documents (.qmd) can be edited in any tool that edits text.
+
+## Render
+
+**Save,** then render to **preview** the document output. 
+
+```{.bash filename="Terminal"}
+quarto preview hello.qmd
+```
+
+RStudio & VS Code: Use **Render** button
+
+The resulting HTML/PDF/MS Word/etc. document will be created and saved in the same directory as the source .qmd file.
+
+### Rendered output: hello.html
+
+![](images/quarto-rendered-output.png){fig-alt="Screenshot of a webpage with the title 'Hello, Penguins'. There is a subheading 'Meet the penguins' followed by a paragraph of text including a link to 'Figure 1', then a scatterplot."}
+
+### Highlights in the rendered output
+
+* Features for scientific publishing. Cross references, citations, equations, and more.
+
+* Output integrated into document. Control how output appears with special comments in your code.
+
+### Behind the Scenes
 
 When you render a document, Quarto:
 
-1.  Runs the code and embeds results and text into an .md file with Knitr or Jupyter.
+1.  Runs the code and embeds results and text into an .md file with:
+    -   **Knitr**, if any `{r}` cells, or
+    -   **Jupyter**, if any other cells.
+    
 2.  Converts the .md file into the output format with Pandoc.
 
-#### Execution Engine
-
-*(This is getting into the weeds, but I do think it is important for new users to understand that its either Knitr or Jupyter that is doing the code evaluation. It's relevant for other sections of cheatsheet: code cell options, inline code, tables, parameters. I'll attempt to minimize/streamline.)*
-
-Code is executed either with:
-
--   Knitr: If there are `{r}` blocks. If there are also `{python}` blocks, they will be executed using the reticulate package.
-
--   Jupyter: Any other code blocks (e.g. `{python}`, `{julia}`, `{bash}`). Kernel determined by the first executable code block. Other language blocks not evaluated.
-
-Override engine selection with `engine`:
-
-``` yaml
-engine: jupyter
-```
-
-Set engine options with `knitr` or `jupyter`:
-
-::: {layout-ncol="2"}
-``` yaml
-knitr:
-  opts_knit:
-    verbose: true
-```
-
-``` yaml
-jupyter: julia-1.9
-```
-:::
-
-### Preview
-
-(Screenshot of output here)
-
-### Publish
+## Publish
 
 ``` {.bash filename="Terminal"}
-quarto publish {venue} document.qmd
+quarto publish {venue} hello.qmd
 ```
 
-`{venue}`: quarto-pub, connect, gh-pages, netlify, confluence, (*coming in Quarto 1.4*) posit-cloud
+`{venue}`: quarto-pub, connect, gh-pages, netlify, confluence, (*v1.4*) posit-cloud
 
-Publish button in RStudio (Screenshot here)
+RStudio: Use **Publish** button ![](images/quarto-rstudio-publish.png){fig-alt="Publish button icon in RStudio" width="10%"}
 
-(Need some text to distinguish these three venues)
+-   [**Quarto Pub**](https://quartopub.com/) Free publishing service for Quarto content.
 
--   **Quarto Pubs**
+-   [**Posit Cloud**](https://posit.cloud/) Cloud-hosted, control access to project and output. ![](images/quarto-rstudio-publish.png){fig-alt="Push button publishing from RStudio" width="10%"}
 
--   **Posit Cloud**
+-   [**Posit Connect**](https://posit.co/products/enterprise/connect/) Org-hosted, control access, schedule updates. ![](images/quarto-rstudio-publish.png){fig-alt="Push button publishing from RStudio" width="10%"}
 
--   **Posit Connect** to share Quarto documents securely, schedule automatic updates, and interact with parameters in real time. <https://posit.co/products/enterprise/connect/>.
+## Quarto Projects
+
+### Create websites, books and more
+
+A directory of Quarto documents + a configuration file (`_quarto.yml`)
+
+See examples at: <https://quarto.org/docs/gallery/>
+
+Get started from the command line:
+
+```{.bash filename="Terminal"}
+quarto create project {type}
+```
+
+`{type}`: default, website, blog, book, confluence, (*v1.4*) manuscript
+
+RStudio: Use **File** > **New Project**
+
+
+## Include Code
+
 
 ## Embed Code
 
@@ -316,6 +356,8 @@ Or use **Visual Editor**
 |:------|------:|
 |Sun    | 696000|
 |Earth  |   6371|
+
+: CAPTION {#tbl-LABEL}
 ```
 
 ### Computation
