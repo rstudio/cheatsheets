@@ -313,6 +313,9 @@ Value is `r 2*2`.
 
 ## Set Formats and Options
 
+::: {layout-ncol=2}
+
+::: {#set-options}
 ### Set Format Options
 
 ``` yaml
@@ -327,7 +330,9 @@ format:
 
 -   Indent format 2 spaces
 -   Indent options 4 spaces
+:::
 
+::: {#multiple-formats}
 
 ### Multiple Formats
 
@@ -344,6 +349,8 @@ format:
 
 -   Top-level options (e.g. `toc`) apply to all formats
 
+:::
+:::
 
 Common values for `format`: html, pdf[^2], docx, odt, rtf, gfm, pptx, revealjs, beamer[^3]
 
