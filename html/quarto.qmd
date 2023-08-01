@@ -204,72 +204,49 @@ See examples at: <https://quarto.org/docs/gallery/>
 
 Get started from the command line:
 
-```{.bash filename="Terminal"}
+``` {.bash filename="Terminal"}
 quarto create project {type}
 ```
 
 `{type}`: default, website, blog, book, confluence, (*v1.4*) manuscript
 
-RStudio: Use **File** > **New Project**
-
+RStudio: Use **File** \> **New Project**
 
 ## Include Code
 
-
-## Embed Code
-
 ### Code Cells
 
-Code cells start with ```` ```{r} ````, or ```` ```{python} ````, and end with ```` ``` ````.
+Code cells start with ```` ```{language} ````, and end with ```` ``` ````.
 
-Or use **Insert Code Chunk/Cell**.
-
-::: {layout-ncol="2"}
-```{{r}}
-#| label: chunk-label
-```
-
-```{{python}}
-#| label: chunk-label
-```
-:::
-
-Can also use `{ojs}` or `{julia}`.
-
-Add YAML code chunk options using `#|` comments inside the chunk.
-
-### Execution Options
-
-Set at the chunk level:
+RStudio & VS Code: Use **Insert Code Chunk/Cell**.
 
 ::: {layout-ncol="2"}
 ```{{r}}
-#| echo: false
+#| label: chunk-id
 ```
 
 ```{{python}}
-#| echo: false
+#| label: chunk-id
 ```
 :::
 
-Or globally in the YAML header with the `execute` option:
+Other languages: `{julia}`, `{ojs}`
 
-``` yaml
----
-execute:
-  echo: false
----
-```
+Add code cell options with `#|` comments.
+
+Cell options control [**execution**](#execution), [figures](#figures), [tables](#tables), layout and more. See them all at: <https://quarto.org/docs/reference/cells/>
+
+### Execution Options {#execution}
 
 +-----------+-----------+----------------------------------------------------------+
 | Option    | Default   | Effects                                                  |
 +===========+===========+==========================================================+
 | `echo`    | `true`    | `false`: hide code in output\                            |
-|           |           | `fenced`: show code cell syntax along with code          |
+|           |           | `fenced`: include code cell syntax                       |
 +-----------+-----------+----------------------------------------------------------+
 | `eval`    | `true`    | `false`: don't run code                                  |
 +-----------+-----------+----------------------------------------------------------+
-| `include` | `true`    | `false`: don't include code or results in output         |
+| `include` | `true`    | `false`: don't include code or results                   |
 +-----------+-----------+----------------------------------------------------------+
 | `output`  | `true`    | `false`: don't include results\                          |
 |           |           | `asis`: treat results as raw markdown                    |
@@ -279,14 +256,28 @@ execute:
 | `error`   | `false`   | `true`: include error in output and continue with render |
 +-----------+-----------+----------------------------------------------------------+
 
-### Other Cell Options
+Set execution options at the **cell level**:
 
-Other options to control [figures](#figures), [tables](#tables), [layout](#layout).
+::: {layout-ncol="2"}
+```{{r}}
+#| echo: false
+```
 
-Available options depend on engine:
+```{{python}}
+#| echo: false
+```
+:::
 
--   Knitr: <https://quarto.org/docs/reference/cells/cells-knitr.html>
--   Jupyter: <https://quarto.org/docs/reference/cells/cells-jupyter.html>
+Set options in code cells with `#|` comments and YAML syntax: `key: value`.
+
+Or globally in the YAML header with the **execute**  option:
+
+``` yaml
+---
+execute:
+  echo: false
+---
+```
 
 ### Inline Code
 
@@ -297,7 +288,7 @@ Use computed values directly in text sections. Code is evaluated at render and r
 
 #### Knitr
 
-Two times two is `` `r knitr::inline_expr("2*2")` ``.
+Value is `` `r knitr::inline_expr("2 + 2")` ``.
 
 </div>
 
@@ -305,9 +296,9 @@ Two times two is `` `r knitr::inline_expr("2*2")` ``.
 
 #### Jupyter
 
-[Coming in Quarto v1.4]{.small .muted}
+[v1.4]{.small .muted}
 
-Two times two is `` `{python} 2*2` ``.
+Value is `` `{python} 2 + 2` ``.
 
 </div>
 
@@ -315,41 +306,130 @@ Two times two is `` `{python} 2*2` ``.
 
 #### Output
 
-Two times two is `r 2*2`.
+Value is `r 2*2`.
 
 </div>
 :::
 
-<!-- START CONTENT ELEMENTS -->
+## Set Formats and Options
 
-## Write With Markdown
+### Set Format Options
 
-RStudio: **Help** \> **Markdown Quick Reference**
-
-<https://quarto.org/docs/authoring/markdown-basics.html>
-
-Or use **Visual Editor**
-
-## Figures {#figures}
-
-### Markdown
-
-``` markdown
-![CAPTION](image.png){#fig-LABEL fig-alt="ALT TEXT"}
+``` yaml
+---
+title: "My Document"
+format: 
+  html: 
+    code-fold: true
+    toc: true
+---
 ```
 
-### Computation
+-   Indent format 2 spaces
+-   Indent options 4 spaces
 
-```{{r}}
+
+### Multiple Formats
+
+``` yaml
+---
+title: "My Document"
+toc: true
+format: 
+  html: 
+    code-fold: true
+  pdf: default
+---
+```
+
+-   Top-level options (e.g. `toc`) apply to all formats
+
+
+Common values for `format`: html, pdf[^2], docx, odt, rtf, gfm, pptx, revealjs, beamer[^3]
+
+[^2]: PDFs and Beamer slides require LaTeX, use:
+
+    ``` {.bash filename="Terminal"}
+    quarto install tinytex
+    ```
+
+[^3]: PDFs and Beamer slides require LaTeX, use:
+
+    ``` {.bash filename="Terminal"}
+    quarto install tinytex
+    ```
+
+
+Render **all** formats:
+
+``` {.bash filename="Terminal"}
+quarto render hello.qmd
+```
+
+Render a **specific** format:
+
+``` {.bash filename="Terminal"}
+quarto render hello.qmd --to pdf
+```
+
+
+### Output Options Table
+
+```{r}
+#| echo: false
+#| output: true
+#| tbl-cap: Important Options. The first column is the option name, an "X" in the next three columns indicates whether the option applies to the format, the fourth column decribes the options and possible values, the final column indicates whether the options can also be set in a code cell.
+library(readr)
+library(dplyr)
+library(gt)
+format_options <- read_csv("data/format-options.csv")
+format_options |> 
+  group_by(Category) |> 
+  select(Category, Option, `html/revealjs`, `pdf/beamer`, `docx/pptx`, Description, `cell level?`) |> 
+  gt() |>
+  sub_missing(missing_text = "") |> 
+  fmt_markdown(columns = Description) |> 
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_body(
+      columns = Option
+    )) |> 
+  tab_style(
+    style = cell_fill(color = "gray95"),
+    locations = cells_body(
+      rows = Category %in% c("Navigation", NA, "Code")
+    )
+  ) |> 
+  opt_stylize(style=5, add_row_striping = FALSE)
+```
+
+Visit <https://quarto.org/docs/reference/> to see all options by format
+
+
+## Add Content
+
+### Figures {#figures}
+
+#### Markdown
+
+``` markdown
+![CAP](image.png){#fig-LABEL fig-alt="ALT"}
+```
+
+#### Computation
+
+```{{python}}
 #| label: fig-LABEL
-#| fig-cap: CAPTION
-#| fig-alt: ALT TEXT
+#| fig-cap: CAP
+#| fig-alt: ALT
 {{ plot code here }}
 ```
 
-## Tables {#tables}
+Or `{r}`
 
-### Markdown
+### Tables {#tables}
+
+#### Markdown
 
 ``` markdown
 |object | radius|
@@ -360,14 +440,14 @@ Or use **Visual Editor**
 : CAPTION {#tbl-LABEL}
 ```
 
-### Computation
+#### Computation
 
-Output a markdown table or an HTML table (regardless of your format) from your code.
+Output a markdown table or an HTML table from your code.
 
 ::: {layout-ncol="2"}
 <div>
 
-#### Knitr
+##### Knitr
 
 Use `knitr::kable()` to produce markdown:
 
@@ -384,37 +464,32 @@ Also see the R packages: gt, flextable, kableExtra.
 
 <div>
 
-#### Jupyter
+##### Jupyter
 
-Combine `Markdown()` with a function that outputs markdown:
+Add `Markdown()` to Markdown output:
 
 ```{{python}}
 #| label: tbl-LABEL
 #| tbl-cap: CAPTION
-from tabulate import tabulate
-table = [["Sun","696,000",1.989e30],
-         ["Earth","6,371",5.972e24]]
-Markdown(tabulate(table, tablefmt='html'))
+import pandas as pd, tabulate
+from IPython.display import Markdown
+df = pd.DataFrame({"A": [1, 2], 
+                   "B": [1, 2]})
+Markdown(df.to_markdown(index=False))
 ```
 
 </div>
 :::
 
-<!-- Could include raw HTML syntax here too... -->
 
-## Cross References
+### Cross References
 
-1.  Add labels:
+1.  **Add labels:**
 
-    -   **Code cell:**
-
-        ``` r
-        #| label: prefix-LABEL
-        ```
-
+    -   **Code cell:** add option `label: prefix-LABEL`
     -   **Markdown:** add attribute `#prefix-LABEL`
 
-2.  Add references: `@prefix-LABEL`, e.g.
+2.  **Add references:** `@prefix-LABEL`, e.g.
 
     ``` markdown
     You can see in @fig-scatterplot, that...
@@ -427,26 +502,22 @@ Markdown(tabulate(table, tablefmt='html'))
 | `eq-`    | Equation 1 |
 | `sec-`   | Section 1  |
 
-## Citations
+### Citations
 
-1.  Add bibliography file to the YAML header:
+1.  Add bibliography **file** to the YAML header:
 
     ``` yaml
     ---
-    title: "My Document"
     bibliography: references.bib
     ---
     ```
 
 2.  Add citations: `[@citation]`, or `@citation`
 
-**Insert Citations** dialog in the Visual Editor:
+RStudio & VS Code: Use **Insert Citations** dialog in the Visual Editor. 
+Build your bibliography file from your Zotero library, DOI, Crossref, DataCite, or PubMed.
 
--   Build your bibliography file from your Zotero library, DOI, Crossref, DataCite, or PubMed
-
--   Generate citation markdown syntax
-
-## Callouts
+### Callouts
 
 ``` markdown
 ::: {.callout-tip}
@@ -478,282 +549,18 @@ Instead of `tip` use one of: `note`, `caution`, `warning`, or `important`:
 ## important
 :::
 
-## Shortcodes
+### Shortcodes
 
-Include the contents of `_file.qmd` in document:
-``` {.markdown shortcodes=false}                                                             
+``` {.markdown shortcodes="false"}
 {{< include _file.qmd >}} 
-```                                   
-
-Embed the code cell labelled `fig-LABEL` from the file `notebook.ipynb` in the document:
-``` {.markdown shortcodes=false}                         
-{{< embed notebook.ipynb#fig-LABEL >}}
-```                                                                                                                                              
-
-Embed a video in the document. Can also be a link to YouTube, or Vimeo:
-``` {.markdown shortcodes=false}                                        
-{{< video local-video.mp4 >}}
-```                                                                                                                                              
-
-Insert a format appropriate pagebreak:
-``` {.markdown shortcodes=false}                                                                           
-{{< pagebreak >}}
-```                                                                                                                                              
-
-Include the value of the option `title` set in the document metadata. Also see `var` and `env` shortcodes:
-``` {.markdown shortcodes=false}       
-{{< meta title >}}
-```                                                                                                                                              
-
-
-## Layout {#layout}
-
-Use the `layout-ncol` and `layout-nrow` attributes to arrange content in a grid:
-
-``` markdown
-:::: {layout-ncol=2}
-::: {}
-Left 
-:::
-::: {}
-Right
-:::
-::::
 ```
 
-Use `layout` for more complicated arrangements:
-
-``` markdown
-:::: {layout="[[1, 1], [1]]"}
-::: {}
-Top Left 
-:::
-::: {}
-Top Right
-:::
-::: {}
-Bottom
-:::
-::::
+``` {.markdown shortcodes="false"}
+{{< embed file.ipynb#id >}}
 ```
 
-Use `layout-ncol`, `layout-nrow`, `layout` as code chunk options.
-
-<!-- END CONTENT ELEMENTS -->
-
-## Set Output Formats and Their Options in YAML
-
-Common values for `format`: html, pdf[^1], docx, odt, rtf, gfm, pptx, revealjs, beamer[^2]
-
-[^1]: PDFs and Beamer slides require LaTeX, use:
-
-    ``` {.bash filename="Terminal"}
-    quarto install tinytex
-    ```
-
-[^2]: PDFs and Beamer slides require LaTeX, use:
-
-    ``` {.bash filename="Terminal"}
-    quarto install tinytex
-    ```
-
-::: {layout-ncol="3"}
-<div>
-
-### Single output, default options:
-
-``` yaml
----
-title: "My Document"
-author: "Author Name"
-format: html
----
-```
-
-</div>
-
-<div>
-
-### Single output, set options:
-
-``` yaml
----
-title: "My Document"
-author: "Author Name"
-format: 
-  html: 
-    code-fold: true
-    toc: true
----
-```
-
--   Indent format two spaces
--   Indent options four spaces
-
-</div>
-
-<div>
-
-### Multiple outputs:
-
-Use `quarto render` on command line or **Render All**
-
-``` yaml
----
-title: "My Document"
-author: "Author Name"
-toc: true
-format: 
-  html: 
-    code-fold: true
-  pdf: default
----
-```
-
--   Top-level options apply to all formats
-
-</div>
-:::
-
-### Output Options Table
-
-```{r}
-#| echo: false
-#| output: true
-#| tbl-cap: Important Options. The first column is the option name, the second column is the description and possible values, and then remaining columns show what file types each option can be applied to, and whether it can also be used as a code cell option.
-library(readr)
-library(dplyr)
-library(gt)
-format_options <- read_csv("data/format-options.csv")
-format_options |> 
-  group_by(Category) |> 
-  gt() |>
-  sub_missing(missing_text = "")
-```
-
-Visit <https://quarto.org/docs/reference/> to see all of a format's options
-
-## Quarto Projects
-
-A collection of Quarto documents and a configuration file, `_quarto.yml`
-
-Websites, blogs, books, and more...
-
-Get started from the command line:
-
-``` {.bash filename="Terminal"}
-quarto create project {type}
-```
-
-Or RStudio: New Project
-
-`{type}`: website, blog, book, confluence
-
-## Quarto Commands
-
-Quarto is a command line tool. Run commands in the Terminal. Add `--help` to get more information.
-
-+----------------------------------------------+-------------------------------------+
-| The **Render** button is like:               | ``` bash                            |
-|                                              | quarto preview document.qmd         |
-|                                              | ```                                 |
-+----------------------------------------------+-------------------------------------+
-| Render all formats:                          | ``` bash                            |
-|                                              | quarto render document.qmd          |
-|                                              | ```                                 |
-+----------------------------------------------+-------------------------------------+
-| Render to a specific format:                 | ``` bash                            |
-|                                              | quarto render document.qmd --to pdf |
-|                                              | ```                                 |
-+----------------------------------------------+-------------------------------------+
-| Render a project:                            | ``` bash                            |
-|                                              | quarto render                       |
-|                                              | ```                                 |
-+----------------------------------------------+-------------------------------------+
-| Install tinytex, recommended for PDF output: | ``` bash                            |
-|                                              | quarto install tinytex              |
-|                                              | ```                                 |
-+----------------------------------------------+-------------------------------------+
-| Publish a document:                          | ``` bash                            |
-|                                              | quarto publish {venue} document.qmd |
-|                                              | ```                                 |
-+----------------------------------------------+-------------------------------------+
-| Publish a project:                           | ``` bash                            |
-|                                              | quarto publish {venue}              |
-|                                              | ```                                 |
-+----------------------------------------------+-------------------------------------+
-| Diagnostics on Quarto and rendering engines: | ``` bash                            |
-|                                              | quarto check                        |
-|                                              | ```                                 |
-+----------------------------------------------+-------------------------------------+
-
-## Parameters
-
-Parameterize your documents to reuse with new inputs (e.g. data, values, etc.).
-
-::: {layout-ncol="2"}
-<div>
-
-#### knitr
-
-1.  **Add parameters** in the header as sub-values of `params`:
-
-    ``` yaml
-    ---
-    params:
-      state: "hawaii"
-    ---
-    ```
-
-2.  **Call parameters** in code using `params$name`:
-
-    ```{{r}}
-    params$state
-    ```
-
-</div>
-
-<div>
-
-#### jupyter
-
-1.  **Add parameters** to a code cell tagged `parameters`:
-
-    ```` markdown
-    ```{{python}}
-    #| tags: [parameters]
-
-    state = "hawaii"
-    ```
-    ````
-
-2.  **Call parameters** in code:
-
-    ```{{python}}
-    state
-    ```
-
-</div>
-:::
-
-**Set parameters at render** with the `-P` option to `quarto render`
-
-``` {.bash filename="Terminal"}
-quarto render report.qmd -P state:"colorado"
-```
-
-## Interactivity?
-
-## Extensions?
-
-Shortcodes, Filters, Journal Article Templates
-
-``` bash
-quarto add
-```
-
-``` bash
-quarto use
+``` {.markdown shortcodes="false"}
+{{< video video.mp4 >}}
 ```
 
 ------------------------------------------------------------------------
