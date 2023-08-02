@@ -13,6 +13,7 @@ listing:
     - "strings.qmd"
     - "shiny.qmd"
     - "package-development.qmd"
+    - "quarto.qmd"
     - "rmarkdown.qmd"
     - "keras.qmd"
     - "plumber.qmd"
