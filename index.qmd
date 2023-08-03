@@ -12,6 +12,7 @@ listing:
     - "lubridate.qmd"
     - "strings.qmd"
     - "shiny.qmd"
+    - "shiny-python.qmd"
     - "package-development.qmd"
     - "quarto.qmd"
     - "rmarkdown.qmd"
