@@ -113,7 +113,7 @@ iris2 <- copyv(iris, NA, NA)
 
 {
      {\fontsize{22}{30}\selectfont \textcolor{Gray}{Advanced and Fast Data Transformation with \emph{collapse}}}{\Huge\ \textcolor{darkgray}{: : CHEAT SHEET}} %\\%\small{by Sebastian Krantz} %
-     \vspace{2mm}
+     % \vspace{2mm}
 }
 
 %\begin{adjustbox}{totalheight=0.5\textheight} % -2\baselineskip
@@ -128,9 +128,9 @@ iris2 <- copyv(iris, NA, NA)
 %\colorbox{gray}{
 \textbf{\emph{collapse}} is a C/C++ based package supporting advanced (grouped, weighted, time series, panel data and recursive) statistical operations in R, with very efficient low-level vectorizations across both groups and columns. \\ [0.8em]
 
-It also offers a flexible, class-agnostic, approach to data transformation in R: handling matrix and data frame based objects in a uniform, attribute preserving, way, and ensuring seamless compatibility with \emph{dplyr} / (grouped) \emph{tibble}, \emph{data.table}, \emph{xts}, \emph{sf} and \emph{plm} classes for panel data ('pseries', 'pdata.frame').  \\ [0.8em]
+It also offers a flexible, class-agnostic, approach to data transformation in R: handling matrix and data frame based objects in a uniform, attribute preserving, way, and ensuring seamless compatibility with base R, \emph{dplyr} / (grouped) \emph{tibble}, \emph{data.table}, \emph{xts/zoo}, \emph{sf}, and \emph{plm} classes for panel data.  \\ [0.8em]
 
-\emph{collapse} provides full control to the user for statistical programming - with several ways to reach the same outcome and rich optimization possibilities. Its default is \code{na.rm = TRUE}, and implemented at very low cost at the algorithm level.  \\ [0.8em]
+\emph{collapse} provides full control to the user for statistical programming - with several ways to reach the same outcome and rich optimization possibilities. It is globally configurable using \code{set\_collapse()} which includes algorithm defaults, multithreading, and the exported namespace (see below).  \\ [0.8em]
 
 Calling \code{help("collapse-documentation")} brings up a detailed documentation, which is also available \href{https://sebkrantz.github.io/collapse/reference/index.html}{online}. See also the \href{https://fastverse.github.io/fastverse/}{\emph{fastverse}} package/project for a recommended set of complimentary packages and easy package management.
 %}
@@ -195,7 +195,7 @@ Sweeping out Statistics (by Reference)}
 \itxt{Fast functions to perform column–wise grouped and weighted computations on matrix-like objects}
 \newline
 
-\quad \code{fmean, fmedian, fmode, fsum, fprod, fsd, fvar} \\
+\quad \code{fmean, fmedian, fmode, fsum, fprod, fsd, fvar,} \\
 \quad \code{fmin, fmax, fnth, ffirst, flast, fnobs, fndistinct} \newline
 
 \textbf{Syntax} \newline
@@ -221,18 +221,15 @@ Sweeping out Statistics (by Reference)}
 fmean(AirPassengers)  # Vector
 fmean(AirPassengers, w = cycle(AirPassengers))  # Weighted mean
 fmean(EuStockMarkets) # Matrix
-fmean(EuStockMarkets, drop = FALSE) # Don't drop dimensions
-fmean(airquality)     # Data Frame (can also use drop = FALSE)
+fmean(airquality)     # Data Frame (use drop = FALSE to keep frame)
 fmean(iris[1:4], g = iris$Species) # Grouped
 X = iris[1:4]; g = iris$Species; w <- abs(rnorm(nrow(X)))
 fmean(X, g, w)  # Grouped and weighted (random weights)
 ## Transfomrations: here centering data on the weighted group median
-TRA(X, fmedian(X, g, w), "-", g) |> head(3)
-fmedian(X, g, w, TRA = "-") |> head(3) # Same thing: more compact
+TRA(X, fmedian(X, g, w), "-", g) |> head(2)
+fmedian(X, g, w, TRA = "-") |> head(2) # Same thing: more compact
 fmedian(X, g, w, "-", set = TRUE) # Modify in-place (same as setTRA())
-head(iris, 3) # Changed iris too, as X = iris[1:4] did a shallow copy
 @
-
 % \begin{addmargin}[2em]{0em}
 % \code{fmean(data[3:5], data\$grp1, data\$weights)\\
 % data \%>\% fgroup\_by(grp1) \%>\% fmean(weights)\\
@@ -240,6 +237,16 @@ head(iris, 3) # Changed iris too, as X = iris[1:4] did a shallow copy
 % fmedian(mat, g, TRA = "-")  \# same thing
 % }
 % \end{addmargin}
+\vspace{-1mm}
+\hrrule
+\section{Other Statistical Functions}
+% \vspace{1mm}
+\itxt{Fast (weighted) sample quantiles, range, and distances}\\
+\setstretch{1.5}
+\code{fquantile(x, probs, w, o, na.rm = TRUE, type = 7)}\\
+\code{frange(x, na.rm = TRUE)} \\
+\code{fdist(x, v, method = "euclidean", nthreads = 1)}\\
+\setstretch{1}
 
 <<echo=FALSE, include=FALSE>>=
 iris <- iris2
@@ -260,7 +267,7 @@ iris <- iris2
 
 \section{Grouping and Ordering}
 % \vspace{1mm}
-\itxt{Optimized functions for grouping, ordering, unique values, splitting \& recombining, and dealing with factors}
+\itxt{Optimized functions for grouping, ordering, unique values, matching, splitting, and dealing with factors}
 \newline
 
 \code{GRP()} - create a grouping object (class 'GRP'): pass to \code{g} arg. %\newline
@@ -275,11 +282,11 @@ fndistinct(iris[1:4], g)  # Computation without grouping overhead
 mtcars |> fgroup_by(cyl, vs, am) |> ss(1:2)
 # Group Stats: [N. groups | mean (sd) min-max of group sizes]
 # Fast Functions also have a grouped_df method: here wt-weighted medians
-mtcars |> fgroup_by(cyl, vs, am) |> fmedian(wt) |> head(3)
+mtcars |> fgroup_by(cyl, vs, am) |> fmedian(wt) |> head(2)
 @
 %\qquad {\scriptsize \textcolor{darkgray}{\emph{Group Stats:} N. groups $|$ Mean (Std. Dev.) Min-Max of group sizes}} \newline
 
-\code{GRPN(), fgroup\_vars(), fungroup()} - get group count,\\ \qquad grouping columns/variables, and ungroup data\\ [0.5em]
+\code{GRPN(), fcount[v](), fgroup\_vars(), fungroup()} - get group count, grouping columns, and ungroup data\\ [0.5em]
 \code{qF(), qG()} - quick \code{as.factor}, and vector grouping object\\ \qquad of class 'qG': a factor-light without levels attribute\\
 \setstretch{1.5}
 \code{group()} - (multivariate) group id ('qG') in appearance order\\
@@ -289,7 +296,8 @@ mtcars |> fgroup_by(cyl, vs, am) |> fmedian(wt) |> head(3)
 \code{radixorder[v]()} - (multivariate) radix-based ordering\\
 \code{finteraction()} - fast factor interactions (or return 'qG')\\
 \code{fdroplevels()} - fast removal of unused factor levels\\
-\code{f[n]unique()} - fast unique values / rows (by columns)\\
+\code{f[n]unique(), fduplicated()} - fast unique values / rows\\
+\code{fmatch(), \%[!][i]in\%} - fast matching of values / rows\\
 \code{gsplit()} - fast  splitting vector based on 'GRP' objects\\
 \code{greorder()} - efficiently reorder \code{y = unlist(gsplit(x, g))}\\ \qquad such that \code{identical(greorder(y, g), x)}
 \setstretch{1}
@@ -303,11 +311,11 @@ f <- qF(v, na.exclude = FALSE) # Adds 'na.included' class: no NA checks
 gv <- group(v) # 'qG' object: first appearance order, with 'na.included'
 microbenchmark(fmode(X, v), fmode(X, f), fmode(X, gv), fmode(X, g))
 @
-% \vspace{-2mm}
+\vspace{-1mm}
 
 \hrrule
+\vspace{-2mm}
 \section{Quick Conversions}
-% \vspace{1mm}
 \itxt{Fast and exact conversion of common data objects} \\ [0.5em]
 \code{qM(), qDF(), qDT(), qTBL()} - convert vectors, arrays, data.frames or lists to matrix, data.frame, data.table or tibble\\ [0.5em]
 \code{m[r|c]tl()} - matrix rows/cols to list, data.frame or data.table\\ [0.5em]
@@ -333,7 +341,9 @@ microbenchmark(fmode(X, v), fmode(X, f), fmode(X, gv), fmode(X, g))
 \code{get\_vars[<-]()} - select/replace columns (standard eval.)\\ [0.5em]
 \setstretch{1}
 \code{[num|cat|char|fact|logi|date]\_vars[<-]()} - select/\\ \qquad replace columns by data type or retrieve names/indices\\ [0.5em]
-\code{add\_vars[<-]()} - add or column-bind columns \newline
+\code{add\_vars[<-]()} - add or column-bind columns\\
+\code{rowbind()} - row-bind lists / data frame-like objects\\ [0.5em]
+\code{join(), pivot()} - join and reshape data frame-like objects \newline
 
 \textbf{Examples}
 <<>>=
@@ -353,16 +363,15 @@ mtcars %>% ftransform(fselect(., hp:qsec) %>% fmedian(cyl, TRA = 1) %>%
                       fsum(TRA = "/", set = TRUE)) %>% i()
 # Aggregation: weighted standard deviations
 mtcars |> fgroup_by(vs) |> fsummarise(across(disp:drat, fsd, w = wt))
-# Grouped linear models: .apply = FALSE applies functions to DF subset
-qTBL(mtcars) |> fgroup_by(vs) |> fsummarise(across(disp:drat,
-     function(x) list(models = list(lm(disp ~., x))), .apply = FALSE))
+# Grouped linear models (one way of doing it)
+qTBL(mtcars) |> fgroup_by(vs) |> fsummarise(reg = list(lm(mpg ~ carb)))
 # Adding some columns. Use ftransform<- to also replace existing ones
 add_vars(iris) <- num_vars(iris) |> fsum(TRA = '%') |> add_stub("perc_")
 @
 <<echo=FALSE, include=FALSE>>=
 iris <- iris2
 @
-% \vspace{-2mm}
+\vspace{-2mm}
 
 
 \hrrule
@@ -378,7 +387,9 @@ iris <- iris2
 # Population weighted mean (PCGDP, LIFEEX) & mode (country), and sum(POP)
 collap(wlddev, country + PCGDP + LIFEEX ~ income, w = ~ POP)
 @
+%\vspace{-2mm}
 \end{multicols} % \vspace{-20mm}
+%\vspace{20mm}
 
 % \end{adjustbox}
 %}
@@ -386,8 +397,10 @@ collap(wlddev, country + PCGDP + LIFEEX ~ income, w = ~ POP)
 \vspace{-5mm}
 \textcolor{lightgray}{\hrulefill}\\
 {\scriptsize \vspace{-0.5mm}
- Page 1 of 2 \hfill \href{https://creativecommons.org/licenses/by-sa/4.0/}{CC-BY-SA}\ Sebastian Krantz\ \textbullet\ Learn more at \href{https://sebkrantz.github.io/collapse/}{sebkrantz.github.io/collapse}\ \textbullet\ Source code at \href{https://github.com/SebKrantz/collapse}{github.com/SebKrantz/collapse}\ \textbullet\ Updates announced at \href{https://twitter.com/collapse\_R}{twitter.com/collapse\_R} - \#rcollapse\ \textbullet\ Cheatsheet created for \emph{collapse} version 1.8.8\ \textbullet\ Updated: 2022-08
+ Page 1 of 2 \hfill \href{https://creativecommons.org/licenses/by-sa/4.0/}{CC-BY-SA}\ Sebastian Krantz\ \textbullet\ Learn more at \href{https://sebkrantz.github.io/collapse/}{sebkrantz.github.io/collapse}\ \textbullet\ Source code at \href{https://github.com/SebKrantz/collapse}{github.com/SebKrantz/collapse}\ \textbullet\ Updates announced at \href{https://twitter.com/collapse\_R}{twitter.com/collapse\_R} - \#rcollapse\ \textbullet\ Cheatsheet created for \emph{collapse} version 2.0.3\ \textbullet\ Updated: 2023-10
 }
+
+
 
 \newpage
 
@@ -600,7 +613,7 @@ nest_coef |> unlist2d(c("vs", "am"), row.names = "variable") |> head(2)
 \section{(Memory) Efficient Programming}
 \itxt{Functions for (memory) efficient R programming}\\ [0.5em]
 
-\code{any|all[v|NA]}, \code{which[v|NA]}, \code{\%[=|!]=\%}, \code{copyv}, \code{setv}, \code{alloc} \code{missing\_cases}, \code{na\_[insert|rm|omit]}, \code{vlengths}, \code{vtypes}, \code{vgcd}, \code{frange}, \code{fnlevels}, \code{fn[row|col]}, \code{fdim}, \code{seq\_[row|col]}\\
+\code{any|all[v|NA]}, \code{which[v|NA]}, \code{\%[=|!]=\%}, \code{copyv}, \code{setv}, \code{alloc} \code{missing\_cases}, \code{na\_[insert|rm|omit]}, \code{vlengths}, \code{vtypes}, \code{vgcd}, \code{fnlevels}, \code{fn[row|col]}, \code{fdim}, \code{seq\_[row|col]}, \code{vec}\\
 <<eval = FALSE>>=
 fsubset(wlddev, year %==% 2010) # 2x faster fsubset(wlddev, year == 2010)
 attach(mtcars) # Efficient sub-assignment by reference, various options...
@@ -620,7 +633,7 @@ setv(am, 0, vs); setv(am, 1:10, vs); setv(am, 1:10, vs[10:20])
 \hrrule
 \section{Small (Helper) Functions}
 \itxt{Functions for (meta-)programming and attributes}\\ [0.5em]
-\code{.c}, \code{massign}, \code{\%=\%}, \code{vlabels[<-]}, \code{setLabels}, \code{vclasses}, \code{namlab}, \code{[add|rm]\_stub}, \code{\%!in\%}, \code{ckmatch}, \code{all\_identical}, \code{all\_obj\_equal}, \code{all\_funs}, \code{set[Dim|Row|Col]names}, \code{unattrib}, \code{setAttrib}, \code{copyAttrib}, \code{copyMostAttrib} %, \code{is\_categorical}, \code{is\_date}
+\code{.c}, \code{massign}, \code{\%=\%}, \code{vlabels[<-]}, \code{setLabels}, \code{vclasses}, \code{namlab}, \code{[add|rm]\_stub}, \code{all\_identical}, \code{all\_obj\_equal}, \code{all\_funs}, \code{set[Dim|Row|Col]names}, \code{unattrib}, \code{setAttrib}, \code{copyAttrib}, \code{copyMostAttrib}, \code{is\_categorical}, \code{is\_date}
 
 <<include=FALSE, echo=FALSE>>=
 wlddev <- wlddev2
@@ -635,23 +648,23 @@ namlab(wlddev[c(2, 9)], N = TRUE, Ndist = TRUE, class = TRUE)
 
 
 \hrrule
-\section{API Extensions}
+\section{API Extensions and Global Options}
 \itxt{Shorthands for frequently used functions}\\ [0.5em]
 \code{fselect -> slt, fsubset -> sbt, fmutate -> mtt, [f/set]transform[v] -> [set]tfm[v], fsummarise -> smr,
 across -> acr, fgroup\_by -> gby, finteraction -> itn, findex\_by -> iby, findex -> ix, frename -> rnm, get\_vars -> gv, num\_vars -> nv,
 add\_vars -> av} \newline
 
-\itxt{Namespace masking}\\ [0.5em]
-Can set \code{option(collpse\_mask = c(...))} with a vector of functions starting with f-, to export versions without f-, masking base R or \emph{dplyr}. A few keywords exist to mask multiple functions, see \code{help("collapse-options")}. This allows clean \& fast code, but poses additional namespace challenges:
+\itxt{Namespace masking and other global options}\\ [0.5em]
+Use \code{set\_collpse(mask = c(...))} with a vector of functions starting with f-, to export versions without f-, masking base R and/or \emph{dplyr}. A few keywords exist to mask multiple functions, see \code{help("collapse-options")}. There are also many other global defaults and optimizations that can be controlled with \code{set\_collapse(...)}. Retrieve options using \code{get\_collapse()}.
 
 <<eval = FALSE>>=
-# Masking all f- functions and specials n = GRPN and table = qtab
-options(collapse_mask = "all")
+# Masking all (f-)functions and changing some defaults (=optimizing)
 library(collapse)
-# The folowing is 100% collapse code, apart from the base pipe
-
+set_collapse(mask = "all", na.rm = FALSE, sort = FALSE, nthreads = 4)
+# The following is now 100% collapse code and executed without regard for
+# missing values, using unsorted grouping and 4 threads (where applicable)
 wlddev |>
-  subset(year >= 1990) |>
+  subset(year >= 1990 & is.finite(GINI)) |>
   group_by(year) |>
   summarise(n = n(), across(PCGDP:GINI, mean, w = POP))
 
@@ -671,14 +684,14 @@ wlddev |>
          PCGDP_growth = growth(PCGDP)) |> unindex()
 
 @
-The best way to set this option is inside an \code{.Rprofile} file placed in the user or project directory. Use it carefully.
+
 
 \end{multicols}
 
 \vspace{-5.5mm}
 \textcolor{lightgray}{\hrulefill}\\
 {\scriptsize \vspace{-0.5mm}
- Page 2 of 2 \hfill \href{https://creativecommons.org/licenses/by-sa/4.0/}{CC-BY-SA}\ Sebastian Krantz\ \textbullet\ Learn more at \href{https://sebkrantz.github.io/collapse/}{sebkrantz.github.io/collapse}\ \textbullet\ Source code at \href{https://github.com/SebKrantz/collapse}{github.com/SebKrantz/collapse}\ \textbullet\ Updates announced at \href{https://twitter.com/collapse\_R}{twitter.com/collapse\_R} - \#rcollapse\ \textbullet\ Cheatsheet created for \emph{collapse} version 1.8.8\ \textbullet\ Updated: 2022-08
+ Page 2 of 2 \hfill \href{https://creativecommons.org/licenses/by-sa/4.0/}{CC-BY-SA}\ Sebastian Krantz\ \textbullet\ Learn more at \href{https://sebkrantz.github.io/collapse/}{sebkrantz.github.io/collapse}\ \textbullet\ Source code at \href{https://github.com/SebKrantz/collapse}{github.com/SebKrantz/collapse}\ \textbullet\ Updates announced at \href{https://twitter.com/collapse\_R}{twitter.com/collapse\_R} - \#rcollapse\ \textbullet\ Cheatsheet created for \emph{collapse} version 2.0.3\ \textbullet\ Updated: 2023-10
 }
 
 \end{document}
