@@ -1,5 +1,5 @@
 
-## Posit Cheatsheets
+## Posit Cheatsheets (This is a test to see if the edits will take hold in the new practice file, thank you!)
 
 <img src="pngs/rstudio-ide.png" width=364 height=288 align="right"/>
 
