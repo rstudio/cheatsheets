@@ -245,7 +245,7 @@ write_file("A,B,C\n7,8,9\nNA,11,12", file = "file3.csv")
     ```{r}
     #| message: false
 
-    read_csv("file.csv", skip = 1)
+    read_csv("file.csv", n_max = 1)
     ```
 
 -   Read values as missing:
