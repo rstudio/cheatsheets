@@ -448,7 +448,7 @@ add_with_rollback(jan31, months(1), roll_to_first = TRUE)
 
 ### Periods
 
-Add or subtract periods to model events that happen a specific clock times, the the NYSE opening bell.
+Add or subtract periods to model events that happen at specific clock times, e.g. the NYSE opening bell.
 
 Make a period with the name of a time unit **pluralized**, e.g.
 
