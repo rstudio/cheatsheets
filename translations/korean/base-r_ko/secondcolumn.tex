@@ -1,0 +1,50 @@
+% !TEX root = base-r.tex
+
+\begin{block}{벡터}
+  \begin{subblock}{벡터 생성하기}
+    \scriptsize\vspace{5pt}\hspace{-8pt}
+    \begin{tableau}{| >{\color{black}}m{2.2cm} | >{\color{white}\cellcolor{codebg}}m{1.401cm} | >{\color{black}\centering\arraybackslash}m{1.45cm} |}
+      \hline
+      \inl{c(2, 4, 6)} & \inl{2 4 6} & 주어진 원소를 가지는 벡터 생성\\\hline
+      \rowcolor{secondary} \inl{2:6} & \inl{2 3 4 5 6} & 정수 수열\\\hline
+      \inl{seq(2, 3, by=0.5)} & \inl{2.0 2.5 3.0} & 복잡한 수열\\\hline
+      \rowcolor{secondary} \inl{rep(1:2, times=3)} & \inl{1 2 1 2 1 2} & 벡터 반복\\\hline
+      \inl{rep(1:2, each=3)} & \inl{1 1 1 2 2 2} & 벡터의 원소 반복\\\hline
+    \end{tableau}
+    \vskip-1ex
+  \end{subblock}
+  
+  \begin{subblock}{벡터 함수}
+    \begin{columns}[t]
+      \hspace{4ex}
+      \begin{column}{0.55\linewidth}
+        \inlc{sort(x)}\\x 정렬해서 반환\br
+        \inlc{table(x)}\\값들의 개수 보기.
+      \end{column}
+      \begin{column}{0.49\linewidth}
+        \inlc{rev(x)}\\x 뒤집어서 반환\br
+        \inlc{unique(x)}\\값들의 종류 보기.
+      \end{column}
+      \hspace{4ex}
+    \end{columns}
+  \end{subblock}
+  
+  \begin{subblock}{벡터 원소 선택}
+    \renewcommand{\arraystretch}{1.411}\hspace{-17.5pt}
+    \begin{tabular}{>{\centering}m{0.48\linewidth} >{\centering\arraybackslash}m{0.47\linewidth}}
+      \multicolumn{2}{c}{\textcolor{gray}{\textbf{위치로 선택}}}\\
+      \inlc{x[4]} & 네번째 원소\\
+      \inlc{x[-4]} & 네번째 빼고 전부\\
+      \inlc{x[2:4]} & 두번째부터 네번째까지\\
+      \inlc{x[-(2:4)]} & 두번째부터 네번째까지 빼고 전부\\
+      \inlc{x[c(1, 5)]} & 첫번째와 다섯번째 원소\\
+      \multicolumn{2}{c}{\textcolor{gray}{\textbf{값으로 선택}}}\\
+      \inlc{x[x == 10]} & 값이 10인 원소\\
+      \inlc{x[which(x==10)]} & 값이 10인 원소\\
+      \inlc{x[x < 0]} & 0보다 작은 모든 원소\\
+      \inlc{x[x\%in\%c(1,2,5)]} & \{1, 2, 5\}에 속한 원소\\
+      \multicolumn{2}{c}{\textcolor{gray}{\textbf{이름으로 선택}}}\\
+      \inlc{x['apple']} & 이름이 'apple'인 원소.
+    \end{tabular}
+  \end{subblock}
+\end{block}

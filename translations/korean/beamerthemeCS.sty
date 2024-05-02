@@ -1,0 +1,329 @@
+
+\ProvidesPackage{beamerthemeCS}
+
+\usepackage{graphicx, colortbl}
+\usepackage{ifthen, multirow}
+
+\usecolortheme{CS}
+
+\def\bleu#1{\textcolor{bleu}{#1}}
+\def\br{\\\vskip2ex}
+
+\usepackage{textcomp}
+
+\usepackage{hyperref, xspace}
+\hypersetup{
+  pdfcreator = {LaTeX with hyperref package},
+  pdfproducer = {pdflatex},
+  colorlinks = true,          % false: boxed links; true: colored links
+  linkcolor = linkcolor,     % color of internal links (change box color with linkbordercolor)
+  citecolor = citecolor,     % color of links to bibliography
+  filecolor = filecolor,       % color of file links
+  urlcolor = urlcolor         % color of external links
+}
+
+\usepackage{listings}
+
+\lstdefinelanguage[myR]{R}[]{R}{
+  morekeywords = {str},
+  sensitive = false
+}
+
+\lstdefinestyle{codeR}{
+  basicstyle = \ttfamily,
+  mathescape = true,
+  aboveskip = 0pt,
+  breaklines = true,
+  language = [myR]R,
+  stringstyle = \color{stringsty},
+  showstringspaces = false
+}
+
+\lstnewenvironment{R}
+  {\lstset{style=codeR, upquote=true}}
+  {}
+
+\lstdefinestyle{codeRbg}{
+  basicstyle = \ttfamily,
+  mathescape = true,
+  aboveskip = 0pt,
+  breaklines = true,
+  language = [myR]R,
+  keywordstyle = \mdseries,
+  numberstyle = \mdseries,
+  stringstyle = \mdseries,
+  showstringspaces = false, 
+  lineskip = 0.35ex,
+  xleftmargin = 0.5ex,
+  xrightmargin = 0.5ex
+}
+
+\lstdefinestyle{codeRc}{
+  basicstyle = \ttfamily,
+  aboveskip = 0pt,
+  breaklines = true,
+  language = [myR]R,
+  keywordstyle = \mdseries,
+  identifierstyle = \color{identifiersty},
+  stringstyle = \color{stringsty},
+  showstringspaces = false, 
+  xleftmargin = 0.5ex,
+  xrightmargin = 0.5ex,
+  literate = 
+   *{0}{{{\color{numbersty}0}}}1
+    {1}{{{\color{numbersty}1}}}1
+    {2}{{{\color{numbersty}2}}}1
+    {3}{{{\color{numbersty}3}}}1
+    {4}{{{\color{numbersty}4}}}1
+    {5}{{{\color{numbersty}5}}}1
+    {6}{{{\color{numbersty}6}}}1
+    {7}{{{\color{numbersty}7}}}1
+    {8}{{{\color{numbersty}8}}}1
+    {9}{{{\color{numbersty}9}}}1
+}
+
+\lstnewenvironment{Rbg}
+  {\lstset{style=codeRbg, upquote=true}}
+  {}
+
+\lstset{
+    literate={~} {\scriptsize$\,\sim\,$}{1}
+}
+  
+\def\inline#1{\lstinline[style=codeR, upquote=true]!#1!}
+\def\inl#1{\lstinline[style=codeRbg, upquote=true]!#1!}
+\def\inlc#1{\lstinline[style=codeRc, upquote=true]!#1!}
+
+
+\lstdefinelanguage{pseudo}{
+  classoffset = 0,
+  morekeywords = {variable, function_name, funct_name},
+  keywordstyle = \color{namestyle},
+  classoffset = 1,
+  morekeywords = {condition},
+  keywordstyle = \color{condstyle},
+  classoffset = 2,
+  morekeywords = {sequence, var, new_variable},
+  keywordstyle = \color{varstyle},
+  classoffset = 3,
+  morekeywords = {Do, something, different},
+  keywordstyle = \color{loopstyle},
+  classoffset=0,
+  sensitive = false,
+  morecomment = [l]{//},
+  morecomment = [s]{/*}{*/},
+  morestring = [b]",
+  morestring = [d]'
+}
+
+\lstdefinestyle{codePseudo}{
+  basicstyle = \ttfamily,
+  mathescape=true,
+  aboveskip = 0pt,
+  breaklines = true,
+  language = pseudo,
+  showstringspaces = false, 
+  lineskip = 0.35ex,
+  xleftmargin = 0.5ex,
+  xrightmargin = 0.5ex
+}
+
+\lstnewenvironment{Pseudo}
+  {\lstset{style=codePseudo, upquote=true}}
+  {}
+
+\defbeamertemplate*{title page}{customized}[1][]{
+  \centering\vskip0.1ex
+  \textbf{\inserttitle}\par\vskip-0.25ex
+  {\usebeamerfont{subtitle} \insertsubtitle\par}
+  \vskip0.75ex
+}
+
+
+\usepackage{calc}
+\newlength{\longueur}
+\newlength{\tmp}
+
+\newenvironment{tableau}[1]{
+  \color{gray}\begin{tabular}[b]{#1}
+}{
+  \end{tabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%
+%%%%% Définition des blocks %%%%
+%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{block begin}{
+  \setlength{\longueur}{\linewidth-2ex}
+  \begin{beamercolorbox}[rounded = true, wd = \linewidth, leftskip = 1ex, rightskip = 1ex, vmode]{block body}
+    \vskip-.5ex
+    \setlength{\linewidth}{\longueur}
+    
+    \hfill
+    \begin{beamercolorbox}[ht = 1.25ex, dp = 0.2ex, wd = \longueur, center, rounded = true]{block title}
+      \textbf{\Large \insertblocktitle}
+    \end{beamercolorbox}
+    \ifbeamercolorempty[bg]{block title}{}
+    
+    \vskip.5ex
+    \usebeamerfont{block body} 
+}
+\setbeamertemplate{block end}{
+  \end{beamercolorbox}\par
+  \vskip1ex
+  \setlength{\linewidth}{\longueur+2ex}
+}
+
+
+%%%%% Sous-titre dans un block %%%%%
+\def\blocksubtitle#1{
+  \vskip0.5ex
+  \setlength{\longueur}{\linewidth-2ex}
+  
+  \hfill
+  \begin{beamercolorbox}[ht = 0.75ex, dp = 0.ex, wd = \longueur, center, rounded = true]{block title}
+    #1
+  \end{beamercolorbox}
+  \hfill\hfill
+  
+  \vskip0.5ex
+}
+
+
+%%%%% Sous block %%%%%
+\newenvironment{subblock}[1]{
+  \setlength{\longueur}{\linewidth-2ex}
+  
+  \hfill\hfill
+  \begin{beamercolorbox}[rounded = true, wd = \linewidth, sep=1ex]{normal text}
+    \vskip-1.5ex
+    \setlength{\linewidth}{\longueur}
+    
+    \ifthenelse{\equal{#1}{}}{}{
+    \hfill
+    \begin{beamercolorbox}[ht = 1ex, dp = 0.ex, wd = \longueur, center, rounded = true]{block title}
+      \textbf{\large #1}
+    \end{beamercolorbox}
+    
+    \vskip0.2ex
+  }}
+  {
+  \vskip-0.75ex
+  \end{beamercolorbox}
+  \hfill\hfill\hfill
+  
+  \vskip-1.25ex
+  \setlength{\linewidth}{\longueur+2ex}}
+
+
+%%%%%  Block annoté %%%%%
+\newenvironment{annotedblock}[2]{
+  \setlength{\longueur}{\linewidth-2ex}
+  
+  \hfill\hfill
+  \begin{beamercolorbox}[rounded = true, wd = \linewidth, sep=1ex]{block body}
+    \vskip-1.5ex
+    \setlength{\linewidth}{\longueur}
+    
+    \hspace{-0.5ex}
+    \begin{beamercolorbox}[ht = 1.25ex, dp = 0.2ex, wd = 0.43\longueur, center, rounded = true]{block title}
+      \textbf{\Large #1}
+    \end{beamercolorbox}
+    \hfill
+    \begin{beamercolorbox}[ht = 1ex, dp = 0.ex, wd = 0.52\longueur, center, rounded = true]{alerted text}
+      #2
+    \end{beamercolorbox}
+    \hspace{-0.5ex}
+    
+    \vskip0.2ex
+  }
+  {\end{beamercolorbox}
+  
+%  \vskip-2ex
+  \setlength{\linewidth}{\longueur+2ex}}
+  
+\newenvironment{seeblock}[2]{
+  \begin{annotedblock}{#1}{\textbf{#2} 패키지 참조}}
+  {\end{annotedblock}}
+  
+  
+\newenvironment{annotedsubblock}[2]{
+  \setlength{\longueur}{\linewidth-2ex}
+  
+  \hfill\hfill
+  \begin{beamercolorbox}[rounded = true, wd = \linewidth, sep=1ex]{normal text}
+    \vskip-1.5ex
+    \setlength{\linewidth}{\longueur}
+    
+    \hspace{-0.5ex}
+    \begin{beamercolorbox}[ht = 1.25ex, dp = 0.ex, wd = 0.6\longueur, center, rounded = true]{block title}
+      \textbf{\large #1}
+    \end{beamercolorbox}
+    \hfill
+    \begin{beamercolorbox}[ht = 1ex, dp = 0.ex, wd = 0.37\longueur, center, rounded = true]{alerted text}
+      #2
+    \end{beamercolorbox}
+    \hspace{-0.5ex}
+    
+    \vskip0.2ex
+  }
+  {\end{beamercolorbox}
+  
+%  \vskip-2ex
+  \setlength{\linewidth}{\longueur+2ex}}
+  
+  
+\newenvironment{seesubblock}[2]{
+  \begin{annotedsubblock}{#1}{\textbf{#2} 패키지 참조}}
+  {\end{annotedsubblock}}
+  
+  
+  
+  
+%%%%%%%%%%%%%%%%%%%%
+%%%% Définition des exemples %%%
+%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{block example begin}{
+  \begin{beamercolorbox}[ht = 1.25ex, dp = 0.5ex, wd = \linewidth, center, rounded = true]{block title example}
+    \usebeamerfont{block title example}\insertblocktitle
+  \end{beamercolorbox}
+    
+  \begin{beamercolorbox}[wd = \linewidth, dp = 0.5ex, leftskip = 1ex, rightskip = 1ex, vmode]{block body example}
+    \vskip0.ex
+}
+\setbeamertemplate{block example end}{
+  \vskip-1.5ex
+  \end{beamercolorbox}
+}
+
+
+
+\newenvironment{code}{
+  \setlength{\longueur}{\linewidth-0.3ex}
+  \begin{beamercolorbox}[wd = \linewidth, dp = 0.4ex, leftskip = 0.15ex, rightskip = 0.15ex, vmode]{block title}
+  
+    \setlength{\linewidth}{\longueur}
+    \vskip0.15ex
+
+    \begin{beamercolorbox}[wd = \longueur, dp = 0.5ex, leftskip = 1ex, rightskip = 1ex, vmode]{normal text}
+      \vskip0.ex
+}{
+      \vskip-1.5ex
+    \end{beamercolorbox}
+    \setlength{\linewidth}{\longueur+0.3ex}
+      \vskip-0.25ex
+  \end{beamercolorbox}
+}
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{\small \hskip3ex RStudio\textregistered\xspace is a trademark of RStudio, Inc. \textbullet\xspace \href{https://creativecommons.org/licenses/by/4.0/}{CC BY} Mhairi McNeill \textbullet\xspace \url{mhairihmcneill@gmail.com} \hfill Translation by Taeho Kim  \textbullet\xspace \url{thkim0560@kaist.ac.kr} \textbullet\xspace package version \textbullet\xspace Updated: 3/15\hspace{3ex} \vskip1ex}
+\setbeamertemplate{navigation symbols}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Display a grid to help align images ... and it looks nice with this color scheme
+% \beamertemplategridbackground[1cm]
+
+%Some beamer customizations:
+\setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{caption}[numbered]{}% Number float-like environments
