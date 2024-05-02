@@ -100,6 +100,8 @@ Several of these cheatsheets also have non-English translations, available on th
 
 [![R syntax comparison](pngs/syntax.png){alt="Download R syntax comparison pdf cheatsheet"}](syntax.pdf)
 
+[![SqueakR](pngs/SqueakR.png){alt="SqueakR"}](SqueakR.pdf)
+
 [![teachR](pngs/teachR.png){alt="Download teachR pdf cheatsheet"}](teachR.pdf)
 
 [![tidyeval](pngs/tidyeval.png){alt="Download tidyeval pdf cheatsheet"}](tidyeval.pdf)
