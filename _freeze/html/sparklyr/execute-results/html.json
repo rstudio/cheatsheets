@@ -1,0 +1,14 @@
+{
+  "hash": "838cdfa44affcebdd0f5c14a01a5344f",
+  "result": {
+    "markdown": "---\ntitle: \"Data science in Spark with sparklyr :: Cheatsheet\"\ndescription: \" \"\nimage-alt: \"\"\nexecute:\n  eval: true\n  output: false\n  warning: false\n---\n\n::: {.cell .column-margin}\n<img src=\"images/logo-sparklyr.png\" height=\"138\" alt=\"Hex logo for sparklyr - Neon shooting stars of various shapes and sizes flying across a black and grey background.\" />\n<br><br><a href=\"../sparklyr.pdf\">\n<p><i class=\"bi bi-file-pdf\"></i> Download PDF</p>\n<img src=\"../pngs/sparklyr.png\" width=\"200\" alt=\"\"/>\n</a>\n<br><br><p>Translations (PDF)</p>\n* <a href=\"../translations/chinese/sparklyr_zh_cn.pdf\"><i class=\"bi bi-file-pdf\"></i>Chinese</a>\n* <a href=\"../translations/chinese/sparklyr_zh_tw.pdf\"><i class=\"bi bi-file-pdf\"></i>Chinese</a>\n* <a href=\"../translations/german/sparklyr_de.pdf\"><i class=\"bi bi-file-pdf\"></i>German</a>\n* <a href=\"../translations/japanese/sparklyr_ja.pdf\"><i class=\"bi bi-file-pdf\"></i>Japanese</a>\n* <a href=\"../translations/spanish/sparklyr_es.pdf\"><i class=\"bi bi-file-pdf\"></i>Spanish</a>\n:::\n\n\n<!-- Page 1 -->\n\nHTML version coming soon! The PDF is available for download [here](../sparklyr.pdf)",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

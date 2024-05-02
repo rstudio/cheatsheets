@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>A typical package development workflow</title>
+  <style>
+    ol.nested-counter-list {
+      counter-reset: item;
+    }
+
+    ol.nested-counter-list li {
+      display: block;
+    }
+
+    ol.nested-counter-list li::before {
+      content: counters(item, ".") ". ";
+      counter-increment: item;
+     }
+
+    ol.nested-counter-list ol {
+      counter-reset: item;
+    }
+
+    ol.nested-counter-list ol>li {
+      display: block;
+    }
+
+    ol.nested-counter-list ol>li::before {
+      content: counters(item, ".") " ";
+      counter-increment: item;
+    }
+  </style>
+</head>
+<body>
+
+  <ol class="nested-counter-list">
+    <li>Edit code
+      <ol>
+        <li>forward to load_all()</li>
+        <li>forward to test()</li>
+      </ol>
+    <li>load_all()
+      <ol>
+        <li>forward to Run code</li>
+      </ol>
+    </li>
+    <li>Run code
+      <ol>
+        <li>back to Edit code</li>
+      </ol>
+    </li>
+    <li>Edit tests
+      <ol>
+        <li>forward to test()</li>
+      </ol>
+    </li>
+    <li>test()
+      <ol>
+        <li>forward to check()</li>
+        <li>back to Edit tests</li>
+        <li>back to Edit code</li>
+      </ol>
+    </li>
+    <li>Edit roxygen
+      <ol>
+        <li>forward to document()</li>
+      </ol>
+    </li>
+    <li>document()
+      <ol>
+        <li>forward to check()</li>
+        <li>forward to "?fun"</li>
+      </ol>
+    </li>
+    <li>?fun
+      <ol>
+        <li>back to Edit roxygen</li>
+      </ol>
+    </li>
+    <li>check()
+      <ol>
+        <li>forward to git commit & git push</li>
+      </ol>
+    </li>
+    <li>git commit</li>
+    <li>git push</li>
+  </ol>
+</body>
+</html>
