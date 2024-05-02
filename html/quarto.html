@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -104,9 +111,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="https://posit.co" class="navbar-brand navbar-brand-logo">
     <img src="../html/images/posit-logo.png" alt="posit logo" class="navbar-logo">
     </a>
@@ -118,35 +125,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
- <span class="menu-text">Posit Cheatsheets</span></a>
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Posit Cheatsheets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../contributed-cheatsheets.html" rel="" target="">
- <span class="menu-text">Contributed Cheatsheets</span></a>
+    <a class="nav-link" href="../contributed-cheatsheets.html"> 
+<span class="menu-text">Contributed Cheatsheets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../translations.html" rel="" target="">
- <span class="menu-text">Translated Cheatsheets</span></a>
+    <a class="nav-link" href="../translations.html"> 
+<span class="menu-text">Translated Cheatsheets</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/rstudio/cheatsheets" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/rstudio/cheatsheets"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
@@ -194,9 +201,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#shortcodes" id="toc-shortcodes" class="nav-link" data-scroll-target="#shortcodes">Shortcodes</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/rstudio/cheatsheets/edit/main/html/quarto.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/rstudio/cheatsheets/edit/main/html/quarto.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
@@ -223,7 +230,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 
 <div class="no-row-height column-margin column-container"><div class="">
@@ -275,17 +284,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>distributions of physical dimensions (@fig-penguins).</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-penguins</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Dimensions of penguins across three species."</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse, <span class="at">quietly =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm)) <span class="sc">+</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkorange"</span>, <span class="st">"purple"</span>, <span class="st">"cyan4"</span>)) <span class="sc">+</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-penguins</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: "Dimensions of penguins across three species."</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="in">#| warning: false</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse, quietly = TRUE)</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="in">library(palmerpenguins)</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="in">penguins |&gt;</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="in">  ggplot(aes(x = flipper_length_mm, y = bill_length_mm)) +</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_point(aes(color = species)) +</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="in">  scale_color_manual(</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="in">    values = c("darkorange", "purple", "cyan4")) +</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="in">  theme_minimal()</span></span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="highlights-in-the-source-file" class="level3">
@@ -311,17 +320,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>distributions of physical dimensions (@fig-penguins).</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Include code. R, Python, Julia, Observable, or any language with a Jupyter kernel.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-penguins</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Dimensions of penguins across three species."</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse, <span class="at">quietly =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm, <span class="at">y =</span> bill_length_mm)) <span class="sc">+</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species)) <span class="sc">+</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkorange"</span>, <span class="st">"purple"</span>, <span class="st">"cyan4"</span>)) <span class="sc">+</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-penguins</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: "Dimensions of penguins across three species."</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="in">#| warning: false</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse, quietly = TRUE)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="in">library(palmerpenguins)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="in">penguins |&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="in">  ggplot(aes(x = flipper_length_mm, y = bill_length_mm)) +</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="in">  geom_point(aes(color = species)) +</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="in">  scale_color_manual(</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="in">    values = c("darkorange", "purple", "cyan4")) +</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="in">  theme_minimal()</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
@@ -352,7 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview hello.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview hello.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>RStudio &amp; VS Code: Use <strong>Render</strong> button</p>
 <p>The resulting HTML/PDF/MS Word/etc. document will be created and saved in the same directory as the source .qmd file.</p>
@@ -386,7 +395,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish {venue} hello.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish {venue} hello.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>{venue}</code>: quarto-pub, connect, gh-pages, netlify, confluence, (<em>v1.4</em>) posit-cloud</p>
 <p>RStudio: Use <strong>Publish</strong> button <img src="images/quarto-rstudio-publish.png" class="img-fluid" style="width:10.0%" alt="Publish button icon in RStudio"></p>
@@ -407,7 +416,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> create project {type}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> create project {type}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>{type}</code>: default, website, blog, book, confluence, (<em>v1.4</em>) manuscript</p>
 <p>RStudio: Use <strong>File</strong> &gt; <strong>New Project</strong></p>
@@ -419,16 +428,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="code-cells">Code Cells</h3>
 <p>Code cells start with <code>```{language}</code>, and end with <code>```</code>.</p>
 <p>RStudio &amp; VS Code: Use <strong>Insert Code Chunk/Cell</strong>.</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: chunk-id</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: chunk-id</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: chunk-id</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: chunk-id</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -488,16 +500,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Set execution options at the <strong>cell level</strong>:</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="sourceCode" id="cb10"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -512,18 +527,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="inline-code" class="level3">
 <h3 class="anchored" data-anchor-id="inline-code">Inline Code</h3>
 <p>Use computed values directly in text sections. Code is evaluated at render and results appear as text.</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<section id="knitr" class="level4 quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<section id="knitr" class="level4 quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <h4 class="anchored" data-anchor-id="knitr">Knitr</h4>
 <p>Value is <code>`r 2 + 2`</code>.</p>
 </section>
-<section id="jupyter" class="level4 quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<section id="jupyter" class="level4 quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <h4 class="anchored" data-anchor-id="jupyter">Jupyter</h4>
 <p><span class="small muted">v1.4</span></p>
 <p>Value is <code>`{python} 2 + 2`</code>.</p>
 </section>
-<section id="output" class="level4 quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<section id="output" class="level4 quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
 <h4 class="anchored" data-anchor-id="output">Output</h4>
 <p>Value is 4.</p>
 </section>
@@ -533,9 +551,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="set-formats-and-options" class="level2">
 <h2 class="anchored" data-anchor-id="set-formats-and-options">Set Formats and Options</h2>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div id="set-options" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div id="set-options" class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <section id="set-format-options" class="level3">
 <h3 class="anchored" data-anchor-id="set-format-options">Set Format Options</h3>
 <div class="sourceCode" id="cb13"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
@@ -551,7 +572,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 </div>
-<section id="multiple-formats" class="level3 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<section id="multiple-formats" class="level3 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <h3 class="anchored" data-anchor-id="multiple-formats">Multiple Formats</h3>
 <div class="sourceCode" id="cb14"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Document"</span></span>
@@ -573,20 +594,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render hello.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render hello.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Render a <strong>specific</strong> format:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render hello.qmd <span class="at">--to</span> pdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render hello.qmd <span class="at">--to</span> pdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="output-options-table" class="level3">
 <h3 class="anchored" data-anchor-id="output-options-table">Output Options Table</h3>
 <div class="cell">
 <div class="cell-output-display">
-
+<div>
 <div id="hygipzdymv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#hygipzdymv table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -1027,177 +1048,240 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-indent: 25px;
 }
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption><p>Important Options. The first column is the option name, an “X” in the
-next three columns indicates whether the option applies to the format,
-the fourth column decribes the options and possible values, the final
-column indicates whether the options can also be set in a code cell.</p></caption>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Option">Option</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="html/revealjs">html/revealjs</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="pdf/beamer">pdf/beamer</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="docx/pptx">docx/pptx</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Description">Description</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="cell level?">cell level?</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr class="gt_group_heading_row">
-      <th colspan="6" class="gt_group_heading" scope="colgroup" id="Navigation">Navigation</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="Navigation  Option" class="gt_row gt_left" style="font-weight: bold; background-color: #F2F2F2;">toc</td>
-<td headers="Navigation  html/revealjs" class="gt_row gt_left" style="background-color: #F2F2F2;">X</td>
-<td headers="Navigation  pdf/beamer" class="gt_row gt_left" style="background-color: #F2F2F2;">X</td>
-<td headers="Navigation  docx/pptx" class="gt_row gt_left" style="background-color: #F2F2F2;">X</td>
-<td headers="Navigation  Description" class="gt_row gt_left" style="background-color: #F2F2F2;"><div class="gt_from_md"><p>Add a table of contents (true or false)</p>
+
+<table class="gt_table table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<caption>Important Options. The first column is the option name, an “X” in the next three columns indicates whether the option applies to the format, the fourth column decribes the options and possible values, the final column indicates whether the options can also be set in a code cell.</caption>
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header gt_col_headings">
+<th id="Option" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Option</th>
+<th id="html/revealjs" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">html/revealjs</th>
+<th id="pdf/beamer" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">pdf/beamer</th>
+<th id="docx/pptx" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">docx/pptx</th>
+<th id="Description" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Description</th>
+<th id="cell level?" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">cell level?</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd gt_group_heading_row">
+<td colspan="6" id="Navigation" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">Navigation</td>
+</tr>
+<tr class="even gt_row_group_first">
+<td class="gt_row gt_left" headers="Navigation  Option" style="font-weight: bold; background-color: #F2F2F2">toc</td>
+<td class="gt_row gt_left" headers="Navigation  html/revealjs" style="background-color: #F2F2F2">X</td>
+<td class="gt_row gt_left" headers="Navigation  pdf/beamer" style="background-color: #F2F2F2">X</td>
+<td class="gt_row gt_left" headers="Navigation  docx/pptx" style="background-color: #F2F2F2">X</td>
+<td class="gt_row gt_left" headers="Navigation  Description" style="background-color: #F2F2F2"><div class="gt_from_md">
+<p>Add a table of contents (true or false)</p>
 </div></td>
-<td headers="Navigation  cell level?" class="gt_row gt_left" style="background-color: #F2F2F2;"></td></tr>
-    <tr><td headers="Navigation  Option" class="gt_row gt_left" style="font-weight: bold; background-color: #F2F2F2;">toc-depth</td>
-<td headers="Navigation  html/revealjs" class="gt_row gt_left" style="background-color: #F2F2F2;">X</td>
-<td headers="Navigation  pdf/beamer" class="gt_row gt_left" style="background-color: #F2F2F2;">X</td>
-<td headers="Navigation  docx/pptx" class="gt_row gt_left" style="background-color: #F2F2F2;">X</td>
-<td headers="Navigation  Description" class="gt_row gt_left" style="background-color: #F2F2F2;"><div class="gt_from_md"><p>Lowest level of headings to add to table of contents (e.g. 2, 3)</p>
+<td class="gt_row gt_left" headers="Navigation  cell level?" style="background-color: #F2F2F2"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Navigation  Option" style="font-weight: bold; background-color: #F2F2F2">toc-depth</td>
+<td class="gt_row gt_left" headers="Navigation  html/revealjs" style="background-color: #F2F2F2">X</td>
+<td class="gt_row gt_left" headers="Navigation  pdf/beamer" style="background-color: #F2F2F2">X</td>
+<td class="gt_row gt_left" headers="Navigation  docx/pptx" style="background-color: #F2F2F2">X</td>
+<td class="gt_row gt_left" headers="Navigation  Description" style="background-color: #F2F2F2"><div class="gt_from_md">
+<p>Lowest level of headings to add to table of contents (e.g. 2, 3)</p>
 </div></td>
-<td headers="Navigation  cell level?" class="gt_row gt_left" style="background-color: #F2F2F2;"></td></tr>
-    <tr><td headers="Navigation  Option" class="gt_row gt_left" style="font-weight: bold; background-color: #F2F2F2;">anchor-sections</td>
-<td headers="Navigation  html/revealjs" class="gt_row gt_left" style="background-color: #F2F2F2;">X</td>
-<td headers="Navigation  pdf/beamer" class="gt_row gt_left" style="background-color: #F2F2F2;"></td>
-<td headers="Navigation  docx/pptx" class="gt_row gt_left" style="background-color: #F2F2F2;"></td>
-<td headers="Navigation  Description" class="gt_row gt_left" style="background-color: #F2F2F2;"><div class="gt_from_md"><p>Show section anchors on mouse hover (true or false)</p>
+<td class="gt_row gt_left" headers="Navigation  cell level?" style="background-color: #F2F2F2"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Navigation  Option" style="font-weight: bold; background-color: #F2F2F2">anchor-sections</td>
+<td class="gt_row gt_left" headers="Navigation  html/revealjs" style="background-color: #F2F2F2">X</td>
+<td class="gt_row gt_left" headers="Navigation  pdf/beamer" style="background-color: #F2F2F2"></td>
+<td class="gt_row gt_left" headers="Navigation  docx/pptx" style="background-color: #F2F2F2"></td>
+<td class="gt_row gt_left" headers="Navigation  Description" style="background-color: #F2F2F2"><div class="gt_from_md">
+<p>Show section anchors on mouse hover (true or false)</p>
 </div></td>
-<td headers="Navigation  cell level?" class="gt_row gt_left" style="background-color: #F2F2F2;"></td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="6" class="gt_group_heading" scope="colgroup" id="Style">Style</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="Style  Option" class="gt_row gt_left" style="font-weight: bold;">highlight-style</td>
-<td headers="Style  html/revealjs" class="gt_row gt_left">X</td>
-<td headers="Style  pdf/beamer" class="gt_row gt_left">X</td>
-<td headers="Style  docx/pptx" class="gt_row gt_left">X</td>
-<td headers="Style  Description" class="gt_row gt_left"><div class="gt_from_md"><p>Syntax highlighting theme (e.g. arrow, pygments, kate, zenburn)</p>
+<td class="gt_row gt_left" headers="Navigation  cell level?" style="background-color: #F2F2F2"></td>
+</tr>
+<tr class="odd gt_group_heading_row">
+<td colspan="6" id="Style" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">Style</td>
+</tr>
+<tr class="even gt_row_group_first">
+<td class="gt_row gt_left" headers="Style  Option" style="font-weight: bold">highlight-style</td>
+<td class="gt_row gt_left" headers="Style  html/revealjs">X</td>
+<td class="gt_row gt_left" headers="Style  pdf/beamer">X</td>
+<td class="gt_row gt_left" headers="Style  docx/pptx">X</td>
+<td class="gt_row gt_left" headers="Style  Description"><div class="gt_from_md">
+<p>Syntax highlighting theme (e.g. arrow, pygments, kate, zenburn)</p>
 </div></td>
-<td headers="Style  cell level?" class="gt_row gt_left"></td></tr>
-    <tr><td headers="Style  Option" class="gt_row gt_left" style="font-weight: bold;">mainfont, monofont</td>
-<td headers="Style  html/revealjs" class="gt_row gt_left">X</td>
-<td headers="Style  pdf/beamer" class="gt_row gt_left">X</td>
-<td headers="Style  docx/pptx" class="gt_row gt_left"></td>
-<td headers="Style  Description" class="gt_row gt_left"><div class="gt_from_md"><p>Font name. HTML: sets CSS <code>font-family</code>; LaTeX: via fontspec package</p>
+<td class="gt_row gt_left" headers="Style  cell level?"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Style  Option" style="font-weight: bold">mainfont, monofont</td>
+<td class="gt_row gt_left" headers="Style  html/revealjs">X</td>
+<td class="gt_row gt_left" headers="Style  pdf/beamer">X</td>
+<td class="gt_row gt_left" headers="Style  docx/pptx"></td>
+<td class="gt_row gt_left" headers="Style  Description"><div class="gt_from_md">
+<p>Font name. HTML: sets CSS <code>font-family</code>; LaTeX: via fontspec package</p>
 </div></td>
-<td headers="Style  cell level?" class="gt_row gt_left"></td></tr>
-    <tr><td headers="Style  Option" class="gt_row gt_left" style="font-weight: bold;">theme</td>
-<td headers="Style  html/revealjs" class="gt_row gt_left">X</td>
-<td headers="Style  pdf/beamer" class="gt_row gt_left"></td>
-<td headers="Style  docx/pptx" class="gt_row gt_left"></td>
-<td headers="Style  Description" class="gt_row gt_left"><div class="gt_from_md"><p>Bootswatch theme name (e.g. cosmo, darkly, solar etc.)</p>
+<td class="gt_row gt_left" headers="Style  cell level?"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Style  Option" style="font-weight: bold">theme</td>
+<td class="gt_row gt_left" headers="Style  html/revealjs">X</td>
+<td class="gt_row gt_left" headers="Style  pdf/beamer"></td>
+<td class="gt_row gt_left" headers="Style  docx/pptx"></td>
+<td class="gt_row gt_left" headers="Style  Description"><div class="gt_from_md">
+<p>Bootswatch theme name (e.g. cosmo, darkly, solar etc.)</p>
 </div></td>
-<td headers="Style  cell level?" class="gt_row gt_left"></td></tr>
-    <tr><td headers="Style  Option" class="gt_row gt_left" style="font-weight: bold;">css</td>
-<td headers="Style  html/revealjs" class="gt_row gt_left">X</td>
-<td headers="Style  pdf/beamer" class="gt_row gt_left"></td>
-<td headers="Style  docx/pptx" class="gt_row gt_left"></td>
-<td headers="Style  Description" class="gt_row gt_left"><div class="gt_from_md"><p>CSS or SCSS file to use to style the document (e.g. “style.css”)</p>
+<td class="gt_row gt_left" headers="Style  cell level?"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Style  Option" style="font-weight: bold">css</td>
+<td class="gt_row gt_left" headers="Style  html/revealjs">X</td>
+<td class="gt_row gt_left" headers="Style  pdf/beamer"></td>
+<td class="gt_row gt_left" headers="Style  docx/pptx"></td>
+<td class="gt_row gt_left" headers="Style  Description"><div class="gt_from_md">
+<p>CSS or SCSS file to use to style the document (e.g. “style.css”)</p>
 </div></td>
-<td headers="Style  cell level?" class="gt_row gt_left"></td></tr>
-    <tr><td headers="Style  Option" class="gt_row gt_left" style="font-weight: bold;">reference-doc</td>
-<td headers="Style  html/revealjs" class="gt_row gt_left"></td>
-<td headers="Style  pdf/beamer" class="gt_row gt_left"></td>
-<td headers="Style  docx/pptx" class="gt_row gt_left">X</td>
-<td headers="Style  Description" class="gt_row gt_left"><div class="gt_from_md"><p>docx/pptx file containing template styles (e.g. file.docx, file.pptx)</p>
+<td class="gt_row gt_left" headers="Style  cell level?"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Style  Option" style="font-weight: bold">reference-doc</td>
+<td class="gt_row gt_left" headers="Style  html/revealjs"></td>
+<td class="gt_row gt_left" headers="Style  pdf/beamer"></td>
+<td class="gt_row gt_left" headers="Style  docx/pptx">X</td>
+<td class="gt_row gt_left" headers="Style  Description"><div class="gt_from_md">
+<p>docx/pptx file containing template styles (e.g. file.docx, file.pptx)</p>
 </div></td>
-<td headers="Style  cell level?" class="gt_row gt_left"></td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="6" class="gt_group_heading" scope="colgroup" id="NA">NA</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="NA  Option" class="gt_row gt_left" style="font-weight: bold; background-color: #F2F2F2;">include-in-header</td>
-<td headers="NA  html/revealjs" class="gt_row gt_left" style="background-color: #F2F2F2;">X</td>
-<td headers="NA  pdf/beamer" class="gt_row gt_left" style="background-color: #F2F2F2;">X</td>
-<td headers="NA  docx/pptx" class="gt_row gt_left" style="background-color: #F2F2F2;"></td>
-<td headers="NA  Description" class="gt_row gt_left" style="background-color: #F2F2F2;"><div class="gt_from_md"><p>Files of content to include in header of output document, also <strong>include-before-body</strong>, <strong>include-after-body</strong></p>
+<td class="gt_row gt_left" headers="Style  cell level?"></td>
+</tr>
+<tr class="odd gt_group_heading_row">
+<td colspan="6" id="NA" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">NA</td>
+</tr>
+<tr class="even gt_row_group_first">
+<td class="gt_row gt_left" headers="NA  Option" style="font-weight: bold; background-color: #F2F2F2">include-in-header</td>
+<td class="gt_row gt_left" headers="NA  html/revealjs" style="background-color: #F2F2F2">X</td>
+<td class="gt_row gt_left" headers="NA  pdf/beamer" style="background-color: #F2F2F2">X</td>
+<td class="gt_row gt_left" headers="NA  docx/pptx" style="background-color: #F2F2F2"></td>
+<td class="gt_row gt_left" headers="NA  Description" style="background-color: #F2F2F2"><div class="gt_from_md">
+<p>Files of content to include in header of output document, also <strong>include-before-body</strong>, <strong>include-after-body</strong></p>
 </div></td>
-<td headers="NA  cell level?" class="gt_row gt_left" style="background-color: #F2F2F2;"></td></tr>
-    <tr><td headers="NA  Option" class="gt_row gt_left" style="font-weight: bold; background-color: #F2F2F2;">keep-md</td>
-<td headers="NA  html/revealjs" class="gt_row gt_left" style="background-color: #F2F2F2;">X</td>
-<td headers="NA  pdf/beamer" class="gt_row gt_left" style="background-color: #F2F2F2;">X</td>
-<td headers="NA  docx/pptx" class="gt_row gt_left" style="background-color: #F2F2F2;">X</td>
-<td headers="NA  Description" class="gt_row gt_left" style="background-color: #F2F2F2;"><div class="gt_from_md"><p>Keep intermediate files (true or false), also <strong>keep-tex</strong>, <strong>keep-ipynb</strong></p>
+<td class="gt_row gt_left" headers="NA  cell level?" style="background-color: #F2F2F2"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="NA  Option" style="font-weight: bold; background-color: #F2F2F2">keep-md</td>
+<td class="gt_row gt_left" headers="NA  html/revealjs" style="background-color: #F2F2F2">X</td>
+<td class="gt_row gt_left" headers="NA  pdf/beamer" style="background-color: #F2F2F2">X</td>
+<td class="gt_row gt_left" headers="NA  docx/pptx" style="background-color: #F2F2F2">X</td>
+<td class="gt_row gt_left" headers="NA  Description" style="background-color: #F2F2F2"><div class="gt_from_md">
+<p>Keep intermediate files (true or false), also <strong>keep-tex</strong>, <strong>keep-ipynb</strong></p>
 </div></td>
-<td headers="NA  cell level?" class="gt_row gt_left" style="background-color: #F2F2F2;"></td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="6" class="gt_group_heading" scope="colgroup" id="LaTeX">LaTeX</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="LaTeX  Option" class="gt_row gt_left" style="font-weight: bold;">documentclass</td>
-<td headers="LaTeX  html/revealjs" class="gt_row gt_left"></td>
-<td headers="LaTeX  pdf/beamer" class="gt_row gt_left">X</td>
-<td headers="LaTeX  docx/pptx" class="gt_row gt_left"></td>
-<td headers="LaTeX  Description" class="gt_row gt_left"><div class="gt_from_md"><p>LaTeX document class, set document options with <strong>classoption</strong></p>
+<td class="gt_row gt_left" headers="NA  cell level?" style="background-color: #F2F2F2"></td>
+</tr>
+<tr class="even gt_group_heading_row">
+<td colspan="6" id="LaTeX" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">LaTeX</td>
+</tr>
+<tr class="odd gt_row_group_first">
+<td class="gt_row gt_left" headers="LaTeX  Option" style="font-weight: bold">documentclass</td>
+<td class="gt_row gt_left" headers="LaTeX  html/revealjs"></td>
+<td class="gt_row gt_left" headers="LaTeX  pdf/beamer">X</td>
+<td class="gt_row gt_left" headers="LaTeX  docx/pptx"></td>
+<td class="gt_row gt_left" headers="LaTeX  Description"><div class="gt_from_md">
+<p>LaTeX document class, set document options with <strong>classoption</strong></p>
 </div></td>
-<td headers="LaTeX  cell level?" class="gt_row gt_left"></td></tr>
-    <tr><td headers="LaTeX  Option" class="gt_row gt_left" style="font-weight: bold;">pdf-engine</td>
-<td headers="LaTeX  html/revealjs" class="gt_row gt_left"></td>
-<td headers="LaTeX  pdf/beamer" class="gt_row gt_left">X</td>
-<td headers="LaTeX  docx/pptx" class="gt_row gt_left"></td>
-<td headers="LaTeX  Description" class="gt_row gt_left"><div class="gt_from_md"><p>LaTeX engine to produce PDF output (xelatex, pdflatex, lualatex)</p>
+<td class="gt_row gt_left" headers="LaTeX  cell level?"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="LaTeX  Option" style="font-weight: bold">pdf-engine</td>
+<td class="gt_row gt_left" headers="LaTeX  html/revealjs"></td>
+<td class="gt_row gt_left" headers="LaTeX  pdf/beamer">X</td>
+<td class="gt_row gt_left" headers="LaTeX  docx/pptx"></td>
+<td class="gt_row gt_left" headers="LaTeX  Description"><div class="gt_from_md">
+<p>LaTeX engine to produce PDF output (xelatex, pdflatex, lualatex)</p>
 </div></td>
-<td headers="LaTeX  cell level?" class="gt_row gt_left"></td></tr>
-    <tr><td headers="LaTeX  Option" class="gt_row gt_left" style="font-weight: bold;">cite-method</td>
-<td headers="LaTeX  html/revealjs" class="gt_row gt_left"></td>
-<td headers="LaTeX  pdf/beamer" class="gt_row gt_left">X</td>
-<td headers="LaTeX  docx/pptx" class="gt_row gt_left"></td>
-<td headers="LaTeX  Description" class="gt_row gt_left"><div class="gt_from_md"><p>Method used to format citations (citeproc, natbib, biblatex)</p>
+<td class="gt_row gt_left" headers="LaTeX  cell level?"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="LaTeX  Option" style="font-weight: bold">cite-method</td>
+<td class="gt_row gt_left" headers="LaTeX  html/revealjs"></td>
+<td class="gt_row gt_left" headers="LaTeX  pdf/beamer">X</td>
+<td class="gt_row gt_left" headers="LaTeX  docx/pptx"></td>
+<td class="gt_row gt_left" headers="LaTeX  Description"><div class="gt_from_md">
+<p>Method used to format citations (citeproc, natbib, biblatex)</p>
 </div></td>
-<td headers="LaTeX  cell level?" class="gt_row gt_left"></td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="6" class="gt_group_heading" scope="colgroup" id="Code">Code</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="Code  Option" class="gt_row gt_left" style="font-weight: bold; background-color: #F2F2F2;">code-fold</td>
-<td headers="Code  html/revealjs" class="gt_row gt_left" style="background-color: #F2F2F2;">X</td>
-<td headers="Code  pdf/beamer" class="gt_row gt_left" style="background-color: #F2F2F2;"></td>
-<td headers="Code  docx/pptx" class="gt_row gt_left" style="background-color: #F2F2F2;"></td>
-<td headers="Code  Description" class="gt_row gt_left" style="background-color: #F2F2F2;"><div class="gt_from_md"><p>Let readers toggle the display of R code (false, true, or show)</p>
+<td class="gt_row gt_left" headers="LaTeX  cell level?"></td>
+</tr>
+<tr class="even gt_group_heading_row">
+<td colspan="6" id="Code" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">Code</td>
+</tr>
+<tr class="odd gt_row_group_first">
+<td class="gt_row gt_left" headers="Code  Option" style="font-weight: bold; background-color: #F2F2F2">code-fold</td>
+<td class="gt_row gt_left" headers="Code  html/revealjs" style="background-color: #F2F2F2">X</td>
+<td class="gt_row gt_left" headers="Code  pdf/beamer" style="background-color: #F2F2F2"></td>
+<td class="gt_row gt_left" headers="Code  docx/pptx" style="background-color: #F2F2F2"></td>
+<td class="gt_row gt_left" headers="Code  Description" style="background-color: #F2F2F2"><div class="gt_from_md">
+<p>Let readers toggle the display of R code (false, true, or show)</p>
 </div></td>
-<td headers="Code  cell level?" class="gt_row gt_left" style="background-color: #F2F2F2;">X</td></tr>
-    <tr><td headers="Code  Option" class="gt_row gt_left" style="font-weight: bold; background-color: #F2F2F2;">code-tools</td>
-<td headers="Code  html/revealjs" class="gt_row gt_left" style="background-color: #F2F2F2;">X</td>
-<td headers="Code  pdf/beamer" class="gt_row gt_left" style="background-color: #F2F2F2;"></td>
-<td headers="Code  docx/pptx" class="gt_row gt_left" style="background-color: #F2F2F2;"></td>
-<td headers="Code  Description" class="gt_row gt_left" style="background-color: #F2F2F2;"><div class="gt_from_md"><p>Add menu for hiding, showing, and downloading code (true or false)</p>
+<td class="gt_row gt_left" headers="Code  cell level?" style="background-color: #F2F2F2">X</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Code  Option" style="font-weight: bold; background-color: #F2F2F2">code-tools</td>
+<td class="gt_row gt_left" headers="Code  html/revealjs" style="background-color: #F2F2F2">X</td>
+<td class="gt_row gt_left" headers="Code  pdf/beamer" style="background-color: #F2F2F2"></td>
+<td class="gt_row gt_left" headers="Code  docx/pptx" style="background-color: #F2F2F2"></td>
+<td class="gt_row gt_left" headers="Code  Description" style="background-color: #F2F2F2"><div class="gt_from_md">
+<p>Add menu for hiding, showing, and downloading code (true or false)</p>
 </div></td>
-<td headers="Code  cell level?" class="gt_row gt_left" style="background-color: #F2F2F2;"></td></tr>
-    <tr><td headers="Code  Option" class="gt_row gt_left" style="font-weight: bold; background-color: #F2F2F2;">code-overflow</td>
-<td headers="Code  html/revealjs" class="gt_row gt_left" style="background-color: #F2F2F2;">X</td>
-<td headers="Code  pdf/beamer" class="gt_row gt_left" style="background-color: #F2F2F2;"></td>
-<td headers="Code  docx/pptx" class="gt_row gt_left" style="background-color: #F2F2F2;"></td>
-<td headers="Code  Description" class="gt_row gt_left" style="background-color: #F2F2F2;"><div class="gt_from_md"><p>Display of wide code (scroll, or wrap)</p>
+<td class="gt_row gt_left" headers="Code  cell level?" style="background-color: #F2F2F2"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Code  Option" style="font-weight: bold; background-color: #F2F2F2">code-overflow</td>
+<td class="gt_row gt_left" headers="Code  html/revealjs" style="background-color: #F2F2F2">X</td>
+<td class="gt_row gt_left" headers="Code  pdf/beamer" style="background-color: #F2F2F2"></td>
+<td class="gt_row gt_left" headers="Code  docx/pptx" style="background-color: #F2F2F2"></td>
+<td class="gt_row gt_left" headers="Code  Description" style="background-color: #F2F2F2"><div class="gt_from_md">
+<p>Display of wide code (scroll, or wrap)</p>
 </div></td>
-<td headers="Code  cell level?" class="gt_row gt_left" style="background-color: #F2F2F2;">X</td></tr>
-    <tr class="gt_group_heading_row">
-      <th colspan="6" class="gt_group_heading" scope="colgroup" id="Figures">Figures</th>
-    </tr>
-    <tr class="gt_row_group_first"><td headers="Figures  Option" class="gt_row gt_left" style="font-weight: bold;">fig-align</td>
-<td headers="Figures  html/revealjs" class="gt_row gt_left">X</td>
-<td headers="Figures  pdf/beamer" class="gt_row gt_left">X</td>
-<td headers="Figures  docx/pptx" class="gt_row gt_left">docx only</td>
-<td headers="Figures  Description" class="gt_row gt_left"><div class="gt_from_md"><p>Alignment of figures (default, left, right, center)</p>
+<td class="gt_row gt_left" headers="Code  cell level?" style="background-color: #F2F2F2">X</td>
+</tr>
+<tr class="even gt_group_heading_row">
+<td colspan="6" id="Figures" class="gt_group_heading" data-quarto-table-cell-role="th" scope="colgroup">Figures</td>
+</tr>
+<tr class="odd gt_row_group_first">
+<td class="gt_row gt_left" headers="Figures  Option" style="font-weight: bold">fig-align</td>
+<td class="gt_row gt_left" headers="Figures  html/revealjs">X</td>
+<td class="gt_row gt_left" headers="Figures  pdf/beamer">X</td>
+<td class="gt_row gt_left" headers="Figures  docx/pptx">docx only</td>
+<td class="gt_row gt_left" headers="Figures  Description"><div class="gt_from_md">
+<p>Alignment of figures (default, left, right, center)</p>
 </div></td>
-<td headers="Figures  cell level?" class="gt_row gt_left">X</td></tr>
-    <tr><td headers="Figures  Option" class="gt_row gt_left" style="font-weight: bold;">fig-width, fig-height</td>
-<td headers="Figures  html/revealjs" class="gt_row gt_left">X</td>
-<td headers="Figures  pdf/beamer" class="gt_row gt_left">X</td>
-<td headers="Figures  docx/pptx" class="gt_row gt_left">X</td>
-<td headers="Figures  Description" class="gt_row gt_left"><div class="gt_from_md"><p>Default width and height for figures in inches</p>
+<td class="gt_row gt_left" headers="Figures  cell level?">X</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Figures  Option" style="font-weight: bold">fig-width, fig-height</td>
+<td class="gt_row gt_left" headers="Figures  html/revealjs">X</td>
+<td class="gt_row gt_left" headers="Figures  pdf/beamer">X</td>
+<td class="gt_row gt_left" headers="Figures  docx/pptx">X</td>
+<td class="gt_row gt_left" headers="Figures  Description"><div class="gt_from_md">
+<p>Default width and height for figures in inches</p>
 </div></td>
-<td headers="Figures  cell level?" class="gt_row gt_left">Knitr only</td></tr>
-    <tr><td headers="Figures  Option" class="gt_row gt_left" style="font-weight: bold;">fig-format</td>
-<td headers="Figures  html/revealjs" class="gt_row gt_left">X</td>
-<td headers="Figures  pdf/beamer" class="gt_row gt_left">X</td>
-<td headers="Figures  docx/pptx" class="gt_row gt_left">X</td>
-<td headers="Figures  Description" class="gt_row gt_left"><div class="gt_from_md"><p>Format for Matplotlib or R figures (retina, png, jpeg, svg, or pdf)</p>
+<td class="gt_row gt_left" headers="Figures  cell level?">Knitr only</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Figures  Option" style="font-weight: bold">fig-format</td>
+<td class="gt_row gt_left" headers="Figures  html/revealjs">X</td>
+<td class="gt_row gt_left" headers="Figures  pdf/beamer">X</td>
+<td class="gt_row gt_left" headers="Figures  docx/pptx">X</td>
+<td class="gt_row gt_left" headers="Figures  Description"><div class="gt_from_md">
+<p>Format for Matplotlib or R figures (retina, png, jpeg, svg, or pdf)</p>
 </div></td>
-<td headers="Figures  cell level?" class="gt_row gt_left"></td></tr>
-  </tbody>
-  
-  
+<td class="gt_row gt_left" headers="Figures  cell level?"></td>
+</tr>
+</tbody>
 </table>
+
+</div>
 </div>
 </div>
 </div>
@@ -1215,10 +1299,10 @@ column indicates whether the options can also be set in a code cell.</p></captio
 <section id="computation" class="level4">
 <h4 class="anchored" data-anchor-id="computation">Computation</h4>
 <div class="sourceCode" id="cb20"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-LABEL</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: CAP</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-alt: ALT</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>{{ plot code here }}</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: fig-LABEL</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-cap: CAP</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="in">#| fig-alt: ALT</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="in">{{ plot code here }}</span></span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Or <code>{r}</code></p>
 </section>
@@ -1237,30 +1321,33 @@ column indicates whether the options can also be set in a code cell.</p></captio
 <section id="computation-1" class="level4">
 <h4 class="anchored" data-anchor-id="computation-1">Computation</h4>
 <p>Output a markdown table or an HTML table from your code.</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<section id="knitr-1" class="level5 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<section id="knitr-1" class="level5 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <h5 class="anchored" data-anchor-id="knitr-1">Knitr</h5>
 <p>Use <code>knitr::kable()</code> to produce markdown:</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-LABEL</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: CAPTION</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: tbl-LABEL</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| tbl-cap: CAPTION</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(cars))</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::kable(head(cars))</span></span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Also see the R packages: gt, flextable, kableExtra.</p>
 </section>
-<section id="jupyter-1" class="level5 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<section id="jupyter-1" class="level5 quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <h5 class="anchored" data-anchor-id="jupyter-1">Jupyter</h5>
 <p>Add <code>Markdown()</code> to Markdown output:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: tbl-LABEL</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| tbl-cap: CAPTION</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd, tabulate</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"A"</span>: [<span class="dv">1</span>, <span class="dv">2</span>], </span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"B"</span>: [<span class="dv">1</span>, <span class="dv">2</span>]})</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>Markdown(df.to_markdown(index<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: tbl-LABEL</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| tbl-cap: CAPTION</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="in">import pandas as pd, tabulate</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="in">from IPython.display import Markdown</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="in">df = pd.DataFrame({"A": [1, 2], </span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="in">                   "B": [1, 2]})</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="in">Markdown(df.to_markdown(index=False))</span></span>
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
@@ -1416,7 +1503,7 @@ important
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> install tinytex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> install tinytex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></li>
 <li id="fn3"><p>PDFs and Beamer slides require LaTeX, use:</p>
@@ -1424,7 +1511,7 @@ important
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> install tinytex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> install tinytex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></li>
 </ol>
@@ -1508,10 +1595,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/rstudio\.github\.io\/cheatsheets\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1521,8 +1625,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1534,7 +1647,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1578,6 +1814,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1603,6 +1840,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1666,4 +1929,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/rstudio/cheatsheets/edit/main/html/quarto.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

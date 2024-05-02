@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -48,7 +48,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -57,6 +63,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -95,6 +102,33 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="html/css/cheatsheet.css">
 </head>
 
@@ -102,9 +136,9 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a href="https://posit.co" class="navbar-brand navbar-brand-logo">
     <img src="./html/images/posit-logo.png" alt="posit logo" class="navbar-logo">
     </a>
@@ -116,38 +150,38 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
- <span class="menu-text">Posit Cheatsheets</span></a>
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Posit Cheatsheets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./contributed-cheatsheets.html" rel="" target="">
- <span class="menu-text">Contributed Cheatsheets</span></a>
+    <a class="nav-link" href="./contributed-cheatsheets.html"> 
+<span class="menu-text">Contributed Cheatsheets</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./translations.html" rel="" target="">
- <span class="menu-text">Translated Cheatsheets</span></a>
+    <a class="nav-link" href="./translations.html"> 
+<span class="menu-text">Translated Cheatsheets</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/rstudio/cheatsheets" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+    <a class="nav-link" href="https://github.com/rstudio/cheatsheets"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
     </div>
@@ -169,7 +203,9 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <p>HTML versions of our popular cheatsheets. PDF versions are available to download on each cheatsheet page. There are also non-English translations available for many cheatsheets, contributed by the community.</p>
 
@@ -178,7 +214,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1702147715099" data-listing-reading-time-sort="8">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1714662939972" data-listing-reading-time-sort="8" data-listing-word-count-sort="1573">
 <a href="./html/rstudio-ide.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-RStudio.png" alt="Hex logo for the RStudio IDE - A light blue hexagon with the word 'RStudio' in the middle. The 'R' is blue in the centre of a solid white circle, while 'Studio' is written in white on the blue background." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -198,7 +234,7 @@ RStudio IDE :: Cheatsheet
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1702147715075" data-listing-reading-time-sort="18">
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1714662939948" data-listing-reading-time-sort="18" data-listing-word-count-sort="3418">
 <a href="./html/data-visualization.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-ggplot2.png" alt="Hex logo for ggplot2 - Six points following an overall increasing trend filled with colors going from light blue to dark blue, connected with a black line, on a light gray background with white grid lines." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -218,7 +254,7 @@ Data visualization with ggplot2 :: Cheat Sheet
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1702147715075" data-listing-reading-time-sort="11">
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1714662939948" data-listing-reading-time-sort="11" data-listing-word-count-sort="2178">
 <a href="./html/data-transformation.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-dplyr.png" alt="Hex logo for dplyr - three different brightly coloured cartoon pairs of pliers that appear as spaceships flying through a black background, with coloured spots representing stars and planets." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -238,7 +274,7 @@ Data transformation with dplyr :: Cheatsheet
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1702147715075" data-listing-reading-time-sort="17">
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1714662939948" data-listing-reading-time-sort="17" data-listing-word-count-sort="3355">
 <a href="./html/data-import.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-readr.png" alt="Hex logo for readr - a white document icon going dowards into a dark blue funnel, with a white icon of a data table coming out the narrow end, all on a blue background." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -258,7 +294,7 @@ Data import with the tidyverse :: Cheatsheet
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1702147715099" data-listing-reading-time-sort="11">
+<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1714662939972" data-listing-reading-time-sort="11" data-listing-word-count-sort="2030">
 <a href="./html/tidyr.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-tidyr.png" alt="Hex logo for tidyr - three different brightly coloured cartoon brooms that appear as spaceships flying through a black background, with coloured spots representing stars and planets." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -278,7 +314,7 @@ Data tidying with tidyr :: Cheatsheet
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1702147715099" data-listing-reading-time-sort="12">
+<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1714662939972" data-listing-reading-time-sort="12" data-listing-word-count-sort="2265">
 <a href="./html/purrr.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-purrr.png" alt="Hex logo for purrr - a simple sketch of a sleeping cat nestled into the bottom of the black border of the hexagon. 'purrr' is written across the top in black." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -298,7 +334,7 @@ Apply functions with purrr :: Cheatsheet
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1702147715075" data-listing-reading-time-sort="5">
+<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1714662939948" data-listing-reading-time-sort="5" data-listing-word-count-sort="995">
 <a href="./html/factors.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-forcats.png" alt="Hex logo for forcats - drawing of four black cats lounging in a cardboard box. On one side of the box it says 'for' and on the adjacent side is says 'cats'." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -318,7 +354,7 @@ Factors with forcats :: Cheatsheet
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="7" data-listing-file-modified-sort="1702147715095" data-listing-reading-time-sort="11">
+<div class="g-col-1" data-index="7" data-listing-file-modified-sort="1714662939972" data-listing-reading-time-sort="11" data-listing-word-count-sort="2148">
 <a href="./html/lubridate.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-lubridate.png" alt="Hex logo for lubridate - a white calendar on a green background, with a clock superimposed on it. 'lubdridate' is written in white across the bottom." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -338,7 +374,7 @@ Dates and times with lubridate :: Cheatsheet
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="8" data-listing-file-modified-sort="1702147715099" data-listing-reading-time-sort="80">
+<div class="g-col-1" data-index="8" data-listing-file-modified-sort="1714662939972" data-listing-reading-time-sort="80" data-listing-word-count-sort="15984">
 <a href="./html/strings.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-stringr.png" alt="Hex logo for stringr - a green hexagon with a white violin in the centre, above the word 'stringr' in white." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -358,7 +394,7 @@ String manipulation with stringr :: Cheatsheet
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="9" data-listing-file-modified-sort="1702147715099" data-listing-reading-time-sort="17">
+<div class="g-col-1" data-index="9" data-listing-file-modified-sort="1714662939972" data-listing-reading-time-sort="17" data-listing-word-count-sort="3268">
 <a href="./html/shiny.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-shiny.png" alt="Hex logo for Shiny - A blue hexagon with the word 'Shiny' written in white in a flowing cursive font. The tail of the 'y' flows back to the left to underline the word." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -378,7 +414,7 @@ Shiny :: Cheatsheet
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="10" data-listing-file-modified-sort="1702147715099" data-listing-reading-time-sort="14">
+<div class="g-col-1" data-index="10" data-listing-file-modified-sort="1714662939972" data-listing-reading-time-sort="14" data-listing-word-count-sort="2787">
 <a href="./html/shiny-python.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-shiny.png" alt="Hex logo for Shiny - A blue hexagon with the word 'Shiny' written in white in a flowing cursive font. The tail of the 'y' flows back to the left to underline the word." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -398,7 +434,7 @@ Shiny for Python :: Cheatsheet
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="11" data-listing-file-modified-sort="1702147715099" data-listing-reading-time-sort="8">
+<div class="g-col-1" data-index="11" data-listing-file-modified-sort="1714662939972" data-listing-reading-time-sort="8" data-listing-word-count-sort="1572">
 <a href="./html/package-development.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-devtools.png" alt="Hex logo for devtools - The bottom part of a lowercase 'd' in black, in a hexagonal shape slightly inside the boundary of the hexagonal logo. The background is filled in three shades of blue. 'devtools' is written across the front in white." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -418,7 +454,7 @@ Package Development :: Cheatsheet
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="12" data-listing-file-modified-sort="1702147715099" data-listing-reading-time-sort="11">
+<div class="g-col-1" data-index="12" data-listing-file-modified-sort="1714662939972" data-listing-reading-time-sort="11" data-listing-word-count-sort="2030">
 <a href="./html/quarto.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-quarto.png" alt="Hex logo for Quarto - a white circle segmented into quarters next to the text Quarto on a blue background." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -438,7 +474,7 @@ QMD Edition
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="13" data-listing-file-modified-sort="1702147715099" data-listing-reading-time-sort="88">
+<div class="g-col-1" data-index="13" data-listing-file-modified-sort="1714662939972" data-listing-reading-time-sort="88" data-listing-word-count-sort="17593">
 <a href="./html/rmarkdown.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-rmarkdown.png" alt="Hex logo for rmarkdown - a dark blue background with a teal border. 'rmarkdown' is written across the bottom in light teal, and there is a quill pen above the word, with the tip pointing to the first 'r'." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -458,7 +494,7 @@ rmarkdown :: Cheatsheet
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="14" data-listing-file-modified-sort="1702147715095" data-listing-reading-time-sort="7">
+<div class="g-col-1" data-index="14" data-listing-file-modified-sort="1714662939972" data-listing-reading-time-sort="7" data-listing-word-count-sort="1322">
 <a href="./html/keras.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-tensorflow.png" alt="Hex logo for tensorflow - A red hexagon with a stylized 'TFR' (denoting TensorFlow for R) in a lighter shade of red, with the 'F' joined to the 'R'." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -478,7 +514,7 @@ Deep Learning with Keras :: Cheatsheet
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="15" data-listing-file-modified-sort="1702147715099" data-listing-reading-time-sort="13">
+<div class="g-col-1" data-index="15" data-listing-file-modified-sort="1714662939972" data-listing-reading-time-sort="13" data-listing-word-count-sort="2444">
 <a href="./html/plumber.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-plumber.png" alt="Hex logo for plumber - the word 'plumber' written in green, where the letters are depicted as water pipes, which connect to the border of the logo. The background is a series of criss-crossing pipes in shades of black and grey." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -498,7 +534,7 @@ REST APIs with plumber :: Cheatsheet
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="16" data-listing-file-modified-sort="1702147715099" data-listing-reading-time-sort="13">
+<div class="g-col-1" data-index="16" data-listing-file-modified-sort="1714662939972" data-listing-reading-time-sort="13" data-listing-word-count-sort="2453">
 <a href="./html/reticulate.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-reticulate.png" alt="Hex logo for reticulate - a navy blue background with a light-blue and yellow snake semi-coiled across the foreground. 'reticulate' is written across the bottom in white." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -518,7 +554,7 @@ Use Python with R with reticulate :: Cheatsheet
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="17" data-listing-file-modified-sort="1702147715099" data-listing-reading-time-sort="1">
+<div class="g-col-1" data-index="17" data-listing-file-modified-sort="1714662939972" data-listing-reading-time-sort="1" data-listing-word-count-sort="47">
 <a href="./html/sparklyr.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="html/images/logo-sparklyr.png" alt="Hex logo for sparklyr - Neon shooting stars of various shapes and sizes flying across a black and grey background." style="height: 200px;"  class="thumbnail-image card-img"/></p>
@@ -622,10 +658,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/rstudio\.github\.io\/cheatsheets\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -635,8 +688,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -648,7 +710,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -692,6 +877,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -717,6 +903,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -780,4 +992,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/rstudio/cheatsheets/edit/main/index.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action">Report an issue</a></p></div></div></div></div></footer></body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/rstudio/cheatsheets/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

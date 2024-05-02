@@ -11,119 +11,119 @@
     "href": "translations.html#bengali",
     "title": "Translated Cheatsheets",
     "section": "Bengali",
-    "text": "Bengali\n\n\n\n\ndata import"
+    "text": "Bengali\n\n\n\n\n\n\n\ndata import"
   },
   {
     "objectID": "translations.html#chinese",
     "href": "translations.html#chinese",
     "title": "Translated Cheatsheets",
     "section": "Chinese",
-    "text": "Chinese\n\n\n\n\nbase R\ndata transformation (cn)\ndata visualization\nkeras (cn)\nsparklyr (cn)\nsparklyr (tw)\ntidyr (cn)"
+    "text": "Chinese\n\n\n\n\n\n\n\nbase R\ndata transformation (cn)\ndata visualization\nkeras (cn)\nsparklyr (cn)\nsparklyr (tw)\ntidyr (cn)"
   },
   {
     "objectID": "translations.html#dutch",
     "href": "translations.html#dutch",
     "title": "Translated Cheatsheets",
     "section": "Dutch",
-    "text": "Dutch\n\n\n\n\ndata visualization\ndata wrangling\npackage development\nrmarkdown"
+    "text": "Dutch\n\n\n\n\n\n\n\ndata visualization\ndata wrangling\npackage development\nrmarkdown"
   },
   {
     "objectID": "translations.html#french",
     "href": "translations.html#french",
     "title": "Translated Cheatsheets",
     "section": "French",
-    "text": "French\n\n\n\n\ncaret\ndata visualization\ndata wrangling\nquanteda\nregex\nrstudio ide\nshiny"
+    "text": "French\n\n\n\n\n\n\n\ncaret\ndata visualization\ndata wrangling\nquanteda\nregex\nrstudio ide\nshiny"
   },
   {
     "objectID": "translations.html#german",
     "href": "translations.html#german",
     "title": "Translated Cheatsheets",
     "section": "German",
-    "text": "German\n\n\n\n\nbase R\ndata transformation\ndata visualization\ndata wrangling\npackage development\nrmarkdown\nshiny\nsparklyr"
+    "text": "German\n\n\n\n\n\n\n\nbase R\ndata transformation\ndata visualization\ndata wrangling\npackage development\nrmarkdown\nshiny\nsparklyr"
   },
   {
     "objectID": "translations.html#greek",
     "href": "translations.html#greek",
     "title": "Translated Cheatsheets",
     "section": "Greek",
-    "text": "Greek\n\n\n\n\nbase R\nrstudio ide"
+    "text": "Greek\n\n\n\n\n\n\n\nbase R\nrstudio ide"
   },
   {
     "objectID": "translations.html#italian",
     "href": "translations.html#italian",
     "title": "Translated Cheatsheets",
     "section": "Italian",
-    "text": "Italian\n\n\n\n\npackage development\nrmarkdown\nrstudio ide"
+    "text": "Italian\n\n\n\n\n\n\n\npackage development\nrmarkdown\nrstudio ide"
   },
   {
     "objectID": "translations.html#japanese",
     "href": "translations.html#japanese",
     "title": "Translated Cheatsheets",
     "section": "Japanese",
-    "text": "Japanese\n\n\n\n\nbase R\ndata visualization\ndata wrangling\nfactors\nkeras\nrmarkdown\nrstudio ide\nsparklyr"
+    "text": "Japanese\n\n\n\n\n\n\n\nbase R\ndata visualization\ndata wrangling\nfactors\nkeras\nrmarkdown\nrstudio ide\nsparklyr"
   },
   {
     "objectID": "translations.html#korean",
     "href": "translations.html#korean",
     "title": "Translated Cheatsheets",
     "section": "Korean",
-    "text": "Korean\n\n\n\n\ncaret\npackage development\npurrr\nrmarkdown\nsyntax"
+    "text": "Korean\n\n\n\n\n\n\n\ncaret\npackage development\npurrr\nrmarkdown\nsyntax"
   },
   {
     "objectID": "translations.html#persian",
     "href": "translations.html#persian",
     "title": "Translated Cheatsheets",
     "section": "Persian",
-    "text": "Persian\n\n\n\n\ndata import"
+    "text": "Persian\n\n\n\n\n\n\n\ndata import"
   },
   {
     "objectID": "translations.html#portuguese",
     "href": "translations.html#portuguese",
     "title": "Translated Cheatsheets",
     "section": "Portuguese",
-    "text": "Portuguese\n\n\n\n\nbase R (br)\ncaret\ndata visualization\ndata wrangling\ndatatable (br)\nrstudio ide"
+    "text": "Portuguese\n\n\n\n\n\n\n\nbase R (br)\ncaret\ndata visualization\ndata wrangling\ndatatable (br)\nrstudio ide"
   },
   {
     "objectID": "translations.html#russian",
     "href": "translations.html#russian",
     "title": "Translated Cheatsheets",
     "section": "Russian",
-    "text": "Russian\n\n\n\n\ndata import\ndata transformation\nlubridate\npurrr"
+    "text": "Russian\n\n\n\n\n\n\n\ndata import\ndata transformation\nlubridate\npurrr"
   },
   {
     "objectID": "translations.html#spanish",
     "href": "translations.html#spanish",
     "title": "Translated Cheatsheets",
     "section": "Spanish",
-    "text": "Spanish\n\n\n\n\nbase R\ncaret\ndata import\ndata transformation\ndata visualization\ndata wrangling\nestadistica descriptiva con R\nfactors\nintroduccion a R\nkeras\nlubridate\npackage development\npurrr\nreticulate\nrmarkdown\nrstudio ide\nshiny\nsparklyr\nstrings\nsurvminer\nsyntax\ntidyeval"
+    "text": "Spanish\n\n\n\n\n\n\n\nbase R\ncaret\ndata import\ndata transformation\ndata visualization\ndata wrangling\nestadistica descriptiva con R\nfactors\nintroduccion a R\nkeras\nlubridate\npackage development\npurrr\nreticulate\nrmarkdown\nrstudio ide\nshiny\nsparklyr\nstrings\nsurvminer\nsyntax\ntidyeval"
   },
   {
     "objectID": "translations.html#turkish",
     "href": "translations.html#turkish",
     "title": "Translated Cheatsheets",
     "section": "Turkish",
-    "text": "Turkish\n\n\n\n\nbase R\ncaret\ndata import\ndata transformation\ndata visualization\nregex\nrmarkdown\nshiny"
+    "text": "Turkish\n\n\n\n\n\n\n\nbase R\ncaret\ndata import\ndata transformation\ndata visualization\nregex\nrmarkdown\nshiny"
   },
   {
     "objectID": "translations.html#ukrainian",
     "href": "translations.html#ukrainian",
     "title": "Translated Cheatsheets",
     "section": "Ukrainian",
-    "text": "Ukrainian\n\n\n\n\ndata import\ndata transformation\nlubridate\npurrr"
+    "text": "Ukrainian\n\n\n\n\n\n\n\ndata import\ndata transformation\nlubridate\npurrr"
   },
   {
     "objectID": "translations.html#uzbek",
     "href": "translations.html#uzbek",
     "title": "Translated Cheatsheets",
     "section": "Uzbek",
-    "text": "Uzbek\n\n\n\n\ndata import\ndata transformation"
+    "text": "Uzbek\n\n\n\n\n\n\n\ndata import\ndata transformation"
   },
   {
     "objectID": "translations.html#vietnamese",
     "href": "translations.html#vietnamese",
     "title": "Translated Cheatsheets",
     "section": "Vietnamese",
-    "text": "Vietnamese\n\n\n\n\nbase R\ndata visualization\ndata wrangling\nlubridate\npackage development\npurrr\nrmarkdown\nshiny\nstrings"
+    "text": "Vietnamese\n\n\n\n\n\n\n\nbase R\ndata visualization\ndata wrangling\nlubridate\npackage development\npurrr\nrmarkdown\nshiny\nstrings"
   },
   {
     "objectID": "html/tidyr.html",
@@ -249,7 +249,7 @@
     "href": "html/shiny-python.html#shiny-for-r-comparison",
     "title": "Shiny for Python :: Cheatsheet",
     "section": "Shiny for R Comparison",
-    "text": "Shiny for R Comparison\nShiny for Python is quite similar to Shiny for R with a few important differences:\n\nCall inputs as input.&lt;id&gt;()\n\n\nR\n\ninput$x\n\nPython\n\ninput.x()\n\n\n\nUse decorators to create and render outputs. Define outputs as functions def &lt;id&gt;():\n\n\nR\n\noutput$y &lt;- \n  renderText(z())\n\nPython\n\n@output \n@renderText \n    def y():\n        return z()\n\n\n\nTo create a reactive expression, use @reactive.Calc\n\n\nR\n\nz &lt;- reactive({ \n  input$x + 1\n})\n\nPython\n\n@reactive.Calc \ndef z():\n    return input.x()+1\n\n\n\nTo create an observer, use @reactive.Effect\n\n\nR\n\na &lt;- observe({ \n  print(input$x)\n})\n\nPython\n\n@reactive.Effect \ndef a():\n    print(input.x())\n\n\n\nCombine these with @reactive.event\n\n\nR\n\nb &lt;- eventReactive(\n  input$goCue,\n  {input$x + 1}\n)\n\nPython\n\n@reactive.Calc \n@reactive.event(input.go_cue )\ndef b():\n    return input.x() + 1\n\n\n\nUse reactive.Value() instead of reactiveVal()\n\n\nR\n\nreactiveVal(1)\n\nPython\n\nreactive.Value(1)\n\n\n\nUse nav_*() instead of *Tab()\n\n\nR\n\ninsertTab() \nappendTab() \n# etc.\n\nPython\n\nnav_insert() \nnav_append() \n# etc.\n\n\n\nFunctions are intuitively organized into submodules\n\n\nR\n\ndateInput() \ntextInput() \n# etc.\n\nPython\n\nui.input_date() \nui.input_text() \n# etc.\n\n\n\nCC BY SA Posit Software, PBC • info@posit.co • posit.co\nLearn more at shiny.posit.co/py/\nUpdated: 2023-12.\n\npackageVersion(\"shiny\")\n\n[1] '1.7.4'"
+    "text": "Shiny for R Comparison\nShiny for Python is quite similar to Shiny for R with a few important differences:\n\nCall inputs as input.&lt;id&gt;()\n\n\nR\n\ninput$x\n\nPython\n\ninput.x()\n\n\n\nUse decorators to create and render outputs. Define outputs as functions def &lt;id&gt;():\n\n\nR\n\noutput$y &lt;- \n  renderText(z())\n\nPython\n\n@output \n@renderText \n    def y():\n        return z()\n\n\n\nTo create a reactive expression, use @reactive.Calc\n\n\nR\n\nz &lt;- reactive({ \n  input$x + 1\n})\n\nPython\n\n@reactive.Calc \ndef z():\n    return input.x()+1\n\n\n\nTo create an observer, use @reactive.Effect\n\n\nR\n\na &lt;- observe({ \n  print(input$x)\n})\n\nPython\n\n@reactive.Effect \ndef a():\n    print(input.x())\n\n\n\nCombine these with @reactive.event\n\n\nR\n\nb &lt;- eventReactive(\n  input$goCue,\n  {input$x + 1}\n)\n\nPython\n\n@reactive.Calc \n@reactive.event(input.go_cue )\ndef b():\n    return input.x() + 1\n\n\n\nUse reactive.Value() instead of reactiveVal()\n\n\nR\n\nreactiveVal(1)\n\nPython\n\nreactive.Value(1)\n\n\n\nUse nav_*() instead of *Tab()\n\n\nR\n\ninsertTab() \nappendTab() \n# etc.\n\nPython\n\nnav_insert() \nnav_append() \n# etc.\n\n\n\nFunctions are intuitively organized into submodules\n\n\nR\n\ndateInput() \ntextInput() \n# etc.\n\nPython\n\nui.input_date() \nui.input_text() \n# etc.\n\n\n\nCC BY SA Posit Software, PBC • info@posit.co • posit.co\nLearn more at shiny.posit.co/py/\nUpdated: 2024-05.\n\npackageVersion(\"shiny\")\n\n[1] '1.7.4'"
   },
   {
     "objectID": "html/rmarkdown.html",
@@ -298,7 +298,7 @@
     "href": "html/rmarkdown.html#write-with-markdown",
     "title": "rmarkdown :: Cheatsheet",
     "section": "Write With Markdown",
-    "text": "Write With Markdown\nThe syntax on the left renders as the output on the right.\n\nTable of markdown syntax and rendered examples. The syntax in the first column renders to the output in the second column.\n\n\nMarkdown Syntax\nPlain text.\nRendered Output\nPlain text.\n\n\n\n\n\n\nEnd a line with two spaces to\nstart a new paragraph.\nEnd a line with two spaces to\nstart a new paragraph.\n\n\nAlso end a line with a backslash\\\nto make a new line.\nAlso end a line with a backslash\nto make a new line.\n\n\n*italics* and **bold**\nitalics and bold\n\n\nsuperscript^2^/subscript~2~\nsuperscript2 /subscript2\n\n\n~~strike through~~\nstrike through\n\n\nescaped: \\* \\_ \\\\\nescaped: * _ \\\n\n\nen dash: --, em dash: ---\nen dash: –, em dash: —\n\n\n# Header 1\nHeader 1\n\n\n## Header 2\nHeader 2\n\n\n...\n…\n\n\n###### Header 6\nHeader 6\n\n\n- unordered list\n- item 2\n    - item 2a (indent 1 tab)\n    - item 2b\n\nunordered list\nitem 2\n\nitem 2a (indent 1 tab)\nitem 2b\n\n\n\n\n1. ordered list\n2. item 2\n  - item 2a (indent 1 tab)\n  - item 2b\n\nordered list\nitem 2\n\nitem 2a\nitem 2b\n\n\n\n\n&lt;link url&gt;\nhttps://posit.co/\n\n\n[This is a link.](link url)\nThis is a link.\n\n\n[This is another link.][id].\n\nAt the end of the document:\n[id]: link url\nThis is another link.\n\n\n![Caption](image.png)\n\nor\n\n![Caption](id2)\n\nAt the end of the document include:\n[id2]: image.png\n\n\n\n`verbatim code`\nverbatim code\n\n\n```\nmultiple lines\nof verbatim code\n```\nmultiple lines\nof verbatim code\n\n\n&gt; block quotes\n\nblock quotes\n\n\n\nequation: $e^{i \\pi} + 1 = 0$\nequation: \\(e^{i \\pi} + 1 = 0\\)\n\n\nequation block:\n$$E = mc^{2}$$\nequation block:\n\\[\nE = mc^{2}\n\\]\n\n\nhorizontal rule:\n---\nhorizontal rule:\n\n\n\n|Right|Left|Default|Center|\n|----:|:---|-------|:----:|\n|12   |12  |12     |12    |\n|123  |123 |123    |123   |\n|1    |1   |1      |1     |\n\nTable: Caption text, example rendered table\n\nCaption text, example rendered table.\n\n\nRight\nLeft\nDefault\nCenter\n\n\n\n\n12\n12\n12\n12\n\n\n123\n123\n123\n123\n\n\n1\n1\n1\n1\n\n\n\n\n\nHTML Tabsets\n## Results {.tabset}\n### Plots\ntext\n\n### Tables\nmore text\nResults\n\nPlotsTables\n\n\ntext\n\n\nmore text"
+    "text": "Write With Markdown\nThe syntax on the left renders as the output on the right.\n\nTable of markdown syntax and rendered examples. The syntax in the first column renders to the output in the second column.\n\n\nMarkdown Syntax\nPlain text.\nRendered Output\nPlain text.\n\n\n\n\n\n\nEnd a line with two spaces to\nstart a new paragraph.\nEnd a line with two spaces to\nstart a new paragraph.\n\n\nAlso end a line with a backslash\\\nto make a new line.\nAlso end a line with a backslash\nto make a new line.\n\n\n*italics* and **bold**\nitalics and bold\n\n\nsuperscript^2^/subscript~2~\nsuperscript2 /subscript2\n\n\n~~strike through~~\nstrike through\n\n\nescaped: \\* \\_ \\\\\nescaped: * _ \\\n\n\nen dash: --, em dash: ---\nen dash: –, em dash: —\n\n\n# Header 1\nHeader 1\n\n\n## Header 2\nHeader 2\n\n\n...\n…\n\n\n###### Header 6\nHeader 6\n\n\n- unordered list\n- item 2\n    - item 2a (indent 1 tab)\n    - item 2b\n\nunordered list\nitem 2\n\nitem 2a (indent 1 tab)\nitem 2b\n\n\n\n\n1. ordered list\n2. item 2\n  - item 2a (indent 1 tab)\n  - item 2b\n\nordered list\nitem 2\n\nitem 2a\nitem 2b\n\n\n\n\n&lt;link url&gt;\nhttps://posit.co/\n\n\n[This is a link.](link url)\nThis is a link.\n\n\n[This is another link.][id].\n\nAt the end of the document:\n[id]: link url\nThis is another link.\n\n\n![Caption](image.png)\n\nor\n\n![Caption](id2)\n\nAt the end of the document include:\n[id2]: image.png\n\n\n\nR Markdown logo\n\n\n\n\n`verbatim code`\nverbatim code\n\n\n```\nmultiple lines\nof verbatim code\n```\nmultiple lines\nof verbatim code\n\n\n&gt; block quotes\n\nblock quotes\n\n\n\nequation: $e^{i \\pi} + 1 = 0$\nequation: \\(e^{i \\pi} + 1 = 0\\)\n\n\nequation block:\n$$E = mc^{2}$$\nequation block:\n\\[\nE = mc^{2}\n\\]\n\n\nhorizontal rule:\n---\nhorizontal rule:\n\n\n\n|Right|Left|Default|Center|\n|----:|:---|-------|:----:|\n|12   |12  |12     |12    |\n|123  |123 |123    |123   |\n|1    |1   |1      |1     |\n\nTable: Caption text, example rendered table\n\nCaption text, example rendered table.\n\n\nRight\nLeft\nDefault\nCenter\n\n\n\n\n12\n12\n12\n12\n\n\n123\n123\n123\n123\n\n\n1\n1\n1\n1\n\n\n\n\n\nHTML Tabsets\n## Results {.tabset}\n### Plots\ntext\n\n### Tables\nmore text\nResults\n\nPlotsTables\n\n\ntext\n\n\nmore text"
   },
   {
     "objectID": "html/rmarkdown.html#set-output-formats-and-their-options-in-yaml",
@@ -382,21 +382,21 @@
     "href": "html/quarto.html#include-code",
     "title": "Publish and Share with Quarto :: Cheatsheet",
     "section": "Include Code",
-    "text": "Include Code\n\nCode Cells\nCode cells start with ```{language}, and end with ```.\nRStudio & VS Code: Use Insert Code Chunk/Cell.\n\n\n\n```{r}\n#| label: chunk-id\n```\n\n\n```{python}\n#| label: chunk-id\n```\n\n\n\nOther languages: {julia}, {ojs}\nAdd code cell options with #| comments.\nCell options control execution, figures, tables, layout and more. See them all at: https://quarto.org/docs/reference/cells/\n\n\nExecution Options\n\n\n\n\n\n\n\n\nOption\nDefault\nEffects\n\n\n\n\necho\ntrue\nfalse: hide code in output\nfenced: include code cell syntax\n\n\neval\ntrue\nfalse: don’t run code\n\n\ninclude\ntrue\nfalse: don’t include code or results\n\n\noutput\ntrue\nfalse: don’t include results\nasis: treat results as raw markdown\n\n\nwarning\ntrue\nfalse: don’t include warnings in output\n\n\nerror\nfalse\ntrue: include error in output and continue with render\n\n\n\nSet execution options at the cell level:\n\n\n\n```{r}\n#| echo: false\n```\n\n\n```{python}\n#| echo: false\n```\n\n\n\nSet options in code cells with #| comments and YAML syntax: key: value.\nOr globally in the YAML header with the execute option:\n---\nexecute:\n  echo: false\n---\n\n\nInline Code\nUse computed values directly in text sections. Code is evaluated at render and results appear as text.\n\n\n\nKnitr\nValue is `r 2 + 2`.\n\n\nJupyter\nv1.4\nValue is `{python} 2 + 2`.\n\n\nOutput\nValue is 4."
+    "text": "Include Code\n\nCode Cells\nCode cells start with ```{language}, and end with ```.\nRStudio & VS Code: Use Insert Code Chunk/Cell.\n\n\n\n\n\n\n```{r}\n#| label: chunk-id\n```\n\n\n```{python}\n#| label: chunk-id\n```\n\n\n\nOther languages: {julia}, {ojs}\nAdd code cell options with #| comments.\nCell options control execution, figures, tables, layout and more. See them all at: https://quarto.org/docs/reference/cells/\n\n\nExecution Options\n\n\n\n\n\n\n\n\nOption\nDefault\nEffects\n\n\n\n\necho\ntrue\nfalse: hide code in output\nfenced: include code cell syntax\n\n\neval\ntrue\nfalse: don’t run code\n\n\ninclude\ntrue\nfalse: don’t include code or results\n\n\noutput\ntrue\nfalse: don’t include results\nasis: treat results as raw markdown\n\n\nwarning\ntrue\nfalse: don’t include warnings in output\n\n\nerror\nfalse\ntrue: include error in output and continue with render\n\n\n\nSet execution options at the cell level:\n\n\n\n\n\n\n```{r}\n#| echo: false\n```\n\n\n```{python}\n#| echo: false\n```\n\n\n\nSet options in code cells with #| comments and YAML syntax: key: value.\nOr globally in the YAML header with the execute option:\n---\nexecute:\n  echo: false\n---\n\n\nInline Code\nUse computed values directly in text sections. Code is evaluated at render and results appear as text.\n\n\n\n\n\n\nKnitr\nValue is `r 2 + 2`.\n\n\nJupyter\nv1.4\nValue is `{python} 2 + 2`.\n\n\nOutput\nValue is 4."
   },
   {
     "objectID": "html/quarto.html#set-formats-and-options",
     "href": "html/quarto.html#set-formats-and-options",
     "title": "Publish and Share with Quarto :: Cheatsheet",
     "section": "Set Formats and Options",
-    "text": "Set Formats and Options\n\n\n\n\nSet Format Options\n---\ntitle: \"My Document\"\nformat: \n  html: \n    code-fold: true\n    toc: true\n---\n\nIndent format 2 spaces\nIndent options 4 spaces\n\n\n\n\nMultiple Formats\n---\ntitle: \"My Document\"\ntoc: true\nformat: \n  html: \n    code-fold: true\n  pdf: default\n---\n\nTop-level options (e.g. toc) apply to all formats\n\n\n\n\nCommon values for format: html, pdf2, docx, odt, rtf, gfm, pptx, revealjs, beamer3\nRender all formats:\n\n\nTerminal\n\nquarto render hello.qmd\n\nRender a specific format:\n\n\nTerminal\n\nquarto render hello.qmd --to pdf\n\n\nOutput Options Table\n\n\n\n\n\nImportant Options. The first column is the option name, an “X” in the\nnext three columns indicates whether the option applies to the format,\nthe fourth column decribes the options and possible values, the final\ncolumn indicates whether the options can also be set in a code cell.\n  \n    \n    \n      Option\n      html/revealjs\n      pdf/beamer\n      docx/pptx\n      Description\n      cell level?\n    \n  \n  \n    \n      Navigation\n    \n    toc\nX\nX\nX\nAdd a table of contents (true or false)\n\n\n    toc-depth\nX\nX\nX\nLowest level of headings to add to table of contents (e.g. 2, 3)\n\n\n    anchor-sections\nX\n\n\nShow section anchors on mouse hover (true or false)\n\n\n    \n      Style\n    \n    highlight-style\nX\nX\nX\nSyntax highlighting theme (e.g. arrow, pygments, kate, zenburn)\n\n\n    mainfont, monofont\nX\nX\n\nFont name. HTML: sets CSS font-family; LaTeX: via fontspec package\n\n\n    theme\nX\n\n\nBootswatch theme name (e.g. cosmo, darkly, solar etc.)\n\n\n    css\nX\n\n\nCSS or SCSS file to use to style the document (e.g. “style.css”)\n\n\n    reference-doc\n\n\nX\ndocx/pptx file containing template styles (e.g. file.docx, file.pptx)\n\n\n    \n      NA\n    \n    include-in-header\nX\nX\n\nFiles of content to include in header of output document, also include-before-body, include-after-body\n\n\n    keep-md\nX\nX\nX\nKeep intermediate files (true or false), also keep-tex, keep-ipynb\n\n\n    \n      LaTeX\n    \n    documentclass\n\nX\n\nLaTeX document class, set document options with classoption\n\n\n    pdf-engine\n\nX\n\nLaTeX engine to produce PDF output (xelatex, pdflatex, lualatex)\n\n\n    cite-method\n\nX\n\nMethod used to format citations (citeproc, natbib, biblatex)\n\n\n    \n      Code\n    \n    code-fold\nX\n\n\nLet readers toggle the display of R code (false, true, or show)\n\nX\n    code-tools\nX\n\n\nAdd menu for hiding, showing, and downloading code (true or false)\n\n\n    code-overflow\nX\n\n\nDisplay of wide code (scroll, or wrap)\n\nX\n    \n      Figures\n    \n    fig-align\nX\nX\ndocx only\nAlignment of figures (default, left, right, center)\n\nX\n    fig-width, fig-height\nX\nX\nX\nDefault width and height for figures in inches\n\nKnitr only\n    fig-format\nX\nX\nX\nFormat for Matplotlib or R figures (retina, png, jpeg, svg, or pdf)\n\n\n  \n  \n  \n\n\n\n\nVisit https://quarto.org/docs/reference/ to see all options by format"
+    "text": "Set Formats and Options\n\n\n\n\n\n\n\nSet Format Options\n---\ntitle: \"My Document\"\nformat: \n  html: \n    code-fold: true\n    toc: true\n---\n\nIndent format 2 spaces\nIndent options 4 spaces\n\n\n\n\nMultiple Formats\n---\ntitle: \"My Document\"\ntoc: true\nformat: \n  html: \n    code-fold: true\n  pdf: default\n---\n\nTop-level options (e.g. toc) apply to all formats\n\n\n\n\nCommon values for format: html, pdf2, docx, odt, rtf, gfm, pptx, revealjs, beamer3\nRender all formats:\n\n\nTerminal\n\nquarto render hello.qmd\n\nRender a specific format:\n\n\nTerminal\n\nquarto render hello.qmd --to pdf\n\n\nOutput Options Table\n\n\n\n\n\n\n\nImportant Options. The first column is the option name, an “X” in the next three columns indicates whether the option applies to the format, the fourth column decribes the options and possible values, the final column indicates whether the options can also be set in a code cell.\n\n\n\n\n\n\n\n\n\n\nOption\nhtml/revealjs\npdf/beamer\ndocx/pptx\nDescription\ncell level?\n\n\n\n\nNavigation\n\n\ntoc\nX\nX\nX\n\nAdd a table of contents (true or false)\n\n\n\n\ntoc-depth\nX\nX\nX\n\nLowest level of headings to add to table of contents (e.g. 2, 3)\n\n\n\n\nanchor-sections\nX\n\n\n\nShow section anchors on mouse hover (true or false)\n\n\n\n\nStyle\n\n\nhighlight-style\nX\nX\nX\n\nSyntax highlighting theme (e.g. arrow, pygments, kate, zenburn)\n\n\n\n\nmainfont, monofont\nX\nX\n\n\nFont name. HTML: sets CSS font-family; LaTeX: via fontspec package\n\n\n\n\ntheme\nX\n\n\n\nBootswatch theme name (e.g. cosmo, darkly, solar etc.)\n\n\n\n\ncss\nX\n\n\n\nCSS or SCSS file to use to style the document (e.g. “style.css”)\n\n\n\n\nreference-doc\n\n\nX\n\ndocx/pptx file containing template styles (e.g. file.docx, file.pptx)\n\n\n\n\nNA\n\n\ninclude-in-header\nX\nX\n\n\nFiles of content to include in header of output document, also include-before-body, include-after-body\n\n\n\n\nkeep-md\nX\nX\nX\n\nKeep intermediate files (true or false), also keep-tex, keep-ipynb\n\n\n\n\nLaTeX\n\n\ndocumentclass\n\nX\n\n\nLaTeX document class, set document options with classoption\n\n\n\n\npdf-engine\n\nX\n\n\nLaTeX engine to produce PDF output (xelatex, pdflatex, lualatex)\n\n\n\n\ncite-method\n\nX\n\n\nMethod used to format citations (citeproc, natbib, biblatex)\n\n\n\n\nCode\n\n\ncode-fold\nX\n\n\n\nLet readers toggle the display of R code (false, true, or show)\n\nX\n\n\ncode-tools\nX\n\n\n\nAdd menu for hiding, showing, and downloading code (true or false)\n\n\n\n\ncode-overflow\nX\n\n\n\nDisplay of wide code (scroll, or wrap)\n\nX\n\n\nFigures\n\n\nfig-align\nX\nX\ndocx only\n\nAlignment of figures (default, left, right, center)\n\nX\n\n\nfig-width, fig-height\nX\nX\nX\n\nDefault width and height for figures in inches\n\nKnitr only\n\n\nfig-format\nX\nX\nX\n\nFormat for Matplotlib or R figures (retina, png, jpeg, svg, or pdf)\n\n\n\n\n\n\n\n\n\n\nVisit https://quarto.org/docs/reference/ to see all options by format"
   },
   {
     "objectID": "html/quarto.html#add-content",
     "href": "html/quarto.html#add-content",
     "title": "Publish and Share with Quarto :: Cheatsheet",
     "section": "Add Content",
-    "text": "Add Content\n\nFigures\n\nMarkdown\n![CAP](image.png){#fig-LABEL fig-alt=\"ALT\"}\n\n\nComputation\n```{python}\n#| label: fig-LABEL\n#| fig-cap: CAP\n#| fig-alt: ALT\n{{ plot code here }}\n```\nOr {r}\n\n\n\nTables\n\nMarkdown\n|object | radius|\n|:------|------:|\n|Sun    | 696000|\n|Earth  |   6371|\n\n: CAPTION {#tbl-LABEL}\n\n\nComputation\nOutput a markdown table or an HTML table from your code.\n\n\n\nKnitr\nUse knitr::kable() to produce markdown:\n```{r}\n#| label: tbl-LABEL\n#| tbl-cap: CAPTION\n\nknitr::kable(head(cars))\n```\nAlso see the R packages: gt, flextable, kableExtra.\n\n\nJupyter\nAdd Markdown() to Markdown output:\n```{python}\n#| label: tbl-LABEL\n#| tbl-cap: CAPTION\nimport pandas as pd, tabulate\nfrom IPython.display import Markdown\ndf = pd.DataFrame({\"A\": [1, 2], \n                   \"B\": [1, 2]})\nMarkdown(df.to_markdown(index=False))\n```\n\n\n\n\n\n\nCross References\n\nAdd labels:\n\nCode cell: add option label: prefix-LABEL\nMarkdown: add attribute #prefix-LABEL\n\nAdd references: @prefix-LABEL, e.g.\nYou can see in @fig-scatterplot, that...\n\n\n\n\nprefix\nRenders\n\n\n\n\nfig-\nFigure 1\n\n\ntbl-\nTable 1\n\n\neq-\nEquation 1\n\n\nsec-\nSection 1\n\n\n\n\n\nCitations\n\nAdd bibliography file to the YAML header:\n---\nbibliography: references.bib\n---\nAdd citations: [@citation], or @citation\n\nRStudio & VS Code: Use Insert Citations dialog in the Visual Editor. Build your bibliography file from your Zotero library, DOI, Crossref, DataCite, or PubMed.\n\n\nCallouts\n::: {.callout-tip}\n## Title\n\nText\n:::\nInstead of tip use one of: note, caution, warning, or important:\n\n\n\n\n\n\ntip\n\n\n\n\n\n\n\n\n\n\n\n\nnote\n\n\n\n\n\n\n\n\n\n\n\n\ncaution\n\n\n\n\n\n\n\n\n\n\n\n\nwarning\n\n\n\n\n\n\n\n\n\n\n\n\nimportant\n\n\n\n\n\n\n\n\nShortcodes\n{{&lt; include _file.qmd &gt;}} \n{{&lt; embed file.ipynb#id &gt;}}\n{{&lt; video video.mp4 &gt;}}\n\nCC BY SA Posit Software, PBC • info@posit.co • posit.co\nLearn more at quarto.org.\nQuarto 1.3\nUpdated: 2023-08."
+    "text": "Add Content\n\nFigures\n\nMarkdown\n![CAP](image.png){#fig-LABEL fig-alt=\"ALT\"}\n\n\nComputation\n```{python}\n#| label: fig-LABEL\n#| fig-cap: CAP\n#| fig-alt: ALT\n{{ plot code here }}\n```\nOr {r}\n\n\n\nTables\n\nMarkdown\n|object | radius|\n|:------|------:|\n|Sun    | 696000|\n|Earth  |   6371|\n\n: CAPTION {#tbl-LABEL}\n\n\nComputation\nOutput a markdown table or an HTML table from your code.\n\n\n\n\n\n\nKnitr\nUse knitr::kable() to produce markdown:\n```{r}\n#| label: tbl-LABEL\n#| tbl-cap: CAPTION\n\nknitr::kable(head(cars))\n```\nAlso see the R packages: gt, flextable, kableExtra.\n\n\nJupyter\nAdd Markdown() to Markdown output:\n```{python}\n#| label: tbl-LABEL\n#| tbl-cap: CAPTION\nimport pandas as pd, tabulate\nfrom IPython.display import Markdown\ndf = pd.DataFrame({\"A\": [1, 2], \n                   \"B\": [1, 2]})\nMarkdown(df.to_markdown(index=False))\n```\n\n\n\n\n\n\nCross References\n\nAdd labels:\n\nCode cell: add option label: prefix-LABEL\nMarkdown: add attribute #prefix-LABEL\n\nAdd references: @prefix-LABEL, e.g.\nYou can see in @fig-scatterplot, that...\n\n\n\n\nprefix\nRenders\n\n\n\n\nfig-\nFigure 1\n\n\ntbl-\nTable 1\n\n\neq-\nEquation 1\n\n\nsec-\nSection 1\n\n\n\n\n\nCitations\n\nAdd bibliography file to the YAML header:\n---\nbibliography: references.bib\n---\nAdd citations: [@citation], or @citation\n\nRStudio & VS Code: Use Insert Citations dialog in the Visual Editor. Build your bibliography file from your Zotero library, DOI, Crossref, DataCite, or PubMed.\n\n\nCallouts\n::: {.callout-tip}\n## Title\n\nText\n:::\nInstead of tip use one of: note, caution, warning, or important:\n\n\n\n\n\n\ntip\n\n\n\n\n\n\n\n\n\n\n\n\nnote\n\n\n\n\n\n\n\n\n\n\n\n\ncaution\n\n\n\n\n\n\n\n\n\n\n\n\nwarning\n\n\n\n\n\n\n\n\n\n\n\n\nimportant\n\n\n\n\n\n\n\n\nShortcodes\n{{&lt; include _file.qmd &gt;}} \n{{&lt; embed file.ipynb#id &gt;}}\n{{&lt; video video.mp4 &gt;}}\n\nCC BY SA Posit Software, PBC • info@posit.co • posit.co\nLearn more at quarto.org.\nQuarto 1.3\nUpdated: 2023-08."
   },
   {
     "objectID": "html/quarto.html#footnotes",
@@ -634,7 +634,7 @@
     "href": "contributed-cheatsheets.html",
     "title": "Contributed Cheatsheets",
     "section": "",
-    "text": "Cheatsheets contributed by the community. Several of these cheatsheets also have non-English translations, available on the Translated Cheatsheets page.\n\n\n\n\n\narrow\n\n\n\n\n\nBase R\n\n\n\n\n\nbayesplot\n\n\n\n\n\n\n\nbcea\n\n\n\n\n\ncaret\n\n\n\n\n\ncartography\n\n\n\n\n\n\n\ncollapse\n\n\n\n\n\ndatatable\n\n\n\n\n\ndeclaredesign\n\n\n\n\n\n\n\ndistr6\n\n\n\n\n\nestimatr\n\n\n\n\n\neurostat\n\n\n\n\n\n\n\ngganimate\n\n\n\n\n\nGit & GitHub\n\n\n\n\n\ngolem\n\n\n\n\n\n\n\ngtsummary\n\n\n\n\n\ngwasrapidd\n\n\n\n\n\nh2o\n\n\n\n\n\n\n\nHow big is your graph?\n\n\n\n\n\nimputeTS\n\n\n\n\n\njfa\n\n\n\n\n\n\n\nlabelled\n\n\n\n\n\nleaflet\n\n\n\n\n\nMachine learning modelling in R\n\n\n\n\n\n\n\nmapsf\n\n\n\n\n\nmlr\n\n\n\n\n\nmosaic\n\n\n\n\n\n\n\nnardl\n\n\n\n\n\nnimble\n\n\n\n\n\noSCR\n\n\n\n\n\n\n\noverviewR\n\n\n\n\n\npackagefinder\n\n\n\n\n\nParallel computation\n\n\n\n\n\n\n\nquanteda\n\n\n\n\n\nquincunx\n\n\n\n\n\nrandomizr\n\n\n\n\n\n\n\nRegular Expressions\n\n\n\n\n\nrphylopic\n\n\n\n\n\nSamplingStrata\n\n\n\n\n\n\n\nSAS &lt;-&gt; R\n\n\n\n\n\nsf\n\n\n\n\n\nsjmisc\n\n\n\n\n\n\n\nslackr\n\n\n\n\n\nstata2r\n\n\n\n\n\nsurvminer\n\n\n\n\n\n\n\nR syntax comparison\n\n\n\n\n\nteachR\n\n\n\n\n\ntidyeval\n\n\n\n\n\n\n\ntime-series\n\n\n\n\n\ntorch\n\n\n\n\n\ntsbox\n\n\n\n\n\n\n\nvegan\n\n\n\n\n\nvtree\n\n\n\n\n\nxplain"
+    "text": "Cheatsheets contributed by the community. Several of these cheatsheets also have non-English translations, available on the Translated Cheatsheets page.\n\n\n\n\n\n\n\n\n\narrow\n\n\n\n\n\n\n\nBase R\n\n\n\n\n\n\n\nbayesplot\n\n\n\n\n\n\n\n\n\nbcea\n\n\n\n\n\n\n\ncaret\n\n\n\n\n\n\n\ncartography\n\n\n\n\n\n\n\n\n\ncollapse\n\n\n\n\n\n\n\ndatatable\n\n\n\n\n\n\n\ndeclaredesign\n\n\n\n\n\n\n\n\n\ndistr6\n\n\n\n\n\n\n\nestimatr\n\n\n\n\n\n\n\neurostat\n\n\n\n\n\n\n\n\n\ngganimate\n\n\n\n\n\n\n\nGit & GitHub\n\n\n\n\n\n\n\ngolem\n\n\n\n\n\n\n\n\n\ngtsummary\n\n\n\n\n\n\n\ngwasrapidd\n\n\n\n\n\n\n\nh2o\n\n\n\n\n\n\n\n\n\nHow big is your graph?\n\n\n\n\n\n\n\nimputeTS\n\n\n\n\n\n\n\njfa\n\n\n\n\n\n\n\n\n\nlabelled\n\n\n\n\n\n\n\nleaflet\n\n\n\n\n\n\n\nMachine learning modelling in R\n\n\n\n\n\n\n\n\n\nmapsf\n\n\n\n\n\n\n\nmlr\n\n\n\n\n\n\n\nmosaic\n\n\n\n\n\n\n\n\n\nnardl\n\n\n\n\n\n\n\nnimble\n\n\n\n\n\n\n\noSCR\n\n\n\n\n\n\n\n\n\noverviewR\n\n\n\n\n\n\n\npackagefinder\n\n\n\n\n\n\n\nParallel computation\n\n\n\n\n\n\n\n\n\nquanteda\n\n\n\n\n\n\n\nquincunx\n\n\n\n\n\n\n\nrandomizr\n\n\n\n\n\n\n\n\n\nRegular Expressions\n\n\n\n\n\n\n\nrphylopic\n\n\n\n\n\n\n\nSamplingStrata\n\n\n\n\n\n\n\n\n\nSAS &lt;-&gt; R\n\n\n\n\n\n\n\nsf\n\n\n\n\n\n\n\nsjmisc\n\n\n\n\n\n\n\n\n\nslackr\n\n\n\n\n\n\n\nstata2r\n\n\n\n\n\n\n\nsurvminer\n\n\n\n\n\n\n\n\n\nR syntax comparison\n\n\n\n\n\n\n\nteachR\n\n\n\n\n\n\n\ntidyeval\n\n\n\n\n\n\n\n\n\ntime-series\n\n\n\n\n\n\n\ntorch\n\n\n\n\n\n\n\ntsbox\n\n\n\n\n\n\n\n\n\nvegan\n\n\n\n\n\n\n\nvtree\n\n\n\n\n\n\n\nxplain"
   },
   {
     "objectID": "html/data-import.html",
@@ -900,7 +900,7 @@
     "href": "html/package-development.html#package-states",
     "title": "Package Development :: Cheatsheet",
     "section": "Package States",
-    "text": "Package States\nThe contents of a package can be stored on disk as a:\n\nsource - a directory with sub-directories (as shown in Package Structure)\nbundle - a single compressed file (.tar.gz)\nbinary - a single compressed file optimized for a specific OS\n\nPackages exist in those states locally or remotely, e.g. on CRAN or on GitHub.\nFrom those states, a package can be installed into an R library and then loaded into memory for use during an R session.\n\n\n\n\n\n\nUse the functions below to move between these states:\n\nlibrary(): Installed in Library to loaded in Memory.\ninstall.packages(): Binary from CRAN repository to installed in Library.\ninstall.packages(type = \"source\"): Source code from CRAN repository to Bundle, to installed in Library.\ninstall_github(): Source code from GitHub repository to Bundle to installed in Library.\ninstall(): Local source code to bundle to installed in Library.\nbuild(): Local source to Bundle.\nbuild(binary = TRUE): Local source to Binary.\nload_all(): Local source to loaded in Memory.\n\n\nCC BY SA Posit Software, PBC • info@posit.co • posit.co\nLearn more at r-pkgs.org.\nUpdated: 2023-07.\n\npackageVersion(\"devtools\")\n\n[1] '2.4.5'\n\npackageVersion(\"usethis\")\n\n[1] '2.2.2'\n\npackageVersion(\"testthat\")\n\n[1] '3.1.10'\n\npackageVersion(\"roxygen2\")\n\n[1] '7.2.3'"
+    "text": "Package States\nThe contents of a package can be stored on disk as a:\n\nsource - a directory with sub-directories (as shown in Package Structure)\nbundle - a single compressed file (.tar.gz)\nbinary - a single compressed file optimized for a specific OS\n\nPackages exist in those states locally or remotely, e.g. on CRAN or on GitHub.\nFrom those states, a package can be installed into an R library and then loaded into memory for use during an R session.\n\n\n\n\n\n\n\n\n\n\nUse the functions below to move between these states:\n\nlibrary(): Installed in Library to loaded in Memory.\ninstall.packages(): Binary from CRAN repository to installed in Library.\ninstall.packages(type = \"source\"): Source code from CRAN repository to Bundle, to installed in Library.\ninstall_github(): Source code from GitHub repository to Bundle to installed in Library.\ninstall(): Local source code to bundle to installed in Library.\nbuild(): Local source to Bundle.\nbuild(binary = TRUE): Local source to Binary.\nload_all(): Local source to loaded in Memory.\n\n\nCC BY SA Posit Software, PBC • info@posit.co • posit.co\nLearn more at r-pkgs.org.\nUpdated: 2023-07.\n\npackageVersion(\"devtools\")\n\n[1] '2.4.5'\n\npackageVersion(\"usethis\")\n\n[1] '2.2.2'\n\npackageVersion(\"testthat\")\n\n[1] '3.1.10'\n\npackageVersion(\"roxygen2\")\n\n[1] '7.2.3'"
   },
   {
     "objectID": "html/purrr.html",
