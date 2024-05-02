@@ -82,6 +82,8 @@ Several of these cheatsheets also have non-English translations, available on th
 
 [![randomizr](pngs/randomizr.png){alt="Download randomizr pdf cheatsheet"}](randomizr.pdf)
 
+[![R Best Practice](pngs/R-best-practice.png){alt="Download R Best Practice pdf cheatsheet"}](R-best-practice.pdf)
+
 [![Regular Expressions](pngs/regular-expressions.png){alt="Download Regular Expressions pdf cheatsheet"}](regex.pdf)
 
 [![rgee](pngs/rgee.png){alt="Download rgee pdf cheatsheet"}](rgee.pdf)
