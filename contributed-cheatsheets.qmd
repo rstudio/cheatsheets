@@ -58,6 +58,8 @@ Several of these cheatsheets also have non-English translations, available on th
 
 [![mapsf](pngs/mapsf.png){alt="Download mapsf pdf cheatsheet"}](mapsf.pdf)
 
+[![metrica](pngs/metrica.png){alt="Download metrica pdf cheatsheet"}](metrica.pdf)
+
 [![mlr](pngs/mlr.png){alt="Download mlr pdf cheatsheet"}](mlr.pdf)
 
 [![mosaic](pngs/mosaic.png){alt="Download mosaic pdf cheatsheet"}](mosaic.pdf)
