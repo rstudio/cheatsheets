@@ -1,0 +1,20 @@
+Category,Option,Description,html/revealjs,pdf/beamer,docx/pptx,cell level?
+Navigation,toc,Add a table of contents (true or false),X,X,X,
+Navigation,toc-depth,"Lowest level of headings to add to table of contents (e.g. 2, 3)",X,X,X,
+Navigation,anchor-sections,Show section anchors on mouse hover (true or false),X,,,
+Style,highlight-style,"Syntax highlighting theme (e.g. arrow, pygments, kate, zenburn)",X,X,X,
+Style,"mainfont, monofont",Font name. HTML: sets CSS `font-family`; LaTeX: via fontspec package,X,X,,
+Style,theme,"Bootswatch theme name (e.g. cosmo, darkly, solar etc.)",X,,,
+Style,css,"CSS or SCSS file to use to style the document (e.g. ""style.css"")",X,,,
+Style,reference-doc,"docx/pptx file containing template styles (e.g. file.docx, file.pptx)",,,X,
+,include-in-header,"Files of content to include in header of output document, also **include-before-body**, **include-after-body**",X,X,,
+,keep-md,"Keep intermediate files (true or false), also **keep-tex**, **keep-ipynb**",X,X,X,
+LaTeX,documentclass,"LaTeX document class, set document options with **classoption**",,X,,
+LaTeX,pdf-engine,"LaTeX engine to produce PDF output (xelatex, pdflatex, lualatex)",,X,,
+LaTeX,cite-method,"Method used to format citations (citeproc, natbib, biblatex)",,X,,
+Code,code-fold,"Let readers toggle the display of R code (false, true, or show)",X,,,X
+Code,code-tools,"Add menu for hiding, showing, and downloading code (true or false)",X,,,
+Code,code-overflow,"Display of wide code (scroll, or wrap)",X,,,X
+Figures,fig-align,"Alignment of figures (default, left, right, center)",X,X,docx only,X
+Figures,"fig-width, fig-height",Default width and height for figures in inches,X,X,X,Knitr only
+Figures,fig-format,"Format for Matplotlib or R figures (retina, png, jpeg, svg, or pdf)",X,X,X,
