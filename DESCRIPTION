@@ -1,0 +1,25 @@
+Package: cheatsheets
+Title: Cheatsheets website
+Version: 0.0.0.9000
+License: CC BY 4.0
+Depends: 
+    dplyr,
+    shiny,
+    rmarkdown,
+    readr,
+    readxl,
+    tidyr,
+    purrr,
+    forcats,
+    lubridate,
+    stringr,
+    usethis,
+    devtools,
+    keras,
+    plumber,
+    reticulate,
+    ggplot2,
+    maps
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
