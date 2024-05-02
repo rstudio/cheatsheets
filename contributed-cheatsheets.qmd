@@ -26,6 +26,8 @@ Several of these cheatsheets also have non-English translations, available on th
 
 [![distr6](pngs/distr6.png){alt="Download distr6 pdf cheatsheet"}](distr6.pdf)
 
+[![DRomics](pngs/DRomics.png){alt="Download DRomics pdf cheatsheet"}](DRomics.pdf)
+
 [![estimatr](pngs/estimatr.png){alt="Download estimatr pdf cheatsheet"}](estimatr.pdf)
 
 [![eurostat](pngs/eurostat.png){alt="Download eurostat pdf cheatsheet"}](eurostat.pdf)
@@ -80,7 +82,7 @@ Several of these cheatsheets also have non-English translations, available on th
 
 [![Regular Expressions](pngs/regular-expressions.png){alt="Download Regular Expressions pdf cheatsheet"}](regex.pdf)
 
-[![rgee](pngs/rgee.png){alt="Download rgee cheatsheet"}](rgee.pdf)
+[![rgee](pngs/rgee.png){alt="Download rgee pdf cheatsheet"}](rgee.pdf)
 
 [![rphylopic](pngs/rphylopic.png){alt="Download rphylopic pdf cheatsheet"}](rphylopic.pdf)
 
