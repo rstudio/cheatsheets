@@ -1,0 +1,76 @@
+\documentclass[final,hyperref={pdfpagelabels=false}]{beamer}
+
+\usepackage{macros}
+
+\usefolder{../}
+\usetheme{CS}
+
+%%%%%% To change the theme color, uncomment the following lines and set your own color. %%%%%%
+%%%%%%%% You can also directly modify the colors in the file beamercolorthemeCS.sty %%%%%%%%
+%
+%\definecolor{mycolor}{rgb}{0.8, 0, 0.4}
+%\definecolor{mycodecolor}{rgb}{0.4, 0.6, 0.8}
+%\colorlet{codebg}{mycodecolor}
+% 
+%\setbeamercolor{structure}{bg = mycolor}
+%\setbeamercolor{title page}{fg = mycolor}
+%\setbeamercolor{alerted text}{fg = mycolor, bg = main}
+%\setbeamercolor{block title example}{fg = mycolor}
+
+\usepackage{times}
+\usepackage{amsmath,amsthm, amssymb, latexsym}
+\boldmath
+\usepackage[english]{babel}
+\usepackage{kotex}
+\usepackage[orientation=landscale, size=a4, scale=1.5, debug]{beamerposter}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+
+\def\q{\textquotesingle}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+  \graphicspath{{figures/}}
+  
+  \title{Base R}
+  \subtitle{Cheatsheet}
+  
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{document}
+  
+  \begin{frame}[fragile]{} 
+    \vfill
+    \begin{columns}[t]
+      \begin{column}{.25\linewidth}
+        \maketitle
+        \input{firstcolumn}
+      \end{column}
+      
+      \begin{column}{.25\linewidth}
+        \input{secondcolumn}
+      \end{column}
+      
+      \begin{column}{.50\linewidth}
+        \input{thirdcolumn}
+      \end{column}
+    \end{columns}
+    \vfill
+  \end{frame}
+  
+  \begin{frame}[fragile]{}
+    \begin{columns}[t]
+      \begin{column}{0.33\linewidth}
+        \input{fourthcolumn}
+      \end{column}
+      
+      \begin{column}{0.33\linewidth}
+        \input{fifthcolumn}
+      \end{column}
+            
+      \begin{column}{0.33\linewidth}
+        \input{sixthcolumn}
+      \end{column}
+    \end{columns}
+  \end{frame}
+\end{document}

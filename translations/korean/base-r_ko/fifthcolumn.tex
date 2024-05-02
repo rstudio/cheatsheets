@@ -1,0 +1,217 @@
+% !TEX root = base-r.tex
+
+{\setbeamercolor{block body}{fg = black, bg = white}
+\begin{block}{리스트}
+  \centering
+  \inlc{l <- list(x = 1:5, y = c('a', 'b'))}\\{\small 리스트는 자료형에 상관없이 여러 개의 원소를 가지는 집합}
+  
+  \smallskip
+  {\color{gray}\hrule}
+  
+  \smallskip
+  \begin{tabular}{*{4}{>{\centering\arraybackslash}m{0.215\linewidth}}}
+    \inlc{l[[2]]} & \inlc{l[1]} & \inlc{l\$x} & \inlc{l['y']}\\
+    l의 두번째 원소 & 첫 번째 원소만 있는 새 리스트 & x라는 이름의 원소 & y라는 이름의 원소만 있는 새 리스트.
+  \end{tabular}
+\end{block}
+}
+
+\begin{block}{행렬}
+  \begin{column}[t]{0.5\linewidth}
+    \begin{tabular}{>{\centering\arraybackslash} m{0.65cm} c @{-~~} l}
+      \begin{tikzpicture}[scale = 0.3]
+        \foreach \x in {0, 1, 2}
+          \foreach \y in {0, 2}
+            \filldraw[lightgray!65] (\x, \y) rectangle ({\x + 0.8}, {\y + 0.8}); 
+        \foreach \x in {0, 1, 2}
+          \filldraw[yellow!75!orange] (\x, 1) rectangle ({\x + 0.8}, {1 + 0.8}); 
+      \end{tikzpicture}
+      & \inlc{m[2,  ]} & 열 선택\\
+      \begin{tikzpicture}[scale = 0.3]
+        \foreach \y in {0, 1, 2}
+          \foreach \x in {1, 2}
+            \filldraw[lightgray!65] (\x, \y) rectangle ({\x + 0.8}, {\y + 0.8}); 
+        \foreach \y in {0, 1, 2}
+          \filldraw[yellow!75!orange] (0, \y) rectangle ({0 + 0.8}, {\y + 0.8}); 
+      \end{tikzpicture}
+      & \inlc{m[ ,1]} & 행 선택\\
+      \begin{tikzpicture}[scale = 0.3]
+        \foreach \x in {0, 1, 2}
+          \foreach \y in {0, 1, 2}
+            \filldraw[lightgray!65] (\x, \y) rectangle ({\x + 0.8}, {\y + 0.8}); 
+        \filldraw[yellow!75!orange] (2, 1) rectangle ({2 + 0.8}, {1 + 0.8}); 
+      \end{tikzpicture}
+      & \inlc{m[2,3]} & 원소 선택
+    \end{tabular}
+  \end{column}          
+  {\color{gray}\vrule}          
+  \begin{column}[t]{0.35\linewidth}
+    \vspace{-10ex}
+    \flushright
+    \inl{t(m)}\\ 전치
+    
+    \inl{m \%*\% n}\\{ 행렬곱}
+    
+    \inl{solve(m,n)}\\{ \inl{m*x = n}의 해 찾기}
+  \end{column}
+\end{block}
+
+{\setbeamercolor{block body}{fg = black, bg = white}
+\begin{seeblock}{데이터프레임}{dplyr}
+  {\fontsize{9pt}{11pt}\selectfont\inlc{df <- data.frame(x = 1:3, y = c('a', 'b', 'c'))}\\모든 원소의 길이가 같은 리스트의 특수한 케이스}
+  
+  \begin{column}{0.35\linewidth}
+    
+    \renewcommand{\arraystretch}{1.75}
+    \color{secondary}
+    \begin{tabular}{| >{\centering\arraybackslash\color{black}} m{0.75cm} | >{\centering\arraybackslash\color{black}} m{0.75cm} |}
+      \hline
+      \rowcolor{codebg}\color{white} x & \color{white}y\\\hline
+      \rowcolor{white} 1 & a\\\hline
+      \rowcolor{white} 2 & b\\\hline
+      \rowcolor{white} 3 & c\\\hline
+    \end{tabular}
+  \end{column}
+%          
+  \begin{column}{0.65\linewidth}
+    \vspace{-3ex}
+    \begin{center}\textbf{리스트로 자르기}\end{center}
+    \begin{tabular}{c >{\centering\arraybackslash} m{0.65cm} c m{0.65cm}}
+      \inlc{df\$x} & 
+      \begin{tikzpicture}[xscale = 0.4, yscale = 0.3]
+        \foreach \y in {0, 1, 2}
+          \filldraw[yellow!75!orange] (0, \y) rectangle ({0 + 0.8}, {\y + 0.8});
+        \filldraw[yellow!70!black] (0, 3) rectangle ({0 + 0.8}, {3 + 0.8}); 
+        \foreach \y in {0, 1, 2}
+          \filldraw[white] (1, \y) rectangle ({1 + 0.8}, {\y + 0.8});
+        \filldraw[codebg] (1, 3) rectangle ({1 + 0.8}, {3 + 0.8}); 
+      \end{tikzpicture} &
+      \inlc{df[[2]]} &
+      \begin{tikzpicture}[xscale = 0.4, yscale = 0.3]
+        \foreach \y in {0, 1, 2}
+          \filldraw[yellow!75!orange] (1, \y) rectangle ({1 + 0.8}, {\y + 0.8});
+        \filldraw[yellow!70!black] (1, 3) rectangle ({1 + 0.8}, {3 + 0.8}); 
+        \foreach \y in {0, 1, 2}
+          \filldraw[white] (0, \y) rectangle ({0 + 0.8}, {\y + 0.8});
+        \filldraw[codebg] (0, 3) rectangle ({0 + 0.8}, {3 + 0.8}); 
+      \end{tikzpicture}
+    \end{tabular}
+    \vspace{-1.5ex}
+    \begin{center}
+      \begin{tikzpicture}[remember picture, overlay]
+        \draw[darkgray, dotted, very thick, rounded corners] (-3, 0) rectangle (3, -1.5);
+      \end{tikzpicture}
+      
+      \textit{데이터프레임 파악하기}
+      
+      \smallskip
+      \begin{tabular}{c l}
+        \inl{view(df)} & 전체 데이터프레임 보기\\
+        \inl{head(df)} & 첫 6열까지만 보기
+      \end{tabular}
+    \end{center}
+  \end{column}
+  
+  \bigskip
+  \textbf{행렬로 자르기}
+  
+  \medskip
+  \begin{column}{0.33\linewidth}
+    \begin{tabular}{c >{\centering\arraybackslash} m{0.65cm}}
+      \inlc{df[ ,2]} &
+      \begin{tikzpicture}[xscale = 0.4, yscale = 0.3]
+        \foreach \y in {0, 1, 2}
+          \filldraw[yellow!70!orange] (1, \y) rectangle ({1 + 0.8}, {\y + 0.8});
+        \filldraw[yellow!75!black] (1, 3) rectangle ({1 + 0.8}, {3 + 0.8}); 
+        \foreach \y in {0, 1, 2}
+          \filldraw[white] (0, \y) rectangle ({0 + 0.8}, {\y + 0.8});
+        \filldraw[codebg] (0, 3) rectangle ({0 + 0.8}, {3 + 0.8}); 
+      \end{tikzpicture}\\[0.75ex]
+      \inlc{df[2,  ]} &
+      \begin{tikzpicture}[xscale = 0.4, yscale = 0.3]
+        \foreach \x in {0, 1} {
+          \filldraw[codebg] (\x, 3) rectangle ({\x + 0.8}, {3 + 0.8}); 
+          \filldraw[white] (\x, 0) rectangle ({\x + 0.8}, {0 + 0.8}); 
+          \filldraw[white] (\x, 2) rectangle ({\x + 0.8}, {2 + 0.8}); 
+          \filldraw[yellow!75!orange] (\x, 1) rectangle ({\x + 0.8}, {1 + 0.8}); 
+        }
+      \end{tikzpicture}\\[0.75ex]
+      \inlc{df[2,2]} &
+      \begin{tikzpicture}[xscale = 0.4, yscale = 0.3]
+        \foreach \x in {0, 1} {
+          \filldraw[codebg] (\x, 3) rectangle ({\x + 0.8}, {3 + 0.8}); 
+          \foreach \y in {0, 1, 2}
+            \filldraw[white] (\x, \y) rectangle ({\x + 0.8}, {\y + 0.8}); 
+        }
+        \filldraw[yellow!75!orange] (1, 1) rectangle ({1 + 0.8}, {1 + 0.8}); 
+      \end{tikzpicture}\\
+    \end{tabular}
+  \end{column}
+  {\color{gray}{\vrule}}
+  \begin{column}{0.24\linewidth}
+    \vspace{-13ex}
+    
+    \inl{nrow(df)}\\열 개수
+    
+    \inl{ncol(df)}\\행 개수
+    
+    \inl{dim(df)}\\행과 열의 개수
+  \end{column}
+  {\color{gray}{\vrule}}
+  \begin{column}{0.4\linewidth}
+    \vspace{-12ex}
+    
+    \inl{cbind} - 열로 합치기
+    
+    \smallskip
+    {\centering
+    \begin{tikzpicture}[xscale = 0.4, yscale = 0.3]
+      \foreach \x in {0, 1} {
+        \filldraw[codebg] (\x, 3) rectangle ({\x + 0.8}, {3 + 0.8}); 
+        \foreach \y in {0, 1, 2}
+          \filldraw[white] (\x, \y) rectangle ({\x + 0.8}, {\y + 0.8}); 
+      }
+      
+      \foreach \y in {0, 1, 2}
+        \filldraw[red] (2.5, \y) rectangle ({2.5 + 0.8}, {\y + 0.8}); 
+      \filldraw[red!70!black] (2.5, 3) rectangle ({2.5 + 0.8}, {3 + 0.8}); 
+      
+      \draw[->, > = stealth', ultra thick, main] (3.75, 1.5) -- (5.35, 1.5);
+      
+      \foreach \x in {6, 7, 8} {
+        \foreach \y in {0, 1, 2}
+          \filldraw[green] (\x, \y) rectangle ({\x + 0.8}, {\y + 0.8}); 
+        \filldraw[green!70!black] (\x, 3) rectangle ({\x + 0.8}, {3 + 0.8}); 
+      }
+    \end{tikzpicture}}
+    
+    \smallskip
+    \inl{rbind} - 행으로 합치기
+    
+    \smallskip
+    {\centering
+    \begin{tikzpicture}[xscale = 0.4, yscale = 0.3]
+      \foreach \x in {0, 1} {
+        \filldraw[codebg] (\x, 3) rectangle ({\x + 0.8}, {3 + 0.8}); 
+        \foreach \y in {0, 1, 2}
+          \filldraw[white] (\x, \y) rectangle ({\x + 0.8}, {\y + 0.8}); 
+      }
+      
+      \foreach \x in {2.5, 3.5} {
+        \filldraw[red] (\x, 1) rectangle ({\x + 0.8}, {1 + 0.8}); 
+        \filldraw[red!70!black] (\x, 2) rectangle ({\x + 0.8}, {2 + 0.8}); 
+      }
+      
+      \draw[->, > = stealth', ultra thick, main] (4.75, 1.5) -- (6.35, 1.5);
+      
+      \foreach \x in {7, 8} {
+        \foreach \y in {-0.5, 0.5, 1.5, 2.5}
+          \filldraw[green] (\x, \y) rectangle ({\x + 0.8}, {\y + 0.8}); 
+        \filldraw[green!70!black] (\x, 3.5) rectangle ({\x + 0.8}, {3.5 + 0.8}); 
+      }
+      
+    \end{tikzpicture}}
+        
+  \end{column}
+\end{seeblock}
+}

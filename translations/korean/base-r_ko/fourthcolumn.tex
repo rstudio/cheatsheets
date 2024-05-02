@@ -1,0 +1,64 @@
+% !TEX root = base-r.tex
+
+\begin{block}{자료형}
+  \vspace{1ex}
+  
+  \centering
+  \begin{minipage}{0.8\linewidth}
+    \centering
+    자주 쓰는 자료형간의 변환. 표 아래쪽의 값에서 위쪽의 값으로는 항상 변환 가능하다.
+  \end{minipage}
+  
+  \vspace{1ex}
+  
+  \small\renewcommand{\arraystretch}{1.3}
+  \begin{tableau}{>{\color{black}}l | >{\color{darkgray}}m{0.31\linewidth} | >{\color{black}\centering\arraybackslash}m{0.35\linewidth}}
+    \inl{as.logical} & \inl{TRUE, FALSE, TRUE} & Boolean 값 (참 아니면 거짓)\\
+    \inl{as.numeric} & \inl{1, 0, 1} & 정수나 실수\\
+    \inl{as.character} & \inl{'1', '0', '1'} & 문자열. 팩터에서 자주 사용함\\
+    \inl{as.factor} & \inl{'1', '0', '1'}\qquad\inl{levels: '1', '0'}  & level이 정해진 문자열. 몇몇 통계모델에 필요함\\
+  \end{tableau}
+  
+\end{block}
+
+{\setbeamercolor{block body}{fg = black, bg = white}
+\begin{block}{수학 함수}
+  \small\renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{r m{0.25\linewidth} r m{0.25\linewidth}}
+    \inl{log(x)} & 자연로그 & \inl{sum(x)} & 합\\
+    \inl{exp(x)} & 지수함수 & \inl{mean(x)} & 평균\\
+    \inl{max(x)} & 최댓값 & \inl{median(x)} & 중앙값\\
+    \inl{min(x)} & 최솟값 & \inl{quantile(x)} & 사분위수\\
+    \inl{(x, n)} & 소수점 n째자리까지 반올림 & \inl{rank(x)} & 원소의 큰 순서\\
+    \inl{(x, n)} & 유효숫자 n자리 & \inl{var(x)} & 분산\\
+    \inl{(x, y)} & 상관계수 & \inl{sd(x)} & 표준편차.
+  \end{tabular}
+\end{block}
+}
+
+\begin{block}{변수 할당}
+  \begin{code}
+    \begin{Pseudo}
+ > a <- 'apple'
+ > a
+ [1] 'apple'
+    \end{Pseudo}
+  \end{code}
+\end{block}
+
+\begin{block}{Environment}
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{l m{0.6\linewidth}}
+    \inline{ls()} & environment의 모든 변수 나열\\
+    \inline{rm(x)} & environment에서 x 제거\\
+    \inline{rm(list = ls())} & environment에서 모든 변수 제거
+  \end{tabular}
+  
+  \vspace{1ex}
+  
+  \centering
+  \begin{minipage}{0.8\linewidth}
+    \centering
+    \textbf{RStudio의 environment 패널로 environment의 변수들을 볼 수 있음}
+  \end{minipage}
+\end{block}

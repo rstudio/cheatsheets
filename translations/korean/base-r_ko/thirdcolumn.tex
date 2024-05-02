@@ -1,0 +1,121 @@
+% !TEX root = base-r.tex
+
+\begin{block}{프로그래밍}
+  \vskip-2ex
+  \begin{columns}[t]\hfill\hfill\hfill
+    \begin{column}{.48\linewidth}
+      \begin{subblock}{For문}
+        \begin{code}
+          \begin{Pseudo}
+for (variable in sequence) {
+    Do something
+}
+          \end{Pseudo}
+        \end{code}
+        
+        \begin{exampleblock}{예시}
+          \begin{Rbg}
+for (i in 1:4) {
+    j <- i + 10
+    print(j)
+}
+          \end{Rbg}
+        \end{exampleblock}
+      \end{subblock}
+      \begin{subblock}{If문}
+        \begin{code}
+          \begin{Pseudo}
+if (condition) {
+    Do something
+} else {
+    Do something
+} 
+          \end{Pseudo}
+        \end{code}
+        
+        \begin{exampleblock}{예시}
+          \begin{Rbg}
+if (i > 3) {
+    print('Yes')
+} else {
+    print('No')
+} 
+          \end{Rbg}
+        \end{exampleblock}
+      \end{subblock}
+    \end{column}\hfill
+    \begin{column}{.48\linewidth}
+      \begin{subblock}{While문}
+        
+        \begin{code}
+          \begin{Pseudo}
+while (condition) {
+    Do something
+}
+          \end{Pseudo}
+        \end{code}
+        
+        \begin{exampleblock}{예시}
+        
+          \begin{Rbg}
+while (i < 5) {
+    print(i)
+    i <- i + 1
+}
+          \end{Rbg}
+        \end{exampleblock}
+        
+        \end{subblock}
+        
+        \begin{subblock}{함수}
+          \begin{code}
+            \begin{Pseudo}
+funct_name <- function(var) {
+    Do something
+    return(new_variable)
+}
+            \end{Pseudo}
+          \end{code}
+          
+          \begin{exampleblock}{예시}
+          
+            \begin{Rbg}
+square <- function(x) {
+    squared <- x*x
+    return(squared)
+}
+            \end{Rbg}
+          \end{exampleblock}
+          
+        \end{subblock}
+      \end{column}\hfill\hfill\hfill
+    \end{columns}
+    
+    \vskip-1.5ex
+    \begin{seesubblock}{데이터 입출력}{readr}
+      \vskip1ex
+      \begin{tableau}{| >{\color{black}\centering\small}m{0.27\linewidth} | >{\color{black}\centering\small}m{0.27\linewidth} | >{\color{black}\centering\arraybackslash}m{0.36\linewidth} |}
+        \hline
+        {\normalfont\textbf{입력}} & {\normalfont\textbf{출력}} & \textbf{설명}\\\hline
+        \rowcolor{secondary} \inl{df <- read.table('file.txt')} & \inl{write.table(df, 'file.txt')} & 구분 문자로 분리된 텍스트 파일 입출력\\\hline
+        \inl{df <- read.csv('file.csv')} & \inl{write.csv(df, 'file.csv')} & csv 파일 입출력 (\inl{read.table/write.table}의 특수한 경우)\\\hline
+        \rowcolor{secondary} \inl{load('file.RData')} & \inl{save(df, file = 'file.RData')} & R 데이터 파일 입출력\\\hline
+      \end{tableau}
+      \vskip-1ex
+    \end{seesubblock}
+    
+    \vskip1ex
+    \begin{subblock}{}
+      \small\hspace{0.25ex}\begin{beamercolorbox}[ht = 3.5ex, dp = 3ex, wd = 0.09\linewidth, center, rounded = true]{block title}
+      \textbf{\footnotesize 관계 연산자}
+    \end{beamercolorbox}
+    \hspace{1ex}
+    \footnotesize
+    \begin{tableau}{| >{\color{black}}c | >{\color{black}\cellcolor{secondary}}c | >{\color{black}}c | >{\color{black}\centering\cellcolor{secondary}}m{0.075\linewidth} | >{\color{black}}c | >{\color{black}\cellcolor{secondary}\centering\arraybackslash}m{0.1\linewidth} | >{\color{black}}c | >{\color{black}\cellcolor{secondary}}c |}
+      \hline
+      \inl{a == b} & 같다 & \inl{a > b} & 크다(초과) & \inl{a >= b} & 크거나 같다(이상) & \inl{is.na(a)} & 값이 없다\\\hline
+      \inl{a \!= b} & 같지 않다 & \inl{a < b} & 작다(미만) & \inl{a <= b} & 작거나 같다(이하) & \inl{is.null(a)} & 값이 null\\\hline
+    \end{tableau}
+    \vskip-1ex
+  \end{subblock}
+\end{block}
