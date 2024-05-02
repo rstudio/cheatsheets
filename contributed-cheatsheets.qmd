@@ -26,6 +26,8 @@ Several of these cheatsheets also have non-English translations, available on th
 
 [![distr6](pngs/distr6.png){alt="Download distr6 pdf cheatsheet"}](distr6.pdf)
 
+[![DRomics](pngs/DRomics.png){alt="Download DRomics pdf cheatsheet"}](DRomics.pdf)
+
 [![estimatr](pngs/estimatr.png){alt="Download estimatr pdf cheatsheet"}](estimatr.pdf)
 
 [![eurostat](pngs/eurostat.png){alt="Download eurostat pdf cheatsheet"}](eurostat.pdf)
@@ -56,6 +58,8 @@ Several of these cheatsheets also have non-English translations, available on th
 
 [![mapsf](pngs/mapsf.png){alt="Download mapsf pdf cheatsheet"}](mapsf.pdf)
 
+[![metrica](pngs/metrica.png){alt="Download metrica pdf cheatsheet"}](metrica.pdf)
+
 [![mlr](pngs/mlr.png){alt="Download mlr pdf cheatsheet"}](mlr.pdf)
 
 [![mosaic](pngs/mosaic.png){alt="Download mosaic pdf cheatsheet"}](mosaic.pdf)
@@ -80,11 +84,15 @@ Several of these cheatsheets also have non-English translations, available on th
 
 [![Regular Expressions](pngs/regular-expressions.png){alt="Download Regular Expressions pdf cheatsheet"}](regex.pdf)
 
+[![rgee](pngs/rgee.png){alt="Download rgee pdf cheatsheet"}](rgee.pdf)
+
 [![rphylopic](pngs/rphylopic.png){alt="Download rphylopic pdf cheatsheet"}](rphylopic.pdf)
 
 [![SamplingStrata](pngs/SamplingStrata.png){alt="Download SamplingStrata pdf cheatsheet"}](SamplingStrata.pdf)
 
-[![SAS \<-\> R](pngs/sas-r.png){alt="Download SAS \<-\> R pdf cheatsheet"}](sas-r.pdf)
+[![SAS \<-\> R](pngs/sas-r.png){alt="Download SAS <-> R pdf cheatsheet"}](sas-r.pdf)
+
+[![SASvsRinPharma](pngs/SASvsRinPharma.png){alt="Download SAS vs. R in Pharma cheatsheet"}](SASvsRinPharma.pdf)
 
 [![sf](pngs/sf.png){alt="Download sf pdf cheatsheet"}](sf.pdf)
 
@@ -97,6 +105,8 @@ Several of these cheatsheets also have non-English translations, available on th
 [![survminer](pngs/survminer.png){alt="Download survminer pdf cheatsheet"}](survminer.pdf)
 
 [![R syntax comparison](pngs/syntax.png){alt="Download R syntax comparison pdf cheatsheet"}](syntax.pdf)
+
+[![SqueakR](pngs/SqueakR.png){alt="SqueakR"}](SqueakR.pdf)
 
 [![teachR](pngs/teachR.png){alt="Download teachR pdf cheatsheet"}](teachR.pdf)
 
