@@ -80,13 +80,15 @@ Several of these cheatsheets also have non-English translations, available on th
 
 [![Regular Expressions](pngs/regular-expressions.png){alt="Download Regular Expressions pdf cheatsheet"}](regex.pdf)
 
-[![rgee](pngs/rgee.png){alt="Google Earth Engine with rgee"}](rgee.pdf)
+[![rgee](pngs/rgee.png){alt="Download rgee cheatsheet"}](rgee.pdf)
 
 [![rphylopic](pngs/rphylopic.png){alt="Download rphylopic pdf cheatsheet"}](rphylopic.pdf)
 
 [![SamplingStrata](pngs/SamplingStrata.png){alt="Download SamplingStrata pdf cheatsheet"}](SamplingStrata.pdf)
 
 [![SAS \<-\> R](pngs/sas-r.png){alt="Download SAS <-> R pdf cheatsheet"}](sas-r.pdf)
+
+[![SASvsRinPharma](pngs/SASvsRinPharma.png){alt="Download SAS vs. R in Pharma cheatsheet"}](SASvsRinPharma.pdf)
 
 [![sf](pngs/sf.png){alt="Download sf pdf cheatsheet"}](sf.pdf)
 
