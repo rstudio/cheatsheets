@@ -29,15 +29,20 @@ translation_list(sheet_name)
 
 ## Overview
 
-![](images/quarto-illustration.png){fig-alt="A schematic representing the multi-language input (e.g. Python, R, Observable, Julia) and multi-format output (e.g. PDF, html, Word documents, and more) versatility of Quarto."}[^credit] 
+![](images/quarto-illustration.png){fig-alt="A schematic representing the multi-language input (e.g. Python, R, Observable, Julia) and multi-format output (e.g. PDF, html, Word documents, and more) versatility of Quarto."}[^1]
 
-[^credit]: Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022. Illustrated by [Allison Horst](https://allisonhorst.com/allison-horst).
+[^1]: Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022.
+    Illustrated by [Allison Horst](https://allisonhorst.com/allison-horst).
 
-* **Author**: Write and code in plain text. Author documents as .qmd files, or Jupyter notebooks. Write in a rich Markdown syntax.
+-   **Author**: Write and code in plain text.
+    Author documents as .qmd files, or Jupyter notebooks.
+    Write in a rich Markdown syntax.
 
-* **Render**: Generate documents, presentations and more. Produce HTML, PDF, MS Word, reveal.js, MS Powerpoint, Beamer, websites, blogs, books...
+-   **Render**: Generate documents, presentations and more.
+    Produce HTML, PDF, MS Word, reveal.js, MS Powerpoint, Beamer, websites, blogs, books...
 
-* **Share**: Share your work with the world. Quickly deploy to GitHub Pages, Netlify, Quarto Pub, Posit Cloud, or Posit Connect.
+-   **Share**: Share your work with the world.
+    Quickly deploy to GitHub Pages, Netlify, Quarto Pub, Posit Cloud, or Posit Connect.
 
 ### Get Quarto
 
@@ -53,7 +58,7 @@ Or, use version **bundled with RStudio.**
 
 ### Source File: hello.qmd
 
-````{.markdown}
+```` markdown
 ---
 title: "Hello, Penguins"
 format: html
@@ -87,37 +92,39 @@ penguins |>
 
 ### Highlights in the source file
 
-*   Set format(s) and options. Use YAML Syntax.
-    
-    ```` markdown
+-   Set format(s) and options.
+    Use YAML Syntax.
+
+    ``` markdown
     ---
     title: "Hello, Penguins"
     format: html
     execute:
       echo: false
     ---
-    ````
+    ```
 
-*   `## Write with **Markdown**` 
-    
-    **RStudio**: Help > Markdown Quick Reference
-    
+-   `## Write with **Markdown**`
+
+    **RStudio**: Help \> Markdown Quick Reference
+
     RStudio & VS Code: Use the **Visual Editor**
 
-    ```` markdown
+    ``` markdown
     ## Meet the penguins
-    
+
     The `penguins` data contains size measurements for 
     penguins from three islands in the Palmer Archipelago, 
     Antarctica.
-    
+
     The three species of penguins have quite distinct 
     distributions of physical dimensions (@fig-penguins).
-    ````
-    
-*   Include code. R, Python, Julia, Observable, or any language with a Jupyter kernel.
+    ```
 
-    ````markdown
+-   Include code.
+    R, Python, Julia, Observable, or any language with a Jupyter kernel.
+
+    ```` markdown
     ```{{r}}
     #| label: fig-penguins
     #| fig-cap: "Dimensions of penguins across three species."
@@ -135,17 +142,20 @@ penguins |>
 
 ### Use a tool with a rich authoring experience
 
-[RStudio](https://posit.co/products/open-source/rstudio/), or   
+[RStudio](https://posit.co/products/open-source/rstudio/), or\
 [Visual Studio Code](https://code.visualstudio.com/) + [Quarto extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto)
 
-*   **Run** code cells as you write
-*   **Render** with a button or keyboard shortcut
-*   Edit Quarto documents with a **Visual Editor** 
-    
+-   **Run** code cells as you write
+
+-   **Render** with a button or keyboard shortcut
+
+-   Edit Quarto documents with a **Visual Editor**
+
     ![](images/quarto-visual-editor.png){fig-alt="Screenshot of the Visual Editor toolbar. Toolbar shows menu items: Normal with dropdown, bold, italics, code, bulleted list, numbered list, link, image, Format dropdown, Insert dropdown and Table dropdown."}
-    
-    -   Apply formatting in Visual Editor. Saved as Markdown in source.
-    
+
+    -   Apply formatting in Visual Editor.
+        Saved as Markdown in source.
+
     -   Insert elements like code cells, cross references, and more.
 
 ### Or any text editor
@@ -154,15 +164,16 @@ Quarto documents (.qmd) can be edited in any tool that edits text.
 
 ## Render
 
-**Save,** then render to **preview** the document output. 
+**Save,** then render to **preview** the document output.
 
-```{.bash filename="Terminal"}
+``` {.bash filename="Terminal"}
 quarto preview hello.qmd
 ```
 
 RStudio & VS Code: Use **Render** button
 
-The resulting HTML/PDF/MS Word/etc. document will be created and saved in the same directory as the source .qmd file.
+The resulting HTML/PDF/MS Word/etc.
+document will be created and saved in the same directory as the source .qmd file.
 
 ### Rendered output: hello.html
 
@@ -170,9 +181,11 @@ The resulting HTML/PDF/MS Word/etc. document will be created and saved in the sa
 
 ### Highlights in the rendered output
 
-* Features for scientific publishing. Cross references, citations, equations, and more.
+-   Features for scientific publishing.
+    Cross references, citations, equations, and more.
 
-* Output integrated into document. Control how output appears with special comments in your code.
+-   Output integrated into document.
+    Control how output appears with special comments in your code.
 
 ### Behind the Scenes
 
@@ -181,7 +194,6 @@ When you render a document, Quarto:
 1.  Runs the code and embeds results and text into an .md file with:
     -   **Knitr**, if any `{r}` cells, or
     -   **Jupyter**, if any other cells.
-    
 2.  Converts the .md file into the output format with Pandoc.
 
 ## Publish
@@ -196,9 +208,11 @@ RStudio: Use **Publish** button ![](images/quarto-rstudio-publish.png){fig-alt="
 
 -   [**Quarto Pub**](https://quartopub.com/) Free publishing service for Quarto content.
 
--   [**Posit Cloud**](https://posit.cloud/) Cloud-hosted, control access to project and output. ![](images/quarto-rstudio-publish.png){fig-alt="Push button publishing from RStudio" width="10%"}
+-   [**Posit Cloud**](https://posit.cloud/) Cloud-hosted, control access to project and output.
+    ![](images/quarto-rstudio-publish.png){fig-alt="Push button publishing from RStudio" width="10%"}
 
--   [**Posit Connect**](https://posit.co/products/enterprise/connect/) Org-hosted, control access, schedule updates. ![](images/quarto-rstudio-publish.png){fig-alt="Push button publishing from RStudio" width="10%"}
+-   [**Posit Connect**](https://posit.co/products/enterprise/connect/) Org-hosted, control access, schedule updates.
+    ![](images/quarto-rstudio-publish.png){fig-alt="Push button publishing from RStudio" width="10%"}
 
 ## Quarto Projects
 
@@ -240,7 +254,8 @@ Other languages: `{julia}`, `{ojs}`
 
 Add code cell options with `#|` comments.
 
-Cell options control [**execution**](#execution), [figures](#figures), [tables](#tables), layout and more. See them all at: <https://quarto.org/docs/reference/cells/>
+Cell options control [**execution**](#execution), [figures](#figures), [tables](#tables), layout and more.
+See them all at: <https://quarto.org/docs/reference/cells/>
 
 ### Execution Options {#execution}
 
@@ -276,7 +291,7 @@ Set execution options at the **cell level**:
 
 Set options in code cells with `#|` comments and YAML syntax: `key: value`.
 
-Or globally in the YAML header with the **execute**  option:
+Or globally in the YAML header with the **execute** option:
 
 ``` yaml
 ---
@@ -287,7 +302,8 @@ execute:
 
 ### Inline Code
 
-Use computed values directly in text sections. Code is evaluated at render and results appear as text.
+Use computed values directly in text sections.
+Code is evaluated at render and results appear as text.
 
 ::: {layout-ncol="3"}
 <div>
@@ -319,8 +335,7 @@ Value is `r 2*2`.
 
 ## Set Formats and Options
 
-::: {layout-ncol=2}
-
+::: {layout-ncol="2"}
 ::: {#set-options}
 ### Set Format Options
 
@@ -339,7 +354,6 @@ format:
 :::
 
 ::: {#multiple-formats}
-
 ### Multiple Formats
 
 ``` yaml
@@ -354,11 +368,11 @@ format:
 ```
 
 -   Top-level options (e.g. `toc`) apply to all formats
-
 :::
 :::
 
-Common values for `format`: html, pdf[^2], docx, odt, rtf, gfm, pptx, revealjs, beamer[^3]
+Common values for `format`: html, pdf[^2], docx, odt, rtf, gfm, pptx, revealjs, beamer
+[^3]
 
 [^2]: PDFs and Beamer slides require LaTeX, use:
 
@@ -372,7 +386,6 @@ Common values for `format`: html, pdf[^2], docx, odt, rtf, gfm, pptx, revealjs, 
     quarto install tinytex
     ```
 
-
 Render **all** formats:
 
 ``` {.bash filename="Terminal"}
@@ -384,7 +397,6 @@ Render a **specific** format:
 ``` {.bash filename="Terminal"}
 quarto render hello.qmd --to pdf
 ```
-
 
 ### Output Options Table
 
@@ -417,7 +429,6 @@ format_options |>
 ```
 
 Visit <https://quarto.org/docs/reference/> to see all options by format
-
 
 ## Add Content
 
@@ -494,7 +505,6 @@ Markdown(df.to_markdown(index=False))
 </div>
 :::
 
-
 ### Cross References
 
 1.  **Add labels:**
@@ -527,7 +537,7 @@ Markdown(df.to_markdown(index=False))
 
 2.  Add citations: `[@citation]`, or `@citation`
 
-RStudio & VS Code: Use **Insert Citations** dialog in the Visual Editor. 
+RStudio & VS Code: Use **Insert Citations** dialog in the Visual Editor.
 Build your bibliography file from your Zotero library, DOI, Crossref, DataCite, or PubMed.
 
 ### Callouts
