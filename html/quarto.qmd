@@ -170,7 +170,9 @@ Quarto documents (.qmd) can be edited in any tool that edits text.
 quarto preview hello.qmd
 ```
 
-RStudio & VS Code: Use **Render** button
+RStudio: Use **Render** button ![](images/quarto-render-button.png){fig-alt="Icon from the Render button in RStudio" height="1.5em"}
+
+VS Code: Use **Preview** button ![](images/quarto-preview-button.svg){fig-alt="Icon from the Preview button in VS Code"}
 
 The resulting HTML/PDF/MS Word/etc.
 document will be created and saved in the same directory as the source .qmd file.
@@ -574,8 +576,8 @@ Instead of `tip` use one of: `note`, `caution`, `warning`, or `important`:
 
 ### Shortcodes
 
-``` {.markdown shortcodes="false"}
-{{< include _file.qmd >}} 
+```{.markdown}
+{{{< include _file.qmd >}}}
 ```
 
 ``` {.markdown shortcodes="false"}
