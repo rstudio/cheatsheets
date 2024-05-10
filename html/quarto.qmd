@@ -170,7 +170,9 @@ Quarto documents (.qmd) can be edited in any tool that edits text.
 quarto preview hello.qmd
 ```
 
-RStudio & VS Code: Use **Render** button
+RStudio: Use **Render** button ![](images/quarto-render-button.png){fig-alt="Icon from the Render button in RStudio" height="1.5em"}
+
+VS Code: Use **Preview** button ![](images/quarto-preview-button.svg){fig-alt="Icon from the Preview button in VS Code"}
 
 The resulting HTML/PDF/MS Word/etc.
 document will be created and saved in the same directory as the source .qmd file.
@@ -202,7 +204,7 @@ When you render a document, Quarto:
 quarto publish {venue} hello.qmd
 ```
 
-`{venue}`: quarto-pub, connect, gh-pages, netlify, confluence, (*v1.4*) posit-cloud
+`{venue}`: quarto-pub, connect, gh-pages, netlify, confluence, posit-cloud
 
 RStudio: Use **Publish** button ![](images/quarto-rstudio-publish.png){fig-alt="Publish button icon in RStudio" width="10%"}
 
@@ -228,7 +230,7 @@ Get started from the command line:
 quarto create project {type}
 ```
 
-`{type}`: default, website, blog, book, confluence, (*v1.4*) manuscript
+`{type}`: default, website, blog, book, confluence, manuscript
 
 RStudio: Use **File** \> **New Project**
 
@@ -318,8 +320,6 @@ Value is `` `r knitr::inline_expr("2 + 2")` ``.
 
 #### Jupyter
 
-[v1.4]{.small .muted}
-
 Value is `` `{python} 2 + 2` ``.
 
 </div>
@@ -372,15 +372,9 @@ format:
 :::
 
 Common values for `format`: html, pdf[^2], docx, odt, rtf, gfm, pptx, revealjs, beamer
-[^3]
+[^2]
 
 [^2]: PDFs and Beamer slides require LaTeX, use:
-
-    ``` {.bash filename="Terminal"}
-    quarto install tinytex
-    ```
-
-[^3]: PDFs and Beamer slides require LaTeX, use:
 
     ``` {.bash filename="Terminal"}
     quarto install tinytex
@@ -574,8 +568,8 @@ Instead of `tip` use one of: `note`, `caution`, `warning`, or `important`:
 
 ### Shortcodes
 
-``` {.markdown shortcodes="false"}
-{{< include _file.qmd >}} 
+```{.markdown}
+{{{< include _file.qmd >}}}
 ```
 
 ``` {.markdown shortcodes="false"}
@@ -592,7 +586,7 @@ CC BY SA Posit Software, PBC • [info\@posit.co](mailto:info@posit.co) • [pos
 
 Learn more at [quarto.org](https://quarto.org).
 
-Quarto 1.3
+Quarto 1.4
 
 Updated: `r format(Sys.Date(), "%Y-%m")`.
 
