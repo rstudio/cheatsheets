@@ -522,7 +522,7 @@
     "href": "html/factors.html",
     "title": "Factors with forcats :: Cheatsheet",
     "section": "",
-    "text": "Download PDF\n\n  \n\nTranslations (PDF)\n\n\nJapanese\nSpanish\nThe forcats package provides tools for working with factors, which are R’s data structure for categorical data.\nlibrary(forcats)"
+    "text": "Download PDF\n\n  \n\nTranslations (PDF)\n\n\nJapanese\nPortuguese\nSpanish\nThe forcats package provides tools for working with factors, which are R’s data structure for categorical data.\nlibrary(forcats)"
   },
   {
     "objectID": "html/factors.html#factors",
@@ -564,7 +564,7 @@
     "href": "html/factors.html#add-or-drop-levels",
     "title": "Factors with forcats :: Cheatsheet",
     "section": "Add or drop levels",
-    "text": "Add or drop levels\n\nfct_drop(f, only): Drop unused levels.\n\nf5 &lt;- factor(c(\"a\",\"b\"),c(\"a\",\"b\",\"x\"))\nf6 &lt;- fct_drop(f5)\n\nfct_expand(f, ...): Add levels to a factor.\n\nfct_expand(f6, \"x\")\n\nfct_na_value_to_level(f, level = \"(Missing)\"): Assigns a level to NAs to ensure they appear in plots, etc.\n\nf &lt;- factor(c(\"a\", \"b\", NA))\nfct_na_value_to_level(f, level = \"(Missing)\")\n\n\n\nCC BY SA Posit Software, PBC • info@posit.co • posit.co\nLearn more at forcats.tidyverse.org.\nUpdated: 2023-06.\n\npackageVersion(\"forcats\")\n\n[1] '1.0.0'"
+    "text": "Add or drop levels\n\nfct_drop(f, only): Drop unused levels.\n\nf5 &lt;- factor(c(\"a\",\"b\"),c(\"a\",\"b\",\"x\"))\nf6 &lt;- fct_drop(f5)\n\nfct_expand(f, ...): Add levels to a factor.\n\nfct_expand(f6, \"x\")\n\nfct_na_value_to_level(f, level = \"(Missing)\"): Assigns a level to NAs to ensure they appear in plots, etc.\n\nf &lt;- factor(c(\"a\", \"b\", NA))\nfct_na_value_to_level(f, level = \"(Missing)\")\n\n\n\nCC BY SA Posit Software, PBC • info@posit.co • posit.co\nLearn more at forcats.tidyverse.org.\nUpdated: 2024-05.\n\npackageVersion(\"forcats\")\n\n[1] '1.0.0'"
   },
   {
     "objectID": "html/data-transformation.html",
