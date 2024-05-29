@@ -6,8 +6,6 @@ execute:
   eval: true
   output: false
   warning: false
-editor_options: 
-  chunk_output_type: console
 ---
 
 ```{r}
@@ -429,9 +427,6 @@ Use a **"Nest Join"** to inner join one table to another into a nested data fram
     left_join(x, y, by = join_by(A, B))
     ```
 
-```{=html}
-<!-- -->
-```
 -   Use a logical statement, `by = join_by(col1 == col2)`, to match on columns that have different names in each table.
 
     ```{r}
