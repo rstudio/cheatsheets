@@ -74,9 +74,9 @@ Common aesthetic values.
 
 -   `linetype`: Integer or string (0 = `"blank"`, 1 = `"solid"`, 2 = `"dashed"`, 3 = `"dotted"`, 4 = `"dotdash"`, 5 = `"longdash"`, 6 = `"twodash"`).
 
--   `size`: Integer (line width in mm for outlines).
+-   `size`: Integer (in mm for size of points and text).
 
--   `linewidth`: Integer (line width in mm for lines).
+-   `linewidth`: Integer (in mm for widths of lines).
 
 -   `shape`: Integer/shape name or a single character (`"a"`).
 
@@ -583,7 +583,7 @@ t + labs(x = "New x axis label",
 
 CC BY SA Posit Software, PBC • [info\@posit.co](mailto:info@posit.co) • [posit.co](https://posit.co)
 
-Learn more at [dplyr.tidyverse.org](https://dplyr.tidyverse.org).
+Learn more at [ggplot2.tidyverse.org](https://ggplot2.tidyverse.org).
 
 Updated: `r format(Sys.Date(), "%Y-%m")`.
 
