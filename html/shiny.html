@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Shiny :: Cheatsheet</title>
+<title>Shiny for R :: Cheatsheet</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -185,7 +185,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Shiny :: Cheatsheet</h1>
+<h1 class="title">Shiny for R :: Cheatsheet</h1>
 </div>
 
 
@@ -229,13 +229,10 @@ Translations (PDF)
 <p>Save your template as <code>app.R</code>. Keep your app in a directory along with optional extra files.</p>
 <ul>
 <li><strong>app-name:</strong> The directory name is the app name</li>
-</ul>
-<!-- -->
-<ul>
-<li><p><strong>app.R</strong></p></li>
-<li><p>DESCRIPTION and README: (optional) used in showcase mode</p></li>
-<li><p>R/: (optional) directory of supplemental .R files that are sourced automatically, must be named <code>R</code></p></li>
-<li><p>www/: (optional) directory of files to share with web browsers (images, CSS, .js, etc.), must be named <code>www</code></p></li>
+<li><strong>app.R</strong></li>
+<li>DESCRIPTION and README: (optional) used in showcase mode</li>
+<li>R/: (optional) directory of supplemental .R files that are sourced automatically, must be named <code>R</code></li>
+<li>www/: (optional) directory of files to share with web browsers (images, CSS, .js, etc.), must be named <code>www</code></li>
 </ul>
 <p>Launch apps stored in a directory with <code>runApp(&lt;path to directory&gt;)</code>.</p>
 <p>To generate the template, type <code>shinyApp</code> and press <code>Tab</code> in the RStudio IDE or go to <strong>File &gt; New Project &gt; New Directory &gt; Shiny Application</strong>.</p>
@@ -448,18 +445,19 @@ Expand to read about the reactivity diagram
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">"a"</span>,<span class="st">""</span>,<span class="st">"A"</span>), </span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">"z"</span>,<span class="st">""</span>,<span class="st">"Z"</span>), </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textOutput</span>(<span class="st">"b"</span>))</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input,output){</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  re <span class="ot">&lt;-</span> <span class="fu">reactive</span>({ </span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(input<span class="sc">$</span>a,input<span class="sc">$</span>z)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>b <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">re</span>()</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  }) </span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textOutput</span>(<span class="st">"b"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input,output){</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  re <span class="ot">&lt;-</span> <span class="fu">reactive</span>({ </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(input<span class="sc">$</span>a,input<span class="sc">$</span>z)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>b <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">re</span>()</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  }) </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ul>
 </section>
@@ -590,9 +588,13 @@ Expand to read about the reactivity diagram
 <li><p>Place the file in the <code>www</code> subdirectory</p></li>
 <li><p>Link to it with:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tags<span class="sc">$</span><span class="fu">head</span>(tags<span class="sc">$</span><span class="fu">link</span>(<span class="at">rel =</span> <span class="st">"stylesheet"</span>, </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">type =</span> <span class="st">"text/css"</span>, </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">href =</span> <span class="st">"&lt;file name&gt;"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tags<span class="sc">$</span><span class="fu">head</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  tags<span class="sc">$</span><span class="fu">link</span>(</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">rel =</span> <span class="st">"stylesheet"</span>, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">"text/css"</span>, </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">href =</span> <span class="st">"&lt;file name&gt;"</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ol>
 <p>To include JavaScript, use <code>includeScript()</code>, or</p>
@@ -702,9 +704,11 @@ Expand to read about the reactivity diagram
 </ul>
 <p>Build your own theme by customizing individual arguments.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bs_theme</span>(<span class="at">bg =</span> <span class="st">"#558AC5"</span>,</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">fg =</span> <span class="st">"#F9B02D"</span>,</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>         ...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bs_theme</span>(</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">bg =</span> <span class="st">"#558AC5"</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fg =</span> <span class="st">"#F9B02D"</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><p><code>?bs_theme</code> for a full list of arguments.</p></li>
@@ -713,11 +717,11 @@ Expand to read about the reactivity diagram
 <hr>
 <p>CC BY SA Posit Software, PBC • <a href="mailto:info@posit.co">info@posit.co</a> • <a href="https://posit.co">posit.co</a></p>
 <p>Learn more at <a href="https://shiny.rstudio.com/">shiny.rstudio.com</a></p>
-<p>Updated: 2023-07.</p>
+<p>Updated: 2024-05.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"shiny"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] '1.7.4.1'</code></pre>
+<pre><code>[1] '1.8.1.1'</code></pre>
 </div>
 </div>
 <hr>
