@@ -984,14 +984,14 @@
     "href": "html/rstudio-ide.html",
     "title": "RStudio IDE :: Cheatsheet",
     "section": "",
-    "text": "Download PDF\n\n  \n\nTranslations (PDF)\n\n\nFrench\nGreek\nItalian\nJapanese\nPortuguese\nSpanish"
+    "text": "Download PDF\n\n  \n\nTranslations (PDF)\n\n\nFrench\nGreek\nItalian\nJapanese\nPortuguese\nSpanish\nVietnamese"
   },
   {
     "objectID": "html/rstudio-ide.html#documents-and-apps",
     "href": "html/rstudio-ide.html#documents-and-apps",
     "title": "RStudio IDE :: Cheatsheet",
     "section": "Documents and Apps",
-    "text": "Documents and Apps\nOpen Shiny, R Markdown, knitr, Sweave, LaTeX, .Rd files and more in Source Pane.\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the RStudio Source Pane\n\n\n\n\n\nFeatures within the RStudio Source Pane\n\nCheck spelling\nRender output\nChoose output format\nConfigure render options\nInsert code chunk\nPublish to server\nJump to previous chunk\nJump to next chunk\nRun code\nShow file outline\nVisual Editor (reverse side)\nJump to section or chunk\nRun this and all previous code chunks\nRun this code chunk\nSet knitr chunk options\n\n\n\n\nAccess markdown guide at Help &gt; Markdown Quick Reference.\nSee below for more on Visual Editor."
+    "text": "Documents and Apps\nOpen Shiny, Quarto, R Markdown, knitr, Sweave, LaTeX, .Rd files and more in Source Pane.\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the RStudio Source Pane\n\n\n\n\n\nFeatures within the RStudio Source Pane\n\nCheck spelling\nRender output\nChoose output format\nConfigure render options\nInsert code chunk\nPublish to server\nJump to previous chunk\nJump to next chunk\nRun code\nShow file outline\nVisual Editor (reverse side)\nJump to section or chunk\nRun this and all previous code chunks\nRun this code chunk\nSet knitr chunk options\n\n\n\n\nAccess markdown guide at Help &gt; Markdown Quick Reference.\nSee below for more on Visual Editor."
   },
   {
     "objectID": "html/rstudio-ide.html#source-editor",
@@ -1019,7 +1019,7 @@
     "href": "html/rstudio-ide.html#package-development",
     "title": "RStudio IDE :: Cheatsheet",
     "section": "Package Development",
-    "text": "Package Development\nCreate a new package with File &gt; New Project &gt; New Directory &gt; R Package\nEnable roxygen documentation with Tools &gt; Project Options &gt; Build Tools\nRoxygen guide at Help &gt; Roxygen Quick Reference\nSee package information in the Build Tab\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the Build Tab\n\n\n\n\n\nFeatures within the Build Tab\n\nInstall package and restart R\nRun devtools::load_all() and reload changes\nRun R CMD check\nClear output and rebuild\nCustomize package build options\nRun package tests\n\n\n\n\nRStudio opens plots in a dedicated Plots pane\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the Plots\n\n\n\n\n\nFeatures within the Plots pane\n\nNavigate recent plots\nOpen in window\nExport plot\nDelete plot\nDelete all plots\n\n\n\n\nGUI Package manager lists every installed package\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the Package manager\n\n\n\n\n\nFeatures within the Package manager\n\nInstall Packages\nUpdate Packages\nBrowse package site\nClick to load package with library(). Unclick to detach package with detach().\nPackage version installed\nDelete from library\n\n\n\n\nRStudio opens documentation in a dedicated Help pane\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the Help pane\n\n\n\n\n\nFeatures within the Help pane\n\nHome page of helpful links\nSearch within help file\nSearch for help file\n\n\n\n\nViewer pane displays HTML content, such as Shiny apps, R Markdown reports, and interactive visualizations\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the Viewer pane\n\n\n\n\n\nFeatures within the Viewer pane\n\nStop Shiny apps\nPublish to shinyapps.io, rpubs, Posit Connect, …\nRefresh\n\n\n\n\nView(&lt;data&gt;) opens spreadsheet like view of data set\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the data set spreadsheet\n\n\n\n\n\nFeatures within the data set spreadsheet\n\nFilter rows by value or value range\nSort by values\nSearch for value"
+    "text": "Package Development\nCreate a new package with File &gt; New Project &gt; New Directory &gt; R Package\nEnable roxygen documentation with Tools &gt; Project Options &gt; Build Tools\nRoxygen guide at Help &gt; Roxygen Quick Reference\nSee package information in the Build Tab\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the Build Tab\n\n\n\n\n\nFeatures within the Build Tab\n\nInstall package and restart R\nRun devtools::load_all() and reload changes\nRun R CMD check\nClear output and rebuild\nCustomize package build options\nRun package tests\n\n\n\n\nRStudio opens plots in a dedicated Plots pane\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the Plots\n\n\n\n\n\nFeatures within the Plots pane\n\nNavigate recent plots\nOpen in window\nExport plot\nDelete plot\nDelete all plots\n\n\n\n\nGUI Package manager lists every installed package\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the Package manager\n\n\n\n\n\nFeatures within the Package manager\n\nInstall Packages\nUpdate Packages\nBrowse package site\nClick to load package with library(). Unclick to detach package with detach().\nPackage version installed\nDelete from library\n\n\n\n\nRStudio opens documentation in a dedicated Help pane\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the Help pane\n\n\n\n\n\nFeatures within the Help pane\n\nHome page of helpful links\nSearch within help file\nSearch for help file\n\n\n\n\nViewer pane displays HTML content, such as Shiny apps, R Markdown reports, and interactive visualizations\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the Viewer pane\n\n\n\n\n\nFeatures within the Viewer pane\n\nStop Shiny apps\nPublish to shinyapps.io, Posit Connect, Posit Cloud, …\nRefresh\n\n\n\n\nView(&lt;data&gt;) opens spreadsheet like view of data set\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the data set spreadsheet\n\n\n\n\n\nFeatures within the data set spreadsheet\n\nFilter rows by value or value range\nSort by values\nSearch for value"
   },
   {
     "objectID": "html/rstudio-ide.html#debug-mode",
@@ -1043,11 +1043,11 @@
     "text": "Visual Editor\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the Visual Editor\n\n\n\n\n\nFeatures within the Visual Editor\n\nCheck spelling\nRender output\nChoose output format\nChoose output location\nInsert code chunk\nJump to previous chunk\nJump to next chunk\nRun selected lines\nPublish to server\nShow file outline\nBlock format\nBack to Source Editor (front page)\nInsert verbatim code\nClear formatting\nLists and block quotes\nLinks\nCitations\nImages\nMore formatting\nInsert blocks, citations, equations, and special characters\nInsert and edit tables\nFile outline\nAdd/Edit attributes\nJump to chunk or header\nSet knitr chunk options\nRun this and all previous code chunks\nRun this code chunk"
   },
   {
-    "objectID": "html/rstudio-ide.html#rstudio-workbench",
-    "href": "html/rstudio-ide.html#rstudio-workbench",
+    "objectID": "html/rstudio-ide.html#posit-workbench",
+    "href": "html/rstudio-ide.html#posit-workbench",
     "title": "RStudio IDE :: Cheatsheet",
-    "section": "RStudio Workbench",
-    "text": "RStudio Workbench\n\nWhy RStudio Workbench?\nExtend the open source server with a commercial license, support, and more:\n\nopen and run multiple R sessions at once\ntune your resources to improve performance\nadministrative tools for managing user sessions\ncollaborate real-time with others in shared projects\nswitch easily from one version of R to a different version\nintegrate with your authentication, authorization, and audit practices\nwork in the RStudio IDE, JupyterLab, Jupyter Notebooks, or VS Code\n\nDownload a free 45 day evaluation."
+    "section": "Posit Workbench",
+    "text": "Posit Workbench\n\nWhy Posit Workbench?\nExtend the open source server with a commercial license, support, and more:\n\nopen and run multiple R sessions at once\ntune your resources to improve performance\nadministrative tools for managing user sessions\ncollaborate real-time with others in shared projects\nswitch easily from one version of R to a different version\nintegrate with your authentication, authorization, and audit practices\nwork in the RStudio IDE, JupyterLab, Jupyter Notebooks, or VS Code\n\nDownload a free 45 day evaluation."
   },
   {
     "objectID": "html/rstudio-ide.html#share-projects",
@@ -1061,7 +1061,7 @@
     "href": "html/rstudio-ide.html#run-remote-jobs",
     "title": "RStudio IDE :: Cheatsheet",
     "section": "Run Remote Jobs",
-    "text": "Run Remote Jobs\nRun R on remote clusters (Kubernetes/Slurm) via the Job Launcher\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the Job Launcher\n\n\n\n\n\nFeatures within the Job Launcher\n\nLaunch a job\nMonitor launcher jobs\nRun launcher jobs remotely\n\n\n\n\n\nCC BY SA Posit Software, PBC • info@posit.co • posit.co\nLearn more at docs.posit.co/ide/user.\nUpdated: 2023-07.\nRStudio IDE 2023.3.0.386."
+    "text": "Run Remote Jobs\nRun R on remote clusters (Kubernetes/Slurm) via the Job Launcher\n\n\n\n\n\n\n\n\n\n\n\nExpand to read about the features in the Job Launcher\n\n\n\n\n\nFeatures within the Job Launcher\n\nLaunch a job\nMonitor launcher jobs\nRun launcher jobs remotely\n\n\n\n\n\nCC BY SA Posit Software, PBC • info@posit.co • posit.co\nLearn more at docs.posit.co/ide/user.\nUpdated: 2024-05.\nRStudio IDE 2024.04.1+748."
   },
   {
     "objectID": "html/shiny.html",
