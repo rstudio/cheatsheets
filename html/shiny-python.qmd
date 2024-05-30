@@ -3,9 +3,8 @@ title: "Shiny for Python :: Cheatsheet"
 description: " "
 image-alt: ""
 execute:
-  eval: true
+  eval: false
   output: false
-  warning: true
 ---
 
 ```{r}
@@ -31,13 +30,8 @@ Users can manipulate the UI, which will cause the server to update the UI's disp
 Save your app as `app.py` in a directory with the files it uses.
 
 -   **app-name:** The directory name is the app name
-
-<!-- -->
-
 -   **app.py**
-
 -   www/: Place images, CSS, etc. to share with the browser in a folder named "www"
-
 -   Include any other scripts, data sets, or assets used by the app in the same directory.
 
 Run `shiny create .` in the terminal to generate an `app.py` file based on a template.
@@ -45,8 +39,6 @@ Run `shiny create .` in the terminal to generate an `app.py` file based on a tem
 Launch apps with `shiny run app.py --reload`
 
 ```{python}
-#| eval: false
-
 from shiny import App, render, ui
 import matplotlib.pyplot as plt
 import numpy as np
@@ -102,7 +94,7 @@ Shinylive apps use WebAssembly to run entirely in a browser--no need for a speci
 
 To embed a Shinylive app in a Quarto doc, include the below syntax.
 
-````markdown
+```` markdown
 ---
 filters:
 - shinylive
@@ -118,31 +110,24 @@ An embedded Shinylive app:
 
 ## Outputs
 
-Match ui.output_\* functions to @render.\* decorators
+Match ui.output\_\* functions to @render.\* decorators
 
-+-----------------------+-------------------------------------------------------------------------------+
-| decorator             | function                                                                      |
-+=======================+===============================================================================+
-| `@render.data_frame`  | `ui.output_data_frame(id)`                                                    |
-+-----------------------+-------------------------------------------------------------------------------+
-| `@render.image`       | `ui.output_image(id, width, height, click, dblclick, hover, brush, inline)`   |
-+-----------------------+-------------------------------------------------------------------------------+
-| `@render.plot`        | `ui.output_plot(id, width, height, click, dblclick, hover, brush, inline)`    |
-+-----------------------+-------------------------------------------------------------------------------+
-| `@render.table`       | `ui.output_table(id)`                                                         |
-+-----------------------+-------------------------------------------------------------------------------+
-| `@render.text`        | `ui.output_text(id, container, inline)` also `ui.output_text_verbatim()`      |
-+-----------------------+-------------------------------------------------------------------------------+
-| `@render.ui`          | `ui.output_ui(id, inline, container, ...)` also `ui.output_html()`            |
-+-----------------------+-------------------------------------------------------------------------------+
-| `@sessiom.download`   | `ui.output_download_button(id, label, icon,...)`                              |
-+-----------------------+-------------------------------------------------------------------------------+
+| decorator            | function                                                                    |
+|------------------|------------------------------------------------------|
+| `@render.data_frame` | `ui.output_data_frame(id)`                                                  |
+| `@render.image`      | `ui.output_image(id, width, height, click, dblclick, hover, brush, inline)` |
+| `@render.plot`       | `ui.output_plot(id, width, height, click, dblclick, hover, brush, inline)`  |
+| `@render.table`      | `ui.output_table(id)`                                                       |
+| `@render.text`       | `ui.output_text(id, container, inline)` also `ui.output_text_verbatim()`    |
+| `@render.ui`         | `ui.output_ui(id, inline, container, ...)` also `ui.output_html()`          |
+| `@sessiom.download`  | `ui.output_download_button(id, label, icon,...)`                            |
 
 : Table of `@render.*()` decorators and their associated `ui.output_*()` functions.
 
 ## Inputs
 
-Use a `ui.input_*()` function to make an input widget that saves a value as `input.<id>`. Input values are reactive and need to be called as `input.<id>()`.
+Use a `ui.input_*()` function to make an input widget that saves a value as `input.<id>`.
+Input values are reactive and need to be called as `input.<id>()`.
 
 -   `ui.input_action_button(id, label, icon, width, ...)`
 
@@ -176,7 +161,8 @@ Use a `ui.input_*()` function to make an input widget that saves a value as `inp
 
 ## Reactivity
 
-Reactive values work together with reactive functions. Call a reactive value from within the arguments of one of these functions to avoid the error `No current reactive context`.
+Reactive values work together with reactive functions.
+Call a reactive value from within the arguments of one of these functions to avoid the error `No current reactive context`.
 
 ![](images/reactivity-diagram-python.png){fig-align="center"}
 
@@ -187,7 +173,7 @@ Reactive values work together with reactive functions. Call a reactive value fro
 
 -   Create your own reactive values
     -   `ui.input_*()`
-    -   `reactive.Value()``
+    -   \`reactive.Value()\`\`
     -   `@reactive.file_reader()`
     -   `@reactive.poll()`
 -   Perform side effects
@@ -207,16 +193,15 @@ Reactive values work together with reactive functions. Call a reactive value fro
 ### Create Your own Reactive Values
 
 -   `ui.input_*()` makes an input widget that saves a reactive value as `input.<id>()`.
+
 -   `reactive.value( )` Creates an object whose value you can set.
 
     ```{python}
-    #| eval: false
-
     #...
     app_ui = ui.page_fluid(
         ui.input_text("a", "A")
     )
-    
+
     def server(input, output, session):
         rv = reactive.Value()
         rv.set(5) 
@@ -225,11 +210,11 @@ Reactive values work together with reactive functions. Call a reactive value fro
 
 ### Create Reactive Expressions
 
--   `@reactive.calc` makes a function a reactive expression. Shiny notifies functions that use the expression when it becomes invalidated, triggering recomputation. Shiny caches the value of the expression while it is valid to avoid unnecessary computation.
+-   `@reactive.calc` makes a function a reactive expression.
+    Shiny notifies functions that use the expression when it becomes invalidated, triggering recomputation.
+    Shiny caches the value of the expression while it is valid to avoid unnecessary computation.
 
     ```{python}
-    #| eval: false
-
     #...
     def server(input, output, session ):
         @reactive.calc
@@ -243,8 +228,6 @@ Reactive values work together with reactive functions. Call a reactive value fro
 -   `@reactive.event()` Makes a function react only when a specified value is invalidated, here `input.a`.
 
     ```{python}
-    #| eval: false
-
     #...
     def server(input, output, session ):
         @reactive.Calc 
@@ -257,17 +240,17 @@ Reactive values work together with reactive functions. Call a reactive value fro
 ### Display Reactive Output
 
 -   `ui.output_*()` adds an output element to the UI.
+
 -   `@render.*` decorators render outputs
+
 -   `def <id>():` A function to generate the output
 
     ```{python}
-    #| eval: false
-
     app_ui = ui.page_fluid(
         ui.input_text("a", "A"), 
         ui.output_text("b"),
     )
-    
+
     def server(input, output, session ):
         @render.text 
         def b():
@@ -276,11 +259,10 @@ Reactive values work together with reactive functions. Call a reactive value fro
 
 ### Perform Side Effects
 
--   `@reactive.effect` Reactively trigger a function with a side effect. Call a reactive value or use `@reactive.event` to specify when the function will rerun.
+-   `@reactive.effect` Reactively trigger a function with a side effect.
+    Call a reactive value or use `@reactive.event` to specify when the function will rerun.
 
     ```{python}
-    #| eval: false
-
     #...
     def server(input, output, session ):
         @reactive.effect
@@ -292,11 +274,10 @@ Reactive values work together with reactive functions. Call a reactive value fro
 
 ### Remove Reactivity
 
--   `reactive.isolate()`Create non-reactive context within a reactive function. Calling a reactive value within this context will not cause the calling function to re-execute should the value become invalid.
+-   `reactive.isolate()`Create non-reactive context within a reactive function.
+    Calling a reactive value within this context will not cause the calling function to re-execute should the value become invalid.
 
     ```{python}
-    #| eval: false
-
     # ...
     def server(input, output, session):
         @render.text 
@@ -310,32 +291,30 @@ Reactive values work together with reactive functions. Call a reactive value fro
 
 Combine multiple elements into a "single element" that has its own properties with a panel function:
 
-- `ui.panel_absolute()`
-- `ui.panel_conditional()`
-- `ui.panel_fixed()`
-- `ui.panel_main()`
-- `ui.panel_sidebar()`
-- `ui.panel_title()`
-- `ui.panel_well()`
-- `ui.row() / ui.column()`
+-   `ui.panel_absolute()`
+-   `ui.panel_conditional()`
+-   `ui.panel_fixed()`
+-   `ui.panel_main()`
+-   `ui.panel_sidebar()`
+-   `ui.panel_title()`
+-   `ui.panel_well()`
+-   `ui.row() / ui.column()`
 
-Layout panels with a layout function. Add elements as arguments of the layout functions.
+Layout panels with a layout function.
+Add elements as arguments of the layout functions.
 
 -   `ui.page_sidebar()`
 
 ```{python}
-#| eval: false
-
 app_ui = ui.page_sider(  
     ui.sidebar("Sidebar", bg="#f8f8f),  
     "Main content",  
 )  
 ```
 
--   `ui.layout_columns()` with `ui.card()
+-   `ui.layout_columns()` with \`ui.card()
 
 ```{python}
-# | eval: false
 app_ui = ui.page_fillable(
     ui.layout_columns(
         ui.card(
@@ -351,8 +330,6 @@ app_ui = ui.page_fillable(
 Use `ui.nav_panel` with `ui.page_navbar` to create tabs:
 
 ```{python}
-#| eval: false
-
 # navset tab
 app_ui = ui.page_navbar(  
     ui.nav_panel("A", "Page A content"),  
@@ -368,8 +345,6 @@ app_ui = ui.page_navbar(
 Use the shinyswatch package to add existing bootstrap themes to your Shiny app ui.
 
 ```{python}
-#| eval: false
-
 import shinyswatch
 
 app_ui = ui.page_fluid(
@@ -382,29 +357,25 @@ app_ui = ui.page_fluid(
 
 Shiny for Python is quite similar to Shiny for R with a few important differences:
 
-
 1.  Call inputs as `input.<id>()`
 
 -   R
 
     ```{r}
-    #| eval: false
     input$x
     ```
 
 -   Python
 
     ```{python}
-    #| eval: false
     input.x()
     ```
 
-2. Use decorators to create and render outputs. Define outputs as functions `def <id>():`
+2.  Use decorators to create and render outputs. Define outputs as functions `def <id>():`
 
 -   R
 
     ```{r}
-    #| eval: false
     output$y <-
         renderText(z())
     ```
@@ -412,18 +383,16 @@ Shiny for Python is quite similar to Shiny for R with a few important difference
 -   Python
 
     ```{python}
-    #| eval: false
     @renderText 
         def y():
             return z()
     ```
 
-3. To create a reactive expression, use `@reactive.calc`
+3.  To create a reactive expression, use `@reactive.calc`
 
 -   R
 
     ```{r}
-    #| eval: false
     z <- reactive({
         input$x + 1
     })
@@ -432,18 +401,16 @@ Shiny for Python is quite similar to Shiny for R with a few important difference
 -   Python
 
     ```{python}
-    #| eval: false
     @reactive.calc 
     def z():
         return input.x()+1
     ```
-    
-4. To create an observer, use `@reactive.effect`
+
+4.  To create an observer, use `@reactive.effect`
 
 -   R
 
     ```{r}
-    #| eval: false
     a <- observe({
         print(input$x)
     })
@@ -452,18 +419,16 @@ Shiny for Python is quite similar to Shiny for R with a few important difference
 -   Python
 
     ```{python}
-    #| eval: false
     @reactive.effect 
     def a():
         print(input.x())
     ```
 
-5. Combine these with `@reactive.event`
+5.  Combine these with `@reactive.event`
 
 -   R
 
     ```{r}
-    #| eval: false
     b <- eventReactive(
         input$goCue,
         {
@@ -475,35 +440,31 @@ Shiny for Python is quite similar to Shiny for R with a few important difference
 -   Python
 
     ```{python}
-    #| eval: false
     @reactive.calc 
     @reactive.event(input.go_cue )
     def b():
         return input.x() + 1
     ```
-    
-6. Use `reactive.Value()` instead of `reactiveVal()`
+
+6.  Use `reactive.Value()` instead of `reactiveVal()`
 
 -   R
 
     ```{r}
-    #| eval: false
     reactiveVal(1)
     ```
 
 -   Python
 
     ```{python}
-    #| eval: false
     reactive.value(1)
-    ```   
+    ```
 
-7. Use `nav_*()` instead of `*Tab()`
+7.  Use `nav_*()` instead of `*Tab()`
 
 -   R
 
     ```{r}
-    #| eval: false
     insertTab()
     appendTab()
     # etc.
@@ -512,18 +473,16 @@ Shiny for Python is quite similar to Shiny for R with a few important difference
 -   Python
 
     ```{python}
-    #| eval: false
     nav_insert() 
     nav_append() 
     # etc.
-    ```   
+    ```
 
-8. Functions are intuitively organized into submodules
+8.  Functions are intuitively organized into submodules
 
 -   R
 
     ```{r}
-    #| eval: false
     dateInput()
     textInput()
     # etc.
@@ -532,11 +491,10 @@ Shiny for Python is quite similar to Shiny for R with a few important difference
 -   Python
 
     ```{python}
-    #| eval: false
     ui.input_date() 
     ui.input_text() 
     # etc.
-    ``` 
+    ```
 
 ------------------------------------------------------------------------
 
@@ -546,10 +504,6 @@ Learn more at [shiny.posit.co/py/](https://shiny.posit.co/py/)
 
 Updated: `r format(Sys.Date(), "%Y-%m")`.
 
-```{r}
-#| output: true
-
-packageVersion("shiny")
-```
+Version: Shiny 0.10.2
 
 ------------------------------------------------------------------------
