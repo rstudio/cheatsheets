@@ -473,7 +473,7 @@
     "href": "html/plumber.html#deploying-plumber-apis",
     "title": "REST APIs with plumber :: Cheatsheet",
     "section": "Deploying Plumber APIs",
-    "text": "Deploying Plumber APIs\nOnce Plumber APIs have been developed, they often need to be deployed somewhere to be useful. Plumber APIs can be deployed in a variety of different ways. One of the easiest way to deploy Plumber APIs is using RStudio Connect, which supports push button publishing from the RStudio IDE.\n\nCC BY SA Posit Software, PBC • info@posit.co • posit.co\nLearn more at rplumber.io.\nUpdated: 2023-06.\n\npackageVersion(\"plumber\")\n\n[1] '1.2.1'"
+    "text": "Deploying Plumber APIs\nOnce Plumber APIs have been developed, they often need to be deployed somewhere to be useful. Plumber APIs can be deployed in a variety of different ways. One of the easiest way to deploy Plumber APIs is using Posit Connect, which supports push button publishing from the RStudio IDE.\n\nCC BY SA Posit Software, PBC • info@posit.co • posit.co\nLearn more at rplumber.io.\nUpdated: 2024-05.\n\npackageVersion(\"plumber\")\n\n[1] '1.2.2'"
   },
   {
     "objectID": "html/lubridate.html",
