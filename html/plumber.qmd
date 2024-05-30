@@ -407,7 +407,7 @@ plumb_api(package = "plumber", # package name
 
 Once Plumber APIs have been developed, they often need to be deployed somewhere to be useful.
 Plumber APIs can be deployed in a variety of different ways.
-One of the easiest way to deploy Plumber APIs is using RStudio Connect, which supports push button publishing from the RStudio IDE.
+One of the easiest way to deploy Plumber APIs is using Posit Connect, which supports push button publishing from the RStudio IDE.
 
 ------------------------------------------------------------------------
 
