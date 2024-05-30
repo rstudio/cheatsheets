@@ -25,7 +25,7 @@ translation_list(sheet_name)
 
 ## Documents and Apps
 
-Open Shiny, R Markdown, knitr, Sweave, LaTeX, .Rd files and more in Source Pane.
+Open Shiny, Quarto, R Markdown, knitr, Sweave, LaTeX, .Rd files and more in Source Pane.
 
 ![](images/document-and-apps-rstudio-ide.png){fig-alt="RStudio Source Pane view" fig-align="center"}
 
@@ -236,7 +236,7 @@ RStudio opens documentation in a dedicated **Help** pane
 ### Features within the Viewer pane
 
 -   Stop Shiny apps
--   Publish to shinyapps.io, rpubs, Posit Connect, ...
+-   Publish to shinyapps.io, Posit Connect, Posit Cloud, ...
 -   Refresh
 :::
 
@@ -326,9 +326,9 @@ Search for keyboard shortcuts with **Tools \> Show Command Palette** or <kbd>Ctr
 -   Run this code chunk
 :::
 
-## RStudio Workbench
+## Posit Workbench
 
-### Why RStudio Workbench?
+### Why Posit Workbench?
 
 Extend the open source server with a commercial license, support, and more:
 
@@ -388,6 +388,6 @@ Learn more at [docs.posit.co/ide/user](https://docs.posit.co/ide/user/).
 
 Updated: `r format(Sys.Date(), "%Y-%m")`.
 
-RStudio IDE 2023.3.0.386.
+RStudio IDE 2024.04.1+748.
 
 ------------------------------------------------------------------------
