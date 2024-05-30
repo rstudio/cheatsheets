@@ -196,13 +196,15 @@ Use these functions to split or combine cells into individual, isolated values.
 
 Create new combinations of variables or identify implicit missing values (combinations of variables not present in the data).
 
--   `expand(data, ...)`: Create a new tibble with all possible combinations of the values of the variables listed in ... Drop other variables.
+-   `expand(data, ...)`: Create a new tibble with all possible combinations of the values of the variables listed in ...
+    Drop other variables.
 
     ```{r}
     expand(mtcars, cyl, gear, carb)
     ```
 
--   `complete(data, ..., fill = list())`: Add missing possible combinations of values of variables listed in ... Fill remaining variables with NA.
+-   `complete(data, ..., fill = list())`: Add missing possible combinations of values of variables listed in ...
+    Fill remaining variables with NA.
 
     ```{r}
     complete(mtcars, cyl, gear, carb)
@@ -223,13 +225,15 @@ x <- tribble(
 )
 ```
 
--   `drop_na(data, ...)`: Drop rows containing `NA`s in ... columns.
+-   `drop_na(data, ...)`: Drop rows containing `NA`s in ...
+    columns.
 
     ```{r}
     drop_na(x, x2)
     ```
 
--   `fill(data, ..., .direction = "down")`: Fill in `NA`s in ... columns using the next or previous value.
+-   `fill(data, ..., .direction = "down")`: Fill in `NA`s in ...
+    columns using the next or previous value.
 
     ```{r}
     fill(x, x2)
