@@ -1,0 +1,593 @@
+---
+title: "Publish and Share with Quarto :: Cheatsheet"
+description: "QMD Edition"
+image-alt: ""
+engine: knitr
+execute:
+  eval: true
+  output: false
+  warning: false
+code-overflow: wrap
+---
+
+::: column-margin
+```{=html}
+<img src="images/logo-quarto.png" height="138" alt="Hex logo for Quarto - a white circle segmented into quarters next to the text Quarto on a blue background." />
+<br><br>
+```
+:::
+
+```{r}
+#| output: asis
+#| echo: false
+#| column: margin
+source("common.R")
+sheet_name <- tools::file_path_sans_ext(knitr::current_input())
+pdf_preview_link(sheet_name)
+translation_list(sheet_name)
+```
+
+## Overview
+
+![](images/quarto-illustration.png){fig-alt="A schematic representing the multi-language input (e.g. Python, R, Observable, Julia) and multi-format output (e.g. PDF, html, Word documents, and more) versatility of Quarto."}[^1]
+
+[^1]: Artwork from "Hello, Quarto" keynote by Julia Lowndes and Mine Çetinkaya-Rundel, presented at RStudio Conference 2022.
+    Illustrated by [Allison Horst](https://allisonhorst.com/allison-horst).
+
+-   **Author**: Write and code in plain text.
+    Author documents as .qmd files, or Jupyter notebooks.
+    Write in a rich Markdown syntax.
+
+-   **Render**: Generate documents, presentations and more.
+    Produce HTML, PDF, MS Word, reveal.js, MS Powerpoint, Beamer, websites, blogs, books...
+
+-   **Share**: Share your work with the world.
+    Quickly deploy to GitHub Pages, Netlify, Quarto Pub, Posit Cloud, or Posit Connect.
+
+### Get Quarto
+
+Get Quarto from: <https://quarto.org/docs/download/>
+
+Or, use version **bundled with RStudio.**
+
+### Get Started
+
+<https://quarto.org/docs/get-started>
+
+## Author
+
+### Source File: hello.qmd
+
+```` markdown
+---
+title: "Hello, Penguins"
+format: html
+execute:
+  echo: false
+---
+
+## Meet the penguins
+
+The `penguins` data contains size measurements for 
+penguins from three islands in the Palmer Archipelago, 
+Antarctica.
+
+The three species of penguins have quite distinct 
+distributions of physical dimensions (@fig-penguins).
+
+```{{r}}
+#| label: fig-penguins
+#| fig-cap: "Dimensions of penguins across three species."
+#| warning: false
+library(tidyverse, quietly = TRUE)
+library(palmerpenguins)
+penguins |>
+  ggplot(aes(x = flipper_length_mm, y = bill_length_mm)) +
+  geom_point(aes(color = species)) +
+  scale_color_manual(
+    values = c("darkorange", "purple", "cyan4")) +
+  theme_minimal()
+```
+````
+
+### Highlights in the source file
+
+-   Set format(s) and options.
+    Use YAML Syntax.
+
+    ``` markdown
+    ---
+    title: "Hello, Penguins"
+    format: html
+    execute:
+      echo: false
+    ---
+    ```
+
+-   `## Write with **Markdown**`
+
+    **RStudio**: Help \> Markdown Quick Reference
+
+    RStudio & VS Code: Use the **Visual Editor**
+
+    ``` markdown
+    ## Meet the penguins
+
+    The `penguins` data contains size measurements for 
+    penguins from three islands in the Palmer Archipelago, 
+    Antarctica.
+
+    The three species of penguins have quite distinct 
+    distributions of physical dimensions (@fig-penguins).
+    ```
+
+-   Include code.
+    R, Python, Julia, Observable, or any language with a Jupyter kernel.
+
+    ```` markdown
+    ```{{r}}
+    #| label: fig-penguins
+    #| fig-cap: "Dimensions of penguins across three species."
+    #| warning: false
+    library(tidyverse, quietly = TRUE)
+    library(palmerpenguins)
+    penguins |>
+      ggplot(aes(x = flipper_length_mm, y = bill_length_mm)) +
+      geom_point(aes(color = species)) +
+      scale_color_manual(
+        values = c("darkorange", "purple", "cyan4")) +
+      theme_minimal()
+    ```
+    ````
+
+### Use a tool with a rich authoring experience
+
+[RStudio](https://posit.co/products/open-source/rstudio/), or\
+[Visual Studio Code](https://code.visualstudio.com/) + [Quarto extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto)
+
+-   **Run** code cells as you write
+
+-   **Render** with a button or keyboard shortcut
+
+-   Edit Quarto documents with a **Visual Editor**
+
+    ![](images/quarto-visual-editor.png){fig-alt="Screenshot of the Visual Editor toolbar. Toolbar shows menu items: Normal with dropdown, bold, italics, code, bulleted list, numbered list, link, image, Format dropdown, Insert dropdown and Table dropdown."}
+
+    -   Apply formatting in Visual Editor.
+        Saved as Markdown in source.
+
+    -   Insert elements like code cells, cross references, and more.
+
+### Or any text editor
+
+Quarto documents (.qmd) can be edited in any tool that edits text.
+
+## Render
+
+**Save,** then render to **preview** the document output.
+
+``` {.bash filename="Terminal"}
+quarto preview hello.qmd
+```
+
+RStudio: Use **Render** button ![](images/quarto-render-button.png){fig-alt="Icon from the Render button in RStudio" height="1.5em"}
+
+VS Code: Use **Preview** button ![](images/quarto-preview-button.svg){fig-alt="Icon from the Preview button in VS Code"}
+
+The resulting HTML/PDF/MS Word/etc.
+document will be created and saved in the same directory as the source .qmd file.
+
+### Rendered output: hello.html
+
+![](images/quarto-rendered-output.png){fig-alt="Screenshot of a webpage with the title 'Hello, Penguins'. There is a subheading 'Meet the penguins' followed by a paragraph of text including a link to 'Figure 1', then a scatterplot."}
+
+### Highlights in the rendered output
+
+-   Features for scientific publishing.
+    Cross references, citations, equations, and more.
+
+-   Output integrated into document.
+    Control how output appears with special comments in your code.
+
+### Behind the Scenes
+
+When you render a document, Quarto:
+
+1.  Runs the code and embeds results and text into an .md file with:
+    -   **Knitr**, if any `{r}` cells, or
+    -   **Jupyter**, if any other cells.
+2.  Converts the .md file into the output format with Pandoc.
+
+## Publish
+
+``` {.bash filename="Terminal"}
+quarto publish {venue} hello.qmd
+```
+
+`{venue}`: quarto-pub, connect, gh-pages, netlify, confluence, posit-cloud
+
+RStudio: Use **Publish** button ![](images/quarto-rstudio-publish.png){fig-alt="Publish button icon in RStudio" width="10%"}
+
+-   [**Quarto Pub**](https://quartopub.com/) Free publishing service for Quarto content.
+
+-   [**Posit Cloud**](https://posit.cloud/) Cloud-hosted, control access to project and output.
+    ![](images/quarto-rstudio-publish.png){fig-alt="Push button publishing from RStudio" width="10%"}
+
+-   [**Posit Connect**](https://posit.co/products/enterprise/connect/) Org-hosted, control access, schedule updates.
+    ![](images/quarto-rstudio-publish.png){fig-alt="Push button publishing from RStudio" width="10%"}
+
+## Quarto Projects
+
+### Create websites, books and more
+
+A directory of Quarto documents + a configuration file (`_quarto.yml`)
+
+See examples at: <https://quarto.org/docs/gallery/>
+
+Get started from the command line:
+
+``` {.bash filename="Terminal"}
+quarto create project {type}
+```
+
+`{type}`: default, website, blog, book, confluence, manuscript
+
+RStudio: Use **File** \> **New Project**
+
+## Include Code
+
+### Code Cells
+
+Code cells start with ```` ```{language} ````, and end with ```` ``` ````.
+
+RStudio & VS Code: Use **Insert Code Chunk/Cell**.
+
+::: {layout-ncol="2"}
+```{{r}}
+#| label: chunk-id
+```
+
+```{{python}}
+#| label: chunk-id
+```
+:::
+
+Other languages: `{julia}`, `{ojs}`
+
+Add code cell options with `#|` comments.
+
+Cell options control [**execution**](#execution), [figures](#figures), [tables](#tables), layout and more.
+See them all at: <https://quarto.org/docs/reference/cells/>
+
+### Execution Options {#execution}
+
++-----------+-----------+----------------------------------------------------------+
+| Option    | Default   | Effects                                                  |
++===========+===========+==========================================================+
+| `echo`    | `true`    | `false`: hide code in output\                            |
+|           |           | `fenced`: include code cell syntax                       |
++-----------+-----------+----------------------------------------------------------+
+| `eval`    | `true`    | `false`: don't run code                                  |
++-----------+-----------+----------------------------------------------------------+
+| `include` | `true`    | `false`: don't include code or results                   |
++-----------+-----------+----------------------------------------------------------+
+| `output`  | `true`    | `false`: don't include results\                          |
+|           |           | `asis`: treat results as raw markdown                    |
++-----------+-----------+----------------------------------------------------------+
+| `warning` | `true`    | `false`: don't include warnings in output                |
++-----------+-----------+----------------------------------------------------------+
+| `error`   | `false`   | `true`: include error in output and continue with render |
++-----------+-----------+----------------------------------------------------------+
+
+Set execution options at the **cell level**:
+
+::: {layout-ncol="2"}
+```{{r}}
+#| echo: false
+```
+
+```{{python}}
+#| echo: false
+```
+:::
+
+Set options in code cells with `#|` comments and YAML syntax: `key: value`.
+
+Or globally in the YAML header with the **execute** option:
+
+``` yaml
+---
+execute:
+  echo: false
+---
+```
+
+### Inline Code
+
+Use computed values directly in text sections.
+Code is evaluated at render and results appear as text.
+
+::: {layout-ncol="3"}
+<div>
+
+#### Knitr
+
+Value is `` `r knitr::inline_expr("2 + 2")` ``.
+
+</div>
+
+<div>
+
+#### Jupyter
+
+Value is `` `{python} 2 + 2` ``.
+
+</div>
+
+<div>
+
+#### Output
+
+Value is `r 2*2`.
+
+</div>
+:::
+
+## Set Formats and Options
+
+::: {layout-ncol="2"}
+::: {#set-options}
+### Set Format Options
+
+``` yaml
+---
+title: "My Document"
+format: 
+  html: 
+    code-fold: true
+    toc: true
+---
+```
+
+-   Indent format 2 spaces
+-   Indent options 4 spaces
+:::
+
+::: {#multiple-formats}
+### Multiple Formats
+
+``` yaml
+---
+title: "My Document"
+toc: true
+format: 
+  html: 
+    code-fold: true
+  pdf: default
+---
+```
+
+-   Top-level options (e.g. `toc`) apply to all formats
+:::
+:::
+
+Common values for `format`: html, pdf[^2], docx, odt, rtf, gfm, pptx, revealjs, beamer
+[^2]
+
+[^2]: PDFs and Beamer slides require LaTeX, use:
+
+    ``` {.bash filename="Terminal"}
+    quarto install tinytex
+    ```
+
+Render **all** formats:
+
+``` {.bash filename="Terminal"}
+quarto render hello.qmd
+```
+
+Render a **specific** format:
+
+``` {.bash filename="Terminal"}
+quarto render hello.qmd --to pdf
+```
+
+### Output Options Table
+
+```{r}
+#| echo: false
+#| output: true
+#| tbl-cap: Important Options. The first column is the option name, an "X" in the next three columns indicates whether the option applies to the format, the fourth column decribes the options and possible values, the final column indicates whether the options can also be set in a code cell.
+library(readr)
+library(dplyr)
+library(gt)
+format_options <- read_csv("data/format-options.csv")
+format_options |> 
+  group_by(Category) |> 
+  select(Category, Option, `html/revealjs`, `pdf/beamer`, `docx/pptx`, Description, `cell level?`) |> 
+  gt() |>
+  sub_missing(missing_text = "") |> 
+  fmt_markdown(columns = Description) |> 
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_body(
+      columns = Option
+    )) |> 
+  tab_style(
+    style = cell_fill(color = "gray95"),
+    locations = cells_body(
+      rows = Category %in% c("Navigation", NA, "Code")
+    )
+  ) |> 
+  opt_stylize(style=5, add_row_striping = FALSE)
+```
+
+Visit <https://quarto.org/docs/reference/> to see all options by format
+
+## Add Content
+
+### Figures {#figures}
+
+#### Markdown
+
+``` markdown
+![CAP](image.png){#fig-LABEL fig-alt="ALT"}
+```
+
+#### Computation
+
+```{{python}}
+#| label: fig-LABEL
+#| fig-cap: CAP
+#| fig-alt: ALT
+{{ plot code here }}
+```
+
+Or `{r}`
+
+### Tables {#tables}
+
+#### Markdown
+
+``` markdown
+|object | radius|
+|:------|------:|
+|Sun    | 696000|
+|Earth  |   6371|
+
+: CAPTION {#tbl-LABEL}
+```
+
+#### Computation
+
+Output a markdown table or an HTML table from your code.
+
+::: {layout-ncol="2"}
+<div>
+
+##### Knitr
+
+Use `knitr::kable()` to produce markdown:
+
+```{{r}}
+#| label: tbl-LABEL
+#| tbl-cap: CAPTION
+
+knitr::kable(head(cars))
+```
+
+Also see the R packages: gt, flextable, kableExtra.
+
+</div>
+
+<div>
+
+##### Jupyter
+
+Add `Markdown()` to Markdown output:
+
+```{{python}}
+#| label: tbl-LABEL
+#| tbl-cap: CAPTION
+import pandas as pd, tabulate
+from IPython.display import Markdown
+df = pd.DataFrame({"A": [1, 2], 
+                   "B": [1, 2]})
+Markdown(df.to_markdown(index=False))
+```
+
+</div>
+:::
+
+### Cross References
+
+1.  **Add labels:**
+
+    -   **Code cell:** add option `label: prefix-LABEL`
+    -   **Markdown:** add attribute `#prefix-LABEL`
+
+2.  **Add references:** `@prefix-LABEL`, e.g.
+
+    ``` markdown
+    You can see in @fig-scatterplot, that...
+    ```
+
+| `prefix` | Renders    |
+|----------|------------|
+| `fig-`   | Figure 1   |
+| `tbl-`   | Table 1    |
+| `eq-`    | Equation 1 |
+| `sec-`   | Section 1  |
+
+### Citations
+
+1.  Add bibliography **file** to the YAML header:
+
+    ``` yaml
+    ---
+    bibliography: references.bib
+    ---
+    ```
+
+2.  Add citations: `[@citation]`, or `@citation`
+
+RStudio & VS Code: Use **Insert Citations** dialog in the Visual Editor.
+Build your bibliography file from your Zotero library, DOI, Crossref, DataCite, or PubMed.
+
+### Callouts
+
+``` markdown
+::: {.callout-tip}
+## Title
+
+Text
+:::
+```
+
+Instead of `tip` use one of: `note`, `caution`, `warning`, or `important`:
+
+::: callout-tip
+## tip
+:::
+
+::: callout-note
+## note
+:::
+
+::: callout-caution
+## caution
+:::
+
+::: callout-warning
+## warning
+:::
+
+::: callout-important
+## important
+:::
+
+### Shortcodes
+
+```{.markdown}
+{{{< include _file.qmd >}}}
+```
+
+``` {.markdown shortcodes="false"}
+{{< embed file.ipynb#id >}}
+```
+
+``` {.markdown shortcodes="false"}
+{{< video video.mp4 >}}
+```
+
+------------------------------------------------------------------------
+
+CC BY SA Posit Software, PBC • [info\@posit.co](mailto:info@posit.co) • [posit.co](https://posit.co)
+
+Learn more at [quarto.org](https://quarto.org).
+
+Quarto 1.4
+
+Updated: `r format(Sys.Date(), "%Y-%m")`.
+
+------------------------------------------------------------------------

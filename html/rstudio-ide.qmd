@@ -1,0 +1,393 @@
+---
+title: "RStudio IDE :: Cheatsheet"
+description: " "
+image-alt: ""
+execute:
+  eval: true
+  output: false
+  warning: false
+engine: knitr
+---
+
+```{r}
+#| output: asis
+#| echo: false
+#| column: margin
+source("common.R")
+use_cheatsheet_logo(
+  "RStudio", 
+  alt = "Hex logo for the RStudio IDE - A light blue hexagon with the word 'RStudio' in the middle. The 'R' is blue in the centre of a solid white circle, while 'Studio' is written in white on the blue background."
+  )
+sheet_name <- tools::file_path_sans_ext(knitr::current_input())
+pdf_preview_link(sheet_name)
+translation_list(sheet_name)
+```
+
+## Documents and Apps
+
+Open Shiny, Quarto, R Markdown, knitr, Sweave, LaTeX, .Rd files and more in Source Pane.
+
+![](images/document-and-apps-rstudio-ide.png){fig-alt="RStudio Source Pane view" fig-align="center"}
+
+::: {.callout-note appearance="minimal" icon="false" collapse="true"}
+## Expand to read about the features in the RStudio Source Pane {aria-hidden="true"}
+
+### Features within the RStudio Source Pane
+
+-   Check spelling
+-   Render output
+-   Choose output format
+-   Configure render options
+-   Insert code chunk
+-   Publish to server
+-   Jump to previous chunk
+-   Jump to next chunk
+-   Run code
+-   Show file outline
+-   Visual Editor (reverse side)
+-   Jump to section or chunk
+-   Run this and all previous code chunks
+-   Run this code chunk
+-   Set knitr chunk options
+:::
+
+Access markdown guide at **Help \> Markdown Quick Reference**.
+
+See below for more on [Visual Editor].
+
+## Source Editor
+
+![](images/source-editor-rstudio-ide.png){fig-alt="RStudio Source Editor view" fig-align="center"}
+
+::: {.callout-note appearance="minimal" icon="false" collapse="true"}
+## Expand to read about the features in the Source Editor {aria-hidden="true"}
+
+### Features within the Source Editor
+
+-   Navigate backwards/forwards
+-   Open in new window
+-   Save
+-   Find and replace
+-   Compile as notebook
+-   Run selected code
+-   Re-run previous code
+-   Source with or without Echo or as a Local Job
+-   Show file outline
+-   Multiple cursors/column selection with Alt + mouse drag.
+-   Code diagnostics that appear in the margin. Hover over diagnostic symbols for details.
+-   Syntax highlighting based on your file's extension
+-   Tab completion to finish function names, file paths, arguments, and more.
+-   Multi-language code snippets to quickly use common blocks of code.
+-   Jump to function in file
+-   Change file type
+-   Working Directory
+-   Run scripts in separate sessions
+-   Maximize, minimize panes
+-   <kbd>Ctrl/Cmd + ↑</kbd> to see history
+-   R Markdown Build Log
+-   Drag pane boundaries
+:::
+
+## Tab Panes
+
+![](images/tab-panes.png){fig-alt="RStudio Tab Panes view" fig-align="center"}
+
+::: {.callout-note appearance="minimal" icon="false" collapse="true"}
+## Expand to read about the features in the Tab Panes {aria-hidden="true"}
+
+### Features within the Tab Panes
+
+-   **Import data** with wizard
+-   History of past commands to run/copy
+-   Manage external databases
+-   View memory usage
+-   R tutorials
+-   Load workspace
+-   Save workspace
+-   Clear R workspace
+-   Search inside environment
+-   Choose environment to display from list of parent environments
+-   Display objects as list or grid
+-   Displays saved objects by type with short description
+-   View in data viewer
+-   View function source code
+-   Create folder
+-   Path to displayed directory
+-   Delete file
+-   Rename file
+-   More file options
+-   Change directory
+-   A File browser keyed to your working directory. Click on file or directory name to open.
+:::
+
+## Version Control
+
+Turn on at **Tools \> Project Options \> Git/SVN**
+
+<ul class="inline">
+
+<li>[A]{.git .added} - Added</li>
+
+<li>[D]{.git .deleted} - Deleted</li>
+
+<li>[M]{.git .modified} - Modified</li>
+
+<li>[R]{.git .renamed} - Renamed</li>
+
+<li>[?]{.git .untracked}
+- Untracked</li>
+
+</ul>
+
+![](images/version-control.png){fig-alt="Version Control view" fig-align="center"}
+
+::: {.callout-note appearance="minimal" icon="false" collapse="true"}
+## Expand to read about the features in the version control view {aria-hidden="true"}
+
+### Features within the version control view
+
+-   Stage files
+-   Commit staged files
+-   Push/Pull to remote
+-   View History
+-   Current branch
+-   Show file diff to view file differences
+:::
+
+## Package Development
+
+Create a new package with **File \> New Project \> New Directory \> R Package**
+
+Enable roxygen documentation with **Tools \> Project Options \> Build Tools**
+
+Roxygen guide at **Help \> Roxygen Quick Reference**
+
+See package information in the **Build Tab**
+
+![](images/pd-build-tab.png){fig-alt="Package build view" fig-align="center"}
+
+::: {.callout-note appearance="minimal" icon="false" collapse="true"}
+## Expand to read about the features in the Build Tab {aria-hidden="true"}
+
+### Features within the Build Tab
+
+-   Install package and restart R
+-   Run devtools::load_all() and reload changes
+-   Run R CMD check
+-   Clear output and rebuild
+-   Customize package build options
+-   Run package tests
+:::
+
+RStudio opens plots in a dedicated **Plots** pane
+
+![](images/pd-plots-pane.png){fig-alt="Plots view" fig-align="center"}
+
+::: {.callout-note appearance="minimal" icon="false" collapse="true"}
+## Expand to read about the features in the Plots {aria-hidden="true"}
+
+### Features within the Plots pane
+
+-   Navigate recent plots
+-   Open in window
+-   Export plot
+-   Delete plot
+-   Delete all plots
+:::
+
+GUI **Package** manager lists every installed package
+
+![](images/pd-package-manager.png){fig-alt="Package manager view" fig-align="center"}
+
+::: {.callout-note appearance="minimal" icon="false" collapse="true"}
+## Expand to read about the features in the Package manager {aria-hidden="true"}
+
+### Features within the Package manager
+
+-   Install Packages
+-   Update Packages
+-   Browse package site
+-   Click to load package with `library()`. Unclick to detach package with `detach()`.
+-   Package version installed
+-   Delete from library
+:::
+
+RStudio opens documentation in a dedicated **Help** pane
+
+![](images/pd-help-pane.png){fig-alt="Help pane view" fig-align="center"}
+
+::: {.callout-note appearance="minimal" icon="false" collapse="true"}
+## Expand to read about the features in the Help pane {aria-hidden="true"}
+
+### Features within the Help pane
+
+-   Home page of helpful links
+-   Search within help file
+-   Search for help file
+:::
+
+**Viewer** pane displays HTML content, such as Shiny apps, R Markdown reports, and interactive visualizations
+
+![](images/pd-viewer-pane.png){fig-alt="Viewer pane view" fig-align="center"}
+
+::: {.callout-note appearance="minimal" icon="false" collapse="true"}
+## Expand to read about the features in the Viewer pane {aria-hidden="true"}
+
+### Features within the Viewer pane
+
+-   Stop Shiny apps
+-   Publish to shinyapps.io, Posit Connect, Posit Cloud, ...
+-   Refresh
+:::
+
+`View(<data>)` opens spreadsheet like view of data set
+
+![](images/pd-view-data.png){fig-alt="Spreadsheet pane view" fig-align="center"}
+
+::: {.callout-note appearance="minimal" icon="false" collapse="true"}
+## Expand to read about the features in the data set spreadsheet {aria-hidden="true"}
+
+### Features within the data set spreadsheet
+
+-   Filter rows by value or value range
+-   Sort by values
+-   Search for value
+:::
+
+## Debug Mode
+
+Use `debug()`, `browser()`, or a breakpoint and execute your code to open the debugger mode.
+
+![](images/dm-console.png){fig-alt="Debug console view" fig-align="center"}
+
+::: {.callout-note appearance="minimal" icon="false" collapse="true"}
+## Expand to read about the features in the debug console {aria-hidden="true"}
+
+### Features within the debug console
+
+-   Launch debugger mode from origin of error
+-   Open traceback to examine the functions that R called before the error occurred
+-   Click next to line number to add/remove a breakpoint.
+-   Highlighted line shows where execution has paused
+-   Run commands in environment where execution has paused
+-   Examine variables in executing environment
+-   Select function in traceback to debug
+-   Step through code one line at a time
+-   Step into and out of functions to run
+-   Resume execution
+-   Quit debug mode
+:::
+
+## Keyboard Shortcuts
+
+View the Keyboard Shortcut Quick Reference with **Tools \> Keyboard Shortcuts** or <kbd>Alt/Option + Shift + K</kbd>
+
+![](images/tools-keyboard-shortcuts.png){fig-alt="Keyboard Shortcut Quick Reference view" fig-align="center"}
+
+Search for keyboard shortcuts with **Tools \> Show Command Palette** or <kbd>Ctrl/Cmd + Shift + P</kbd>.
+
+![](images/tools-show-command-palette.png){fig-alt="Show Command Palette view" fig-align="center"}
+
+## Visual Editor
+
+![](images/ide-visual-editor.png){fig-alt="Visual Editor view" fig-align="center"}
+
+::: {.callout-note appearance="minimal" icon="false" collapse="true"}
+## Expand to read about the features in the Visual Editor {aria-hidden="true"}
+
+### Features within the Visual Editor
+
+-   Check spelling
+-   Render output
+-   Choose output format
+-   Choose output location
+-   Insert code chunk
+-   Jump to previous chunk
+-   Jump to next chunk
+-   Run selected lines
+-   Publish to server
+-   Show file outline
+-   Block format
+-   Back to Source Editor (front page)
+-   Insert verbatim code
+-   Clear formatting
+-   Lists and block quotes
+-   Links
+-   Citations
+-   Images
+-   More formatting
+-   Insert blocks, citations, equations, and special characters
+-   Insert and edit tables
+-   File outline
+-   Add/Edit attributes
+-   Jump to chunk or header
+-   Set knitr chunk options
+-   Run this and all previous code chunks
+-   Run this code chunk
+:::
+
+## Posit Workbench
+
+### Why Posit Workbench?
+
+Extend the open source server with a commercial license, support, and more:
+
+-   open and run multiple R sessions at once
+-   tune your resources to improve performance
+-   administrative tools for managing user sessions
+-   collaborate real-time with others in shared projects
+-   switch easily from one version of R to a different version
+-   integrate with your authentication, authorization, and audit practices
+-   work in the RStudio IDE, JupyterLab, Jupyter Notebooks, or VS Code
+
+Download a free [45 day evaluation](https://posit.co/products/enterprise/workbench/).
+
+## Share Projects
+
+**File \> New Project**
+
+RStudio saves the call history, workspace, and working directory associated with a project.
+It reloads each when you re-open a project.
+
+![](images/share-projects.png){fig-alt="Share Project view" fig-align="center"}
+
+::: {.callout-note appearance="minimal" icon="false" collapse="true"}
+## Expand to read about the features in the Share Project {aria-hidden="true"}
+
+### Features within the Share Project
+
+-   Start **new R Session** in current project
+-   Close R Session in project
+-   Active shared collaborators
+-   Name of current project
+-   **Share Project** with Collaborators
+-   **Select R Version**
+:::
+
+## Run Remote Jobs
+
+Run R on remote clusters (Kubernetes/Slurm) via the Job Launcher
+
+![](images/run-remote-job.png){fig-alt="Launcher view" fig-align="center"}
+
+::: {.callout-note appearance="minimal" icon="false" collapse="true"}
+## Expand to read about the features in the Job Launcher {aria-hidden="true"}
+
+### Features within the Job Launcher
+
+-   Launch a job
+-   Monitor launcher jobs
+-   Run launcher jobs remotely
+:::
+
+------------------------------------------------------------------------
+
+CC BY SA Posit Software, PBC • [info\@posit.co](mailto:info@posit.co) • [posit.co](https://posit.co)
+
+Learn more at [docs.posit.co/ide/user](https://docs.posit.co/ide/user/).
+
+Updated: `r format(Sys.Date(), "%Y-%m")`.
+
+RStudio IDE 2024.04.1+748.
+
+------------------------------------------------------------------------

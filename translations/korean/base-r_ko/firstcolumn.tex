@@ -1,0 +1,26 @@
+% !TEX root = base-r.tex
+
+\begin{block}{사용법 도움받기}
+  
+  \blocksubtitle{매뉴얼 보기}
+  \inline{?mean}\\특정 함수에 대한 도움 받기\br
+  \inline{help.search('weighted mean')}\\특정 단어나 문구에 대한 사용법 찾기\br
+  \inline{help(package = 'dplyr')}\\패키지 사용법 찾기
+  
+  \blocksubtitle{오브젝트 정보 더보기}
+  \inline{str(iris)}\\오브젝트의 구조에 대한 요약 보기\br
+  \inline{class(iris)}\\오브젝트가 소속된 클래스 찾기
+\end{block}
+
+\begin{block}{패키지 사용하기}
+  \inline{install.packages('dplyr')}\\CRAN에서 패키지를 다운로드하고 설치\br
+  \inline{library(dplyr)}\\세션에 패키지 불러오기\br
+  \inline{dplyr::select}\\패키지에서 특정 함수 사용\br
+  \inline{data(iris)}\\내장 데이터셋을 environment에 불러오기
+\end{block}
+
+\begin{block}{작업 디렉토리}
+  \inline{getwd()}\\현재 작업 디렉토리 찾기\br
+  \inline{setwd('C://file/path')}\\현재 작업 디렉토리 변경\br
+  \textbf{RStudio의 project를 사용해 작업 디렉토리를 현재 폴더로 변경할 수 있음}
+\end{block}

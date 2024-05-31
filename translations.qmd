@@ -1,0 +1,37 @@
+---
+title: "Translated Cheatsheets"
+---
+
+Non-English translations of both Posit and community-contributed cheatsheets.
+
+```{r}
+#| output: asis
+#| echo: false
+
+languages <- basename(fs::dir_ls("translations", type = "dir"))
+
+for (lang in languages) {
+  cat(glue::glue("## {tools::toTitleCase(lang)}\n\n"))
+  
+  files <- fs::dir_ls(fs::path("translations", lang), glob = "*.pdf")
+  cat('::: {layout-ncol="3"}\n\n')
+  
+  for (file in files) {
+    # drop language suffix and file extension, but keep 
+    # dialect suffix
+    sheet_name <- gsub(
+      "([-a-z]+)(_[a-z]{2})(_[a-z]{2})?", 
+      "\\1\\3", tolower(basename(fs::path_ext_remove(file)))
+    )
+    # replace dashes with spaces
+    sheet_name <- gsub("-", " ", sheet_name)
+    # if dialect suffix put it in parens
+    sheet_name <- gsub("_([a-z]{2})$", " (\\1)", sheet_name)
+    sheet_name <- gsub("\\br\\b", "R", sheet_name)
+    
+    cat(glue::glue("* [{sheet_name}]({file})\n\n"))
+  }
+  cat(':::\n\n')
+}
+```
+

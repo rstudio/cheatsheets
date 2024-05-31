@@ -1,0 +1,149 @@
+/*** Default settings ***/
+body {
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.visually-hidden {
+  position:absolute;
+  left:-10000px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+*:focus-visible {
+  outline: 2px dotted #4D7AA4;
+  border: 1px solid #fff;
+}
+
+figure {
+  /* border: thin silver solid; */
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+/*** Font styles ***/
+.uppercase {
+  text-transform: uppercase;
+}
+
+/*** Headings ***/
+h2 {
+  color: #4D7AA4;
+}
+
+.hr {
+  border-top: 1px solid #6E6E6E;
+}
+
+
+/*** Table ***/
+.table-keyboard-shortcuts tbody th {
+  text-align: left;
+  font-weight: normal;
+}
+
+.table-keyboard-shortcuts tbody tr.header th {
+  color: #4D7AA4;
+  font-weight: bold;
+}
+
+.table-keyboard-shortcuts tbody tr.header:not(:first-child) th {
+  padding-top: 1rem;
+}
+
+/*** Keyboard keys ***/
+kbd {
+	margin: 0px 0.1em;
+	padding: 0.1em 0.6em;
+	border-radius: 3px;
+	border: 1px solid rgb(204, 204, 204);
+	color: rgb(51, 51, 51);
+	line-height: 1.4;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 0.875rem;
+	display: inline-block;
+	box-shadow: 0px 1px 0px rgba(0,0,0,0.2), inset 0px 0px 0px 2px #ffffff;
+	background-color: rgb(247, 247, 247);
+	-moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #ffffff inset;
+	-webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2), 0 0 0 2px #ffffff inset;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	text-shadow: 0 1px 0 #fff;
+}
+
+/*** GIT ***/
+
+.git {
+  color: #000;
+  width: 1.5rem;
+  text-align: center;
+  vertical-align: middle;
+  display:inline-block;
+}
+
+.added {
+  background-color: #37D2A8;
+}
+
+.deleted {
+  background-color: #F72501;
+}
+
+.modified {
+  background-color: #3F7CD5;
+}
+
+.renamed {
+  background-color: #C42DC2;
+}
+
+.untracked {
+  background-color: #F9D304;
+}
+
+/*** Lists ***/
+
+.no-style {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.inline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+}
+
+.inline li {
+  margin-left: 1rem;
+}
+
+/*** Callouts ***/
+
+div.callout-note.callout {
+  border-left-color: #4D7AA4;
+}
+
+h1, h2, h3, h4 {
+  opacity: 1;
+}
+
+.quarto-grid-item p.card-img-top>img {
+  object-fit: contain;
+}
+
+.quarto-grid-item div.post-contents {
+  padding-bottom: 0;
+}

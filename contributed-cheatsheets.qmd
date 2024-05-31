@@ -1,0 +1,128 @@
+---
+title: "Contributed Cheatsheets"
+---
+
+Cheatsheets contributed by the community.
+Several of these cheatsheets also have non-English translations, available on the [Translated Cheatsheets](translations.html) page.
+
+::: {layout-ncol="3" layout-valign="bottom"}
+[![arrow](pngs/arrow.png){alt="Download arrow pdf cheatsheet"}](arrow.pdf)
+
+[![Base R](pngs/base-r.png){alt="Download Base R pdf cheatsheet"}](base-r.pdf)
+
+[![bayesplot](pngs/bayesplot.png){alt="Download bayesplot pdf cheatsheet"}](bayesplot.pdf)
+
+[![bcea](pngs/bcea.png){alt="Download bcea pdf cheatsheet"}](bcea.pdf)
+
+[![caret](pngs/caret.png){alt="Download caret pdf cheatsheet"}](caret.pdf)
+
+[![cartography](pngs/cartography.png){alt="Download cartography pdf cheatsheet"}](cartography.pdf)
+
+[![collapse](pngs/collapse.png){alt="Download collapse pdf cheatsheet"}](collapse.pdf)
+
+[![datatable](pngs/datatable.png){alt="Download datatable pdf cheatsheet"}](datatable.pdf)
+
+[![declaredesign](pngs/declaredesign.png){alt="Download declaredesign pdf cheatsheet"}](declaredesign.pdf)
+
+[![distr6](pngs/distr6.png){alt="Download distr6 pdf cheatsheet"}](distr6.pdf)
+
+[![DRomics](pngs/DRomics.png){alt="Download DRomics pdf cheatsheet"}](DRomics.pdf)
+
+[![estimatr](pngs/estimatr.png){alt="Download estimatr pdf cheatsheet"}](estimatr.pdf)
+
+[![eurostat](pngs/eurostat.png){alt="Download eurostat pdf cheatsheet"}](eurostat.pdf)
+
+[![gganimate](pngs/gganimate.png){alt="Download gganimate pdf cheatsheet"}](gganimate.pdf)
+
+[![Git & GitHub](pngs/git-github.png){alt="Download Git & GitHub pdf cheatsheet"}](git-github.pdf)
+
+[![golem](pngs/golem.png){alt="Download golem pdf cheatsheet"}](golem.pdf)
+
+[![gtsummary](pngs/gtsummary.png){alt="Download gtsummary pdf cheatsheet"}](gtsummary.pdf)
+
+[![gwasrapidd](pngs/gwasrapidd.png){alt="Download gwasrapidd pdf cheatsheet"}](gwasrapidd.pdf)
+
+[![h2o](pngs/h2o.png){alt="Download h2o pdf cheatsheet"}](h2o.pdf)
+
+[![How big is your graph?](pngs/how-big-is-your-graph.png){alt="Download How big is your graph? pdf cheatsheet"}](how-big-is-your-graph.pdf)
+
+[![imputeTS](pngs/imputeTS.png){alt="Download imputeTS pdf cheatsheet"}](imputeTS.pdf)
+
+[![jfa](pngs/jfa.png){alt="Download jfa pdf cheatsheet"}](jfa.pdf)
+
+[![labelled](pngs/labelled.png){alt="Download labelled pdf cheatsheet"}](labelled.pdf)
+
+[![leaflet](pngs/leaflet.png){alt="Download leaflet pdf cheatsheet"}](leaflet.pdf)
+
+[![Machine learning modelling in R](pngs/Machine%20Learning%20Modelling%20in%20R.png){alt="Download Machine Learning Modelling in R pdf cheatsheet"}](Machine%20Learning%20Modelling%20in%20R.pdf)
+
+[![mapsf](pngs/mapsf.png){alt="Download mapsf pdf cheatsheet"}](mapsf.pdf)
+
+[![metrica](pngs/metrica.png){alt="Download metrica pdf cheatsheet"}](metrica.pdf)
+
+[![mlr](pngs/mlr.png){alt="Download mlr pdf cheatsheet"}](mlr.pdf)
+
+[![mosaic](pngs/mosaic.png){alt="Download mosaic pdf cheatsheet"}](mosaic.pdf)
+
+[![nardl](pngs/nardl.png){alt="Download nardl pdf cheatsheet"}](nardl.pdf)
+
+[![nimble](pngs/nimble.png){alt="Download nimble pdf cheatsheet"}](nimble.pdf)
+
+[![oSCR](pngs/oSCR.png){alt="Download oSCR pdf cheatsheet"}](oSCR.pdf)
+
+[![overviewR](pngs/overviewR.png){alt="Download overviewR pdf cheatsheet"}](overviewR.pdf)
+
+[![packagefinder](pngs/packagefinder.png){alt="Download packagefinder pdf cheatsheet"}](packagefinder.pdf)
+
+[![Parallel computation](pngs/parallel_computation.png){alt="Download Parallel computation pdf cheatsheet"}](parallel_computation.pdf)
+
+[![quanteda](pngs/quanteda.png){alt="Download quanteda pdf cheatsheet"}](quanteda.pdf)
+
+[![quincunx](pngs/quincunx.png){alt="Download quincunx pdf cheatsheet"}](quincunx.pdf)
+
+[![randomizr](pngs/randomizr.png){alt="Download randomizr pdf cheatsheet"}](randomizr.pdf)
+
+[![R Best Practice](pngs/R-best-practice.png){alt="Download R Best Practice pdf cheatsheet"}](R-best-practice.pdf)
+
+[![Regular Expressions](pngs/regular-expressions.png){alt="Download Regular Expressions pdf cheatsheet"}](regex.pdf)
+
+[![rgee](pngs/rgee.png){alt="Download rgee pdf cheatsheet"}](rgee.pdf)
+
+[![rphylopic](pngs/rphylopic.png){alt="Download rphylopic pdf cheatsheet"}](rphylopic.pdf)
+
+[![SamplingStrata](pngs/SamplingStrata.png){alt="Download SamplingStrata pdf cheatsheet"}](SamplingStrata.pdf)
+
+[![SAS \<-\> R](pngs/sas-r.png){alt="Download SAS <-> R pdf cheatsheet"}](sas-r.pdf)
+
+[![SASvsRinPharma](pngs/SASvsRinPharma.png){alt="Download SAS vs. R in Pharma cheatsheet"}](SASvsRinPharma.pdf)
+
+[![sf](pngs/sf.png){alt="Download sf pdf cheatsheet"}](sf.pdf)
+
+[![sjmisc](pngs/sjmisc.png){alt="Download sjmisc pdf cheatsheet"}](sjmisc.pdf)
+
+[![slackr](pngs/slackr.png){alt="Download slackr pdf cheatsheet"}](slackr.pdf)
+
+[![stata2r](pngs/stata2r.png){alt="Download stata2r pdf cheatsheet"}](stata2r.pdf)
+
+[![survminer](pngs/survminer.png){alt="Download survminer pdf cheatsheet"}](survminer.pdf)
+
+[![R syntax comparison](pngs/syntax.png){alt="Download R syntax comparison pdf cheatsheet"}](syntax.pdf)
+
+[![SqueakR](pngs/SqueakR.png){alt="SqueakR"}](SqueakR.pdf)
+
+[![teachR](pngs/teachR.png){alt="Download teachR pdf cheatsheet"}](teachR.pdf)
+
+[![tidyeval](pngs/tidyeval.png){alt="Download tidyeval pdf cheatsheet"}](tidyeval.pdf)
+
+[![time-series](pngs/time-series.png){alt="Download time-series pdf cheatsheet"}](time-series.pdf)
+
+[![torch](pngs/torch.png){alt="Download torch pdf cheatsheet"}](torch.pdf)
+
+[![tsbox](pngs/tsbox.png){alt="Download tsbox pdf cheatsheet"}](tsbox.pdf)
+
+[![vegan](pngs/vegan.png){alt="Download vegan pdf cheatsheet"}](vegan.pdf)
+
+[![vtree](pngs/vtree.png){alt="Download vtree pdf cheatsheet"}](vtree.pdf)
+
+[![xplain](pngs/xplain.png){alt="Download xplain pdf cheatsheet"}](xplain.pdf)
+:::

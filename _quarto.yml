@@ -1,0 +1,36 @@
+project:
+  type: website
+  render: 
+    - "*.qmd"
+
+website:
+  navbar:
+    background: light
+    logo: html/images/posit-logo.png
+    logo-alt: "posit logo"
+    logo-href: https://posit.co
+    left:
+      - href: index.qmd
+      - href: contributed-cheatsheets.qmd
+      - href: translations.qmd
+    right:
+      - icon: github
+        href: https://github.com/rstudio/cheatsheets
+        aria-label: GitHub
+  repo-url: https://github.com/rstudio/cheatsheets
+  repo-actions: [edit, issue]
+  favicon: html/images/posit-favicon.png
+  
+format:
+  html:
+    theme: [cosmo, html/css/style.scss]
+    toc: true
+    toc-location: left
+    highlight-style: a11y-dark
+    css: html/css/cheatsheet.css
+    mainfont: "Atkinson Hyperlegible"
+    
+editor: visual
+
+execute: 
+  freeze: auto
