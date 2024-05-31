@@ -33,13 +33,6 @@ translation_list(sheet_name)
 library(ggplot2)
 ```
 
-```{r}
-#| label: other-used-packages
-#| include: false
-
-library(maps)
-```
-
 To display values, map variables in the data to visual properties of the geom (**aesthetics**) like **size**, **color**, and **x** and **y** locations.
 
 Complete the template below to build a graph.
@@ -264,16 +257,14 @@ j <- ggplot(df, aes(grp, fit, ymin = fit - se, ymax = fit + se))
 
 ### Two Variables - Maps
 
-```{r}
-murder_data <- data.frame(
-  murder = USArrests$Murder, 
-  state = tolower(rownames(USArrests))
-)
-map <- map_data("state")
-k <- ggplot(murder_data, aes(fill = murder))
-```
+Draw the appropriate geometric object depending on the simple features present in the data.
+`aes()` arguments: `map_id`, `alpha`, `color`, `fill`, `linetype`, `linewidth`.
 
--   `k + geom_map(aes(map_id = state), map = map) + expand_limits(x = map$long, y = map$lat)`: Draw polygons as a map. `aes()` arguments: `map_id`, `alpha`, `color`, `fill`, `linetype`, `linewidth`.
+```{r}
+nc <- sf::st_read(system.file("shape/nc.shp", package = "sf"))
+ggplot(nc) +
+  geom_sf(aes(fill = AREA))
+```
 
 ### Three Variables
 
@@ -469,8 +460,8 @@ u <- d + geom_bar()
     Transformed Cartesian coordinates.
     Set `xtrans` and `ytrans` to the name of a window function.
 
--   `π + coord_quickmap(); π + coord_map(projection = "ortho", orientation = c(41, -74, 0))`: `projection`, `xlim`, `ylim`.
-    Map projections from the **mapproj** packages (`mercator` (default), `azequalarea`, `lagrange`, etc.).
+-   `π + coord_sf()`: `xlim`, `ylim`, `crs`.
+    Ensures all layers use a common Coordinate Reference System.
 
 ## Position Adjustments
 
