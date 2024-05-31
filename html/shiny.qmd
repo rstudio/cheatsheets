@@ -438,98 +438,59 @@ To include an image:
 
 ## Layouts
 
-Combine multiple elements into a "single element" that has its own properties with a panel function, e.g.
+Use the **bslib** package to lay out the your app and its components.
 
-```{r}
-#| eval: false
+### Page layouts
 
-wellPanel(
-  dateInput("a", ""),
-  submitButton()
-)
-```
+#### Dashboard layouts
 
-Other elements:
+-   `page_sidebar()` - A sidebar page
 
--   `absolutePanel()`
--   `conditionalPanel()`
--   `fixedPanel()`
--   `headerPanel()`
--   `inputPanel()`
--   `mainPanel()`
--   `navlistPanel()`
--   `sidebarPanel()`
--   `tabPanel()`
--   `tabsetPanel()`
--   `titlePanel()`
--   `wellPanel()`
+-   `page_navbar()` - Multi-page app with a top navigation bar
 
-Organize panels and elements into a layout with a layout function.
-Add elements as arguments of the layout functions.
+-   `page_fillable()` - A screen-filling page layout
 
--   `sidebarLayout()`
+#### Basic layouts
 
-    ```{r}
-    #| eval: false
+-   `page()`
 
-    ui <- fluidPage(
-      sidebarLayout(
-        sidebarPanel(),
-        mainPanel()
-      )
-    )
-    ```
+-   `page_fluid()`
 
--   `fluidRow()`
+-   `page_fixed()`
 
-    ```{r}
-    #| eval: false
+### User interface layouts
 
-    ui <- fluidPage(
-      fluidRow(column(width = 4),
-               column(width = 2, offset = 3)),
-      fluidRow(column(width = 12))
-    )
-    ```
+#### Multiple columns
 
-Also `flowLayout()`, `splitLayout()`, `verticalLayout()`, `fixedPage()`, and `fixedRow()`.
+-   `layout_columns()` - Organize UI elements into Bootstrap’s 12-column CSS grid
 
-Layer tabPanels on top of each other, and navigate between them with:
+-   `layout_column_wrap()` - Organize elements into a grid of equal-width columns
 
-```{r}
-#| eval: false
+#### Multiple panels
 
-ui <- fluidPage(
-  tabsetPanel(
-    tabPanel("tab1", "contents"),
-    tabPanel("tab2", "contents"),
-    tabPanel("tab3", "contents")
-  )
-)
-```
+-   `navset_tab()` - Tabbed navigation container
 
-```{r}
-#| eval: false
+-   `navset_pill()` - Creates a navigation container that behaves exactly like `navset_tab()`, but the tab toggles are *pills* or button-shaped
 
-ui <- fluidPage(
-  navlistPanel(
-    tabPanel("tab1", "contents"),
-    tabPanel("tab2", "contents"),
-    tabPanel("tab3", "contents")
-  )
-)
-```
+-   `navset_underline()` - Creates a navigation container that behaves exactly like `navset_tab()` and `navset_pill()`, but the active/focused navigation links are styled with an underline
 
-```{r}
-#| eval: false
+-   `nav_panel()` - Content to display when given item is selected
 
-ui <- navbarPage(
-  title = "Page",
-  tabPanel("tab1", "contents"),
-  tabPanel("tab2", "contents"),
-  tabPanel("tab3", "contents")
-)
-```
+-   `nav_menu()` - Create a menu of nav items
+
+-   `nav_item()` - Place arbitrary content in the nav panel
+
+-   `nav_spacer()` - Add spacing between nav items
+
+Also dynamically update nav containers with `nav_select()`, `nav_insert()`, `nav_remove()`, `nav_show()`, `nav_hide()`.
+
+#### Sidebar layout
+
+-   `sidebar()`
+
+-   `layout_sidebar()`
+
+-   `toggle_sidebar()`
 
 ## Themes
 
