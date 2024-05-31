@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -72,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../html/css/cheatsheet.css">
 </head>
 
-<body class="floating nav-fixed">
+<body class="floating nav-fixed slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -119,7 +153,57 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#connect" id="toc-connect" class="nav-link active" data-scroll-target="#connect">Connect</a>
+  <ul class="collapse">
+  <li><a href="#databricks-connect-v2" id="toc-databricks-connect-v2" class="nav-link" data-scroll-target="#databricks-connect-v2">Databricks Connect (v2)</a></li>
+  <li><a href="#standalone-cluster" id="toc-standalone-cluster" class="nav-link" data-scroll-target="#standalone-cluster">Standalone cluster</a></li>
+  <li><a href="#yarn-client" id="toc-yarn-client" class="nav-link" data-scroll-target="#yarn-client">Yarn client</a></li>
+  <li><a href="#yarn-cluster" id="toc-yarn-cluster" class="nav-link" data-scroll-target="#yarn-cluster">Yarn cluster</a></li>
+  <li><a href="#kubernetes" id="toc-kubernetes" class="nav-link" data-scroll-target="#kubernetes">Kubernetes</a></li>
+  <li><a href="#local-mode" id="toc-local-mode" class="nav-link" data-scroll-target="#local-mode">Local mode</a></li>
+  <li><a href="#cloud" id="toc-cloud" class="nav-link" data-scroll-target="#cloud">Cloud</a></li>
+  </ul></li>
+  <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import">Import</a>
+  <ul class="collapse">
+  <li><a href="#read-a-file-into-spark" id="toc-read-a-file-into-spark" class="nav-link" data-scroll-target="#read-a-file-into-spark">Read a file into Spark</a></li>
+  <li><a href="#from-a-table" id="toc-from-a-table" class="nav-link" data-scroll-target="#from-a-table">From a table</a></li>
+  <li><a href="#r-data-frame-into-spark" id="toc-r-data-frame-into-spark" class="nav-link" data-scroll-target="#r-data-frame-into-spark">R data frame into Spark</a></li>
+  </ul></li>
+  <li><a href="#wrangle" id="toc-wrangle" class="nav-link" data-scroll-target="#wrangle">Wrangle</a>
+  <ul class="collapse">
+  <li><a href="#dplyr-verbs" id="toc-dplyr-verbs" class="nav-link" data-scroll-target="#dplyr-verbs">dplyr verbs</a></li>
+  <li><a href="#tidyr" id="toc-tidyr" class="nav-link" data-scroll-target="#tidyr">tidyr</a></li>
+  <li><a href="#feature-transformers" id="toc-feature-transformers" class="nav-link" data-scroll-target="#feature-transformers">Feature transformers</a></li>
+  </ul></li>
+  <li><a href="#visualize" id="toc-visualize" class="nav-link" data-scroll-target="#visualize">Visualize</a>
+  <ul class="collapse">
+  <li><a href="#dplyr-ggplot2" id="toc-dplyr-ggplot2" class="nav-link" data-scroll-target="#dplyr-ggplot2">dplyr + ggplot2</a></li>
+  </ul></li>
+  <li><a href="#modeling" id="toc-modeling" class="nav-link" data-scroll-target="#modeling">Modeling</a>
+  <ul class="collapse">
+  <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression">Regression</a></li>
+  <li><a href="#classification" id="toc-classification" class="nav-link" data-scroll-target="#classification">Classification</a></li>
+  <li><a href="#tree" id="toc-tree" class="nav-link" data-scroll-target="#tree">Tree</a></li>
+  <li><a href="#clustering" id="toc-clustering" class="nav-link" data-scroll-target="#clustering">Clustering</a></li>
+  <li><a href="#recommendation" id="toc-recommendation" class="nav-link" data-scroll-target="#recommendation">Recommendation</a></li>
+  <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation">Evaluation</a></li>
+  <li><a href="#frequent-pattern" id="toc-frequent-pattern" class="nav-link" data-scroll-target="#frequent-pattern">Frequent pattern</a></li>
+  <li><a href="#stats" id="toc-stats" class="nav-link" data-scroll-target="#stats">Stats</a></li>
+  <li><a href="#feature" id="toc-feature" class="nav-link" data-scroll-target="#feature">Feature</a></li>
+  <li><a href="#utilities" id="toc-utilities" class="nav-link" data-scroll-target="#utilities">Utilities</a></li>
+  </ul></li>
+  <li><a href="#ml-pipelines" id="toc-ml-pipelines" class="nav-link" data-scroll-target="#ml-pipelines">ML pipelines</a>
+  <ul class="collapse">
+  <li><a href="#initialize-and-train" id="toc-initialize-and-train" class="nav-link" data-scroll-target="#initialize-and-train">Initialize and train</a></li>
+  <li><a href="#save-and-retrieve" id="toc-save-and-retrieve" class="nav-link" data-scroll-target="#save-and-retrieve">Save and retrieve</a></li>
+  </ul></li>
+  <li><a href="#distributed-r" id="toc-distributed-r" class="nav-link" data-scroll-target="#distributed-r">Distributed R</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/rstudio/cheatsheets/edit/main/html/sparklyr.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -150,24 +234,382 @@ ul.task-list li input[type="checkbox"] {
 
 <!-- Page 1 -->
 <div class="no-row-height column-margin column-container"><div class="cell">
-<img src="images/logo-sparklyr.png" height="138" alt="Hex logo for sparklyr - Neon shooting stars of various shapes and sizes flying across a black and grey background."> <br><br><a href="../sparklyr.pdf">
-<p>
-<i class="bi bi-file-pdf"></i> Download PDF
-</p>
-<img src="../pngs/sparklyr.png" width="200" alt=""> </a> <br><br>
-<p>
-Translations (PDF)
-</p>
+
+</div></div><p><img src="images/sparklyr-ds-workflow.png" class="img-fluid"></p>
+<section id="connect" class="level1">
+<h1>Connect</h1>
+<section id="databricks-connect-v2" class="level2">
+<h2 class="anchored" data-anchor-id="databricks-connect-v2">Databricks Connect (v2)</h2>
+<p>Supported in Databricks Connect v2</p>
+<ol type="1">
+<li><p>Open your .Renviron file: <code>usethis::edit_r_environ()</code></p></li>
+<li><p>In the .Renviron file add your Databricks Host Url and Token (PAT):</p>
 <ul>
-<li><a href="../translations/chinese/sparklyr_zh_cn.pdf"><i class="bi bi-file-pdf"></i>Chinese</a></li>
-<li><a href="../translations/chinese/sparklyr_zh_tw.pdf"><i class="bi bi-file-pdf"></i>Chinese</a></li>
-<li><a href="../translations/german/sparklyr_de.pdf"><i class="bi bi-file-pdf"></i>German</a></li>
-<li><a href="../translations/japanese/sparklyr_ja.pdf"><i class="bi bi-file-pdf"></i>Japanese</a></li>
-<li><a href="../translations/spanish/sparklyr_es.pdf"><i class="bi bi-file-pdf"></i>Spanish</a></li>
+<li><code>DATABRICKS_HOST = \[Your Host URL\]</code></li>
+<li><code>DATABRICKS_TOKEN = \[Your PAT\]</code></li>
+</ul></li>
+<li><p>Install extension: <code>install.packages("pysparklyr")</code></p></li>
+<li><p>Open connection:</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>sc <span class="ot">&lt;-</span> <span class="fu">spark_connect</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">cluster_id =</span> <span class="st">"[Your cluster’s ID]"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"databricks_connect"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="standalone-cluster" class="level2">
+<h2 class="anchored" data-anchor-id="standalone-cluster">Standalone cluster</h2>
+<ol type="1">
+<li><p>Install RStudio Server on one of the existing nodes or a server in the same LAN</p></li>
+<li><p>Open a connection</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">spark_connect</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">master=</span><span class="st">"spark://host:port"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">version =</span> <span class="st">"3.2"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">spark_home =</span> [path to Spark]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="yarn-client" class="level2">
+<h2 class="anchored" data-anchor-id="yarn-client">Yarn client</h2>
+<ol type="1">
+<li><p>Install RStudio Server on an edge node</p></li>
+<li><p>Locate path to the clusterʼs Spark Home Directory, it normally is <code>"/usr/lib/spark"</code></p></li>
+<li><p>Basic configuration example</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>conf <span class="ot">&lt;-</span> <span class="fu">spark_config</span>()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>conf<span class="sc">$</span>spark.executor.memory <span class="ot">&lt;-</span> <span class="st">"300M"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>conf<span class="sc">$</span>spark.executor.cores <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>conf<span class="sc">$</span>spark.executor.instances <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>conf<span class="sc">$</span>spark.dynamicAllocation.enabled<span class="ot">&lt;-</span><span class="st">"false"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li>Open a connection</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sc <span class="ot">&lt;-</span> <span class="fu">spark_connect</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">master =</span> <span class="st">"yarn"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">spark_home =</span> <span class="st">"/usr/lib/spark/"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">version =</span> <span class="st">"2.1.0"</span>, <span class="at">config =</span> conf</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="yarn-cluster" class="level2">
+<h2 class="anchored" data-anchor-id="yarn-cluster">Yarn cluster</h2>
+<ol type="1">
+<li><p>Make sure to have copies of the <strong>yarn-site.xml</strong> and <strong>hive-site.xml</strong> files in the RStudio Server</p></li>
+<li><p>Point environment variables to the correct paths</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">JAVA_HOME=</span><span class="st">"[Path]"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">SPARK_HOME =</span><span class="st">"[Path]"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">YARN_CONF_DIR =</span><span class="st">"[Path]"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>Open a connection</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sc <span class="ot">&lt;-</span> <span class="fu">spark_connect</span>(<span class="at">master =</span> <span class="st">"yarn-cluster"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="kubernetes" class="level2">
+<h2 class="anchored" data-anchor-id="kubernetes">Kubernetes</h2>
+<ol type="1">
+<li><p>Use the following to obtain the Host and Port <code>system2("kubectl", "cluster-info")</code></p></li>
+<li><p>Open a connection</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sc <span class="ot">&lt;-</span> <span class="fu">spark_connect</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">config =</span> <span class="fu">spark_config_kubernetes</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"k8s://https://[HOST]&gt;:[PORT]"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">account =</span> <span class="st">"default"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">image =</span> <span class="st">"docker.io/owner/repo:version"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="local-mode" class="level2">
+<h2 class="anchored" data-anchor-id="local-mode">Local mode</h2>
+<p>No cluster required. Use for learning purposes only</p>
+<ol type="1">
+<li><p>Install a local version of Spark: spark_install()</p></li>
+<li><p>Open a connection</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sc <span class="ot">&lt;-</span> <span class="fu">spark_connect</span>(<span class="at">master=</span><span class="st">"local"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="cloud" class="level2">
+<h2 class="anchored" data-anchor-id="cloud">Cloud</h2>
+<p><strong>Azure</strong> - <code>spark_connect(method = "synapse")</code></p>
+<p><strong>Qubole</strong> - <code>spark_connect(method = "qubole")</code></p>
+</section>
+</section>
+<section id="import" class="level1">
+<h1>Import</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sparklyr-import.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="R push complete to Spark back to R collecting results. Also import from Source to Spark." width="501"></p>
+</figure>
+</div>
+<p>Import data into Spark, not R</p>
+<section id="read-a-file-into-spark" class="level2">
+<h2 class="anchored" data-anchor-id="read-a-file-into-spark">Read a file into Spark</h2>
+<p><strong>Arguments that apply to all functions:</strong></p>
+<p>sc, name, path, options=list(), repartition=0, memory=TRUE, overwrite=TRUE</p>
+<ul>
+<li>CSV: <code>spark_read_csv(header = TRUE, columns = NULL, infer_schema = TRUE, delimiter = ",", quote= "\"", escape = "\\", charset = "UTF-8", null_value = NULL)</code></li>
+<li>JSON: <code>spark_read_json()</code></li>
+<li>PARQUET: <code>spark_read_parquet()</code></li>
+<li>TEXT: <code>spark_read_text()</code></li>
+<li>DELTA: <code>spark_read_delta()</code></li>
 </ul>
-</div></div><p>HTML version coming soon! The PDF is available to download <a href="../sparklyr.pdf">here</a>.</p>
+</section>
+<section id="from-a-table" class="level2">
+<h2 class="anchored" data-anchor-id="from-a-table">From a table</h2>
+<ul>
+<li><p><code>dplyr::tbl(scr, ...)</code> - Creates a reference to the table without loading its data into memory</p></li>
+<li><p><code>dbplyr::in_catalog()</code> - Enables a three part table address</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">tbl</span>(sc,<span class="fu">in_catalog</span>(<span class="st">"catalog"</span>, <span class="st">"schema"</span>, <span class="st">"table"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="r-data-frame-into-spark" class="level2">
+<h2 class="anchored" data-anchor-id="r-data-frame-into-spark">R data frame into Spark</h2>
+<p>Supported in Databricks Connect v2</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dplyr<span class="sc">::</span><span class="fu">copy_to</span>(dest, df, name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Apache Arrow accelerates data transfer between R and Spark. To use, simply load the library</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sparklyr)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arrow)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="wrangle" class="level1">
+<h1>Wrangle</h1>
+<section id="dplyr-verbs" class="level2">
+<h2 class="anchored" data-anchor-id="dplyr-verbs">dplyr verbs</h2>
+<p>Supported in Databricks Connect v2</p>
+<p>Translates into Spark SQL statements</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">copy_to</span>(sc, mtcars) <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trm =</span> <span class="fu">ifelse</span>(am <span class="sc">==</span> <span class="dv">0</span>, <span class="st">"auto"</span>, <span class="st">"man"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(trm) <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_all</span>(mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tidyr" class="level2">
+<h2 class="anchored" data-anchor-id="tidyr">tidyr</h2>
+<ul>
+<li><p><code>pivot_longer()</code> - Collapse several columns into two. (Supported in Databricks Connect v2)</p></li>
+<li><p><code>pivot_wider()</code> - Expand two columns into several. (Supported in Databricks Connect v2)</p></li>
+<li><p><code>nest()</code> / <code>unnest()</code> - Convert groups of cells into list-columns, and vice versa.</p></li>
+<li><p><code>unite()</code> / <code>separate()</code> - Split a single column into several columns, and vice versa.</p></li>
+<li><p><code>fill()</code> - Fill NA with the previous value.</p></li>
+</ul>
+</section>
+<section id="feature-transformers" class="level2">
+<h2 class="anchored" data-anchor-id="feature-transformers">Feature transformers</h2>
+<ul>
+<li><code>ft_binarizer()</code> - Assigned values based on threshold</li>
+<li><code>ft_bucketizer()</code> - Numeric column to discretized column</li>
+<li><code>ft_count_vectorizer()</code> - Extracts a vocabulary from document</li>
+<li><code>ft_discrete_cosine_transform()</code> - 1D discrete cosine transform of a real vector</li>
+<li><code>ft_elementwise_product()</code> - Element- wise product between 2 cols</li>
+<li><code>ft_hashing_tf()</code> - Maps a sequence of terms to their term frequencies using the hashing trick.</li>
+<li><code>ft_idf()</code> - Compute the Inverse Document Frequency (IDF) given a collection of documents.</li>
+<li><code>ft_imputer()</code> - Imputation estimator for completing missing values, uses the mean or the median of the columns.</li>
+<li><code>ft_index_to_string()</code> - Index labels back to label as strings</li>
+<li><code>ft_interaction()</code> - Takes in Double and Vector columns and outputs a flattened vector of their feature interactions.</li>
+<li><code>ft_max_abs_scaler()</code> - Rescale each feature individually to range [-1, 1] (Supported in Databricks Connect v2)</li>
+<li><code>ft_min_max_scaler()</code> - Rescale each feature to a common range [min, max] linearly</li>
+<li><code>ft_ngram()</code> - Converts the input array of strings into an array of n-grams</li>
+<li><code>ft_bucketed_random_projection_lsh()</code></li>
+<li><code>ft_minhash_lsh()</code> - Locality Sensitive Hashing functions for Euclidean distance and Jaccard distance (MinHash)</li>
+<li><code>ft_normalizer()</code> - Normalize a vector to have unit norm using the given p-norm</li>
+<li><code>ft_one_hot_encoder()</code> - Continuous to binary vectors</li>
+<li><code>ft_pca()</code> - Project vectors to a lower dimensional space of top k principal components</li>
+<li><code>ft_quantile_discretizer()</code> - Continuous to binned categorical values.</li>
+<li><code>ft_regex_tokenizer()</code> - Extracts tokens either by using the provided regex pattern to split the text</li>
+<li><code>ft_robust_scaler()</code> - Removes the median and scales according to standard scale</li>
+<li><code>ft_standard_scaler()</code> - Removes the mean and scaling to unit variance using column summary statistics (Supported in Databricks Connect v2)</li>
+<li><code>ft_stop_words_remover()</code> - Filters out stop words from input</li>
+<li><code>ft_string_indexer()</code> - Column of labels into a column of label indices.</li>
+<li><code>ft_tokenizer()</code> - Converts to lowercase and then splits it by white spaces</li>
+<li><code>ft_vector_assembler()</code> - Combine vectors into single row-vector</li>
+<li><code>ft_vector_indexer()</code> - Indexing categorical feature columns in a dataset of Vector</li>
+<li><code>ft_vector_slicer()</code> - Takes a feature vector and outputs a new feature vector with a subarray of the original features</li>
+<li><code>ft_word2vec()</code> - Word2Vec transforms a word into a code</li>
+</ul>
+<!-- Page 2 -->
+</section>
+</section>
+<section id="visualize" class="level1">
+<h1>Visualize</h1>
+<section id="dplyr-ggplot2" class="level2">
+<h2 class="anchored" data-anchor-id="dplyr-ggplot2">dplyr + ggplot2</h2>
+<p>Supported in Databricks Connect v2</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">copy_to</span>(sc, mtcars) <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mpg_m =</span> <span class="fu">mean</span>(mpg)) <span class="sc">%&gt;%</span> <span class="co"># Summarize in Spark</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>() <span class="sc">%&gt;%</span>                    <span class="co"># Collect results in R</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(cyl, mpg_m))        <span class="co"># Create plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="modeling" class="level1">
+<h1>Modeling</h1>
+<section id="regression" class="level2">
+<h2 class="anchored" data-anchor-id="regression">Regression</h2>
+<ul>
+<li><code>ml_linear_regression()</code> - Linear regression.</li>
+<li><code>ml_aft_survival_regression()</code> - Parametric survival regression model named accelerated failure time (AFT) model.</li>
+<li><code>ml_generalized_linear_regression()</code> - GLM.</li>
+<li><code>ml_isotonic_regression()</code> - Uses parallelized pool adjacent violators algorithm.</li>
+<li><code>ml_random_forest_regressor()</code> - Regression using random forests.</li>
+</ul>
+</section>
+<section id="classification" class="level2">
+<h2 class="anchored" data-anchor-id="classification">Classification</h2>
+<ul>
+<li><code>ml_linear_svc()</code> - Classification using linear support vector machines.</li>
+<li><code>ml_logistic_regression()</code> - Logistic regression. (Supported in Databricks Connect v2)</li>
+<li><code>ml_multilayer_perceptron_classifier()</code> - Based on the Multilayer Perceptron.</li>
+<li><code>ml_naive_bayes()</code> - It supports Multinomial NB which can handle finitely supported discrete data.</li>
+<li><code>ml_one_vs_rest()</code> - Reduction of Multiclass, performs reduction using one against all strategy.</li>
+</ul>
+</section>
+<section id="tree" class="level2">
+<h2 class="anchored" data-anchor-id="tree">Tree</h2>
+<ul>
+<li><code>ml_decision_tree_classifier()</code>, <code>ml_decision_tree()</code>, `ml_decision_tree_regressor(). - Classification and regression using decision trees.</li>
+<li><code>ml_gbt_classifier()</code>, <code>ml_gradient_boosted_trees()</code>, <code>ml_gbt_regressor()</code> - Binary classification and regression using gradient boosted trees.</li>
+<li><code>ml_random_forest_classifier()</code> - Classification and regression using random forests.</li>
+<li><code>ml_feature_importances()</code>, <code>ml_tree_feature_importance()</code> - Feature Importance for Tree Models.</li>
+</ul>
+</section>
+<section id="clustering" class="level2">
+<h2 class="anchored" data-anchor-id="clustering">Clustering</h2>
+<ul>
+<li><code>ml_bisecting_kmeans()</code> - A bisecting k-means algorithm based on the paper.</li>
+<li><code>ml_lda()</code>, <code>ml_describe_topics()</code>, <code>ml_log_likelihood()</code>, <code>ml_log_perplexity()</code>, <code>ml_topics_matrix()</code> - LDA topic model designed for text documents.</li>
+<li><code>ml_gaussian_mixture()</code> - Expectation maximization for multivariate Gaussian Mixture Models (GMMs).</li>
+<li><code>ml_kmeans()</code>, <code>ml_compute_cost()</code>, <code>ml_compute_silhouette_measure()</code> - Clustering with support for k-means.</li>
+<li><code>ml_power_iteration()</code> - For clustering vertices of a graph given pairwise similarities as edge properties.</li>
+</ul>
+</section>
+<section id="recommendation" class="level2">
+<h2 class="anchored" data-anchor-id="recommendation">Recommendation</h2>
+<ul>
+<li><code>ml_als()</code>, <code>ml_recommend()</code> - Recommendation using Alternating Least Squares matrix factorization.</li>
+</ul>
+</section>
+<section id="evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="evaluation">Evaluation</h2>
+<ul>
+<li><code>ml_clustering_evaluator()</code> - Evaluator for clustering.</li>
+<li><code>ml_evaluate()</code> - Compute performance metrics.</li>
+<li><code>ml_binary_classification_evaluator()</code>, <code>ml_binary_classification_eval()</code>, <code>ml_classification_eval()</code> - A set of functions to calculate performance metrics for prediction models.</li>
+</ul>
+</section>
+<section id="frequent-pattern" class="level2">
+<h2 class="anchored" data-anchor-id="frequent-pattern">Frequent pattern</h2>
+<ul>
+<li><code>ml_fpgrowth()</code>, <code>ml_association_rules()</code>, <code>ml_freq_itemsets()</code> - A parallel FP-growth algorithm to mine frequent itemsets.</li>
+<li><code>ml_freq_seq_patterns()</code>, <code>ml_prefixspan()</code> - PrefixSpan algorithm for mining frequent itemsets.</li>
+</ul>
+</section>
+<section id="stats" class="level2">
+<h2 class="anchored" data-anchor-id="stats">Stats</h2>
+<ul>
+<li><code>ml_summary()</code> - Extracts a metric from the summary object of a Spark ML model.</li>
+<li><code>ml_corr()</code> - Compute correlation matrix.</li>
+</ul>
+</section>
+<section id="feature" class="level2">
+<h2 class="anchored" data-anchor-id="feature">Feature</h2>
+<ul>
+<li><code>ml_chisquare_test(x,features,label)</code> - Pearson’s independence test for every feature against the label.</li>
+<li><code>ml_default_stop_words()</code> - Loads the default stop words for the given language.</li>
+</ul>
+</section>
+<section id="utilities" class="level2">
+<h2 class="anchored" data-anchor-id="utilities">Utilities</h2>
+<ul>
+<li><code>ml_call_constructor()</code> - Identifies the associated sparklyr ML constructor for the JVM.</li>
+<li><code>ml_model_data()</code> - Extracts data associated with a Spark ML model.</li>
+<li><code>ml_standardize_formula()</code> - Generates a formula string from user inputs.</li>
+<li><code>ml_uid()</code> - Extracts the UID of an ML object.</li>
+</ul>
+</section>
+</section>
+<section id="ml-pipelines" class="level1">
+<h1>ML pipelines</h1>
+<p>Easily create a formal Spark Pipeline models using R. Save the Pipeline in native Sacala. It will have <strong>no dependencies</strong> on R.</p>
+<section id="initialize-and-train" class="level2">
+<h2 class="anchored" data-anchor-id="initialize-and-train">Initialize and train</h2>
+<p>Supported in Databricks Connect v2</p>
+<ul>
+<li><code>ml_pipeline()</code> - Initializes a new Spark Pipeline.</li>
+<li><code>ml_fit()</code> - Trains the model, outputs a Spark Pipeline Model.</li>
+</ul>
+</section>
+<section id="save-and-retrieve" class="level2">
+<h2 class="anchored" data-anchor-id="save-and-retrieve">Save and retrieve</h2>
+<p>Supported in Databricks Connect v2</p>
+<ul>
+<li><code>ml_save()</code> - Saves into a format that can be read by Scala and PySpark.</li>
+<li><code>ml_read()</code> - Reads Spark object into sparklyr.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sparklyr-save-retrieve.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="ml_pipeline() to ft_dplyr_transformer to ft_bucketizer() to ml_linear_regression() to ml_fit() to ml_save()." width="501"></p>
+</figure>
+</div>
+<p><a href="https://spark.posit.co/guides/pipelines">spark.posit.co/guides/pipelines</a></p>
+</section>
+</section>
+<section id="distributed-r" class="level1">
+<h1>Distributed R</h1>
+<p>Supported in Databricks Connect v2</p>
+<p>Run arbitrary R code at scale inside your cluster with spark_apply(). Useful when there you need functionality only available in R, and to solve ‘embarrassingly parallel problems’.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">spark_apply</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  x, f, </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">columns =</span> <span class="cn">NULL</span>, <span class="at">memory =</span> <span class="cn">TRUE</span>, <span class="at">group_by =</span> <span class="cn">NULL</span>, </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="cn">NULL</span>, <span class="at">barrier =</span> <span class="cn">NULL</span>, <span class="at">fetch_result_as_sdf =</span> <span class="cn">TRUE</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">copy_to</span>(sc, mtcars) <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spark_apply</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    nrow, <span class="co"># R only function</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">group_by =</span> <span class="st">"am"</span>, </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="st">"am double, x long"</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<p>CC BY SA Posit Software, PBC • <a href="mailto:info@posit.co">info@posit.co</a> • <a href="https://posit.co">posit.co</a></p>
+<p>Learn more at <a href="https://spark.posit.co/">spark.posit.co</a> and <a href="https://therinspark.com/">therinspark.com</a>.</p>
+<p>Updated: 2024-05.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"sparklyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] '1.8.6'</code></pre>
+</div>
+</div>
+<hr>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -584,4 +1026,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/rstudio/cheatsheets/edit/main/html/sparklyr.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/rstudio/cheatsheets/edit/main/html/sparklyr.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
