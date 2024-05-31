@@ -297,7 +297,6 @@ Visualize a stat by changing the default stat of a geom function, `geom_bar(stat
 Use `after_stat(name)` syntax to map the stat variable `name` to an aesthetic.
 
 ```{r}
-#| eval: false
 i + stat_density_2d(aes(fill = after_stat(level)), geom = "polygon")
 ```
 
@@ -355,13 +354,12 @@ Override defaults with **scales** package.
 To change a mapping, add a new scale.
 
 ```{r}
-#| eval: false
 n <- d + geom_bar(aes(fill = fl))
 
 n + scale_fill_manual(
-  value = c(),
-  limits = c(), 
-  breaks = c(),
+  values = c("skyblue", "royalblue", "blue", "navy"),
+  limits = c("d", "e", "p", "r"),
+  breaks =c("d", "e", "p", "r"),
   name = "fuel", 
   labels = c("D", "E", "P", "R")
 )
@@ -484,7 +482,6 @@ s <- ggplot(mpg, aes(fl, fill = drv))
 Each position adjustment can be recast as a function with manual `width` and `height` arguments:
 
 ```{r}
-#| eval: false
 s + geom_bar(position = position_dodge(width = 1))
 ```
 
@@ -508,12 +505,11 @@ s + geom_bar(position = position_dodge(width = 1))
 
 -   `u + theme()`: Customize aspects of the theme such as axis, legend, panel, and facet properties.
 
-    ```{r}
-    #| eval: false
-    r + ggtitle("Title") + theme(plot.title.postion = "plot")
+```{r}
+u + labs(title = "Title") + theme(plot.title.position = "plot")
         
-    r + theme(panel.background = element_rect(fill = "blue"))
-    ```
+u + theme(panel.background = element_rect(fill = "blue"))
+```
 
 ## Faceting
 

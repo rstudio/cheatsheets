@@ -46,8 +46,6 @@ The keras R package uses the Python keras library.
 You can install all the prerequisites directly from R: <https://tensorflow.rstudio.com/install>.
 
 ```{r}
-#| eval: false
-
 library(keras)
 install_keras()
 ```

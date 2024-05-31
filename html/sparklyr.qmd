@@ -9,6 +9,7 @@ execute:
 ---
 
 ```{r}
+#| eval: true
 #| output: asis
 #| echo: false
 #| column: margin

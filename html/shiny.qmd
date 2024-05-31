@@ -3,12 +3,13 @@ title: "Shiny for R :: Cheatsheet"
 description: " "
 image-alt: ""
 execute:
-  eval: true
+  eval: false
   output: false
   warning: true
 ---
 
 ```{r}
+#| eval: true
 #| output: asis
 #| echo: false
 #| column: margin
@@ -46,8 +47,6 @@ Launch apps stored in a directory with `runApp(<path to directory>)`.
 To generate the template, type `shinyApp` and press `Tab` in the RStudio IDE or go to **File \> New Project \> New Directory \> Shiny Application**.
 
 ```{r}
-#| eval: false
-
 # app.R 
 library(shiny)
 
@@ -188,8 +187,6 @@ Call a reactive value from within the arguments of one of these functions to avo
 -   `*Input()` functions: Each input function creates a reactive value stored as `input$<inputId>`.
 
     ```{r}
-    #| eval: false
-
     # *Input() example
     ui <- fluidPage(
       textInput("a","","A")
@@ -201,8 +198,6 @@ Call a reactive value from within the arguments of one of these functions to avo
     `reactiveValues(...)`: Creates a list of reactive values whose values you can set.
 
     ```{r}
-    #| eval: false
-
     # reactiveVal example
     server <- function(input,output){
       rv <- reactiveValues() 
@@ -225,8 +220,6 @@ Call a reactive value from within the arguments of one of these functions to avo
     Call the expression with function syntax, e.g. `re()`.
 
     ```{r}
-    #| eval: false
-
     library(shiny)
 
     ui <- fluidPage(
@@ -252,8 +245,6 @@ Call a reactive value from within the arguments of one of these functions to avo
 -   `eventReactive(eventExpr, valueExpr, event.env, event.quoted, value.env, value.quoted, ..., label, domain, ignoreNULL, ignoreInit)`: Creates reactive expression with code in 2nd argument that only invalidates when reactive values in 1st argument change.
 
     ```{r}
-    #| eval: false
-
     library(shiny)
 
     ui <- fluidPage(
@@ -279,8 +270,6 @@ Call a reactive value from within the arguments of one of these functions to avo
     Save the results to `output$<outputId>`.
 
     ```{r}
-    #| eval: false
-
     library(shiny)
 
     ui <- fluidPage(
@@ -306,8 +295,6 @@ Call a reactive value from within the arguments of one of these functions to avo
     Alternative to ``` observe``() ```.
 
     ```{r}
-    #| eval: false
-
     library(shiny)
 
     ui <- fluidPage(textInput("a","","A"), actionButton("go","Go"))
@@ -327,8 +314,6 @@ Call a reactive value from within the arguments of one of these functions to avo
     Returns a **non-reactive** copy of the results.
 
     ```{r}
-    #| eval: false
-
     library(shiny)
 
     ui <- fluidPage(
@@ -353,7 +338,6 @@ An app's UI is an HTML document.
 Use Shiny's functions to assemble this HTML with R.
 
 ```{r}
-#| eval: false
 fluidPage(
   textInput("a","")
 )
@@ -380,8 +364,6 @@ The most common tags have wrapper functions.
 You do not need to prefix their names with `tags$`.
 
 ```{r}
-#| eval: false
-
 ui <- fluidPage(
   h1("Header 1"), # <h1>Header 1</h1>
   hr(), # <hr>
@@ -401,8 +383,6 @@ To include a CSS file, use `includeCSS()`, or
 2.  Link to it with:
 
     ```{r}
-    #| eval: false
-
     tags$head(
       tags$link(
         rel = "stylesheet", 
@@ -419,8 +399,6 @@ To include JavaScript, use `includeScript()`, or
 2.  Link to it with:
 
     ```{r}
-    #| eval: false
-
     tags$head(tags$script(src = "<file name>"))
     ```
 
@@ -431,8 +409,6 @@ To include an image:
 2.  Link to it with:
 
     ```{r}
-    #| eval: false
-
     img(src = "<file name>")
     ```
 
@@ -497,8 +473,6 @@ Also dynamically update nav containers with `nav_select()`, `nav_insert()`, `nav
 Use the **bslib** package to add existing themes to your Shiny app ui, or make your own.
 
 ```{r}
-#| eval: false
-
 library(bslib)
 ui <- fluidPage(
   theme = bs_theme(
@@ -513,8 +487,6 @@ ui <- fluidPage(
 Build your own theme by customizing individual arguments.
 
 ```{r}
-#| eval: false
-
 bs_theme(
   bg = "#558AC5",
   fg = "#F9B02D",
@@ -536,6 +508,7 @@ Updated: `r format(Sys.Date(), "%Y-%m")`.
 
 ```{r}
 #| output: true
+#| eval: true
 
 packageVersion("shiny")
 ```

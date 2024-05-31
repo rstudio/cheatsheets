@@ -265,8 +265,6 @@ Or, if you like, you can convert manually with
     Also `iter_next()` and `as_iterator()`.
 
     ```{r}
-    #| eval: false
-
     iterate(iter, print)
     ```
 
@@ -296,8 +294,6 @@ Or, if you like, you can convert manually with
     Also `py_set_attr()`, `py_has_attr()`, and `py_list_attributes()`.
 
     ```{r}
-    #| eval: false
-
     py_get_attr(x)
     ```
 
@@ -306,8 +302,6 @@ Or, if you like, you can convert manually with
 -   `py_help(object)`: Open the documentation page for a Python object.
 
     ```{r}
-    #| eval: false
-
     py_help(sns)
     ```
 
@@ -322,8 +316,6 @@ Or, if you like, you can convert manually with
     Also `py_load_object()`.
 
     ```{r}
-    #| eval: false
-
     py_save_objects(x, "x.pickle")
     ```
 
@@ -405,8 +397,6 @@ Then suggest your instance to reticulate.
 -   `install_python(version, list = FALSE, force = FALSE)`: Download and install Python.
 
     ```{r}
-    #| eval: false
-
     install_python("3.9.16")
     ```
 
@@ -496,8 +486,6 @@ Otherwise, to choose an instance of Python to bind to, reticulate scans the inst
         Undo with `Sys.unsetenv()`.
 
         ```{r}
-        #| eval: false
-
         Sys.setenv(RETICULATE_PYTHON = "/usr/local/bin/python")
         ```
 
@@ -507,24 +495,18 @@ Otherwise, to choose an instance of Python to bind to, reticulate scans the inst
     -   `use_python(python, required = FALSE)`: Suggest a Python binary to use by path.
 
         ```{r}
-        #| eval: false
-
         use_python("usr/local/bin/python")
         ```
 
     -   `use_virtualenv(virtualenv = NULL, required = FALSE)`: Suggest a Python virtualenv
 
         ```{r}
-        #| eval: false
-
         use_virtualenv("~/myenv")
         ```
 
     -   `use_condaenv(condaenv = NULL, conda = "auto", required = FALSE)`: Suggest a conda env to use.
 
         ```{r}
-        #| eval: false
-
         use_condaenv(condaenv = "r-nlp", conda = "/opt/anaconda3/bin/conda")
         ```
 
