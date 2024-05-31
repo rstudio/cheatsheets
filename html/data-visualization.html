@@ -403,17 +403,12 @@ Translations (PDF)
 </section>
 <section id="two-variables---maps" class="level3">
 <h3 class="anchored" data-anchor-id="two-variables---maps">Two Variables - Maps</h3>
+<p>Draw the appropriate geometric object depending on the simple features present in the data. <code>aes()</code> arguments: <code>map_id</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>linewidth</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>murder_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">murder =</span> USArrests<span class="sc">$</span>Murder, </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">state =</span> <span class="fu">tolower</span>(<span class="fu">rownames</span>(USArrests))</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>map <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">"state"</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(murder_data, <span class="fu">aes</span>(<span class="at">fill =</span> murder))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nc <span class="ot">&lt;-</span> sf<span class="sc">::</span><span class="fu">st_read</span>(<span class="fu">system.file</span>(<span class="st">"shape/nc.shp"</span>, <span class="at">package =</span> <span class="st">"sf"</span>))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nc) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> AREA))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ul>
-<li><code>k + geom_map(aes(map_id = state), map = map) + expand_limits(x = map$long, y = map$lat)</code>: Draw polygons as a map. <code>aes()</code> arguments: <code>map_id</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>linetype</code>, <code>linewidth</code>.</li>
-</ul>
 </section>
 <section id="three-variables" class="level3">
 <h3 class="anchored" data-anchor-id="three-variables">Three Variables</h3>
@@ -547,7 +542,7 @@ Translations (PDF)
 <li><p><code>ggplot(mpg, aes(y = fl)) + geom_bar()</code>: Flip Cartesian coordinates by switching x and y aesthetic mappings.</p></li>
 <li><p><code>u + coord_polar(theta = "x", direction = 1)</code>: <code>theta</code>, <code>start</code>, <code>direction</code>. Polar coordinates.</p></li>
 <li><p><code>u + coord_trans(y = "sqrt")</code>: <code>x</code>, <code>y</code>, <code>xlim</code>, <code>ylim</code>. Transformed Cartesian coordinates. Set <code>xtrans</code> and <code>ytrans</code> to the name of a window function.</p></li>
-<li><p><code>π + coord_quickmap(); π + coord_map(projection = "ortho", orientation = c(41, -74, 0))</code>: <code>projection</code>, <code>xlim</code>, <code>ylim</code>. Map projections from the <strong>mapproj</strong> packages (<code>mercator</code> (default), <code>azequalarea</code>, <code>lagrange</code>, etc.).</p></li>
+<li><p><code>π + coord_sf()</code>: <code>xlim</code>, <code>ylim</code>, <code>crs</code>. Ensures all layers use a common Coordinate Reference System.</p></li>
 </ul>
 </section>
 <section id="position-adjustments" class="level2">

@@ -171,7 +171,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#remove-reactivity" id="toc-remove-reactivity" class="nav-link" data-scroll-target="#remove-reactivity">Remove Reactivity</a></li>
   </ul></li>
   <li><a href="#ui" id="toc-ui" class="nav-link" data-scroll-target="#ui">UI</a></li>
-  <li><a href="#layouts" id="toc-layouts" class="nav-link" data-scroll-target="#layouts">Layouts</a></li>
+  <li><a href="#layouts" id="toc-layouts" class="nav-link" data-scroll-target="#layouts">Layouts</a>
+  <ul class="collapse">
+  <li><a href="#page-layouts" id="toc-page-layouts" class="nav-link" data-scroll-target="#page-layouts">Page layouts</a></li>
+  <li><a href="#user-interface-layouts" id="toc-user-interface-layouts" class="nav-link" data-scroll-target="#user-interface-layouts">User interface layouts</a></li>
+  </ul></li>
   <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes">Themes</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/rstudio/cheatsheets/edit/main/html/shiny.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -616,99 +620,80 @@ Expand to read about the reactivity diagram
 </section>
 <section id="layouts" class="level2">
 <h2 class="anchored" data-anchor-id="layouts">Layouts</h2>
-<p>Combine multiple elements into a “single element” that has its own properties with a panel function, e.g.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wellPanel</span>(</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dateInput</span>(<span class="st">"a"</span>, <span class="st">""</span>),</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">submitButton</span>()</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Other elements:</p>
+<p>Use the <strong>bslib</strong> package to lay out the your app and its components.</p>
+<section id="page-layouts" class="level3">
+<h3 class="anchored" data-anchor-id="page-layouts">Page layouts</h3>
+<section id="dashboard-layouts" class="level4">
+<h4 class="anchored" data-anchor-id="dashboard-layouts">Dashboard layouts</h4>
 <ul>
-<li><code>absolutePanel()</code></li>
-<li><code>conditionalPanel()</code></li>
-<li><code>fixedPanel()</code></li>
-<li><code>headerPanel()</code></li>
-<li><code>inputPanel()</code></li>
-<li><code>mainPanel()</code></li>
-<li><code>navlistPanel()</code></li>
-<li><code>sidebarPanel()</code></li>
-<li><code>tabPanel()</code></li>
-<li><code>tabsetPanel()</code></li>
-<li><code>titlePanel()</code></li>
-<li><code>wellPanel()</code></li>
+<li><p><code>page_sidebar()</code> - A sidebar page</p></li>
+<li><p><code>page_navbar()</code> - Multi-page app with a top navigation bar</p></li>
+<li><p><code>page_fillable()</code> - A screen-filling page layout</p></li>
 </ul>
-<p>Organize panels and elements into a layout with a layout function. Add elements as arguments of the layout functions.</p>
+</section>
+<section id="basic-layouts" class="level4">
+<h4 class="anchored" data-anchor-id="basic-layouts">Basic layouts</h4>
 <ul>
-<li><p><code>sidebarLayout()</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sidebarLayout</span>(</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sidebarPanel</span>(),</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mainPanel</span>()</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>fluidRow()</code></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fluidRow</span>(<span class="fu">column</span>(<span class="at">width =</span> <span class="dv">4</span>),</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>           <span class="fu">column</span>(<span class="at">width =</span> <span class="dv">2</span>, <span class="at">offset =</span> <span class="dv">3</span>)),</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fluidRow</span>(<span class="fu">column</span>(<span class="at">width =</span> <span class="dv">12</span>))</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
+<li><p><code>page()</code></p></li>
+<li><p><code>page_fluid()</code></p></li>
+<li><p><code>page_fixed()</code></p></li>
 </ul>
-<p>Also <code>flowLayout()</code>, <code>splitLayout()</code>, <code>verticalLayout()</code>, <code>fixedPage()</code>, and <code>fixedRow()</code>.</p>
-<p>Layer tabPanels on top of each other, and navigate between them with:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabsetPanel</span>(</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tabPanel</span>(<span class="st">"tab1"</span>, <span class="st">"contents"</span>),</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tabPanel</span>(<span class="st">"tab2"</span>, <span class="st">"contents"</span>),</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tabPanel</span>(<span class="st">"tab3"</span>, <span class="st">"contents"</span>)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">navlistPanel</span>(</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tabPanel</span>(<span class="st">"tab1"</span>, <span class="st">"contents"</span>),</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tabPanel</span>(<span class="st">"tab2"</span>, <span class="st">"contents"</span>),</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tabPanel</span>(<span class="st">"tab3"</span>, <span class="st">"contents"</span>)</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">navbarPage</span>(</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Page"</span>,</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabPanel</span>(<span class="st">"tab1"</span>, <span class="st">"contents"</span>),</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabPanel</span>(<span class="st">"tab2"</span>, <span class="st">"contents"</span>),</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tabPanel</span>(<span class="st">"tab3"</span>, <span class="st">"contents"</span>)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+</section>
+</section>
+<section id="user-interface-layouts" class="level3">
+<h3 class="anchored" data-anchor-id="user-interface-layouts">User interface layouts</h3>
+<section id="multiple-columns" class="level4">
+<h4 class="anchored" data-anchor-id="multiple-columns">Multiple columns</h4>
+<ul>
+<li><p><code>layout_columns()</code> - Organize UI elements into Bootstrap’s 12-column CSS grid</p></li>
+<li><p><code>layout_column_wrap()</code> - Organize elements into a grid of equal-width columns</p></li>
+</ul>
+</section>
+<section id="multiple-panels" class="level4">
+<h4 class="anchored" data-anchor-id="multiple-panels">Multiple panels</h4>
+<ul>
+<li><p><code>navset_tab()</code> - Tabbed navigation container</p></li>
+<li><p><code>navset_pill()</code> - Creates a navigation container that behaves exactly like <code>navset_tab()</code>, but the tab toggles are <em>pills</em> or button-shaped</p></li>
+<li><p><code>navset_underline()</code> - Creates a navigation container that behaves exactly like <code>navset_tab()</code> and <code>navset_pill()</code>, but the active/focused navigation links are styled with an underline</p></li>
+<li><p><code>nav_panel()</code> - Content to display when given item is selected</p></li>
+<li><p><code>nav_menu()</code> - Create a menu of nav items</p></li>
+<li><p><code>nav_item()</code> - Place arbitrary content in the nav panel</p></li>
+<li><p><code>nav_spacer()</code> - Add spacing between nav items</p></li>
+</ul>
+<p>Also dynamically update nav containers with <code>nav_select()</code>, <code>nav_insert()</code>, <code>nav_remove()</code>, <code>nav_show()</code>, <code>nav_hide()</code>.</p>
+</section>
+<section id="sidebar-layout" class="level4">
+<h4 class="anchored" data-anchor-id="sidebar-layout">Sidebar layout</h4>
+<ul>
+<li><p><code>sidebar()</code></p></li>
+<li><p><code>layout_sidebar()</code></p></li>
+<li><p><code>toggle_sidebar()</code></p></li>
+</ul>
+</section>
+</section>
 </section>
 <section id="themes" class="level2">
 <h2 class="anchored" data-anchor-id="themes">Themes</h2>
 <p>Use the <strong>bslib</strong> package to add existing themes to your Shiny app ui, or make your own.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bslib)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">theme =</span> <span class="fu">bs_theme</span>(</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">boothswatch =</span> <span class="st">"darkly"</span>,</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bslib)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">theme =</span> <span class="fu">bs_theme</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">boothswatch =</span> <span class="st">"darkly"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    ...</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><code>bootswatch_themes()</code>: Get a list of themes.</li>
 </ul>
 <p>Build your own theme by customizing individual arguments.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bs_theme</span>(</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">bg =</span> <span class="st">"#558AC5"</span>,</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fg =</span> <span class="st">"#F9B02D"</span>,</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  ...</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bs_theme</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">bg =</span> <span class="st">"#558AC5"</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fg =</span> <span class="st">"#F9B02D"</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><p><code>?bs_theme</code> for a full list of arguments.</p></li>
@@ -719,7 +704,7 @@ Expand to read about the reactivity diagram
 <p>Learn more at <a href="https://shiny.rstudio.com/">shiny.rstudio.com</a></p>
 <p>Updated: 2024-05.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"shiny"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"shiny"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] '1.8.1.1'</code></pre>
 </div>
