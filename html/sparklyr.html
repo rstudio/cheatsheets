@@ -235,8 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- Page 1 -->
 <div class="no-row-height column-margin column-container"><div class="cell">
 
-</div></div><p><img src="images/sparklyr-ds-workflow.png" class="img-fluid"></p>
-<section id="connect" class="level1">
+</div></div><section id="connect" class="level1">
 <h1>Connect</h1>
 <section id="databricks-connect-v2" class="level2">
 <h2 class="anchored" data-anchor-id="databricks-connect-v2">Databricks Connect (v2)</h2>
@@ -346,13 +345,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="cloud">Cloud</h2>
 <p><strong>Azure</strong> - <code>spark_connect(method = "synapse")</code></p>
 <p><strong>Qubole</strong> - <code>spark_connect(method = "qubole")</code></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/spark-ds-workflow.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 </section>
 </section>
 <section id="import" class="level1">
 <h1>Import</h1>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/sparklyr-import.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="R push complete to Spark back to R collecting results. Also import from Source to Spark." width="501"></p>
+<p><img src="images/spark-import.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="R push complete to Spark back to R collecting results. Also import from Source to Spark." width="501"></p>
 </figure>
 </div>
 <p>Import data into Spark, not R</p>
@@ -571,7 +575,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/sparklyr-save-retrieve.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="ml_pipeline() to ft_dplyr_transformer to ft_bucketizer() to ml_linear_regression() to ml_fit() to ml_save()." width="501"></p>
+<p><img src="images/spark-save-retrieve.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="ml_pipeline() to ft_dplyr_transformer to ft_bucketizer() to ml_linear_regression() to ml_fit() to ml_save()." width="501"></p>
 </figure>
 </div>
 <p><a href="https://spark.posit.co/guides/pipelines">spark.posit.co/guides/pipelines</a></p>
