@@ -33,7 +33,8 @@ library(reticulate)
 
 (Optional) Build Python env to use.
 
-Add `knitr::knit_engires$set(python = reticulate::eng_python)` to the setup chunk to set up the reticulate Python engine (not required for knitr \>= 1.18).
+knitr versions >= 1.18 will automatically use the reticulate engine for Python chunks. See `?reticulate::eng_python` for a listing of supported knitr chunk options.
+
 
 ```{{{r}}}
 #| label: setup
@@ -407,7 +408,7 @@ Then suggest your instance to reticulate.
     py_available()
     ```
 
--   `py_discover_config()`: Return all detected versions of Python.
+-   `py_discover_config()`: Return the detected installation of Python.
     Use `py_config()` to check which version has been loaded.
 
     ```{r}
@@ -430,7 +431,7 @@ Then suggest your instance to reticulate.
 
 ### Create a Python env
 
--   `virtual_env(envname = NULL, ...)`: Create a new virtual environment.
+-   `virtualenv_create(envname = NULL, ...)`: Create a new virtual environment.
 
     ```{r}
     virtualenv_create("r-pandas")
@@ -490,32 +491,30 @@ Otherwise, to choose an instance of Python to bind to, reticulate scans the inst
         ```
 
 2.  The instances referenced by `use_` functions if called before `import()`.
-    Will fail silently if called after impoty unless `required = TRUE`.
 
-    -   `use_python(python, required = FALSE)`: Suggest a Python binary to use by path.
+    -   `use_python(python)`: Path to a Python binary.
 
         ```{r}
         use_python("usr/local/bin/python")
         ```
 
-    -   `use_virtualenv(virtualenv = NULL, required = FALSE)`: Suggest a Python virtualenv
+    -   `use_virtualenv(virtualenv)`: Path to _or_ name of a Python virtualenv.
 
         ```{r}
         use_virtualenv("~/myenv")
+        #| eval: false
+        use_virtualenv("~/myenv") # path to venv
+        use_virtualenv("r-keras") # name of venv
         ```
 
-    -   `use_condaenv(condaenv = NULL, conda = "auto", required = FALSE)`: Suggest a conda env to use.
+3.  A virtual env found in the current working directory: "./.venv" 
 
-        ```{r}
-        use_condaenv(condaenv = "r-nlp", conda = "/opt/anaconda3/bin/conda")
-        ```
+4. Environments that are named after the imported module. e.g. "~/.virtualenvs/r-scipy/" for `import("scipy")`
 
-3.  Within virtualenvs and conda envs that carry the same name as the imported module.
-    e.g. `~/anaconda/envs/nltk` for `import("nltk")`
+5. The package default virtualenv, "r-reticulate".
 
-4.  At the location of the Python binary discovered on the system PATH (i.e. `Sys.which("python")`)
+6.  At the location of the Python binary discovered on the system `PATH` (i.e. `Sys.which("python")`)
 
-5.  At customary locations for Python, e.g. `/usr/local/bin/python`, `/opt/local/bin/python…`
 
 ------------------------------------------------------------------------
 
