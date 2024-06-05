@@ -92,7 +92,8 @@ summary(model)
 plot(model)
 
 # compile (define loss and optimizer)
-model |> compile(
+model |> 
+  compile(
   loss = 'categorical_crossentropy',
   optimizer = optimizer_rmsprop(),
   metrics = c('accuracy')
