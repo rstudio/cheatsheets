@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -224,7 +224,7 @@ Translations (PDF)
 <section id="python-in-r-markdown" class="level2">
 <h2 class="anchored" data-anchor-id="python-in-r-markdown">Python in R Markdown</h2>
 <p>(Optional) Build Python env to use.</p>
-<p>Add <code>knitr::knit_engires$set(python = reticulate::eng_python)</code> to the setup chunk to set up the reticulate Python engine (not required for knitr &gt;= 1.18).</p>
+<p>knitr versions &gt;= 1.18 will automatically use the reticulate engine for Python chunks. See <code>?reticulate::eng_python</code> for a listing of supported knitr chunk options.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{{r}}</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: setup</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| include: false</span></span>
@@ -359,7 +359,7 @@ mpl.pyplot.show()
 <h2 class="anchored" data-anchor-id="object-conversion">Object Conversion</h2>
 <p><strong>Tip: To index Python objects begin at 0, use integers, e.g.&nbsp;<code>OL</code></strong></p>
 <p>Reticulate provides <strong>automatic</strong> built-in conversion between Python and R for many Python types.</p>
-<table class="table">
+<table class="caption-top table">
 <caption>Table of data types in R and their Python equivalents.</caption>
 <thead>
 <tr class="header">
@@ -555,7 +555,7 @@ Enter 'exit' or 'quit' to exit the REPL and return to R.
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_available</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
-<li><p><code>py_discover_config()</code>: Return all detected versions of Python. Use <code>py_config()</code> to check which version has been loaded.</p>
+<li><p><code>py_discover_config()</code>: Return the detected installation of Python. Use <code>py_config()</code> to check which version has been loaded.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_config</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
@@ -572,7 +572,7 @@ Enter 'exit' or 'quit' to exit the REPL and return to R.
 <section id="create-a-python-env" class="level3">
 <h3 class="anchored" data-anchor-id="create-a-python-env">Create a Python env</h3>
 <ul>
-<li><p><code>virtual_env(envname = NULL, ...)</code>: Create a new virtual environment.</p>
+<li><p><code>virtualenv_create(envname = NULL, ...)</code>: Create a new virtual environment.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">virtualenv_create</span>(<span class="st">"r-pandas"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
@@ -614,31 +614,31 @@ Enter 'exit' or 'quit' to exit the REPL and return to R.
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">RETICULATE_PYTHON =</span> <span class="st">"/usr/local/bin/python"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ul></li>
-<li><p>The instances referenced by <code>use_</code> functions if called before <code>import()</code>. Will fail silently if called after impoty unless <code>required = TRUE</code>.</p>
+<li><p>The instances referenced by <code>use_</code> functions if called before <code>import()</code>.</p>
 <ul>
-<li><p><code>use_python(python, required = FALSE)</code>: Suggest a Python binary to use by path.</p>
+<li><p><code>use_python(python)</code>: Path to a Python binary.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_python</span>(<span class="st">"usr/local/bin/python"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
-<li><p><code>use_virtualenv(virtualenv = NULL, required = FALSE)</code>: Suggest a Python virtualenv</p>
+<li><p><code>use_virtualenv(virtualenv)</code>: Path to <em>or</em> name of a Python virtualenv.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">"~/myenv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>use_condaenv(condaenv = NULL, conda = "auto", required = FALSE)</code>: Suggest a conda env to use.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_condaenv</span>(<span class="at">condaenv =</span> <span class="st">"r-nlp"</span>, <span class="at">conda =</span> <span class="st">"/opt/anaconda3/bin/conda"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">"~/myenv"</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">"~/myenv"</span>) <span class="co"># path to venv</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">"r-keras"</span>) <span class="co"># name of venv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ul></li>
-<li><p>Within virtualenvs and conda envs that carry the same name as the imported module. e.g.&nbsp;<code>~/anaconda/envs/nltk</code> for <code>import("nltk")</code></p></li>
-<li><p>At the location of the Python binary discovered on the system PATH (i.e.&nbsp;<code>Sys.which("python")</code>)</p></li>
-<li><p>At customary locations for Python, e.g.&nbsp;<code>/usr/local/bin/python</code>, <code>/opt/local/bin/python…</code></p></li>
+<li><p>A virtual env found in the current working directory: “./.venv”</p></li>
+<li><p>Environments that are named after the imported module. e.g.&nbsp;“~/.virtualenvs/r-scipy/” for <code>import("scipy")</code></p></li>
+<li><p>The package default virtualenv, “r-reticulate”.</p></li>
+<li><p>At the location of the Python binary discovered on the system <code>PATH</code> (i.e.&nbsp;<code>Sys.which("python")</code>)</p></li>
 </ol>
 <hr>
 <p>CC BY SA Posit Software, PBC • <a href="mailto:info@posit.co">info@posit.co</a> • <a href="https://posit.co">posit.co</a></p>
 <p>Learn more at <a href="https://rstudio.github.io/reticulate/">rstudio.github.io/reticulate</a>.</p>
-<p>Updated: 2024-05.</p>
+<p>Updated: 2024-06.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"reticulate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"reticulate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] '1.37.0'</code></pre>
 </div>
