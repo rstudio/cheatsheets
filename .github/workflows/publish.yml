@@ -25,7 +25,7 @@ jobs:
       - name: Install magick libs
         run: |
           sudo apt-get -qq update
-          sudo apt-get -y install libmagick++-dev libudunits2-dev libproj-dev
+          sudo apt-get -y install libmagick++-dev libudunits2-dev libproj-dev libgdal-dev
           sudo ldconfig /usr/local/lib
 
       - name: Install R Dependencies
