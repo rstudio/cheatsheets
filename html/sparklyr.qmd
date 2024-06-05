@@ -197,9 +197,9 @@ Supported in Databricks Connect v2
 Translates into Spark SQL statements
 
 ```{r}
-copy_to(sc, mtcars) %>%
-  mutate(trm = ifelse(am == 0, "auto", "man")) %>%
-  group_by(trm) %>%
+copy_to(sc, mtcars) |>
+  mutate(trm = ifelse(am == 0, "auto", "man")) |>
+  group_by(trm) |>
   summarise_all(mean)
 ```
 
@@ -258,10 +258,10 @@ copy_to(sc, mtcars) %>%
 Supported in Databricks Connect v2
 
 ```{r}
-copy_to(sc, mtcars) %>%
-  group_by(cyl) %>%
-  summarise(mpg_m = mean(mpg)) %>% # Summarize in Spark
-  collect() %>%                    # Collect results in R
+copy_to(sc, mtcars) |>
+  group_by(cyl) |>
+  summarise(mpg_m = mean(mpg)) |> # Summarize in Spark
+  collect() |>                    # Collect results in R
   ggplot() +
   geom_col(aes(cyl, mpg_m))        # Create plot
 ```
@@ -371,7 +371,7 @@ spark_apply(
 ```
 
 ```{r}
-copy_to(sc, mtcars) %>%
+copy_to(sc, mtcars) |>
   spark_apply(
     nrow, # R only function
     group_by = "am", 
