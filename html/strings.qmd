@@ -161,7 +161,7 @@ see <- function(rx) str_view("abc ABC 123\t.!?\\(){}\n", rx)
     ```
 
 -   `str_split_fixed(string, pattern, n)`: Split a vector of strings into a matrix of substrings (splitting at occurrences of a pattern match).
-    Also `str_split()` to return a list of substrings and `str_split_n()` to return the nth substring.
+    Also `str_split()` to return a list of substrings and `str_split_i()` to return the ith substring.
 
     ```{r}
     str_split_fixed(sentences, " ", n = 3)
