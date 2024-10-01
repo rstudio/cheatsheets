@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Posit Team :: Cheatsheet</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../html/images/posit-favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../html/css/cheatsheet.css">
+</head>
+
+<body class="floating nav-fixed slimcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="https://posit.co" class="navbar-brand navbar-brand-logo">
+    <img src="../html/images/posit-logo.png" alt="posit logo" class="navbar-logo">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Posit Cheatsheets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../contributed-cheatsheets.html"> 
+<span class="menu-text">Contributed Cheatsheets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../translations.html"> 
+<span class="menu-text">Translated Cheatsheets</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rstudio/cheatsheets"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#opening-a-new-session-in-posit-workbench" id="toc-opening-a-new-session-in-posit-workbench" class="nav-link" data-scroll-target="#opening-a-new-session-in-posit-workbench">1. Opening a New Session in Posit Workbench</a></li>
+  <li><a href="#configure-package-repositories" id="toc-configure-package-repositories" class="nav-link" data-scroll-target="#configure-package-repositories">2. Configure Package Repositories</a>
+  <ul class="collapse">
+  <li><a href="#check-current-repositories" id="toc-check-current-repositories" class="nav-link" data-scroll-target="#check-current-repositories">Check Current Repositories</a></li>
+  <li><a href="#configure-repositories-with-posit-package-manager" id="toc-configure-repositories-with-posit-package-manager" class="nav-link" data-scroll-target="#configure-repositories-with-posit-package-manager">Configure Repositories with Posit Package Manager</a></li>
+  <li><a href="#obtaining-package-manager-url" id="toc-obtaining-package-manager-url" class="nav-link" data-scroll-target="#obtaining-package-manager-url">Obtaining Package Manager URL</a></li>
+  </ul></li>
+  <li><a href="#access-your-data" id="toc-access-your-data" class="nav-link" data-scroll-target="#access-your-data">3. Access Your Data</a>
+  <ul class="collapse">
+  <li><a href="#database-interface-dbi-example-in-r" id="toc-database-interface-dbi-example-in-r" class="nav-link" data-scroll-target="#database-interface-dbi-example-in-r">Database Interface (DBI) Example in R</a></li>
+  <li><a href="#python-database-api-db-api-example-in-python" id="toc-python-database-api-db-api-example-in-python" class="nav-link" data-scroll-target="#python-database-api-db-api-example-in-python">Python Database API (DB-API) Example in Python</a></li>
+  <li><a href="#connecting-to-a-database-using-open-database-connectivity-odbc" id="toc-connecting-to-a-database-using-open-database-connectivity-odbc" class="nav-link" data-scroll-target="#connecting-to-a-database-using-open-database-connectivity-odbc">Connecting to a Database using Open Database Connectivity (ODBC)</a></li>
+  <li><a href="#posit-professional-odbc-drivers" id="toc-posit-professional-odbc-drivers" class="nav-link" data-scroll-target="#posit-professional-odbc-drivers">Posit Professional ODBC Drivers</a></li>
+  </ul></li>
+  <li><a href="#run-your-code" id="toc-run-your-code" class="nav-link" data-scroll-target="#run-your-code">4. Run your Code</a></li>
+  <li><a href="#supported-content-on-posit-connect" id="toc-supported-content-on-posit-connect" class="nav-link" data-scroll-target="#supported-content-on-posit-connect">5. Supported Content on Posit Connect</a>
+  <ul class="collapse">
+  <li><a href="#documents" id="toc-documents" class="nav-link" data-scroll-target="#documents">Documents</a></li>
+  <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">Applications</a></li>
+  <li><a href="#apis" id="toc-apis" class="nav-link" data-scroll-target="#apis">APIs</a></li>
+  <li><a href="#pins" id="toc-pins" class="nav-link" data-scroll-target="#pins">Pins</a></li>
+  </ul></li>
+  <li><a href="#publishing-content-to-posit-connect" id="toc-publishing-content-to-posit-connect" class="nav-link" data-scroll-target="#publishing-content-to-posit-connect">6. Publishing Content to Posit Connect</a></li>
+  <li><a href="#share-and-control-content-on-posit-connect" id="toc-share-and-control-content-on-posit-connect" class="nav-link" data-scroll-target="#share-and-control-content-on-posit-connect">7. Share and Control Content on Posit Connect</a>
+  <ul class="collapse">
+  <li><a href="#info-and-content-metadata" id="toc-info-and-content-metadata" class="nav-link" data-scroll-target="#info-and-content-metadata">Info and Content Metadata</a></li>
+  <li><a href="#access-controls" id="toc-access-controls" class="nav-link" data-scroll-target="#access-controls">Access Controls</a></li>
+  <li><a href="#runtime-settings" id="toc-runtime-settings" class="nav-link" data-scroll-target="#runtime-settings">Runtime Settings</a></li>
+  <li><a href="#schedule-and-email" id="toc-schedule-and-email" class="nav-link" data-scroll-target="#schedule-and-email">Schedule and Email</a></li>
+  <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags">Tags</a></li>
+  <li><a href="#environment-variables" id="toc-environment-variables" class="nav-link" data-scroll-target="#environment-variables">Environment Variables</a></li>
+  </ul></li>
+  <li><a href="#other-resources" id="toc-other-resources" class="nav-link" data-scroll-target="#other-resources">Other Resources</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/rstudio/cheatsheets/edit/main/html/posit-team.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Posit Team :: Cheatsheet</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+
+<div class="no-row-height column-margin column-container"><div class="">
+<img src="images/logo-team-full-color.svg" height="50" alt="Posit Team logo with the Posit orange and blue logo on the left followed by Posit Team text.">
+<br><br>
+</div><div class="cell">
+<a href="../posit-team.pdf">
+<p>
+<i class="bi bi-file-pdf"></i> Download PDF
+</p>
+</a><p><a href="../posit-team.pdf"><img src="../pngs/posit-team.png" width="200" alt=""> </a> <br><br></p>
+</div></div>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Posit Team is the bundle of Posit’s most popular products including: Workbench, Connect, and Package Manager. Together, this bundle delivers an end-to-end toolchain for data science teams committed to R and Python, improving every step of a data scientist’s workflow, from developing insights, to deploying data products, to managing environments.</p>
+<ul>
+<li><p><strong>Posit Workbench:</strong> Development environment for creating insights.</p></li>
+<li><p><strong>Posit Connect:</strong> Hosting environment for accessing and sharing insights.</p></li>
+<li><p><strong>Posit Package Manager:</strong> R and Python package repository management.</p></li>
+</ul>
+</section>
+<section id="opening-a-new-session-in-posit-workbench" class="level2">
+<h2 class="anchored" data-anchor-id="opening-a-new-session-in-posit-workbench">1. Opening a New Session in Posit Workbench</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/posit-workbench-session.png" class="img-fluid figure-img"></p>
+<figcaption>Posit Workbench - New Session Options</figcaption>
+</figure>
+</div>
+<ul>
+<li><p>Current integrated development environments (IDEs) include <strong>Jupyter Notebook, JupyterLab, RStudio Pro,</strong> and <strong>Visual Studio Code</strong>.</p></li>
+<li><p>Cluster options may vary depending on how Posit Workbench is configured in your environment.</p></li>
+</ul>
+</section>
+<section id="configure-package-repositories" class="level2">
+<h2 class="anchored" data-anchor-id="configure-package-repositories">2. Configure Package Repositories</h2>
+<section id="check-current-repositories" class="level3">
+<h3 class="anchored" data-anchor-id="check-current-repositories">Check Current Repositories</h3>
+<p>Within an R session, you can check your R repositories by running:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="st">"repos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For Python, you can use <code>pip</code> to list your current Python repositories:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> config list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="configure-repositories-with-posit-package-manager" class="level3">
+<h3 class="anchored" data-anchor-id="configure-repositories-with-posit-package-manager">Configure Repositories with Posit Package Manager</h3>
+<p>To set your R repositories to Posit Package Manager, run:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repos =</span> <span class="fu">c</span>(<span class="at">CRAN =</span> <span class="st">"https://your-package-manager-url.com"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To ensure this persists across sessions, add this line to your <code>.Rprofile</code> file.</p>
+</div>
+</div>
+<p>To set your Python repositories to Posit Package Manager, run:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> config set global.index-url https://your-package-manager-url.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To ensure this persists across sessions, add this line to your <code>.bashrc</code> or <code>.bash_profile</code> file.</p>
+</div>
+</div>
+</section>
+<section id="obtaining-package-manager-url" class="level3">
+<h3 class="anchored" data-anchor-id="obtaining-package-manager-url">Obtaining Package Manager URL</h3>
+<p>To obtain the URL for your Posit Package Manager, click the <code>SETUP</code> button within the user interface of Posit Package Manager and scroll to <strong>Repository URL:</strong>. You can also leverage Posit Public Package Manager for CRAN, PyPI, and Bioconductor packages: <a href="https://p3m.dev/" class="uri">https://p3m.dev/</a></p>
+</section>
+</section>
+<section id="access-your-data" class="level2">
+<h2 class="anchored" data-anchor-id="access-your-data">3. Access Your Data</h2>
+<p>Access your data within Posit Team no matter where it lives and what format it is in, including:</p>
+<ul>
+<li><p><strong>Flat files:</strong> examples including <code>data.csv</code>, <code>data.txt</code>, <code>data.parquet</code>.</p></li>
+<li><p><strong>APIs:</strong> Interact with APIs using packages such as {requests} in Python or {httr2} and {jsonlite} in R.</p></li>
+<li><p><strong>Pins:</strong> Store and retrieve Python/R objects including data and models.</p></li>
+<li><p><strong>Databases:</strong> Connect to a variety of database types using DBI/DB-API/ODBC.</p></li>
+</ul>
+<section id="database-interface-dbi-example-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="database-interface-dbi-example-in-r">Database Interface (DBI) Example in R</h3>
+<p>Below is an example of connecting to a PostgreSQL database using the DBI package in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  RPostgres<span class="sc">::</span><span class="fu">Postgres</span>(),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">hostname =</span> <span class="st">"db.company.com"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">port =</span> <span class="dv">5432</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="python-database-api-db-api-example-in-python" class="level3">
+<h3 class="anchored" data-anchor-id="python-database-api-db-api-example-in-python">Python Database API (DB-API) Example in Python</h3>
+<p>Below is an example of connecting to a PostgreSQL database using the <code>psycopg2</code> package in Python:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>con <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">'example.db'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="connecting-to-a-database-using-open-database-connectivity-odbc" class="level3">
+<h3 class="anchored" data-anchor-id="connecting-to-a-database-using-open-database-connectivity-odbc">Connecting to a Database using Open Database Connectivity (ODBC)</h3>
+<p>Below is an example of connecting to a PostgreSQL database using the <code>odbc</code> package in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(odbc<span class="sc">::</span><span class="fu">odbc</span>(),</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">driver =</span> <span class="st">"PostgreSQL Driver"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">database =</span> <span class="st">"test_db"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">UID =</span> <span class="fu">Sys.getenv</span>(<span class="st">"DB_USER"</span>),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">PWD =</span> <span class="fu">Sys.getenv</span>(<span class="st">"DB_PASSWORD"</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">host =</span> <span class="st">"localhost"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">port =</span> <span class="dv">5432</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Below is an example of connecting to a PostgreSQL database using the <code>pyodbc</code> package in Python:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>con <span class="op">=</span> pyodbc.<span class="ex">connect</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  driver <span class="op">=</span> <span class="st">'PostgreSQL'</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  database <span class="op">=</span> <span class="st">'test_db'</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  server <span class="op">=</span> <span class="st">'localhost'</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  port <span class="op">=</span> <span class="dv">5432</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  uid <span class="op">=</span> os.getenv(<span class="st">'DB_USER'</span>),</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  pwd <span class="op">=</span> os.getenv(<span class="st">'DB_PASSWORD'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="posit-professional-odbc-drivers" class="level3">
+<h3 class="anchored" data-anchor-id="posit-professional-odbc-drivers">Posit Professional ODBC Drivers</h3>
+<p>A full list of Posit provided professional ODBC drivers can be found here: <a href="https://docs.posit.co/pro-drivers/" class="uri">https://docs.posit.co/pro-drivers/</a></p>
+</section>
+</section>
+<section id="run-your-code" class="level2">
+<h2 class="anchored" data-anchor-id="run-your-code">4. Run your Code</h2>
+<p>Posit Workbench includes multiple options for running your R and Python code, including:</p>
+<ul>
+<li><p>Support for multiple R and Python versions.</p></li>
+<li><p>Support for virtual environments (e.g., <code>venv</code>) and project-oriented workflows.</p></li>
+<li><p>Submit long-running Python/R jobs to Posit Workbench server to run in independent sessions using <strong>Workbench Jobs</strong> within RStudio Pro (<a href="https://docs.posit.co/ide/server-pro/user/rstudio-pro/guide/workbench-jobs.html" class="uri">https://docs.posit.co/ide/server-pro/user/rstudio-pro/guide/workbench-jobs.html</a>) and VS Code (<a href="https://docs.posit.co/ide/server-pro/user/vs-code/guide/workbench-jobs.html" class="uri">https://docs.posit.co/ide/server-pro/user/vs-code/guide/workbench-jobs.html</a>).</p></li>
+</ul>
+</section>
+<section id="supported-content-on-posit-connect" class="level2">
+<h2 class="anchored" data-anchor-id="supported-content-on-posit-connect">5. Supported Content on Posit Connect</h2>
+<p>Currently supported content on Posit Connect includes:</p>
+<section id="documents" class="level3">
+<h3 class="anchored" data-anchor-id="documents">Documents</h3>
+<ul>
+<li><p>Quarto</p></li>
+<li><p>R Markdown</p></li>
+<li><p>Jupyter Notebooks</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Most documents are considered “static.” However, documents created with Voilà or R Markdown that include Shiny components are considered “interactive.”</p>
+</div>
+</div></li>
+</ul>
+</section>
+<section id="applications" class="level3">
+<h3 class="anchored" data-anchor-id="applications">Applications</h3>
+<ul>
+<li><p>Shiny (R and Python)</p></li>
+<li><p>Bokeh</p></li>
+<li><p>Streamlit</p></li>
+<li><p>Dash</p></li>
+</ul>
+</section>
+<section id="apis" class="level3">
+<h3 class="anchored" data-anchor-id="apis">APIs</h3>
+<ul>
+<li><p>Plumber</p></li>
+<li><p>FastAPI</p></li>
+<li><p>Flask</p></li>
+<li><p>Tensorflow</p></li>
+<li><p>plumbertableau</p></li>
+<li><p>FastAPI Tableau</p></li>
+<li><p>Vetiver</p></li>
+</ul>
+</section>
+<section id="pins" class="level3">
+<h3 class="anchored" data-anchor-id="pins">Pins</h3>
+<ul>
+<li>Pins</li>
+</ul>
+</section>
+</section>
+<section id="publishing-content-to-posit-connect" class="level2">
+<h2 class="anchored" data-anchor-id="publishing-content-to-posit-connect">6. Publishing Content to Posit Connect</h2>
+<p>Connect supports multiple methods for publishing content, including:</p>
+<ul>
+<li><strong><code>rsconnect</code>:</strong> Publish content directly from R using the rsconnect R package.</li>
+<li><strong>Command Line Interface (CLI):</strong> Publish content using the CLI within the <code>rsconnect-python</code> package.</li>
+<li><strong>Push Button Deployment:</strong> Publish content with the click of a button using push button deployment. This is natively available within RStudio Pro and Jupyter Notebooks. You can also access push button deployment using the <strong>Posit Publisher</strong> extension in Visual Studio Code.</li>
+<li><strong>Git:</strong> Publish directly from a Git repository</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For Git deployment, content will automatically fetch from the associated remote Git repository and re-deploy. This allows for integration with Git-centric workflows and continuous deployment automation.</p>
+</div>
+</div>
+</section>
+<section id="share-and-control-content-on-posit-connect" class="level2">
+<h2 class="anchored" data-anchor-id="share-and-control-content-on-posit-connect">7. Share and Control Content on Posit Connect</h2>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your Posit Connect configuration and license may restrict which options are available to your content.</p>
+</div>
+</div>
+<p>As the owner of content published to Posit Connect, you have access to the <em>content</em> <em>settings</em>. These settings include:</p>
+<section id="info-and-content-metadata" class="level3">
+<h3 class="anchored" data-anchor-id="info-and-content-metadata">Info and Content Metadata</h3>
+<p>Easily modify the content’s title and metadata. You can also add a thumbnail to your content and get a glimpse into usage data.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Posit Connect API Cookbook contains numerous recipes for accessing and reporting usage data: <a href="https://pos.it/cookbook" class="uri">https://pos.it/cookbook</a>.</p>
+</div>
+</div>
+</section>
+<section id="access-controls" class="level3">
+<h3 class="anchored" data-anchor-id="access-controls">Access Controls</h3>
+<p>Control who has access to your content. Options include:</p>
+<ul>
+<li><p><strong>Anyone - no login required:</strong> Content is public and open to anyone.</p></li>
+<li><p><strong>All users - login required:</strong> Content available to anyone that can access Posit Connect.</p></li>
+<li><p><strong>Specific users or groups:</strong> Content is available to specific users (or user groups) defined by the content’s owner.</p></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To share content on Posit Connect with others, all you need to share is the <strong>Content URL</strong> which can be customized.</p>
+</div>
+</div>
+</section>
+<section id="runtime-settings" class="level3">
+<h3 class="anchored" data-anchor-id="runtime-settings">Runtime Settings</h3>
+<p>Runtime settings allow publishers to easily tune and scale their applications and APIs. These settings include:</p>
+<ul>
+<li><p><strong>Processes and Connections:</strong> Interactive or scheduled content requires a <strong>process</strong> to execute the code. Examples include an R or Python process. Depending on the number of users accessing your content (<strong>Connections</strong>), you can modify the maximum and minimum number of processes for your content.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Content will remain running if the minimum processes is set to greater than 0. This is great for content with a long start up time.</p>
+</div>
+</div></li>
+<li><p><strong>Timeout Configurations:</strong> Control the time thresholds for content startup, idle time, and time since last data sent/received.</p></li>
+<li><p><strong>Process Execution:</strong> Content is initially configured to run on the server as a Unix user configured by your Posit Connect administrator, defaulting to the <code>rstudio-connect</code> user. Your content may need to run as a different Unix user due to resource permissions and constraints.</p></li>
+<li><p><strong>Execution Environment:</strong> Specify the image used to create the content execution container.</p></li>
+<li><p><strong>CPU and RAM Configurations:</strong> Easily modify initial and max amount of CPU and RAM content can use.</p></li>
+<li><p><strong>GPU Configurations:</strong> Your administrator can set application defaults or upper limits for both AMD and NVIDIA GPUs.</p></li>
+<li><p><strong>Environment Management:</strong> Administrators and content owners can configure the application-level default environment management strategy for a piece of content</p></li>
+</ul>
+</section>
+<section id="schedule-and-email" class="level3">
+<h3 class="anchored" data-anchor-id="schedule-and-email">Schedule and Email</h3>
+<p>Static documents that were published with accompanying source code can be configured to execute on a schedule of your choosing including:</p>
+<ul>
+<li><p>By Minute</p></li>
+<li><p>Hourly</p></li>
+<li><p>Daily</p></li>
+<li><p>Weekly</p></li>
+<li><p>Semimonthly</p></li>
+<li><p>Monthly</p></li>
+<li><p>Yearly</p></li>
+</ul>
+<p>Scheduled reports can be configured to send an email to targeted recipients upon successful completion.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can customize the email sent by Connect using R Markdown (<a href="https://pos.it/rmd_email">pos.it/rmd_email</a>) and Quarto (<a href="https://pos.it/qmd_email">pos.it/qmd_email</a>).</p>
+</div>
+</div>
+</section>
+<section id="tags" class="level3">
+<h3 class="anchored" data-anchor-id="tags">Tags</h3>
+<p>Tags help organize, discover, and filter content more easily on the Connect dashboard. Please work with your administrator to establish a tag schema that best suits your team.</p>
+</section>
+<section id="environment-variables" class="level3">
+<h3 class="anchored" data-anchor-id="environment-variables">Environment Variables</h3>
+<p>Securely pass configuration options to your content on Posit Connect as environment variables including <strong>API Keys</strong> and <strong>Passwords</strong>.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Always avoid hard-coding API keys, passwords, or tokens in the source code of content published to Posit Connect. This is a major security concern!</p>
+</div>
+</div>
+</section>
+</section>
+<section id="other-resources" class="level2">
+<h2 class="anchored" data-anchor-id="other-resources">Other Resources</h2>
+<ul>
+<li><p>Questions about sales and licensing? Contact sales@posit.co</p></li>
+<li><p>Experiencing technical issues? Contact support@posit.co</p></li>
+<li><p>Other questions? Contact info@posit.co</p></li>
+<li><p>Posit Team documentation: <a href="https://docs.posit.co" class="uri">https://docs.posit.co</a></p></li>
+<li><p>Posit Team release notes: <a href="https://docs.posit.co/release-notes.html" class="uri">https://docs.posit.co/release-notes.html</a></p></li>
+<li><p><strong>Posit Community</strong>: Posit Community is an open forum for any open source or Posit Team quetsions: <a href="https://forum.posit.co" class="uri">https://forum.posit.co</a></p></li>
+<li><p><strong>Monthly End-to-End Workflow Demos with Posit Team</strong>: Join our monthly Posit Team Demos on the last Wednesday of every month: <a href="https://pos.it/team-demo" class="uri">https://pos.it/team-demo</a></p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/rstudio\.github\.io\/cheatsheets\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/rstudio/cheatsheets/edit/main/html/posit-team.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
