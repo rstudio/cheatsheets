@@ -40,7 +40,7 @@ see <- function(rx) str_view("abc ABC 123\t.!?\\(){}\n", rx)
     Also `str_like()`.
 
     ```{r}
-    str(fruit, "a")
+    str_detect(fruit, "a")
     ```
 
 -   `str_starts(string, pattern, negate = FALSE)`: Detect the presence of a pattern match at the beginning of a string.
