@@ -2,90 +2,90 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/lubridate.html</loc>
-    <lastmod>2024-10-01T00:49:45.815Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.458Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/reticulate.html</loc>
-    <lastmod>2024-10-01T00:49:45.815Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.458Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/tidyr.html</loc>
-    <lastmod>2024-10-01T00:49:45.816Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.462Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/data-transformation.html</loc>
-    <lastmod>2024-10-01T00:49:45.791Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.434Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/shiny-python.html</loc>
-    <lastmod>2024-10-01T00:49:45.816Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.458Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/data-visualization.html</loc>
-    <lastmod>2024-10-01T00:49:45.791Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.434Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/sparklyr.html</loc>
-    <lastmod>2024-10-01T00:49:45.816Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.458Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/posit-team.html</loc>
-    <lastmod>2024-10-01T00:49:45.815Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.458Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/keras.html</loc>
-    <lastmod>2024-10-01T00:49:45.815Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.458Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/translations.html</loc>
-    <lastmod>2024-10-01T00:49:47.517Z</lastmod>
+    <lastmod>2024-10-25T12:20:00.350Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/index.html</loc>
-    <lastmod>2024-10-01T00:49:45.817Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.462Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/contributed-cheatsheets.html</loc>
-    <lastmod>2024-10-01T00:49:45.738Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.374Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/rstudio-ide.html</loc>
-    <lastmod>2024-10-01T00:49:45.816Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.458Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/quarto.html</loc>
-    <lastmod>2024-10-01T00:49:45.815Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.458Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/rmarkdown.html</loc>
-    <lastmod>2024-10-01T00:49:45.816Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.458Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/package-development.html</loc>
-    <lastmod>2024-10-01T00:49:45.815Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.458Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/shiny.html</loc>
-    <lastmod>2024-10-01T00:49:45.816Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.458Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/plumber.html</loc>
-    <lastmod>2024-10-01T00:49:45.815Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.458Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/factors.html</loc>
-    <lastmod>2024-10-01T00:49:45.791Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.434Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/purrr.html</loc>
-    <lastmod>2024-10-01T00:49:45.815Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.458Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/strings.html</loc>
-    <lastmod>2024-10-01T00:49:45.816Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.462Z</lastmod>
   </url>
   <url>
     <loc>https://rstudio.github.io/cheatsheets/html/data-import.html</loc>
-    <lastmod>2024-10-01T00:49:45.791Z</lastmod>
+    <lastmod>2024-10-25T12:19:58.434Z</lastmod>
   </url>
 </urlset>
