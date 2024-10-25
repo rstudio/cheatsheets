@@ -20,6 +20,7 @@ listing:
     - "plumber.qmd"
     - "reticulate.qmd"
     - "sparklyr.qmd"
+    - "posit-team.qmd"
   type: grid
   image-height: "200px"
   sort: false
