@@ -6,6 +6,8 @@ Cheatsheets contributed by the community.
 Several of these cheatsheets also have non-English translations, available on the [Translated Cheatsheets](translations.html) page.
 
 ::: {layout-ncol="3" layout-valign="bottom"}
+[![admiral](pngs/admiral.png){alt="Download admiral pdf cheatsheet"}](admiral.pdf)
+
 [![arrow](pngs/arrow.png){alt="Download arrow pdf cheatsheet"}](arrow.pdf)
 
 [![Base R](pngs/base-r.png){alt="Download Base R pdf cheatsheet"}](base-r.pdf)
