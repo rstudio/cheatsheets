@@ -104,6 +104,8 @@ Several of these cheatsheets also have non-English translations, available on th
 
 [![slackr](pngs/slackr.png){alt="Download slackr pdf cheatsheet"}](slackr.pdf)
 
+[![srvyr](pngs/srvyr.png){alt="Download srvyr pdf cheatsheet"}](srvyr.pdf)
+
 [![stata2r](pngs/stata2r.png){alt="Download stata2r pdf cheatsheet"}](stata2r.pdf)
 
 [![survminer](pngs/survminer.png){alt="Download survminer pdf cheatsheet"}](survminer.pdf)
