@@ -33,8 +33,7 @@ library(shiny)
 
 Users can manipulate the UI, which will cause the server to update the UI's display (by running R code).
 
-Save your template as `app.R`.
-Keep your app in a directory along with optional extra files.
+Save your template as `app.R`. Keep your app in a directory along with optional extra files.
 
 -   **app-name:** The directory name is the app name
 -   **app.R**
@@ -73,19 +72,18 @@ server <- function(input, output, session) {
 shinyApp(ui = ui, server = server)
 ```
 
-See annotated examples of Shiny apps by running `runExample(<example name>)`.
-Run `runExample()` with no arguments for a list of example names.
+See annotated examples of Shiny apps by running `runExample(<example name>)`. Run `runExample()` with no arguments for a list of example names.
 
 ## Share
 
 Share your app in three ways:
 
-1.  Host it on [shinyapps.io](shinyapps.io), a cloud based service from Posit. To deploy Shiny apps:
-    -   Create a free or professional account at [shinyapps.io](shinyapps.io)
+1.  Host it on [shinyapps.io](https://www.shinyapps.io/), a cloud based service from Posit. To deploy Shiny apps:
+    -   Create a free or professional account at [shinyapps.io](https://www.shinyapps.io/)
 
     -   Click the Publish icon in RStudio IDE, or run: `rsconnect::deployApp("<path to directory>")`
-2.  Purchase Posit Connect, a publishing platform for R and Python. [posit.co/products/enterprise/connect/](posit.co/products/enterprise/connect/)
-3.  Build your own Shiny Server. [posit.co/products/open-source/shinyserver/](posit.co/products/open-source/shinyserver/)
+2.  Purchase Posit Connect, a publishing platform for R and Python. [posit.co/products/enterprise/connect/](https://posit.co/products/enterprise/connect/)
+3.  Build your own Shiny Server. [posit.co/products/open-source/shinyserver/](https://posit.co/products/open-source/shiny-server/)
 
 ## Outputs
 
@@ -112,15 +110,13 @@ Share your app in three ways:
 
 : Table of render\*() functions and their associated \*Output() functions.
 
-These are the core output types.
-See [htmlwidgets.org](https://www.htmlwidgets.org/) for many more options.
+These are the core output types. See [htmlwidgets.org](https://www.htmlwidgets.org/) for many more options.
 
 ## Inputs
 
 Collect values from the user.
 
-Access the current value of an input object with `input$<inputId>`.
-Input values are **reactive**.
+Access the current value of an input object with `input$<inputId>`. Input values are **reactive**.
 
 -   `actionButton(inputId, label, icon, width, ...)`
 
@@ -152,8 +148,7 @@ Input values are **reactive**.
 
 ## Reactivity
 
-Reactive values work together with reactive functions.
-Call a reactive value from within the arguments of one of these functions to avoid the error `Operation not allowed without an active reactive context`**.**
+Reactive values work together with reactive functions. Call a reactive value from within the arguments of one of these functions to avoid the error `Operation not allowed without an active reactive context`**.**
 
 ![](images/reactivity-diagram.png){fig-align="center"}
 
@@ -265,9 +260,7 @@ Call a reactive value from within the arguments of one of these functions to avo
 
 ### Render Reactive Output
 
--   `render*()` functions: (see front page) Builds an object to display.
-    Will rerun code in body to rebuild the object whenever a reactive value in the code changes.
-    Save the results to `output$<outputId>`.
+-   `render*()` functions: (see front page) Builds an object to display. Will rerun code in body to rebuild the object whenever a reactive value in the code changes. Save the results to `output$<outputId>`.
 
     ```{r}
     library(shiny)
@@ -291,8 +284,7 @@ Call a reactive value from within the arguments of one of these functions to avo
 
 -   `observe(x, env)`: Creates an observer from the given expression.
 
--   `observeEvent(eventExpr, handlerExpr, event.env, event.quoted, handler.env, handler.quoted, ..., label, suspended, priority, domain, autoDestroy, ignoreNULL, ignoreInit, once)`: Runs code in 2nd argument when reactive values in 1st argument change.
-    Alternative to ``` observe``() ```.
+-   `observeEvent(eventExpr, handlerExpr, event.env, event.quoted, handler.env, handler.quoted, ..., label, suspended, priority, domain, autoDestroy, ignoreNULL, ignoreInit, once)`: Runs code in 2nd argument when reactive values in 1st argument change. Alternative to ``` observe``() ```.
 
     ```{r}
     library(shiny)
@@ -310,8 +302,7 @@ Call a reactive value from within the arguments of one of these functions to avo
 
 ### Remove Reactivity
 
--   `isolate(expr)`: Runs a code block.
-    Returns a **non-reactive** copy of the results.
+-   `isolate(expr)`: Runs a code block. Returns a **non-reactive** copy of the results.
 
     ```{r}
     library(shiny)
@@ -354,14 +345,11 @@ Returns HTML:
 </div>
 ```
 
-Add static HTML elements with **tags**, a list of functions that parallel common HTML tags, e.g. `tags$a()`.
-Unnamed arguments will be passed into the tag; named arguments will become tag attributes.
+Add static HTML elements with **tags**, a list of functions that parallel common HTML tags, e.g. `tags$a()`. Unnamed arguments will be passed into the tag; named arguments will become tag attributes.
 
-Run `names(tags)` for a complete list.
-`tags$h1("Header")` -\> `<h1>Header</h1>`
+Run `names(tags)` for a complete list. `tags$h1("Header")` -\> `<h1>Header</h1>`
 
-The most common tags have wrapper functions.
-You do not need to prefix their names with `tags$`.
+The most common tags have wrapper functions. You do not need to prefix their names with `tags$`.
 
 ```{r}
 ui <- fluidPage(
