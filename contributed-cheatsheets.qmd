@@ -122,6 +122,10 @@ Several of these cheatsheets also have non-English translations, available on th
 
 [![vegan](pngs/vegan.png){alt="Download vegan pdf cheatsheet"}](vegan.pdf)
 
+[![vivainsights R](pngs/vivainsights_r.png){alt="Download vivainsights R pdf cheatsheet"}](vivainsights_r.pdf)
+
+[![vivainsights Python](pngs/vivainsights_py.png){alt="Download vivainsights Python pdf cheatsheet"}](vivainsights_py.pdf)
+
 [![vtree](pngs/vtree.png){alt="Download vtree pdf cheatsheet"}](vtree.pdf)
 
 [![xplain](pngs/xplain.png){alt="Download xplain pdf cheatsheet"}](xplain.pdf)
