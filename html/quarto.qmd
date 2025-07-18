@@ -48,7 +48,7 @@ translation_list(sheet_name)
 
 Get Quarto from: <https://quarto.org/docs/download/>
 
-Or, use version **bundled with RStudio.**
+Or, use version **bundled with [RStudio](https://posit.co/products/open-source/rstudio/) or [Positron](https://positron.posit.co).**
 
 ### Get Started
 
@@ -108,7 +108,7 @@ penguins |>
 
     **RStudio**: Help \> Markdown Quick Reference
 
-    RStudio & VS Code: Use the **Visual Editor**
+    RStudio, Positron and VS Code: Use the **Visual Editor**
 
     ``` markdown
     ## Meet the penguins
@@ -142,7 +142,8 @@ penguins |>
 
 ### Use a tool with a rich authoring experience
 
-[RStudio](https://posit.co/products/open-source/rstudio/), or\
+[RStudio](https://posit.co/products/open-source/rstudio/), \
+[Positron](https://positron.posit.co) with bundled [Quarto extension](https://open-vsx.org/extension/quarto/quarto), or\
 [Visual Studio Code](https://code.visualstudio.com/) + [Quarto extension](https://marketplace.visualstudio.com/items?itemName=quarto.quarto)
 
 -   **Run** code cells as you write
@@ -172,7 +173,7 @@ quarto preview hello.qmd
 
 RStudio: Use **Render** button ![](images/quarto-render-button.png){fig-alt="Icon from the Render button in RStudio" height="1.5em"}
 
-VS Code: Use **Preview** button ![](images/quarto-preview-button.svg){fig-alt="Icon from the Preview button in VS Code"}
+Positron and VS Code: Use **Preview** button ![](images/quarto-preview-button.svg){fig-alt="Icon from the Preview button in Positron and VS Code"}
 
 The resulting HTML/PDF/MS Word/etc.
 document will be created and saved in the same directory as the source .qmd file.
@@ -204,17 +205,13 @@ When you render a document, Quarto:
 quarto publish {venue} hello.qmd
 ```
 
-`{venue}`: quarto-pub, connect, gh-pages, netlify, confluence, posit-cloud
-
-RStudio: Use **Publish** button ![](images/quarto-rstudio-publish.png){fig-alt="Publish button icon in RStudio" width="10%"}
+`{venue}`: quarto-pub, connect, gh-pages, netlify, confluence
 
 -   [**Quarto Pub**](https://quartopub.com/) Free publishing service for Quarto content.
 
--   [**Posit Cloud**](https://posit.cloud/) Cloud-hosted, control access to project and output.
-    ![](images/quarto-rstudio-publish.png){fig-alt="Push button publishing from RStudio" width="10%"}
-
--   [**Posit Connect**](https://posit.co/products/enterprise/connect/) Org-hosted, control access, schedule updates.
-    ![](images/quarto-rstudio-publish.png){fig-alt="Push button publishing from RStudio" width="10%"}
+-   [**Posit Connect**](https://posit.co/products/enterprise/connect/) Org-hosted, control access, schedule updates.  
+    RStudio: Use **Publish** button ![](images/quarto-rstudio-publish.png){fig-alt="Publish button icon in RStudio" width="10%"}  
+    Positron and VS Code: Use [Posit Publisher extension](https://open-vsx.org/extension/posit/publisher).
 
 ## Quarto Projects
 
@@ -232,7 +229,8 @@ quarto create project {type}
 
 `{type}`: default, website, blog, book, confluence, manuscript
 
-RStudio: Use **File** \> **New Project**
+RStudio: Use **File** \> **New Project**  
+Positron and VS Code: Use **Quarto: Create Project** command
 
 ## Include Code
 
@@ -240,7 +238,7 @@ RStudio: Use **File** \> **New Project**
 
 Code cells start with ```` ```{language} ````, and end with ```` ``` ````.
 
-RStudio & VS Code: Use **Insert Code Chunk/Cell**.
+RStudio, Positron & VS Code: Use **Insert Code Chunk/Cell**.
 
 ::: {layout-ncol="2"}
 ```{{r}}
@@ -397,7 +395,7 @@ quarto render hello.qmd --to pdf
 ```{r}
 #| echo: false
 #| output: true
-#| tbl-cap: Important Options. The first column is the option name, an "X" in the next three columns indicates whether the option applies to the format, the fourth column decribes the options and possible values, the final column indicates whether the options can also be set in a code cell.
+#| tbl-cap: Important Options. The first column is the option name, an "X" in the next three columns indicates whether the option applies to the format, the fourth column describes the options and possible values, the final column indicates whether the options can also be set in a code cell.
 library(readr)
 library(dplyr)
 library(gt)
@@ -531,8 +529,7 @@ Markdown(df.to_markdown(index=False))
 
 2.  Add citations: `[@citation]`, or `@citation`
 
-RStudio & VS Code: Use **Insert Citations** dialog in the Visual Editor.
-Build your bibliography file from your Zotero library, DOI, Crossref, DataCite, or PubMed.
+RStudio, Positron & VS Code: Use **Insert Citations** dialog in the Visual Editor. Build your bibliography file from your Zotero library, DOI, Crossref, DataCite, or PubMed.
 
 ### Callouts
 
@@ -586,7 +583,7 @@ CC BY SA Posit Software, PBC • [info\@posit.co](mailto:info@posit.co) • [pos
 
 Learn more at [quarto.org](https://quarto.org).
 
-Quarto 1.4
+Quarto 1.7
 
 Updated: `r format(Sys.Date(), "%Y-%m")`.
 
