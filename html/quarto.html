@@ -245,7 +245,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>
 <i class="bi bi-file-pdf"></i> Download PDF
 </p>
-</a><p><a href="../quarto.pdf"><img src="../pngs/quarto.png" width="200" alt=""> </a> <br><br></p>
+<img src="../pngs/quarto.png" width="200" alt=""> </a> <br><br>
+<p>
+Translations (PDF)
+</p>
+<ul>
+<li><a href="../translations/spanish/quarto_es.pdf"><i class="bi bi-file-pdf"></i>Spanish</a></li>
+</ul>
 </div></div>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
@@ -258,7 +264,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="get-quarto" class="level3">
 <h3 class="anchored" data-anchor-id="get-quarto">Get Quarto</h3>
 <p>Get Quarto from: <a href="https://quarto.org/docs/download/" class="uri">https://quarto.org/docs/download/</a></p>
-<p>Or, use version <strong>bundled with RStudio.</strong></p>
+<p>Or, use version <strong>bundled with <a href="https://posit.co/products/open-source/rstudio/">RStudio</a> or <a href="https://positron.posit.co">Positron</a>.</strong></p>
 </section>
 <section id="get-started" class="level3">
 <h3 class="anchored" data-anchor-id="get-started">Get Started</h3>
@@ -311,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>## Write with **Markdown**</code></p>
 <p><strong>RStudio</strong>: Help &gt; Markdown Quick Reference</p>
-<p>RStudio &amp; VS Code: Use the <strong>Visual Editor</strong></p>
+<p>RStudio, Positron and VS Code: Use the <strong>Visual Editor</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Meet the penguins</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>The <span class="in">`penguins`</span> data contains size measurements for </span>
@@ -338,7 +344,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="use-a-tool-with-a-rich-authoring-experience" class="level3">
 <h3 class="anchored" data-anchor-id="use-a-tool-with-a-rich-authoring-experience">Use a tool with a rich authoring experience</h3>
-<p><a href="https://posit.co/products/open-source/rstudio/">RStudio</a>, or<br>
+<p><a href="https://posit.co/products/open-source/rstudio/">RStudio</a>,<br>
+<a href="https://positron.posit.co">Positron</a> with bundled <a href="https://open-vsx.org/extension/quarto/quarto">Quarto extension</a>, or<br>
 <a href="https://code.visualstudio.com/">Visual Studio Code</a> + <a href="https://marketplace.visualstudio.com/items?itemName=quarto.quarto">Quarto extension</a></p>
 <ul>
 <li><p><strong>Run</strong> code cells as you write</p></li>
@@ -366,7 +373,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb5" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview hello.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>RStudio: Use <strong>Render</strong> button <img src="images/quarto-render-button.png" style="height:1.5em" alt="Icon from the Render button in RStudio"></p>
-<p>VS Code: Use <strong>Preview</strong> button <img src="images/quarto-preview-button.svg" class="img-fluid" alt="Icon from the Preview button in VS Code"></p>
+<p>Positron and VS Code: Use <strong>Preview</strong> button <img src="images/quarto-preview-button.svg" class="img-fluid" alt="Icon from the Preview button in Positron and VS Code"></p>
 <p>The resulting HTML/PDF/MS Word/etc. document will be created and saved in the same directory as the source .qmd file.</p>
 <section id="rendered-output-hello.html" class="level3">
 <h3 class="anchored" data-anchor-id="rendered-output-hello.html">Rendered output: hello.html</h3>
@@ -400,12 +407,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="sourceCode" id="cb6" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish {venue} hello.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>{venue}</code>: quarto-pub, connect, gh-pages, netlify, confluence, posit-cloud</p>
-<p>RStudio: Use <strong>Publish</strong> button <img src="images/quarto-rstudio-publish.png" class="img-fluid" style="width:10.0%" alt="Publish button icon in RStudio"></p>
+<p><code>{venue}</code>: quarto-pub, connect, gh-pages, netlify, confluence</p>
 <ul>
 <li><p><a href="https://quartopub.com/"><strong>Quarto Pub</strong></a> Free publishing service for Quarto content.</p></li>
-<li><p><a href="https://posit.cloud/"><strong>Posit Cloud</strong></a> Cloud-hosted, control access to project and output. <img src="images/quarto-rstudio-publish.png" class="img-fluid" style="width:10.0%" alt="Push button publishing from RStudio"></p></li>
-<li><p><a href="https://posit.co/products/enterprise/connect/"><strong>Posit Connect</strong></a> Org-hosted, control access, schedule updates. <img src="images/quarto-rstudio-publish.png" class="img-fluid" style="width:10.0%" alt="Push button publishing from RStudio"></p></li>
+<li><p><a href="https://posit.co/products/enterprise/connect/"><strong>Posit Connect</strong></a> Org-hosted, control access, schedule updates.<br>
+RStudio: Use <strong>Publish</strong> button <img src="images/quarto-rstudio-publish.png" class="img-fluid" style="width:10.0%" alt="Publish button icon in RStudio"><br>
+Positron and VS Code: Use <a href="https://open-vsx.org/extension/posit/publisher">Posit Publisher extension</a>.</p></li>
 </ul>
 </section>
 <section id="quarto-projects" class="level2">
@@ -422,7 +429,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb7" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> create project {type}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>{type}</code>: default, website, blog, book, confluence, manuscript</p>
-<p>RStudio: Use <strong>File</strong> &gt; <strong>New Project</strong></p>
+<p>RStudio: Use <strong>File</strong> &gt; <strong>New Project</strong><br>
+Positron and VS Code: Use <strong>Quarto: Create Project</strong> command</p>
 </section>
 </section>
 <section id="include-code" class="level2">
@@ -430,7 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="code-cells" class="level3">
 <h3 class="anchored" data-anchor-id="code-cells">Code Cells</h3>
 <p>Code cells start with <code>```{language}</code>, and end with <code>```</code>.</p>
-<p>RStudio &amp; VS Code: Use <strong>Insert Code Chunk/Cell</strong>.</p>
+<p>RStudio, Positron &amp; VS Code: Use <strong>Insert Code Chunk/Cell</strong>.</p>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
@@ -595,25 +603,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="output-options-table" class="level3">
 <h3 class="anchored" data-anchor-id="output-options-table">Output Options Table</h3>
-<div class="cell" data-tbl-cap="Important Options. The first column is the option name, an &quot;X&quot; in the next three columns indicates whether the option applies to the format, the fourth column decribes the options and possible values, the final column indicates whether the options can also be set in a code cell.">
+<div class="cell" data-tbl-cap="Important Options. The first column is the option name, an &quot;X&quot; in the next three columns indicates whether the option applies to the format, the fourth column describes the options and possible values, the final column indicates whether the options can also be set in a code cell.">
 <div class="cell-output-display">
-<div id="crodffxlcr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#crodffxlcr table {
+<div id="fjasakhwta" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fjasakhwta table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#crodffxlcr thead, #crodffxlcr tbody, #crodffxlcr tfoot, #crodffxlcr tr, #crodffxlcr td, #crodffxlcr th {
+#fjasakhwta thead, #fjasakhwta tbody, #fjasakhwta tfoot, #fjasakhwta tr, #fjasakhwta td, #fjasakhwta th {
   border-style: none;
 }
 
-#crodffxlcr p {
+#fjasakhwta p {
   margin: 0;
   padding: 0;
 }
 
-#crodffxlcr .gt_table {
+#fjasakhwta .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -639,12 +647,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-left-color: #D5D5D5;
 }
 
-#crodffxlcr .gt_caption {
+#fjasakhwta .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#crodffxlcr .gt_title {
+#fjasakhwta .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -656,7 +664,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-width: 0;
 }
 
-#crodffxlcr .gt_subtitle {
+#fjasakhwta .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -668,7 +676,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-width: 0;
 }
 
-#crodffxlcr .gt_heading {
+#fjasakhwta .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -680,13 +688,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#crodffxlcr .gt_bottom_border {
+#fjasakhwta .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D5D5D5;
 }
 
-#crodffxlcr .gt_col_headings {
+#fjasakhwta .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D5D5D5;
@@ -701,7 +709,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#crodffxlcr .gt_col_heading {
+#fjasakhwta .gt_col_heading {
   color: #FFFFFF;
   background-color: #004D80;
   font-size: 100%;
@@ -721,7 +729,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#crodffxlcr .gt_column_spanner_outer {
+#fjasakhwta .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #004D80;
   font-size: 100%;
@@ -733,15 +741,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 4px;
 }
 
-#crodffxlcr .gt_column_spanner_outer:first-child {
+#fjasakhwta .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#crodffxlcr .gt_column_spanner_outer:last-child {
+#fjasakhwta .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#crodffxlcr .gt_column_spanner {
+#fjasakhwta .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D5D5D5;
@@ -753,11 +761,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   width: 100%;
 }
 
-#crodffxlcr .gt_spanner_row {
+#fjasakhwta .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#crodffxlcr .gt_group_heading {
+#fjasakhwta .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -783,7 +791,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 
-#crodffxlcr .gt_empty_group_heading {
+#fjasakhwta .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -798,15 +806,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: middle;
 }
 
-#crodffxlcr .gt_from_md > :first-child {
+#fjasakhwta .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#crodffxlcr .gt_from_md > :last-child {
+#fjasakhwta .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#crodffxlcr .gt_row {
+#fjasakhwta .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -825,7 +833,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   overflow-x: hidden;
 }
 
-#crodffxlcr .gt_stub {
+#fjasakhwta .gt_stub {
   color: #FFFFFF;
   background-color: #929292;
   font-size: 100%;
@@ -838,7 +846,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#crodffxlcr .gt_stub_row_group {
+#fjasakhwta .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -852,15 +860,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   vertical-align: top;
 }
 
-#crodffxlcr .gt_row_group_first td {
+#fjasakhwta .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#crodffxlcr .gt_row_group_first th {
+#fjasakhwta .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#crodffxlcr .gt_summary_row {
+#fjasakhwta .gt_summary_row {
   color: #FFFFFF;
   background-color: #5F5F5F;
   text-transform: inherit;
@@ -870,16 +878,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#crodffxlcr .gt_first_summary_row {
+#fjasakhwta .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D5D5D5;
 }
 
-#crodffxlcr .gt_first_summary_row.thick {
+#fjasakhwta .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#crodffxlcr .gt_last_summary_row {
+#fjasakhwta .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -889,7 +897,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D5D5D5;
 }
 
-#crodffxlcr .gt_grand_summary_row {
+#fjasakhwta .gt_grand_summary_row {
   color: #FFFFFF;
   background-color: #929292;
   text-transform: inherit;
@@ -899,7 +907,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#crodffxlcr .gt_first_grand_summary_row {
+#fjasakhwta .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -909,7 +917,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-top-color: #D5D5D5;
 }
 
-#crodffxlcr .gt_last_grand_summary_row_top {
+#fjasakhwta .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -919,11 +927,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D5D5D5;
 }
 
-#crodffxlcr .gt_striped {
+#fjasakhwta .gt_striped {
   background-color: #F4F4F4;
 }
 
-#crodffxlcr .gt_table_body {
+#fjasakhwta .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D5D5D5;
@@ -932,7 +940,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-bottom-color: #D5D5D5;
 }
 
-#crodffxlcr .gt_footnotes {
+#fjasakhwta .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -946,7 +954,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#crodffxlcr .gt_footnote {
+#fjasakhwta .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -955,7 +963,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#crodffxlcr .gt_sourcenotes {
+#fjasakhwta .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -969,7 +977,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   border-right-color: #D3D3D3;
 }
 
-#crodffxlcr .gt_sourcenote {
+#fjasakhwta .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -977,69 +985,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   padding-right: 5px;
 }
 
-#crodffxlcr .gt_left {
+#fjasakhwta .gt_left {
   text-align: left;
 }
 
-#crodffxlcr .gt_center {
+#fjasakhwta .gt_center {
   text-align: center;
 }
 
-#crodffxlcr .gt_right {
+#fjasakhwta .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#crodffxlcr .gt_font_normal {
+#fjasakhwta .gt_font_normal {
   font-weight: normal;
 }
 
-#crodffxlcr .gt_font_bold {
+#fjasakhwta .gt_font_bold {
   font-weight: bold;
 }
 
-#crodffxlcr .gt_font_italic {
+#fjasakhwta .gt_font_italic {
   font-style: italic;
 }
 
-#crodffxlcr .gt_super {
+#fjasakhwta .gt_super {
   font-size: 65%;
 }
 
-#crodffxlcr .gt_footnote_marks {
+#fjasakhwta .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#crodffxlcr .gt_asterisk {
+#fjasakhwta .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#crodffxlcr .gt_indent_1 {
+#fjasakhwta .gt_indent_1 {
   text-indent: 5px;
 }
 
-#crodffxlcr .gt_indent_2 {
+#fjasakhwta .gt_indent_2 {
   text-indent: 10px;
 }
 
-#crodffxlcr .gt_indent_3 {
+#fjasakhwta .gt_indent_3 {
   text-indent: 15px;
 }
 
-#crodffxlcr .gt_indent_4 {
+#fjasakhwta .gt_indent_4 {
   text-indent: 20px;
 }
 
-#crodffxlcr .gt_indent_5 {
+#fjasakhwta .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
 
 <table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<caption>Important Options. The first column is the option name, an “X” in the next three columns indicates whether the option applies to the format, the fourth column decribes the options and possible values, the final column indicates whether the options can also be set in a code cell.</caption>
+<caption>Important Options. The first column is the option name, an “X” in the next three columns indicates whether the option applies to the format, the fourth column describes the options and possible values, the final column indicates whether the options can also be set in a code cell.</caption>
 <colgroup>
 <col style="width: 16%">
 <col style="width: 16%">
@@ -1385,7 +1393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Add citations: <code>[@citation]</code>, or <code>@citation</code></p></li>
 </ol>
-<p>RStudio &amp; VS Code: Use <strong>Insert Citations</strong> dialog in the Visual Editor. Build your bibliography file from your Zotero library, DOI, Crossref, DataCite, or PubMed.</p>
+<p>RStudio, Positron &amp; VS Code: Use <strong>Insert Citations</strong> dialog in the Visual Editor. Build your bibliography file from your Zotero library, DOI, Crossref, DataCite, or PubMed.</p>
 </section>
 <section id="callouts" class="level3">
 <h3 class="anchored" data-anchor-id="callouts">Callouts</h3>
@@ -1469,8 +1477,8 @@ important
 <hr>
 <p>CC BY SA Posit Software, PBC • <a href="mailto:info@posit.co">info@posit.co</a> • <a href="https://posit.co">posit.co</a></p>
 <p>Learn more at <a href="https://quarto.org">quarto.org</a>.</p>
-<p>Quarto 1.4</p>
-<p>Updated: 2024-05.</p>
+<p>Quarto 1.7</p>
+<p>Updated: 2025-07.</p>
 <hr>
 
 
