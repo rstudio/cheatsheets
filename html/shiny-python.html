@@ -211,7 +211,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>
 <i class="bi bi-file-pdf"></i> Download PDF
 </p>
-</a><p><a href="../shiny-python.pdf"><img src="../pngs/shiny-python.png" width="200" alt=""> </a> <br><br></p>
+<img src="../pngs/shiny-python.png" width="200" alt=""> </a> <br><br>
+<p>
+Translations (PDF)
+</p>
+<ul>
+<li><a href="../translations/spanish/shiny-python_es.pdf"><i class="bi bi-file-pdf"></i>Spanish</a></li>
+</ul>
 </div></div><section id="build-an-app" class="level2">
 <h2 class="anchored" data-anchor-id="build-an-app">Build an App</h2>
 <p>A <strong>Shiny</strong> app is an interactive web page (<strong>ui</strong>) powered by a live Python session run by a <strong>server</strong> (or by a browser with Shinylive).</p>
@@ -262,7 +268,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Host it on <a href="https://www.shinyapps.io/">shinyapps.io</a>, a cloud based service from Posit. To deploy Shiny apps:</p>
 <ul>
 <li>Create a free or professional account at <a href="https://www.shinyapps.io/">shinyapps.io</a></li>
-<li>Use the reconnect-python package to publish with <code>rsconnect deploy shiny &lt;path to directory&gt;</code></li>
+<li>Use the rsconnect-python package to publish with <code>rsconnect deploy shiny &lt;path to directory&gt;</code></li>
 </ul></li>
 <li><p>Purchase Posit Connect, a publishing platform for R and Python. <a href="https://posit.co/products/enterprise/connect/">posit.co/products/enterprise/connect/</a></p></li>
 <li><p>Use open source deployment options. <a href="https://shiny.posit.co/py/docs/deploy.html">shiny.posit.co/py/docs/deploy.html</a></p></li>
@@ -295,8 +301,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <table class="caption-top table">
 <caption>Table of <code>@render.*()</code> decorators and their associated <code>ui.output_*()</code> functions.</caption>
 <colgroup>
-<col style="width: 25%">
-<col style="width: 75%">
+<col style="width: 29%">
+<col style="width: 70%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -327,11 +333,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td><code>@render.ui</code></td>
-<td><code>ui.output_ui(id, inline, container, ...)</code> also <code>ui.output_html()</code></td>
+<td><code>ui.output_ui(id, inline, container, ...)</code></td>
 </tr>
 <tr class="odd">
-<td><code>@sessiom.download</code></td>
-<td><code>ui.output_download_button(id, label, icon,...)</code></td>
+<td><code>@render.download</code></td>
+<td><code>ui.download_button(id, label, icon, width,...)</code></td>
 </tr>
 </tbody>
 </table>
@@ -342,6 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p><code>ui.input_action_button(id, label, icon, width, ...)</code></p></li>
 <li><p><code>ui.input_action_link(id, label, icon, ...)</code></p></li>
+<li><p><code>ui.input_task_button(id, label, icon, label_busy, icon_busy, width, type, auto_reset)</code></p></li>
 <li><p><code>ui.input_checkbox(id, label, value, width)</code></p></li>
 <li><p><code>ui.input_checkbox_group(id, label, choices, selected, inline, width)</code></p></li>
 <li><p><code>ui.input_date(id, label, value, min, max, format, startview, weekstart, language, width, autoclose, datesdisabled, daysofweekdisabled)</code></p></li>
@@ -350,10 +357,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><code>ui.input_numeric(id, label, value, min, max, step, width)</code></p></li>
 <li><p><code>ui.input_password(id, label, value, width, placeholder)</code></p></li>
 <li><p><code>ui.input_radio_buttons(id, label, choices, selected, inline, width)</code></p></li>
-<li><p><code>ui.input_select(id, label, choices, selected, multiple, selectize, width, size) Also ui.input_selectize()</code></p></li>
+<li><p><code>ui.input_select(id, label, choices, selected, multiple, selectize, width, size, remove_button, options)</code></p></li>
+<li><p><code>ui.input_selectize(id,label, choices, selected, multiple, width, remove_button, options)</code></p></li>
 <li><p><code>ui.input_slider(id, label, min, max, value, step, ticks, animate, width, sep, pre, post, timeFormat, timezone, dragRange)</code></p></li>
 <li><p><code>ui.input_switch(id, label, value, width)</code></p></li>
-<li><p><code>ui.input_text(id, label, value, width, placeholder, autocomplete, spellcheck) Also ui.input_text_area()</code></p></li>
+<li><p><code>ui.input_text(id, label, value, width, placeholder, autocomplete, spellcheck)</code> Also <code>ui.input_text_area()</code></p></li>
 </ul>
 <!-- page 2 -->
 </section>
@@ -382,7 +390,7 @@ Expand to read about the reactivity diagram
 <li>Create your own reactive values
 <ul>
 <li><code>ui.input_*()</code></li>
-<li>`reactive.Value()``</li>
+<li>`reactive.value()``</li>
 <li><code>@reactive.file_reader()</code></li>
 <li><code>@reactive.poll()</code></li>
 </ul></li>
@@ -426,7 +434,7 @@ Expand to read about the reactivity diagram
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> server(<span class="bu">input</span>, output, session):</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    rv <span class="op">=</span> reactive.Value()</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    rv <span class="op">=</span> reactive.value()</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    rv.<span class="bu">set</span>(<span class="dv">5</span>) </span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
@@ -453,11 +461,10 @@ Expand to read about the reactivity diagram
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#...</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> server(<span class="bu">input</span>, output, session ):</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">@reactive.Calc</span> </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">@reactive.event</span>(<span class="bu">input</span>.a) </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> re():</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">input</span>.b() </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">@reactive.event</span>(<span class="bu">input</span>.a)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> re():</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">input</span>.b()</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 </ul>
 </section>
@@ -529,7 +536,7 @@ Expand to read about the reactivity diagram
 <li><code>ui.page_sidebar()</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>app_ui <span class="op">=</span> ui.page_sider(  </span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>app_ui <span class="op">=</span> ui.page_sidebar(  </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    ui.sidebar(<span class="st">"Sidebar"</span>, bg<span class="op">=</span><span class="st">"#f8f8f),  </span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="er">    "Main content",  </span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -567,9 +574,9 @@ Expand to read about the reactivity diagram
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shinyswatch</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>app_ui <span class="op">=</span> ui.page_fluid(</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    shinyswatch.theme.darkly(), </span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>app_ui <span class="op">=</span> ui.page_fluid( </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    theme<span class="op">=</span>shinyswatch.theme.darkly,</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -661,7 +668,7 @@ Expand to read about the reactivity diagram
 </div></li>
 </ul>
 <ol start="6" type="1">
-<li>Use <code>reactive.Value()</code> instead of <code>reactiveVal()</code></li>
+<li>Use <code>reactive.value()</code> instead of <code>reactiveVal()</code></li>
 </ol>
 <ul>
 <li><p>R</p>
@@ -710,7 +717,7 @@ Expand to read about the reactivity diagram
 <hr>
 <p>CC BY SA Posit Software, PBC • <a href="mailto:info@posit.co">info@posit.co</a> • <a href="https://posit.co">posit.co</a></p>
 <p>Learn more at <a href="https://shiny.posit.co/py/">shiny.posit.co/py/</a></p>
-<p>Updated: 2024-05.</p>
+<p>Updated: 2025-07.</p>
 <p>Version: Shiny 0.10.2</p>
 <hr>
 
