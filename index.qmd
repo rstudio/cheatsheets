@@ -9,6 +9,7 @@ listing:
     - "tidyr.qmd"
     - "purrr.qmd"
     - "factors.qmd"
+    - "nlp-with-llms.qmd"
     - "lubridate.qmd"
     - "strings.qmd"
     - "shiny.qmd"
