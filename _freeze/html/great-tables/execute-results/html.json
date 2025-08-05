@@ -1,0 +1,15 @@
+{
+  "hash": "94b89c50cff834f61d1f295978c219ca",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Great Tables :: Cheatsheet\"\ndescription: \" \"\nimage-alt: \"\"\nexecute:\n  eval: true\n  output: false\n  warning: false\n---\n\n<img src=\"images/logo-great-tables.png\" height=\"138\" alt=\"Hex logo for gt - pink hexagon with the letters GT.\"> <br><br><a href=\"../great-tables.pdf\">\n\n\n::: {.cell .column-margin}\n<a href=\"../great-tables.pdf\">\n<p><i class=\"bi bi-file-pdf\"></i> Download PDF</p>\n<img src=\"../pngs/great-tables.png\" width=\"200\" alt=\"\"/>\n</a>\n<br><br>\n:::\n\n\nWill be updated soon!\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

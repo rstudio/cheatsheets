@@ -1,0 +1,15 @@
+{
+  "hash": "c3de7dedd2c3c9c03bd59b85dab113e9",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"gt :: Cheatsheet\"\ndescription: \" \"\nimage-alt: \"\"\nexecute:\n  eval: true\n  output: false\n  warning: false\n---\n\n<img src=\"images/logo-gt.png\" height=\"138\" alt=\"Hex logo for gt - illustration of black cube with a table with colorful cells and the letters GT.\"> <br><br><a href=\"../gt.pdf\">\n\n\n::: {.cell .column-margin}\n<a href=\"../gt.pdf\">\n<p><i class=\"bi bi-file-pdf\"></i> Download PDF</p>\n<img src=\"../pngs/gt.png\" width=\"200\" alt=\"\"/>\n</a>\n<br><br><p>Translations (PDF)</p>\n* <a href=\"../translations/vietnamese/gtsummary_vi.pdf\"><i class=\"bi bi-file-pdf\"></i>Vietnamese</a>\n:::\n\n\nWill be updated soon!\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
