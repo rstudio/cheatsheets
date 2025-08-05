@@ -2,26 +2,29 @@
   {
     "listing": "/index.html",
     "items": [
-      "/html/rstudio-ide.html",
       "/html/data-visualization.html",
       "/html/data-transformation.html",
       "/html/data-import.html",
       "/html/tidyr.html",
       "/html/purrr.html",
       "/html/factors.html",
-      "/html/nlp-with-llms.html",
       "/html/lubridate.html",
       "/html/strings.html",
-      "/html/shiny.html",
-      "/html/shiny-python.html",
       "/html/package-development.html",
       "/html/quarto.html",
-      "/html/rmarkdown.html",
+      "/html/gt.html",
+      "/html/great-tables.html",
+      "/html/shiny.html",
+      "/html/shiny-python.html",
+      "/html/shinychat.html",
+      "/html/nlp-with-llms.html",
       "/html/keras.html",
       "/html/plumber.html",
       "/html/reticulate.html",
       "/html/sparklyr.html",
-      "/html/posit-team.html"
+      "/html/posit-team.html",
+      "/html/rmarkdown.html",
+      "/html/rstudio-ide.html"
     ]
   }
 ]
