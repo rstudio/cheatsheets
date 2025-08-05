@@ -14,6 +14,7 @@ listing:
     - "quarto.qmd"
     - "gt.qmd"
     - "great-tables.qmd"
+    - "plotnine.qmd"
     - "shiny.qmd"
     - "shiny-python.qmd"
     - "shinychat.qmd"
