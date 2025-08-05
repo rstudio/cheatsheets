@@ -74,7 +74,7 @@ or if using an existing Python virtual environment.
 
 ### Import Python Modules
 
-Import any Python module into R, and access the attributes of a module with $.
+Import any Python module into R, and access the attributes of a module with `$`.
 
 - `import(module, as = NULL, convert = TRUE, delay_load = FALSE)`: Import a 
 Python module. If convert = TRUE, Python objects are converted to their 
@@ -96,10 +96,50 @@ code by default.
 
 - `import_builtins(convert = TRUE)` - Import Python's built-in functions
 
+  ```r
+  builtins <- import_builtins()
+  builtins$print("hello")
+  ```
+
+### Source Python files
+
+Source a Python script and make the Python functions and objects it creates 
+available in R
+
+- `source_python(file, envir = parent.frame(), convert = TRUE)` - Run a Python 
+script, assigning objects to a specified R environment.
+
+    ```r
+    source_python("file.py")
+    ```
+    
+### Run Python Code
+
+Execute Python code into the main Python module. Access the results, and 
+anything else in Python's main module, with `py$`.
+
+- `py_run_file(file, local = FALSE, convert = TRUE)` - Run Python file in the 
+main module.
+
+    ```r
+    py_run_file("my-script.py")
+    ```
 
 
+- `py_eval(code, convert = TRUE)` - Run a Python expression, return the result.
+py_eval("1 + 1”)
 
+    ```r
+    py_eval("1 + 1") 
+    ```
 
+- `py_run_string(code, local = FALSE, convert = TRUE)` - Run Python code 
+(passed as a string) in the main module.
+
+    ```r
+    py_run_string("x = 10")
+    py$x
+    ```
 
 ## Old
 
