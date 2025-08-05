@@ -23,18 +23,65 @@ pdf_preview_link(sheet_name)
 translation_list(sheet_name)
 ```
 
-The **reticulate** package lets you use Python and R together seamlessly in R code, in R Markdown documents, and in the RStudio IDE.
+## Getting Started
+
+Reticulate makes it very easy to get started with Python in R.
+Simply use py_require() to let Reticulate know which Python version and packages you will need:
 
 ```{r}
+#| eval: false
+
 library(reticulate)
+py_require("polars", python_version="3.12")
+pl <- import("polars")
 ```
 
-## Python in R Markdown
+An isolated Python virtual environment that you will not need to manage is 
+created, this eliminates the risk of the environment becoming unstable overtime.
+
+Reticulate uses an extremely fast Python package manager called 
+[uv](https://docs.astral.sh/uv/). Some features of this system are:
+
+- 10x–100x faster than pip at setting up virtual environments
+- Downloads, installs and manages Python versions
+- Supports macOS, Linux and Windows
+
+Reticulate will automatically download and install **uv**
+for you in a location that  does not make system changes to your machine.
+
+## Manage environments
+
+Manage Virtualenv and Conda environments. Use if `py_require()` is not an option, 
+or if using an existing Python virtual environment.
+
++----------------------+-----------------------------------------------------------------+
+|Create new            |`virtualenv_create()` / `conda_create()`<br/>                    |
+|                      |*`virtualenv_create("my-env")`*                                  |
++----------------------+-----------------------------------------------------------------+
+|Use in R session      |`use_virtualenv()` / `use_condaenv()` / `use_python()`<br/>      |
+|                      |*`use_virtualenv(“my-env")`*                                     |
++----------------------+-----------------------------------------------------------------+
+|List available        |`virtualenv_list()` / `conda_list()`                             |
++----------------------+-----------------------------------------------------------------+
+|Install packages      |`py_install()` / `virtualenv_install()` / `conda_install()`<br/> |
+|                      |*`py_install(“polars”, "my-env")`*                               |
++----------------------+-----------------------------------------------------------------+
+|Delete from disk      |`virtualenv_remove()` / `conda_remove()`<br/>                    |
+|                      |*`virtualenv_remove("my-env")`*                                  |
++----------------------+-----------------------------------------------------------------+
+
+
+
+
+
+
+
+## Old
 
 (Optional) Build Python env to use.
 
-knitr versions >= 1.18 will automatically use the reticulate engine for Python chunks. See `?reticulate::eng_python` for a listing of supported knitr chunk options.
-
+knitr versions \>= 1.18 will automatically use the reticulate engine for Python chunks.
+See `?reticulate::eng_python` for a listing of supported knitr chunk options.
 
 ```{{{r}}}
 #| label: setup
@@ -498,7 +545,7 @@ Otherwise, to choose an instance of Python to bind to, reticulate scans the inst
         use_python("usr/local/bin/python")
         ```
 
-    -   `use_virtualenv(virtualenv)`: Path to _or_ name of a Python virtualenv.
+    -   `use_virtualenv(virtualenv)`: Path to *or* name of a Python virtualenv.
 
         ```{r}
         use_virtualenv("~/myenv")
@@ -507,14 +554,14 @@ Otherwise, to choose an instance of Python to bind to, reticulate scans the inst
         use_virtualenv("r-keras") # name of venv
         ```
 
-3.  A virtual env found in the current working directory: "./.venv" 
+3.  A virtual env found in the current working directory: "./.venv"
 
-4. Environments that are named after the imported module. e.g. "~/.virtualenvs/r-scipy/" for `import("scipy")`
+4.  Environments that are named after the imported module.
+    e.g. "\~/.virtualenvs/r-scipy/" for `import("scipy")`
 
-5. The package default virtualenv, "r-reticulate".
+5.  The package default virtualenv, "r-reticulate".
 
 6.  At the location of the Python binary discovered on the system `PATH` (i.e. `Sys.which("python")`)
-
 
 ------------------------------------------------------------------------
 
