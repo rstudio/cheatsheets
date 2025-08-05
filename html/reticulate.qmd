@@ -140,6 +140,50 @@ py_eval("1 + 1”)
     py_run_string("x = 10")
     py$x
     ```
+    
+### In a Notebook
+
+Call Python as a code chunk in **Quarto** and **R Markdown**
+
+![](images/reticulate-quarto.png){width=500 fig-align="center"}
+
+- Begin Python chunks with ```{python} . Chunk options like echo, include, etc.
+all work as expected
+
+- With `py_require()`, define which Python libraries will be used in the notebook
+
+
+- Use the `py` object to access objects created` in Python chunks from R chunks
+
+- Python chunks all execute within a single Python session so you have access to 
+all objects created, and modules loaded, in previous chunks.
+
+- Use the r object to access objects created in R chunks from Python chunks
+
+- Output displays below chunk, including plots.
+
+### As a Python console (REPL)
+
+A REPL (Read, Eval, Print Loop) is a command line where you can run Python code 
+and view the results.
+
+```python
+> library(reticulate)
+> py_require("plotnine")
+> repl_python() # Starts a Python REPL
+>>> from plotnine.data import penguins
+>>> penguins.shape
+```
+
+1. Use py_require() to define libraries and Python version to use
+1. In RStudio, open in the console with repl_python(), or by running code in a 
+Python script  with Cmd + Enter (Windows: Ctrl + Enter). Click on the language 
+logo to toggle between R and Python.
+1. Type commands at the `>>>` prompt.
+1. Press Enter to run code.
+1. Type `exit` to close and return to R console.
+
+
 
 ## Old
 
