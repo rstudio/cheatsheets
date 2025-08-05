@@ -70,6 +70,31 @@ or if using an existing Python virtual environment.
 |                      |*`virtualenv_remove("my-env")`*                                  |
 +----------------------+-----------------------------------------------------------------+
 
+## Calling Python
+
+### Import Python Modules
+
+Import any Python module into R, and access the attributes of a module with $.
+
+- `import(module, as = NULL, convert = TRUE, delay_load = FALSE)`: Import a 
+Python module. If convert = TRUE, Python objects are converted to their 
+equivalent R types. Access the attributes of a module with $.
+
+    ```r
+    import("polars")
+    ```
+    
+- `import_from_path(module, path = “." )` - Import module from an arbitrary 
+filesystem path.
+
+- `import_main(convert = TRUE)` - Import the main module, where Python executes 
+code by default.
+
+    ```r
+    main <- import_main()
+    ```
+
+- `import_builtins(convert = TRUE)` - Import Python's built-in functions
 
 
 
