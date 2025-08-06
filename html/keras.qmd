@@ -95,6 +95,77 @@ weights and others.
     
 - `predict(<model>, x)`: Generates predictions
 
+## Example
+
+Train image recognizer on MNIST data a.k.a. deep learning’s ‘hello world’ example 
+
+```r
+library(keras3)
+
+# Input layer: use MNIST images
+.[.[x_train, y_train], .[x_test, y_test]] <- dataset_mnist()
+
+# Rescale and categorize
+x_train <- x_train/255
+x_test <- x_test/255
+num_classes <- 10
+y_train <- to_categorical(y_train, num_classes)
+y_test <- to_categorical(y_test, num_classes)
+
+# Define the model and layers
+model <- keras_model_sequential(
+  input_shape = c(28, 28, 1)) |>
+  layer_conv_2d(
+    filters = 32, kernel_size = c(3, 3),
+    activation = "relu") |>
+  layer_max_pooling_2d(pool_size = c(2, 2)) |>
+  layer_conv_2d(
+    filters = 64,
+    kernel_size = c(3, 3),
+    activation = "relu") |>
+  layer_max_pooling_2d(pool_size = c(2, 2)) |>
+  layer_flatten() |>
+  layer_dropout(rate = 0.5) |>
+  layer_dense(units = num_classes, activation = "softmax")
+  
+# Inspect the model
+summary(model)
+
+plot(model)
+
+# Compile (define loss and optimizer)
+model |>
+  compile(
+    loss = "categorical_crossentropy",
+    optimizer = optimizer_rmsprop(),
+    metrics = c("accuracy")
+    )
+    
+# Fit the model
+model |> 
+  fit(
+    x_train, y_train, 
+    epochs = 30, 
+    batch_size = 128, 
+    validation_split = 0.2
+    )
+  
+# Evaluate and predict
+model |> 
+  evaluate(x_test, y_test)
+  
+model |>
+  predict(x_test)
+  
+# Save the full model
+save_model(model, "mnist-classifier.keras")
+
+# Deploy for serving inference
+dir.create("mnist")
+export_savedmodel(model, "mnist/1")
+rsconnect::deployTFModel("mnist")
+```
+
 ## Layers
 
 ### Core layers
