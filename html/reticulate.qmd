@@ -36,39 +36,29 @@ py_require("polars", python_version="3.12")
 pl <- import("polars")
 ```
 
-An isolated Python virtual environment that you will not need to manage is 
-created, this eliminates the risk of the environment becoming unstable overtime.
+An isolated Python virtual environment that you will not need to manage is created, this eliminates the risk of the environment becoming unstable overtime.
 
-Reticulate uses an extremely fast Python package manager called 
-[uv](https://docs.astral.sh/uv/). Some features of this system are:
+Reticulate uses an extremely fast Python package manager called [uv](https://docs.astral.sh/uv/).
+Some features of this system are:
 
-- 10x–100x faster than pip at setting up virtual environments
-- Downloads, installs and manages Python versions
-- Supports macOS, Linux and Windows
+-   10x–100x faster than pip at setting up virtual environments
+-   Downloads, installs and manages Python versions
+-   Supports macOS, Linux and Windows
 
-Reticulate will automatically download and install **uv**
-for you in a location that  does not make system changes to your machine.
+Reticulate will automatically download and install **uv** for you in a location that does not make system changes to your machine.
 
 ## Manage environments
 
-Manage Virtualenv and Conda environments. Use if `py_require()` is not an option, 
-or if using an existing Python virtual environment.
+Manage Virtualenv and Conda environments.
+Use if `py_require()` is not an option, or if using an existing Python virtual environment.
 
-+----------------------+-----------------------------------------------------------------+
-|Create new            |`virtualenv_create()` / `conda_create()`<br/>                    |
-|                      |*`virtualenv_create("my-env")`*                                  |
-+----------------------+-----------------------------------------------------------------+
-|Use in R session      |`use_virtualenv()` / `use_condaenv()` / `use_python()`<br/>      |
-|                      |*`use_virtualenv(“my-env")`*                                     |
-+----------------------+-----------------------------------------------------------------+
-|List available        |`virtualenv_list()` / `conda_list()`                             |
-+----------------------+-----------------------------------------------------------------+
-|Install packages      |`py_install()` / `virtualenv_install()` / `conda_install()`<br/> |
-|                      |*`py_install(“polars”, "my-env")`*                               |
-+----------------------+-----------------------------------------------------------------+
-|Delete from disk      |`virtualenv_remove()` / `conda_remove()`<br/>                    |
-|                      |*`virtualenv_remove("my-env")`*                                  |
-+----------------------+-----------------------------------------------------------------+
+|  |  |
+|-------------------|-----------------------------------------------------|
+| Create new | `virtualenv_create()` / `conda_create()`<br/> *`virtualenv_create("my-env")`* |
+| Use in R session | `use_virtualenv()` / `use_condaenv()` / `use_python()`<br/> *`use_virtualenv(“my-env")`* |
+| List available | `virtualenv_list()` / `conda_list()` |
+| Install packages | `py_install()` / `virtualenv_install()` / `conda_install()`<br/> *`py_install(“polars”, "my-env")`* |
+| Delete from disk | `virtualenv_remove()` / `conda_remove()`<br/> *`virtualenv_remove("my-env")`* |
 
 ## Calling Python
 
@@ -76,98 +66,88 @@ or if using an existing Python virtual environment.
 
 Import any Python module into R, and access the attributes of a module with `$`.
 
-- `import(module, as = NULL, convert = TRUE, delay_load = FALSE)`: Import a 
-Python module. If convert = TRUE, Python objects are converted to their 
-equivalent R types. Access the attributes of a module with $.
+-   `import(module, as = NULL, convert = TRUE, delay_load = FALSE)`: Import a Python module.
+    If convert = TRUE, Python objects are converted to their equivalent R types.
+    Access the attributes of a module with \$.
 
-    ```r
+    ``` r
     import("polars")
     ```
-    
-- `import_from_path(module, path = “." )`: Import module from an arbitrary 
-filesystem path.
 
-- `import_main(convert = TRUE)`: Import the main module, where Python executes 
-code by default.
+-   `import_from_path(module, path = “." )`: Import module from an arbitrary filesystem path.
 
-    ```r
+-   `import_main(convert = TRUE)`: Import the main module, where Python executes code by default.
+
+    ``` r
     main <- import_main()
     ```
 
-- `import_builtins(convert = TRUE)`: Import Python's built-in functions
+-   `import_builtins(convert = TRUE)`: Import Python's built-in functions
 
-  ```r
-  builtins <- import_builtins()
-  builtins$print("hello")
-  ```
+    ``` r
+    builtins <- import_builtins()
+    builtins$print("hello")
+    ```
 
 ### Source Python files
 
-Source a Python script and make the Python functions and objects it creates 
-available in R
+Source a Python script and make the Python functions and objects it creates available in R
 
-- `source_python(file, envir = parent.frame(), convert = TRUE)`: Run a Python 
-script, assigning objects to a specified R environment.
+-   `source_python(file, envir = parent.frame(), convert = TRUE)`: Run a Python script, assigning objects to a specified R environment.
 
-    ```r
+    ``` r
     source_python("file.py")
     ```
-    
+
 ### Run Python Code
 
-Execute Python code into the main Python module. Access the results, and 
-anything else in Python's main module, with `py$`.
+Execute Python code into the main Python module.
+Access the results, and anything else in Python's main module, with `py$`.
 
-- `py_run_file(file, local = FALSE, convert = TRUE)`: Run Python file in the 
-main module.
+-   `py_run_file(file, local = FALSE, convert = TRUE)`: Run Python file in the main module.
 
-    ```r
+    ``` r
     py_run_file("my-script.py")
     ```
 
+-   `py_eval(code, convert = TRUE)`: Run a Python expression, return the result.
+    py_eval("1 + 1”)
 
-- `py_eval(code, convert = TRUE)`: Run a Python expression, return the result.
-py_eval("1 + 1”)
-
-    ```r
+    ``` r
     py_eval("1 + 1") 
     ```
 
-- `py_run_string(code, local = FALSE, convert = TRUE)`: Run Python code 
-(passed as a string) in the main module.
+-   `py_run_string(code, local = FALSE, convert = TRUE)`: Run Python code (passed as a string) in the main module.
 
-    ```r
+    ``` r
     py_run_string("x = 10")
     py$x
     ```
-    
+
 ### In a Notebook
 
 Call Python as a code chunk in **Quarto** and **R Markdown**
 
-![](images/reticulate-quarto.png){width=500 fig-align="center"}
+![Combine R and Python in Quarto](images/reticulate-quarto.png){width="500" fig-align="center" fig-alt="A screenshot of a Quarto document that combines R code and Python code"}
 
-- Begin Python chunks with ```{python} . Chunk options like echo, include, etc.
-all work as expected
+-   Begin Python chunks with \`\`\`{python} .
+    Chunk options like echo, include, etc. all work as expected
 
-- With `py_require()`, define which Python libraries will be used in the notebook
+-   With `py_require()`, define which Python libraries will be used in the notebook
 
+-   Use the `py` object to access objects created\` in Python chunks from R chunks
 
-- Use the `py` object to access objects created` in Python chunks from R chunks
+-   Python chunks all execute within a single Python session so you have access to all objects created, and modules loaded, in previous chunks.
 
-- Python chunks all execute within a single Python session so you have access to 
-all objects created, and modules loaded, in previous chunks.
+-   Use the r object to access objects created in R chunks from Python chunks
 
-- Use the r object to access objects created in R chunks from Python chunks
-
-- Output displays below chunk, including plots.
+-   Output displays below chunk, including plots.
 
 ### As a Python console (REPL)
 
-A REPL (Read, Eval, Print Loop) is a command line where you can run Python code 
-and view the results.
+A REPL (Read, Eval, Print Loop) is a command line where you can run Python code and view the results.
 
-```python
+``` python
 > library(reticulate)
 > py_require("plotnine")
 > repl_python() # Starts a Python REPL
@@ -175,33 +155,82 @@ and view the results.
 >>> penguins.shape
 ```
 
-1. Use py_require() to define libraries and Python version to use
-1. In RStudio, open in the console with repl_python(), or by running code in a 
-Python script  with Cmd + Enter (Windows: Ctrl + Enter). Click on the language 
-logo to toggle between R and Python.
-1. Type commands at the `>>>` prompt.
-1. Press Enter to run code.
-1. Type `exit` to close and return to R console.
+1.  Use py_require() to define libraries and Python version to use
+2.  In RStudio, open in the console with repl_python(), or by running code in a Python script with Cmd + Enter (Windows: Ctrl + Enter). Click on the language logo to toggle between R and Python.
+3.  Type commands at the `>>>` prompt.
+4.  Press Enter to run code.
+5.  Type `exit` to close and return to R console.
 
-## Object Conversion 
+## Object Conversion
 
 ### Automatic conversions
 
-Reticulate provides automatic built-in conversion between Python and R for many
-Python types.
+Reticulate provides automatic built-in conversion between Python and R for many Python types.
 
-- `py_to_r(x)`: Convert a Python object to an R object. Also `r_to_py()`
+-   `py_to_r(x)`: Convert a Python object to an R object. Also `r_to_py()`
 
-| R                      | Python                     |
-|------------------------|----------------------------|
-| Single-element vector  | Scalar                     |
-| Multi-element vector   | List                       |
-| List of multiple types | Tuple                      |
-| Named List             | Dict                       |
-| Matrix/Array           | NumPy ndarray              |
-| Data Frame             | Pandas DataFrame           |
-| Function               | Python function            |
-| `NULL`, `TRUE`, `FALSE`| `None`, `True`, `False`    |
+| R                       | Python                  |
+|-------------------------|-------------------------|
+| Single-element vector   | Scalar                  |
+| Multi-element vector    | List                    |
+| List of multiple types  | Tuple                   |
+| Named List              | Dict                    |
+| Matrix/Array            | NumPy ndarray           |
+| Data Frame              | Pandas DataFrame        |
+| Function                | Python function         |
+| `NULL`, `TRUE`, `FALSE` | `None`, `True`, `False` |
+
+### Manual Conversions
+
+Specify how the objects will be converted
+
+-   `tuple(..., convert = FALSE)`: Create a Python tuple.
+
+    ``` r
+    tuple("a", "b", "c")
+    ```
+
+-   `dict(..., convert = FALSE)`: Create a Python dictionary.
+
+    ``` r
+    dict(foo = "bar", index = 42L)
+    ```
+
+-   `py_dict()`: A dictionary that uses Python objects as keys.
+
+    ``` r
+    py_dict("foo", "bar")
+    ```
+
+-   `np_array(data, dtype = NULL, order = "C")`: Create NumPy arrays.
+
+    ``` r
+    np_array(c(1:8), dtype = "float16")
+    ```
+
+- `array_reshape(x, dim, order = c("C", "F"))`: Reshape a Python array.
+    
+    ```r
+    x <- 1:4
+    array_reshape(x, c(2, 2)) 
+    ```
+
+- `py_func(f)`: Wrap an R function in a Python function with the same signature.
+
+    ```r
+    py_func(xor) 
+    ```
+    
+- `iterate(it, f = base::identity, simplify = TRUE)`: Apply an R function to 
+each value of a Python iterator or return the values as an R vector, draining 
+the iterator as you go. Also `iter_next()` and `as_iterator()`.
+
+- `py_iterator(fn, completed = NULL)`: Create a Python iterator from an R function. 
+
+    ```r
+    seq_gen <- function(x){n <- x; function() {n <<- n + 1; n}}
+    py_iterator(seq_gen(9))
+    ```
 
 ## Old
 
