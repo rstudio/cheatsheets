@@ -38,6 +38,108 @@ Ollama, Anthropic and many others thanks to its integration with `chatlas`
 
 :::
 
+## Getting started
+
+::: {.panel-tabset group="language"}
+
+### R
+
+1. Load the libraries
+    
+    ```r
+    library(mall)
+    library(ellmer)
+    ```
+    
+1. Create a vendor specific chat connection
+
+    ```r
+    chat <- chat_openai()
+    ```
+
+1. Pass the chat object to mall
+
+    ```r
+    llm_use(chat)
+    ````
+    
+*For dataframes:*
+    
+```r
+data(“reviews") # Sample product reviews
+
+reviews |>
+  llm_sentiment(review)
+```
+*For vectors:*
+
+```r
+llm_vec_sentiment(c("I am happy", "I am sad”))
+```
+
+**Connect automatically**
+
+As a convenience, mall is able to automatically establish a connection with the 
+LLM. To do this you can use the `.mall_chat` option: 
+`options(.mall_chat=ellmer::chat_openai(model="gpt-4o"))`
+Add this line to your *.Rprofile * file in order for that code to run every 
+time you start R. You can call `usethis::edit_r_profile()` to edit.
+
+### Python
+
+Start by creating a new LLM connection
+
+```python
+from chatlas import ChatOpenAI
+chat = ChatOpenAI()
+```
+
+*Dataframes*
+
+1. Load the library
+
+    ```python
+    import mall
+    ```
+    
+1. Read or load your data frame
+
+    ```python
+    reviews = mall.MallData.reviews # Sample product
+    reviews
+    ```
+1. Pass the chat object to mall
+
+    ```python
+    reviews.llm.use(chat)
+    ```
+    
+1. Access NLP functions via `.llm`
+    
+    ```python
+    reviews.llm.sentiment('review')
+    ```
+    
+*String vectors*
+
+1. Load the LLMVec class
+
+    ```python
+    from mall import LLMVec
+    ```
+1. Create a new LLMVec object
+
+    ```python
+    llm = LLMVec(chat)
+    ```
+    
+1. Pass a vector to a function in the new object
+
+    ```python
+    llm.sentiment(['I am happy', 'I am sad'])
+    ```
+    
+:::
 
 ## NLP functions
 
