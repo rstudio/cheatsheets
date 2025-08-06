@@ -210,3 +210,56 @@ negative.
 
 
 :::
+
+
+### Extract
+
+Extract specific entity, or entities, from the provided text
+
+::: {.panel-tabset group="language"}
+
+### R
+
+- `llm_extract(.data, col, labels, expand_cols = FALSE, additional_prompt = "", pred_name = “.extract")`
+
+    ```r
+    llm_extract(reviews, review, labels = "product")
+    ```
+    
+- `llm_vec_extract(x, labels = c(), additional_prompt = "", preview = FALSE)`
+
+    ```r
+    llm_vec_extract("bob smith, 123 3rd street", c("name", "address"))
+    ```
+    
+  
+**Special arguments**
+
+`labels`:  A vector to specify the entities to identify `expand_cols` - If 
+multiple labels, this indicates if the labels will show up in their own 
+column (data frames only)
+
+### Python
+
+- *\<DataFrame\>*`.llm.extract(col, labels='', expand_cols = False, additional = '', pred_name = 'extract')`  
+
+    ```python
+    reviews.llm.extract("review", labels = "product")
+    ```
+
+- *\<LLMVec object\>*`.extract(x, labels='', additional='') `
+
+    ```python
+    llm.extract(['bob smith, 123 3rd street'], labels=['name', 'address'])
+    ```
+
+**Special arguments**
+
+
+`labels`: A vector to specify the entities to identify `expand_cols` - If 
+multiple labels, this indicates if the labels will show up in their own
+column (data frames only)
+
+:::
+
+
