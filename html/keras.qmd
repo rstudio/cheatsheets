@@ -31,6 +31,8 @@ It provides the freedom to x work with *JAX*, *Tensorflow*, and *Torch*, plus th
 **keras3** provides easy access to the Keras vast API.
 It also makes getting started with Keras faster by automatically creating a working Python environment with all the needed libraries pre-installed.
 
+![Convolution Neural Network (CNN)](images/keras-convolution-diagram.png){width="600" fig-align="center" fig-alt="A diagram that provides a conceptual overview of how a CNN works"}
+
 ## Model building
 
 ### 1. Define the model
