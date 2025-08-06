@@ -502,7 +502,28 @@ method
 |`op_threshold()`|`op_unravel_index()`|
 
 
-## Deep Learning with R Book 3rd Edition
+## Learn more
 
+::: {.columns}
+:::{.column width="70%"}
+
+::: {style="font-size: 120%;"}
+[Deep Learning with R, Third Edition](https://www.manning.com/books/deep-learning-with-r-third-edition) 
+:::
+
+::: {style="font-size: 90%;"}
+*By François Chollet & Tomasz Kalinowski* <br/>
+*2025*
+:::
+
+::: {style="font-size: 70%;"}
 [https://www.manning.com/books/deep-learning-with-r-third-edition](https://www.manning.com/books/deep-learning-with-r-third-edition)
+:::
 
+:::
+:::{.column width="30%"}
+
+[![](images/keras-book.png){width="600" fig-align="center" fig-alt="A diagram that provides a conceptual overview of how a CNN works"}](https://www.manning.com/books/deep-learning-with-r-third-edition)
+
+:::
+:::
