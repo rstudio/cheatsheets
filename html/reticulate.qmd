@@ -231,7 +231,39 @@ the iterator as you go. Also `iter_next()` and `as_iterator()`.
     seq_gen <- function(x){n <- x; function() {n <<- n + 1; n}}
     py_iterator(seq_gen(9))
     ```
+    
+## Helpers
 
+- `py_capture_output(expr, type = c("stdout", "stderr"))`: Capture and return 
+Python output . Also `py_suppress_warnings()`.
+
+- `py_get_attr(x, name, silent = FALSE)`: Get an attribute of a Python object. 
+Also `py_set_attr()`, `py_has_attr()`, and `py_list_attributes()`.
+
+- `py_help(object)`: Open the documentation page for a Python object.
+
+    ```r
+    py_help(sns)
+    ```
+    
+- `py_last_error()`: Get the last Python error encountered. Also 
+`py_clear_last_error()` to clear the last error.
+
+- `py_save_object(object, filename, pickle = "pickle", ...)`: Save and load 
+Python objects with pickle. Also `py_load_object()`.
+
+    ```r
+    py_save_object(x, "x.pickle")
+    ```
+
+- `with(data, expr, as = NULL, ...)`: Evaluate an expression within a Python 
+context manager.
+
+    ```r
+    py <- import_builtins();
+    with(py$open("output.txt", "w") %as% file,
+      {file$write("Hello, there!")})
+    ```
 ## Old
 
 (Optional) Build Python env to use.
