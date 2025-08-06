@@ -8,7 +8,7 @@ execute:
   warning: false
 ---
 
-<img src="images/logo-mall.png" height="138" alt="Hex logo for mall - drawing of the inside of a mall. There is a fountain in the middle."> <br><br><a href="../nlp-with-llms.pdf">
+<img src="images/logo-mall.png" alt="Hex logo for mall - drawing of the inside of a mall. There is a fountain in the middle." height="138"/> <br><br><a href="../nlp-with-llms.pdf">
 
 ```{r}
 #| output: asis
@@ -20,5 +20,73 @@ pdf_preview_link(sheet_name)
 translation_list(sheet_name)
 ```
 
+## Intro
 
-Will be updated soon!
+Use LLM’s to perform NLP row-wise over a data frame. mall comes with pre-defined
+prompts that perform specific NLP operations, and then places the results in a 
+new column.
+
+::: {.panel-tabset group="language"}
+### R
+
+Use OpenAI, Ollama, Anthropic and many others thanks to its integration with `ellmer`
+
+### Python
+
+Use OpenAI,
+Ollama, Anthropic and many others thanks to its integration with `chatlas`
+
+:::
+
+
+## NLP functions
+
+
+### Sentiment analysis 
+
+::: {.panel-tabset group="language"}
+
+### R
+
+- `llm_sentiment(.data, col, options = c("positive", "negative", “neutral"), pred_name = “.sentiment", additional_prompt = “”)`
+
+    ```r
+    llm_sentiment(reviews, review)
+    ```
+
+- `llm_vec_sentiment(x, options = c("positive", "negative", "neutral"), additional_prompt = "", preview = FALSE)`
+
+    ```r
+    llm_vec_sentiment(c("I am happy", "I am sad"))
+    ```
+
+**Special arguments:**
+
+`options`: Customize the sentiments to check for: 
+`options = c(“positive”, “negative”)`. Use ‘tilde’ to mask the results, for 
+example `c("positive" ~ 1, "negative" ~ 0))` returns 1 for positive and 0 for
+negative.
+
+### Python
+
+- *\<Dataframe\>*`.llm.sentiment(col, options = ['positive', 'negative', 'neutral'], additional='', pred_name ='sentiment')`
+
+    ```python
+    reviews.llm.sentiment('review')
+    ```
+
+- *\<LLMVec object\>*`.sentiment(x, options=['positive', 'negative', 'neutral'], additional='')`
+
+    ```python
+    llm.sentiment(['I am happy', 'I am sad'])
+    ```
+
+**Special arguments:**
+
+`options`:  Customize the sentiments to check for: 
+`options = ["positive", "negative"]`. Use a DICT object to mask the results, 
+for example `{"positive": 1, "negative"  0}` returns 1 for positive and 0 for
+negative.
+
+
+:::
