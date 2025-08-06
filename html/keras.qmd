@@ -15,8 +15,9 @@ execute:
 #| column: margin
 source("common.R")
 use_cheatsheet_logo(
-  "tensorflow",
-  alt = "Hex logo for tensorflow - A red hexagon with a stylized 'TFR' (denoting TensorFlow for R) in a lighter shade of red, with the 'F' joined to the 'R'.")
+  "keras3",
+  alt = "Hex logo for keras3. It is a very large white K with a red background. It has the name of the package in smaller letters on the right."
+  )
 sheet_name <- tools::file_path_sans_ext(knitr::current_input())
 pdf_preview_link(sheet_name)
 translation_list(sheet_name)
@@ -24,17 +25,77 @@ translation_list(sheet_name)
 
 ## Intro
 
-**Keras** is a high-level neural networks API developed with a focus on enabling fast experimentation.
-It supports multiple back-ends, including TensorFlow, Jax and Torch.
+**Keras** enables fast experimentation with “neural networks”.
+It supports **convolution networks** (vision) and **recurrent networks** (text and time series).
+It provides the freedom to x work with *JAX*, *Tensorflow*, and *Torch*, plus the freedom to build models that can seamlessly move across these frameworks.
+**keras3** provides easy access to the Keras vast API.
+It also makes getting started with Keras faster by automatically creating a working Python environment with all the needed libraries pre-installed.
 
-Backends like TensorFlow are lower level mathematical libraries for building deep neural network architectures.
-The keras3 R package makes it easy to use Keras with any backend in R.
+## Model building
 
-1.  **Define**: Model, Sequential model, Multi-GPU model
-2.  **Compile**: Optimizer, Loss, Metrics
-3.  **Fit**: Batch size, Epochs, Validation split
-4.  **Evaluate**: Evaluate, Plot
-5.  **Predict**: Classes, Probability
+### 1. Define the model
+
+- `keras_input()` / `keras_model()`: Defines a Functional Model with inputs and outputs.
+
+    ```r
+    inputs <- keras_input(<input-shape>)
+    outputs <- inputs |> 
+      layer_dense() |> 
+      layer_…
+    model <- keras_model(inputs, outputs)
+    ```
+- `keras_model_sequential()`: Define a Sequential Model composed of a linear stack of layers
+
+    ```r
+    model <- keras_model_sequential(<input-shape>) |> 
+      layer_dense() |> 
+      layer_...
+    ```
+
+- `Model()`: Subclass the base Model class
+
+### 2. Inspect the model
+
+- `summary(<model>)`: A summary of a Keras Model
+
+- `plot(<model>)` Plot the model. Needs **graphviz** to work:
+[graphviz.gitlab.io/download](https://graphviz.gitlab.io/download/)
+
+### 3. Compile the model
+
+- `compile()`: Configure aspects of the model such as optimizer, loss, metrics, 
+weights and others.
+
+    ```r
+    model |> compile(
+      loss = "categorical_crossentropy", 
+      optimizer = "rmsprop", 
+      metrics = "accuracy"
+      )
+    ```
+    
+### 4. Fit the model
+
+- `fit()`: Trains the model for a fixed number of dataset iterations (epochs)
+
+    ```r
+    model |> 
+      fit(<x>, <y>, epochs = 30, batch_size = 128, validation_split = 0.2)
+    ```
+
+
+### 5. Evaluate the model
+
+- `evaluate(<model>)`: Returns the loss and metrics
+    
+    ```r
+    model |> 
+      evaluate(<x test>,<y test>)
+    ```
+    
+- `predict(<model>, x)`: Generates predictions
+
+## Old
 
 Read more at:\
 <https://keras.posit.co>\
@@ -254,24 +315,23 @@ Customize training:
 
 -   `image_dataset_from_directory()` Create a TF Dataset from image files in a directory.
 
--   `image_load()`, `image_from_array()`, `image_to_array()`,  `image_array_save()`: Work with PIL Image instances
+-   `image_load()`, `image_from_array()`, `image_to_array()`, `image_array_save()`: Work with PIL Image instances
 
 #### Transform Images
 
 Operations that transform image tensors in deterministic ways.
 
-- `op_image_crop()`
-- `op_image_extract_patches()`
-- `op_image_pad()`
-- `op_image_resize()`
-- `op_image_affine_transform()`
-- `op_image_map_coordinates()`
-- `op_image_rgb_to_grayscale()`
-
+-   `op_image_crop()`
+-   `op_image_extract_patches()`
+-   `op_image_pad()`
+-   `op_image_resize()`
+-   `op_image_affine_transform()`
+-   `op_image_map_coordinates()`
+-   `op_image_rgb_to_grayscale()`
 
 Resize images without aspect ratio distortion.
 
-- `image_smart_resize()`:
+-   `image_smart_resize()`:
 
 #### Image Layers
 
@@ -280,123 +340,123 @@ Note, any image operation function can also be used as a layer in a Model, or us
 
 ##### Image Preprocessing Layers
 
-- `layer_resizing()`
-- `layer_rescaling()`
-- `layer_center_crop()`
+-   `layer_resizing()`
+-   `layer_rescaling()`
+-   `layer_center_crop()`
 
 ##### Image Augmentation Layers
+
 Preprocessing layers that randomly augment image inputs during training.
 
-- `layer_random_crop()`
-- `layer_random_flip()`
-- `layer_random_translation()`
-- `layer_random_rotation()`
-- `layer_random_zoom()`
-- `layer_random_contrast()`
-- `layer_random_brightness()`
+-   `layer_random_crop()`
+-   `layer_random_flip()`
+-   `layer_random_translation()`
+-   `layer_random_rotation()`
+-   `layer_random_zoom()`
+-   `layer_random_contrast()`
+-   `layer_random_brightness()`
 
 ### Sequence Preprocesing
 
-- `timeseries_dataset_from_array()`: Generate a TF Dataset of sliding windows over a timeseries provided as array.
+-   `timeseries_dataset_from_array()`: Generate a TF Dataset of sliding windows over a timeseries provided as array.
 
-- `audio_dataset_from_directory()`: Generate a TF Dataset from audio files.
+-   `audio_dataset_from_directory()`: Generate a TF Dataset from audio files.
 
-- `pad_sequences()`: Pad sequences to the same length
+-   `pad_sequences()`: Pad sequences to the same length
 
 ### Text Preprocessing
 
-- `text_dataset_from_directory()`: Generate a TF Dataset from text files in a directory.
+-   `text_dataset_from_directory()`: Generate a TF Dataset from text files in a directory.
 
-- `layer_text_vectorization()`, `get_vocabulary()`, `set_vocabulary()`: Map text to integer sequences.
+-   `layer_text_vectorization()`, `get_vocabulary()`, `set_vocabulary()`: Map text to integer sequences.
 
 ### Numerical Features Preprocessing
 
-- `layer_normalization()`: Normalizes continuous features.
+-   `layer_normalization()`: Normalizes continuous features.
 
-- `layer_discretization()`: Buckets continuous features by ranges.
+-   `layer_discretization()`: Buckets continuous features by ranges.
 
 ### Categorical Features Preprocessing
 
-- `layer_category_encoding()`: Encode integer features.
+-   `layer_category_encoding()`: Encode integer features.
 
-- `layer_hashing()`: Hash and bin categorical features.
+-   `layer_hashing()`: Hash and bin categorical features.
 
-- `layer_hashed_crossing()`: Cross features using the "hashing trick".
+-   `layer_hashed_crossing()`: Cross features using the "hashing trick".
 
-- `layer_string_lookup()`: Map strings to (possibly encoded) indices.
+-   `layer_string_lookup()`: Map strings to (possibly encoded) indices.
 
-- `layer_integer_lookup()`: Map integers to (possibly encoded) indices.
+-   `layer_integer_lookup()`: Map integers to (possibly encoded) indices.
 
 ### Tabular Data
-One-stop utility for preprocessing and encoding structured data. Define a feature space from a list of table columns (features).
-```r
+
+One-stop utility for preprocessing and encoding structured data.
+Define a feature space from a list of table columns (features).
+
+``` r
 feature_space <- layer_feature_space(features = list(<features>))
 ```
 
 Adapt the feature space to a dataset
-```r
+
+``` r
 adapt(feature_space, dataset)
 ```
 
 Use the adapted `feature_space` preprocessing layer as a layer in a Keras Model, or in the data input pipeline with `tfdatasets::dataset_map()`
 
-
 Available features:
 
-- `feature_float()`
-- `feature_float_rescaled()`
-- `feature_float_normalized()`
-- `feature_float_discretized()`
-- `feature_integer_categorical()`
-- `feature_integer_hashed()`
-- `feature_string_categorical()`
-- `feature_string_hashed()`
-- `feature_cross()`
-- `feature_custom()`
-
+-   `feature_float()`
+-   `feature_float_rescaled()`
+-   `feature_float_normalized()`
+-   `feature_float_discretized()`
+-   `feature_integer_categorical()`
+-   `feature_integer_hashed()`
+-   `feature_string_categorical()`
+-   `feature_string_hashed()`
+-   `feature_cross()`
+-   `feature_custom()`
 
 ## Pre-trained models
 
 Keras applications are deep learning models that are made available alongside pre-trained weights.
 These models can be used for prediction, feature extraction, and fine-tuning.
 
-MobileNetV3  Model, pre-trained on ImageNet
+MobileNetV3 Model, pre-trained on ImageNet
 
-- `application_mobilenet_v3_large()`
-- `application_mobilenet_v3_small()`
+-   `application_mobilenet_v3_large()`
+-   `application_mobilenet_v3_small()`
 
 EfficientNetV2 Model, pre-trained on ImageNet
 
-- `application_efficientnet_v2s()`
-- `application_efficientnet_v2m()`
-- `application_efficientnet_v2l()`
+-   `application_efficientnet_v2s()`
+-   `application_efficientnet_v2m()`
+-   `application_efficientnet_v2l()`
 
 Inception-ResNet v2 and v3 model, with weights trained on ImageNet
 
-- `application_inception_resnet_v2()`
-- `application_inception_v3()`
+-   `application_inception_resnet_v2()`
+-   `application_inception_v3()`
 
 VGG16 and VGG19 models
 
-- `application_vgg16()`
-- `application_vgg19()`
+-   `application_vgg16()`
+-   `application_vgg19()`
 
 ResNet50 model
 
-- `application_resnet50()`:
+-   `application_resnet50()`:
 
 NASNet model architecture
 
-- `application_nasnet_large()`
-- `application_nasnet_mobile()`
-
+-   `application_nasnet_large()`
+-   `application_nasnet_mobile()`
 
 ImageNet is a large database of images with labels, extensively used for deep learning
 
 Preprocesses a tensor encoding a batch of images for an application, and decodes predictions from an application.
-- `application_preprocess_inputs()`
-- `application_decode_predictions()`
-
+- `application_preprocess_inputs()` - `application_decode_predictions()`
 
 ## Callbacks
 
