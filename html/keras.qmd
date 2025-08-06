@@ -418,7 +418,8 @@ a sequence for operations.
 
 - `op_scatter()`:  Modifies tensor in specified locations with zeroes
 
-- `op_scatter_update()`: It modifies tensor in specified locations that do not need to be contiguous
+- `op_scatter_update()`: It modifies tensor in specified locations that do 
+not need to be contiguous
 
 - `op_searchsorted()`: Performs a binary search
 
@@ -432,13 +433,74 @@ a sequence for operations.
 
 - `op_subset()`: Get specific section of the tensor
 
-- `op_switch()`: Applies one of several functions passed to the function based on an index argument
+- `op_switch()`: Applies one of several functions passed to the function based 
+on an index argument
 
-- `op_unstack()`: Splits tensor into a list of tensors separated along the specified axis
+- `op_unstack()`: Splits tensor into a list of tensors separated along the 
+specified axis
 
-- `op_vectorized_map()`: Applies a function to every single value in the tensor. Designed for vectorized operations
+- `op_vectorized_map()`: Applies a function to every single value in the tensor. 
+Designed for vectorized operations
 
 - `op_while_loop()`: While loop implementation
 
+### Images
 
+- `op_image_affine_transform()`: Applies the given transform
+
+- `op_image_crop()`: Crops to specified height and width
+
+- `op_image_gaussian_blur()`: Applies Gaussian blur
+
+- `op_image_extract_patches()`: Extracts from image
+
+- `op_image_hsv_to_rgb()`: Converts from HSV to RGB
+
+- `op_image_map_coordinates()`: Maps input array to new coordinates by 
+interpolation
+
+- `op_image_pad()`: Pad images with zeroes to specified height and width
+
+- `op_image_perspective_transform()`: Applies a perspective transformation to 
+the image
+
+- `op_image_resize()`: Resize image to size using the specified interpolation 
+method
+
+- `op_image_rgb_to_grayscale()`: Converts from RGB to grayscale
+
+- `op_image_rgb_to_hsv()`:  Converts from RGB to HSV
+
+### Neural network
+
+
+|||
+|-------------------------|-------------------------|
+|`op_average_pool()`|`op_batch_normalization()`|
+|`op_binary_crossentropy()`|`op_celu()`|
+|`op_conv()`|`op_conv_transpose()`|
+|`op_ctc_loss()`|`op_depthwise_conv()`|
+|`op_elu()`|`op_gelu()`|
+|`op_glu()`|`op_hard_shrink()`|
+|`op_hard_sigmoid()`|`op_hard_silu()`|
+|`op_hard_tanh()`|`op_leaky_relu()`|
+|`op_log_sigmoid()`|`op_log_softmax()`|
+|`op_max_pool()`|`op_moments()`|
+|`op_multi_hot()`|`op_categorical_crossentropy()`|
+|`op_sparse_categorical_crossentropy()`|`op_normalize()`|
+|`op_one_hot()`|`op_polar()`|
+|`op_psnr()`|`op_relu()`|
+|`op_relu6()`|`op_rms_normalization()`|
+|`op_selu()`|`op_separable_conv()`|
+|`op_sigmoid()`|`op_silu()`|
+|`op_soft_shrink()`|`op_softmax()`|
+|`op_softplus()`|`op_softsign()`|
+|`op_sparse_plus()`|`op_sparsemax()`|
+|`op_squareplus()`|`op_tanh_shrink()`|
+|`op_threshold()`|`op_unravel_index()`|
+
+
+## Deep Learning with R Book 3rd Edition
+
+[https://www.manning.com/books/deep-learning-with-r-third-edition](https://www.manning.com/books/deep-learning-with-r-third-edition)
 
