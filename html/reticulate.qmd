@@ -23,512 +23,273 @@ pdf_preview_link(sheet_name)
 translation_list(sheet_name)
 ```
 
-The **reticulate** package lets you use Python and R together seamlessly in R code, in R Markdown documents, and in the RStudio IDE.
+## Getting Started
+
+Reticulate makes it very easy to get started with Python in R.
+Simply use py_require() to let Reticulate know which Python version and packages you will need:
 
 ```{r}
+#| eval: false
+
 library(reticulate)
+py_require("polars", python_version="3.12")
+pl <- import("polars")
 ```
 
-## Python in R Markdown
+An isolated Python virtual environment that you will not need to manage is created, this eliminates the risk of the environment becoming unstable overtime.
 
-(Optional) Build Python env to use.
+Reticulate uses an extremely fast Python package manager called [uv](https://docs.astral.sh/uv/).
+Some features of this system are:
 
-knitr versions >= 1.18 will automatically use the reticulate engine for Python chunks. See `?reticulate::eng_python` for a listing of supported knitr chunk options.
+-   10x–100x faster than pip at setting up virtual environments
+-   Downloads, installs and manages Python versions
+-   Supports macOS, Linux and Windows
 
+Reticulate will automatically download and install **uv** for you in a location that does not make system changes to your machine.
 
-```{{{r}}}
-#| label: setup
-#| include: false
+## Manage environments
 
-library(reticulate) 
-virtualenv_create("fmri-proj") 
-py_install("seaborn", envname = "fmri-proj") 
-use_virtualenv("fmri-proj")`
-```
+Manage Virtualenv and Conda environments.
+Use if `py_require()` is not an option, or if using an existing Python virtual environment.
 
-Begin Python chunks with ```` ```{python} ````.
-Chunk options like `echo`, `include`, etc. all work as expected.
+|  |  |
+|-------------------|-----------------------------------------------------|
+| Create new | `virtualenv_create()` / `conda_create()`<br/> *`virtualenv_create("my-env")`* |
+| Use in R session | `use_virtualenv()` / `use_condaenv()` / `use_python()`<br/> *`use_virtualenv(“my-env")`* |
+| List available | `virtualenv_list()` / `conda_list()` |
+| Install packages | `py_install()` / `virtualenv_install()` / `conda_install()`<br/> *`py_install(“polars”, "my-env")`* |
+| Delete from disk | `virtualenv_remove()` / `conda_remove()`<br/> *`virtualenv_remove("my-env")`* |
 
-```{{{python}}} 
-#| echo: false
-
-import seaborn as sns 
-fmri = sns.load_dataset("fmri")`
-```
-
-Use the `py` object the access objects created in Python chunks from R chunks.
-
-````         
-``` {{r}}
-f1 <- subset(py$fmri, region = "parietal")
-```
-````
-
-Python chunks all execute within a **single** Python session so you have access to all objects created in previous chunks.
-
-Use the `r` object to access objects created in R chunks from Python chunks.
-
-````         
-``` {{python}}
-import matplotlib as mpl
-sns.lmplot("timepoint", "signal", data=r.f1)
-mpl.pyplot.show()
-```
-````
-
-## Python in R
-
-`python.r` Example:
-
-```{r}
-library(reticulate)
-py_install("seaborn")
-use_virtualenv("r-reticulate")
-
-sns <- import("seaborn")
-
-fmri <- sns$load_dataset("fmri")
-dim(fmri)
-
-# creates tips
-source_python("python.py")
-dim(tips)
-
-# creates tips in main
-py_run_file("python.py")
-dim(py$tips)
-
-py_run_string("print(tips.shape)")
-```
-
-`python.py` Example:
-
-``` python
-import seaborn as sns
-tips = sns.load_dataset("tips")
-```
-
-Call Python from R code in three ways:
+## Calling Python
 
 ### Import Python Modules
 
-Use `import()` to import any Python module.
-Access the attributes of a module with `$`.
-
-```{r}
-library(reticulate)
-py_install("seaborn")
-use_virtualenv("r-reticulate")
-
-sns <- import("seaborn")
-
-tips <- sns$load_dataset("tips")
-dim(tips)
-```
+Import any Python module into R, and access the attributes of a module with `$`.
 
 -   `import(module, as = NULL, convert = TRUE, delay_load = FALSE)`: Import a Python module.
-    If `convert = TRUE`, Python objects are converted to their equivalent R types.
-    Also `import_from_path()`.
+    If convert = TRUE, Python objects are converted to their equivalent R types.
+    Access the attributes of a module with \$.
 
-    ```{r}
-    import("pandas")
+    ``` r
+    import("polars")
     ```
+
+-   `import_from_path(module, path = “." )`: Import module from an arbitrary filesystem path.
 
 -   `import_main(convert = TRUE)`: Import the main module, where Python executes code by default.
 
-    ```{r}
-    import_main()
+    ``` r
+    main <- import_main()
     ```
 
--   `import_builtings(convert = TRUE)`: Import Python's built-in functions.
+-   `import_builtins(convert = TRUE)`: Import Python's built-in functions
 
-    ```{r}
-    import_builtins()
+    ``` r
+    builtins <- import_builtins()
+    builtins$print("hello")
     ```
 
-### Source Python Files
+### Source Python files
 
-Use `source_python()` to source a Python script and make the Python functions and objects it creates available in the calling R environment.
-
-```{r}
-source_python("python.py")
-dim(py$tips)
-```
+Source a Python script and make the Python functions and objects it creates available in R
 
 -   `source_python(file, envir = parent.frame(), convert = TRUE)`: Run a Python script, assigning objects to a specified R environment.
 
-    ```{r}
-    source_python("python.py")
+    ``` r
+    source_python("file.py")
     ```
 
 ### Run Python Code
 
-Execute Python code into the `main` Python modules with `py_run_file()` or `py_run_string()`.
+Execute Python code into the main Python module.
+Access the results, and anything else in Python's main module, with `py$`.
 
-```{r}
-py_run_file("python.py")
-dim(py$tips)
+-   `py_run_file(file, local = FALSE, convert = TRUE)`: Run Python file in the main module.
 
-py_run_string("print(tips.shape)")
-```
+    ``` r
+    py_run_file("my-script.py")
+    ```
+
+-   `py_eval(code, convert = TRUE)`: Run a Python expression, return the result.
+    py_eval("1 + 1”)
+
+    ``` r
+    py_eval("1 + 1") 
+    ```
 
 -   `py_run_string(code, local = FALSE, convert = TRUE)`: Run Python code (passed as a string) in the main module.
 
-    ```{r}
+    ``` r
     py_run_string("x = 10")
     py$x
     ```
 
--   `py_run_file(file, local = FALSE, convert = TRUE)`: Run Python file in the main module.
+### In a Notebook
 
-    ```{r}
-    py_run_file("python.py")
-    ```
+Call Python as a code chunk in **Quarto** and **R Markdown**
 
--   `py_eval(code, convert = TRUE)`: Run a Python expression, return the result.
-    Also `py_call()`.
+![Combine R and Python in Quarto](images/reticulate-quarto.png){width="500" fig-align="center" fig-alt="A screenshot of a Quarto document that combines R code and Python code"}
 
-    ```{r}
-    py_eval("1 + 1")
-    ```
+-   Begin Python chunks with \`\`\`{python} .
+    Chunk options like echo, include, etc. all work as expected
 
-Access the results, and anything else in Python's `main` module, with `py`.
+-   With `py_require()`, define which Python libraries will be used in the notebook
 
--   `py`: An R object that contains the Python main module and the results stored there.
+-   Use the `py` object to access objects created\` in Python chunks from R chunks
 
-    ```{r}
-    py$x
-    ```
+-   Python chunks all execute within a single Python session so you have access to all objects created, and modules loaded, in previous chunks.
+
+-   Use the r object to access objects created in R chunks from Python chunks
+
+-   Output displays below chunk, including plots.
+
+### As a Python console (REPL)
+
+A REPL (Read, Eval, Print Loop) is a command line where you can run Python code and view the results.
+
+``` python
+> library(reticulate)
+> py_require("plotnine")
+> repl_python() # Starts a Python REPL
+>>> from plotnine.data import penguins
+>>> penguins.shape
+```
+
+1.  Use py_require() to define libraries and Python version to use
+2.  In RStudio, open in the console with repl_python(), or by running code in a Python script with Cmd + Enter (Windows: Ctrl + Enter). Click on the language logo to toggle between R and Python.
+3.  Type commands at the `>>>` prompt.
+4.  Press Enter to run code.
+5.  Type `exit` to close and return to R console.
 
 ## Object Conversion
 
-**Tip: To index Python objects begin at 0, use integers, e.g. `OL`**
+### Automatic conversions
 
-Reticulate provides **automatic** built-in conversion between Python and R for many Python types.
+Reticulate provides automatic built-in conversion between Python and R for many Python types.
 
-| R                      | Python            |
-|------------------------|-------------------|
-| Single-element vector  | Scalar            |
-| Multi-element vector   | List              |
-| List of multiple types | Tuple             |
-| Named List             | Dict              |
-| Matrix/Array           | NumPy ndarray     |
-| Data Frame             | Pandas DataFrame  |
-| Function               | Python function   |
-| NULL, TRUE, FALSE      | None, True, False |
+-   `py_to_r(x)`: Convert a Python object to an R object. Also `r_to_py()`
 
-: Table of data types in R and their Python equivalents.
+| R                       | Python                  |
+|-------------------------|-------------------------|
+| Single-element vector   | Scalar                  |
+| Multi-element vector    | List                    |
+| List of multiple types  | Tuple                   |
+| Named List              | Dict                    |
+| Matrix/Array            | NumPy ndarray           |
+| Data Frame              | Pandas DataFrame        |
+| Function                | Python function         |
+| `NULL`, `TRUE`, `FALSE` | `None`, `True`, `False` |
 
-Or, if you like, you can convert manually with
+### Manual Conversions
 
--   `py_to_r(x)`: Convert a Python object to an R object.
-    Also `r_to_py()`.
-
-    ```{r}
-    py_to_r(py)
-    ```
+Specify how the objects will be converted
 
 -   `tuple(..., convert = FALSE)`: Create a Python tuple.
 
-    ```{r}
+    ``` r
     tuple("a", "b", "c")
     ```
 
--   `dict(..., convert = FALSE)`: Create a Python dictionary object.
-    Also `py_dict()` to make a dictionary that uses Python objects as keys.
+-   `dict(..., convert = FALSE)`: Create a Python dictionary.
 
-    ```{r}
+    ``` r
     dict(foo = "bar", index = 42L)
+    ```
+
+-   `py_dict()`: A dictionary that uses Python objects as keys.
+
+    ``` r
+    py_dict("foo", "bar")
     ```
 
 -   `np_array(data, dtype = NULL, order = "C")`: Create NumPy arrays.
 
-    ```{r}
+    ``` r
     np_array(c(1:8), dtype = "float16")
     ```
 
--   `array_reshape(x, dim, order = c("C", "F"))`: Reshape a Python array.
-
-    ```{r}
+- `array_reshape(x, dim, order = c("C", "F"))`: Reshape a Python array.
+    
+    ```r
     x <- 1:4
-    array_reshape(x, c(2,2))
+    array_reshape(x, c(2, 2)) 
     ```
 
--   `py_func(f)`: Wrap an R function in a Python function with the same signature.
+- `py_func(f)`: Wrap an R function in a Python function with the same signature.
 
-    ```{r}
-    py_func(xor)
+    ```r
+    py_func(xor) 
     ```
+    
+- `iterate(it, f = base::identity, simplify = TRUE)`: Apply an R function to 
+each value of a Python iterator or return the values as an R vector, draining 
+the iterator as you go. Also `iter_next()` and `as_iterator()`.
 
--   `py_main_thread_func(f)`: Create a function that will always be called on the main thread.
+- `py_iterator(fn, completed = NULL)`: Create a Python iterator from an R function. 
 
--   `iterate(it, f = base::identity, simplify = TRUE)`: Apply an R function to each value of a Python iterator or return the values as an R vector, draining the iterator as you go.
-    Also `iter_next()` and `as_iterator()`.
-
-    ```{r}
-    iterate(iter, print)
-    ```
-
--   `py_interator(fn, completed = NULL)`: Create a Python iterator from an R function.
-
-    ```{r}
-    seq_gen <- function(x) {
-      n <- x;
-      function() {
-        n <<- n + 1;
-        n
-      }
-    }
+    ```r
+    seq_gen <- function(x){n <- x; function() {n <<- n + 1; n}}
     py_iterator(seq_gen(9))
     ```
-
-## Helpers
-
--   `py_capture_output(expr, type = c("stdout", "stderr"))`: Capture and return Python output.
-    Also `py_supress_warnings()`.
-
-    ```{r}
-    py_capture_output("x")
-    ```
-
--   `py_get_attr(x, name, silent = FALSE)`: Get an attribute of a Python object.
-    Also `py_set_attr()`, `py_has_attr()`, and `py_list_attributes()`.
-
-    ```{r}
-    py_get_attr(x)
-    ```
-
-<!-- TO DO: Needs name argument. -->
-
--   `py_help(object)`: Open the documentation page for a Python object.
-
-    ```{r}
-    py_help(sns)
-    ```
-
--   `py_last_error()`: Get the last Python error encountered.
-    Also `py_clear_last_error()` to clear the last error.
-
-    ```{r}
-    py_last_error()
-    ```
-
--   `py_save_object(object, filename, pickle = "pickle", ...)`: Save and load Python objects with pickle.
-    Also `py_load_object()`.
-
-    ```{r}
-    py_save_objects(x, "x.pickle")
-    ```
-
--   `with(data, expr, as = NULL, ...)`: Evaluate an expression within a Python context manager.
-
-    ```{r}
-    py <- import_builtins()
-    with(py$open("output.txt", "w") %as% file,
-         {file$write("Hello, there!")})
-    ```
-
-<!-- Page 2 -->
-
+    
 ## Python in the IDE
 
-Requires reticulate plus RStudio v1.2+.
-Some features require v1.4+.
+The RStudio and Positron IDE’s provide first-class integration with Reticulate.
 
-![](images/reticulate-ide.png)
+![](images/reticulate-rstudio.png){width="800" fig-align="center" fig-alt="Screenshot of using Reticulate in the RStudio IDE"}
+    
+![](images/reticulate-positron.png){width="800" fig-align="center" fig-alt="Screenshot of using Reticulate in the Positron IDE"}    
+    
+## Helpers
 
-::: {.callout-note appearance="minimal" icon="false" collapse="true"}
-## Expand to read about reticulate features in the RStudio IDE {aria-hidden="true"}
+- `py_capture_output(expr, type = c("stdout", "stderr"))`: Capture and return 
+Python output . Also `py_suppress_warnings()`.
 
-### reticulate features in the RStudio IDE
+- `py_get_attr(x, name, silent = FALSE)`: Get an attribute of a Python object. 
+Also `py_set_attr()`, `py_has_attr()`, and `py_list_attributes()`.
 
--   Syntax highlighting for Python scripts and chunks.
--   Tab completion for Python functions and objects (and Python modules imported in R scripts).
--   Source Python scripts.
--   Execute Python code line by line with `Cmd + Enter` (`Ctrl + Enter`).
--   View Python objects in the Environment Pane.
--   View Python objects in the Data Viewer.
--   A Python REPL opens in the console when you run Python code with a keyboard shortcut. Type `exit` to close.
--   `matplotlib` plots display in plots pane.
--   Press `F1` over a Python symbol to display the help topic for that symbol.
-:::
+- `py_help(object)`: Open the documentation page for a Python object.
 
-## Python REPL
+    ```r
+    py_help(sns)
+    ```
+    
+- `py_last_error()`: Get the last Python error encountered. Also 
+`py_clear_last_error()` to clear the last error.
 
-RStudio IDE Window:
+- `py_save_object(object, filename, pickle = "pickle", ...)`: Save and load 
+Python objects with pickle. Also `py_load_object()`.
 
-A REPL (Read, Eval, Print Loop) is a command line where you can run Python code and view the results.
-
-1.  Open in the console with `repl_python()`, or by running code in a Python script with `Cmd + Enter` (`Ctrl + Enter`).
-
-    -   `repl_python(module = NULL, quiet = getOption("reticulate.repl.quiet", default = FALSE), input = NULL)`: Launch a Python REPL. Run `exit` to close.
-
-        ```{r}
-        repl_python()
-        ```
-
-2.  Type commands at `>>>` prompt.
-
-3.  Press `Enter` to run code.
-
-4.  Type `exit` to close and return to R console.
-
-    ```         
-    > reticulate::repl_python()
-    Python 3.9.16 (/Users/mine/.virtualenvs/r-reticulate/bin/python)
-    Reticulate 1.28 REPL -- A Python interpreter in R.
-    Enter 'exit' or 'quit' to exit the REPL and return to R.
-    >>> import seaborn as sns
-    >>> tips = sns.load_dataset("tips")
-    >>> tips.shape
-    (244, 7)
-    >>> exit
-    >
+    ```r
+    py_save_object(x, "x.pickle")
     ```
 
-## Configure Python
+- `with(data, expr, as = NULL, ...)`: Evaluate an expression within a Python 
+context manager.
 
-Reticulate binds to a local instance of Python when you first call `import()` directly or implicitly from an R session.
-To control the process, find or build your desired Python instance.
-Then suggest your instance to reticulate.
-**Restart R to unbind.**
-
-### Find Python
-
--   `install_python(version, list = FALSE, force = FALSE)`: Download and install Python.
-
-    ```{r}
-    install_python("3.9.16")
+    ```r
+    py <- import_builtins();
+    with(py$open("output.txt", "w") %as% file,
+      {file$write("Hello, there!")})
     ```
+    
 
--   `py_available(initialize = FALSE)`: Check if Python is available on your system.
-    Also `py_module_available()` and `py_numpy_module()`.
+## Choosing Python
 
-    ```{r}
-    py_available()
-    ```
+Reticulate follows a specific order to discover and choose the Python 
+environment to use
 
--   `py_discover_config()`: Return the detected installation of Python.
-    Use `py_config()` to check which version has been loaded.
+1. `RETICULATE_PYTHON` or `RETICULATE_PYTHON_ENV`
+1. `use_python()` or `use_virtualenv()`, if called before `import()`.
+1. Working directory contains a virtual env: ./.venv
+1. Environments named after the imported module. e.g. 
+*~/.virtualenvs/r-scipy/ for `import(“scipy")`*
+1. `RETICULATE_PYTHON_FALLBACK`
+1. The default Virtual Environment: `r-reticulate`
+1. Specifications from `py_require()` (See tip below)
+1. OS’ default Python (PATH or Windows registry)
 
-    ```{r}
-    py_config()
-    ```
-
--   `virtualenv_list()`: List all available virtual environments.
-    Also `virtualenv_root()`.
-
-    ```{r}
-    virtualenv_list()
-    ```
-
--   `conda_list(conda = "auto")`: List all available conda envs.
-    Also `conda_binary()` and `conda_version()`.
-
-    ```{r}
-    conda_list()
-    ```
-
-### Create a Python env
-
--   `virtualenv_create(envname = NULL, ...)`: Create a new virtual environment.
-
-    ```{r}
-    virtualenv_create("r-pandas")
-    ```
-
--   `conda_create(envname = NULL, ...)`: Create a new conda environment.
-
-    ```{r}
-    conda_create("r-pandas", packages = "pandas")
-    ```
-
-### Install Packages
-
-Install Python packages with R (below) or the shell:
-
-`pip install SciPy`
-
-`conda install SciPy`
-
--   `py_install(packages, envname, ...)`: Install Python packages into a Python env.
-
-    ```{r}
-    py_install("pandas")
-    ```
-
--   `virtualenv_install(envname, packages, ...)`: Install a package within a virtual environment.
-    Also `virtualenv_remove()`.
-
-    ```{r}
-    virtualenv_install("r-pandas", packages = "pandas")
-    ```
-
--   `conda_installs(envname, packages, ...)`: Install a package within a conda environment.
-    Also `conda_remove()`.
-
-    ```{r}
-    conda_install("r-pandas", packages = "plotly")
-    ```
-
-### Suggest an env to use
-
-Set a default Python interpreter in the RStudio IDE Global or Project Options.
-Go to **Tools \> Global Options ... \> Python** for Global Options.
-Within a project, go to **Tools \> Project Options... \> Python**.
-
-Otherwise, to choose an instance of Python to bind to, reticulate scans the instances on your computer in the following order, **stopping at the first instance that contains the module called by `import()`**.
-
-1.  The instance referenced by the environment variable `RETICULATE_PYTHON` (if specified).
-    **Tip: set in .Renviron file.**
-
-    -   `Sys.setenv(RETICULATE_PYTHON = PATH)`: Set default Python binary.
-        Persists across sessions!
-        Undo with `Sys.unsetenv()`.
-
-        ```{r}
-        Sys.setenv(RETICULATE_PYTHON = "/usr/local/bin/python")
-        ```
-
-2.  The instances referenced by `use_` functions if called before `import()`.
-
-    -   `use_python(python)`: Path to a Python binary.
-
-        ```{r}
-        use_python("usr/local/bin/python")
-        ```
-
-    -   `use_virtualenv(virtualenv)`: Path to _or_ name of a Python virtualenv.
-
-        ```{r}
-        use_virtualenv("~/myenv")
-        #| eval: false
-        use_virtualenv("~/myenv") # path to venv
-        use_virtualenv("r-keras") # name of venv
-        ```
-
-3.  A virtual env found in the current working directory: "./.venv" 
-
-4. Environments that are named after the imported module. e.g. "~/.virtualenvs/r-scipy/" for `import("scipy")`
-
-5. The package default virtualenv, "r-reticulate".
-
-6.  At the location of the Python binary discovered on the system `PATH` (i.e. `Sys.which("python")`)
-
-
-------------------------------------------------------------------------
-
-CC BY SA Posit Software, PBC • [info\@posit.co](mailto:info@posit.co) • [posit.co](https://posit.co)
-
-Learn more at [rstudio.github.io/reticulate](https://rstudio.github.io/reticulate/).
-
-Updated: `r format(Sys.Date(), "%Y-%m")`.
-
-```{r}
-#| output: true
-#| eval: true
-
-packageVersion("reticulate")
-```
-
-------------------------------------------------------------------------
+:::{.callout-tip}
+To have `py_require()` take more precedence, set `RETICULATE_PYTHON=“managed”`. 
+It will become number 1 on the list.    
+::: 
