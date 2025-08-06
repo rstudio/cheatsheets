@@ -264,6 +264,28 @@ context manager.
     with(py$open("output.txt", "w") %as% file,
       {file$write("Hello, there!")})
     ```
+    
+
+## Choosing Python
+
+Reticulate follows a specific order to discover and choose the Python 
+environment to use
+
+1. `RETICULATE_PYTHON` or `RETICULATE_PYTHON_ENV`
+1. `use_python()` or `use_virtualenv()`, if called before `import()`.
+1. Working directory contains a virtual env: ./.venv
+1. Environments named after the imported module. e.g. 
+*~/.virtualenvs/r-scipy/ for `import(“scipy")`*
+1. `RETICULATE_PYTHON_FALLBACK`
+1. The default Virtual Environment: `r-reticulate`
+1. Specifications from `py_require()` (See tip below)
+1. OS’ default Python (PATH or Windows registry)
+
+:::{.callout-tip}
+To have `py_require()` take more precedence, set `RETICULATE_PYTHON=“managed”`. 
+It will become number 1 on the list.    
+::: 
+
 ## Old
 
 (Optional) Build Python env to use.
