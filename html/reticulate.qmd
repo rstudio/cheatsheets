@@ -84,17 +84,17 @@ equivalent R types. Access the attributes of a module with $.
     import("polars")
     ```
     
-- `import_from_path(module, path = “." )` - Import module from an arbitrary 
+- `import_from_path(module, path = “." )`: Import module from an arbitrary 
 filesystem path.
 
-- `import_main(convert = TRUE)` - Import the main module, where Python executes 
+- `import_main(convert = TRUE)`: Import the main module, where Python executes 
 code by default.
 
     ```r
     main <- import_main()
     ```
 
-- `import_builtins(convert = TRUE)` - Import Python's built-in functions
+- `import_builtins(convert = TRUE)`: Import Python's built-in functions
 
   ```r
   builtins <- import_builtins()
@@ -106,7 +106,7 @@ code by default.
 Source a Python script and make the Python functions and objects it creates 
 available in R
 
-- `source_python(file, envir = parent.frame(), convert = TRUE)` - Run a Python 
+- `source_python(file, envir = parent.frame(), convert = TRUE)`: Run a Python 
 script, assigning objects to a specified R environment.
 
     ```r
@@ -118,7 +118,7 @@ script, assigning objects to a specified R environment.
 Execute Python code into the main Python module. Access the results, and 
 anything else in Python's main module, with `py$`.
 
-- `py_run_file(file, local = FALSE, convert = TRUE)` - Run Python file in the 
+- `py_run_file(file, local = FALSE, convert = TRUE)`: Run Python file in the 
 main module.
 
     ```r
@@ -126,14 +126,14 @@ main module.
     ```
 
 
-- `py_eval(code, convert = TRUE)` - Run a Python expression, return the result.
+- `py_eval(code, convert = TRUE)`: Run a Python expression, return the result.
 py_eval("1 + 1”)
 
     ```r
     py_eval("1 + 1") 
     ```
 
-- `py_run_string(code, local = FALSE, convert = TRUE)` - Run Python code 
+- `py_run_string(code, local = FALSE, convert = TRUE)`: Run Python code 
 (passed as a string) in the main module.
 
     ```r
@@ -183,7 +183,25 @@ logo to toggle between R and Python.
 1. Press Enter to run code.
 1. Type `exit` to close and return to R console.
 
+## Object Conversion 
 
+### Automatic conversions
+
+Reticulate provides automatic built-in conversion between Python and R for many
+Python types.
+
+- `py_to_r(x)`: Convert a Python object to an R object. Also `r_to_py()`
+
+| R                      | Python                     |
+|------------------------|----------------------------|
+| Single-element vector  | Scalar                     |
+| Multi-element vector   | List                       |
+| List of multiple types | Tuple                      |
+| Named List             | Dict                       |
+| Matrix/Array           | NumPy ndarray              |
+| Data Frame             | Pandas DataFrame           |
+| Function               | Python function            |
+| `NULL`, `TRUE`, `FALSE`| `None`, `True`, `False`    |
 
 ## Old
 
