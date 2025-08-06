@@ -25,7 +25,7 @@ translation_list(sheet_name)
 
 ## Intro
 
-Use LLM’s to perform NLP row-wise over a data frame. mall comes with pre-defined
+Use LLM’s to perform NLP row-wise over a data frame. `mall` comes with pre-defined
 prompts that perform specific NLP operations, and then places the results in a 
 new column.
 
@@ -66,21 +66,26 @@ Ollama, Anthropic and many others thanks to its integration with `chatlas`
     llm_use(chat)
     ````
     
-*For dataframes:*
+- *For dataframes:*
+
+    ```r
+    data(“reviews") # Sample product reviews
     
-```r
-data(“reviews") # Sample product reviews
+    reviews |>
+      llm_sentiment(review)
+    ```
 
-reviews |>
-  llm_sentiment(review)
-```
-*For vectors:*
+- *For vectors:*
+    
+    ```r
+    llm_vec_sentiment(c("I am happy", "I am sad”))
+    ```
 
-```r
-llm_vec_sentiment(c("I am happy", "I am sad”))
-```
+<br/>
 
+::: {style="font-size: 130%;"}    
 **Connect automatically**
+:::
 
 As a convenience, mall is able to automatically establish a connection with the 
 LLM. To do this you can use the `.mall_chat` option: 
@@ -97,50 +102,50 @@ from chatlas import ChatOpenAI
 chat = ChatOpenAI()
 ```
 
-*Dataframes*
+- *For Dataframes*
 
-1. Load the library
-
-    ```python
-    import mall
-    ```
+  1. Load the library
+  
+      ```python
+      import mall
+      ```
+      
+  1. Read or load your data frame
+  
+      ```python
+      reviews = mall.MallData.reviews # Sample product
+      reviews
+      ```
+  1. Pass the chat object to mall
+  
+      ```python
+      reviews.llm.use(chat)
+      ```
+      
+  1. Access NLP functions via `.llm`
+      
+      ```python
+      reviews.llm.sentiment('review')
+      ```
     
-1. Read or load your data frame
+- *For String vectors*
 
-    ```python
-    reviews = mall.MallData.reviews # Sample product
-    reviews
-    ```
-1. Pass the chat object to mall
-
-    ```python
-    reviews.llm.use(chat)
-    ```
-    
-1. Access NLP functions via `.llm`
-    
-    ```python
-    reviews.llm.sentiment('review')
-    ```
-    
-*String vectors*
-
-1. Load the LLMVec class
-
-    ```python
-    from mall import LLMVec
-    ```
-1. Create a new LLMVec object
-
-    ```python
-    llm = LLMVec(chat)
-    ```
-    
-1. Pass a vector to a function in the new object
-
-    ```python
-    llm.sentiment(['I am happy', 'I am sad'])
-    ```
+  1. Load the LLMVec class
+  
+      ```python
+      from mall import LLMVec
+      ```
+  1. Create a new LLMVec object
+  
+      ```python
+      llm = LLMVec(chat)
+      ```
+      
+  1. Pass a vector to a function in the new object
+  
+      ```python
+      llm.sentiment(['I am happy', 'I am sad'])
+      ```
     
 :::
 
