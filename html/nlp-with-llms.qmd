@@ -25,19 +25,29 @@ translation_list(sheet_name)
 
 ## Intro
 
-Use LLM’s to perform NLP row-wise over a data frame. `mall` comes with pre-defined
-prompts that perform specific NLP operations, and then places the results in a 
-new column.
 
 ::: {.panel-tabset group="language"}
+
 ### R
 
-Use OpenAI, Ollama, Anthropic and many others thanks to its integration with `ellmer`
+Use LLM’s to perform NLP row-wise over a data frame. `mall` comes with pre-defined
+prompts that perform specific NLP operations, and then places the results in a 
+new column. Use *OpenAI*, *Ollama*, *Anthropic* and many others thanks to its
+integration with `ellmer`
+
+`mall`’s data frame functions are designed with ‘tidy’ principals in mind, so they
+work with the Tidyverse packages. `mall` also includes functions that work with 
+string vectors.
 
 ### Python
 
-Use OpenAI,
-Ollama, Anthropic and many others thanks to its integration with `chatlas`
+Use LLM’s to perform NLP row-wise over a data frame. `mall` comes with pre-defined
+prompts that perform specific NLP operations, and then places the results in a 
+new column. Use *OpenAI*, *Ollama*, *Anthropic* and many others thanks to its 
+integration with `chatlas`
+
+`mall` works as an extension for **Polars** data frames. It also works with
+string vectors.
 
 :::
 
