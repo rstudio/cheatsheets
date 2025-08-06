@@ -95,6 +95,42 @@ weights and others.
     
 - `predict(<model>, x)`: Generates predictions
 
+## Layers
+
+### Core layers
+
+- `layer_dense()`: A layer connected to all neurons in the preceding layer
+
+- `layer_einsum_dense()`: A dense layer of arbitrary dimensionality
+
+- `layer_embedding()`: Acts as a mapping function, it stores a dense vector for each word 
+in the vocabulary
+
+- `layer_lambda()`: Allows arbitrary expressions to be used as a layer
+
+- `layer_masking()`: Masks a sequence by using a mask value to skip time steps
+
+### Convolution layers 
+
+Layers that create a convolution kernel that is convolved with the layer input 
+over one, two, or three dimensions to produce a tensor of outputs.
+
+- `layer_conv_1d()` / `layer_conv_1d_transpose()`:  Layer of a single dimension
+(temporal). Transpose does the opposite, deconvolution.\
+
+- `layer_conv_2d()` / `layer_conv_2d_transpose()`:  Two dimensional layer
+(image). Transpose does the opposite, deconvolution.
+
+- `layer_conv_3d()` / `layer_conv_3d_transpose()`:  Three dimensional layer
+(images over volumes). Transpose does the opposite, deconvolution.
+
+- `layer_depthwise_conv_1d()` / `layer_depthwise_conv_2d()`: A type of 
+convolution in which each input channel is convolved with a different kernel.
+
+- `layer_separable_conv_1d()` / `layer_separable_conv_2d()`: A depthwise 
+convolution that acts separately on  channels, followed by a pointwise
+convolution that mixes channels.
+
 ## Old
 
 Read more at:\
