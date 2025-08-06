@@ -131,6 +131,61 @@ convolution in which each input channel is convolved with a different kernel.
 convolution that acts separately on  channels, followed by a pointwise
 convolution that mixes channels.
 
+- `layer_depthwise_conv_1d()` / `layer_depthwise_conv_2d()`: A type of 
+convolution  in which each input channel is convolved with a different kernel.
+
+- `layer_separable_conv_1d()` / `layer_separable_conv_2d()` - A depthwise 
+convolution  that acts separately on channels, followed by a pointwise
+convolution that mixes channels.
+
+### Normalization layers
+
+- `layer_batch_normalization()`: Operates across the batch dimension
+
+- `layer_layer_normalization()`: Operates across the feature dimension
+
+- `layer_group_normalization()`: Operates across channels
+
+- `layer_spectral_normalization()`: Controls the Lipschitz constant of the weights
+
+- `layer_rms_normalization()`: Root Mean Square
+
+### Regularization layers
+
+- `layer_batch_normalization()`: Maintains the mean output close to 0 and the
+output standard deviation close to 1.
+
+- `layer_gaussian_noise()`: Layers that randomly “drop” a fraction of input 
+units during training by setting them to 0
+
+- `layer_dropout()`: Non 0 inputs are scaled up
+
+- `layer_alpha_dropout()`: Keeps original mean and variance
+
+- `layer_gaussian_dropout()`: 1-centers Gaussian noise
+
+- `layer_spatial_dropout_1d()` / `layer_spatial_dropout_2d()` / 
+`layer_spatial_dropout_3d()`: Drops entire dimensional feature maps instead of 
+individual elements
+
+### Pooling layers
+
+Layers that **reduce** each dimension of the input while retaining the most important
+features
+
+- `layer_max_pooling_1d()` / `layer_max_pooling_2d()` / `layer_max_pooling_3d()`:
+Maximum value over a specified window size (pool size)
+
+- `layer_average_pooling_1d()` / `layer_average_pooling_2d()` / 
+`layer_average_pooling_3d()`: Average value over a specified window size 
+(pool size)
+
+- `layer_global_max_pooling_1d()` / `layer_global_max_pooling_2d()` /
+`layer_global_max_pooling_3d()`: Maximum value of the dimension
+
+- `layer_global_average_pooling_1d()` / `layer_global_average_pooling_2d()` /
+`layer_global_average_pooling_3d()`: Average value of the dimension
+
 ## Old
 
 Read more at:\
