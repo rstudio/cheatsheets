@@ -159,24 +159,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#python-in-r-markdown" id="toc-python-in-r-markdown" class="nav-link active" data-scroll-target="#python-in-r-markdown">Python in R Markdown</a></li>
-  <li><a href="#python-in-r" id="toc-python-in-r" class="nav-link" data-scroll-target="#python-in-r">Python in R</a>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting Started</a></li>
+  <li><a href="#manage-environments" id="toc-manage-environments" class="nav-link" data-scroll-target="#manage-environments">Manage environments</a></li>
+  <li><a href="#calling-python" id="toc-calling-python" class="nav-link" data-scroll-target="#calling-python">Calling Python</a>
   <ul class="collapse">
   <li><a href="#import-python-modules" id="toc-import-python-modules" class="nav-link" data-scroll-target="#import-python-modules">Import Python Modules</a></li>
-  <li><a href="#source-python-files" id="toc-source-python-files" class="nav-link" data-scroll-target="#source-python-files">Source Python Files</a></li>
+  <li><a href="#source-python-files" id="toc-source-python-files" class="nav-link" data-scroll-target="#source-python-files">Source Python files</a></li>
   <li><a href="#run-python-code" id="toc-run-python-code" class="nav-link" data-scroll-target="#run-python-code">Run Python Code</a></li>
+  <li><a href="#in-a-notebook" id="toc-in-a-notebook" class="nav-link" data-scroll-target="#in-a-notebook">In a Notebook</a></li>
+  <li><a href="#as-a-python-console-repl" id="toc-as-a-python-console-repl" class="nav-link" data-scroll-target="#as-a-python-console-repl">As a Python console (REPL)</a></li>
   </ul></li>
-  <li><a href="#object-conversion" id="toc-object-conversion" class="nav-link" data-scroll-target="#object-conversion">Object Conversion</a></li>
-  <li><a href="#helpers" id="toc-helpers" class="nav-link" data-scroll-target="#helpers">Helpers</a></li>
-  <li><a href="#python-in-the-ide" id="toc-python-in-the-ide" class="nav-link" data-scroll-target="#python-in-the-ide">Python in the IDE</a></li>
-  <li><a href="#python-repl" id="toc-python-repl" class="nav-link" data-scroll-target="#python-repl">Python REPL</a></li>
-  <li><a href="#configure-python" id="toc-configure-python" class="nav-link" data-scroll-target="#configure-python">Configure Python</a>
+  <li><a href="#object-conversion" id="toc-object-conversion" class="nav-link" data-scroll-target="#object-conversion">Object Conversion</a>
   <ul class="collapse">
-  <li><a href="#find-python" id="toc-find-python" class="nav-link" data-scroll-target="#find-python">Find Python</a></li>
-  <li><a href="#create-a-python-env" id="toc-create-a-python-env" class="nav-link" data-scroll-target="#create-a-python-env">Create a Python env</a></li>
-  <li><a href="#install-packages" id="toc-install-packages" class="nav-link" data-scroll-target="#install-packages">Install Packages</a></li>
-  <li><a href="#suggest-an-env-to-use" id="toc-suggest-an-env-to-use" class="nav-link" data-scroll-target="#suggest-an-env-to-use">Suggest an env to use</a></li>
+  <li><a href="#automatic-conversions" id="toc-automatic-conversions" class="nav-link" data-scroll-target="#automatic-conversions">Automatic conversions</a></li>
+  <li><a href="#manual-conversions" id="toc-manual-conversions" class="nav-link" data-scroll-target="#manual-conversions">Manual Conversions</a></li>
   </ul></li>
+  <li><a href="#python-in-the-ide" id="toc-python-in-the-ide" class="nav-link" data-scroll-target="#python-in-the-ide">Python in the IDE</a></li>
+  <li><a href="#helpers" id="toc-helpers" class="nav-link" data-scroll-target="#helpers">Helpers</a></li>
+  <li><a href="#choosing-python" id="toc-choosing-python" class="nav-link" data-scroll-target="#choosing-python">Choosing Python</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/rstudio/cheatsheets/edit/main/html/reticulate.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
 </nav>
@@ -219,150 +219,136 @@ Translations (PDF)
 <ul>
 <li><a href="../translations/spanish/reticulate_es.pdf"><i class="bi bi-file-pdf"></i>Spanish</a></li>
 </ul>
-</div></div><p>The <strong>reticulate</strong> package lets you use Python and R together seamlessly in R code, in R Markdown documents, and in the RStudio IDE.</p>
+</div></div><section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
+<p>Reticulate makes it very easy to get started with Python in R. Simply use py_require() to let Reticulate know which Python version and packages you will need:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">py_require</span>(<span class="st">"polars"</span>, <span class="at">python_version=</span><span class="st">"3.12"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pl <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"polars"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="python-in-r-markdown" class="level2">
-<h2 class="anchored" data-anchor-id="python-in-r-markdown">Python in R Markdown</h2>
-<p>(Optional) Build Python env to use.</p>
-<p>knitr versions &gt;= 1.18 will automatically use the reticulate engine for Python chunks. See <code>?reticulate::eng_python</code> for a listing of supported knitr chunk options.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{{r}}</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| label: setup</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">#| include: false</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="in">library(reticulate) </span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="in">virtualenv_create("fmri-proj") </span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="in">py_install("seaborn", envname = "fmri-proj") </span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="in">use_virtualenv("fmri-proj")`</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Begin Python chunks with <code>```{python}</code>. Chunk options like <code>echo</code>, <code>include</code>, etc. all work as expected.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{{python}}</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| echo: false</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="in">import seaborn as sns </span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="in">fmri = sns.load_dataset("fmri")`</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Use the <code>py</code> object the access objects created in Python chunks from R chunks.</p>
-<pre><code>``` {{r}}
-f1 &lt;- subset(py$fmri, region = "parietal")
-```</code></pre>
-<p>Python chunks all execute within a <strong>single</strong> Python session so you have access to all objects created in previous chunks.</p>
-<p>Use the <code>r</code> object to access objects created in R chunks from Python chunks.</p>
-<pre><code>``` {{python}}
-import matplotlib as mpl
-sns.lmplot("timepoint", "signal", data=r.f1)
-mpl.pyplot.show()
-```</code></pre>
+<p>An isolated Python virtual environment that you will not need to manage is created, this eliminates the risk of the environment becoming unstable overtime.</p>
+<p>Reticulate uses an extremely fast Python package manager called <a href="https://docs.astral.sh/uv/">uv</a>. Some features of this system are:</p>
+<ul>
+<li>10x–100x faster than pip at setting up virtual environments</li>
+<li>Downloads, installs and manages Python versions</li>
+<li>Supports macOS, Linux and Windows</li>
+</ul>
+<p>Reticulate will automatically download and install <strong>uv</strong> for you in a location that does not make system changes to your machine.</p>
 </section>
-<section id="python-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="python-in-r">Python in R</h2>
-<p><code>python.r</code> Example:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">py_install</span>(<span class="st">"seaborn"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">"r-reticulate"</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>sns <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"seaborn"</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>fmri <span class="ot">&lt;-</span> sns<span class="sc">$</span><span class="fu">load_dataset</span>(<span class="st">"fmri"</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(fmri)</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># creates tips</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">source_python</span>(<span class="st">"python.py"</span>)</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(tips)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># creates tips in main</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">py_run_file</span>(<span class="st">"python.py"</span>)</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(py<span class="sc">$</span>tips)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="fu">py_run_string</span>(<span class="st">"print(tips.shape)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><code>python.py</code> Example:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tips <span class="op">=</span> sns.load_dataset(<span class="st">"tips"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Call Python from R code in three ways:</p>
+<section id="manage-environments" class="level2">
+<h2 class="anchored" data-anchor-id="manage-environments">Manage environments</h2>
+<p>Manage Virtualenv and Conda environments. Use if <code>py_require()</code> is not an option, or if using an existing Python virtual environment.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 73%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Create new</td>
+<td><code>virtualenv_create()</code> / <code>conda_create()</code><br> <em><code>virtualenv_create("my-env")</code></em></td>
+</tr>
+<tr class="even">
+<td>Use in R session</td>
+<td><code>use_virtualenv()</code> / <code>use_condaenv()</code> / <code>use_python()</code><br> <em><code>use_virtualenv(“my-env")</code></em></td>
+</tr>
+<tr class="odd">
+<td>List available</td>
+<td><code>virtualenv_list()</code> / <code>conda_list()</code></td>
+</tr>
+<tr class="even">
+<td>Install packages</td>
+<td><code>py_install()</code> / <code>virtualenv_install()</code> / <code>conda_install()</code><br> <em><code>py_install(“polars”, "my-env")</code></em></td>
+</tr>
+<tr class="odd">
+<td>Delete from disk</td>
+<td><code>virtualenv_remove()</code> / <code>conda_remove()</code><br> <em><code>virtualenv_remove("my-env")</code></em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="calling-python" class="level2">
+<h2 class="anchored" data-anchor-id="calling-python">Calling Python</h2>
 <section id="import-python-modules" class="level3">
 <h3 class="anchored" data-anchor-id="import-python-modules">Import Python Modules</h3>
-<p>Use <code>import()</code> to import any Python module. Access the attributes of a module with <code>$</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">py_install</span>(<span class="st">"seaborn"</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">"r-reticulate"</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>sns <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"seaborn"</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>tips <span class="ot">&lt;-</span> sns<span class="sc">$</span><span class="fu">load_dataset</span>(<span class="st">"tips"</span>)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(tips)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>Import any Python module into R, and access the attributes of a module with <code>$</code>.</p>
 <ul>
-<li><p><code>import(module, as = NULL, convert = TRUE, delay_load = FALSE)</code>: Import a Python module. If <code>convert = TRUE</code>, Python objects are converted to their equivalent R types. Also <code>import_from_path()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">import</span>(<span class="st">"pandas"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
+<li><p><code>import(module, as = NULL, convert = TRUE, delay_load = FALSE)</code>: Import a Python module. If convert = TRUE, Python objects are converted to their equivalent R types. Access the attributes of a module with $.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">import</span>(<span class="st">"polars"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>import_from_path(module, path = “." )</code>: Import module from an arbitrary filesystem path.</p></li>
 <li><p><code>import_main(convert = TRUE)</code>: Import the main module, where Python executes code by default.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">import_main</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>import_builtings(convert = TRUE)</code>: Import Python’s built-in functions.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">import_builtins</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>main <span class="ot">&lt;-</span> <span class="fu">import_main</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>import_builtins(convert = TRUE)</code>: Import Python’s built-in functions</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>builtins <span class="ot">&lt;-</span> <span class="fu">import_builtins</span>()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>builtins<span class="sc">$</span><span class="fu">print</span>(<span class="st">"hello"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 <section id="source-python-files" class="level3">
-<h3 class="anchored" data-anchor-id="source-python-files">Source Python Files</h3>
-<p>Use <code>source_python()</code> to source a Python script and make the Python functions and objects it creates available in the calling R environment.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source_python</span>(<span class="st">"python.py"</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(py<span class="sc">$</span>tips)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<h3 class="anchored" data-anchor-id="source-python-files">Source Python files</h3>
+<p>Source a Python script and make the Python functions and objects it creates available in R</p>
 <ul>
 <li><p><code>source_python(file, envir = parent.frame(), convert = TRUE)</code>: Run a Python script, assigning objects to a specified R environment.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source_python</span>(<span class="st">"python.py"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source_python</span>(<span class="st">"file.py"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
 <section id="run-python-code" class="level3">
 <h3 class="anchored" data-anchor-id="run-python-code">Run Python Code</h3>
-<p>Execute Python code into the <code>main</code> Python modules with <code>py_run_file()</code> or <code>py_run_string()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_run_file</span>(<span class="st">"python.py"</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(py<span class="sc">$</span>tips)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">py_run_string</span>(<span class="st">"print(tips.shape)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Execute Python code into the main Python module. Access the results, and anything else in Python’s main module, with <code>py$</code>.</p>
+<ul>
+<li><p><code>py_run_file(file, local = FALSE, convert = TRUE)</code>: Run Python file in the main module.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_run_file</span>(<span class="st">"my-script.py"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>py_eval(code, convert = TRUE)</code>: Run a Python expression, return the result. py_eval(“1 + 1”)</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_eval</span>(<span class="st">"1 + 1"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>py_run_string(code, local = FALSE, convert = TRUE)</code>: Run Python code (passed as a string) in the main module.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_run_string</span>(<span class="st">"x = 10"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>py<span class="sc">$</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</section>
+<section id="in-a-notebook" class="level3">
+<h3 class="anchored" data-anchor-id="in-a-notebook">In a Notebook</h3>
+<p>Call Python as a code chunk in <strong>Quarto</strong> and <strong>R Markdown</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/reticulate-quarto.png" class="img-fluid figure-img" alt="A screenshot of a Quarto document that combines R code and Python code" width="500"></p>
+<figcaption>Combine R and Python in Quarto</figcaption>
+</figure>
 </div>
 <ul>
-<li><p><code>py_run_string(code, local = FALSE, convert = TRUE)</code>: Run Python code (passed as a string) in the main module.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_run_string</span>(<span class="st">"x = 10"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>py<span class="sc">$</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>py_run_file(file, local = FALSE, convert = TRUE)</code>: Run Python file in the main module.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_run_file</span>(<span class="st">"python.py"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>py_eval(code, convert = TRUE)</code>: Run a Python expression, return the result. Also <code>py_call()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_eval</span>(<span class="st">"1 + 1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
+<li><p>Begin Python chunks with ```{python} . Chunk options like echo, include, etc. all work as expected</p></li>
+<li><p>With <code>py_require()</code>, define which Python libraries will be used in the notebook</p></li>
+<li><p>Use the <code>py</code> object to access objects created` in Python chunks from R chunks</p></li>
+<li><p>Python chunks all execute within a single Python session so you have access to all objects created, and modules loaded, in previous chunks.</p></li>
+<li><p>Use the r object to access objects created in R chunks from Python chunks</p></li>
+<li><p>Output displays below chunk, including plots.</p></li>
 </ul>
-<p>Access the results, and anything else in Python’s <code>main</code> module, with <code>py</code>.</p>
-<ul>
-<li><p><code>py</code>: An R object that contains the Python main module and the results stored there.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>py<span class="sc">$</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ul>
+</section>
+<section id="as-a-python-console-repl" class="level3">
+<h3 class="anchored" data-anchor-id="as-a-python-console-repl">As a Python console (REPL)</h3>
+<p>A REPL (Read, Eval, Print Loop) is a command line where you can run Python code and view the results.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> library(reticulate)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> py_require(<span class="st">"plotnine"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> repl_python() <span class="co"># Starts a Python REPL</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> plotnine.data <span class="im">import</span> penguins</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> penguins.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>Use py_require() to define libraries and Python version to use</li>
+<li>In RStudio, open in the console with repl_python(), or by running code in a Python script with Cmd + Enter (Windows: Ctrl + Enter). Click on the language logo to toggle between R and Python.</li>
+<li>Type commands at the <code>&gt;&gt;&gt;</code> prompt.</li>
+<li>Press Enter to run code.</li>
+<li>Type <code>exit</code> to close and return to R console.</li>
+</ol>
 </section>
 </section>
 <section id="object-conversion" class="level2">
 <h2 class="anchored" data-anchor-id="object-conversion">Object Conversion</h2>
-<p><strong>Tip: To index Python objects begin at 0, use integers, e.g.&nbsp;<code>OL</code></strong></p>
-<p>Reticulate provides <strong>automatic</strong> built-in conversion between Python and R for many Python types.</p>
+<section id="automatic-conversions" class="level3">
+<h3 class="anchored" data-anchor-id="automatic-conversions">Automatic conversions</h3>
+<p>Reticulate provides automatic built-in conversion between Python and R for many Python types.</p>
+<ul>
+<li><code>py_to_r(x)</code>: Convert a Python object to an R object. Also <code>r_to_py()</code></li>
+</ul>
 <table class="caption-top table">
-<caption>Table of data types in R and their Python equivalents.</caption>
 <thead>
 <tr class="header">
 <th>R</th>
@@ -399,256 +385,94 @@ mpl.pyplot.show()
 <td>Python function</td>
 </tr>
 <tr class="even">
-<td>NULL, TRUE, FALSE</td>
-<td>None, True, False</td>
+<td><code>NULL</code>, <code>TRUE</code>, <code>FALSE</code></td>
+<td><code>None</code>, <code>True</code>, <code>False</code></td>
 </tr>
 </tbody>
 </table>
-<p>Or, if you like, you can convert manually with</p>
+</section>
+<section id="manual-conversions" class="level3">
+<h3 class="anchored" data-anchor-id="manual-conversions">Manual Conversions</h3>
+<p>Specify how the objects will be converted</p>
 <ul>
-<li><p><code>py_to_r(x)</code>: Convert a Python object to an R object. Also <code>r_to_py()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_to_r</span>(py)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
 <li><p><code>tuple(..., convert = FALSE)</code>: Create a Python tuple.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tuple</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>dict(..., convert = FALSE)</code>: Create a Python dictionary object. Also <code>py_dict()</code> to make a dictionary that uses Python objects as keys.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dict</span>(<span class="at">foo =</span> <span class="st">"bar"</span>, <span class="at">index =</span> <span class="dv">42</span>L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tuple</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>dict(..., convert = FALSE)</code>: Create a Python dictionary.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dict</span>(<span class="at">foo =</span> <span class="st">"bar"</span>, <span class="at">index =</span> <span class="dv">42</span>L)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>py_dict()</code>: A dictionary that uses Python objects as keys.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_dict</span>(<span class="st">"foo"</span>, <span class="st">"bar"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>np_array(data, dtype = NULL, order = "C")</code>: Create NumPy arrays.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">np_array</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>), <span class="at">dtype =</span> <span class="st">"float16"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">np_array</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>), <span class="at">dtype =</span> <span class="st">"float16"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>array_reshape(x, dim, order = c("C", "F"))</code>: Reshape a Python array.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">array_reshape</span>(x, <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">array_reshape</span>(x, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>py_func(f)</code>: Wrap an R function in a Python function with the same signature.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_func</span>(xor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>py_main_thread_func(f)</code>: Create a function that will always be called on the main thread.</p></li>
-<li><p><code>iterate(it, f = base::identity, simplify = TRUE)</code>: Apply an R function to each value of a Python iterator or return the values as an R vector, draining the iterator as you go. Also <code>iter_next()</code> and <code>as_iterator()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">iterate</span>(iter, print)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>py_interator(fn, completed = NULL)</code>: Create a Python iterator from an R function.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>seq_gen <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> x;</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>() {</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">&lt;&lt;-</span> n <span class="sc">+</span> <span class="dv">1</span>;</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    n</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="fu">py_iterator</span>(<span class="fu">seq_gen</span>(<span class="dv">9</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_func</span>(xor) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>iterate(it, f = base::identity, simplify = TRUE)</code>: Apply an R function to each value of a Python iterator or return the values as an R vector, draining the iterator as you go. Also <code>iter_next()</code> and <code>as_iterator()</code>.</p></li>
+<li><p><code>py_iterator(fn, completed = NULL)</code>: Create a Python iterator from an R function.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>seq_gen <span class="ot">&lt;-</span> <span class="cf">function</span>(x){n <span class="ot">&lt;-</span> x; <span class="cf">function</span>() {n <span class="ot">&lt;&lt;-</span> n <span class="sc">+</span> <span class="dv">1</span>; n}}</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">py_iterator</span>(<span class="fu">seq_gen</span>(<span class="dv">9</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
+</section>
+</section>
+<section id="python-in-the-ide" class="level2">
+<h2 class="anchored" data-anchor-id="python-in-the-ide">Python in the IDE</h2>
+<p>The RStudio and Positron IDE’s provide first-class integration with Reticulate.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/reticulate-rstudio.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Screenshot of using Reticulate in the RStudio IDE" width="800"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/reticulate-positron.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Screenshot of using Reticulate in the Positron IDE" width="800"></p>
+</figure>
+</div>
 </section>
 <section id="helpers" class="level2">
 <h2 class="anchored" data-anchor-id="helpers">Helpers</h2>
 <ul>
-<li><p><code>py_capture_output(expr, type = c("stdout", "stderr"))</code>: Capture and return Python output. Also <code>py_supress_warnings()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_capture_output</span>(<span class="st">"x"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>py_get_attr(x, name, silent = FALSE)</code>: Get an attribute of a Python object. Also <code>py_set_attr()</code>, <code>py_has_attr()</code>, and <code>py_list_attributes()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_get_attr</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ul>
-<!-- TO DO: Needs name argument. -->
-<ul>
+<li><p><code>py_capture_output(expr, type = c("stdout", "stderr"))</code>: Capture and return Python output . Also <code>py_suppress_warnings()</code>.</p></li>
+<li><p><code>py_get_attr(x, name, silent = FALSE)</code>: Get an attribute of a Python object. Also <code>py_set_attr()</code>, <code>py_has_attr()</code>, and <code>py_list_attributes()</code>.</p></li>
 <li><p><code>py_help(object)</code>: Open the documentation page for a Python object.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_help</span>(sns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>py_last_error()</code>: Get the last Python error encountered. Also <code>py_clear_last_error()</code> to clear the last error.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_last_error</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_help</span>(sns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>py_last_error()</code>: Get the last Python error encountered. Also <code>py_clear_last_error()</code> to clear the last error.</p></li>
 <li><p><code>py_save_object(object, filename, pickle = "pickle", ...)</code>: Save and load Python objects with pickle. Also <code>py_load_object()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_save_objects</span>(x, <span class="st">"x.pickle"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_save_object</span>(x, <span class="st">"x.pickle"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><code>with(data, expr, as = NULL, ...)</code>: Evaluate an expression within a Python context manager.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>py <span class="ot">&lt;-</span> <span class="fu">import_builtins</span>()</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(py<span class="sc">$</span><span class="fu">open</span>(<span class="st">"output.txt"</span>, <span class="st">"w"</span>) <span class="sc">%as%</span> file,</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>     {file<span class="sc">$</span><span class="fu">write</span>(<span class="st">"Hello, there!"</span>)})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>py <span class="ot">&lt;-</span> <span class="fu">import_builtins</span>();</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(py<span class="sc">$</span><span class="fu">open</span>(<span class="st">"output.txt"</span>, <span class="st">"w"</span>) <span class="sc">%as%</span> file,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  {file<span class="sc">$</span><span class="fu">write</span>(<span class="st">"Hello, there!"</span>)})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
-<!-- Page 2 -->
 </section>
-<section id="python-in-the-ide" class="level2">
-<h2 class="anchored" data-anchor-id="python-in-the-ide">Python in the IDE</h2>
-<p>Requires reticulate plus RStudio v1.2+. Some features require v1.4+.</p>
-<p><img src="images/reticulate-ide.png" class="img-fluid"></p>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<section id="choosing-python" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-python">Choosing Python</h2>
+<p>Reticulate follows a specific order to discover and choose the Python environment to use</p>
+<ol type="1">
+<li><code>RETICULATE_PYTHON</code> or <code>RETICULATE_PYTHON_ENV</code></li>
+<li><code>use_python()</code> or <code>use_virtualenv()</code>, if called before <code>import()</code>.</li>
+<li>Working directory contains a virtual env: ./.venv</li>
+<li>Environments named after the imported module. e.g.&nbsp; <em>~/.virtualenvs/r-scipy/ for <code>import(“scipy")</code></em></li>
+<li><code>RETICULATE_PYTHON_FALLBACK</code></li>
+<li>The default Virtual Environment: <code>r-reticulate</code></li>
+<li>Specifications from <code>py_require()</code> (See tip below)</li>
+<li>OS’ default Python (PATH or Windows registry)</li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
+<i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to read about reticulate features in the RStudio IDE
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<section id="reticulate-features-in-the-rstudio-ide" class="level3 callout-body-container callout-body">
-<h3 class="anchored" data-anchor-id="reticulate-features-in-the-rstudio-ide">reticulate features in the RStudio IDE</h3>
-<ul>
-<li>Syntax highlighting for Python scripts and chunks.</li>
-<li>Tab completion for Python functions and objects (and Python modules imported in R scripts).</li>
-<li>Source Python scripts.</li>
-<li>Execute Python code line by line with <code>Cmd + Enter</code> (<code>Ctrl + Enter</code>).</li>
-<li>View Python objects in the Environment Pane.</li>
-<li>View Python objects in the Data Viewer.</li>
-<li>A Python REPL opens in the console when you run Python code with a keyboard shortcut. Type <code>exit</code> to close.</li>
-<li><code>matplotlib</code> plots display in plots pane.</li>
-<li>Press <code>F1</code> over a Python symbol to display the help topic for that symbol.</li>
-</ul>
-</section>
+Tip
 </div>
 </div>
-</section>
-<section id="python-repl" class="level2">
-<h2 class="anchored" data-anchor-id="python-repl">Python REPL</h2>
-<p>RStudio IDE Window:</p>
-<p>A REPL (Read, Eval, Print Loop) is a command line where you can run Python code and view the results.</p>
-<ol type="1">
-<li><p>Open in the console with <code>repl_python()</code>, or by running code in a Python script with <code>Cmd + Enter</code> (<code>Ctrl + Enter</code>).</p>
-<ul>
-<li><p><code>repl_python(module = NULL, quiet = getOption("reticulate.repl.quiet", default = FALSE), input = NULL)</code>: Launch a Python REPL. Run <code>exit</code> to close.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">repl_python</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ul></li>
-<li><p>Type commands at <code>&gt;&gt;&gt;</code> prompt.</p></li>
-<li><p>Press <code>Enter</code> to run code.</p></li>
-<li><p>Type <code>exit</code> to close and return to R console.</p>
-<pre><code>&gt; reticulate::repl_python()
-Python 3.9.16 (/Users/mine/.virtualenvs/r-reticulate/bin/python)
-Reticulate 1.28 REPL -- A Python interpreter in R.
-Enter 'exit' or 'quit' to exit the REPL and return to R.
-&gt;&gt;&gt; import seaborn as sns
-&gt;&gt;&gt; tips = sns.load_dataset("tips")
-&gt;&gt;&gt; tips.shape
-(244, 7)
-&gt;&gt;&gt; exit
-&gt;</code></pre></li>
-</ol>
-</section>
-<section id="configure-python" class="level2">
-<h2 class="anchored" data-anchor-id="configure-python">Configure Python</h2>
-<p>Reticulate binds to a local instance of Python when you first call <code>import()</code> directly or implicitly from an R session. To control the process, find or build your desired Python instance. Then suggest your instance to reticulate. <strong>Restart R to unbind.</strong></p>
-<section id="find-python" class="level3">
-<h3 class="anchored" data-anchor-id="find-python">Find Python</h3>
-<ul>
-<li><p><code>install_python(version, list = FALSE, force = FALSE)</code>: Download and install Python.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install_python</span>(<span class="st">"3.9.16"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>py_available(initialize = FALSE)</code>: Check if Python is available on your system. Also <code>py_module_available()</code> and <code>py_numpy_module()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_available</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>py_discover_config()</code>: Return the detected installation of Python. Use <code>py_config()</code> to check which version has been loaded.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_config</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>virtualenv_list()</code>: List all available virtual environments. Also <code>virtualenv_root()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">virtualenv_list</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>conda_list(conda = "auto")</code>: List all available conda envs. Also <code>conda_binary()</code> and <code>conda_version()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">conda_list</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ul>
-</section>
-<section id="create-a-python-env" class="level3">
-<h3 class="anchored" data-anchor-id="create-a-python-env">Create a Python env</h3>
-<ul>
-<li><p><code>virtualenv_create(envname = NULL, ...)</code>: Create a new virtual environment.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">virtualenv_create</span>(<span class="st">"r-pandas"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>conda_create(envname = NULL, ...)</code>: Create a new conda environment.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">conda_create</span>(<span class="st">"r-pandas"</span>, <span class="at">packages =</span> <span class="st">"pandas"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ul>
-</section>
-<section id="install-packages" class="level3">
-<h3 class="anchored" data-anchor-id="install-packages">Install Packages</h3>
-<p>Install Python packages with R (below) or the shell:</p>
-<p><code>pip install SciPy</code></p>
-<p><code>conda install SciPy</code></p>
-<ul>
-<li><p><code>py_install(packages, envname, ...)</code>: Install Python packages into a Python env.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">py_install</span>(<span class="st">"pandas"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>virtualenv_install(envname, packages, ...)</code>: Install a package within a virtual environment. Also <code>virtualenv_remove()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">virtualenv_install</span>(<span class="st">"r-pandas"</span>, <span class="at">packages =</span> <span class="st">"pandas"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>conda_installs(envname, packages, ...)</code>: Install a package within a conda environment. Also <code>conda_remove()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">conda_install</span>(<span class="st">"r-pandas"</span>, <span class="at">packages =</span> <span class="st">"plotly"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ul>
-</section>
-<section id="suggest-an-env-to-use" class="level3">
-<h3 class="anchored" data-anchor-id="suggest-an-env-to-use">Suggest an env to use</h3>
-<p>Set a default Python interpreter in the RStudio IDE Global or Project Options. Go to <strong>Tools &gt; Global Options … &gt; Python</strong> for Global Options. Within a project, go to <strong>Tools &gt; Project Options… &gt; Python</strong>.</p>
-<p>Otherwise, to choose an instance of Python to bind to, reticulate scans the instances on your computer in the following order, <strong>stopping at the first instance that contains the module called by <code>import()</code></strong>.</p>
-<ol type="1">
-<li><p>The instance referenced by the environment variable <code>RETICULATE_PYTHON</code> (if specified). <strong>Tip: set in .Renviron file.</strong></p>
-<ul>
-<li><p><code>Sys.setenv(RETICULATE_PYTHON = PATH)</code>: Set default Python binary. Persists across sessions! Undo with <code>Sys.unsetenv()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">RETICULATE_PYTHON =</span> <span class="st">"/usr/local/bin/python"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ul></li>
-<li><p>The instances referenced by <code>use_</code> functions if called before <code>import()</code>.</p>
-<ul>
-<li><p><code>use_python(python)</code>: Path to a Python binary.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_python</span>(<span class="st">"usr/local/bin/python"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-<li><p><code>use_virtualenv(virtualenv)</code>: Path to <em>or</em> name of a Python virtualenv.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">"~/myenv"</span>)</span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">"~/myenv"</span>) <span class="co"># path to venv</span></span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">use_virtualenv</span>(<span class="st">"r-keras"</span>) <span class="co"># name of venv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ul></li>
-<li><p>A virtual env found in the current working directory: “./.venv”</p></li>
-<li><p>Environments that are named after the imported module. e.g.&nbsp;“~/.virtualenvs/r-scipy/” for <code>import("scipy")</code></p></li>
-<li><p>The package default virtualenv, “r-reticulate”.</p></li>
-<li><p>At the location of the Python binary discovered on the system <code>PATH</code> (i.e.&nbsp;<code>Sys.which("python")</code>)</p></li>
-</ol>
-<hr>
-<p>CC BY SA Posit Software, PBC • <a href="mailto:info@posit.co">info@posit.co</a> • <a href="https://posit.co">posit.co</a></p>
-<p>Learn more at <a href="https://rstudio.github.io/reticulate/">rstudio.github.io/reticulate</a>.</p>
-<p>Updated: 2024-06.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"reticulate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] '1.37.0'</code></pre>
+<div class="callout-body-container callout-body">
+<p>To have <code>py_require()</code> take more precedence, set <code>RETICULATE_PYTHON=“managed”</code>. It will become number 1 on the list.</p>
 </div>
 </div>
-<hr>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
