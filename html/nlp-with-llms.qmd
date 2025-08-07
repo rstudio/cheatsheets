@@ -39,6 +39,12 @@ integration with `ellmer`
 work with the Tidyverse packages. `mall` also includes functions that work with 
 string vectors.
 
+
+![](images/mall-ellmer.png){width="500" fig-align="center" fig-alt="A diagram showing how mall adds a prompt and passes it to the LLM via ellmer"}
+
+
+
+
 ### Python
 
 Use LLM’s to perform NLP row-wise over a data frame. `mall` comes with pre-defined
@@ -48,6 +54,8 @@ integration with `chatlas`
 
 `mall` works as an extension for **Polars** data frames. It also works with
 string vectors.
+
+![](images/mall-chatlas.png){width="500" fig-align="center" fig-alt="A diagram showing how mall adds a prompt and passes it to the LLM via chatlas"}
 
 :::
 
