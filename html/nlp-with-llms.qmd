@@ -485,3 +485,128 @@ will change those not in the set to `NA`
 
 
 :::
+
+
+### Shared arguments
+
+
+::: {.panel-tabset group="language"}
+
+### R
+
+`additional_prompt`:  Appends instructions to the LLM.
+
+```r
+llm_classify(reviews, review, c("appliance", "computers"), additional_prompt = "Consider TVs as appliances")
+```
+
+`pred_name`: Name of the new column. Defaults are set based on the NLP 
+operation. `(Data frames only)`
+
+```r
+llm_vec_translate("grass is green", "spanish", pred_name = "in_spanish")
+```
+
+`preview`: Returns what it would be sent to the LLM instead *(Vectors only)*
+
+### Python
+
+
+`additional`:  Appends more instructions to the LLM.
+
+```python
+reviews.llm.classify("review", ["appliance", “computer"],additional="Consider TVs as appliances”)
+```
+
+`pred_name`:  Name of the new column. Defaults are set based on the NLP 
+operation. *(Data frames only)*
+
+:::
+
+## Other features
+
+### Ollama direct
+
+::: {.panel-tabset group="language"}
+
+### R
+
+
+If Ollama is the only LLM provider you are using, then a
+simplified way to connect is available which does not
+require an ellmer Chat object. Simply pass “ollama”
+as the `backend`, and specify the model:
+
+```r
+llm_use("ollama", model= “llama3.2")
+```
+
+### Python
+
+
+If Ollama is the only LLM provider you are using, then a simplified way to 
+connect is available which does not require an `ellmer` `Chat` object. Simply 
+pass "ollama" as the `backend`, and specify the model:
+
+- Dataframe:
+
+    ```python
+    reviews.llm.use('ollama','llama3.2')
+    ```
+    
+- Vector:
+
+    ```python
+    llm = LLMVec('ollama','llama3.2')
+    ```
+:::
+
+### Caching results
+
+::: {.panel-tabset group="language"}
+
+### R
+
+By default, mall saves the LLM results in a temp folder. To specify a folder 
+call:
+
+```r
+llm_use(chat, .cache = "<my folder>")
+```
+    
+To turn **off** use:
+
+```r
+llm_use(chat, .cache = "")
+```
+
+### Python
+
+By default, mall saves the LLM results in a folder. To specify a folder call:
+
+- Dataframe:
+
+    ```python
+    reviews.llm.use(chat, _cache='<my folder>')
+    ```
+- Vector:
+
+    ```python
+    llm = LLMVec(chat, _cache='<my folder>')
+    ```
+
+To turn off use:
+
+- Dataframe:
+
+    ```python
+    reviews.llm.use(chat, _cache='')
+    ```
+
+- Vector:
+
+    ```python
+    llm = LLMVec(chat, _cache='')
+    ```
+    
+:::
