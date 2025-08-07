@@ -263,3 +263,177 @@ column (data frames only)
 :::
 
 
+### Summarize
+
+Summarize text into a specified number of words
+
+::: {.panel-tabset group="language"}
+
+### R
+
+- `llm_summarize( .data, col, max_words = 10, pred_name = ".summary", additional_prompt = "")`
+
+    ```r
+    llm_summarize(reviews, review, max_words = 5)
+    ```
+    
+- `llm_vec_summarize(x, max_words = 10, additional_prompt = "", preview = FALSE)`
+
+    ```r
+    llm_vec_summarize("This has been the best TV I've
+    ever used. Great screen, and sound.", max_words = 5)
+    ```
+
+### Python
+
+- *\<DataFrame\>*`.llm.summarize(x, max_words=10, additional='')`
+
+    ```python
+    reviews.llm.summarize("review", 5)
+    ```
+    
+- *\<LLMVec object\>*`.summarize(x, max_words=10, additional='')`
+
+    ```python
+    llm.summarize(['This has been the best TV Ive ever used. Great screen, and sound.'], max_words = 5)
+    ```
+:::
+
+
+
+### Verify
+
+Check if a statement is true or not based on the provided text
+
+::: {.panel-tabset group="language"}
+
+### R
+
+- `llm_verify(.data, col, what, yes_no = factor(c(1, 0)), pred_name = ".verify", additional_prompt = "")`
+
+    ```r
+    llm_verify(reviews, review, "is the customer happy")
+    ```
+
+- `llm_vec_verify(x, what, yes_no = factor(c(1, 0)), additional_prompt = “", preview = FALSE)`
+
+    ```r
+    llm_verify(c("I am happy", "I am sad"), "is the person happy”)
+    ```
+
+**Special arguments**
+
+`yes_no`: Customize what it returns for true/false with a vector
+`yes_no = c("y", "n")`.
+
+### Python
+
+- *\<DataFrame\>*`.llm.verify(col, what='', yes_no=[1, 0], additional='', pred_name='verify')`
+    
+    ```python
+    reviews.llm.verify("review", "is the customer happy")
+    ```
+    
+- *\<LLMVec object\>*`.verify(x, what='', yes_no=[1, 0], additional='')`
+
+    ```python
+    llm.verify(['I am happy', 'I am sad'], what = 'Is the person happy?')
+    ```
+
+**Special arguments**
+
+`yes_no`: Customize what it returns for true/false with a vector
+`yes_no = ["y", "n"]`.
+
+:::
+
+
+### Classify
+
+Classify the provided text as one of the options provided via the `labels`
+
+::: {.panel-tabset group="language"}
+
+### R
+
+- `llm_classify(.data, col, labels, pred_name = ".classify", additional_prompt = "")`
+
+    ```r
+    llm_classify(reviews, review, c("appliance", "computer"))
+    ```
+
+- `llm_vec_classify(x, labels, additional_prompt = "", preview = FALSE)`
+
+    ```r
+    llm_vec_classify(c("this is important!", "just whenever”), c("urgent", "not urgent"))
+    ```
+
+**Special arguments**
+
+`labels`: A character vector with at least 2 labels to classify the text as
+
+### Python
+
+- *\<DataFrame\>*`.llm.classify(col, labels='', additional='', pred_name='classify')`
+    
+    ```python
+    reviews.llm.classify("review", ["appliance", "computer"])
+    ```
+    
+- *\<LLMVec object\>*`.classify(x, labels='', additional='')`
+
+    ```python
+    llm.classify(['this is important!', 'there is no rush'], ['urgent', 'not urgent'])
+    ```
+    
+**Special arguments**
+
+`labels`: A character vector with at least 2 labels to classify the text as
+
+:::
+
+### Translate
+
+Translate into target language
+
+::: {.panel-tabset group="language"}
+
+### R
+
+- `llm_translate( .data, col, language, pred_name = ".translation", additional_prompt = “")`
+
+    ```r
+    llm_translate(reviews, review, "spanish")
+    ```
+
+- `llm_vec_translate(x, language, additional_prompt = "", preview = FALSE)`
+
+    ```r
+    llm_vec_translate("grass is green", "spanish")
+    ```
+
+**Special arguments**
+
+`language`: Target language. No origin language is passed since the LLM 
+detects it automatically.
+
+### Python
+
+- *\<DataFrame\>*`.llm.translate(col, language='', additional='', pred_name='translation')`
+
+    ``` python
+    reviews.llm.translate("review", "spanish")
+    ```
+
+- *\<LLMVec object\>*`.translate(x, language='', additional='')`
+
+    ```python
+    llm.translate([‘the grass is green’], language = 'spanish') 
+    ```
+
+**Special arguments**
+
+`language`: Target language. No origin language is passed since the LLM detects 
+it automatically.
+
+:::
