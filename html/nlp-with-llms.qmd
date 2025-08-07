@@ -23,6 +23,10 @@ pdf_preview_link(sheet_name)
 translation_list(sheet_name)
 ```
 
+::: {style="text-align: center;"}  
+*Click on* **R** *or the* **Python** *tab to see the information in your preferred language*
+:::
+
 ## Intro
 
 
