@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -37,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c3c2c9e745155556954bc4da23476b10.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7530c408590d20eba92ebedbb433c75c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-d923f11539f32d5de3c1cdcc94c3345d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -73,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../html/css/cheatsheet.css">
 </head>
 
-<body class="floating nav-fixed quarto-light">
+<body class="floating nav-fixed slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -120,7 +155,30 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
+  <li><a href="#nlp-functions" id="toc-nlp-functions" class="nav-link" data-scroll-target="#nlp-functions">NLP functions</a>
+  <ul class="collapse">
+  <li><a href="#sentiment-analysis" id="toc-sentiment-analysis" class="nav-link" data-scroll-target="#sentiment-analysis">Sentiment analysis</a></li>
+  <li><a href="#extract" id="toc-extract" class="nav-link" data-scroll-target="#extract">Extract</a></li>
+  <li><a href="#summarize" id="toc-summarize" class="nav-link" data-scroll-target="#summarize">Summarize</a></li>
+  <li><a href="#verify" id="toc-verify" class="nav-link" data-scroll-target="#verify">Verify</a></li>
+  <li><a href="#classify" id="toc-classify" class="nav-link" data-scroll-target="#classify">Classify</a></li>
+  <li><a href="#translate" id="toc-translate" class="nav-link" data-scroll-target="#translate">Translate</a></li>
+  <li><a href="#custom" id="toc-custom" class="nav-link" data-scroll-target="#custom">Custom</a></li>
+  <li><a href="#shared-arguments" id="toc-shared-arguments" class="nav-link" data-scroll-target="#shared-arguments">Shared arguments</a></li>
+  </ul></li>
+  <li><a href="#other-features" id="toc-other-features" class="nav-link" data-scroll-target="#other-features">Other features</a>
+  <ul class="collapse">
+  <li><a href="#ollama-direct" id="toc-ollama-direct" class="nav-link" data-scroll-target="#ollama-direct">Ollama direct</a></li>
+  <li><a href="#caching-results" id="toc-caching-results" class="nav-link" data-scroll-target="#caching-results">Caching results</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/rstudio/cheatsheets/edit/main/html/nlp-with-llms.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -148,17 +206,386 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><img src="images/logo-mall.png" height="138" alt="Hex logo for mall - drawing of the inside of a mall. There is a fountain in the middle."> <br><br><a href="../nlp-with-llms.pdf"></a></p><a href="../nlp-with-llms.pdf">
-</a>
-<div class="no-row-height column-margin column-container"><div class="cell"><a href="../nlp-with-llms.pdf">
-</a><a href="../nlp-with-llms.pdf">
+
+<div class="no-row-height column-margin column-container"><div class="cell">
+<img src="images/logo-mall.png" height="138" alt="Hex logo for mall - drawing of the inside of a mall. There is a fountain in the middle."> <br><br><a href="../nlp-with-llms.pdf">
 <p>
 <i class="bi bi-file-pdf"></i> Download PDF
 </p>
 </a><p><a href="../nlp-with-llms.pdf"><img src="../pngs/nlp-with-llms.png" width="200" alt=""> </a> <br><br></p>
-</div></div><p>Will be updated soon!</p>
+</div></div><div style="text-align: center;">
+<p><em>Click on</em> <strong>R</strong> <em>or the</em> <strong>Python</strong> <em>tab to see the information in your preferred language</em></p>
+</div>
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">Intro</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>Use LLM’s to perform NLP row-wise over a data frame. <code>mall</code> comes with pre-defined prompts that perform specific NLP operations, and then places the results in a new column. Use <em>OpenAI</em>, <em>Ollama</em>, <em>Anthropic</em> and many others thanks to its integration with <code>ellmer</code></p>
+<p><code>mall</code>’s data frame functions are designed with ‘tidy’ principals in mind, so they work with the Tidyverse packages. <code>mall</code> also includes functions that work with string vectors.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/mall-ellmer.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="A diagram showing how mall adds a prompt and passes it to the LLM via ellmer" width="500"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>Use LLM’s to perform NLP row-wise over a data frame. <code>mall</code> comes with pre-defined prompts that perform specific NLP operations, and then places the results in a new column. Use <em>OpenAI</em>, <em>Ollama</em>, <em>Anthropic</em> and many others thanks to its integration with <code>chatlas</code></p>
+<p><code>mall</code> works as an extension for <strong>Polars</strong> data frames. It also works with string vectors.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/mall-chatlas.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="A diagram showing how mall adds a prompt and passes it to the LLM via chatlas" width="500"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="getting-started" class="level2">
+<h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<ol type="1">
+<li><p>Load the libraries</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mall)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ellmer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Create a vendor specific chat connection</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>chat <span class="ot">&lt;-</span> <span class="fu">chat_openai</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Pass the chat object to mall</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_use</span>(chat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+<ul>
+<li><p><em>For dataframes:</em></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(“reviews<span class="st">") # Sample product reviews</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">reviews |&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">  llm_sentiment(review)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><em>For vectors:</em></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_vec_sentiment</span>(<span class="fu">c</span>(<span class="st">"I am happy"</span>, <span class="st">"I am sad”))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p><br></p>
+<div style="font-size: 130%;">
+<p><strong>Connect automatically</strong></p>
+</div>
+<p>As a convenience, mall is able to automatically establish a connection with the LLM. To do this you can use the <code>.mall_chat</code> option: <code>options(.mall_chat=ellmer::chat_openai(model="gpt-4o"))</code> Add this line to your <em>.Rprofile </em> file in order for that code to run every time you start R. You can call <code>usethis::edit_r_profile()</code> to edit.</p>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p>Start by creating a new LLM connection</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> chatlas <span class="im">import</span> ChatOpenAI</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>chat <span class="op">=</span> ChatOpenAI()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p><em>For Dataframes</em></p>
+<ol type="1">
+<li><p>Load the library</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mall</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Read or load your data frame</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>reviews <span class="op">=</span> mall.MallData.reviews <span class="co"># Sample product</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>reviews</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Pass the chat object to mall</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>reviews.llm.use(chat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Access NLP functions via <code>.llm</code></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>reviews.llm.sentiment(<span class="st">'review'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol></li>
+<li><p><em>For String vectors</em></p>
+<ol type="1">
+<li><p>Load the LLMVec class</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mall <span class="im">import</span> LLMVec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Create a new LLMVec object</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>llm <span class="op">=</span> LLMVec(chat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Pass a vector to a function in the new object</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>llm.sentiment([<span class="st">'I am happy'</span>, <span class="st">'I am sad'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="nlp-functions" class="level2">
+<h2 class="anchored" data-anchor-id="nlp-functions">NLP functions</h2>
+<section id="sentiment-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="sentiment-analysis">Sentiment analysis</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<ul>
+<li><p><code>llm_sentiment(.data, col, options = c("positive", "negative", “neutral"), pred_name = “.sentiment", additional_prompt = “”)</code></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_sentiment</span>(reviews, review)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>llm_vec_sentiment(x, options = c("positive", "negative", "neutral"), additional_prompt = "", preview = FALSE)</code></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_vec_sentiment</span>(<span class="fu">c</span>(<span class="st">"I am happy"</span>, <span class="st">"I am sad"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p><strong>Special arguments:</strong></p>
+<p><code>options</code>: Customize the sentiments to check for: <code>options = c(“positive”, “negative”)</code>. Use ‘tilde’ to mask the results, for example <code>c("positive" ~ 1, "negative" ~ 0))</code> returns 1 for positive and 0 for negative.</p>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<ul>
+<li><p><em>&lt;Dataframe&gt;</em><code>.llm.sentiment(col, options = ['positive', 'negative', 'neutral'], additional='', pred_name ='sentiment')</code></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>reviews.llm.sentiment(<span class="st">'review'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><em>&lt;LLMVec object&gt;</em><code>.sentiment(x, options=['positive', 'negative', 'neutral'], additional='')</code></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>llm.sentiment([<span class="st">'I am happy'</span>, <span class="st">'I am sad'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p><strong>Special arguments:</strong></p>
+<p><code>options</code>: Customize the sentiments to check for: <code>options = ["positive", "negative"]</code>. Use a DICT object to mask the results, for example <code>{"positive": 1, "negative"  0}</code> returns 1 for positive and 0 for negative.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="extract" class="level3">
+<h3 class="anchored" data-anchor-id="extract">Extract</h3>
+<p>Extract specific entity, or entities, from the provided text</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<ul>
+<li><p><code>llm_extract(.data, col, labels, expand_cols = FALSE, additional_prompt = "", pred_name = “.extract")</code></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_extract</span>(reviews, review, <span class="at">labels =</span> <span class="st">"product"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>llm_vec_extract(x, labels = c(), additional_prompt = "", preview = FALSE)</code></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_vec_extract</span>(<span class="st">"bob smith, 123 3rd street"</span>, <span class="fu">c</span>(<span class="st">"name"</span>, <span class="st">"address"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p><strong>Special arguments</strong></p>
+<p><code>labels</code>: A vector to specify the entities to identify <code>expand_cols</code> - If multiple labels, this indicates if the labels will show up in their own column (data frames only)</p>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<ul>
+<li><p><em>&lt;DataFrame&gt;</em><code>.llm.extract(col, labels='', expand_cols = False, additional = '', pred_name = 'extract')</code></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>reviews.llm.extract(<span class="st">"review"</span>, labels <span class="op">=</span> <span class="st">"product"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><em>&lt;LLMVec object&gt;</em><code>.extract(x, labels='', additional='')</code></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>llm.extract([<span class="st">'bob smith, 123 3rd street'</span>], labels<span class="op">=</span>[<span class="st">'name'</span>, <span class="st">'address'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p><strong>Special arguments</strong></p>
+<p><code>labels</code>: A vector to specify the entities to identify <code>expand_cols</code> - If multiple labels, this indicates if the labels will show up in their own column (data frames only)</p>
+</div>
+</div>
+</div>
+</section>
+<section id="summarize" class="level3">
+<h3 class="anchored" data-anchor-id="summarize">Summarize</h3>
+<p>Summarize text into a specified number of words</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
+<ul>
+<li><p><code>llm_summarize( .data, col, max_words = 10, pred_name = ".summary", additional_prompt = "")</code></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_summarize</span>(reviews, review, <span class="at">max_words =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>llm_vec_summarize(x, max_words = 10, additional_prompt = "", preview = FALSE)</code></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_vec_summarize</span>(<span class="st">"This has been the best TV I've</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="st">ever used. Great screen, and sound."</span>, <span class="at">max_words =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</div>
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
+<ul>
+<li><p><em>&lt;DataFrame&gt;</em><code>.llm.summarize(x, max_words=10, additional='')</code></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>reviews.llm.summarize(<span class="st">"review"</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><em>&lt;LLMVec object&gt;</em><code>.summarize(x, max_words=10, additional='')</code></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>llm.summarize([<span class="st">'This has been the best TV Ive ever used. Great screen, and sound.'</span>], max_words <span class="op">=</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="verify" class="level3">
+<h3 class="anchored" data-anchor-id="verify">Verify</h3>
+<p>Check if a statement is true or not based on the provided text</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
+<ul>
+<li><p><code>llm_verify(.data, col, what, yes_no = factor(c(1, 0)), pred_name = ".verify", additional_prompt = "")</code></p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_verify</span>(reviews, review, <span class="st">"is the customer happy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>llm_vec_verify(x, what, yes_no = factor(c(1, 0)), additional_prompt = “", preview = FALSE)</code></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_verify</span>(<span class="fu">c</span>(<span class="st">"I am happy"</span>, <span class="st">"I am sad"</span>), <span class="st">"is the person happy”)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p><strong>Special arguments</strong></p>
+<p><code>yes_no</code>: Customize what it returns for true/false with a vector <code>yes_no = c("y", "n")</code>.</p>
+</div>
+<div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
+<ul>
+<li><p><em>&lt;DataFrame&gt;</em><code>.llm.verify(col, what='', yes_no=[1, 0], additional='', pred_name='verify')</code></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>reviews.llm.verify(<span class="st">"review"</span>, <span class="st">"is the customer happy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><em>&lt;LLMVec object&gt;</em><code>.verify(x, what='', yes_no=[1, 0], additional='')</code></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>llm.verify([<span class="st">'I am happy'</span>, <span class="st">'I am sad'</span>], what <span class="op">=</span> <span class="st">'Is the person happy?'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p><strong>Special arguments</strong></p>
+<p><code>yes_no</code>: Customize what it returns for true/false with a vector <code>yes_no = ["y", "n"]</code>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="classify" class="level3">
+<h3 class="anchored" data-anchor-id="classify">Classify</h3>
+<p>Classify the provided text as one of the options provided via the <code>labels</code></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
+<ul>
+<li><p><code>llm_classify(.data, col, labels, pred_name = ".classify", additional_prompt = "")</code></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_classify</span>(reviews, review, <span class="fu">c</span>(<span class="st">"appliance"</span>, <span class="st">"computer"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>llm_vec_classify(x, labels, additional_prompt = "", preview = FALSE)</code></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_vec_classify</span>(<span class="fu">c</span>(<span class="st">"this is important!"</span>, <span class="st">"just whenever”), c("</span>urgent<span class="st">", "</span>not urgent<span class="st">"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p><strong>Special arguments</strong></p>
+<p><code>labels</code>: A character vector with at least 2 labels to classify the text as</p>
+</div>
+<div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
+<ul>
+<li><p><em>&lt;DataFrame&gt;</em><code>.llm.classify(col, labels='', additional='', pred_name='classify')</code></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>reviews.llm.classify(<span class="st">"review"</span>, [<span class="st">"appliance"</span>, <span class="st">"computer"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><em>&lt;LLMVec object&gt;</em><code>.classify(x, labels='', additional='')</code></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>llm.classify([<span class="st">'this is important!'</span>, <span class="st">'there is no rush'</span>], [<span class="st">'urgent'</span>, <span class="st">'not urgent'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p><strong>Special arguments</strong></p>
+<p><code>labels</code>: A character vector with at least 2 labels to classify the text as</p>
+</div>
+</div>
+</div>
+</section>
+<section id="translate" class="level3">
+<h3 class="anchored" data-anchor-id="translate">Translate</h3>
+<p>Translate into target language</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
+<ul>
+<li><p><code>llm_translate( .data, col, language, pred_name = ".translation", additional_prompt = “")</code></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_translate</span>(reviews, review, <span class="st">"spanish"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>llm_vec_translate(x, language, additional_prompt = "", preview = FALSE)</code></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_vec_translate</span>(<span class="st">"grass is green"</span>, <span class="st">"spanish"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p><strong>Special arguments</strong></p>
+<p><code>language</code>: Target language. No origin language is passed since the LLM detects it automatically.</p>
+</div>
+<div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
+<ul>
+<li><p><em>&lt;DataFrame&gt;</em><code>.llm.translate(col, language='', additional='', pred_name='translation')</code></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>reviews.llm.translate(<span class="st">"review"</span>, <span class="st">"spanish"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><em>&lt;LLMVec object&gt;</em><code>.translate(x, language='', additional='')</code></p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>llm.translate([‘the grass <span class="kw">is</span> green’], language <span class="op">=</span> <span class="st">'spanish'</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p><strong>Special arguments</strong></p>
+<p><code>language</code>: Target language. No origin language is passed since the LLM detects it automatically.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="custom" class="level3">
+<h3 class="anchored" data-anchor-id="custom">Custom</h3>
+<p>Create your own prompt</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
+<ul>
+<li><p><code>llm_custom(.data, col, prompt = "", pred_name = ".pred", valid_resps = "")</code></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>my_prompt <span class="ot">&lt;-</span> <span class="st">"Answer a question. Return only the</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="st">answer, no explanation. Acceptable answers are 'yes',</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="st">‘no’. Answer this about the following text, is this a</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="st">happy customer?:"</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_custom</span>(reviews , review, my_prompt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>llm_vec_custom(x, prompt = "", valid_resps = NULL)</code></p></li>
+</ul>
+<p><strong>Special arguments</strong></p>
+<p><code>valid_resps</code>: A vector to specify the set of answers expected back. <code>mall</code> will change those not in the set to <code>NA</code></p>
+</div>
+<div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
+<ul>
+<li><p><em>&lt;DataFrame&gt;</em><code>.llm.custom(col, prompt='', valid_resps='', pred_name='custom')</code></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>my_prompt <span class="op">=</span> <span class="st">"Answer a question. Return only the answer,"</span> <span class="op">\</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">" no explanation. Acceptable answers are 'yes', 'no'."</span> <span class="op">\</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Answer this about the following text, is this a happy customer?:"</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>reviews.llm.custom(<span class="st">"review"</span>, prompt <span class="op">=</span> my_prompt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><em>&lt;LLMVec object&gt;</em><code>.custom(x, prompt='', valid_resps='')</code></p></li>
+</ul>
+<p><strong>Special arguments</strong></p>
+<p><code>valid_resps</code>: A vector to specify the set of answers expected back.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="shared-arguments" class="level3">
+<h3 class="anchored" data-anchor-id="shared-arguments">Shared arguments</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
+<p><code>additional_prompt</code>: Appends instructions to the LLM.</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_classify</span>(reviews, review, <span class="fu">c</span>(<span class="st">"appliance"</span>, <span class="st">"computers"</span>), <span class="at">additional_prompt =</span> <span class="st">"Consider TVs as appliances"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>pred_name</code>: Name of the new column. Defaults are set based on the NLP operation. <code>(Data frames only)</code></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_vec_translate</span>(<span class="st">"grass is green"</span>, <span class="st">"spanish"</span>, <span class="at">pred_name =</span> <span class="st">"in_spanish"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>preview</code>: Returns what it would be sent to the LLM instead <em>(Vectors only)</em></p>
+</div>
+<div id="tabset-10-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-10-2-tab">
+<p><code>additional</code>: Appends more instructions to the LLM.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>reviews.llm.classify(<span class="st">"review"</span>, [<span class="st">"appliance"</span>, “computer<span class="st">"],additional="</span>Consider TVs <span class="im">as</span> appliances”)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>pred_name</code>: Name of the new column. Defaults are set based on the NLP operation. <em>(Data frames only)</em></p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="other-features" class="level2">
+<h2 class="anchored" data-anchor-id="other-features">Other features</h2>
+<section id="ollama-direct" class="level3">
+<h3 class="anchored" data-anchor-id="ollama-direct">Ollama direct</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-11-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-2" role="tab" aria-controls="tabset-11-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
+<p>If Ollama is the only LLM provider you are using, then a simplified way to connect is available which does not require an ellmer Chat object. Simply pass “ollama” as the <code>backend</code>, and specify the model:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_use</span>(<span class="st">"ollama"</span>, <span class="at">model=</span> “llama3<span class="fl">.2</span><span class="st">")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-11-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-11-2-tab">
+<p>If Ollama is the only LLM provider you are using, then a simplified way to connect is available which does not require an <code>ellmer</code> <code>Chat</code> object. Simply pass “ollama” as the <code>backend</code>, and specify the model:</p>
+<ul>
+<li><p>Dataframe:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>reviews.llm.use(<span class="st">'ollama'</span>,<span class="st">'llama3.2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Vector:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>llm <span class="op">=</span> LLMVec(<span class="st">'ollama'</span>,<span class="st">'llama3.2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="caching-results" class="level3">
+<h3 class="anchored" data-anchor-id="caching-results">Caching results</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset" data-group="language">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-12-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-2" role="tab" aria-controls="tabset-12-2" aria-selected="false">Python</a></li></ul>
+<div class="tab-content" data-group="language">
+<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
+<p>By default, mall saves the LLM results in a temp folder. To specify a folder call:</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_use</span>(chat, <span class="at">.cache =</span> <span class="st">"&lt;my folder&gt;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To turn <strong>off</strong> use:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">llm_use</span>(chat, <span class="at">.cache =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="tabset-12-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-12-2-tab">
+<p>By default, mall saves the LLM results in a folder. To specify a folder call:</p>
+<ul>
+<li><p>Dataframe:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>reviews.llm.use(chat, _cache<span class="op">=</span><span class="st">'&lt;my folder&gt;'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Vector:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>llm <span class="op">=</span> LLMVec(chat, _cache<span class="op">=</span><span class="st">'&lt;my folder&gt;'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p>To turn off use:</p>
+<ul>
+<li><p>Dataframe:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>reviews.llm.use(chat, _cache<span class="op">=</span><span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Vector:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>llm <span class="op">=</span> LLMVec(chat, _cache<span class="op">=</span><span class="st">''</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+</div>
+</div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -565,4 +992,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/rstudio/cheatsheets/edit/main/html/nlp-with-llms.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/rstudio/cheatsheets/edit/main/html/nlp-with-llms.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
