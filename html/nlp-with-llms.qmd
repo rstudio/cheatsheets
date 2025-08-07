@@ -437,3 +437,51 @@ detects it automatically.
 it automatically.
 
 :::
+
+
+### Custom
+
+Create your own prompt
+
+::: {.panel-tabset group="language"}
+
+### R
+
+- `llm_custom(.data, col, prompt = "", pred_name = ".pred", valid_resps = "")`
+    
+    ```r
+    my_prompt <- "Answer a question. Return only the
+    answer, no explanation. Acceptable answers are 'yes',
+    ‘no’. Answer this about the following text, is this a
+    happy customer?:"
+    llm_custom(reviews , review, my_prompt)
+    ```
+    
+- `llm_vec_custom(x, prompt = "", valid_resps = NULL)`
+
+**Special arguments**
+
+`valid_resps`:  A vector to specify the set of answers expected back. `mall` 
+will change those not in the set to `NA`
+
+
+### Python
+
+- *\<DataFrame\>*`.llm.custom(col, prompt='', valid_resps='', pred_name='custom')`
+
+    ```python
+    my_prompt = "Answer a question. Return only the answer," \
+        " no explanation. Acceptable answers are 'yes', 'no'." \
+        "Answer this about the following text, is this a happy customer?:"
+    reviews.llm.custom("review", prompt = my_prompt)
+    ```
+
+- *\<LLMVec object\>*`.custom(x, prompt='', valid_resps='')`
+
+
+**Special arguments**
+
+`valid_resps`:  A vector to specify the set of answers expected back.
+
+
+:::
