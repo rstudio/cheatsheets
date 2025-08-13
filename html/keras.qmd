@@ -15,8 +15,9 @@ execute:
 #| column: margin
 source("common.R")
 use_cheatsheet_logo(
-  "tensorflow",
-  alt = "Hex logo for tensorflow - A red hexagon with a stylized 'TFR' (denoting TensorFlow for R) in a lighter shade of red, with the 'F' joined to the 'R'.")
+  "keras3",
+  alt = "Hex logo for keras3. It is a very large white K with a red background. It has the name of the package in smaller letters on the right."
+  )
 sheet_name <- tools::file_path_sans_ext(knitr::current_input())
 pdf_preview_link(sheet_name)
 translation_list(sheet_name)
@@ -24,404 +25,505 @@ translation_list(sheet_name)
 
 ## Intro
 
-**Keras** is a high-level neural networks API developed with a focus on enabling fast experimentation.
-It supports multiple back-ends, including TensorFlow, Jax and Torch.
+**Keras** enables fast experimentation with "neural networks".
+It supports **convolution networks** (vision) and **recurrent networks** (text and time series).
+It provides the freedom to x work with *JAX*, *Tensorflow*, and *Torch*, plus the freedom to build models that can seamlessly move across these frameworks.
+**keras3** provides easy access to the Keras vast API.
+It also makes getting started with Keras faster by automatically creating a working Python environment with all the needed libraries pre-installed.
 
-Backends like TensorFlow are lower level mathematical libraries for building deep neural network architectures.
-The keras3 R package makes it easy to use Keras with any backend in R.
+![Convolution Neural Network (CNN)](images/keras-convolution-diagram.png){width="600" fig-align="center" fig-alt="A diagram that provides a conceptual overview of how a CNN works"}
 
-1.  **Define**: Model, Sequential model, Multi-GPU model
-2.  **Compile**: Optimizer, Loss, Metrics
-3.  **Fit**: Batch size, Epochs, Validation split
-4.  **Evaluate**: Evaluate, Plot
-5.  **Predict**: Classes, Probability
+## Model building
 
-Read more at:\
-<https://keras.posit.co>\
-<https://www.manning.com/books/deep-learning-with-r-second-edition>
+### 1. Define the model
 
-### Installation
+- `keras_input()` / `keras_model()`: Defines a Functional Model with inputs and outputs.
 
-The keras3 R package uses the Python keras library.
-You can install all the prerequisites directly from R See `?keras3::install_keras` for details and options.
+    ```r
+    inputs <- keras_input(<input-shape>)
+    outputs <- inputs |> 
+      layer_dense() |> 
+      layer_…
+    model <- keras_model(inputs, outputs)
+    ```
+- `keras_model_sequential()`: Define a Sequential Model composed of a linear stack of layers
 
-```{r}
+    ```r
+    model <- keras_model_sequential(<input-shape>) |> 
+      layer_dense() |> 
+      layer_...
+    ```
+
+- `Model()`: Subclass the base Model class
+
+### 2. Inspect the model
+
+- `summary(<model>)`: A summary of a Keras Model
+
+- `plot(<model>)` Plot the model. Needs **graphviz** to work:
+[graphviz.gitlab.io/download](https://graphviz.gitlab.io/download/)
+
+### 3. Compile the model
+
+- `compile()`: Configure aspects of the model such as optimizer, loss, metrics, 
+weights and others.
+
+    ```r
+    model |> compile(
+      loss = "categorical_crossentropy", 
+      optimizer = "rmsprop", 
+      metrics = "accuracy"
+      )
+    ```
+    
+### 4. Fit the model
+
+- `fit()`: Trains the model for a fixed number of dataset iterations (epochs)
+
+    ```r
+    model |> 
+      fit(<x>, <y>, epochs = 30, batch_size = 128, validation_split = 0.2)
+    ```
+
+
+### 5. Evaluate the model
+
+- `evaluate(<model>)`: Returns the loss and metrics
+    
+    ```r
+    model |> 
+      evaluate(<x test>,<y test>)
+    ```
+    
+- `predict(<model>, x)`: Generates predictions
+
+## Example
+
+Train image recognizer on MNIST data a.k.a. deep learning’s ‘hello world’ example 
+
+```r
 library(keras3)
-reticulate::install_python()
-install_keras()
-```
 
-This installs the required libraries in virtual environment named 'r-keras'.
-It will automatically detect if a GPU is available.
+# Input layer: use MNIST images
+.[.[x_train, y_train], .[x_test, y_test]] <- dataset_mnist()
 
-### Training an Image Recognizer on MNIST Data
+# Rescale and categorize
+x_train <- x_train/255
+x_test <- x_test/255
+num_classes <- 10
+y_train <- to_categorical(y_train, num_classes)
+y_test <- to_categorical(y_test, num_classes)
 
-The "Hello, World!" of deep learning
-
-```{r}
-# input layer: use MNIST images
-mnist <- dataset_mnist()
-x_train <- mnist$train$x;  y_train <- mnist$train$y
-x_test <- mnist$test$x;  y_test <- mnist$test$y
-
-# reshape and rescale
-x_train <- array_reshape(x_train, c(nrow(x_train), 784))
-x_test <- array_reshape(x_test, c(nrow(x_test), 784))
-x_train <- x_train / 255;  x_test <- x_test / 255
-
-y_train <- to_categorical(y_train, 10)
-y_test <- to_categorical(y_test, 10)
-
-# defining the model and layers
-model <-
-  keras_model_sequential(input_shape = c(28, 28, 1))
-model |>
-  layer_conv_2d(filters = 32, kernel_size = c(3, 3),
-                activation = "relu") |>
+# Define the model and layers
+model <- keras_model_sequential(
+  input_shape = c(28, 28, 1)) |>
+  layer_conv_2d(
+    filters = 32, kernel_size = c(3, 3),
+    activation = "relu") |>
   layer_max_pooling_2d(pool_size = c(2, 2)) |>
-  layer_conv_2d(filters = 64, kernel_size = c(3, 3),
-                activation = "relu") |>
+  layer_conv_2d(
+    filters = 64,
+    kernel_size = c(3, 3),
+    activation = "relu") |>
   layer_max_pooling_2d(pool_size = c(2, 2)) |>
   layer_flatten() |>
   layer_dropout(rate = 0.5) |>
-  layer_dense(units = num_classes,
-              activation = "softmax")
-
-# View the model summary
+  layer_dense(units = num_classes, activation = "softmax")
+  
+# Inspect the model
 summary(model)
+
 plot(model)
 
-# compile (define loss and optimizer)
-model |> 
+# Compile (define loss and optimizer)
+model |>
   compile(
-  loss = 'categorical_crossentropy',
-  optimizer = optimizer_rmsprop(),
-  metrics = c('accuracy')
-)
-
-# train (fit)
-model |> fit(
-  x_train, y_train,
-  epochs = 30, batch_size = 128,
-  validation_split = 0.2
-)
-model |> evaluate(x_test, y_test)
-model |> predict(x_test)
-
-# save the full model
+    loss = "categorical_crossentropy",
+    optimizer = optimizer_rmsprop(),
+    metrics = c("accuracy")
+    )
+    
+# Fit the model
+model |> 
+  fit(
+    x_train, y_train, 
+    epochs = 30, 
+    batch_size = 128, 
+    validation_split = 0.2
+    )
+  
+# Evaluate and predict
+model |> 
+  evaluate(x_test, y_test)
+  
+model |>
+  predict(x_test)
+  
+# Save the full model
 save_model(model, "mnist-classifier.keras")
 
-# deploy for serving inference.
-dir.create("serving-mnist-classifier")
-export_savedmodel(modek, "serving-mnist-classifier/1")
-rsconnect::deployTFModel("serving-mnist-classifier")
+# Deploy for serving inference
+dir.create("mnist")
+export_savedmodel(model, "mnist/1")
+rsconnect::deployTFModel("mnist")
 ```
 
-## Working with Keras models
+## Layers
 
-### Define a Model
+### Core layers
 
-#### Functional API: `keras_input()` and `keras_model()`
+- `layer_dense()`: A layer connected to all neurons in the preceding layer
 
-Define a Functional Model with inputs and outputs.
+- `layer_einsum_dense()`: A dense layer of arbitrary dimensionality
 
-``` r
-inputs <- keras_input(<input-shape>)
-outputs <- inputs |>
-  layer_dense() |> layer_...
-model <- keras_model(inputs, outputs)
-```
+- `layer_embedding()`: Acts as a mapping function, it stores a dense vector for each word 
+in the vocabulary
 
-#### Sequential API: `keras_model_sequential()`
+- `layer_lambda()`: Allows arbitrary expressions to be used as a layer
 
-Define a Sequential Model composed of a linear stack of layers
+- `layer_masking()`: Masks a sequence by using a mask value to skip time steps
 
-``` r
-model <-
-  keras_model_sequential(<input-shape>) |>
-  layer_dense() |> layer_...
-```
+### Convolution layers 
 
-#### Subclassing API: `Model()`
+Layers that create a convolution kernel that is convolved with the layer input 
+over one, two, or three dimensions to produce a tensor of outputs.
 
-Subclass the base Model class
+- `layer_conv_1d()` / `layer_conv_1d_transpose()`:  Layer of a single dimension
+(temporal). Transpose does the opposite, deconvolution.\
 
-### Compile a Model
+- `layer_conv_2d()` / `layer_conv_2d_transpose()`:  Two dimensional layer
+(image). Transpose does the opposite, deconvolution.
 
-`compile(object, optimizer, loss, metrics = NULL)`: Configure a Keras model for training.
+- `layer_conv_3d()` / `layer_conv_3d_transpose()`:  Three dimensional layer
+(images over volumes). Transpose does the opposite, deconvolution.
 
-### Fit a Model
+- `layer_depthwise_conv_1d()` / `layer_depthwise_conv_2d()`: A type of 
+convolution in which each input channel is convolved with a different kernel.
 
-`fit(object, x = NULL, y = NULL, batch_size = NULL, epochs = 10, verbose = 1, callbacks = NULL, ...)`: Train a Keras model for a fixed number of epochs (iterations)
+- `layer_separable_conv_1d()` / `layer_separable_conv_2d()`: A depthwise 
+convolution that acts separately on  channels, followed by a pointwise
+convolution that mixes channels.
 
-Customize training:
+- `layer_depthwise_conv_1d()` / `layer_depthwise_conv_2d()`: A type of 
+convolution  in which each input channel is convolved with a different kernel.
 
--   Provide callbacks to `fit()`:
--   Define a custom `Callback()`.
--   Call `train_on_batch()` in a custom training loop.
--   Subclass `Model()` and implement a custom `train_step` method.
--   Write a fully custom training loop. Update weights with `model$optimizer$apply(gradients, weights)`
+- `layer_separable_conv_1d()` / `layer_separable_conv_2d()` - A depthwise 
+convolution  that acts separately on channels, followed by a pointwise
+convolution that mixes channels.
 
-### Inspect a Model
+### Normalization layers
 
--   `print(model)`: Print a summary of a Keras model
+- `layer_batch_normalization()`: Operates across the batch dimension
 
--   `plot(model,  show_shapes = FALSE, show_dtype = FALSE, show_layer_names = FALSE, ...)`: Plot a Keras model
+- `layer_layer_normalization()`: Operates across the feature dimension
 
-### Evaluate a Model
+- `layer_group_normalization()`: Operates across channels
 
--   `evaluate(object, x = NULL, y = NULL, batch_size = NULL)`: Evaluate a Keras model.
+- `layer_spectral_normalization()`: Controls the Lipschitz constant of the weights
 
-### Predict
+- `layer_rms_normalization()`: Root Mean Square
 
--   `predict()`: Generate predictions from a Keras model.
+### Regularization layers
 
--   `predict_on_batch()`: Returns predictions for a single batch of samples.
+- `layer_batch_normalization()`: Maintains the mean output close to 0 and the
+output standard deviation close to 1.
 
-### Save/Load a Model
+- `layer_gaussian_noise()`: Layers that randomly "drop" a fraction of input 
+units during training by setting them to 0
 
--   `save_model()`; `load_model()`: Save/Load models using the ".keras" file format.
+- `layer_dropout()`: Non 0 inputs are scaled up
 
--   `save_model_weights()`; `load_model_weights()`: Save/load model weights to/from ".h5" files.
+- `layer_alpha_dropout()`: Keeps original mean and variance
 
--   `save_model_config()`; `load_model_config()`: Save/load model architecture to/from a ".json" file.
+- `layer_gaussian_dropout()`: 1-centers Gaussian noise
 
-### Core Layers
+- `layer_spatial_dropout_1d()` / `layer_spatial_dropout_2d()` / 
+`layer_spatial_dropout_3d()`: Drops entire dimensional feature maps instead of 
+individual elements
 
--   `layer_dense()`: Add a densely-connected NN layer to an output.
+### Pooling layers
 
--   `layer_einsum_dense()`: Add a dense layer with arbitrary dimensionality.
+Layers that **reduce** each dimension of the input while retaining the most important
+features
 
--   `layer_activation()`: Apply an activation function to an output.
+- `layer_max_pooling_1d()` / `layer_max_pooling_2d()` / `layer_max_pooling_3d()`:
+Maximum value over a specified window size (pool size)
 
--   `layer_dropout()`: Applies Dropout to the input.
+- `layer_average_pooling_1d()` / `layer_average_pooling_2d()` / 
+`layer_average_pooling_3d()`: Average value over a specified window size 
+(pool size)
 
--   `layer_reshape()`: Reshapes an output to a certain shape.
+- `layer_global_max_pooling_1d()` / `layer_global_max_pooling_2d()` /
+`layer_global_max_pooling_3d()`: Maximum value of the dimension
 
--   `layer_permute()`: Permute the dimensions of an input according to a given pattern.
+- `layer_global_average_pooling_1d()` / `layer_global_average_pooling_2d()` /
+`layer_global_average_pooling_3d()`: Average value of the dimension
 
--   `layer_repeat_vector()`: Repeats the input n times.
+## Preprocessing layers
 
--   `layer_lambda(object, f)`: Wraps arbitrary expression as a layer.
+### Numerical features
 
--   `layer_activity_regularization()`: Layer that applies an update to the cost function based input activity.
+- `layer_normalization()`: Normalizes continuous features
 
--   `layer_masking()`: Masks a sequence by using a mask value to skip timesteps.
+- `layer_discretization()`:  Buckets by ranges
 
--   `layer_flatten()`: Flattens an input.
+### Categorical features
 
-<!-- Page 2 -->
+- `layer_category_encoding()`: Encodes integer features
 
-## More layers
+- `layer_hashing()`: Hashes and bins features
 
-### Convolutional Layers
+- `layer_hashed_crossing()`: Crosses features using the "hashing trick"
 
--   `layer_conv_1d()`: 1D, e.g. temporal convolution.
+- `layer_string_lookup()` / `layer_integer_lookup()`: Maps a set of arbitrary 
+text or integers via a table-based vocabulary lookup
 
--   `layer_conv_2d_transpose()`: Transposed 2D (deconvolution).
 
--   `layer_conv_2d()` : 2D, e.g. spatial convolution over images.
+### Data frames
+- `layer_feature_space()`: Main function to specify the how the features are 
+to be pre-processed
 
--   `layer_conv_3d_transpose()`: Transposed 3D (deconvolution).
-
--   `layer_conv_3d()`: 3D, e.g. spatial convolution over volumes.
-
--   `layer_conv_lstm_2d()`: Convolutional LSTM.
-
--   `layer_separable_conv_2d()`: Depthwise separable 2D.
-
--   `layer_upsampling_1d()`; `layer_upsampling_2d()`; `layer_upsampling_3d()`: Upsampling layer.
-
--   `layer_zero_padding_1d()`; `layer_zero_padding_2d()`; `layer_zero_padding_3d()`: Zero-padding layer.
-
--   `layer_cropping_1d()`; `layer_cropping_2d()`; `layer_cropping_3d()`: Cropping layer.
-
-### Pooling Layers
-
--   `layer_max_pooling_1d()`; `layer_max_pooling_2d()`; `layer_max_pooling_3d()`: Maximum pooling for 1D to 3D.
-
--   `layer_average_pooling_1d()`; `layer_average_pooling_2d()`; `layer_average_pooling_3d()`: Average pooling for 1D to 3D.
-
--   `layer_global_max_pooling_1d()`; `layer_global_max_pooling_2d()`; `layer_global_max_pooling_3d()`: Global maximum pooling.
-
--   `layer_global_average_pooling_1d()`; `layer_global_average_pooling_2d()`; `layer_global_average_pooling_3d()`: Global average pooling.
-
-## Preprocessing
-
-### Image Preprocessing
-
-#### Load Images
-
--   `image_dataset_from_directory()` Create a TF Dataset from image files in a directory.
-
--   `image_load()`, `image_from_array()`, `image_to_array()`,  `image_array_save()`: Work with PIL Image instances
-
-#### Transform Images
-
-Operations that transform image tensors in deterministic ways.
-
-- `op_image_crop()`
-- `op_image_extract_patches()`
-- `op_image_pad()`
-- `op_image_resize()`
-- `op_image_affine_transform()`
-- `op_image_map_coordinates()`
-- `op_image_rgb_to_grayscale()`
-
-
-Resize images without aspect ratio distortion.
-
-- `image_smart_resize()`:
-
-#### Image Layers
-
-Builtin image preprocessing layers.
-Note, any image operation function can also be used as a layer in a Model, or used in `layer_lambda()`.
-
-##### Image Preprocessing Layers
-
-- `layer_resizing()`
-- `layer_rescaling()`
-- `layer_center_crop()`
-
-##### Image Augmentation Layers
-Preprocessing layers that randomly augment image inputs during training.
-
-- `layer_random_crop()`
-- `layer_random_flip()`
-- `layer_random_translation()`
-- `layer_random_rotation()`
-- `layer_random_zoom()`
-- `layer_random_contrast()`
-- `layer_random_brightness()`
-
-### Sequence Preprocesing
-
-- `timeseries_dataset_from_array()`: Generate a TF Dataset of sliding windows over a timeseries provided as array.
-
-- `audio_dataset_from_directory()`: Generate a TF Dataset from audio files.
-
-- `pad_sequences()`: Pad sequences to the same length
-
-### Text Preprocessing
-
-- `text_dataset_from_directory()`: Generate a TF Dataset from text files in a directory.
-
-- `layer_text_vectorization()`, `get_vocabulary()`, `set_vocabulary()`: Map text to integer sequences.
-
-### Numerical Features Preprocessing
-
-- `layer_normalization()`: Normalizes continuous features.
-
-- `layer_discretization()`: Buckets continuous features by ranges.
-
-### Categorical Features Preprocessing
-
-- `layer_category_encoding()`: Encode integer features.
-
-- `layer_hashing()`: Hash and bin categorical features.
-
-- `layer_hashed_crossing()`: Cross features using the "hashing trick".
-
-- `layer_string_lookup()`: Map strings to (possibly encoded) indices.
-
-- `layer_integer_lookup()`: Map integers to (possibly encoded) indices.
-
-### Tabular Data
-One-stop utility for preprocessing and encoding structured data. Define a feature space from a list of table columns (features).
-```r
-feature_space <- layer_feature_space(features = list(<features>))
-```
-
-Adapt the feature space to a dataset
-```r
-adapt(feature_space, dataset)
-```
-
-Use the adapted `feature_space` preprocessing layer as a layer in a Keras Model, or in the data input pipeline with `tfdatasets::dataset_map()`
-
-
-Available features:
+    ```r
+    feature_space <- layer_feature_space(
+      features = list(float_var = feature_float_normalized(),
+      string_var = feature_string_categorical(),
+      int_var = feature_integer_categorical())
+      )
+    ```
 
 - `feature_float()`
+
 - `feature_float_rescaled()`
+
 - `feature_float_normalized()`
-- `feature_float_discretized()`
+
+- `feature_float_discretized(num_bins)`
+
 - `feature_integer_categorical()`
-- `feature_integer_hashed()`
+
 - `feature_string_categorical()`
-- `feature_string_hashed()`
-- `feature_cross()`
-- `feature_custom()`
+
+- `adapt()`: Calculates the the normalizations, bins, and other conversions 
+against the data set 
+
+    ```r
+    adapt(feature_space, <TF dataset>)
+    ```
+    
+### Text
+- `layer_text_vectorization()` / `get_vocabulary()` / `set_vocabulary()`: Maps 
+a set of arbitrary text or integers via a table-based vocabulary lookup
+
+### Audio
+
+- `layer_mel_spectrogram()`: Converts signal to Mel
+
+### Images 
+
+- `layer_resizing()`: Changes the size of images
+
+- `layer_rescaling()`: Multiplies scale by a given number
+
+- `layer_center_crop()`: Crops images to the given size
+
+- `layer_auto_contrast()`: Makes differences between pixels more obvious    
+
+### Image augmentation
+
+|||
+|-------------------------|-------------------------|
+|`layer_aug_mix()` |`layer_random_hue()`|
+|`layer_cut_mix()` |`layer_random_invert()`|
+|`layer_mix_up()`|`layer_random_rotation()`|
+|`layer_solarization()`|`layer_random_shear()`|
+|`layer_random_contrast()`|`layer_random_zoom()`|
+|`layer_random_crop()`|`layer_random_saturation()`|
+|`layer_random_erasing()`|`layer_random_sharpness()`|
+|`layer_random_flip()`|`layer_random_translation()`|
+|`layer_random_grayscale()`|`layer_random_brightness()`|
+|`layer_random_color_jitter()`|`layer_random_gaussian_blur()`|
+|`layer_random_perspective()`|`layer_random_color_degeneration()`|
+|`layer_random_posterization()`||
+
+## Data Loading
+
+- `text_dataset_from_directory()`
+
+- `audio_dataset_from_directory()`: Reads .wav files
+
+- `image_dataset_from_directory()`: This function supports JPEG, Bitmap, PNG and GIF
+
+- `image_load()`: Loads image into a PIL format
+
+- `image_from_array()`: Converts array into PIL format
+
+- `image_to_array()`: Converts PIL image to array 
+
+- `timeseries_dataset_from_array()`: Creates a dataset of sliding windows over 
+a time series
+
+- `pad_sequences()`: Pads sequences to the same length
+
+## Save and Deploy
+
+### I/O operations
+
+- `save_model("<path>")` / `load_model("<path>")`: Manage models using the 
+".keras" file format.
+- `save_model_weights()` / `load_model_weights()`:  Manage model weights to/from 
+".h5" files.
+
+- `save_model_config()` / `load_model_config()`:  Manage model architecture 
+to/from a ".json" file.
+
+### Deploy
+
+- `export_savedmodel(<model>, "<path>/1")`: Save a TF SavedModel for inference.
+
+- `rsconnect::deployTFModel("<path>")`- Deploy a TF SavedModel to Posit Connect
+for inference.
+
+## Operations
+
+Introduced in Keras v.3, these are low-level operations that will work the same
+in *JAX*, *TF* and *Torch*. 
+
+### Core
+
+- `op_associative_scan()`: Faster `op_scan()` if the function performs a binary 
+associative operation
+
+- `op_cast()`: Casts to specified dtype
+
+- `op_cond()`: Conditionally applies one of two functions
+
+- `op_convert_to_array()`: Tensor to R array
+
+- `op_convert_to_numpy()`:  Tensor to Numpy array
+
+- `op_convert_to_tensor()`:  Array to tensor
+
+- `op_custom_gradient()`: Allows fine grained control over the gradients of
+a sequence for operations.
+
+- `op_dtype()`: Returns tensor’s dtype
+
+- `op_fori_loop()`: For loop, return tensor
+
+- `op_is_tensor()`: Checks for backend specific tensor
+
+- `op_map()`: Applies a function to every single value in the tensor
+
+- `op_rearrange()`: Rearranges tensor to specification
+
+- `op_scan()`: Maps a function, but retaining state
+
+- `op_scatter()`:  Modifies tensor in specified locations with zeroes
+
+- `op_scatter_update()`: It modifies tensor in specified locations that do 
+not need to be contiguous
+
+- `op_searchsorted()`: Performs a binary search
+
+- `op_shape()`: Returns tensor’s shape
+
+- `op_slice()`:  Extract specific location within the tensor
+
+- `op_slice_update()`:  It modifies tensor in a specified location
+
+- `op_stop_gradient()`: Stops gradient computation
+
+- `op_subset()`: Get specific section of the tensor
+
+- `op_switch()`: Applies one of several functions passed to the function based 
+on an index argument
+
+- `op_unstack()`: Splits tensor into a list of tensors separated along the 
+specified axis
+
+- `op_vectorized_map()`: Applies a function to every single value in the tensor. 
+Designed for vectorized operations
+
+- `op_while_loop()`: While loop implementation
+
+### Images
+
+- `op_image_affine_transform()`: Applies the given transform
+
+- `op_image_crop()`: Crops to specified height and width
+
+- `op_image_gaussian_blur()`: Applies Gaussian blur
+
+- `op_image_extract_patches()`: Extracts from image
+
+- `op_image_hsv_to_rgb()`: Converts from HSV to RGB
+
+- `op_image_map_coordinates()`: Maps input array to new coordinates by 
+interpolation
+
+- `op_image_pad()`: Pad images with zeroes to specified height and width
+
+- `op_image_perspective_transform()`: Applies a perspective transformation to 
+the image
+
+- `op_image_resize()`: Resize image to size using the specified interpolation 
+method
+
+- `op_image_rgb_to_grayscale()`: Converts from RGB to grayscale
+
+- `op_image_rgb_to_hsv()`:  Converts from RGB to HSV
+
+### Neural network
 
 
-## Pre-trained models
-
-Keras applications are deep learning models that are made available alongside pre-trained weights.
-These models can be used for prediction, feature extraction, and fine-tuning.
-
-MobileNetV3  Model, pre-trained on ImageNet
-
-- `application_mobilenet_v3_large()`
-- `application_mobilenet_v3_small()`
-
-EfficientNetV2 Model, pre-trained on ImageNet
-
-- `application_efficientnet_v2s()`
-- `application_efficientnet_v2m()`
-- `application_efficientnet_v2l()`
-
-Inception-ResNet v2 and v3 model, with weights trained on ImageNet
-
-- `application_inception_resnet_v2()`
-- `application_inception_v3()`
-
-VGG16 and VGG19 models
-
-- `application_vgg16()`
-- `application_vgg19()`
-
-ResNet50 model
-
-- `application_resnet50()`:
-
-NASNet model architecture
-
-- `application_nasnet_large()`
-- `application_nasnet_mobile()`
+|||
+|-------------------------|-------------------------|
+|`op_average_pool()`|`op_batch_normalization()`|
+|`op_binary_crossentropy()`|`op_celu()`|
+|`op_conv()`|`op_conv_transpose()`|
+|`op_ctc_loss()`|`op_depthwise_conv()`|
+|`op_elu()`|`op_gelu()`|
+|`op_glu()`|`op_hard_shrink()`|
+|`op_hard_sigmoid()`|`op_hard_silu()`|
+|`op_hard_tanh()`|`op_leaky_relu()`|
+|`op_log_sigmoid()`|`op_log_softmax()`|
+|`op_max_pool()`|`op_moments()`|
+|`op_multi_hot()`|`op_categorical_crossentropy()`|
+|`op_sparse_categorical_crossentropy()`|`op_normalize()`|
+|`op_one_hot()`|`op_polar()`|
+|`op_psnr()`|`op_relu()`|
+|`op_relu6()`|`op_rms_normalization()`|
+|`op_selu()`|`op_separable_conv()`|
+|`op_sigmoid()`|`op_silu()`|
+|`op_soft_shrink()`|`op_softmax()`|
+|`op_softplus()`|`op_softsign()`|
+|`op_sparse_plus()`|`op_sparsemax()`|
+|`op_squareplus()`|`op_tanh_shrink()`|
+|`op_threshold()`|`op_unravel_index()`|
 
 
-ImageNet is a large database of images with labels, extensively used for deep learning
+## Learn more
 
-Preprocesses a tensor encoding a batch of images for an application, and decodes predictions from an application.
-- `application_preprocess_inputs()`
-- `application_decode_predictions()`
+::: {.columns}
+:::{.column width="70%"}
 
+::: {style="font-size: 120%;"}
+[Deep Learning with R, Third Edition](https://www.manning.com/books/deep-learning-with-r-third-edition) 
+:::
 
-## Callbacks
+::: {style="font-size: 90%;"}
+*By François Chollet & Tomasz Kalinowski* <br/>
+*2025*
+:::
 
-A callback is a set of functions to be applied at given stages of the training procedure.
-You can use callbacks to get a view on internal states and statistics of the model during training.
+::: {style="font-size: 70%;"}
+[https://www.manning.com/books/deep-learning-with-r-third-edition](https://www.manning.com/books/deep-learning-with-r-third-edition)
+:::
 
--   `allback_early_stopping()`: Stop training when a monitored quantity has stopped improving.
+:::
+:::{.column width="30%"}
 
--   `callback_learning_rate_scheduler()`: Learning rate scheduler.
+[![](images/keras-book.png){width="600" fig-align="center" fig-alt="A diagram that provides a conceptual overview of how a CNN works"}](https://www.manning.com/books/deep-learning-with-r-third-edition)
 
--   `callback_tensorboard()`: TensorBoard basic visualizations.
-
-------------------------------------------------------------------------
-
-CC BY SA Posit Software, PBC • [info\@posit.co](mailto:info@posit.co) • [posit.co](https://posit.co)
-
-Learn more at [keras.posit.co](https://keras.posit.co/).
-
-Updated: `r format(Sys.Date(), "%Y-%m")`.
-
-```{r}
-#| eval: true
-#| output: true
-
-packageVersion("keras3")
-```
-
-------------------------------------------------------------------------
+:::
+:::
