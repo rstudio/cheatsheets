@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7530c408590d20eba92ebedbb433c75c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d923f11539f32d5de3c1cdcc94c3345d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-506128d1720c45c7633917c8215e1087.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -159,38 +159,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
+  <li><a href="#model-building" id="toc-model-building" class="nav-link" data-scroll-target="#model-building">Model building</a>
   <ul class="collapse">
-  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
-  <li><a href="#training-an-image-recognizer-on-mnist-data" id="toc-training-an-image-recognizer-on-mnist-data" class="nav-link" data-scroll-target="#training-an-image-recognizer-on-mnist-data">Training an Image Recognizer on MNIST Data</a></li>
+  <li><a href="#define-the-model" id="toc-define-the-model" class="nav-link" data-scroll-target="#define-the-model">1. Define the model</a></li>
+  <li><a href="#inspect-the-model" id="toc-inspect-the-model" class="nav-link" data-scroll-target="#inspect-the-model">2. Inspect the model</a></li>
+  <li><a href="#compile-the-model" id="toc-compile-the-model" class="nav-link" data-scroll-target="#compile-the-model">3. Compile the model</a></li>
+  <li><a href="#fit-the-model" id="toc-fit-the-model" class="nav-link" data-scroll-target="#fit-the-model">4. Fit the model</a></li>
+  <li><a href="#evaluate-the-model" id="toc-evaluate-the-model" class="nav-link" data-scroll-target="#evaluate-the-model">5. Evaluate the model</a></li>
   </ul></li>
-  <li><a href="#working-with-keras-models" id="toc-working-with-keras-models" class="nav-link" data-scroll-target="#working-with-keras-models">Working with Keras models</a>
+  <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example">Example</a></li>
+  <li><a href="#layers" id="toc-layers" class="nav-link" data-scroll-target="#layers">Layers</a>
   <ul class="collapse">
-  <li><a href="#define-a-model" id="toc-define-a-model" class="nav-link" data-scroll-target="#define-a-model">Define a Model</a></li>
-  <li><a href="#compile-a-model" id="toc-compile-a-model" class="nav-link" data-scroll-target="#compile-a-model">Compile a Model</a></li>
-  <li><a href="#fit-a-model" id="toc-fit-a-model" class="nav-link" data-scroll-target="#fit-a-model">Fit a Model</a></li>
-  <li><a href="#inspect-a-model" id="toc-inspect-a-model" class="nav-link" data-scroll-target="#inspect-a-model">Inspect a Model</a></li>
-  <li><a href="#evaluate-a-model" id="toc-evaluate-a-model" class="nav-link" data-scroll-target="#evaluate-a-model">Evaluate a Model</a></li>
-  <li><a href="#predict" id="toc-predict" class="nav-link" data-scroll-target="#predict">Predict</a></li>
-  <li><a href="#saveload-a-model" id="toc-saveload-a-model" class="nav-link" data-scroll-target="#saveload-a-model">Save/Load a Model</a></li>
-  <li><a href="#core-layers" id="toc-core-layers" class="nav-link" data-scroll-target="#core-layers">Core Layers</a></li>
+  <li><a href="#core-layers" id="toc-core-layers" class="nav-link" data-scroll-target="#core-layers">Core layers</a></li>
+  <li><a href="#convolution-layers" id="toc-convolution-layers" class="nav-link" data-scroll-target="#convolution-layers">Convolution layers</a></li>
+  <li><a href="#normalization-layers" id="toc-normalization-layers" class="nav-link" data-scroll-target="#normalization-layers">Normalization layers</a></li>
+  <li><a href="#regularization-layers" id="toc-regularization-layers" class="nav-link" data-scroll-target="#regularization-layers">Regularization layers</a></li>
+  <li><a href="#pooling-layers" id="toc-pooling-layers" class="nav-link" data-scroll-target="#pooling-layers">Pooling layers</a></li>
   </ul></li>
-  <li><a href="#more-layers" id="toc-more-layers" class="nav-link" data-scroll-target="#more-layers">More layers</a>
+  <li><a href="#preprocessing-layers" id="toc-preprocessing-layers" class="nav-link" data-scroll-target="#preprocessing-layers">Preprocessing layers</a>
   <ul class="collapse">
-  <li><a href="#convolutional-layers" id="toc-convolutional-layers" class="nav-link" data-scroll-target="#convolutional-layers">Convolutional Layers</a></li>
-  <li><a href="#pooling-layers" id="toc-pooling-layers" class="nav-link" data-scroll-target="#pooling-layers">Pooling Layers</a></li>
+  <li><a href="#numerical-features" id="toc-numerical-features" class="nav-link" data-scroll-target="#numerical-features">Numerical features</a></li>
+  <li><a href="#categorical-features" id="toc-categorical-features" class="nav-link" data-scroll-target="#categorical-features">Categorical features</a></li>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames">Data frames</a></li>
+  <li><a href="#text" id="toc-text" class="nav-link" data-scroll-target="#text">Text</a></li>
+  <li><a href="#audio" id="toc-audio" class="nav-link" data-scroll-target="#audio">Audio</a></li>
+  <li><a href="#images" id="toc-images" class="nav-link" data-scroll-target="#images">Images</a></li>
+  <li><a href="#image-augmentation" id="toc-image-augmentation" class="nav-link" data-scroll-target="#image-augmentation">Image augmentation</a></li>
   </ul></li>
-  <li><a href="#preprocessing" id="toc-preprocessing" class="nav-link" data-scroll-target="#preprocessing">Preprocessing</a>
+  <li><a href="#data-loading" id="toc-data-loading" class="nav-link" data-scroll-target="#data-loading">Data Loading</a></li>
+  <li><a href="#save-and-deploy" id="toc-save-and-deploy" class="nav-link" data-scroll-target="#save-and-deploy">Save and Deploy</a>
   <ul class="collapse">
-  <li><a href="#image-preprocessing" id="toc-image-preprocessing" class="nav-link" data-scroll-target="#image-preprocessing">Image Preprocessing</a></li>
-  <li><a href="#sequence-preprocesing" id="toc-sequence-preprocesing" class="nav-link" data-scroll-target="#sequence-preprocesing">Sequence Preprocesing</a></li>
-  <li><a href="#text-preprocessing" id="toc-text-preprocessing" class="nav-link" data-scroll-target="#text-preprocessing">Text Preprocessing</a></li>
-  <li><a href="#numerical-features-preprocessing" id="toc-numerical-features-preprocessing" class="nav-link" data-scroll-target="#numerical-features-preprocessing">Numerical Features Preprocessing</a></li>
-  <li><a href="#categorical-features-preprocessing" id="toc-categorical-features-preprocessing" class="nav-link" data-scroll-target="#categorical-features-preprocessing">Categorical Features Preprocessing</a></li>
-  <li><a href="#tabular-data" id="toc-tabular-data" class="nav-link" data-scroll-target="#tabular-data">Tabular Data</a></li>
+  <li><a href="#io-operations" id="toc-io-operations" class="nav-link" data-scroll-target="#io-operations">I/O operations</a></li>
+  <li><a href="#deploy" id="toc-deploy" class="nav-link" data-scroll-target="#deploy">Deploy</a></li>
   </ul></li>
-  <li><a href="#pre-trained-models" id="toc-pre-trained-models" class="nav-link" data-scroll-target="#pre-trained-models">Pre-trained models</a></li>
-  <li><a href="#callbacks" id="toc-callbacks" class="nav-link" data-scroll-target="#callbacks">Callbacks</a></li>
+  <li><a href="#operations" id="toc-operations" class="nav-link" data-scroll-target="#operations">Operations</a>
+  <ul class="collapse">
+  <li><a href="#core" id="toc-core" class="nav-link" data-scroll-target="#core">Core</a></li>
+  <li><a href="#images-1" id="toc-images-1" class="nav-link" data-scroll-target="#images-1">Images</a></li>
+  <li><a href="#neural-network" id="toc-neural-network" class="nav-link" data-scroll-target="#neural-network">Neural network</a></li>
+  </ul></li>
+  <li><a href="#learn-more" id="toc-learn-more" class="nav-link" data-scroll-target="#learn-more">Learn more</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/rstudio/cheatsheets/edit/main/html/keras.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
 </nav>
@@ -222,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <div class="no-row-height column-margin column-container"><div class="cell">
-<img src="images/logo-tensorflow.png" height="138" alt="Hex logo for tensorflow - A red hexagon with a stylized 'TFR' (denoting TensorFlow for R) in a lighter shade of red, with the 'F' joined to the 'R'."> <br><br><a href="../keras.pdf">
+<img src="images/logo-keras3.png" height="138" alt="Hex logo for keras3. It is a very large white K with a red background. It has the name of the package in smaller letters on the right."> <br><br><a href="../keras.pdf">
 <p>
 <i class="bi bi-file-pdf"></i> Download PDF
 </p>
@@ -237,367 +246,505 @@ Translations (PDF)
 </ul>
 </div></div><section id="intro" class="level2">
 <h2 class="anchored" data-anchor-id="intro">Intro</h2>
-<p><strong>Keras</strong> is a high-level neural networks API developed with a focus on enabling fast experimentation. It supports multiple back-ends, including TensorFlow, Jax and Torch.</p>
-<p>Backends like TensorFlow are lower level mathematical libraries for building deep neural network architectures. The keras3 R package makes it easy to use Keras with any backend in R.</p>
-<ol type="1">
-<li><strong>Define</strong>: Model, Sequential model, Multi-GPU model</li>
-<li><strong>Compile</strong>: Optimizer, Loss, Metrics</li>
-<li><strong>Fit</strong>: Batch size, Epochs, Validation split</li>
-<li><strong>Evaluate</strong>: Evaluate, Plot</li>
-<li><strong>Predict</strong>: Classes, Probability</li>
-</ol>
-<p>Read more at:<br>
-<a href="https://keras.posit.co" class="uri">https://keras.posit.co</a><br>
-<a href="https://www.manning.com/books/deep-learning-with-r-second-edition" class="uri">https://www.manning.com/books/deep-learning-with-r-second-edition</a></p>
-<section id="installation" class="level3">
-<h3 class="anchored" data-anchor-id="installation">Installation</h3>
-<p>The keras3 R package uses the Python keras library. You can install all the prerequisites directly from R See <code>?keras3::install_keras</code> for details and options.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(keras3)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">install_python</span>()</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install_keras</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>This installs the required libraries in virtual environment named ‘r-keras’. It will automatically detect if a GPU is available.</p>
-</section>
-<section id="training-an-image-recognizer-on-mnist-data" class="level3">
-<h3 class="anchored" data-anchor-id="training-an-image-recognizer-on-mnist-data">Training an Image Recognizer on MNIST Data</h3>
-<p>The “Hello, World!” of deep learning</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># input layer: use MNIST images</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>mnist <span class="ot">&lt;-</span> <span class="fu">dataset_mnist</span>()</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x_train <span class="ot">&lt;-</span> mnist<span class="sc">$</span>train<span class="sc">$</span>x;  y_train <span class="ot">&lt;-</span> mnist<span class="sc">$</span>train<span class="sc">$</span>y</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>x_test <span class="ot">&lt;-</span> mnist<span class="sc">$</span>test<span class="sc">$</span>x;  y_test <span class="ot">&lt;-</span> mnist<span class="sc">$</span>test<span class="sc">$</span>y</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># reshape and rescale</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>x_train <span class="ot">&lt;-</span> <span class="fu">array_reshape</span>(x_train, <span class="fu">c</span>(<span class="fu">nrow</span>(x_train), <span class="dv">784</span>))</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>x_test <span class="ot">&lt;-</span> <span class="fu">array_reshape</span>(x_test, <span class="fu">c</span>(<span class="fu">nrow</span>(x_test), <span class="dv">784</span>))</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>x_train <span class="ot">&lt;-</span> x_train <span class="sc">/</span> <span class="dv">255</span>;  x_test <span class="ot">&lt;-</span> x_test <span class="sc">/</span> <span class="dv">255</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>y_train <span class="ot">&lt;-</span> <span class="fu">to_categorical</span>(y_train, <span class="dv">10</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>y_test <span class="ot">&lt;-</span> <span class="fu">to_categorical</span>(y_test, <span class="dv">10</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># defining the model and layers</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">keras_model_sequential</span>(<span class="at">input_shape =</span> <span class="fu">c</span>(<span class="dv">28</span>, <span class="dv">28</span>, <span class="dv">1</span>))</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>model <span class="sc">|&gt;</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">32</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                <span class="at">activation =</span> <span class="st">"relu"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">64</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>                <span class="at">activation =</span> <span class="st">"relu"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_flatten</span>() <span class="sc">|&gt;</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_dropout</span>(<span class="at">rate =</span> <span class="fl">0.5</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> num_classes,</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>              <span class="at">activation =</span> <span class="st">"softmax"</span>)</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># View the model summary</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co"># compile (define loss and optimizer)</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>model <span class="sc">|&gt;</span> </span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compile</span>(</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>  <span class="at">loss =</span> <span class="st">'categorical_crossentropy'</span>,</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>  <span class="at">optimizer =</span> <span class="fu">optimizer_rmsprop</span>(),</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">c</span>(<span class="st">'accuracy'</span>)</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co"># train (fit)</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>model <span class="sc">|&gt;</span> <span class="fu">fit</span>(</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  x_train, y_train,</span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  <span class="at">epochs =</span> <span class="dv">30</span>, <span class="at">batch_size =</span> <span class="dv">128</span>,</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  <span class="at">validation_split =</span> <span class="fl">0.2</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>model <span class="sc">|&gt;</span> <span class="fu">evaluate</span>(x_test, y_test)</span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>model <span class="sc">|&gt;</span> <span class="fu">predict</span>(x_test)</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co"># save the full model</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="fu">save_model</span>(model, <span class="st">"mnist-classifier.keras"</span>)</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="co"># deploy for serving inference.</span></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"serving-mnist-classifier"</span>)</span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="fu">export_savedmodel</span>(modek, <span class="st">"serving-mnist-classifier/1"</span>)</span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>rsconnect<span class="sc">::</span><span class="fu">deployTFModel</span>(<span class="st">"serving-mnist-classifier"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Keras</strong> enables fast experimentation with “neural networks”. It supports <strong>convolution networks</strong> (vision) and <strong>recurrent networks</strong> (text and time series). It provides the freedom to x work with <em>JAX</em>, <em>Tensorflow</em>, and <em>Torch</em>, plus the freedom to build models that can seamlessly move across these frameworks. <strong>keras3</strong> provides easy access to the Keras vast API. It also makes getting started with Keras faster by automatically creating a working Python environment with all the needed libraries pre-installed.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/keras-convolution-diagram.png" class="img-fluid figure-img" alt="A diagram that provides a conceptual overview of how a CNN works" width="600"></p>
+<figcaption>Convolution Neural Network (CNN)</figcaption>
+</figure>
 </div>
 </section>
-</section>
-<section id="working-with-keras-models" class="level2">
-<h2 class="anchored" data-anchor-id="working-with-keras-models">Working with Keras models</h2>
-<section id="define-a-model" class="level3">
-<h3 class="anchored" data-anchor-id="define-a-model">Define a Model</h3>
-<section id="functional-api-keras_input-and-keras_model" class="level4">
-<h4 class="anchored" data-anchor-id="functional-api-keras_input-and-keras_model">Functional API: <code>keras_input()</code> and <code>keras_model()</code></h4>
-<p>Define a Functional Model with inputs and outputs.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>inputs <span class="ot">&lt;-</span> <span class="fu">keras_input</span>(<span class="sc">&lt;</span>input<span class="sc">-</span>shape<span class="sc">&gt;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>outputs <span class="ot">&lt;-</span> inputs <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_dense</span>() <span class="sc">|&gt;</span> layer_...</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">keras_model</span>(inputs, outputs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="sequential-api-keras_model_sequential" class="level4">
-<h4 class="anchored" data-anchor-id="sequential-api-keras_model_sequential">Sequential API: <code>keras_model_sequential()</code></h4>
-<p>Define a Sequential Model composed of a linear stack of layers</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">keras_model_sequential</span>(<span class="sc">&lt;</span>input<span class="sc">-</span>shape<span class="sc">&gt;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_dense</span>() <span class="sc">|&gt;</span> layer_...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="subclassing-api-model" class="level4">
-<h4 class="anchored" data-anchor-id="subclassing-api-model">Subclassing API: <code>Model()</code></h4>
-<p>Subclass the base Model class</p>
-</section>
-</section>
-<section id="compile-a-model" class="level3">
-<h3 class="anchored" data-anchor-id="compile-a-model">Compile a Model</h3>
-<p><code>compile(object, optimizer, loss, metrics = NULL)</code>: Configure a Keras model for training.</p>
-</section>
-<section id="fit-a-model" class="level3">
-<h3 class="anchored" data-anchor-id="fit-a-model">Fit a Model</h3>
-<p><code>fit(object, x = NULL, y = NULL, batch_size = NULL, epochs = 10, verbose = 1, callbacks = NULL, ...)</code>: Train a Keras model for a fixed number of epochs (iterations)</p>
-<p>Customize training:</p>
+<section id="model-building" class="level2">
+<h2 class="anchored" data-anchor-id="model-building">Model building</h2>
+<section id="define-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="define-the-model">1. Define the model</h3>
 <ul>
-<li>Provide callbacks to <code>fit()</code>:</li>
-<li>Define a custom <code>Callback()</code>.</li>
-<li>Call <code>train_on_batch()</code> in a custom training loop.</li>
-<li>Subclass <code>Model()</code> and implement a custom <code>train_step</code> method.</li>
-<li>Write a fully custom training loop. Update weights with <code>model$optimizer$apply(gradients, weights)</code></li>
+<li><p><code>keras_input()</code> / <code>keras_model()</code>: Defines a Functional Model with inputs and outputs.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>inputs <span class="ot">&lt;-</span> <span class="fu">keras_input</span>(<span class="sc">&lt;</span>input<span class="sc">-</span>shape<span class="sc">&gt;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>outputs <span class="ot">&lt;-</span> inputs <span class="sc">|&gt;</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_dense</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  layer_…</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">keras_model</span>(inputs, outputs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>keras_model_sequential()</code>: Define a Sequential Model composed of a linear stack of layers</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">keras_model_sequential</span>(<span class="sc">&lt;</span>input<span class="sc">-</span>shape<span class="sc">&gt;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_dense</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  layer_...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>Model()</code>: Subclass the base Model class</p></li>
 </ul>
 </section>
-<section id="inspect-a-model" class="level3">
-<h3 class="anchored" data-anchor-id="inspect-a-model">Inspect a Model</h3>
+<section id="inspect-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="inspect-the-model">2. Inspect the model</h3>
 <ul>
-<li><p><code>print(model)</code>: Print a summary of a Keras model</p></li>
-<li><p><code>plot(model,  show_shapes = FALSE, show_dtype = FALSE, show_layer_names = FALSE, ...)</code>: Plot a Keras model</p></li>
+<li><p><code>summary(&lt;model&gt;)</code>: A summary of a Keras Model</p></li>
+<li><p><code>plot(&lt;model&gt;)</code> Plot the model. Needs <strong>graphviz</strong> to work: <a href="https://graphviz.gitlab.io/download/">graphviz.gitlab.io/download</a></p></li>
 </ul>
 </section>
-<section id="evaluate-a-model" class="level3">
-<h3 class="anchored" data-anchor-id="evaluate-a-model">Evaluate a Model</h3>
+<section id="compile-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="compile-the-model">3. Compile the model</h3>
 <ul>
-<li><code>evaluate(object, x = NULL, y = NULL, batch_size = NULL)</code>: Evaluate a Keras model.</li>
+<li><p><code>compile()</code>: Configure aspects of the model such as optimizer, loss, metrics, weights and others.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>model <span class="sc">|&gt;</span> <span class="fu">compile</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">loss =</span> <span class="st">"categorical_crossentropy"</span>, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">optimizer =</span> <span class="st">"rmsprop"</span>, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="st">"accuracy"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
-<section id="predict" class="level3">
-<h3 class="anchored" data-anchor-id="predict">Predict</h3>
+<section id="fit-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="fit-the-model">4. Fit the model</h3>
 <ul>
-<li><p><code>predict()</code>: Generate predictions from a Keras model.</p></li>
-<li><p><code>predict_on_batch()</code>: Returns predictions for a single batch of samples.</p></li>
+<li><p><code>fit()</code>: Trains the model for a fixed number of dataset iterations (epochs)</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>model <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(<span class="sc">&lt;</span>x<span class="sc">&gt;</span>, <span class="sc">&lt;</span>y<span class="sc">&gt;</span>, <span class="at">epochs =</span> <span class="dv">30</span>, <span class="at">batch_size =</span> <span class="dv">128</span>, <span class="at">validation_split =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
-<section id="saveload-a-model" class="level3">
-<h3 class="anchored" data-anchor-id="saveload-a-model">Save/Load a Model</h3>
+<section id="evaluate-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="evaluate-the-model">5. Evaluate the model</h3>
 <ul>
-<li><p><code>save_model()</code>; <code>load_model()</code>: Save/Load models using the “.keras” file format.</p></li>
-<li><p><code>save_model_weights()</code>; <code>load_model_weights()</code>: Save/load model weights to/from “.h5” files.</p></li>
-<li><p><code>save_model_config()</code>; <code>load_model_config()</code>: Save/load model architecture to/from a “.json” file.</p></li>
+<li><p><code>evaluate(&lt;model&gt;)</code>: Returns the loss and metrics</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>model <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">evaluate</span>(<span class="sc">&lt;</span>x test<span class="sc">&gt;</span>,<span class="sc">&lt;</span>y test<span class="sc">&gt;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>predict(&lt;model&gt;, x)</code>: Generates predictions</p></li>
 </ul>
 </section>
+</section>
+<section id="example" class="level2">
+<h2 class="anchored" data-anchor-id="example">Example</h2>
+<p>Train image recognizer on MNIST data a.k.a. deep learning’s ‘hello world’ example</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(keras3)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Input layer: use MNIST images</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>.[.[x_train, y_train], .[x_test, y_test]] <span class="ot">&lt;-</span> <span class="fu">dataset_mnist</span>()</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Rescale and categorize</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>x_train <span class="ot">&lt;-</span> x_train<span class="sc">/</span><span class="dv">255</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>x_test <span class="ot">&lt;-</span> x_test<span class="sc">/</span><span class="dv">255</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>num_classes <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>y_train <span class="ot">&lt;-</span> <span class="fu">to_categorical</span>(y_train, num_classes)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>y_test <span class="ot">&lt;-</span> <span class="fu">to_categorical</span>(y_test, num_classes)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the model and layers</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">keras_model_sequential</span>(</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">input_shape =</span> <span class="fu">c</span>(<span class="dv">28</span>, <span class="dv">28</span>, <span class="dv">1</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_conv_2d</span>(</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">filters =</span> <span class="dv">32</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">activation =</span> <span class="st">"relu"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_conv_2d</span>(</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">filters =</span> <span class="dv">64</span>,</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>),</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">activation =</span> <span class="st">"relu"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_flatten</span>() <span class="sc">|&gt;</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_dropout</span>(<span class="at">rate =</span> <span class="fl">0.5</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> num_classes, <span class="at">activation =</span> <span class="st">"softmax"</span>)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the model</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Compile (define loss and optimizer)</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>model <span class="sc">|&gt;</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">compile</span>(</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">loss =</span> <span class="st">"categorical_crossentropy"</span>,</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">optimizer =</span> <span class="fu">optimizer_rmsprop</span>(),</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">metrics =</span> <span class="fu">c</span>(<span class="st">"accuracy"</span>)</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the model</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>model <span class="sc">|&gt;</span> </span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>(</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>    x_train, y_train, </span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">epochs =</span> <span class="dv">30</span>, </span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">batch_size =</span> <span class="dv">128</span>, </span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">validation_split =</span> <span class="fl">0.2</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate and predict</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>model <span class="sc">|&gt;</span> </span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">evaluate</span>(x_test, y_test)</span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>model <span class="sc">|&gt;</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict</span>(x_test)</span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the full model</span></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="fu">save_model</span>(model, <span class="st">"mnist-classifier.keras"</span>)</span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Deploy for serving inference</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">"mnist"</span>)</span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a><span class="fu">export_savedmodel</span>(model, <span class="st">"mnist/1"</span>)</span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>rsconnect<span class="sc">::</span><span class="fu">deployTFModel</span>(<span class="st">"mnist"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="layers" class="level2">
+<h2 class="anchored" data-anchor-id="layers">Layers</h2>
 <section id="core-layers" class="level3">
-<h3 class="anchored" data-anchor-id="core-layers">Core Layers</h3>
+<h3 class="anchored" data-anchor-id="core-layers">Core layers</h3>
 <ul>
-<li><p><code>layer_dense()</code>: Add a densely-connected NN layer to an output.</p></li>
-<li><p><code>layer_einsum_dense()</code>: Add a dense layer with arbitrary dimensionality.</p></li>
-<li><p><code>layer_activation()</code>: Apply an activation function to an output.</p></li>
-<li><p><code>layer_dropout()</code>: Applies Dropout to the input.</p></li>
-<li><p><code>layer_reshape()</code>: Reshapes an output to a certain shape.</p></li>
-<li><p><code>layer_permute()</code>: Permute the dimensions of an input according to a given pattern.</p></li>
-<li><p><code>layer_repeat_vector()</code>: Repeats the input n times.</p></li>
-<li><p><code>layer_lambda(object, f)</code>: Wraps arbitrary expression as a layer.</p></li>
-<li><p><code>layer_activity_regularization()</code>: Layer that applies an update to the cost function based input activity.</p></li>
-<li><p><code>layer_masking()</code>: Masks a sequence by using a mask value to skip timesteps.</p></li>
-<li><p><code>layer_flatten()</code>: Flattens an input.</p></li>
+<li><p><code>layer_dense()</code>: A layer connected to all neurons in the preceding layer</p></li>
+<li><p><code>layer_einsum_dense()</code>: A dense layer of arbitrary dimensionality</p></li>
+<li><p><code>layer_embedding()</code>: Acts as a mapping function, it stores a dense vector for each word in the vocabulary</p></li>
+<li><p><code>layer_lambda()</code>: Allows arbitrary expressions to be used as a layer</p></li>
+<li><p><code>layer_masking()</code>: Masks a sequence by using a mask value to skip time steps</p></li>
 </ul>
-<!-- Page 2 -->
 </section>
-</section>
-<section id="more-layers" class="level2">
-<h2 class="anchored" data-anchor-id="more-layers">More layers</h2>
-<section id="convolutional-layers" class="level3">
-<h3 class="anchored" data-anchor-id="convolutional-layers">Convolutional Layers</h3>
+<section id="convolution-layers" class="level3">
+<h3 class="anchored" data-anchor-id="convolution-layers">Convolution layers</h3>
+<p>Layers that create a convolution kernel that is convolved with the layer input over one, two, or three dimensions to produce a tensor of outputs.</p>
 <ul>
-<li><p><code>layer_conv_1d()</code>: 1D, e.g.&nbsp;temporal convolution.</p></li>
-<li><p><code>layer_conv_2d_transpose()</code>: Transposed 2D (deconvolution).</p></li>
-<li><p><code>layer_conv_2d()</code> : 2D, e.g.&nbsp;spatial convolution over images.</p></li>
-<li><p><code>layer_conv_3d_transpose()</code>: Transposed 3D (deconvolution).</p></li>
-<li><p><code>layer_conv_3d()</code>: 3D, e.g.&nbsp;spatial convolution over volumes.</p></li>
-<li><p><code>layer_conv_lstm_2d()</code>: Convolutional LSTM.</p></li>
-<li><p><code>layer_separable_conv_2d()</code>: Depthwise separable 2D.</p></li>
-<li><p><code>layer_upsampling_1d()</code>; <code>layer_upsampling_2d()</code>; <code>layer_upsampling_3d()</code>: Upsampling layer.</p></li>
-<li><p><code>layer_zero_padding_1d()</code>; <code>layer_zero_padding_2d()</code>; <code>layer_zero_padding_3d()</code>: Zero-padding layer.</p></li>
-<li><p><code>layer_cropping_1d()</code>; <code>layer_cropping_2d()</code>; <code>layer_cropping_3d()</code>: Cropping layer.</p></li>
+<li><p><code>layer_conv_1d()</code> / <code>layer_conv_1d_transpose()</code>: Layer of a single dimension (temporal). Transpose does the opposite, deconvolution.<br>
+</p></li>
+<li><p><code>layer_conv_2d()</code> / <code>layer_conv_2d_transpose()</code>: Two dimensional layer (image). Transpose does the opposite, deconvolution.</p></li>
+<li><p><code>layer_conv_3d()</code> / <code>layer_conv_3d_transpose()</code>: Three dimensional layer (images over volumes). Transpose does the opposite, deconvolution.</p></li>
+<li><p><code>layer_depthwise_conv_1d()</code> / <code>layer_depthwise_conv_2d()</code>: A type of convolution in which each input channel is convolved with a different kernel.</p></li>
+<li><p><code>layer_separable_conv_1d()</code> / <code>layer_separable_conv_2d()</code>: A depthwise convolution that acts separately on channels, followed by a pointwise convolution that mixes channels.</p></li>
+<li><p><code>layer_depthwise_conv_1d()</code> / <code>layer_depthwise_conv_2d()</code>: A type of convolution in which each input channel is convolved with a different kernel.</p></li>
+<li><p><code>layer_separable_conv_1d()</code> / <code>layer_separable_conv_2d()</code> - A depthwise convolution that acts separately on channels, followed by a pointwise convolution that mixes channels.</p></li>
+</ul>
+</section>
+<section id="normalization-layers" class="level3">
+<h3 class="anchored" data-anchor-id="normalization-layers">Normalization layers</h3>
+<ul>
+<li><p><code>layer_batch_normalization()</code>: Operates across the batch dimension</p></li>
+<li><p><code>layer_layer_normalization()</code>: Operates across the feature dimension</p></li>
+<li><p><code>layer_group_normalization()</code>: Operates across channels</p></li>
+<li><p><code>layer_spectral_normalization()</code>: Controls the Lipschitz constant of the weights</p></li>
+<li><p><code>layer_rms_normalization()</code>: Root Mean Square</p></li>
+</ul>
+</section>
+<section id="regularization-layers" class="level3">
+<h3 class="anchored" data-anchor-id="regularization-layers">Regularization layers</h3>
+<ul>
+<li><p><code>layer_batch_normalization()</code>: Maintains the mean output close to 0 and the output standard deviation close to 1.</p></li>
+<li><p><code>layer_gaussian_noise()</code>: Layers that randomly “drop” a fraction of input units during training by setting them to 0</p></li>
+<li><p><code>layer_dropout()</code>: Non 0 inputs are scaled up</p></li>
+<li><p><code>layer_alpha_dropout()</code>: Keeps original mean and variance</p></li>
+<li><p><code>layer_gaussian_dropout()</code>: 1-centers Gaussian noise</p></li>
+<li><p><code>layer_spatial_dropout_1d()</code> / <code>layer_spatial_dropout_2d()</code> / <code>layer_spatial_dropout_3d()</code>: Drops entire dimensional feature maps instead of individual elements</p></li>
 </ul>
 </section>
 <section id="pooling-layers" class="level3">
-<h3 class="anchored" data-anchor-id="pooling-layers">Pooling Layers</h3>
+<h3 class="anchored" data-anchor-id="pooling-layers">Pooling layers</h3>
+<p>Layers that <strong>reduce</strong> each dimension of the input while retaining the most important features</p>
 <ul>
-<li><p><code>layer_max_pooling_1d()</code>; <code>layer_max_pooling_2d()</code>; <code>layer_max_pooling_3d()</code>: Maximum pooling for 1D to 3D.</p></li>
-<li><p><code>layer_average_pooling_1d()</code>; <code>layer_average_pooling_2d()</code>; <code>layer_average_pooling_3d()</code>: Average pooling for 1D to 3D.</p></li>
-<li><p><code>layer_global_max_pooling_1d()</code>; <code>layer_global_max_pooling_2d()</code>; <code>layer_global_max_pooling_3d()</code>: Global maximum pooling.</p></li>
-<li><p><code>layer_global_average_pooling_1d()</code>; <code>layer_global_average_pooling_2d()</code>; <code>layer_global_average_pooling_3d()</code>: Global average pooling.</p></li>
+<li><p><code>layer_max_pooling_1d()</code> / <code>layer_max_pooling_2d()</code> / <code>layer_max_pooling_3d()</code>: Maximum value over a specified window size (pool size)</p></li>
+<li><p><code>layer_average_pooling_1d()</code> / <code>layer_average_pooling_2d()</code> / <code>layer_average_pooling_3d()</code>: Average value over a specified window size (pool size)</p></li>
+<li><p><code>layer_global_max_pooling_1d()</code> / <code>layer_global_max_pooling_2d()</code> / <code>layer_global_max_pooling_3d()</code>: Maximum value of the dimension</p></li>
+<li><p><code>layer_global_average_pooling_1d()</code> / <code>layer_global_average_pooling_2d()</code> / <code>layer_global_average_pooling_3d()</code>: Average value of the dimension</p></li>
 </ul>
 </section>
 </section>
-<section id="preprocessing" class="level2">
-<h2 class="anchored" data-anchor-id="preprocessing">Preprocessing</h2>
-<section id="image-preprocessing" class="level3">
-<h3 class="anchored" data-anchor-id="image-preprocessing">Image Preprocessing</h3>
-<section id="load-images" class="level4">
-<h4 class="anchored" data-anchor-id="load-images">Load Images</h4>
+<section id="preprocessing-layers" class="level2">
+<h2 class="anchored" data-anchor-id="preprocessing-layers">Preprocessing layers</h2>
+<section id="numerical-features" class="level3">
+<h3 class="anchored" data-anchor-id="numerical-features">Numerical features</h3>
 <ul>
-<li><p><code>image_dataset_from_directory()</code> Create a TF Dataset from image files in a directory.</p></li>
-<li><p><code>image_load()</code>, <code>image_from_array()</code>, <code>image_to_array()</code>, <code>image_array_save()</code>: Work with PIL Image instances</p></li>
+<li><p><code>layer_normalization()</code>: Normalizes continuous features</p></li>
+<li><p><code>layer_discretization()</code>: Buckets by ranges</p></li>
 </ul>
 </section>
-<section id="transform-images" class="level4">
-<h4 class="anchored" data-anchor-id="transform-images">Transform Images</h4>
-<p>Operations that transform image tensors in deterministic ways.</p>
+<section id="categorical-features" class="level3">
+<h3 class="anchored" data-anchor-id="categorical-features">Categorical features</h3>
 <ul>
-<li><code>op_image_crop()</code></li>
-<li><code>op_image_extract_patches()</code></li>
-<li><code>op_image_pad()</code></li>
-<li><code>op_image_resize()</code></li>
-<li><code>op_image_affine_transform()</code></li>
-<li><code>op_image_map_coordinates()</code></li>
-<li><code>op_image_rgb_to_grayscale()</code></li>
-</ul>
-<p>Resize images without aspect ratio distortion.</p>
-<ul>
-<li><code>image_smart_resize()</code>:</li>
+<li><p><code>layer_category_encoding()</code>: Encodes integer features</p></li>
+<li><p><code>layer_hashing()</code>: Hashes and bins features</p></li>
+<li><p><code>layer_hashed_crossing()</code>: Crosses features using the “hashing trick”</p></li>
+<li><p><code>layer_string_lookup()</code> / <code>layer_integer_lookup()</code>: Maps a set of arbitrary text or integers via a table-based vocabulary lookup</p></li>
 </ul>
 </section>
-<section id="image-layers" class="level4">
-<h4 class="anchored" data-anchor-id="image-layers">Image Layers</h4>
-<p>Builtin image preprocessing layers. Note, any image operation function can also be used as a layer in a Model, or used in <code>layer_lambda()</code>.</p>
-<section id="image-preprocessing-layers" class="level5">
-<h5 class="anchored" data-anchor-id="image-preprocessing-layers">Image Preprocessing Layers</h5>
+<section id="data-frames" class="level3">
+<h3 class="anchored" data-anchor-id="data-frames">Data frames</h3>
 <ul>
-<li><code>layer_resizing()</code></li>
-<li><code>layer_rescaling()</code></li>
-<li><code>layer_center_crop()</code></li>
+<li><p><code>layer_feature_space()</code>: Main function to specify the how the features are to be pre-processed</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>feature_space <span class="ot">&lt;-</span> <span class="fu">layer_feature_space</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">features =</span> <span class="fu">list</span>(<span class="at">float_var =</span> <span class="fu">feature_float_normalized</span>(),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">string_var =</span> <span class="fu">feature_string_categorical</span>(),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">int_var =</span> <span class="fu">feature_integer_categorical</span>())</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><code>feature_float()</code></p></li>
+<li><p><code>feature_float_rescaled()</code></p></li>
+<li><p><code>feature_float_normalized()</code></p></li>
+<li><p><code>feature_float_discretized(num_bins)</code></p></li>
+<li><p><code>feature_integer_categorical()</code></p></li>
+<li><p><code>feature_string_categorical()</code></p></li>
+<li><p><code>adapt()</code>: Calculates the the normalizations, bins, and other conversions against the data set</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">adapt</span>(feature_space, <span class="sc">&lt;</span>TF dataset<span class="sc">&gt;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 </ul>
 </section>
-<section id="image-augmentation-layers" class="level5">
-<h5 class="anchored" data-anchor-id="image-augmentation-layers">Image Augmentation Layers</h5>
-<p>Preprocessing layers that randomly augment image inputs during training.</p>
+<section id="text" class="level3">
+<h3 class="anchored" data-anchor-id="text">Text</h3>
 <ul>
-<li><code>layer_random_crop()</code></li>
-<li><code>layer_random_flip()</code></li>
-<li><code>layer_random_translation()</code></li>
-<li><code>layer_random_rotation()</code></li>
-<li><code>layer_random_zoom()</code></li>
-<li><code>layer_random_contrast()</code></li>
-<li><code>layer_random_brightness()</code></li>
+<li><code>layer_text_vectorization()</code> / <code>get_vocabulary()</code> / <code>set_vocabulary()</code>: Maps a set of arbitrary text or integers via a table-based vocabulary lookup</li>
+</ul>
+</section>
+<section id="audio" class="level3">
+<h3 class="anchored" data-anchor-id="audio">Audio</h3>
+<ul>
+<li><code>layer_mel_spectrogram()</code>: Converts signal to Mel</li>
+</ul>
+</section>
+<section id="images" class="level3">
+<h3 class="anchored" data-anchor-id="images">Images</h3>
+<ul>
+<li><p><code>layer_resizing()</code>: Changes the size of images</p></li>
+<li><p><code>layer_rescaling()</code>: Multiplies scale by a given number</p></li>
+<li><p><code>layer_center_crop()</code>: Crops images to the given size</p></li>
+<li><p><code>layer_auto_contrast()</code>: Makes differences between pixels more obvious</p></li>
+</ul>
+</section>
+<section id="image-augmentation" class="level3">
+<h3 class="anchored" data-anchor-id="image-augmentation">Image augmentation</h3>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><code>layer_aug_mix()</code></td>
+<td><code>layer_random_hue()</code></td>
+</tr>
+<tr class="even">
+<td><code>layer_cut_mix()</code></td>
+<td><code>layer_random_invert()</code></td>
+</tr>
+<tr class="odd">
+<td><code>layer_mix_up()</code></td>
+<td><code>layer_random_rotation()</code></td>
+</tr>
+<tr class="even">
+<td><code>layer_solarization()</code></td>
+<td><code>layer_random_shear()</code></td>
+</tr>
+<tr class="odd">
+<td><code>layer_random_contrast()</code></td>
+<td><code>layer_random_zoom()</code></td>
+</tr>
+<tr class="even">
+<td><code>layer_random_crop()</code></td>
+<td><code>layer_random_saturation()</code></td>
+</tr>
+<tr class="odd">
+<td><code>layer_random_erasing()</code></td>
+<td><code>layer_random_sharpness()</code></td>
+</tr>
+<tr class="even">
+<td><code>layer_random_flip()</code></td>
+<td><code>layer_random_translation()</code></td>
+</tr>
+<tr class="odd">
+<td><code>layer_random_grayscale()</code></td>
+<td><code>layer_random_brightness()</code></td>
+</tr>
+<tr class="even">
+<td><code>layer_random_color_jitter()</code></td>
+<td><code>layer_random_gaussian_blur()</code></td>
+</tr>
+<tr class="odd">
+<td><code>layer_random_perspective()</code></td>
+<td><code>layer_random_color_degeneration()</code></td>
+</tr>
+<tr class="even">
+<td><code>layer_random_posterization()</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="data-loading" class="level2">
+<h2 class="anchored" data-anchor-id="data-loading">Data Loading</h2>
+<ul>
+<li><p><code>text_dataset_from_directory()</code></p></li>
+<li><p><code>audio_dataset_from_directory()</code>: Reads .wav files</p></li>
+<li><p><code>image_dataset_from_directory()</code>: This function supports JPEG, Bitmap, PNG and GIF</p></li>
+<li><p><code>image_load()</code>: Loads image into a PIL format</p></li>
+<li><p><code>image_from_array()</code>: Converts array into PIL format</p></li>
+<li><p><code>image_to_array()</code>: Converts PIL image to array</p></li>
+<li><p><code>timeseries_dataset_from_array()</code>: Creates a dataset of sliding windows over a time series</p></li>
+<li><p><code>pad_sequences()</code>: Pads sequences to the same length</p></li>
+</ul>
+</section>
+<section id="save-and-deploy" class="level2">
+<h2 class="anchored" data-anchor-id="save-and-deploy">Save and Deploy</h2>
+<section id="io-operations" class="level3">
+<h3 class="anchored" data-anchor-id="io-operations">I/O operations</h3>
+<ul>
+<li><p><code>save_model("&lt;path&gt;")</code> / <code>load_model("&lt;path&gt;")</code>: Manage models using the “.keras” file format.</p></li>
+<li><p><code>save_model_weights()</code> / <code>load_model_weights()</code>: Manage model weights to/from “.h5” files.</p></li>
+<li><p><code>save_model_config()</code> / <code>load_model_config()</code>: Manage model architecture to/from a “.json” file.</p></li>
+</ul>
+</section>
+<section id="deploy" class="level3">
+<h3 class="anchored" data-anchor-id="deploy">Deploy</h3>
+<ul>
+<li><p><code>export_savedmodel(&lt;model&gt;, "&lt;path&gt;/1")</code>: Save a TF SavedModel for inference.</p></li>
+<li><p><code>rsconnect::deployTFModel("&lt;path&gt;")</code>- Deploy a TF SavedModel to Posit Connect for inference.</p></li>
 </ul>
 </section>
 </section>
-</section>
-<section id="sequence-preprocesing" class="level3">
-<h3 class="anchored" data-anchor-id="sequence-preprocesing">Sequence Preprocesing</h3>
+<section id="operations" class="level2">
+<h2 class="anchored" data-anchor-id="operations">Operations</h2>
+<p>Introduced in Keras v.3, these are low-level operations that will work the same in <em>JAX</em>, <em>TF</em> and <em>Torch</em>.</p>
+<section id="core" class="level3">
+<h3 class="anchored" data-anchor-id="core">Core</h3>
 <ul>
-<li><p><code>timeseries_dataset_from_array()</code>: Generate a TF Dataset of sliding windows over a timeseries provided as array.</p></li>
-<li><p><code>audio_dataset_from_directory()</code>: Generate a TF Dataset from audio files.</p></li>
-<li><p><code>pad_sequences()</code>: Pad sequences to the same length</p></li>
+<li><p><code>op_associative_scan()</code>: Faster <code>op_scan()</code> if the function performs a binary associative operation</p></li>
+<li><p><code>op_cast()</code>: Casts to specified dtype</p></li>
+<li><p><code>op_cond()</code>: Conditionally applies one of two functions</p></li>
+<li><p><code>op_convert_to_array()</code>: Tensor to R array</p></li>
+<li><p><code>op_convert_to_numpy()</code>: Tensor to Numpy array</p></li>
+<li><p><code>op_convert_to_tensor()</code>: Array to tensor</p></li>
+<li><p><code>op_custom_gradient()</code>: Allows fine grained control over the gradients of a sequence for operations.</p></li>
+<li><p><code>op_dtype()</code>: Returns tensor’s dtype</p></li>
+<li><p><code>op_fori_loop()</code>: For loop, return tensor</p></li>
+<li><p><code>op_is_tensor()</code>: Checks for backend specific tensor</p></li>
+<li><p><code>op_map()</code>: Applies a function to every single value in the tensor</p></li>
+<li><p><code>op_rearrange()</code>: Rearranges tensor to specification</p></li>
+<li><p><code>op_scan()</code>: Maps a function, but retaining state</p></li>
+<li><p><code>op_scatter()</code>: Modifies tensor in specified locations with zeroes</p></li>
+<li><p><code>op_scatter_update()</code>: It modifies tensor in specified locations that do not need to be contiguous</p></li>
+<li><p><code>op_searchsorted()</code>: Performs a binary search</p></li>
+<li><p><code>op_shape()</code>: Returns tensor’s shape</p></li>
+<li><p><code>op_slice()</code>: Extract specific location within the tensor</p></li>
+<li><p><code>op_slice_update()</code>: It modifies tensor in a specified location</p></li>
+<li><p><code>op_stop_gradient()</code>: Stops gradient computation</p></li>
+<li><p><code>op_subset()</code>: Get specific section of the tensor</p></li>
+<li><p><code>op_switch()</code>: Applies one of several functions passed to the function based on an index argument</p></li>
+<li><p><code>op_unstack()</code>: Splits tensor into a list of tensors separated along the specified axis</p></li>
+<li><p><code>op_vectorized_map()</code>: Applies a function to every single value in the tensor. Designed for vectorized operations</p></li>
+<li><p><code>op_while_loop()</code>: While loop implementation</p></li>
 </ul>
 </section>
-<section id="text-preprocessing" class="level3">
-<h3 class="anchored" data-anchor-id="text-preprocessing">Text Preprocessing</h3>
+<section id="images-1" class="level3">
+<h3 class="anchored" data-anchor-id="images-1">Images</h3>
 <ul>
-<li><p><code>text_dataset_from_directory()</code>: Generate a TF Dataset from text files in a directory.</p></li>
-<li><p><code>layer_text_vectorization()</code>, <code>get_vocabulary()</code>, <code>set_vocabulary()</code>: Map text to integer sequences.</p></li>
+<li><p><code>op_image_affine_transform()</code>: Applies the given transform</p></li>
+<li><p><code>op_image_crop()</code>: Crops to specified height and width</p></li>
+<li><p><code>op_image_gaussian_blur()</code>: Applies Gaussian blur</p></li>
+<li><p><code>op_image_extract_patches()</code>: Extracts from image</p></li>
+<li><p><code>op_image_hsv_to_rgb()</code>: Converts from HSV to RGB</p></li>
+<li><p><code>op_image_map_coordinates()</code>: Maps input array to new coordinates by interpolation</p></li>
+<li><p><code>op_image_pad()</code>: Pad images with zeroes to specified height and width</p></li>
+<li><p><code>op_image_perspective_transform()</code>: Applies a perspective transformation to the image</p></li>
+<li><p><code>op_image_resize()</code>: Resize image to size using the specified interpolation method</p></li>
+<li><p><code>op_image_rgb_to_grayscale()</code>: Converts from RGB to grayscale</p></li>
+<li><p><code>op_image_rgb_to_hsv()</code>: Converts from RGB to HSV</p></li>
 </ul>
 </section>
-<section id="numerical-features-preprocessing" class="level3">
-<h3 class="anchored" data-anchor-id="numerical-features-preprocessing">Numerical Features Preprocessing</h3>
-<ul>
-<li><p><code>layer_normalization()</code>: Normalizes continuous features.</p></li>
-<li><p><code>layer_discretization()</code>: Buckets continuous features by ranges.</p></li>
-</ul>
+<section id="neural-network" class="level3">
+<h3 class="anchored" data-anchor-id="neural-network">Neural network</h3>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><code>op_average_pool()</code></td>
+<td><code>op_batch_normalization()</code></td>
+</tr>
+<tr class="even">
+<td><code>op_binary_crossentropy()</code></td>
+<td><code>op_celu()</code></td>
+</tr>
+<tr class="odd">
+<td><code>op_conv()</code></td>
+<td><code>op_conv_transpose()</code></td>
+</tr>
+<tr class="even">
+<td><code>op_ctc_loss()</code></td>
+<td><code>op_depthwise_conv()</code></td>
+</tr>
+<tr class="odd">
+<td><code>op_elu()</code></td>
+<td><code>op_gelu()</code></td>
+</tr>
+<tr class="even">
+<td><code>op_glu()</code></td>
+<td><code>op_hard_shrink()</code></td>
+</tr>
+<tr class="odd">
+<td><code>op_hard_sigmoid()</code></td>
+<td><code>op_hard_silu()</code></td>
+</tr>
+<tr class="even">
+<td><code>op_hard_tanh()</code></td>
+<td><code>op_leaky_relu()</code></td>
+</tr>
+<tr class="odd">
+<td><code>op_log_sigmoid()</code></td>
+<td><code>op_log_softmax()</code></td>
+</tr>
+<tr class="even">
+<td><code>op_max_pool()</code></td>
+<td><code>op_moments()</code></td>
+</tr>
+<tr class="odd">
+<td><code>op_multi_hot()</code></td>
+<td><code>op_categorical_crossentropy()</code></td>
+</tr>
+<tr class="even">
+<td><code>op_sparse_categorical_crossentropy()</code></td>
+<td><code>op_normalize()</code></td>
+</tr>
+<tr class="odd">
+<td><code>op_one_hot()</code></td>
+<td><code>op_polar()</code></td>
+</tr>
+<tr class="even">
+<td><code>op_psnr()</code></td>
+<td><code>op_relu()</code></td>
+</tr>
+<tr class="odd">
+<td><code>op_relu6()</code></td>
+<td><code>op_rms_normalization()</code></td>
+</tr>
+<tr class="even">
+<td><code>op_selu()</code></td>
+<td><code>op_separable_conv()</code></td>
+</tr>
+<tr class="odd">
+<td><code>op_sigmoid()</code></td>
+<td><code>op_silu()</code></td>
+</tr>
+<tr class="even">
+<td><code>op_soft_shrink()</code></td>
+<td><code>op_softmax()</code></td>
+</tr>
+<tr class="odd">
+<td><code>op_softplus()</code></td>
+<td><code>op_softsign()</code></td>
+</tr>
+<tr class="even">
+<td><code>op_sparse_plus()</code></td>
+<td><code>op_sparsemax()</code></td>
+</tr>
+<tr class="odd">
+<td><code>op_squareplus()</code></td>
+<td><code>op_tanh_shrink()</code></td>
+</tr>
+<tr class="even">
+<td><code>op_threshold()</code></td>
+<td><code>op_unravel_index()</code></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="categorical-features-preprocessing" class="level3">
-<h3 class="anchored" data-anchor-id="categorical-features-preprocessing">Categorical Features Preprocessing</h3>
-<ul>
-<li><p><code>layer_category_encoding()</code>: Encode integer features.</p></li>
-<li><p><code>layer_hashing()</code>: Hash and bin categorical features.</p></li>
-<li><p><code>layer_hashed_crossing()</code>: Cross features using the “hashing trick”.</p></li>
-<li><p><code>layer_string_lookup()</code>: Map strings to (possibly encoded) indices.</p></li>
-<li><p><code>layer_integer_lookup()</code>: Map integers to (possibly encoded) indices.</p></li>
-</ul>
 </section>
-<section id="tabular-data" class="level3">
-<h3 class="anchored" data-anchor-id="tabular-data">Tabular Data</h3>
-<p>One-stop utility for preprocessing and encoding structured data. Define a feature space from a list of table columns (features).</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>feature_space <span class="ot">&lt;-</span> <span class="fu">layer_feature_space</span>(<span class="at">features =</span> <span class="fu">list</span>(<span class="sc">&lt;</span>features<span class="sc">&gt;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Adapt the feature space to a dataset</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">adapt</span>(feature_space, dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Use the adapted <code>feature_space</code> preprocessing layer as a layer in a Keras Model, or in the data input pipeline with <code>tfdatasets::dataset_map()</code></p>
-<p>Available features:</p>
-<ul>
-<li><code>feature_float()</code></li>
-<li><code>feature_float_rescaled()</code></li>
-<li><code>feature_float_normalized()</code></li>
-<li><code>feature_float_discretized()</code></li>
-<li><code>feature_integer_categorical()</code></li>
-<li><code>feature_integer_hashed()</code></li>
-<li><code>feature_string_categorical()</code></li>
-<li><code>feature_string_hashed()</code></li>
-<li><code>feature_cross()</code></li>
-<li><code>feature_custom()</code></li>
-</ul>
-</section>
-</section>
-<section id="pre-trained-models" class="level2">
-<h2 class="anchored" data-anchor-id="pre-trained-models">Pre-trained models</h2>
-<p>Keras applications are deep learning models that are made available alongside pre-trained weights. These models can be used for prediction, feature extraction, and fine-tuning.</p>
-<p>MobileNetV3 Model, pre-trained on ImageNet</p>
-<ul>
-<li><code>application_mobilenet_v3_large()</code></li>
-<li><code>application_mobilenet_v3_small()</code></li>
-</ul>
-<p>EfficientNetV2 Model, pre-trained on ImageNet</p>
-<ul>
-<li><code>application_efficientnet_v2s()</code></li>
-<li><code>application_efficientnet_v2m()</code></li>
-<li><code>application_efficientnet_v2l()</code></li>
-</ul>
-<p>Inception-ResNet v2 and v3 model, with weights trained on ImageNet</p>
-<ul>
-<li><code>application_inception_resnet_v2()</code></li>
-<li><code>application_inception_v3()</code></li>
-</ul>
-<p>VGG16 and VGG19 models</p>
-<ul>
-<li><code>application_vgg16()</code></li>
-<li><code>application_vgg19()</code></li>
-</ul>
-<p>ResNet50 model</p>
-<ul>
-<li><code>application_resnet50()</code>:</li>
-</ul>
-<p>NASNet model architecture</p>
-<ul>
-<li><code>application_nasnet_large()</code></li>
-<li><code>application_nasnet_mobile()</code></li>
-</ul>
-<p>ImageNet is a large database of images with labels, extensively used for deep learning</p>
-<p>Preprocesses a tensor encoding a batch of images for an application, and decodes predictions from an application. - <code>application_preprocess_inputs()</code> - <code>application_decode_predictions()</code></p>
-</section>
-<section id="callbacks" class="level2">
-<h2 class="anchored" data-anchor-id="callbacks">Callbacks</h2>
-<p>A callback is a set of functions to be applied at given stages of the training procedure. You can use callbacks to get a view on internal states and statistics of the model during training.</p>
-<ul>
-<li><p><code>allback_early_stopping()</code>: Stop training when a monitored quantity has stopped improving.</p></li>
-<li><p><code>callback_learning_rate_scheduler()</code>: Learning rate scheduler.</p></li>
-<li><p><code>callback_tensorboard()</code>: TensorBoard basic visualizations.</p></li>
-</ul>
-<hr>
-<p>CC BY SA Posit Software, PBC • <a href="mailto:info@posit.co">info@posit.co</a> • <a href="https://posit.co">posit.co</a></p>
-<p>Learn more at <a href="https://keras.posit.co/">keras.posit.co</a>.</p>
-<p>Updated: 2024-06.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"keras3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] '1.0.0'</code></pre>
+<section id="learn-more" class="level2">
+<h2 class="anchored" data-anchor-id="learn-more">Learn more</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<div style="font-size: 120%;">
+<p><a href="https://www.manning.com/books/deep-learning-with-r-third-edition">Deep Learning with R, Third Edition</a></p>
+</div>
+<div style="font-size: 90%;">
+<p><em>By François Chollet &amp; Tomasz Kalinowski</em> <br> <em>2025</em></p>
+</div>
+<div style="font-size: 70%;">
+<p><a href="https://www.manning.com/books/deep-learning-with-r-third-edition">https://www.manning.com/books/deep-learning-with-r-third-edition</a></p>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.manning.com/books/deep-learning-with-r-third-edition"><img src="images/keras-book.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="A diagram that provides a conceptual overview of how a CNN works" width="600"></a></p>
+</figure>
 </div>
 </div>
-<hr>
+</div>
 
 
 </section>
