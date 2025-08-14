@@ -71,6 +71,13 @@ Summary functions take vectors as input and return one value back (see Summary F
       summarize(avg = mean(mpg))
     ```
 
+-   Alternate grouping syntax with `.by` as an argument:
+
+    ```{r}
+    mtcars |>
+      summarize(avg = mean(mpg), .by = cyl)
+    ```
+
 -   Use `rowwise(.data, ...)` to group data into individual rows.
     dplyr functions will compute results for each row.
     Also apply functions to list-columns.
