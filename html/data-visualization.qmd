@@ -158,7 +158,7 @@ d <- ggplot(mpg, aes(fl))
 e <- ggplot(mpg, aes(cty, hwy))
 ```
 
--   `e + geom_label(aes(label = cty), nudge_x = 1, nudge_y = 1)`: Add text with a rectangle background.
+-   `e + geom_label(aes(label = cty))`: Add text with a rectangle background.
     `aes()` arguments: - `x`, `y`, `label`, `alpha`, `angle`, `color`, `family`, `fontface`, `hjust`, `lineheight`, `size`, `vjust`.
 
 -   `e + geom_point()`: Draw a scatter plot.
@@ -173,7 +173,7 @@ e <- ggplot(mpg, aes(cty, hwy))
 -   `e + geom_smooth(method = lm)`: Plot smoothed conditional means.
     `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `group`, `linetype`, `linewidth`, `weight`.
 
--   `e + geom_text(aes(label = cty), nudge_x = 1, nudge_y = 1)`: Add text to a plot.
+-   `e + geom_text(aes(label = cty))`: Add text to a plot.
     `aes()` arguments: `x`, `y`, `label`, `alpha`, `angle`, `color`, `family`, `fontface`, `hjust`, `lineheight`, `size`, `vjust`.
 
 ### Two Variables - One Discrete, One Continuous
