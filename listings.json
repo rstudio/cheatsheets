@@ -11,6 +11,8 @@
       "/html/lubridate.html",
       "/html/strings.html",
       "/html/package-development.html",
+      "/html/positron.html",
+      "/html/rstudio-ide.html",
       "/html/quarto.html",
       "/html/gt.html",
       "/html/great-tables.html",
@@ -23,9 +25,8 @@
       "/html/plumber.html",
       "/html/reticulate.html",
       "/html/sparklyr.html",
-      "/html/posit-team.html",
       "/html/rmarkdown.html",
-      "/html/rstudio-ide.html"
+      "/html/posit-team.html"
     ]
   }
 ]
