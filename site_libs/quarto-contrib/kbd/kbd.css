@@ -1,2 +1,5 @@
-kbd.kbd {
+kbd.kbd.mac {
+  /* When rendering keyboard icons on macOS, we revert the font family to the 
+     system font to ensure the icons render with the same X-height as upper case letters. */
+  font-family: inherit;
 }
