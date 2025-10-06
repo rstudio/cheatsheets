@@ -1,0 +1,90 @@
+---
+title: "Reproducible R Environments with renv :: Cheatsheet"
+description: " "
+image-alt: ""
+execute:
+  eval: true
+  output: false
+  warning: false
+---
+
+```{r}
+#| output: asis
+#| echo: false
+#| column: margin
+source("common.R")
+
+## TODO
+# use_cheatsheet_logo("renv", alt = "Hex logo for renv")
+# sheet_name <- tools::file_pah_sans_ext(knitr::current_input())
+# pdf_preview_link(sheet_name)
+# translation_list(sheet_name)
+```
+
+
+```todo
+- Compatible with typical R package repositories (CRAN, PPM, R-universe), as well as commonly-used Git services (GitHub, Gitlab, Bitbucket)
+- Discuss the global package cache (single installation of particular package version; reused across different renv projects)
+- Discuss different snapshot types (implicit vs explicit); change type with renv::settings$snapshot.type().
+  - implicit => scan R files for dependencies; e.g. called to library(dplyr)
+  - explicit => only scan project DESCRIPTION file; user must keep up-to-date
+- Mention that `renv::install()` supports custom remotes, e.g. `renv::install("rstudio/dplyr")`?
+- Mention `options(renv.config.pak.enabled = TRUE)` for pak integration?
+- Mention that `renv::deactivate()` can be used to temporarily "turn off" `renv` in a project, and `renv::activate()` can turn it back on?
+- Discuss Git integration; `renv::history()` and `renv::revert()`, for checking out and using older lockfiles?
+- Discuss `renv::run()`? (Run an R script in the context of an `renv` project)
+- Discuss `renv::checkout()`? (Install packages from a snapshot of Posit Package Manager)
+- Discuss `renv::embed()` and `renv::use()`? (Ways to declare package dependency versions directly in .R / .Rmd / .qmd files)
+- Worth discussing that `renv` infers a package's source from its DESCRIPTION file? And so requires the installer of that package (renv, pak, remotes) to encode Remote dependency information at installation time.
+- Mention that more documentation + advanced topics are described in pkgdown website at https://rstudio.github.io/renv/index.html
+```
+
+The **renv** package helps you create reproducible environments for your R projects. Use **renv** to make your R projects more isolated, portable and reproducible.
+
+
+## Core Concepts
+
+- An R library is a directory of installed R packages. When a package is installed (e.g. via `install.packages()`), the package is installed into the first writable library in your `.libPaths()`.
+
+- `renv` projects use an _isolated_ project library. Installing and removing packages in one `renv` project does not effect other `renv` projects, or your default R library.
+
+- `renv` provides tools for saving the state of an R library (`renv::snapshot()`), and restoring the state of an R library (`renv::restore()`).
+
+- You can use as little or as much of the `renv` tooling as you want -- if all you need is project isolation, then `renv::init()` is all you need.
+
+- All of the "regular" tools for R package management and installation work with `renv`.
+
+
+## Getting Started
+
+- Call `renv::init()` on a new project, or an existing project, to initialize `renv`.
+- `renv` creates and updates a project `.Rprofile`, as well as `renv/activate.R`.
+- These files are used to automatically activate `renv` for new R sessions started in this project.
+
+
+## Core Workflows
+
+- `renv::init()`: Initialize **renv** in a new or existing project.
+- `renv::install()`: Install R packages.
+- `renv::update()`: Update installed packages to their latest-available version.
+- `renv::status()`: Check your project status; in particular, if your **lockfile** and **library** are in sync.
+- `renv::snapshot()`: Save the state of your project library to a **lockfile**.
+- `renv::restore()`: Install the exact package versions from a **lockfile**.
+
+
+## Dependencies
+
+<!-- TODO: discuss snapshot types here? -->
+
+- `renv::dependencies()`: View your project's inferred package dependencies.
+
+
+## Configuring renv
+
+- `?renv::config`: User-specific settings. Tweak how you'd like `renv` to behave in different scenarios.
+- `?renv::settings`: Project-level settings. These settings are persisted as part of the project, and will be active for any other collaborators in the project.
+
+
+## Diagnostics
+
+- `renv::diagnostics()`: Print a diagnostics report; useful for bug reports at https://github.com/rstudio/renv.
