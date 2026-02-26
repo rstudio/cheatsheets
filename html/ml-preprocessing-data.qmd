@@ -249,18 +249,21 @@ bake(pr, new_data = new_data)
 
 ### Covenience selectors
 
-|  |  |
-|---------------|---------------------------------------------------------|
-| `all_string_predictors()` | |
-| `all_logical_predictors()` | |
-| `all_numeric_predictors()` | |
-| `all_integer_predictors()` | |
-| `all_double_predictors()` | |
-| `all_factor_predictors()` | |
-| `all_ordered_predictors()` | |
-| `all_unordered_predictors()` || 
-| `all_nominal_predictors()` | |
-| `all_date_predictors()` / `all_datetime_predictors()` | |
+|  | Double | Integer | Text |Logical|Factor \n Unordered | Factor \n Ordered|
+|---------------|------|------|------|------|------|------|
+| `all_string_predictors()` | | |✅| | | |
+| `all_logical_predictors()` | | | |✅| | |
+| `all_numeric_predictors()` | ✅|✅| | | | |
+| `all_integer_predictors()` | |✅|  | | | |
+| `all_double_predictors()` | ✅| | | | | |
+| `all_factor_predictors()` | | | | |✅|✅|
+| `all_ordered_predictors()` | | | | | |✅|
+| `all_unordered_predictors()` ||  | | |✅|
+| `all_nominal_predictors()` | | |✅| |✅|✅|
+
+
+- `all_date_predictors()` / `all_datetime_predictors()` 
+
 
 
 ### Role Management
