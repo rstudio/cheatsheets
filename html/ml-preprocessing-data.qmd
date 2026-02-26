@@ -271,8 +271,8 @@ bake(pr, new_data = new_data)
 *In case a variable is not a outcome or predictor but needs to be retained. Create new role, and set it to not ‘bake’.*
 
 ```r
-rec <- recipe(x ~ ., data = train_data)` |>
-  update_role(my_id, new_role = "id")` |>
+rec <- recipe(x ~ ., data = train_data) |>
+  update_role(my_id, new_role = "id") |>
   update_role_requirements(rec,"id",bake = FALSE)
 ```
 
@@ -284,4 +284,4 @@ rec <- recipe(x ~ ., data = train_data)` |>
 
 - `update_role_requirements(recipe, ..., bake = NULL)` - Allows for fine tunes requirements of the various roles you might come across in recipes.
 
-
+To learm more about roles see: [https://recipes.tidymodels.org/reference/roles.html](https://recipes.tidymodels.org/reference/roles.html).
