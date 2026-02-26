@@ -51,7 +51,7 @@ bake(pr, new_data = new_data)
 ### Common `step_` arguments
 
 |  |  |
-|----------|-----------------------------------------------------------|
+|---------------|---------------------------------------------------------|
 | `recipe` | A recipe object. New steps are appended to the recipe. |
 | `...` | Arguments passed to the external R function accessed by the step function |
 | `options` | Selector functions to choose variables for this step |
@@ -72,43 +72,96 @@ bake(pr, new_data = new_data)
 
 ## In-place Transformations
 
-- `step_mutate(recipe, ..., .pkgs = character())`: General purpose transformer using `dplyr.`
+-   `step_mutate(recipe, ..., .pkgs = character())`: General purpose transformer using `dplyr.`
 
-- `step_relu(recipe, ..., shift = 0, reverse = FALSE, smooth = FALSE, prefix = "right_relu_")`: Applies smoothed rectified linear transformation.
+-   `step_relu(recipe, ..., shift = 0, reverse = FALSE, smooth = FALSE, prefix = "right_relu_")`: Applies smoothed rectified linear transformation.
 
-- `step_sqrt(recipe, ...)`: Applies square root transformation.
+-   `step_sqrt(recipe, ...)`: Applies square root transformation.
 
 ### Basis functions
 
-- `step_spline_natural(recipe, ..., deg_free = 10, options = NULL, keep_original_cols = FALSE)`: Creates a natural spline (a.k.a restricted cubic spline) features.
+-   `step_spline_natural(recipe, ..., deg_free = 10, options = NULL, keep_original_cols = FALSE)`: Creates a natural spline (a.k.a restricted cubic spline) features.
 
-- `step_spline_b(recipe, ..., deg_free = 10, degree = 3, options = NULL, keep_original_cols = FALSE)`: Creates b-spline features.
+-   `step_spline_b(recipe, ..., deg_free = 10, degree = 3, options = NULL, keep_original_cols = FALSE)`: Creates b-spline features.
 
-- `step_spline_convex(recipe, ..., deg_free = 10, degree = 3,  options = NULL, keep_original_cols = FALSE)`
+-   `step_spline_convex(recipe, ..., deg_free = 10, degree = 3,  options = NULL, keep_original_cols = FALSE)`
 
-- `step_spline_monotone(recipe, ..., deg_free = 10, degree = 3, options = NULL, keep_original_cols = FALSE)` 
+-   `step_spline_monotone(recipe, ..., deg_free = 10, degree = 3, options = NULL, keep_original_cols = FALSE)`
 
-- `step_spline_nonnegative(recipe, ..., deg_free = 10, degree = 3, options = NULL, keep_original_cols = FALSE)` 
+-   `step_spline_nonnegative(recipe, ..., deg_free = 10, degree = 3, options = NULL, keep_original_cols = FALSE)`
 
-- `step_poly(recipe, ..., degree = 2L, options = list(), keep_original_cols = FALSE)`: Creates new columns that are basis expansions of variables using orthogonal polynomials.
+-   `step_poly(recipe, ..., degree = 2L, options = list(), keep_original_cols = FALSE)`: Creates new columns that are basis expansions of variables using orthogonal polynomials.
 
-- `step_poly_bernstein(recipe, ..., degree = 10, options = NULL, results = NULL, keep_original_cols = FALSE)`: Creates Bernstein polynomial features.
+-   `step_poly_bernstein(recipe, ..., degree = 10, options = NULL, results = NULL, keep_original_cols = FALSE)`: Creates Bernstein polynomial features.
 
 ### Normalization
 
-- `step_normalize(recipe, ..., na_rm = TRUE)`: Normalizes to have a standard deviation of 1 and mean of 0.
+-   `step_normalize(recipe, ..., na_rm = TRUE)`: Normalizes to have a standard deviation of 1 and mean of 0.
 
-- `step_YeoJohnson(recipe, ...)`: Makes data look more like a normal distribution.
+-   `step_YeoJohnson(recipe, ...)`: Makes data look more like a normal distribution.
 
-- `step_percentile(recipe, ..., options = list(probs = (0:100)/100), outside = "none")`: Replaces the value of a variable with its percentile from the training set.
+-   `step_percentile(recipe, ..., options = list(probs = (0:100)/100), outside = "none")`: Replaces the value of a variable with its percentile from the training set.
 
-- `step_range(recipe, ..., min = 0, max = 1, clipping = TRUE)`: Normalizes numeric data to be within a pre-defined range of values.
+-   `step_range(recipe, ..., min = 0, max = 1, clipping = TRUE)`: Normalizes numeric data to be within a pre-defined range of values.
 
-- `step_spatialsign(recipe, ..., na_rm = TRUE)`: Converts numeric data into a projection on to a unit sphere.
+-   `step_spatialsign(recipe, ..., na_rm = TRUE)`: Converts numeric data into a projection on to a unit sphere.
 
 ### Discretize
 
-- `step_discretize(recipe, ..., num_breaks = 4, min_unique = 10, options = list(prefix = "bin"))`: Converts numeric data into a factor with bins having approximately the same number of data points.
+-   `step_discretize(recipe, ..., num_breaks = 4, min_unique = 10, options = list(prefix = "bin"))`: Converts numeric data into a factor with bins having approximately the same number of data points.
 
-- `step_cut(recipe, ..., breaks, include_outside_range = FALSE)`: Cuts a numeric variable into a factor based on provided boundary values.
+-   `step_cut(recipe, ..., breaks, include_outside_range = FALSE)`: Cuts a numeric variable into a factor based on provided boundary values.
+
+
+## Imputation
+
+-   `step_impute_bag(recipe, ..., impute_with = all_predictors(), trees = 25, options = list(keepX = FALSE))`:  Creates a bagged tree model for data. Good for categorical data.
+
+-   `step_impute_knn(recipe, ..., neighbors = 5, impute_with = all_predictors(), options = list(nthread = 1, eps = 1e-08))`:  Uses Gower's distance which can be used for mixtures of nominal and numeric data.
+
+-   `step_impute_linear(recipe, ..., impute_with = all_predictors())`:  Creates linear regression models to impute missing data.
+
+-   `step_impute_lower(recipe, ..., threshold = NULL)`:  Substitutes the truncated value by a random number between zero and the truncation point.
+
+-   `step_impute_mean(recipe, ..., trim = 0)`:  Substitutes missing values of numeric variables by the training set mean of those variables.
+
+-   `step_impute_median(recipe, ...)`:  Substitutes missing values of numeric variables by the training set median of those variables.
+
+- `step_impute_mode(recipe, ...)`:  Imputes nominal data using the most common value.
+
+- `step_impute_roll(recipe, ..., statistic = median, window = 5L)`:  Imputes numeric data using a rolling window statistic.
+
+- `step_unknown(recipe, ..., new_level = "unknown")`:  Assigns a missing value in a factor level to “unknown”.
+
+
+## Encodings
+
+### Type Converters
+
+- `step_factor2string(recipe, ...)`: Converts one or more factor vectors to strings.
+
+- `step_string2factor(recipe, ...)`: Converts one or more character vectors to factors (ordered or unordered).
+
+- `step_num2factor(recipe, ..., transform = function(x) x)`: Converts one or more numeric vectors to factors (ordered or unordered). This can be useful when categories are encoded as integers.
+
+- `step_integer(recipe, ..., strict = TRUE, zero_based = FALSE)`: Converts data into a set of ascending integers based on the ascending order from the training data.
+
+### Value Converters
+
+
+- `step_indicate_na(recipe, ..., sparse = "auto", keep_original_cols = TRUE)`: Creates and append additional binary columns to the data set to indicate which observations are missing.
+
+- `step_ordinalscore(recipe, ..., convert = as.numeric)`: Converts ordinal factor variables into numeric scores.
+
+- `step_unorder(recipe, ...)`: Turns ordered factor variables into unordered factor variables.
+
+
+### Other
+
+- `step_relevel(recipe, ..., ref_level)`: Reorders factor columns so that the level specified by ref_level is first. This is useful for `contr.treatment()` contrasts which take the first level as the reference.
+
+- `step_novel(recipe, ..., new_level = "new")`: Assigns a previously unseen factor level to "new" .
+
+- `step_other(recipe, ..., threshold = 0.05, other = "other" )`: Pools infrequently occurring values into an "other" category.
+
 
