@@ -69,3 +69,46 @@ bake(pr, new_data = new_data)
 -   `step_filter_missing(recipe, ..., threshold = 0.1)`: Removes variables that have too many missing values.
 
 -   `step_rm(recipe, ...)`: Removes selected variables.
+
+## In-place Transformations
+
+- `step_mutate(recipe, ..., .pkgs = character())`: General purpose transformer using `dplyr.`
+
+- `step_relu(recipe, ..., shift = 0, reverse = FALSE, smooth = FALSE, prefix = "right_relu_")`: Applies smoothed rectified linear transformation.
+
+- `step_sqrt(recipe, ...)`: Applies square root transformation.
+
+### Basis functions
+
+- `step_spline_natural(recipe, ..., deg_free = 10, options = NULL, keep_original_cols = FALSE)`: Creates a natural spline (a.k.a restricted cubic spline) features.
+
+- `step_spline_b(recipe, ..., deg_free = 10, degree = 3, options = NULL, keep_original_cols = FALSE)`: Creates b-spline features.
+
+- `step_spline_convex(recipe, ..., deg_free = 10, degree = 3,  options = NULL, keep_original_cols = FALSE)`
+
+- `step_spline_monotone(recipe, ..., deg_free = 10, degree = 3, options = NULL, keep_original_cols = FALSE)` 
+
+- `step_spline_nonnegative(recipe, ..., deg_free = 10, degree = 3, options = NULL, keep_original_cols = FALSE)` 
+
+- `step_poly(recipe, ..., degree = 2L, options = list(), keep_original_cols = FALSE)`: Creates new columns that are basis expansions of variables using orthogonal polynomials.
+
+- `step_poly_bernstein(recipe, ..., degree = 10, options = NULL, results = NULL, keep_original_cols = FALSE)`: Creates Bernstein polynomial features.
+
+### Normalization
+
+- `step_normalize(recipe, ..., na_rm = TRUE)`: Normalizes to have a standard deviation of 1 and mean of 0.
+
+- `step_YeoJohnson(recipe, ...)`: Makes data look more like a normal distribution.
+
+- `step_percentile(recipe, ..., options = list(probs = (0:100)/100), outside = "none")`: Replaces the value of a variable with its percentile from the training set.
+
+- `step_range(recipe, ..., min = 0, max = 1, clipping = TRUE)`: Normalizes numeric data to be within a pre-defined range of values.
+
+- `step_spatialsign(recipe, ..., na_rm = TRUE)`: Converts numeric data into a projection on to a unit sphere.
+
+### Discretize
+
+- `step_discretize(recipe, ..., num_breaks = 4, min_unique = 10, options = list(prefix = "bin"))`: Converts numeric data into a factor with bins having approximately the same number of data points.
+
+- `step_cut(recipe, ..., breaks, include_outside_range = FALSE)`: Cuts a numeric variable into a factor based on provided boundary values.
+
