@@ -9,3 +9,5 @@ rsconnect/
 /.quarto/
 _site
 .Rbuildignore
+
+**/*.quarto_ipynb
