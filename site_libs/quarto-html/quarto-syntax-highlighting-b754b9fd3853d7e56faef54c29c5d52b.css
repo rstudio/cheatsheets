@@ -1,33 +1,34 @@
 /* quarto syntax highlight colors */
 :root {
-  --quarto-hl-ot-color: #ffa07a;
-  --quarto-hl-at-color: #ffd700;
-  --quarto-hl-ss-color: #abe338;
-  --quarto-hl-an-color: #d4d0ab;
-  --quarto-hl-fu-color: #ffd700;
-  --quarto-hl-st-color: #abe338;
-  --quarto-hl-cf-color: #ffa07a;
-  --quarto-hl-op-color: #00e0e0;
-  --quarto-hl-er-color: #dcc6e0;
-  --quarto-hl-bn-color: #dcc6e0;
-  --quarto-hl-al-color: #dcc6e0;
-  --quarto-hl-va-color: #f5ab35;
-  --quarto-hl-bu-color: #f5ab35;
-  --quarto-hl-ex-color: #ffd700;
-  --quarto-hl-pp-color: #dcc6e0;
-  --quarto-hl-in-color: #d4d0ab;
-  --quarto-hl-vs-color: #abe338;
-  --quarto-hl-wa-color: #d4d0ab;
-  --quarto-hl-do-color: #d4d0ab;
-  --quarto-hl-ch-color: #abe338;
-  --quarto-hl-dt-color: #dcc6e0;
-  --quarto-hl-fl-color: #f5ab35;
-  --quarto-hl-co-color: #d4d0ab;
-  --quarto-hl-cv-color: #d4d0ab;
-  --quarto-hl-cn-color: #ffa07a;
-  --quarto-hl-sc-color: #00e0e0;
-  --quarto-hl-dv-color: #dcc6e0;
-  --quarto-hl-kw-color: #ffa07a;
+  --quarto-hl-ot-color: #d91e18;
+  --quarto-hl-at-color: #a55a00;
+  --quarto-hl-ss-color: #008000;
+  --quarto-hl-an-color: #696969;
+  --quarto-hl-fu-color: #06287e;
+  --quarto-hl-st-color: #008000;
+  --quarto-hl-cf-color: #d91e18;
+  --quarto-hl-op-color: #00769e;
+  --quarto-hl-er-color: #7928a1;
+  --quarto-hl-bn-color: #7928a1;
+  --quarto-hl-al-color: #7928a1;
+  --quarto-hl-va-color: #a55a00;
+  --quarto-hl-bu-color: inherit;
+  --quarto-hl-ex-color: inherit;
+  --quarto-hl-pp-color: #7928a1;
+  --quarto-hl-in-color: #696969;
+  --quarto-hl-vs-color: #008000;
+  --quarto-hl-wa-color: #696969;
+  --quarto-hl-do-color: #696969;
+  --quarto-hl-im-color: inherit;
+  --quarto-hl-ch-color: #008000;
+  --quarto-hl-dt-color: #7928a1;
+  --quarto-hl-fl-color: #a55a00;
+  --quarto-hl-co-color: #696969;
+  --quarto-hl-cv-color: #696969;
+  --quarto-hl-cn-color: #d91e18;
+  --quarto-hl-sc-color: #00769e;
+  --quarto-hl-dv-color: #7928a1;
+  --quarto-hl-kw-color: #d91e18;
 }
 
 /* other quarto variables */
@@ -37,122 +38,120 @@
 
 /* syntax highlight based on Pandoc's rules */
 pre > code.sourceCode > span {
-  color: #f8f8f2;
+  color: #545454;
 }
 
 code.sourceCode > span {
-  color: #f8f8f2;
+  color: #545454;
 }
 
 div.sourceCode,
 div.sourceCode pre.sourceCode {
-  color: #f8f8f2;
+  color: #545454;
 }
 
 /* Normal */
 code span {
-  color: #f8f8f2;
+  color: #545454;
 }
 
 /* Alert */
 code span.al {
-  color: #dcc6e0;
+  color: #7928a1;
   font-style: inherit;
 }
 
 /* Annotation */
 code span.an {
-  color: #d4d0ab;
+  color: #696969;
   font-style: inherit;
 }
 
 /* Attribute */
 code span.at {
-  color: #ffd700;
+  color: #a55a00;
   font-style: inherit;
 }
 
 /* BaseN */
 code span.bn {
-  color: #dcc6e0;
+  color: #7928a1;
   font-style: inherit;
 }
 
 /* BuiltIn */
 code span.bu {
-  color: #f5ab35;
   font-style: inherit;
 }
 
 /* ControlFlow */
 code span.cf {
-  color: #ffa07a;
+  color: #d91e18;
   font-style: inherit;
 }
 
 /* Char */
 code span.ch {
-  color: #abe338;
+  color: #008000;
   font-style: inherit;
 }
 
 /* Constant */
 code span.cn {
-  color: #ffa07a;
+  color: #d91e18;
   font-style: inherit;
 }
 
 /* Comment */
 code span.co {
-  color: #d4d0ab;
+  color: #696969;
   font-style: inherit;
 }
 
 /* CommentVar */
 code span.cv {
-  color: #d4d0ab;
+  color: #696969;
   font-style: italic;
 }
 
 /* Documentation */
 code span.do {
-  color: #d4d0ab;
+  color: #696969;
   font-style: italic;
 }
 
 /* DataType */
 code span.dt {
-  color: #dcc6e0;
+  color: #7928a1;
   font-style: inherit;
 }
 
 /* DecVal */
 code span.dv {
-  color: #dcc6e0;
+  color: #7928a1;
   font-style: inherit;
 }
 
 /* Error */
 code span.er {
-  color: #dcc6e0;
+  color: #7928a1;
   font-style: inherit;
 }
 
 /* Extension */
 code span.ex {
-  color: #ffd700;
   font-style: inherit;
 }
 
 /* Float */
 code span.fl {
-  color: #f5ab35;
+  color: #a55a00;
   font-style: inherit;
 }
 
 /* Function */
 code span.fu {
-  color: #ffd700;
+  color: #06287e;
   font-style: inherit;
 }
 
@@ -163,67 +162,67 @@ code span.im {
 
 /* Information */
 code span.in {
-  color: #d4d0ab;
+  color: #696969;
   font-style: inherit;
 }
 
 /* Keyword */
 code span.kw {
-  color: #ffa07a;
+  color: #d91e18;
   font-style: inherit;
 }
 
 /* Operator */
 code span.op {
-  color: #00e0e0;
+  color: #00769e;
   font-style: inherit;
 }
 
 /* Other */
 code span.ot {
-  color: #ffa07a;
+  color: #d91e18;
   font-style: inherit;
 }
 
 /* Preprocessor */
 code span.pp {
-  color: #dcc6e0;
+  color: #7928a1;
   font-style: inherit;
 }
 
 /* SpecialChar */
 code span.sc {
-  color: #00e0e0;
+  color: #00769e;
   font-style: inherit;
 }
 
 /* SpecialString */
 code span.ss {
-  color: #abe338;
+  color: #008000;
   font-style: inherit;
 }
 
 /* String */
 code span.st {
-  color: #abe338;
+  color: #008000;
   font-style: inherit;
 }
 
 /* Variable */
 code span.va {
-  color: #f5ab35;
+  color: #a55a00;
   font-style: inherit;
 }
 
 /* VerbatimString */
 code span.vs {
-  color: #abe338;
+  color: #008000;
   font-style: inherit;
 }
 
 /* Warning */
 code span.wa {
-  color: #d4d0ab;
+  color: #696969;
   font-style: italic;
 }
 
@@ -231,4 +230,4 @@ code span.wa {
   content: "</";
 }
 
-/*# sourceMappingURL=7782d1fea7f2561192e3c644380ba1d9.css.map */
+/*# sourceMappingURL=f03ab405d406a4f73e37d104cafdb335.css.map */
