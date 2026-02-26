@@ -1,0 +1,71 @@
+---
+title: "Preprocessing data with recipes :: Cheatsheet"
+description: " "
+image-alt: ""
+execute:
+  eval: true
+  output: false
+  warning: false
+---
+
+```{r}
+#| output: asis
+#| echo: false
+#| column: margin
+source("common.R")
+use_cheatsheet_logo(
+  "recipes", 
+  alt = "Hex logo for recipes, drawing of a cartoon cupcake that has arms and legs and it is smiling ."
+)
+sheet_name <- tools::file_path_sans_ext(knitr::current_input())
+pdf_preview_link(sheet_name)
+translation_list(sheet_name)
+```
+
+## Basics
+
+Get your data ready for modeling using ‘pipable’ sequences of feature engineering steps with **recipes.**
+
+```{r}
+#| eval: false
+
+# Initialize the recipe and add steps 
+rec <- recipe(x ~ ., data = train_data) |>
+  step_normalize(all_numeric_predictors())
+
+# Run the steps using training data
+pr <- prep(rec, training = train_data)
+
+#  Apply estimates to new data 
+bake(pr, new_data = new_data)
+```
+
+-   `recipe(x, ...)`: Begins a new recipe specification.
+
+-   `prep(x, ...)`: Prepares the recipe with training data.
+
+-   `bake(object, ...)`: Applies estimates from prep().
+
+-   `update(object, ...)`: Updates and re-fits a model.
+
+### Common `step_` arguments
+
+|  |  |
+|----------|-----------------------------------------------------------|
+| `recipe` | A recipe object. New steps are appended to the recipe. |
+| `...` | Arguments passed to the external R function accessed by the step function |
+| `options` | Selector functions to choose variables for this step |
+
+## Filters
+
+-   `step_nzv(recipe, ..., freq_cut = 95/5, unique_cut = 10, options = list(freq_cut = 95/5)`: Removes variables that are highly sparse and unbalanced.
+
+-   `step_zv(recipe, ..., group = NULL)`: Removes variables that contain only a single value.
+
+-   `step_lincomb(recipe, ..., max_steps = 5)`: Removes numeric variables that have exact linear combinations between them.
+
+-   `step_corr(recipe, ..., threshold = 0.9, use = "pairwise.complete.obs", method = "pearson")`: Removes variables that have large absolute correlations with other variables.
+
+-   `step_filter_missing(recipe, ..., threshold = 0.1)`: Removes variables that have too many missing values.
+
+-   `step_rm(recipe, ...)`: Removes selected variables.
