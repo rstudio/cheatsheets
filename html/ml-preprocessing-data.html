@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Preprocessing data with recipes :: Cheatsheet</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../html/images/posit-favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b754b9fd3853d7e56faef54c29c5d52b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-703ae5196cd7c30cd219b05948acf5d8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../html/css/cheatsheet.css">
+</head>
+
+<body class="floating nav-fixed slimcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="https://posit.co" class="navbar-brand navbar-brand-logo">
+    <img src="../html/images/posit-logo.png" alt="posit logo" class="navbar-logo light-content">
+    <img src="../html/images/posit-logo.png" alt="posit logo" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Posit Cheatsheets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../contributed-cheatsheets.html"> 
+<span class="menu-text">Contributed Cheatsheets</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../translations.html"> 
+<span class="menu-text">Translated Cheatsheets</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rstudio/cheatsheets"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#basics" id="toc-basics" class="nav-link active" data-scroll-target="#basics">Basics</a>
+  <ul class="collapse">
+  <li><a href="#common-step_-arguments" id="toc-common-step_-arguments" class="nav-link" data-scroll-target="#common-step_-arguments">Common <code>step_</code> arguments</a></li>
+  </ul></li>
+  <li><a href="#filters" id="toc-filters" class="nav-link" data-scroll-target="#filters">Filters</a></li>
+  <li><a href="#in-place-transformations" id="toc-in-place-transformations" class="nav-link" data-scroll-target="#in-place-transformations">In-place Transformations</a>
+  <ul class="collapse">
+  <li><a href="#basis-functions" id="toc-basis-functions" class="nav-link" data-scroll-target="#basis-functions">Basis functions</a></li>
+  <li><a href="#normalization" id="toc-normalization" class="nav-link" data-scroll-target="#normalization">Normalization</a></li>
+  <li><a href="#discretize" id="toc-discretize" class="nav-link" data-scroll-target="#discretize">Discretize</a></li>
+  </ul></li>
+  <li><a href="#imputation" id="toc-imputation" class="nav-link" data-scroll-target="#imputation">Imputation</a></li>
+  <li><a href="#encodings" id="toc-encodings" class="nav-link" data-scroll-target="#encodings">Encodings</a>
+  <ul class="collapse">
+  <li><a href="#type-converters" id="toc-type-converters" class="nav-link" data-scroll-target="#type-converters">Type Converters</a></li>
+  <li><a href="#value-converters" id="toc-value-converters" class="nav-link" data-scroll-target="#value-converters">Value Converters</a></li>
+  <li><a href="#other" id="toc-other" class="nav-link" data-scroll-target="#other">Other</a></li>
+  </ul></li>
+  <li><a href="#dummy-variables" id="toc-dummy-variables" class="nav-link" data-scroll-target="#dummy-variables">Dummy Variables</a>
+  <ul class="collapse">
+  <li><a href="#convert" id="toc-convert" class="nav-link" data-scroll-target="#convert">Convert</a></li>
+  <li><a href="#text" id="toc-text" class="nav-link" data-scroll-target="#text">Text</a></li>
+  </ul></li>
+  <li><a href="#date-time" id="toc-date-time" class="nav-link" data-scroll-target="#date-time">Date &amp; Time</a></li>
+  <li><a href="#multivariate-transformation" id="toc-multivariate-transformation" class="nav-link" data-scroll-target="#multivariate-transformation">Multivariate Transformation</a>
+  <ul class="collapse">
+  <li><a href="#centroids" id="toc-centroids" class="nav-link" data-scroll-target="#centroids">Centroids</a></li>
+  <li><a href="#other-1" id="toc-other-1" class="nav-link" data-scroll-target="#other-1">Other</a></li>
+  </ul></li>
+  <li><a href="#row-operations" id="toc-row-operations" class="nav-link" data-scroll-target="#row-operations">Row Operations</a></li>
+  <li><a href="#other-2" id="toc-other-2" class="nav-link" data-scroll-target="#other-2">Other</a></li>
+  <li><a href="#role-type" id="toc-role-type" class="nav-link" data-scroll-target="#role-type">Role &amp; Type</a>
+  <ul class="collapse">
+  <li><a href="#selectors" id="toc-selectors" class="nav-link" data-scroll-target="#selectors">Selectors</a></li>
+  <li><a href="#covenience-selectors" id="toc-covenience-selectors" class="nav-link" data-scroll-target="#covenience-selectors">Covenience selectors</a></li>
+  <li><a href="#role-management" id="toc-role-management" class="nav-link" data-scroll-target="#role-management">Role Management</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/rstudio/cheatsheets/edit/main/html/ml-preprocessing-data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Preprocessing data with recipes :: Cheatsheet</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+
+<div class="no-row-height column-margin column-container"><div class="cell">
+<img src="images/logo-recipes.png" height="138" alt="Hex logo for recipes, drawing of a cartoon cupcake that has arms and legs and it is smiling ."> <br><br><a href="../ml-preprocessing-data.pdf">
+<p>
+<i class="bi bi-file-pdf"></i> Download PDF
+</p>
+</a><p><a href="../ml-preprocessing-data.pdf"><img src="../pngs/ml-preprocessing-data.png" width="200" alt=""> </a> <br><br></p>
+</div></div><section id="basics" class="level2">
+<h2 class="anchored" data-anchor-id="basics">Basics</h2>
+<p>Get your data ready for modeling using ‘pipable’ sequences of feature engineering steps with <strong>recipes.</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the recipe and add steps </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(x <span class="sc">~</span> ., <span class="at">data =</span> train_data) <span class="sc">|&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">step_normalize</span>(<span class="fu">all_numeric_predictors</span>())</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the steps using training data</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>pr <span class="ot">&lt;-</span> <span class="fu">prep</span>(rec, <span class="at">training =</span> train_data)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#  Apply estimates to new data </span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">bake</span>(pr, <span class="at">new_data =</span> new_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><p><code>recipe(x, ...)</code>: Begins a new recipe specification.</p></li>
+<li><p><code>prep(x, ...)</code>: Prepares the recipe with training data.</p></li>
+<li><p><code>bake(object, ...)</code>: Applies estimates from prep().</p></li>
+<li><p><code>update(object, ...)</code>: Updates and re-fits a model.</p></li>
+</ul>
+<section id="common-step_-arguments" class="level3">
+<h3 class="anchored" data-anchor-id="common-step_-arguments">Common <code>step_</code> arguments</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 79%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><code>recipe</code></td>
+<td>A recipe object. New steps are appended to the recipe.</td>
+</tr>
+<tr class="even">
+<td><code>...</code></td>
+<td>Arguments passed to the external R function accessed by the step function</td>
+</tr>
+<tr class="odd">
+<td><code>options</code></td>
+<td>Selector functions to choose variables for this step</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="filters" class="level2">
+<h2 class="anchored" data-anchor-id="filters">Filters</h2>
+<ul>
+<li><p><code>step_nzv(recipe, ..., freq_cut = 95/5, unique_cut = 10, options = list(freq_cut = 95/5)</code>: Removes variables that are highly sparse and unbalanced.</p></li>
+<li><p><code>step_zv(recipe, ..., group = NULL)</code>: Removes variables that contain only a single value.</p></li>
+<li><p><code>step_lincomb(recipe, ..., max_steps = 5)</code>: Removes numeric variables that have exact linear combinations between them.</p></li>
+<li><p><code>step_corr(recipe, ..., threshold = 0.9, use = "pairwise.complete.obs", method = "pearson")</code>: Removes variables that have large absolute correlations with other variables.</p></li>
+<li><p><code>step_filter_missing(recipe, ..., threshold = 0.1)</code>: Removes variables that have too many missing values.</p></li>
+<li><p><code>step_rm(recipe, ...)</code>: Removes selected variables.</p></li>
+</ul>
+</section>
+<section id="in-place-transformations" class="level2">
+<h2 class="anchored" data-anchor-id="in-place-transformations">In-place Transformations</h2>
+<ul>
+<li><p><code>step_mutate(recipe, ..., .pkgs = character())</code>: General purpose transformer using <code>dplyr.</code></p></li>
+<li><p><code>step_relu(recipe, ..., shift = 0, reverse = FALSE, smooth = FALSE, prefix = "right_relu_")</code>: Applies smoothed rectified linear transformation.</p></li>
+<li><p><code>step_sqrt(recipe, ...)</code>: Applies square root transformation.</p></li>
+</ul>
+<section id="basis-functions" class="level3">
+<h3 class="anchored" data-anchor-id="basis-functions">Basis functions</h3>
+<ul>
+<li><p><code>step_spline_natural(recipe, ..., deg_free = 10, options = NULL, keep_original_cols = FALSE)</code>: Creates a natural spline (a.k.a restricted cubic spline) features.</p></li>
+<li><p><code>step_spline_b(recipe, ..., deg_free = 10, degree = 3, options = NULL, keep_original_cols = FALSE)</code>: Creates b-spline features.</p></li>
+<li><p><code>step_spline_convex(recipe, ..., deg_free = 10, degree = 3,  options = NULL, keep_original_cols = FALSE)</code></p></li>
+<li><p><code>step_spline_monotone(recipe, ..., deg_free = 10, degree = 3, options = NULL, keep_original_cols = FALSE)</code></p></li>
+<li><p><code>step_spline_nonnegative(recipe, ..., deg_free = 10, degree = 3, options = NULL, keep_original_cols = FALSE)</code></p></li>
+<li><p><code>step_poly(recipe, ..., degree = 2L, options = list(), keep_original_cols = FALSE)</code>: Creates new columns that are basis expansions of variables using orthogonal polynomials.</p></li>
+<li><p><code>step_poly_bernstein(recipe, ..., degree = 10, options = NULL, results = NULL, keep_original_cols = FALSE)</code>: Creates Bernstein polynomial features.</p></li>
+</ul>
+</section>
+<section id="normalization" class="level3">
+<h3 class="anchored" data-anchor-id="normalization">Normalization</h3>
+<ul>
+<li><p><code>step_normalize(recipe, ..., na_rm = TRUE)</code>: Normalizes to have a standard deviation of 1 and mean of 0.</p></li>
+<li><p><code>step_YeoJohnson(recipe, ...)</code>: Makes data look more like a normal distribution.</p></li>
+<li><p><code>step_percentile(recipe, ..., options = list(probs = (0:100)/100), outside = "none")</code>: Replaces the value of a variable with its percentile from the training set.</p></li>
+<li><p><code>step_range(recipe, ..., min = 0, max = 1, clipping = TRUE)</code>: Normalizes numeric data to be within a pre-defined range of values.</p></li>
+<li><p><code>step_spatialsign(recipe, ..., na_rm = TRUE)</code>: Converts numeric data into a projection on to a unit sphere.</p></li>
+</ul>
+</section>
+<section id="discretize" class="level3">
+<h3 class="anchored" data-anchor-id="discretize">Discretize</h3>
+<ul>
+<li><p><code>step_discretize(recipe, ..., num_breaks = 4, min_unique = 10, options = list(prefix = "bin"))</code>: Converts numeric data into a factor with bins having approximately the same number of data points.</p></li>
+<li><p><code>step_cut(recipe, ..., breaks, include_outside_range = FALSE)</code>: Cuts a numeric variable into a factor based on provided boundary values.</p></li>
+</ul>
+</section>
+</section>
+<section id="imputation" class="level2">
+<h2 class="anchored" data-anchor-id="imputation">Imputation</h2>
+<ul>
+<li><p><code>step_impute_bag(recipe, ..., impute_with = all_predictors(), trees = 25, options = list(keepX = FALSE))</code>: Creates a bagged tree model for data. Good for categorical data.</p></li>
+<li><p><code>step_impute_knn(recipe, ..., neighbors = 5, impute_with = all_predictors(), options = list(nthread = 1, eps = 1e-08))</code>: Uses Gower’s distance which can be used for mixtures of nominal and numeric data.</p></li>
+<li><p><code>step_impute_linear(recipe, ..., impute_with = all_predictors())</code>: Creates linear regression models to impute missing data.</p></li>
+<li><p><code>step_impute_lower(recipe, ..., threshold = NULL)</code>: Substitutes the truncated value by a random number between zero and the truncation point.</p></li>
+<li><p><code>step_impute_mean(recipe, ..., trim = 0)</code>: Substitutes missing values of numeric variables by the training set mean of those variables.</p></li>
+<li><p><code>step_impute_median(recipe, ...)</code>: Substitutes missing values of numeric variables by the training set median of those variables.</p></li>
+<li><p><code>step_impute_mode(recipe, ...)</code>: Imputes nominal data using the most common value.</p></li>
+<li><p><code>step_impute_roll(recipe, ..., statistic = median, window = 5L)</code>: Imputes numeric data using a rolling window statistic.</p></li>
+<li><p><code>step_unknown(recipe, ..., new_level = "unknown")</code>: Assigns a missing value in a factor level to “unknown”.</p></li>
+</ul>
+</section>
+<section id="encodings" class="level2">
+<h2 class="anchored" data-anchor-id="encodings">Encodings</h2>
+<section id="type-converters" class="level3">
+<h3 class="anchored" data-anchor-id="type-converters">Type Converters</h3>
+<ul>
+<li><p><code>step_factor2string(recipe, ...)</code>: Converts one or more factor vectors to strings.</p></li>
+<li><p><code>step_string2factor(recipe, ...)</code>: Converts one or more character vectors to factors (ordered or unordered).</p></li>
+<li><p><code>step_num2factor(recipe, ..., transform = function(x) x)</code>: Converts one or more numeric vectors to factors (ordered or unordered). This can be useful when categories are encoded as integers.</p></li>
+<li><p><code>step_integer(recipe, ..., strict = TRUE, zero_based = FALSE)</code>: Converts data into a set of ascending integers based on the ascending order from the training data.</p></li>
+</ul>
+</section>
+<section id="value-converters" class="level3">
+<h3 class="anchored" data-anchor-id="value-converters">Value Converters</h3>
+<ul>
+<li><p><code>step_indicate_na(recipe, ..., sparse = "auto", keep_original_cols = TRUE)</code>: Creates and append additional binary columns to the data set to indicate which observations are missing.</p></li>
+<li><p><code>step_ordinalscore(recipe, ..., convert = as.numeric)</code>: Converts ordinal factor variables into numeric scores.</p></li>
+<li><p><code>step_unorder(recipe, ...)</code>: Turns ordered factor variables into unordered factor variables.</p></li>
+</ul>
+</section>
+<section id="other" class="level3">
+<h3 class="anchored" data-anchor-id="other">Other</h3>
+<ul>
+<li><p><code>step_relevel(recipe, ..., ref_level)</code>: Reorders factor columns so that the level specified by ref_level is first. This is useful for <code>contr.treatment()</code> contrasts which take the first level as the reference.</p></li>
+<li><p><code>step_novel(recipe, ..., new_level = "new")</code>: Assigns a previously unseen factor level to “new” .</p></li>
+<li><p><code>step_other(recipe, ..., threshold = 0.05, other = "other" )</code>: Pools infrequently occurring values into an “other” category.</p></li>
+</ul>
+</section>
+</section>
+<section id="dummy-variables" class="level2">
+<h2 class="anchored" data-anchor-id="dummy-variables">Dummy Variables</h2>
+<ul>
+<li><p><code>step_dummy(recipe, ..., threshold = 0, other = "other", naming = dummy_names, prefix = NULL, keep_original_cols = TRUE)</code>: Standard dummy variable converter.</p></li>
+<li><p><code>step_dummy_extract(recipe, ..., sep = NULL, pattern = NULL, threshold = 0, other = "other", keep_original_cols = TRUE)</code>: Converts multiple nominal data into one or more numeric integer terms for the levels of the original data.</p></li>
+<li><p><code>step_dummy_multi_choice(recipe, ..., threshold = 0, other = "other", keep_original_cols = TRUE)</code>: Converts multiple nominal data into one or more numeric binary terms for the levels of the original data.</p></li>
+</ul>
+<section id="convert" class="level3">
+<h3 class="anchored" data-anchor-id="convert">Convert</h3>
+<ul>
+<li><code>step_bin2factor(recipe, ..., levels = c("yes", "no"), ref_first = TRUE)</code>: Converts dummy variable into 2-level factor.</li>
+</ul>
+</section>
+<section id="text" class="level3">
+<h3 class="anchored" data-anchor-id="text">Text</h3>
+<ul>
+<li><p><code>step_regex(recipe, ..., options = list(), pattern = ".", options = list(), result = make.names(pattern), sparse = "auto", keep_original_cols = TRUE)</code>: Creates a dummy variable that detects the given regular expression.</p></li>
+<li><p><code>step_count(recipe, ..., normalize = FALSE, pattern = ".", options = list(), result = make.names(pattern), sparse = "auto", keep_original_cols = TRUE)</code>: Create counts of patterns using regular expressions.</p></li>
+</ul>
+</section>
+</section>
+<section id="date-time" class="level2">
+<h2 class="anchored" data-anchor-id="date-time">Date &amp; Time</h2>
+<ul>
+<li><p><code>step_date(recipe, ..., features = c("dow", "month", "year"), abbr = TRUE, label = TRUE, ordinal = FALSE, locale = clock::clock_locale()$labels, keep_original_cols = TRUE)</code>: Converts date data into one or more factor or numeric variables (dow = day of week).</p></li>
+<li><p><code>step_time(recipe, ..., features = c("hour", "minute", "second"), keep_original_cols = TRUE)</code>: Converts date-time data into one or more factor or numeric variables.</p></li>
+<li><p><code>step_holiday(recipe, ..., holidays = c("LaborDay", "NewYearsDay", "ChristmasDay"), sparse = "auto", keep_original_cols = TRUE)</code>: Converts date data into binary indicators variables for common holidays.</p></li>
+</ul>
+</section>
+<section id="multivariate-transformation" class="level2">
+<h2 class="anchored" data-anchor-id="multivariate-transformation">Multivariate Transformation</h2>
+<ul>
+<li><p><code>step_pca(recipe, ..., num_comp = 5, threshold = NA, options = list(), keep_original_cols = TRUE)</code>: Converts numeric variables into one or more principal components.</p></li>
+<li><p><code>step_ica(recipe, ..., num_comp = 5, options = list(method = "C"), keep_original_cols = TRUE)</code>: Converts numeric data into one or more independent components.</p></li>
+<li><p><code>step_kpca_poly(recipe, ..., num_comp = 5, degree = 2, scale_factor = 1, offset = 1, keep_original_cols = TRUE)</code>: Converts numeric data into principal components using a polynomial kernel basis expansion.</p></li>
+<li><p><code>step_kpca_rbf(recipe, ..., num_comp = 5, sigma = 0.2, keep_original_cols = TRUE)</code>: Converts numeric data into principal components using a radial basis function kernel basis expansion.</p></li>
+<li><p><code>step_isomap(recipe, ..., num_terms = 5, neighbors = 50, options = list(.mute = c("message", "output")), keep_original_cols = TRUE)</code>: Uses multidimensional scaling to convert numeric data into new dimensions.</p></li>
+<li><p><code>step_nnmf_sparse(recipe, ..., num_comp = 2, penalty = 0.001, options = list(), keep_original_cols = TRUE)</code>: Converts numeric data into non-negative components.</p></li>
+<li><p><code>step_pls(recipe, ..., num_comp = 2, predictor_prop = 1, outcome = NULL, options = list(scale = TRUE), preserve = deprecated(), prefix = "PLS", keep_original_cols = TRUE)</code>: Converts numeric data into one or more new dimensions.</p></li>
+</ul>
+<section id="centroids" class="level3">
+<h3 class="anchored" data-anchor-id="centroids">Centroids</h3>
+<ul>
+<li><p><code>step_classdist(recipe, ..., class, mean_func = mean, cov_func = cov, pool = FALSE, log = TRUE, prefix = "classdist_", keep_original_cols = TRUE)</code>: Converts numeric data into Mahalanobis distance measurements to the data centroid.</p></li>
+<li><p><code>step_classdist_shrunken(recipe, ..., class = NULL, threshold = 1/2, sd_offset = 1/2, log = TRUE, prefix = "classdist_", keep_original_cols = TRUE)</code>: Converts numeric data into Euclidean distance to the regularized class centroid.</p></li>
+<li><p><code>step_depth(recipe, ..., class, metric = "halfspace", options = list(), data = NULL, prefix = "depth_", keep_original_cols = TRUE)</code>: Converts numeric data into a measurement of data depth by category</p></li>
+</ul>
+</section>
+<section id="other-1" class="level3">
+<h3 class="anchored" data-anchor-id="other-1">Other</h3>
+<ul>
+<li><p><code>step_geodist(recipe, lat = NULL, lon = NULL, ref_lat = NULL, ref_lon = NULL, is_lat_lon = TRUE, log = FALSE, name = "geo_dist", keep_original_cols = TRUE)</code>: Calculates the distance between points on a map to a reference location.</p></li>
+<li><p><code>step_ratio(recipe, ..., denom = denom_vars(), naming = function(numer, denom) {make.names(paste(numer, denom, sep = "_o_")) }, keep_original_cols = TRUE)</code>: Creates ratios from selected numeric variables (denom).</p></li>
+</ul>
+</section>
+</section>
+<section id="row-operations" class="level2">
+<h2 class="anchored" data-anchor-id="row-operations">Row Operations</h2>
+<ul>
+<li><p><code>step_naomit(recipe, ...)</code>: Removes observations if they contain <code>NA</code> or <code>NaN</code> values.</p></li>
+<li><p><code>step_sample(recipe, ..., size = NULL, replace = FALSE)</code>: Samples rows using <code>dplyr::sample_n()</code> or <code>dplyr::sample_frac()</code>.</p></li>
+<li><p><code>step_shuffle(recipe, ...)</code>: Randomly changes the order of rows for selected variables.</p></li>
+<li><p><code>step_slice(recipe, ...)</code>: Filters rows using <code>dplyr::slice()</code>.</p></li>
+</ul>
+</section>
+<section id="other-2" class="level2">
+<h2 class="anchored" data-anchor-id="other-2">Other</h2>
+<ul>
+<li><p><code>step_interact(recipe, terms, sep = "_x_", keep_original_cols = TRUE)</code> - Creates new columns that are interaction terms between two or more variables.</p></li>
+<li><p><code>step_rename(recipe, ...)</code> - Adds variables using <code>dplyr::rename()</code>.</p></li>
+<li><p><code>step_window(recipe, ..., size = 3, na_rm = TRUE, statistic = "mean", keep_original_cols = TRUE)</code> - Creates new columns that are the results of functions that compute statistics across moving windows.</p></li>
+</ul>
+</section>
+<section id="role-type" class="level2">
+<h2 class="anchored" data-anchor-id="role-type">Role &amp; Type</h2>
+<section id="selectors" class="level3">
+<h3 class="anchored" data-anchor-id="selectors">Selectors</h3>
+<ul>
+<li><p><code>all_outcomes()</code> / <code>all_predictors()</code> - Select variables from formula based on the most common two roles.</p></li>
+<li><p><code>has_role(match = “predictor")</code> - Select by passing the role name required.</p></li>
+<li><p><code>has_type(match = "numeric")</code>- Select by type of variable.</p></li>
+</ul>
+</section>
+<section id="covenience-selectors" class="level3">
+<h3 class="anchored" data-anchor-id="covenience-selectors">Covenience selectors</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Double</th>
+<th>Integer</th>
+<th>Text</th>
+<th>Logical</th>
+<th>Factor Unordered</th>
+<th>Factor Ordered</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>all_string_predictors()</code></td>
+<td></td>
+<td></td>
+<td>✅</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>all_logical_predictors()</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>all_numeric_predictors()</code></td>
+<td>✅</td>
+<td>✅</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>all_integer_predictors()</code></td>
+<td></td>
+<td>✅</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>all_double_predictors()</code></td>
+<td>✅</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>all_factor_predictors()</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td><code>all_ordered_predictors()</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td><code>all_unordered_predictors()</code></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>✅</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>all_nominal_predictors()</code></td>
+<td></td>
+<td></td>
+<td>✅</td>
+<td></td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>all_date_predictors()</code> / <code>all_datetime_predictors()</code></li>
+</ul>
+</section>
+<section id="role-management" class="level3">
+<h3 class="anchored" data-anchor-id="role-management">Role Management</h3>
+<p><em>In case a variable is not a outcome or predictor but needs to be retained. Create new role, and set it to not ‘bake’.</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rec <span class="ot">&lt;-</span> <span class="fu">recipe</span>(x <span class="sc">~</span> ., <span class="at">data =</span> train_data) <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">update_role</span>(my_id, <span class="at">new_role =</span> <span class="st">"id"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">update_role_requirements</span>(rec,<span class="st">"id"</span>,<span class="at">bake =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><p><code>add_role(recipe, ..., new_role = "predictor", new_type = NULL)</code> - Adds an additional role to variables that already have a role in the recipe.</p></li>
+<li><p><code>update_role(recipe, ..., new_role = "predictor", old_role = NULL)</code> - Alters an existing role in the recipe or assigns an initial role to variables that do not yet have a declared role.</p></li>
+<li><p><code>remove_role(recipe, ..., old_role)</code> - Eliminates a single existing role in the recipe.</p></li>
+<li><p><code>update_role_requirements(recipe, ..., bake = NULL)</code> - Allows for fine tunes requirements of the various roles you might come across in recipes.</p></li>
+</ul>
+<p>To learm more about roles see: <a href="https://recipes.tidymodels.org/reference/roles.html">https://recipes.tidymodels.org/reference/roles.html</a>.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/rstudio\.github\.io\/cheatsheets\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/rstudio/cheatsheets/edit/main/html/ml-preprocessing-data.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
