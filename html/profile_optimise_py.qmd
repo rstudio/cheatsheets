@@ -109,7 +109,7 @@ Potential risks associated with optimizing:
 
 -   Prefer tuples, dictionaries, and sets over lists, when appropriate
 
--   Minimise Python written: Use scientific Python packages (NumPy, Pandas)
+-   Minimise Python written: Use scientific Python packages (NumPy, Pandas). NumPy arrays support broadcasting - mathematical operation is applied element-wise looping over the array explicitly
 
 -   Newer is often faster: When possible, use the latest versions of Python and packages
 
