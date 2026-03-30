@@ -70,7 +70,7 @@ Potential risks associated with optimising:
 
 -   Trying to optimise code that only takes up a minuscule fraction of the total runtime, you might end up spending more time on the optimisation than you actually gain from it.
 
--   `line_profiler`: Commonly used tool for line-level profiling. It is not a part of the Python standard library and needs to installed using: `pip install “line_profiler[all]”`
+-   `line_profiler`: Commonly used tool for line-level profiling. It is not a part of the Python standard library and needs to be installed using: `pip install “line_profiler[all]”`
 
 -   **Decorate functions to be profiled**: `line_profiler` must be attached to specific functions and cannot attach to a full Python file or project. If your Python file has significant code in the global scope it will be necessary to move it into a new function which can then instead be called from global scope.
 
@@ -103,7 +103,7 @@ Potential risks associated with optimizing:
 
 ### Simple tips to optimise Python code
 
--   Use built-in Python functions (those available without importing packages)
+-   Use built-in functions and the standard library - don’t reinvent the wheel!
 
 -   Use list comprehension when creating lists
 
