@@ -212,120 +212,122 @@ show_engines("linear_reg")
 
 -   `decision_tree(mode, engine = "rpart", cost_complexity, tree_depth, min_n)` - A set of if/then statements creates a tree-based structure.
 
-```{r}
-#| output: asis
-#| echo: false
-package_pills(list(
-  list("partykit", 123),
-  list("rpart", 123),
-  list("spark", 12),
-  list("C5.0", 1)
-))
-```
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("partykit", 123),
+      list("rpart", 123),
+      list("spark", 12),
+      list("C5.0", 1)
+    ))
+    ```
 
 -   `mars(mode, engine = "earth", num_terms, prod_degree, prune_method)` - Uses artificial features for some predictors. These features resemble hinge functions and the result is a model that is a segmented regression in small dimensions.
 
-```{r}
-#| output: asis
-#| echo: false
-package_pills(list(
-  list("earth", 12)
-))
-```
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("earth", 12)
+    ))
+    ```
 
 -   `mlp(mode, engine = "nnet", hidden_units, penalty, dropout, epochs, activation, learn_rate)` - Defines a multilayer perceptron model (a.k.a. a single layer, feed-forward neural network).
 
-```{r}
-#| output: asis
-#| echo: false
-package_pills(list(
-  list("nnet", 12),
-  list("brulee", 12),
-  list("brulee_two_layer", 12),
-  list("keras", 12),
-  list("grnn", 12)
-))
-```
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("nnet", 12),
+      list("brulee", 12),
+      list("brulee_two_layer", 12),
+      list("keras", 12),
+      list("grnn", 12)
+    ))
+    ```
 
-`gen_additive_mod(mode, select_features, adjust_deg_free, engine = "mgcv")` - Uses smoothed functions of numeric predictors in a generalized linear model.
+-   `gen_additive_mod(mode, select_features, adjust_deg_free, engine = "mgcv")` - Uses smoothed functions of numeric predictors in a generalized linear model.
 
-```{r}
-#| output: asis
-#| echo: false
-package_pills(list(
-  list("mgcv", 12)
-))
-```
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("mgcv", 12)
+    ))
+    ```
 
-`nearest_neighbor(mode, engine = "kknn", neighbors, weight_func, dist_power)` - Uses the K most similar data points from the training set to predict new samples.
+-   `nearest_neighbor(mode, engine = "kknn", neighbors, weight_func, dist_power)` - Uses the K most similar data points from the training set to predict new samples.
 
-```{r}
-#| output: asis
-#| echo: false
-package_pills(list(
-  list("knn", 12)
-))
-```
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("knn", 12)
+    ))
+    ```
 
-`pls(mode, predictor_prop, num_comp, engine = "mixOmics")` - Uses latent variables to model the data. Similar to a supervised version of PCA.
+-   `pls(mode, predictor_prop, num_comp, engine = "mixOmics")` - Uses latent variables to model the data. Similar to a supervised version of PCA.
 
-```{r}
-#| output: asis
-#| echo: false
-package_pills(list(
-  list("mixOmics", 12)
-))
-```
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("mixOmics", 12)
+    ))
+    ```
 
 ## Discriminant
 
 **`discrim_*(mode = "classification")`**
 
-`discrim_flexible(num_terms, prod_degree, prune_method, engine = "earth")` - Fits a discriminant analysis model that uses nonlinear features created using MARS.
+-   `discrim_flexible(num_terms, prod_degree, prune_method, engine = "earth")` - Fits a discriminant analysis model that uses nonlinear features created using MARS.
 
-```{r}
-#| output: asis
-#| echo: false
-package_pills(list(
-  list("earth", 1)
-))
-```
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("earth", 1)
+    ))
+    ```
 
-`discrim_regularized(frac_common_cov, frac_identity, engine = "klaR")` - Estimates a multivariate distribution for the predictors separately for the data in each class. The model's structure can be LDA, QDA, or a combination. Each probability class is computed using Bayes's theorem, given the predictor values.
+-   `discrim_regularized(frac_common_cov, frac_identity, engine = "klaR")` - Estimates a multivariate distribution for the predictors separately for the data in each class. The model's structure can be LDA, QDA, or a combination. Each probability class is computed using Bayes's theorem, given the predictor values.
 
-```{r}
-#| output: asis
-#| echo: false
-package_pills(list(
-  list("klaR", 1)
-))
-```
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("klaR", 1)
+    ))
+    ```
 
 **`discrim_*(mode = "classification", regularization_method, engine = "MASS")`**
 
+<div style="text-align: center;">
 Estimates a multivariate distribution for the predictors separately for the data in each class using a method described below. Each class' probability is computed using Bayes' theorem, given the predictor values.
+</div>
 
-`discrim_linear(penalty)` - Uses Gaussian with a common covariance matrix to perform the estimate.
+-   `discrim_linear(penalty)` - Uses Gaussian with a common covariance matrix to perform the estimate.
 
-```{r}
-#| output: asis
-#| echo: false
-package_pills(list(
-  list("MASS", 1),
-  list("mda", 1),
-  list("sda", 1),
-  list("sparsediscrim", 1)
-))
-```
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("MASS", 1),
+      list("mda", 1),
+      list("sda", 1),
+      list("sparsediscrim", 1)
+    ))
+    ```
 
-`discrim_quad()` - Uses Gaussian with separate covariance matrices to perform the estimate.
+-   `discrim_quad()` - Uses Gaussian with separate covariance matrices to perform the estimate.
 
-```{r}
-#| output: asis
-#| echo: false
-package_pills(list(
-  list("MASS", 1),
-  list("sparsediscrim", 1)
-))
-```
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("MASS", 1),
+      list("sparsediscrim", 1)
+    ))
+    ```
 
