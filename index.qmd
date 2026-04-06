@@ -10,6 +10,7 @@ listing:
     - "factors.qmd"
     - "lubridate.qmd"
     - "strings.qmd"
+    - "ml-create-models.qmd"
     - "ml-preprocessing-data.qmd"
     - "package-development.qmd"
     - "positron.qmd"
