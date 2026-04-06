@@ -496,9 +496,7 @@ Estimates a multivariate distribution for the predictors separately for the data
 
 ## Survival
 
-**`*(mode = "censored regression")`**
-
--   `proportional_hazards(engine = "survival", penalty, mixture)` - Defines a model for the hazard function as a multiplicative function of covariates times a baseline hazard.
+-   `proportional_hazards(mode = "censored regression", engine = "survival", penalty, mixture)` - Defines a model for the hazard function as a multiplicative function of covariates times a baseline hazard.
 
     ```{r}
     #| output: asis
@@ -509,7 +507,7 @@ Estimates a multivariate distribution for the predictors separately for the data
     ))
     ```
 
--   `survival_reg(engine = "survival", dist)` - Defines a parametric survival model.
+-   `survival_reg(mode = "censored regression", engine = "survival", dist)` - Defines a parametric survival model.
 
     ```{r}
     #| output: asis
@@ -525,7 +523,11 @@ Estimates a multivariate distribution for the predictors separately for the data
 
 ```{r}
 library(tidymodels)
-lm_spec <- linear_reg() |> set_engine("lm")
+
+lm_spec <- linear_reg() |> 
+  set_engine("lm")
+
+lm_spec
 ```
 
 ### Methods
@@ -534,6 +536,8 @@ lm_spec <- linear_reg() |> set_engine("lm")
 
     ```{r}
     lm_fit <- fit(lm_spec, mpg ~ ., data = mtcars)
+
+    lm_fit
     ```
 
 -   `predict(object, ...)`
