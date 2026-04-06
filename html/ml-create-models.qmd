@@ -279,9 +279,7 @@ show_engines("linear_reg")
 
 ## Discriminant
 
-**`discrim_*(mode = "classification")`**
-
--   `discrim_flexible(num_terms, prod_degree, prune_method, engine = "earth")` - Fits a discriminant analysis model that uses nonlinear features created using MARS.
+-   `discrim_flexible(mode = "classification", num_terms, prod_degree, prune_method, engine = "earth")` - Fits a discriminant analysis model that uses nonlinear features created using MARS.
 
     ```{r}
     #| output: asis
@@ -291,7 +289,7 @@ show_engines("linear_reg")
     ))
     ```
 
--   `discrim_regularized(frac_common_cov, frac_identity, engine = "klaR")` - Estimates a multivariate distribution for the predictors separately for the data in each class. The model's structure can be LDA, QDA, or a combination. Each probability class is computed using Bayes's theorem, given the predictor values.
+-   `discrim_regularized(mode = "classification", frac_common_cov, frac_identity, engine = "klaR")` - Estimates a multivariate distribution for the predictors separately for the data in each class. The model's structure can be LDA, QDA, or a combination. Each probability class is computed using Bayes's theorem, given the predictor values.
 
     ```{r}
     #| output: asis
@@ -301,13 +299,12 @@ show_engines("linear_reg")
     ))
     ```
 
-**`discrim_*(mode = "classification", regularization_method, engine = "MASS")`**
 
 <div style="text-align: center;">
 Estimates a multivariate distribution for the predictors separately for the data in each class using a method described below. Each class' probability is computed using Bayes' theorem, given the predictor values.
 </div>
 
--   `discrim_linear(penalty)` - Uses Gaussian with a common covariance matrix to perform the estimate.
+-   `discrim_linear(mode = "classification", regularization_method, engine = "MASS", penalty)` - Uses Gaussian with a common covariance matrix to perform the estimate.
 
     ```{r}
     #| output: asis
@@ -320,7 +317,7 @@ Estimates a multivariate distribution for the predictors separately for the data
     ))
     ```
 
--   `discrim_quad()` - Uses Gaussian with separate covariance matrices to perform the estimate.
+-   `discrim_quad(mode = "classification", regularization_method, engine = "MASS")` - Uses Gaussian with separate covariance matrices to perform the estimate.
 
     ```{r}
     #| output: asis
@@ -328,6 +325,78 @@ Estimates a multivariate distribution for the predictors separately for the data
     package_pills(list(
       list("MASS", 1),
       list("sparsediscrim", 1)
+    ))
+    ```
+
+## Support Vector Machine
+
+<div style="text-align: center;">
+**Classification:** Maximizes the width of the margin between classes using a method described below.
+
+**Regression:** Optimizes a robust loss function only affected by very large model residuals and uses an additional method described below.
+</div>
+
+-   `svm_linear(mode, cost, engine = "LiblineaR", margin)` - Classification: A linear class boundary. Regression: Uses a linear fit.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("kernlab", 12),
+      list("LiblineaR", 12)
+    ))
+    ```
+
+-   `svm_poly(mode, cost, engine = "kernlab", degree, scale_factor)` - Classification: A polynomial class boundary. Regression: Uses polynomial functions of the predictors.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("kernlab", 12)
+    ))
+    ```
+
+-   `svm_rbf(mode, cost, engine = "kernlab", rbf_sigma)` - Classification: A nonlinear class boundary. Regression: Uses nonlinear functions of the predictors.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("kernlab", 12)
+    ))
+    ```
+
+## Feature Rules
+
+-   `rule_fit(mode, mtry, trees, min_n, tree_depth, learn_rate, loss_reduction, sample_size, stop_iter, penalty, engine = "xrf")` - Derives simple feature rules from a tree ensemble and uses them as features in a regularized model.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("xrf", 12),
+      list("h2o", 1)
+    ))
+    ```
+
+-   `C5_rules(mode = "classification", trees, min_n, engine = "C5.0")` - Derives feature rules from a tree for prediction. A single tree or boosted ensemble can be used.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("C5.0", 1)
+    ))
+    ```
+
+-   `cubist_rules(mode = "regression", committees, neighbors, max_rules, engine = "Cubist")` - Derives simple feature rules from a tree ensemble and creates regression models within each rule.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("Cubist", 2)
     ))
     ```
 
