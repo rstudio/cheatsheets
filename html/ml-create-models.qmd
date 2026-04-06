@@ -94,6 +94,21 @@ rand_forest(mtry = 10, trees = 2000) |> # Define type of model
 show_engines("linear_reg")
 ```
 
+## Legends
+
+### Mode Support Numbers
+
+- **1** - Classification
+- **2** - Regression
+- **3** - Censored Regression
+- **4** - Quantile Regression
+
+### Engine Tags
+
+Engine tags show the engine name and mode support numbers. For example, <span class="pill">h2o <sup>12</sup></span> means engine `h2o` supports classification (1), and regression (2).
+
+
+
 ## Classification Only
 
 -   `logistic_reg(mode = "classification", engine = "glm", penalty, mixture)` - Generalized linear model for binary outcomes. A linear combination of the predictors is used to model the log odds of an event.
@@ -400,3 +415,197 @@ Estimates a multivariate distribution for the predictors separately for the data
     ))
     ```
 
+## Ensemble
+
+<div style="text-align: center; font-style: italic;">
+"E Pluribus Unum"
+</div>
+
+-   `bag_mars(mode, num_terms, prod_degree, prune_method, engine = "earth")` - Ensemble of generalized linear models that use artificial features for some predictors. These features resemble hinge functions and the result is a model that is a segmented regression in small dimensions.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("earth", 12)
+    ))
+    ```
+
+-   `bag_mlp(mode, hidden_units, penalty, epochs, engine = "nnet")` - An ensemble of single layer, feed-forward neural networks.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("nnet", 12)
+    ))
+    ```
+
+-   `bag_tree(mode, cost_complexity = 0, tree_depth, min_n = 2, class_cost, engine = "rpart")` - Ensemble of decision trees.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("C5.0", 1),
+      list("rpart", 123)
+    ))
+    ```
+
+-   `bart(mode, engine = "dbarts", trees, prior_terminal_node_coef, prior_terminal_node_expo, prior_outcome_range)` - Tree ensemble model that uses Bayesian analysis to assemble the ensemble.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("bart", 12)
+    ))
+    ```
+
+-   `boost_tree(mode, engine = "xgboost", mtry, trees, min_n, tree_depth, learn_rate, loss_reduction, sample_size, stop_iter)` - Creates a series of decision trees forming an ensemble. Each tree depends on the results of previous trees. All trees in the ensemble are combined to produce a final prediction.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("C5.0", 1),
+      list("catboost", 12),
+      list("h2o", 12),
+      list("lightgbm", 12),
+      list("mboost", 3),
+      list("spark", 12),
+      list("xgboost", 124)
+    ))
+    ```
+
+-   `rand_forest(mode, engine = "ranger", mtry, trees, min_n)` - Creates a large number of decision trees, each independent of the others. The final prediction uses all predictions from the individual trees and combines them.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("aorsf", 123),
+      list("grf", 124),
+      list("h2o", 12),
+      list("partykit", 123),
+      list("randomForest", 12),
+      list("ranger", 12),
+      list("spark", 12)
+    ))
+    ```
+
+## Survival
+
+**`*(mode = "censored regression")`**
+
+-   `proportional_hazards(engine = "survival", penalty, mixture)` - Defines a model for the hazard function as a multiplicative function of covariates times a baseline hazard.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("glmnet", 3),
+      list("survival", 3)
+    ))
+    ```
+
+-   `survival_reg(engine = "survival", dist)` - Defines a parametric survival model.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("flexsurv", 3),
+      list("flexsurvspline", 3),
+      list("survival", 3)
+    ))
+    ```
+
+## Operations
+
+```{r}
+library(tidymodels)
+lm_spec <- linear_reg() |> set_engine("lm")
+```
+
+### Methods
+
+-   `fit(object, ...)` - Estimates parameters for a given model from a set of data.
+
+    ```{r}
+    lm_fit <- fit(lm_spec, mpg ~ ., data = mtcars)
+    ```
+
+-   `predict(object, ...)`
+
+    ```{r}
+    predict(lm_fit, mtcars)
+    ```
+
+-   `autoplot(object, ...)` - Uses ggplot2 to draw a particular plot for an object of a particular class
+
+-   `update(object, ...)` - Updates and (by default) re-fit a model. It does this by extracting the call stored in the object, updating the call and evaluating that call.
+
+### Tidiers
+
+-   `augment(x, ...)` - Augment data with model results
+
+    ```{r}
+    augment(lm_fit, mtcars)
+    ```
+
+-   `glance(x, ...)` - Construct a single row summary "glance" of a model fit
+
+    ```{r}
+    glance(lm_fit)
+    ```
+
+-   `tidy(x, ...)` - Turn an object into a tidy tibble
+
+    ```{r}
+    tidy(lm_fit)
+    ```
+
+### General
+
+-   `repair_call(x, data)` - When the user passes a formula to fit() and the underlying model function uses a formula, the call object produced by fit() may not be usable by other functions.
+
+-   `control_parsnip(verbosity = 1L, catch = FALSE)` - Pass options to the fit.model_spec() function to control its output and computations.
+
+    ```{r}
+    control_parsnip(verbosity = 2)
+    ```
+
+-   `show_engines(x)` - The possible engines for a model can depend on what packages are loaded. Some parsnip extension add engines to existing models.
+
+    ```{r}
+    show_engines("linear_reg")
+    ```
+
+-   `translate(x, ...)` - Translates a model specification into a code object that is specific to a particular engine (e.g. R package). It translates generic parameters to their counterparts.
+
+    ```{r}
+    translate(lm_spec)
+    ```
+
+-   `multi_predict(object, ...)` - For some models, predictions can be made on sub-models in the model object.
+
+### Extract
+
+-   `extract_spec_parsnip(x, ...)` - Returns a parsnip model specification.
+
+    ```{r}
+    extract_spec_parsnip(lm_fit)
+    ```
+
+-   `extract_fit_engine(x, ...)` - Returns the engine specific fit embedded within a parsnip model fit. For example, when using linear_reg() with the "lm" engine, this returns the underlying lm object.
+
+    ```{r}
+    extract_fit_engine(lm_fit)
+    ```
+
+-   `extract_parameter_dials(x, parameter, ...)` - Returns a single dials parameter object.
+
+-   `extract_parameter_set_dials(x, ...)` - Returns a set of dials parameter objects.
+
+-   `extract_fit_time(x, summarize = TRUE, ...)` - returns a tibble with fit times. The fit times correspond to the time for the parsnip engine to fit and do not include other portions of the elapsed time in fit.model_spec().
