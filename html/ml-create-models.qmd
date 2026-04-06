@@ -7,6 +7,34 @@ execute:
   warning: false
 ---
 
+```{css}
+#| echo: false
+.package-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 4px 0 10px 0;
+}
+
+.pill {
+  display: inline-block;
+  padding: 2px 12px;
+  margin: 2px 0;
+  border: 1px solid #6c757d;
+  border-radius: 20px;
+  font-size: 14px;
+  font-family: monospace;
+  color: #333;
+  background-color: white;
+  white-space: nowrap;
+}
+
+.pill sup {
+  font-size: 10px;
+  margin-left: 3px;
+}
+```
+
 ```{r}
 #| output: asis
 #| echo: false
@@ -21,8 +49,18 @@ pdf_preview_link(sheet_name)
 translation_list(sheet_name)
 
 library(tidymodels)
-```
 
+package_pills <- function(packages) {
+  cat('::: {.package-pills}\n')
+  for (pkg in packages) {
+    name <- pkg[[1]]
+    numbers <- pkg[[2]]
+    sups <- paste0('<sup>', numbers, '</sup>', collapse = ' ')
+    cat('<span class="pill">', name, ' ', sups, '</span>\n', sep = '')
+  }
+  cat(':::\n')
+}
+```
 
 ## Basics
 
@@ -30,12 +68,11 @@ library(tidymodels)
 
 A `parsnip` specification is made up of 3 main components:
 
-1. The type of model to be used, such as Random Forest (`rand_forest()`) or linear regression (`linear_reg()`)
+1.  The type of model to be used, such as Random Forest (`rand_forest()`) or linear regression (`linear_reg()`)
 
-1. How will the model be used, or mode. The two most common are “regression” and “classification”.
+2.  How will the model be used, or mode. The two most common are “regression” and “classification”.
 
-1. The computational engine, or program that will actually execute the training. It could be an external R package, such as ranger, or even an engine outside of R, such as Stan or Apache Spark.
-
+3.  The computational engine, or program that will actually execute the training. It could be an external R package, such as ranger, or even an engine outside of R, such as Stan or Apache Spark.
 
 ```{r}
 library(tidymodels)
@@ -44,7 +81,6 @@ rand_forest(mtry = 10, trees = 2000) |> # Define type of model
   set_engine("ranger", importance = "impurity") |> # Select an engine
   set_mode("regression") # Set the mode
 ```
-
 
 `set_engine(object, engine, ...)` - Specifies which package or system will be used to fit the model, along with any arguments specific to that software.
 
@@ -58,4 +94,238 @@ rand_forest(mtry = 10, trees = 2000) |> # Define type of model
 show_engines("linear_reg")
 ```
 
+## Classification Only
+
+-   `logistic_reg(mode = "classification", engine = "glm", penalty, mixture)` - Generalized linear model for binary outcomes. A linear combination of the predictors is used to model the log odds of an event.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("brulee", 1),
+      list("gee", 1),
+      list("glm", 1),
+      list("glmer", 1),
+      list("glmnet", 1),
+      list("h2o", 1),
+      list("keras", 1),
+      list("LiblineaR", 1),
+      list("spark", 1),
+      list("stan", 1),
+      list("stan_glmer", 1)
+    ))
+    ```
+-   `multinom_reg(mode = "classification", engine = "nnet", penalty, mixture)` - Uses linear predictors to predict multiclass data using the multinomial distribution.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("brulee", 1),
+      list("glmnet", 1),
+      list("h2o", 1),
+      list("keras", 1),
+      list("nnet", 1),
+      list("spark", 1)
+    ))
+    ```
+
+-   `naive_Bayes(mode = "classification", smoothness, Laplace, engine = "klaR")` - Uses Bayes' theorem to compute the probability of each class, given the predictor values.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("h2o", 1),
+      list("klaR", 1),
+      list("naivebayes", 1)
+    ))
+    ```
+
+-   `null_model(mode = "classification", engine = "parsnip")` - Fit a single mean or largest class model. This is the user-facing function for the null_model() specification.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("parsnip", 1)
+    ))
+    ```
+
+-   `ordinal_reg(mode = "classification", ordinal_link, odds_link, penalty, mixture, engine = "polr")` - Defines a generalized linear model that predicts an ordinal outcome.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("rpartScore", 1),
+      list("polr", 1),
+      list("vgam", 1),
+      list("vglm", 1)
+    ))
+    ```
+
+## Regression Only
+
+-   `linear_reg(mode = "regression", engine = "lm", penalty, mixture)` - Defines a model that can predict numeric values from predictors using a linear function.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("brulee", 2),
+      list("gee", 2),
+      list("glm", 2),
+      list("glmer", 2),
+      list("glmnet", 2),
+      list("gls", 2),
+      list("h2o", 2),
+      list("keras", 2),
+      list("lm", 2),
+      list("lme", 2),
+      list("quantreg", 2),
+      list("spark", 2),
+      list("stan", 2),
+      list("stan_glmer", 2)
+    ))
+    ```
+
+-   `poisson_reg(mode = "regression", penalty, mixture, engine = "glm")` - Defines a generalized linear model for count data that follow a Poisson distribution.
+
+    ```{r}
+    #| output: asis
+    #| echo: false
+    package_pills(list(
+      list("gee", 2),
+      list("glm", 2),
+      list("glmer", 2),
+      list("glmnet", 2),
+      list("h2o", 2),
+      list("hurdle", 2),
+      list("stan", 2),
+      list("stan_glmer", 2),
+      list("zeroinfl", 2)
+    ))
+    ```
+
+## General Use
+
+-   `decision_tree(mode, engine = "rpart", cost_complexity, tree_depth, min_n)` - A set of if/then statements creates a tree-based structure.
+
+```{r}
+#| output: asis
+#| echo: false
+package_pills(list(
+  list("partykit", 123),
+  list("rpart", 123),
+  list("spark", 12),
+  list("C5.0", 1)
+))
+```
+
+-   `mars(mode, engine = "earth", num_terms, prod_degree, prune_method)` - Uses artificial features for some predictors. These features resemble hinge functions and the result is a model that is a segmented regression in small dimensions.
+
+```{r}
+#| output: asis
+#| echo: false
+package_pills(list(
+  list("earth", 12)
+))
+```
+
+-   `mlp(mode, engine = "nnet", hidden_units, penalty, dropout, epochs, activation, learn_rate)` - Defines a multilayer perceptron model (a.k.a. a single layer, feed-forward neural network).
+
+```{r}
+#| output: asis
+#| echo: false
+package_pills(list(
+  list("nnet", 12),
+  list("brulee", 12),
+  list("brulee_two_layer", 12),
+  list("keras", 12),
+  list("grnn", 12)
+))
+```
+
+`gen_additive_mod(mode, select_features, adjust_deg_free, engine = "mgcv")` - Uses smoothed functions of numeric predictors in a generalized linear model.
+
+```{r}
+#| output: asis
+#| echo: false
+package_pills(list(
+  list("mgcv", 12)
+))
+```
+
+`nearest_neighbor(mode, engine = "kknn", neighbors, weight_func, dist_power)` - Uses the K most similar data points from the training set to predict new samples.
+
+```{r}
+#| output: asis
+#| echo: false
+package_pills(list(
+  list("knn", 12)
+))
+```
+
+`pls(mode, predictor_prop, num_comp, engine = "mixOmics")` - Uses latent variables to model the data. Similar to a supervised version of PCA.
+
+```{r}
+#| output: asis
+#| echo: false
+package_pills(list(
+  list("mixOmics", 12)
+))
+```
+
+## Discriminant
+
+**`discrim_*(mode = "classification")`**
+
+`discrim_flexible(num_terms, prod_degree, prune_method, engine = "earth")` - Fits a discriminant analysis model that uses nonlinear features created using MARS.
+
+```{r}
+#| output: asis
+#| echo: false
+package_pills(list(
+  list("earth", 1)
+))
+```
+
+`discrim_regularized(frac_common_cov, frac_identity, engine = "klaR")` - Estimates a multivariate distribution for the predictors separately for the data in each class. The model's structure can be LDA, QDA, or a combination. Each probability class is computed using Bayes's theorem, given the predictor values.
+
+```{r}
+#| output: asis
+#| echo: false
+package_pills(list(
+  list("klaR", 1)
+))
+```
+
+**`discrim_*(mode = "classification", regularization_method, engine = "MASS")`**
+
+Estimates a multivariate distribution for the predictors separately for the data in each class using a method described below. Each class' probability is computed using Bayes' theorem, given the predictor values.
+
+`discrim_linear(penalty)` - Uses Gaussian with a common covariance matrix to perform the estimate.
+
+```{r}
+#| output: asis
+#| echo: false
+package_pills(list(
+  list("MASS", 1),
+  list("mda", 1),
+  list("sda", 1),
+  list("sparsediscrim", 1)
+))
+```
+
+`discrim_quad()` - Uses Gaussian with separate covariance matrices to perform the estimate.
+
+```{r}
+#| output: asis
+#| echo: false
+package_pills(list(
+  list("MASS", 1),
+  list("sparsediscrim", 1)
+))
+```
 
