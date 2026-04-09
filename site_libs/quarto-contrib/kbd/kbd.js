@@ -45,6 +45,9 @@
   window.addEventListener("DOMContentLoaded", (_) => {
     for (const el of Array.from(document.querySelectorAll("kbd"))) {
       el.classList.add("kbd");
+      if (el.dataset.mode === "plain") {
+        continue;
+      }
       if (el.dataset[os.name] !== undefined) {
         el.innerText = el.dataset[os.name];
       }
