@@ -30,10 +30,10 @@ Users can manipulate the UI, which will cause the server to update the UI's disp
 
 Save your app as `app.py` in a directory with the files it uses.
 
--   **app-name:** The directory name is the app name
--   **app.py**
--   www/: Place images, CSS, etc. to share with the browser in a folder named "www"
--   Include any other scripts, data sets, or assets used by the app in the same directory.
+- **app-name:** The directory name is the app name
+- **app.py**
+- www/: Place images, CSS, etc. to share with the browser in a folder named "www"
+- Include any other scripts, data sets, or assets used by the app in the same directory.
 
 Run `shiny create .` in the terminal to generate an `app.py` file based on a template.
 
@@ -46,8 +46,8 @@ import numpy as np
 
 # Nest Python functions to build an HTML interface
 app_ui = ui.page_fluid( # Layout the UI with Layout Functions
- 
-  #  Add Inputs with ui.input_*() functions 
+
+  #  Add Inputs with ui.input_*() functions
   ui.input_slider(
     "n", "Sample Size", 0, 1000, 20
   ),
@@ -56,13 +56,13 @@ app_ui = ui.page_fluid( # Layout the UI with Layout Functions
 )
 
 def server(input, output, session):
-  
+
   # For each output, define a function that generates the output
   @render.plot # Specify the type of output with a @render. decorator
   def dist(): # Use the output id as the function name
-    
+
     # Call the values of UI inputs with input.<id>()
-    x = np.random.randn(input.n()) 
+    x = np.random.randn(input.n())
     plt.hist(x, range=[-3, 3])
 
 # Call App() to combine app_ui and server() into an interactive app
@@ -73,25 +73,22 @@ app = App(app_ui, server)
 
 Share your app in three ways:
 
-1.  Host it on [shinyapps.io](https://www.shinyapps.io/), a cloud based service from Posit.
-    To deploy Shiny apps:
+1.  Host it on [Posit Connect Cloud](https://connect.posit.cloud/), a cloud based service from Posit. To deploy Shiny apps:
 
-    -   Create a free or professional account at [shinyapps.io](https://www.shinyapps.io/)
-    -   Use the rsconnect-python package to publish with `rsconnect deploy shiny <path to directory>`
+    - Create a free or professional account at [connect.posit.cloud](https://connect.posit.cloud/)
+    - Publish from GitHub or from VS Code or Positron using the [Posit Publisher extension](https://marketplace.visualstudio.com/items?itemName=Posit.publisher)
 
-2.  Purchase Posit Connect, a publishing platform for R and Python.
-    [posit.co/products/enterprise/connect/](https://posit.co/products/enterprise/connect/)
+2.  Purchase Posit Connect, a publishing platform for R and Python. [posit.co/products/enterprise/connect/](https://posit.co/products/enterprise/connect/)
 
-3.  Use open source deployment options.
-    [shiny.posit.co/py/docs/deploy.html](https://shiny.posit.co/py/docs/deploy.html)
+3.  Use open source deployment options. [shiny.posit.co/py/docs/deploy.html](https://shiny.posit.co/py/docs/deploy.html)
 
 ## Shinylive
 
 Shinylive apps use WebAssembly to run entirely in a browser--no need for a special server to run Python.
 
--   Edit and/or host Shinylive apps at shinylive.io
--   Create a Shinylive version of an app to deploy with `shinylive export myapp site`. Then deploy to a hosting site like Github or Netifly.
--   Embed Shinylive apps in Quarto sites, blogs, etc
+- Edit and/or host Shinylive apps at shinylive.io
+- Create a Shinylive version of an app to deploy with `shinylive export myapp site`. Then deploy to a hosting site like Github or Netifly.
+- Embed Shinylive apps in Quarto sites, blogs, etc
 
 To embed a Shinylive app in a Quarto doc, include the below syntax.
 
@@ -100,9 +97,9 @@ To embed a Shinylive app in a Quarto doc, include the below syntax.
 filters:
 - shinylive
 ---
-  
+
 An embedded Shinylive app:
-  
+
 ```{{r}}
 #| standalone: true
 # [App.py code here...]
@@ -114,7 +111,7 @@ An embedded Shinylive app:
 Match ui.output\_\* functions to @render.\* decorators
 
 | decorator | function |
-|---------------------|---------------------------------------------------|
+|-----------------------|------------------------------------------------|
 | `@render.data_frame` | `ui.output_data_frame(id)` |
 | `@render.image` | `ui.output_image(id, width, height, click, dblclick, hover, brush, inline)` |
 | `@render.plot` | `ui.output_plot(id, width, height, click, dblclick, hover, brush, inline)` |
@@ -127,47 +124,45 @@ Match ui.output\_\* functions to @render.\* decorators
 
 ## Inputs
 
-Use a `ui.input_*()` function to make an input widget that saves a value as `input.<id>`.
-Input values are reactive and need to be called as `input.<id>()`.
+Use a `ui.input_*()` function to make an input widget that saves a value as `input.<id>`. Input values are reactive and need to be called as `input.<id>()`.
 
--   `ui.input_action_button(id, label, icon, width, ...)`
+- `ui.input_action_button(id, label, icon, width, ...)`
 
--   `ui.input_action_link(id, label, icon, ...)`
+- `ui.input_action_link(id, label, icon, ...)`
 
--   `ui.input_task_button(id, label, icon, label_busy, icon_busy, width, type, auto_reset)`
+- `ui.input_task_button(id, label, icon, label_busy, icon_busy, width, type, auto_reset)`
 
--   `ui.input_checkbox(id, label, value, width)`
+- `ui.input_checkbox(id, label, value, width)`
 
--   `ui.input_checkbox_group(id, label, choices, selected, inline, width)`
+- `ui.input_checkbox_group(id, label, choices, selected, inline, width)`
 
--   `ui.input_date(id, label, value, min, max, format, startview, weekstart, language, width, autoclose, datesdisabled, daysofweekdisabled)`
+- `ui.input_date(id, label, value, min, max, format, startview, weekstart, language, width, autoclose, datesdisabled, daysofweekdisabled)`
 
--   `ui.input_date_range(id, label, start, end, min, max, format, startview, weekstart, language, separator, width, autoclose)`
+- `ui.input_date_range(id, label, start, end, min, max, format, startview, weekstart, language, separator, width, autoclose)`
 
--   `ui.input_file(id, label, multiple, accept, width, buttonLabel, placeholder, capture)`
+- `ui.input_file(id, label, multiple, accept, width, buttonLabel, placeholder, capture)`
 
--   `ui.input_numeric(id, label, value, min, max, step, width)`
+- `ui.input_numeric(id, label, value, min, max, step, width)`
 
--   `ui.input_password(id, label, value, width, placeholder)`
+- `ui.input_password(id, label, value, width, placeholder)`
 
--   `ui.input_radio_buttons(id, label, choices, selected, inline, width)`
+- `ui.input_radio_buttons(id, label, choices, selected, inline, width)`
 
--   `ui.input_select(id, label, choices, selected, multiple, selectize, width, size, remove_button, options)`
+- `ui.input_select(id, label, choices, selected, multiple, selectize, width, size, remove_button, options)`
 
--   `ui.input_selectize(id,label, choices, selected, multiple, width, remove_button, options)`
+- `ui.input_selectize(id,label, choices, selected, multiple, width, remove_button, options)`
 
--   `ui.input_slider(id, label, min, max, value, step, ticks, animate, width, sep, pre, post, timeFormat, timezone, dragRange)`
+- `ui.input_slider(id, label, min, max, value, step, ticks, animate, width, sep, pre, post, timeFormat, timezone, dragRange)`
 
--   `ui.input_switch(id, label, value, width)`
+- `ui.input_switch(id, label, value, width)`
 
--   `ui.input_text(id, label, value, width, placeholder, autocomplete, spellcheck)` Also `ui.input_text_area()`
+- `ui.input_text(id, label, value, width, placeholder, autocomplete, spellcheck)` Also `ui.input_text_area()`
 
 <!-- page 2 -->
 
 ## Reactivity
 
-Reactive values work together with reactive functions.
-Call a reactive value from within the arguments of one of these functions to avoid the error `No current reactive context`.
+Reactive values work together with reactive functions. Call a reactive value from within the arguments of one of these functions to avoid the error `No current reactive context`.
 
 ![](images/reactivity-diagram-python.png){fig-align="center"}
 
@@ -176,147 +171,142 @@ Call a reactive value from within the arguments of one of these functions to avo
 
 ### Phases in the reactivity diagram
 
--   Create your own reactive values
-    -   `ui.input_*()`
-    -   \`reactive.value()\`\`
-    -   `@reactive.file_reader()`
-    -   `@reactive.poll()`
--   Perform side effects
-    -   `@reactive.Effect`
--   Schedule updates
-    -   `reactive.invalidate_later()`
--   Create reactive expressions
-    -   `reactive.Calc()`
--   Remove reactivity
-    -   `reactive.isolate()`
--   React based on event
-    -   `@reactive.event()`
--   Render reactive output
-    -   `@render*`
+- Create your own reactive values
+  - `ui.input_*()`
+  - \`reactive.value()\`\`
+  - `@reactive.file_reader()`
+  - `@reactive.poll()`
+- Perform side effects
+  - `@reactive.Effect`
+- Schedule updates
+  - `reactive.invalidate_later()`
+- Create reactive expressions
+  - `reactive.Calc()`
+- Remove reactivity
+  - `reactive.isolate()`
+- React based on event
+  - `@reactive.event()`
+- Render reactive output
+  - `@render*`
 :::
 
 ### Create Your own Reactive Values
 
--   `ui.input_*()` makes an input widget that saves a reactive value as `input.<id>()`.
+- `ui.input_*()` makes an input widget that saves a reactive value as `input.<id>()`.
 
--   `reactive.value( )` Creates an object whose value you can set.
+- `reactive.value( )` Creates an object whose value you can set.
 
-    ```{python}
-    #...
-    app_ui = ui.page_fluid(
-        ui.input_text("a", "A")
-    )
+  ```{python}
+  #...
+  app_ui = ui.page_fluid(
+      ui.input_text("a", "A")
+  )
 
-    def server(input, output, session):
-        rv = reactive.value()
-        rv.set(5) 
-    #...
-    ```
+  def server(input, output, session):
+      rv = reactive.value()
+      rv.set(5)
+  #...
+  ```
 
 ### Create Reactive Expressions
 
--   `@reactive.calc` makes a function a reactive expression.
-    Shiny notifies functions that use the expression when it becomes invalidated, triggering recomputation.
-    Shiny caches the value of the expression while it is valid to avoid unnecessary computation.
+- `@reactive.calc` makes a function a reactive expression. Shiny notifies functions that use the expression when it becomes invalidated, triggering recomputation. Shiny caches the value of the expression while it is valid to avoid unnecessary computation.
 
-    ```{python}
-    #...
-    def server(input, output, session ):
-        @reactive.calc
-        def re():
-            return input.a() + input.b()
-    #...
-    ```
+  ```{python}
+  #...
+  def server(input, output, session ):
+      @reactive.calc
+      def re():
+          return input.a() + input.b()
+  #...
+  ```
 
 ### React Based on Event
 
--   `@reactive.event()` Makes a function react only when a specified value is invalidated, here `input.a`.
+- `@reactive.event()` Makes a function react only when a specified value is invalidated, here `input.a`.
 
-    ```{python}
-    #...
-    def server(input, output, session ):
-        @reactive.event(input.a)
-        def re():
-            return input.b()
-    #...
-    ```
+  ```{python}
+  #...
+  def server(input, output, session ):
+      @reactive.event(input.a)
+      def re():
+          return input.b()
+  #...
+  ```
 
 ### Display Reactive Output
 
--   `ui.output_*()` adds an output element to the UI.
+- `ui.output_*()` adds an output element to the UI.
 
--   `@render.*` decorators render outputs
+- `@render.*` decorators render outputs
 
--   `def <id>():` A function to generate the output
+- `def <id>():` A function to generate the output
 
-    ```{python}
-    app_ui = ui.page_fluid(
-        ui.input_text("a", "A"), 
-        ui.output_text("b"),
-    )
+  ```{python}
+  app_ui = ui.page_fluid(
+      ui.input_text("a", "A"),
+      ui.output_text("b"),
+  )
 
-    def server(input, output, session ):
-        @render.text 
-        def b():
-            return input.a()
-    ```
+  def server(input, output, session ):
+      @render.text
+      def b():
+          return input.a()
+  ```
 
 ### Perform Side Effects
 
--   `@reactive.effect` Reactively trigger a function with a side effect.
-    Call a reactive value or use `@reactive.event` to specify when the function will rerun.
+- `@reactive.effect` Reactively trigger a function with a side effect. Call a reactive value or use `@reactive.event` to specify when the function will rerun.
 
-    ```{python}
-    #...
-    def server(input, output, session ):
-        @reactive.effect
-        @reactive.event(input.a) 
-        def print():
-            print("Hi") 
-    #...
-    ```
+  ```{python}
+  #...
+  def server(input, output, session ):
+      @reactive.effect
+      @reactive.event(input.a)
+      def print():
+          print("Hi")
+  #...
+  ```
 
 ### Remove Reactivity
 
--   `reactive.isolate()`Create non-reactive context within a reactive function.
-    Calling a reactive value within this context will not cause the calling function to re-execute should the value become invalid.
+- `reactive.isolate()`Create non-reactive context within a reactive function. Calling a reactive value within this context will not cause the calling function to re-execute should the value become invalid.
 
-    ```{python}
-    # ...
-    def server(input, output, session):
-        @render.text 
-        def a():
-            with reactive.isolate():
-                return input.a() 
-    #...
-    ```
+  ```{python}
+  # ...
+  def server(input, output, session):
+      @render.text
+      def a():
+          with reactive.isolate():
+              return input.a()
+  #...
+  ```
 
 ## Layouts
 
 Combine multiple elements into a "single element" that has its own properties with a panel function:
 
--   `ui.panel_absolute()`
--   `ui.panel_conditional()`
--   `ui.panel_fixed()`
--   `ui.panel_main()`
--   `ui.panel_sidebar()`
--   `ui.panel_title()`
--   `ui.panel_well()`
--   `ui.row() / ui.column()`
+- `ui.panel_absolute()`
+- `ui.panel_conditional()`
+- `ui.panel_fixed()`
+- `ui.panel_main()`
+- `ui.panel_sidebar()`
+- `ui.panel_title()`
+- `ui.panel_well()`
+- `ui.row() / ui.column()`
 
-Layout panels with a layout function.
-Add elements as arguments of the layout functions.
+Layout panels with a layout function. Add elements as arguments of the layout functions.
 
--   `ui.page_sidebar()`
+- `ui.page_sidebar()`
 
 ```{python}
-app_ui = ui.page_sidebar(  
-    ui.sidebar("Sidebar", bg="#f8f8f),  
-    "Main content",  
-)  
+app_ui = ui.page_sidebar(
+    ui.sidebar("Sidebar", bg="#f8f8f),
+    "Main content",
+)
 ```
 
--   `ui.layout_columns()` with \`ui.card()
+- `ui.layout_columns()` with \`ui.card()
 
 ```{python}
 app_ui = ui.page_fillable(
@@ -335,13 +325,13 @@ Use `ui.nav_panel` with `ui.page_navbar` to create tabs:
 
 ```{python}
 # navset tab
-app_ui = ui.page_navbar(  
-    ui.nav_panel("A", "Page A content"),  
-    ui.nav_panel("B", "Page B content"),  
-    ui.nav_panel("C", "Page C content"),  
-    title="App with navbar",  
-    id="page",  
-) 
+app_ui = ui.page_navbar(
+    ui.nav_panel("A", "Page A content"),
+    ui.nav_panel("B", "Page B content"),
+    ui.nav_panel("C", "Page C content"),
+    title="App with navbar",
+    id="page",
+)
 ```
 
 ## Themes
@@ -351,7 +341,7 @@ Use the shinyswatch package to add existing bootstrap themes to your Shiny app u
 ```{python}
 import shinyswatch
 
-app_ui = ui.page_fluid( 
+app_ui = ui.page_fluid(
     # ...
     theme=shinyswatch.theme.darkly,
 )
@@ -363,142 +353,142 @@ Shiny for Python is quite similar to Shiny for R with a few important difference
 
 1.  Call inputs as `input.<id>()`
 
--   R
+- R
 
-    ```{r}
-    input$x
-    ```
+  ```{r}
+  input$x
+  ```
 
--   Python
+- Python
 
-    ```{python}
-    input.x()
-    ```
+  ```{python}
+  input.x()
+  ```
 
 2.  Use decorators to create and render outputs. Define outputs as functions `def <id>():`
 
--   R
+- R
 
-    ```{r}
-    output$y <-
-        renderText(z())
-    ```
+  ```{r}
+  output$y <-
+      renderText(z())
+  ```
 
--   Python
+- Python
 
-    ```{python}
-    @renderText 
-        def y():
-            return z()
-    ```
+  ```{python}
+  @renderText
+      def y():
+          return z()
+  ```
 
 3.  To create a reactive expression, use `@reactive.calc`
 
--   R
+- R
 
-    ```{r}
-    z <- reactive({
-        input$x + 1
-    })
-    ```
+  ```{r}
+  z <- reactive({
+      input$x + 1
+  })
+  ```
 
--   Python
+- Python
 
-    ```{python}
-    @reactive.calc 
-    def z():
-        return input.x()+1
-    ```
+  ```{python}
+  @reactive.calc
+  def z():
+      return input.x()+1
+  ```
 
 4.  To create an observer, use `@reactive.effect`
 
--   R
+- R
 
-    ```{r}
-    a <- observe({
-        print(input$x)
-    })
-    ```
+  ```{r}
+  a <- observe({
+      print(input$x)
+  })
+  ```
 
--   Python
+- Python
 
-    ```{python}
-    @reactive.effect 
-    def a():
-        print(input.x())
-    ```
+  ```{python}
+  @reactive.effect
+  def a():
+      print(input.x())
+  ```
 
 5.  Combine these with `@reactive.event`
 
--   R
+- R
 
-    ```{r}
-    b <- eventReactive(
-        input$goCue,
-        {
-            input$x + 1
-        }
-    )
-    ```
+  ```{r}
+  b <- eventReactive(
+      input$goCue,
+      {
+          input$x + 1
+      }
+  )
+  ```
 
--   Python
+- Python
 
-    ```{python}
-    @reactive.calc 
-    @reactive.event(input.go_cue )
-    def b():
-        return input.x() + 1
-    ```
+  ```{python}
+  @reactive.calc
+  @reactive.event(input.go_cue )
+  def b():
+      return input.x() + 1
+  ```
 
 6.  Use `reactive.value()` instead of `reactiveVal()`
 
--   R
+- R
 
-    ```{r}
-    reactiveVal(1)
-    ```
+  ```{r}
+  reactiveVal(1)
+  ```
 
--   Python
+- Python
 
-    ```{python}
-    reactive.value(1)
-    ```
+  ```{python}
+  reactive.value(1)
+  ```
 
 7.  Use `nav_*()` instead of `*Tab()`
 
--   R
+- R
 
-    ```{r}
-    insertTab()
-    appendTab()
-    # etc.
-    ```
+  ```{r}
+  insertTab()
+  appendTab()
+  # etc.
+  ```
 
--   Python
+- Python
 
-    ```{python}
-    nav_insert() 
-    nav_append() 
-    # etc.
-    ```
+  ```{python}
+  nav_insert()
+  nav_append()
+  # etc.
+  ```
 
 8.  Functions are intuitively organized into submodules
 
--   R
+- R
 
-    ```{r}
-    dateInput()
-    textInput()
-    # etc.
-    ```
+  ```{r}
+  dateInput()
+  textInput()
+  # etc.
+  ```
 
--   Python
+- Python
 
-    ```{python}
-    ui.input_date() 
-    ui.input_text() 
-    # etc.
-    ```
+  ```{python}
+  ui.input_date()
+  ui.input_text()
+  # etc.
+  ```
 
 ------------------------------------------------------------------------
 
