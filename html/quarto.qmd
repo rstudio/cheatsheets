@@ -1,6 +1,7 @@
 ---
 title: "Publish and Share with Quarto :: Cheatsheet"
 description: "QMD Edition"
+image: images/logo-quarto.png
 image-alt: ""
 engine: knitr
 execute:
