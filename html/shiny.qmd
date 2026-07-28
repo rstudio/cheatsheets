@@ -231,7 +231,11 @@ Reactive values work together with reactive functions. Call a reactive value fro
 
 ### Create Reactive Expressions
 
-- `reactive(x)`: Calculate a (reactive) value based on other reactive values. Useful for encapsulating reactive logic needed across multiple outputs. Call the expression with function syntax, e.g. `re()`.
+`reactive(x)`: 
+
+- Calculate a (reactive) value based on other reactive values. Useful for encapsulating reactive logic needed across multiple outputs. 
+
+- Call the expression with function syntax, e.g. `re()`.
 
   ```{r}
   ui <- bslib::page_fluid(
@@ -254,7 +258,7 @@ Reactive values work together with reactive functions. Call a reactive value fro
 
 ### React Based on Event
 
-- `eventReactive(eventExpr, valueExpr)`: Creates reactive expression with code in 2nd argument that only invalidates when reactive values in 1st argument change.
+`eventReactive(eventExpr, valueExpr)`: Creates reactive expression with code in 2nd argument that only invalidates when reactive values in 1st argument change.
 
   ```{r}
   ui <- bslib::page_fluid(
@@ -280,7 +284,12 @@ Reactive values work together with reactive functions. Call a reactive value fro
 
 ### Render Reactive Output
 
-- `render*()` functions: Produces results for a corresponding `*Output()` UI container. Re-render occurs when reactive dependencies change. Save the results to `output$<id>`.
+`render*()` functions: 
+
+- Produces results for a corresponding `*Output()` UI container. 
+Re-render occurs when reactive dependencies change. 
+
+- Save the results to `output$<id>`.
 
   ```{r}
   ui <- bslib::page_fluid(
@@ -322,7 +331,7 @@ Reactive values work together with reactive functions. Call a reactive value fro
 
 ### Remove Reactive Dependencies
 
-- `isolate(expr)`: Prevent reactive values from invalidating a reactive expression.
+`isolate(expr)`: Prevent reactive values from invalidating a reactive expression.
 
   ```{r}
   ui <- bslib::page_fluid(
