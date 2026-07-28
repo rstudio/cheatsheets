@@ -78,6 +78,8 @@ Several of these cheatsheets also have non-English translations, available on th
 
 [![Parallel computation](pngs/parallel_computation.png){alt="Download Parallel computation pdf cheatsheet"}](parallel_computation.pdf)
 
+[![Profile optimise](pngs/profile_optimise_py.png){alt="Download Profile optimise pdf cheatsheet"}](profile_optimise_py.pdf)
+
 [![quanteda](pngs/quanteda.png){alt="Download quanteda pdf cheatsheet"}](quanteda.pdf)
 
 [![quincunx](pngs/quincunx.png){alt="Download quincunx pdf cheatsheet"}](quincunx.pdf)
