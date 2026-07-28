@@ -260,27 +260,27 @@ Reactive values work together with reactive functions. Call a reactive value fro
 
 `eventReactive(eventExpr, valueExpr)`: Creates reactive expression with code in 2nd argument that only invalidates when reactive values in 1st argument change.
 
-  ```{r}
-  ui <- bslib::page_fluid(
-    textInput("a", "", "A"),
-    actionButton("go", "Go"),
-    textOutput("b")
+```{r}
+ui <- bslib::page_fluid(
+  textInput("a", "", "A"),
+  actionButton("go", "Go"),
+  textOutput("b")
+)
+
+server <- \(input, outpu t){
+  re <- eventReactive(
+    input$g
+  {
+   o {input
+  $a}
   )
+  output$b <- renderText({
+    re()
+  })
+}
 
-  server <- \(input, outpu t){
-    re <- eventReactive(
-      input$g
-    {
-     o {input
-    $a}
-    )
-    output$b <- renderText({
-      re()
-    })
-  }
-
-  shinyApp(ui, server)
-  ```
+shinyApp(ui, server)
+```
 
 ### Render Reactive Output
 
@@ -333,22 +333,22 @@ Re-render occurs when reactive dependencies change.
 
 `isolate(expr)`: Prevent reactive values from invalidating a reactive expression.
 
-  ```{r}
-  ui <- bslib::page_fluid(
-    textInput("a", "", "A"),
-    actionButton("go", "Go"),
-    textOutput("b")
-  )
+```{r}
+ui <- bslib::page_fluid(
+  textInput("a", "", "A"),
+  actionButton("go", "Go"),
+  textOutput("b")
+)
 
-  server <- \(input, outpu t){
-    output$b <- renderText({
-      input$go
-      isolate(input$a)
-    })
-  }
+server <- \(input, outpu t){
+  output$b <- renderText({
+    input$go
+    isolate(input$a)
+  })
+}
 
-  shinyApp(ui, server)
-  ```
+shinyApp(ui, server)
+```
 
 ## User Interfaces (UI)
 
