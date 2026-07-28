@@ -162,7 +162,62 @@ Collect values from the user. Use a `ui.input_*()` function to make an input wid
 
 ## Reactivity
 
-Reactive values work together with reactive functions. A reactive value must be read from within a reactive function to avoid the error `No current reactive context`. The reactive module is located at `shiny.reactive`.
+Reactive values work together with reactive functions. A reactive value must be read from within a reactive function to avoid the error `No current reactive context`. 
+
+- Module located at `shiny.reactive`.
+
+  ```{python}
+  from shiny import reactive
+  from shiny.express import (
+    input, render, ui
+  )
+
+  ui.input_text("text", "Enter text")
+  ```
+
+- Create a reactive value from other (reactive) values. Helps avoid redundant logic and unnecessary computation.
+
+  ```{python}
+  @reactive.calc
+  def length():
+      return len(input.text())
+  ```
+
+- Create a reactive UI or output.
+
+  ```{python}
+  @render.text
+  def length_output():
+    return f"{length()} characters"
+  ```
+
+- Perform side eﬀects like logging, updating.
+
+  ```{python}
+  @reactive.effect
+  def length_log():
+    print(f"{length()} characters")
+  ```
+
+Reactive functions re-execute when any of their reactive dependencies (i.e., values) change. However, sometimes you want to ignore all but one (i.e., event). Don't execute until `input.submit` is truthy (i.e. the button is clicked):
+
+```{python}
+ui.input_text("name", "Enter name")
+ui.input_action_button("submit", "Submit")
+
+@render.text
+@reactive.event(input.submit)
+def greeting():
+  return f"Hello {input.name()}!"
+
+@reactive.effect
+@reactive.event(input.submit)
+def log_name():
+  print(f"Name submitted {input.name()}")
+```
+
+A `reactive.value()` can be useful for programmatically setting/reading a reactive value. 
+This is often useful when the value can't be derived from input values alone.
 
 ![](images/reactivity-diagram-python.png){fig-align="center"}
 
@@ -190,74 +245,32 @@ Reactive values work together with reactive functions. A reactive value must be 
   - `@render.*`
 :::
 
-### Create Reactive Calculations
-
-- `@reactive.calc` creates a reactive value from other (reactive) values. Helps avoid redundant logic and unnecessary computation.
-
-- `@render.*` creates a reactive UI or output.
-
-  ```{python}
-  from shiny import reactive
-  from shiny.express import (
-    input, render, ui
-  )
-
-  ui.input_text("text", "Enter text")
-
-  @reactive.calc
-  def length():
-    return len(input.text())
-
-  @render.text
-  def length_output():
-    return f"{length()} characters"
-  ```
-
-### Perform Side Effects
-
-- `@reactive.effect` performs side effects like logging, updating inputs, etc.
-
-  ```{python}
-  @reactive.effect
-  def length_log():
-    print(f"{length()} characters")
-  ```
-
-- `reactive.value()` can be useful for programmatically setting/reading a reactive value. This is often useful when the value can't be derived from input values alone.
-
-### React Based on Event
-
-Reactive functions re-execute when any of their reactive dependencies (i.e., values) change. However, sometimes you want to ignore all but one (i.e., event). Don't execute until `input.submit` is truthy (i.e. the button is clicked):
-
-```{python}
-ui.input_text("name", "Enter name")
-ui.input_action_button("submit", "Submit")
-
-@render.text
-@reactive.event(input.submit)
-def greeting():
-  return f"Hello {input.name()}!"
-
-@reactive.effect
-@reactive.event(input.submit)
-def log_name():
-  print(f"Name submitted {input.name()}")
-```
-
 ## User Interfaces (UI)
 
 Design delightful UI with a collection of layouts, components, themes, & more.
 
 ### Page layouts
 
-- `with ui.sidebar():` - Sidebar
+- with `ui.sidebar():` Sidebar
 
-- `with ui.nav_panel():` - Multi-page
+- with `ui.nav_panel():` Multi-page
 
 ```{python}
 ui.page_opts(
   fillable=True,   # Filling (vertical) layout
   full_width=True) # Full-width page
+```
+
+### Cards
+
+Visually group UI elements together with the `card()` component.
+
+```{python}
+with ui.card():
+  ui.card_header("Title")
+  @render.plot
+  def plot():
+    ...
 ```
 
 ### UI layouts
@@ -283,18 +296,6 @@ with ui.navset_card_underline():
   with ui.nav_menu("Menu"):
     with ui.nav_panel("3"):
       "3rd panel"
-```
-
-### Cards
-
-Visually group UI elements together with the `card()` component.
-
-```{python}
-with ui.card():
-  ui.card_header("Title")
-  @render.plot
-  def plot():
-    ...
 ```
 
 ### Accordions
@@ -370,7 +371,8 @@ typography:
 
 Build streaming Gen AI interfaces like chatbots and more with the `Chat` and `MarkdownStream` components.
 
-Use `Chat` to implement a streaming chat interface. Provide a callback to generate a response to `user_input` using an AI framework of your choice (e.g., chatlas, LangChain, etc).
+Use `Chat` to implement a streaming chat interface. 
+Provide a callback to generate a response to `user_input` using an AI framework of your choice (e.g., chatlas, LangChain, etc).
 
 ```{python}
 from chatlas import ChatOpenAI
