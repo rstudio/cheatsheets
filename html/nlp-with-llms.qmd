@@ -39,7 +39,7 @@ Use *OpenAI*, *Ollama*, *Anthropic* and many others thanks to its integration wi
 
 ![](images/mall-ellmer.png){width="500" fig-align="center" fig-alt="A diagram showing how mall adds a prompt and passes it to the LLM via ellmer"}
 
-`mall`’s data frame functions are designed with ‘tidy’ principals in mind, so they work with the Tidyverse packages. 
+`mall`’s data frame functions are designed with ‘tidy’ principles in mind, so they work with the Tidyverse packages. 
 `mall` also includes functions that work with string vectors.
 
 ### Python
