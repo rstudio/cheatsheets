@@ -31,8 +31,6 @@ format:
       dark: a11y-dark
     css: html/css/cheatsheet.css
     mainfont: "Atkinson Hyperlegible"
-    
-editor: visual
 
 execute: 
   freeze: auto
