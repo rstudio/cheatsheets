@@ -20,18 +20,24 @@ jobs:
       - name: Install R
         uses: r-lib/actions/setup-r@v2
         with:
-          r-version: '4.4.0'
+          r-version: '4.6.1'
           
       - name: Install magick libs
         run: |
           sudo apt-get -qq update
-          sudo apt-get -y install libmagick++-dev libudunits2-dev libproj-dev libgdal-dev
-          sudo ldconfig /usr/local/lib
+          sudo apt-get -y install libmagick++-dev libudunits2-dev libproj-dev libgdal-dev libnode-dev libssl-dev libcurl4-openssl-dev libgit2-dev cmake
+          sudo ldconfig
+
+      - name: Use Linux binary repo for renv restore
+        run: |
+          CODENAME=$(lsb_release -cs)
+          echo "Using PPM binary repo for Ubuntu $CODENAME"
+          echo "RENV_CONFIG_REPOS_OVERRIDE=https://packagemanager.posit.co/cran/__linux__/${CODENAME}/latest" >> "$GITHUB_ENV"
 
       - name: Install R Dependencies
         uses: r-lib/actions/setup-renv@v2
         with:
-          cache-version: 2
+          cache-version: 4
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2

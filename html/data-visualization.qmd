@@ -14,7 +14,7 @@ execute:
 
 source("common.R")
 use_cheatsheet_logo(
-  "ggplot2", 
+  "ggplot2",
   alt = "Hex logo for ggplot2 - Six points following an overall increasing trend filled with colors going from light blue to dark blue, connected with a black line, on a light gray background with white grid lines."
 )
 
@@ -356,13 +356,14 @@ To change a mapping, add a new scale.
 ```{r}
 n <- d + geom_bar(aes(fill = fl))
 
-n + scale_fill_manual(
-  values = c("skyblue", "royalblue", "blue", "navy"),
-  limits = c("d", "e", "p", "r"),
-  breaks =c("d", "e", "p", "r"),
-  name = "fuel", 
-  labels = c("D", "E", "P", "R")
-)
+n +
+  scale_fill_manual(
+    values = c("skyblue", "royalblue", "blue", "navy"),
+    limits = c("d", "e", "p", "r"),
+    breaks = c("d", "e", "p", "r"),
+    name = "fuel",
+    labels = c("D", "E", "P", "R")
+  )
 ```
 
 In this example, `scale_` specifies a scale function, `fill` is the aesthetic to adjust, and `manual` is the prepackaged scale to use.
@@ -507,7 +508,7 @@ s + geom_bar(position = position_dodge(width = 1))
 
 ```{r}
 u + labs(title = "Title") + theme(plot.title.position = "plot")
-        
+
 u + theme(panel.background = element_rect(fill = "blue"))
 ```
 
@@ -576,7 +577,6 @@ Updated: `r format(Sys.Date(), "%Y-%m")`.
 
 ```{r}
 #| output: true
-
 packageVersion("ggplot2")
 ```
 

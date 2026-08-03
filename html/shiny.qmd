@@ -222,7 +222,7 @@ Reactive values work together with reactive functions. Call a reactive value fro
 - `reactiveVal(value)`: Create a reactive value from a given value. Useful for managing state.
 
   ```{r}
-  server <- \(input, outpu t){
+  server <- \(input, output) {
     print(isolate(input$a))
     rv <- reactiveVal(NULL)
     print(isolate(rv()))
@@ -244,7 +244,7 @@ Reactive values work together with reactive functions. Call a reactive value fro
     textOutput("b")
   )
 
-  server <- \(input, outpu t){
+  server <- \(input, output) {
     re <- reactive({
       paste(input$a, input$z)
     })
@@ -260,27 +260,24 @@ Reactive values work together with reactive functions. Call a reactive value fro
 
 `eventReactive(eventExpr, valueExpr)`: Creates reactive expression with code in 2nd argument that only invalidates when reactive values in 1st argument change.
 
-  ```{r}
-  ui <- bslib::page_fluid(
-    textInput("a", "", "A"),
-    actionButton("go", "Go"),
-    textOutput("b")
-  )
+```{r}
+ui <- bslib::page_fluid(
+  textInput("a", "", "A"),
+  actionButton("go", "Go"),
+  textOutput("b")
+)
 
-  server <- \(input, outpu t){
-    re <- eventReactive(
-      input$g
-    {
-     o {input
-    $a}
-    )
-    output$b <- renderText({
-      re()
-    })
-  }
+server <- \(input, output) {
+  re <- eventReactive(input$go, {
+    input$a
+  })
+  output$b <- renderText({
+    re()
+  })
+}
 
-  shinyApp(ui, server)
-  ```
+shinyApp(ui, server)
+```
 
 ### Render Reactive Output
 
@@ -297,7 +294,7 @@ Re-render occurs when reactive dependencies change.
     textOutput("b")
   )
 
-  server <- \(input, outpu t){
+  server <- \(input, output) {
     output$b <- renderText({
       input$a
     })
@@ -318,7 +315,7 @@ Re-render occurs when reactive dependencies change.
     actionButton("go", "Go")
   )
 
-  server <- \(input, outpu t){
+  server <- \(input, output) {
     observe(print(input$a))
 
     observeEvent(input$go, {
@@ -333,22 +330,22 @@ Re-render occurs when reactive dependencies change.
 
 `isolate(expr)`: Prevent reactive values from invalidating a reactive expression.
 
-  ```{r}
-  ui <- bslib::page_fluid(
-    textInput("a", "", "A"),
-    actionButton("go", "Go"),
-    textOutput("b")
-  )
+```{r}
+ui <- bslib::page_fluid(
+  textInput("a", "", "A"),
+  actionButton("go", "Go"),
+  textOutput("b")
+)
 
-  server <- \(input, outpu t){
-    output$b <- renderText({
-      input$go
-      isolate(input$a)
-    })
-  }
+server <- \(input, output) {
+  output$b <- renderText({
+    input$go
+    isolate(input$a)
+  })
+}
 
-  shinyApp(ui, server)
-  ```
+shinyApp(ui, server)
+```
 
 ## User Interfaces (UI)
 
@@ -486,7 +483,7 @@ To include a CSS file, use `includeCSS()`, or
 2.  Link to it with:
 
     ```{r}
-    tags$head(tags$link(href = "<file nam     rel = "stylesheet"))
+    tags$head(tags$link(href = "<file name>", rel = "stylesheet"))
     ```
 
 To include JS, use `includeScript()`, or

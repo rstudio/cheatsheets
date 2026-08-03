@@ -59,7 +59,7 @@ sc <- spark_connect(
 spark_connect(
   master="spark://host:port",
   version = "3.2",
-  spark_home = [path to Spark]
+  spark_home = "[path to Spark]"
 )
 ```
 

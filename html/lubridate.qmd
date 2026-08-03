@@ -14,8 +14,9 @@ execute:
 #| column: margin
 source("common.R")
 use_cheatsheet_logo(
-  "lubridate", 
-  alt = "Hex logo for lubridate - a white calendar on a green background, with a clock superimposed on it. 'lubdridate' is written in white across the bottom.")
+  "lubridate",
+  alt = "Hex logo for lubridate - a white calendar on a green background, with a clock superimposed on it. 'lubdridate' is written in white across the bottom."
+)
 sheet_name <- tools::file_path_sans_ext(knitr::current_input())
 pdf_preview_link(sheet_name)
 translation_list(sheet_name)
@@ -29,7 +30,6 @@ library(lubridate)
 
 ```{r}
 #| include: false
-
 library(hms)
 ```
 
@@ -156,7 +156,6 @@ Use an accessor function to get a component.
 
 ```{r}
 #| output: true
-
 d
 day(d)
 ```
@@ -165,7 +164,6 @@ Assign into an accessor function to change a component in place.
 
 ```{r}
 #| output: true
-
 day(d) <- 1
 d
 ```
@@ -322,7 +320,6 @@ Also `stamp_date()` and `stamp_time()`.
 
     ```{r}
     #| output: true
-
     sf(ymd("2010-04-05"))
     ```
 
@@ -425,7 +422,6 @@ February 31st.
 
 ```{r}
 #| output: true
-
 jan31 <- ymd(20180131)
 jan31 + months(1)
 ```
@@ -434,7 +430,6 @@ jan31 + months(1)
 
 ```{r}
 #| output: true
-
 jan31 %m+% months(1)
 ```
 
@@ -442,7 +437,6 @@ jan31 %m+% months(1)
 
 ```{r}
 #| output: true
-
 add_with_rollback(jan31, months(1), roll_to_first = TRUE)
 ```
 
@@ -454,7 +448,6 @@ Make a period with the name of a time unit **pluralized**, e.g.
 
 ```{r}
 #| output: true
-
 p <- months(3) + days(12)
 
 # Shows the number of months, number of days, etc.
@@ -513,7 +506,6 @@ Make a duration with the name of a period prefixed with a *d*, e.g.
 
 ```{r}
 #| output: true
-
 dd <- ddays(14)
 
 # Shows the exact length in seconds, and the equivalent in common units
@@ -569,7 +561,6 @@ Make an interval with `interval()` or `%--%`, e.g.
 
 ```{r}
 #| output: true
-
 i <- interval(ymd("2017-01-01"), d)
 i
 
@@ -642,7 +633,6 @@ Updated: `r format(Sys.Date(), "%Y-%m")`.
 
 ```{r}
 #| output: true
-
 packageVersion("lubridate")
 ```
 
