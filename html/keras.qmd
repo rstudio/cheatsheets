@@ -39,20 +39,21 @@ It also makes getting started with Keras faster by automatically creating a work
 
 - `keras_input()` / `keras_model()`: Defines a Functional Model with inputs and outputs.
 
-    ```{r}
-    inputs <- keras_input(<input-shape>)
-    outputs <- inputs |> 
-      layer_dense() |> 
-      layer_…
-    model <- keras_model(inputs, outputs)
-    ```
+```{r}
+inputs <- keras_input(<input-shape>)
+outputs <- inputs |> 
+  layer_dense() |> 
+  layer_…
+model <- keras_model(inputs, outputs)
+```
+
 - `keras_model_sequential()`: Define a Sequential Model composed of a linear stack of layers
 
-    ```{r}
-    model <- keras_model_sequential(<input-shape>) |> 
-      layer_dense() |> 
-      layer_...
-    ```
+```{r}
+model <- keras_model_sequential(<input-shape>) |> 
+  layer_dense() |> 
+  layer_...
+```
 
 - `Model()`: Subclass the base Model class
 
@@ -68,34 +69,34 @@ It also makes getting started with Keras faster by automatically creating a work
 - `compile()`: Configure aspects of the model such as optimizer, loss, metrics, 
 weights and others.
 
-    ```{r}
-    mode
- l |> compile(
-        loss = "categorical_crossentroy", 
-        optimizer = "rmsprp", 
-        metrics = "accuracy"
-      )
-    ```
+```{r}
+model |>
+  compile(
+    loss = "categorical_crossentroy",
+    optimizer = "rmsprp",
+    metrics = "accuracy"
+  )
+```
     
 ### 4. Fit the model
 
 - `fit()`: Trains the model for a fixed number of dataset iterations (epochs)
 
-    ```{r}
-    model |> 
-      fit(<x>, <y>, epochs = 30, batch_size = 128, validation_split = 0.2)
-    ```
+```{r}
+model |> 
+  fit(<x>, <y>, epochs = 30, batch_size = 128, validation_split = 0.2)
+```
 
 
 ### 5. Evaluate the model
 
 - `evaluate(<model>)`: Returns the loss and metrics
     
-    ```{r}
-    model |> 
-      evaluate(<x test>,<y test>)
-    ```
-    
+```{r}
+model |> 
+  evaluate(<x test>,<y test>)
+```
+
 - `predict(<model>, x)`: Generates predictions
 
 ## Example
@@ -289,14 +290,15 @@ text or integers via a table-based vocabulary lookup
 - `layer_feature_space()`: Main function to specify the how the features are 
 to be pre-processed
 
-    ```{r}
-    feature_space <- layer_feature_space(
-      features = l
-    ist(float_var = feature_float_normalized(),
-        string_var = feature_string_categorical(),
-        int_var = feature_integer_categoricl())
-      )
-    ```
+```{r}
+feature_space <- layer_feature_space(
+  features = list(
+    float_var = feature_float_normalized(),
+    string_var = feature_string_categorical(),
+    int_var = feature_integer_categoricl()
+  )
+)
+```
 
 - `feature_float()`
 
@@ -313,10 +315,10 @@ to be pre-processed
 - `adapt()`: Calculates the the normalizations, bins, and other conversions 
 against the data set 
 
-    ```{r}
-    adapt(feature_space, <TF dataset>)
-    ```
-    
+```{r}
+adapt(feature_space, <TF dataset>)
+```
+
 ### Text
 - `layer_text_vectorization()` / `get_vocabulary()` / `set_vocabulary()`: Maps 
 a set of arbitrary text or integers via a table-based vocabulary lookup
@@ -481,7 +483,6 @@ method
 - `op_image_rgb_to_hsv()`:  Converts from RGB to HSV
 
 ### Neural network
-
 
 |||
 |-------------------------|-------------------------|
