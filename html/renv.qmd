@@ -45,8 +45,19 @@ The core reproducibility loop ties every function together:
 1.  `renv::init()` -- set up an isolated project library.
 2.  `renv::install()` / `renv::update()` -- add and update packages as you work.
 3.  `renv::snapshot()` -- record the exact package versions to the **lockfile** (`renv.lock`).
-4.  Commit `renv.lock` to version control and share it.
+4.  Commit the project files to version control and share it (see **Collaboration** below).
 5.  A collaborator (or future you) runs `renv::restore()` to reinstall those exact versions.
+
+## Collaboration
+
+Commit these files to version control so collaborators can reproduce your project:
+
+- `renv.lock` -- the lockfile of exact package versions.
+- `.Rprofile` -- activates renv for new R sessions in the project.
+- `renv/activate.R` -- the activation script.
+- `renv/settings.json` -- project-level settings.
+
+When a collaborator opens the project, renv automatically prompts them to run `renv::restore()`.
 
 ## Core Concepts
 
@@ -108,9 +119,20 @@ renv supports two **snapshot types**, set with `renv::settings$snapshot.type()`:
 
 ## Other Useful Functions
 
+- `renv::history()` / `renv::revert()`: View past lockfiles from version control, and roll back to an earlier one.
 - `renv::upgrade()`: Upgrade the version of renv used by the project.
 - `renv::purge()`: Remove packages from the global cache (e.g. to reclaim space or clear a broken install).
 - `renv::diagnostics()`: Print a diagnostics report; useful for bug reports at [github.com/rstudio/renv](https://github.com/rstudio/renv).
+
+## What renv Does Not Do
+
+renv reproduces R packages, not your whole environment. It does not manage:
+
+- Your R version -- use a tool like [rig](https://github.com/r-lib/rig) to install and switch R versions.
+- Pandoc -- required to render R Markdown and Quarto documents.
+- System libraries, the OS, and compiler versions -- for full reproducibility, pair renv with Docker.
+
+`renv::restore()` can also fail when a package must be compiled from source and its system prerequisites (or original binaries) are unavailable.
 
 ------------------------------------------------------------------------
 
