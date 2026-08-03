@@ -303,7 +303,7 @@ starwars |>
     type = case_when(
       height > 200 | mass > 200 ~ "large",
       species == "Droid" ~ "robot",
-      TRUE ~ "other"
+      .default = "other"
     )
   )
 ```
@@ -381,7 +381,72 @@ column_to_rownames(a, var = "C")
 
 ## Combine Tables
 
+### Combine Variables
+
 ```{r}
+#| echo: false
+x <- tribble(
+  ~A  , ~B  , ~C ,
+  "a" , "t" ,  1 ,
+  "b" , "u" ,  2 ,
+  "c" , "v" ,  3
+)
+
+y <- tribble(
+  ~E  , ~F  , ~G ,
+  "a" , "t" ,  3 ,
+  "b" , "u" ,  2 ,
+  "d" , "w" ,  1
+)
+```
+
+```{r}
+#| output: true
+x
+y
+```
+
+`bind_cols(..., .name_repair)`: Returns tables placed side by side as a single table. Column lengths must be equal. Columns will NOT be matched by id (to do that look at Relational Data below), so be sure to check that both tables are ordered the way you want before binding.
+
+```{r}
+#| output: true
+bind_cols(x, y)
+```
+
+### Combine Cases
+
+```{r}
+#| echo: false
+x <- tribble(
+  ~A  , ~B  , ~C ,
+  "a" , "t" ,  1 ,
+  "b" , "u" ,  2 ,
+)
+
+y <- tribble(
+  ~A  , ~B  , ~C ,
+  "c" , "v" ,  3 ,
+  "d" , "w" ,  4
+)
+```
+
+```{r}
+#| output: true
+x
+y
+```
+
+`bind_rows(..., .id = NULL)`: Returns tables one on top of the other as a single table. Set `.id` to a column name to add a column of the original table names.
+
+```{r}
+#| output: true
+bind_rows(x, y)
+```
+
+### Relational Data
+
+```{r}
+#| echo: false
 x <- tribble(
   ~A  , ~B  , ~C ,
   "a" , "t" ,  1 ,
@@ -397,38 +462,74 @@ y <- tribble(
 )
 ```
 
-### Combine Variables
-
--   `bind_cols(..., .name_repair)`: Returns tables placed side by side as a single table. Column lengths must be equal. Columns will NOT be matched by id (to do that look at Relational Data below), so be sure to check that both tables are ordered the way you want before binding.
-
-### Combine Cases
-
--   `bind_rows(..., .id = NULL)`: Returns tables one on top of the other as a single table. Set `.id` to a column name to add a column of the original table names.
-
-### Relational Data
+```{r}
+#| output: true
+x
+y
+```
 
 Use a **"Mutating Join"** to join one table to columns from another, matching values with the rows that the correspond to.
 Each join retains a different combination of values from the tables.
 
 -   `left_join(x, y, by = NULL, copy = FALSE, suffix = c(".x", ".y"), ..., keep = FALSE, na_matches = "na")`: Join matching values from `y` to `x`.
+
+```{r}
+#| output: true
+left_join(x, y)
+```
+
 -   `right_join(x, y, by = NULL, copy = FALSE, suffix = c(".x", ".y"), ..., keep = FALSE, na_matches = "na")`: Join matching values from `x` to `y`.
+
+```{r}
+#| output: true
+right_join(x, y)
+```
+
 -   `inner_join(x, y, by = NULL, copy = FALSE, suffix = c(".x", ".y"), ..., keep = FALSE, na_matches = "na")`: Join data. retain only rows with matches.
+
+```{r}
+#| output: true
+inner_join(x, y)
+```
+
 -   `full_join(x, y, by = NULL, copy = FALSE, suffix = c(".x", ".y"), ..., keep = FALSE, na_matches = "na")`: Join data. Retain all values, all rows.
+
+```{r}
+#| output: true
+full_join(x, y)
+```
 
 Use a **"Filtering Join"** to filter one table against the rows of another.
 
 -   `semi_join(x, y, by = NULL, copy = FALSE, ..., na_matches = "na")`: Return rows of `x` that have a match in `y`. Use to see what will be included in a join.
+
+```{r}
+#| output: true
+semi_join(x, y)
+```
+
 -   `anti_join(x, y, by = NULL, copy = FALSE, ..., na_matches = "na")`: Return rows of `x` that do not have a match in `y`. Use to see what will not be included in a join.
+
+```{r}
+#| output: true
+anti_join(x, y)
+```
 
 Use a **"Nest Join"** to inner join one table to another into a nested data frame.
 
 -   `nest_join(x, y, by = NULL, copy = FALSE, keep = FALSE, name = NULL, ...)`: Join data, nesting matches from `y` in a single new data frame column.
+
+```{r}
+#| output: true
+nest_join(x, y)
+```
 
 ### Column Matching for Joins
 
 -   Use `by = join_by(col1, col2, …)` to specify one or more common columns to match on.
 
 ```{r}
+#| output: true
 left_join(x, y, by = join_by(A))
 left_join(x, y, by = join_by(A, B))
 ```
@@ -436,12 +537,14 @@ left_join(x, y, by = join_by(A, B))
 -   Use a logical statement, `by = join_by(col1 == col2)`, to match on columns that have different names in each table.
 
 ```{r}
+#| output: true
 left_join(x, y, by = join_by(C == D))
 ```
 
 -   Use `suffix` to specify the suffix to give to unmatched columns that have the same name in both tables.
 
 ```{r}
+#| output: true
 left_join(x, y, by = join_by(C == D), suffix = c("1", "2"))
 ```
 
