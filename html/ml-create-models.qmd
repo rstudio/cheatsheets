@@ -5,10 +5,10 @@ image-alt: ""
 execute:
   eval: true
   warning: false
+  output: false
 ---
 
-```{css}
-#| echo: false
+<style>
 .package-pills {
   display: flex;
   flex-wrap: wrap;
@@ -33,7 +33,7 @@ execute:
   font-size: 10px;
   margin-left: 3px;
 }
-```
+</style>
 
 ```{r}
 #| output: asis
@@ -41,7 +41,7 @@ execute:
 #| column: margin
 source("common.R")
 use_cheatsheet_logo(
-  "parsnip", 
+  "parsnip",
   alt = "Hex logo for recipes, drawing of a cartoon parsnip smiling."
 )
 sheet_name <- tools::file_path_sans_ext(knitr::current_input())
@@ -524,7 +524,7 @@ Estimates a multivariate distribution for the predictors separately for the data
 ```{r}
 library(tidymodels)
 
-lm_spec <- linear_reg() |> 
+lm_spec <- linear_reg() |>
   set_engine("lm")
 
 lm_spec
