@@ -98,10 +98,21 @@ Enable [pak](https://pak.r-lib.org) for faster, parallel installs with `options(
 
 Use these to save and reproduce the *state* of your project library:
 
-- `renv::status()`: Check whether your lockfile and library are in sync. Packages installed but not recorded call for `snapshot()`; packages recorded but not installed call for `restore()`.
+- `renv::status()`: Check whether your lockfile and library are in sync (see **Staying in Sync**).
 - `renv::snapshot()`: Save the state of your project library to the lockfile.
 - `renv::restore()`: Install the exact package versions recorded in the lockfile.
 - `renv::record()`: Record a specific package version in the lockfile without installing it.
+
+## Staying in Sync
+
+`renv::status()` reports when your project is out of sync, and how to fix it:
+
+- Packages installed or updated, but not recorded in the lockfile? Record them with `renv::snapshot()`.
+- Packages recorded in the lockfile, but not installed? Reinstall them with `renv::restore()`.
+- Packages used in your code, but not installed? Install them with `renv::install()`, then `renv::snapshot()`.
+- Pulled a collaborator's changes to `renv.lock`? Sync up with `renv::restore()`.
+
+When in doubt, treat the lockfile as the source of truth -- your project library can always be rebuilt from it with `renv::restore()`.
 
 ## Dependencies
 
