@@ -26,11 +26,11 @@ format:
     theme: [cosmo, html/css/style.scss]
     toc: true
     toc-location: left
-    highlight-style: a11y-dark
+    highlight-style: 
+      light: a11y-light
+      dark: a11y-dark
     css: html/css/cheatsheet.css
     mainfont: "Atkinson Hyperlegible"
-    
-editor: visual
 
 execute: 
   freeze: auto

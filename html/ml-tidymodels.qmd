@@ -1,0 +1,510 @@
+---
+title: "Machine learning with tidymodels :: Cheatsheet"
+description: " "
+image-alt: ""
+execute:
+  eval: true
+  warning: false
+---
+
+```{css}
+/*| echo: false */
+.pkg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+  margin: 10px 0 20px 0;
+}
+
+.pkg-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #212529;
+  text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.pkg-card:hover,
+.pkg-card:focus-visible {
+  border-color: #adb5bd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: #212529;
+}
+
+.pkg-card img {
+  width: 44px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.pkg-card .pkg-body {
+  display: block;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.pkg-card .pkg-name {
+  font-family: monospace;
+  font-weight: 700;
+  color: #212529;
+}
+
+.ml-diagram {
+  margin: 12px 0 20px 0;
+  color: var(--bs-body-color, #212529);
+}
+
+.ml-diagram svg {
+  width: 100%;
+  height: auto;
+  max-width: 760px;
+}
+
+.ml-diagram text {
+  font-family: inherit;
+  font-size: 19px;
+  fill: currentColor;
+}
+
+.ml-diagram rect {
+  fill: #ffffff;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.ml-diagram .conn {
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.tm-intro {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin: 10px 0 18px 0;
+}
+
+.tm-intro img {
+  width: 120px;
+  height: auto;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.tm-cols ul {
+  column-count: 2;
+  column-gap: 48px;
+  list-style: none;
+  padding-left: 0;
+  margin: 6px 0 18px 0;
+  max-width: 340px;
+}
+
+.tm-cols li {
+  padding: 3px 0;
+}
+```
+
+```{r}
+#| output: asis
+#| echo: false
+#| column: margin
+source("common.R")
+use_cheatsheet_logo(
+  "tidymodels",
+  alt = "Hex logo for tidymodels, a set of hexagons arranged like a honeycomb."
+)
+sheet_name <- tools::file_path_sans_ext(knitr::current_input())
+pdf_preview_link(sheet_name)
+translation_list(sheet_name)
+```
+
+```{r}
+#| echo: false
+# Render a grid of package cards. Each card is a link to the package's
+# pkgdown site (https://<pkg>.tidymodels.org), showing its hex logo
+# (if available locally under images/hex-<pkg>.png), its name, and a blurb.
+package_cards <- function(packages) {
+  # Emit as a raw HTML block so pandoc passes it through verbatim. If we used a
+  # markdown fenced div (::: {.pkg-grid}), pandoc would wrap the inline <a>
+  # cards in a <p>, leaving the grid with a single item and collapsing the gap.
+  cat('```{=html}\n')
+  cat('<div class="pkg-grid">\n')
+  for (pkg in packages) {
+    name <- pkg[[1]]
+    blurb <- pkg[[2]]
+    url <- sprintf("https://%s.tidymodels.org", name)
+    logo <- file.path("images", paste0("hex-", name, ".png"))
+    img <- if (file.exists(file.path("html", logo)) || file.exists(logo)) {
+      sprintf('<img src="%s" alt="Hex logo for %s" />', logo, name)
+    } else {
+      ""
+    }
+    cat(sprintf(
+      '<a class="pkg-card" href="%s">%s<span class="pkg-body"><span class="pkg-name">%s</span><br>%s</span></a>\n',
+      url, img, name, blurb
+    ))
+  }
+  cat('</div>\n')
+  cat('```\n')
+}
+```
+
+## Intro
+
+`tidymodels` is a collection of R packages for modeling and machine learning that share a common design and grammar. Unlike most cheatsheets, which cover the functions of a single package, this cheatsheet maps the packages themselves, grouping each by where it fits in the machine learning workflow.
+
+### The machine learning workflow
+
+::: {.ml-diagram}
+```{=html}
+<svg viewBox="0 0 900 320" role="img" aria-labelledby="ml-diagram-title ml-diagram-desc">
+  <title id="ml-diagram-title">The tidymodels machine learning workflow</title>
+  <desc id="ml-diagram-desc">A linear pipeline flows across the top: Resampling, then Pre-processing, Modeling, Post-processing, and Measuring. Beneath it, an Orchestrating band spans Pre-processing through Post-processing and feeds into Tuning on the right. Orchestrating also flows down into Deploy.</desc>
+  <defs>
+    <marker id="ml-arrow" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/>
+    </marker>
+  </defs>
+
+  <!-- Top pipeline -->
+  <rect x="35"  y="30" width="145" height="50" rx="6"/>
+  <rect x="206" y="30" width="145" height="50" rx="6"/>
+  <rect x="377" y="30" width="145" height="50" rx="6"/>
+  <rect x="548" y="30" width="145" height="50" rx="6"/>
+  <rect x="719" y="30" width="145" height="50" rx="6"/>
+  <text x="107.5" y="60" text-anchor="middle">Resampling</text>
+  <text x="278.5" y="60" text-anchor="middle">Pre-processing</text>
+  <text x="449.5" y="60" text-anchor="middle">Modeling</text>
+  <text x="620.5" y="60" text-anchor="middle">Post-processing</text>
+  <text x="791.5" y="60" text-anchor="middle">Measuring</text>
+
+  <!-- Top horizontal arrows -->
+  <line class="conn" x1="182" y1="55" x2="204" y2="55" marker-end="url(#ml-arrow)"/>
+  <line class="conn" x1="353" y1="55" x2="375" y2="55" marker-end="url(#ml-arrow)"/>
+  <line class="conn" x1="524" y1="55" x2="546" y2="55" marker-end="url(#ml-arrow)"/>
+  <line class="conn" x1="695" y1="55" x2="717" y2="55" marker-end="url(#ml-arrow)"/>
+
+  <!-- Down arrows into Orchestrating -->
+  <line class="conn" x1="278.5" y1="82" x2="278.5" y2="138" marker-end="url(#ml-arrow)"/>
+  <line class="conn" x1="449.5" y1="82" x2="449.5" y2="138" marker-end="url(#ml-arrow)"/>
+  <line class="conn" x1="620.5" y1="82" x2="620.5" y2="138" marker-end="url(#ml-arrow)"/>
+
+  <!-- Orchestrating band + Tuning -->
+  <rect x="206" y="140" width="487" height="50" rx="6"/>
+  <rect x="719" y="140" width="145" height="50" rx="6"/>
+  <text x="449.5" y="170" text-anchor="middle">Orchestrating</text>
+  <text x="791.5" y="170" text-anchor="middle">Tuning</text>
+  <line class="conn" x1="695" y1="165" x2="717" y2="165" marker-end="url(#ml-arrow)"/>
+
+  <!-- Deploy -->
+  <line class="conn" x1="449.5" y1="192" x2="449.5" y2="248" marker-end="url(#ml-arrow)"/>
+  <rect x="377" y="250" width="145" height="50" rx="6"/>
+  <text x="449.5" y="280" text-anchor="middle">Deploy</text>
+</svg>
+```
+:::
+
+## Resampling
+
+Split and resample data for honest evaluation.
+
+```{r}
+#| output: asis
+#| echo: false
+package_cards(list(
+  list("rsample", "Create and manage resampling sets such as cross-validation, bootstraps, and validation splits."),
+  list("spatialsample", "Resample spatial data while respecting geographic structure.")
+))
+```
+
+## Pre-processing
+
+Prepare data for modeling.
+
+```{r}
+#| output: asis
+#| echo: false
+package_cards(list(
+  list("recipes", "The preprocessing framework for building pipeable feature-engineering steps."),
+  list("embed", "Recipe steps that encode categorical predictors via target, likelihood, and entity embeddings."),
+  list("textrecipes", "Recipe steps that turn text into model-ready features."),
+  list("themis", "Recipe steps to rebalance class-imbalanced data with up-sampling, down-sampling, and SMOTE."),
+  list("filtro", "Filter-based supervised feature selection.")
+))
+```
+
+## Modeling
+
+Define and fit models through one consistent interface.
+
+### Classification & regression
+
+```{r}
+#| output: asis
+#| echo: false
+package_cards(list(
+  list("parsnip", "The core tidy interface every model plugs into, across many engines."),
+  list("bonsai", "Tree-based engines such as LightGBM and partykit."),
+  list("baguette", "Bagged ensembles of trees and MARS."),
+  list("rules", "Rule-based models such as Cubist, C5.0, and RuleFit."),
+  list("discrim", "Discriminant analysis and naive Bayes models.")
+))
+```
+
+### Specialized problems
+
+```{r}
+#| output: asis
+#| echo: false
+package_cards(list(
+  list("poissonreg", "Poisson and count-data regression."),
+  list("censored", "Survival models for time-to-event outcomes."),
+  list("multilevelmod", "Mixed-effects and hierarchical models."),
+  list("tidyclust", "Clustering models under a tidy interface."),
+  list("plsmod", "Partial least squares and other projection models."),
+  list("tabby", "Tabular deep-learning models; runs with brulee and tabpfn."),
+  list("agua", "Interface to h2o models and AutoML.")
+))
+```
+
+## Post-processing
+
+Adjust predictions.
+
+```{r}
+#| output: asis
+#| echo: false
+package_cards(list(
+  list("probably", "Tune classification thresholds and handle equivocal zones."),
+  list("tailor", "Post-process predictions through calibration and other sequential adjustments.")
+))
+```
+
+## Measuring
+
+Measure model quality.
+
+```{r}
+#| output: asis
+#| echo: false
+package_cards(list(
+  list("yardstick", "Measure model performance with tidy metrics."),
+  list("tidyposterior", "Compare models across resamples using Bayesian methods.")
+))
+```
+
+## Orchestrating
+
+Tie the pieces together.
+
+```{r}
+#| output: asis
+#| echo: false
+package_cards(list(
+  list("workflows", "Bundle preprocessing, model, and post-processing into one object."),
+  list("workflowsets", "Create and evaluate many workflows at once."),
+  list("stacks", "Build stacked ensembles from tuned models.")
+))
+```
+
+## Tuning
+
+Optimize hyperparameters.
+
+```{r}
+#| output: asis
+#| echo: false
+package_cards(list(
+  list("tune", "Run grid and iterative hyperparameter search."),
+  list("dials", "Define tuning parameters and build grids. Often called for you by tune."),
+  list("finetune", "Add search strategies such as racing and simulated annealing."),
+  list("important", "Measure predictor importance.")
+))
+```
+
+## Deploy
+
+Put models into production.
+
+### Prepare & serve
+
+```{r}
+#| output: asis
+#| echo: false
+package_cards(list(
+  list("vetiver", "Version, deploy, and monitor models in production."),
+  list("butcher", "Strip fitted models down to reduce object size."),
+  list("applicable", "Flag new samples that fall outside the training distribution.")
+))
+```
+
+### Run in a database
+
+```{r}
+#| output: asis
+#| echo: false
+package_cards(list(
+  list("tidypredict", "Generate SQL to score models inside a database."),
+  list("modeldb", "Fit models directly in a database."),
+  list("orbital", "Convert workflows into portable equations that can run in-database.")
+))
+```
+
+## Data
+
+Datasets used in documentation, tests, and teaching.
+
+```{r}
+#| output: asis
+#| echo: false
+package_cards(list(
+  list("modeldata", "Over 40 example datasets bundled for modeling."),
+  list("modeldatatoo", "Over half a dozen larger datasets downloaded on demand.")
+))
+```
+
+## Deep learning
+
+R packages that implement or wrap tabular deep-learning models.
+
+```{r}
+#| output: asis
+#| echo: false
+package_cards(list(
+  list("brulee", "Torch-based models, from MLPs to ResNet and SAINT."),
+  list("tabpfn", "A pretrained transformer that predicts tabular data with no training.")
+))
+```
+
+## Other
+
+### General
+
+```{r}
+#| output: asis
+#| echo: false
+package_cards(list(
+  list("broom", "Convert model objects into tidy tibbles."),
+  list("infer", "Run statistical inference and hypothesis tests."),
+  list("corrr", "Explore correlations in a data frame.")
+))
+```
+
+### Development
+
+```{r}
+#| output: asis
+#| echo: false
+package_cards(list(
+  list("hardhat", "Scaffold new modeling packages.")
+))
+```
+
+## The `tidymodels` package
+
+::: {.tm-intro}
+![](images/hex-tidymodels.png){fig-alt="Hex logo for tidymodels, a set of hexagons arranged like a honeycomb."}
+
+The `tidymodels` package installs and loads a set of packages that are considered important during day-to-day machine learning development.
+:::
+
+It loads the following packages from tidymodels:
+
+::: {.tm-cols}
+- `rsample`
+- `recipes`
+- `parsnip`
+- `yardstick`
+- `tailor`
+- `tune`
+- `dials`
+- `workflows`
+- `workflowsets`
+- `broom`
+- `infer`
+- `modeldata`
+:::
+
+It also loads the following packages from the tidyverse:
+
+::: {.tm-cols}
+- `dplyr`
+- `ggplot2`
+- `purrr`
+- `tidyr`
+:::
+
+## Example
+
+A complete workflow: split, engineer features, tune, finalize, and deploy.
+
+```{r}
+#| message: false
+library(tidymodels)
+
+# Split data and make CV folds
+set.seed(857)
+
+splits <- ames |>
+  initial_split(prop = 0.8)
+train <- training(splits)
+folds <- train |>
+  vfold_cv(v = 5)
+
+# Feature engineering in a recipe
+rec <- recipe(
+  Sale_Price ~ Gr_Liv_Area + Year_Built + Bldg_Type,
+  data = train
+) |>
+  step_log(Gr_Liv_Area, base = 10) |>
+  step_dummy(all_nominal_predictors()) |>
+  step_normalize(all_numeric_predictors())
+
+# Model with parameters to tune
+mod <- decision_tree(
+  cost_complexity = tune(),
+  tree_depth = tune()
+) |>
+  set_engine("rpart") |>
+  set_mode("regression")
+
+# Bundle into a workflow
+wf <- workflow() |>
+  add_recipe(rec) |>
+  add_model(mod)
+
+# Tune over the folds
+res <- wf |>
+  tune_grid(
+    resamples = folds,
+    grid = 10
+  )
+
+# Finalize best, refit, test once
+best <- res |>
+  select_best(metric = "rmse")
+final <- wf |>
+  finalize_workflow(best) |>
+  last_fit(splits)
+
+collect_metrics(final)
+
+# Deploy the fitted workflow
+library(vetiver)
+library(pins)
+
+v <- final |>
+  extract_workflow() |>
+  vetiver_model("ames_tree")
+
+board <- board_temp()
+vetiver_pin_write(board, v)
+```
