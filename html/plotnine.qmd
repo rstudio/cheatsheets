@@ -36,11 +36,12 @@ from plotnine import *
 from plotnine.data import *
 
 (
-    ggplot(data=data_frame)                  # required
-    + geom_function(                          # required
-        mapping=aes(**mappings),              # required
+    ggplot(data=data_frame)  # required
+    + geom_function(  # required
+        mapping=aes(**mappings),  # required
         stat=stat,
-        position=position)
+        position=position,
+    )
     + coord_function()
     + facet_function()
     + scale_function()
