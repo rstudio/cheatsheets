@@ -14,6 +14,7 @@ listing:
     - "ml-create-models.qmd"
     - "ml-preprocessing-data.qmd"
     - "package-development.qmd"
+    - "renv.qmd"
     - "positron.qmd"
     - "rstudio-ide.qmd"
     - "quarto.qmd"

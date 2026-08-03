@@ -18,7 +18,8 @@ use_cheatsheet_logo(
   alt = "Hex logo for renv with a leafy plant growing out of the soil and the roots visible below the soil."
 )
 sheet_name <- tools::file_path_sans_ext(knitr::current_input())
-pdf_preview_link(sheet_name)
+# TODO: re-enable once the PDF version (renv.pdf, pngs/renv.png) exists
+# pdf_preview_link(sheet_name)
 translation_list(sheet_name)
 ```
 
@@ -29,14 +30,23 @@ Deferred to the pkgdown website (https://rstudio.github.io/renv), likely too muc
 - renv::embed() / renv::use() (declare dependency versions inline in .R / .Rmd / .qmd files).
 
 Still to confirm / possible additions:
-- Git integration: renv::history() and renv::revert() for checking out older lockfiles.
 - renv::checkout() (install packages from a snapshot of Posit Package Manager).
 -->
 
-The **renv** package helps you create reproducible environments for your R projects, making them more isolated, portable, and reproducible.
+The **renv** package helps you create isolated, portable, and reproducible environments for your R projects.
 Use as little or as much of renv as you need -- if all you want is project isolation, then `renv::init()` is all you need. 
 All of the "regular" tools for R package management and installation continue to work with renv.
 renv works with typical R package repositories (CRAN, Posit Package Manager, R-universe) and common Git services (GitHub, GitLab, Bitbucket). 
+
+## Core Concepts
+
+- An R **library** is a directory of installed R packages. When you install a package (e.g. via `install.packages()`), it goes into the first writable library on your `.libPaths()`.
+
+- renv projects use an *isolated* **project library**. Installing or removing packages in one renv project does not affect other renv projects, or your default R library.
+
+- The **lockfile** (`renv.lock`) records the exact source and version of every package your project uses. `renv::snapshot()` writes it; `renv::restore()` reads it.
+
+- The global **package cache** is shared across all of your renv projects. Project libraries are populated with links into the cache, so creating a new project library is cheap, and installing a package you've used before is fast.
 
 ## The renv Workflow
 
@@ -59,13 +69,7 @@ Commit these files to version control so collaborators can reproduce your projec
 
 renv writes a `.gitignore` for you so the project library itself is not committed -- you share the lockfile, not the installed packages. When a collaborator opens the project, renv automatically prompts them to run `renv::restore()`.
 
-## Core Concepts
-
-- An R **library** is a directory of installed R packages. When you install a package (e.g. via `install.packages()`), it goes into the first writable library on your `.libPaths()`.
-
-- renv projects use an *isolated* **project library**. Installing or removing packages in one renv project does not affect other renv projects, or your default R library.
-
-- The **lockfile** (`renv.lock`) records the exact source and version of every package your project uses. `renv::snapshot()` writes it; `renv::restore()` reads it.
+The same workflow powers CI: [`r-lib/actions/setup-renv`](https://github.com/r-lib/actions/tree/v2-branch/setup-renv) restores your lockfile on GitHub Actions; see the [CI vignette](https://rstudio.github.io/renv/articles/ci.html) for other services.
 
 ## Getting Started
 
@@ -84,8 +88,8 @@ renv::init(settings = list(snapshot.type = "explicit"))
 
 Use these to change *which* packages (and versions) are in your project library:
 
-- `renv::install()`: Install one or more named packages. Supports custom remotes, e.g. `renv::install("rstudio/dplyr")` (GitHub) or a specific version with `renv::install("dplyr@1.1.0")`. Targets packages you name or declared in the project `DESCRIPTION` file.
-- `renv::update()`: Update *all* already-installed packages to their latest-available version compared to the source they were installed from.
+- `renv::install()`: Install one or more named packages. Supports custom remotes, e.g. `renv::install("tidyverse/dplyr")` (GitHub) or a specific version with `renv::install("dplyr@1.1.0")`. With no arguments, installs the packages your project requires.
+- `renv::update()`: Update packages (all by default, or those you name) to the latest version available from the source they were installed from.
 - `renv::remove()`: Remove packages from the project library.
 
 Enable [pak](https://pak.r-lib.org) for faster, parallel installs with `options(renv.config.pak.enabled = TRUE)`.
@@ -94,21 +98,23 @@ Enable [pak](https://pak.r-lib.org) for faster, parallel installs with `options(
 
 Use these to save and reproduce the *state* of your project library:
 
-- `renv::status()`: Check whether your lockfile and library are in sync.
+- `renv::status()`: Check whether your lockfile and library are in sync. Packages installed but not recorded call for `snapshot()`; packages recorded but not installed call for `restore()`.
 - `renv::snapshot()`: Save the state of your project library to the lockfile.
 - `renv::restore()`: Install the exact package versions recorded in the lockfile.
 - `renv::record()`: Record a specific package version in the lockfile without installing it.
 
 ## Dependencies
 
-`renv::dependencies()`: Discover packages used within R files within project.
-rmarkdown package is required in order to scan dependencies in R Markdown and Quarto files.
+`renv::dependencies()`: Discover the packages used in your project's R, R Markdown, and Quarto files.
+The rmarkdown package is required to scan dependencies in R Markdown and Quarto files.
 
-renv supports two **snapshot types**, set with `renv::settings$snapshot.type()`:
+Use a `.renvignore` file to exclude files or directories from dependency discovery, and `renv::settings$ignored.packages()` to keep development-only packages (e.g. devtools) out of the lockfile.
+
+renv supports several **snapshot types**, set with `renv::settings$snapshot.type()`. The two most common:
 
 | Type | What it captures |
 |-------------------|-----------------------------------------------------|
-| `"implicit"` (default) | Scans your R files for dependencies (e.g. `library(dplyr)`, `dplyr::mutate()`). |
+| `"implicit"` (default) | Scans your files with `renv::dependencies()` (e.g. `library(dplyr)`, `dplyr::mutate()`). |
 | `"explicit"` | Only packages listed in the project `DESCRIPTION` file, which you maintain. |
 
 ## Configuring renv
@@ -121,6 +127,7 @@ renv supports two **snapshot types**, set with `renv::settings$snapshot.type()`:
 
 - `renv::history()` / `renv::revert()`: View past lockfiles from version control, and roll back to an earlier one.
 - `renv::upgrade()`: Upgrade the version of renv used by the project.
+- `renv::repair()`: Fix a project library whose links into the global cache have broken (e.g. after moving or cleaning the cache).
 - `renv::purge()`: Remove packages from the global cache (e.g. to reclaim space or clear a broken install).
 - `renv::diagnostics()`: Print a diagnostics report; useful for bug reports at [github.com/rstudio/renv](https://github.com/rstudio/renv).
 
@@ -128,7 +135,7 @@ renv supports two **snapshot types**, set with `renv::settings$snapshot.type()`:
 
 renv reproduces R packages, not your whole environment. It does not manage:
 
-- Your R version -- use a tool like [rig](https://github.com/r-lib/rig) to install and switch R versions.
+- Your R version -- renv records it in the lockfile and warns on mismatch, but does not install it. Use a tool like [rig](https://github.com/r-lib/rig) to install and switch R versions.
 - Pandoc -- required to render R Markdown and Quarto documents.
 - System libraries, the OS, and compiler versions -- for full reproducibility, pair renv with Docker.
 
