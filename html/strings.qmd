@@ -14,8 +14,9 @@ execute:
 #| column: margin
 source("common.R")
 use_cheatsheet_logo(
-  "stringr", 
-  alt = "Hex logo for stringr - a green hexagon with a white violin in the centre, above the word 'stringr' in white.")
+  "stringr",
+  alt = "Hex logo for stringr - a green hexagon with a white violin in the centre, above the word 'stringr' in white."
+)
 sheet_name <- tools::file_path_sans_ext(knitr::current_input())
 pdf_preview_link(sheet_name)
 translation_list(sheet_name)
@@ -469,14 +470,18 @@ see <- function(rx) str_view("abc ABC 123\t.!?\\(){}\n", rx)
 
 `anchor <- function(rx) str_view("aaa", rx)`
 
-+--------------------------------------------------------------------------------------------------------------------------------------------+
-| regexp \| matches \| example \| example output\                                                                                            |
-| \| \| \| (highlighted characters are in \<\>)                                                                                              |
-+============================================================================================================================================+
-| `^a` \| start of string \| `anchor("^a")` \| `|                 |                | <a>aa             |                 |                |` |
-+--------------------------------------------------------------------------------------------------------------------------------------------+
-| `a$` \| end of string \| `anchor("a$")` \| `|                 |                | aa<a>             |                 |                |`   |
-+--------------------------------------------------------------------------------------------------------------------------------------------+
++-----------+-----------------+-------------------+--------------------------------------+
+| regexp    | matches         | example           | example output                       |
+|           |                 |                   | (highlighted characters are in \<\>) |
++===========+=================+===================+======================================+
+| `^a`      | start of string | `anchor("^a")`    | ```                                  |
+|           |                 |                   | <a>aa                                |
+|           |                 |                   | ```                                  |
++-----------+-----------------+-------------------+--------------------------------------+
+| `a$`      | end of string   | `anchor("a$")`    | ```                                  |
+|           |                 |                   | aa<a>                                |
+|           |                 |                   | ```                                  |
++-----------+-----------------+-------------------+--------------------------------------+
 
 : Anchors
 
