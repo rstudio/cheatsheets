@@ -44,7 +44,7 @@ The core reproducibility loop ties every function together:
 
 1.  `renv::init()` -- set up an isolated project library.
 2.  `renv::install()` / `renv::update()` -- add and update packages as you work.
-3.  `renv::snapshot()` -- record the exact package versions to the **lockfile** (`renv.lock`).
+3.  Confirm your code still works, then `renv::snapshot()` -- record the exact package versions to the **lockfile** (`renv.lock`).
 4.  Commit the project files to version control and share it (see **Collaboration** below).
 5.  A collaborator (or future you) runs `renv::restore()` to reinstall those exact versions.
 
@@ -57,7 +57,7 @@ Commit these files to version control so collaborators can reproduce your projec
 - `renv/activate.R` -- the activation script.
 - `renv/settings.json` -- project-level settings.
 
-When a collaborator opens the project, renv automatically prompts them to run `renv::restore()`.
+renv writes a `.gitignore` for you so the project library itself is not committed -- you share the lockfile, not the installed packages. When a collaborator opens the project, renv automatically prompts them to run `renv::restore()`.
 
 ## Core Concepts
 
