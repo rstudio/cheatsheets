@@ -686,7 +686,7 @@
       ],
       "Config/testthat/edition": "3",
       "Encoding": "UTF-8",
-      "Repository": "CRAN",
+      "Repository": "RSPM",
       "NeedsCompilation": "no",
       "Author": "Jeffrey Horner [aut, cph], Greg Hunt [aut, cre, cph]",
       "Maintainer": "Greg Hunt <greg@firmansyah.com>"
@@ -715,7 +715,7 @@
       "NeedsCompilation": "yes",
       "Author": "Jim Hester [aut] (<https://orcid.org/0000-0002-2739-7082>), Gábor Csárdi [aut, cre], Posit Software, PBC [cph, fnd]",
       "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "broom": {
       "Package": "broom",
@@ -966,7 +966,7 @@
       "NeedsCompilation": "no",
       "Author": "Gábor Csárdi [aut, cre, cph] (ORCID: <https://orcid.org/0000-0001-7098-9676>), Winston Chang [aut], Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>), Ascent Digital Services [cph, fnd]",
       "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "cellranger": {
       "Package": "cellranger",
@@ -1644,7 +1644,7 @@
       "NeedsCompilation": "no",
       "Author": "Hadley Wickham [aut], Jim Hester [aut], Winston Chang [aut], Jennifer Bryan [aut, cre] (ORCID: <https://orcid.org/0000-0002-6983-2759>), Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
       "Maintainer": "Jennifer Bryan <jenny@posit.co>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "diagram": {
       "Package": "diagram",
@@ -1781,7 +1781,7 @@
       "NeedsCompilation": "yes",
       "Author": "Dirk Eddelbuettel [aut, cre] (ORCID: <https://orcid.org/0000-0001-6419-907X>), Antoine Lucas [ctb] (ORCID: <https://orcid.org/0000-0002-8059-9767>), Jarek Tuszynski [ctb], Henrik Bengtsson [ctb] (ORCID: <https://orcid.org/0000-0002-7579-5165>), Simon Urbanek [ctb] (ORCID: <https://orcid.org/0000-0003-2297-1732>), Mario Frasca [ctb], Bryan Lewis [ctb], Murray Stokely [ctb], Hannes Muehleisen [ctb] (ORCID: <https://orcid.org/0000-0001-8552-0029>), Duncan Murdoch [ctb], Jim Hester [ctb] (ORCID: <https://orcid.org/0000-0002-2739-7082>), Wush Wu [ctb] (ORCID: <https://orcid.org/0000-0001-5180-0567>), Qiang Kou [ctb] (ORCID: <https://orcid.org/0000-0001-6786-5453>), Thierry Onkelinx [ctb] (ORCID: <https://orcid.org/0000-0001-8804-4216>), Michel Lang [ctb] (ORCID: <https://orcid.org/0000-0001-9754-0393>), Viliam Simko [ctb], Kurt Hornik [ctb] (ORCID: <https://orcid.org/0000-0003-4198-9911>), Radford Neal [ctb] (ORCID: <https://orcid.org/0000-0002-2473-3407>), Kendon Bell [ctb] (ORCID: <https://orcid.org/0000-0002-9093-8312>), Matthew de Queljoe [ctb], Dmitry Selivanov [ctb] (ORCID: <https://orcid.org/0000-0003-0492-6647>), Ion Suruceanu [ctb] (ORCID: <https://orcid.org/0009-0005-6446-4909>), Bill Denney [ctb] (ORCID: <https://orcid.org/0000-0002-5759-428X>), Dirk Schumacher [ctb], András Svraka [ctb] (ORCID: <https://orcid.org/0009-0008-8480-1329>), Sergey Fedorov [ctb] (ORCID: <https://orcid.org/0000-0002-5970-7233>), Will Landau [ctb] (ORCID: <https://orcid.org/0000-0003-1878-3253>), Floris Vanderhaeghe [ctb] (ORCID: <https://orcid.org/0000-0002-6378-6229>), Kevin Tappe [ctb], Harris McGehee [ctb], Tim Mastny [ctb], Aaron Peikert [ctb] (ORCID: <https://orcid.org/0000-0001-7813-818X>), Mark van der Loo [ctb] (ORCID: <https://orcid.org/0000-0002-9807-4686>), Chris Muir [ctb] (ORCID: <https://orcid.org/0000-0003-2555-3878>), Moritz Beller [ctb] (ORCID: <https://orcid.org/0000-0003-4852-0526>), Sebastian Campbell [ctb] (ORCID: <https://orcid.org/0009-0000-5948-4503>), Winston Chang [ctb] (ORCID: <https://orcid.org/0000-0002-1576-2126>), Dean Attali [ctb] (ORCID: <https://orcid.org/0000-0002-5645-3493>), Michael Chirico [ctb] (ORCID: <https://orcid.org/0000-0003-0787-087X>), Kevin Ushey [ctb] (ORCID: <https://orcid.org/0000-0003-2880-7407>), Carl Pearson [ctb] (ORCID: <https://orcid.org/0000-0003-0701-7860>)",
       "Maintainer": "Dirk Eddelbuettel <edd@debian.org>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "downlit": {
       "Package": "downlit",
@@ -1826,7 +1826,7 @@
       "NeedsCompilation": "no",
       "Author": "Hadley Wickham [aut, cre], Posit Software, PBC [cph, fnd]",
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "dplyr": {
       "Package": "dplyr",
@@ -1948,7 +1948,7 @@
       "NeedsCompilation": "no",
       "Author": "Hadley Wickham [aut, cre], RStudio [cph]",
       "Maintainer": "Hadley Wickham <hadley@rstudio.com>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "evaluate": {
       "Package": "evaluate",
@@ -2015,7 +2015,7 @@
       "NeedsCompilation": "yes",
       "Author": "Brodie Gaslam [aut, cre], Elliott Sales De Andrade [ctb], R Core Team [cph] (UTF8 byte length calcs from src/util.c), Michael Chirico [ctb] (ORCID: <https://orcid.org/0000-0003-0787-087X>), Unicode, Inc. [cph, dtc] (Unicode Character Database derivative data in src/width.c)",
       "Maintainer": "Brodie Gaslam <brodie.gaslam@yahoo.com>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "farver": {
       "Package": "farver",
@@ -2038,7 +2038,7 @@
       "NeedsCompilation": "yes",
       "Author": "Thomas Lin Pedersen [cre, aut] (<https://orcid.org/0000-0002-5147-4711>), Berendea Nicolae [aut] (Author of the ColorSpace C++ library), Romain François [aut] (<https://orcid.org/0000-0002-2444-4226>), Posit, PBC [cph, fnd]",
       "Maintainer": "Thomas Lin Pedersen <thomas.pedersen@posit.co>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "fastmap": {
       "Package": "fastmap",
@@ -2058,7 +2058,7 @@
       "NeedsCompilation": "yes",
       "Author": "Winston Chang [aut, cre], Posit Software, PBC [cph, fnd], Tessil [cph] (hopscotch_map library)",
       "Maintainer": "Winston Chang <winston@posit.co>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "fontawesome": {
       "Package": "fontawesome",
@@ -3427,7 +3427,7 @@
       "Encoding": "UTF-8",
       "NeedsCompilation": "yes",
       "Author": "Jeroen Ooms [aut, cre] (<https://orcid.org/0000-0002-4035-0289>), Duncan Temple Lang [ctb], Lloyd Hilaiel [cph] (author of bundled libyajl)",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "juicyjuice": {
       "Package": "juicyjuice",
@@ -4013,7 +4013,7 @@
       "NeedsCompilation": "yes",
       "Author": "Yihui Xie [aut, cre] (<https://orcid.org/0000-0003-0645-5666>, https://yihui.org), Jeffrey Horner [ctb], Beilei Bian [ctb]",
       "Maintainer": "Yihui Xie <xie@yihui.name>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "miniUI": {
       "Package": "miniUI",
@@ -4036,7 +4036,7 @@
       "NeedsCompilation": "no",
       "Author": "Joe Cheng [cre, aut], Posit Software, PBC [cph, fnd] (03wc8by49)",
       "Maintainer": "Joe Cheng <joe@posit.co>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "mixopt": {
       "Package": "mixopt",
@@ -4557,7 +4557,7 @@
       "NeedsCompilation": "no",
       "Author": "Hadley Wickham [aut], Jim Hester [aut], Gábor Csárdi [aut, cre], Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
       "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "pkgconfig": {
       "Package": "pkgconfig",
@@ -4701,7 +4701,7 @@
       "NeedsCompilation": "no",
       "Author": "Hadley Wickham [aut], Winston Chang [aut], Jim Hester [aut], Lionel Henry [aut, cre], Posit Software, PBC [cph, fnd], R Core team [ctb] (Some namespace and vignette code extracted from base R)",
       "Maintainer": "Lionel Henry <lionel@posit.co>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "plumber": {
       "Package": "plumber",
@@ -4932,7 +4932,7 @@
       "NeedsCompilation": "yes",
       "Author": "Hadley Wickham [aut, cre], Winston Chang [aut], Javier Luraschi [aut], Timothy Mastny [aut], Posit Software, PBC [cph, fnd], jQuery Foundation [cph] (jQuery library), jQuery contributors [ctb, cph] (jQuery library; authors listed in inst/htmlwidgets/lib/jquery/AUTHORS.txt), Mike Bostock [ctb, cph] (D3 library), D3 contributors [ctb] (D3 library), Ivan Sagalaev [ctb, cph] (highlight.js library)",
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "progress": {
       "Package": "progress",
@@ -5244,7 +5244,7 @@
       "NeedsCompilation": "yes",
       "Author": "Hadley Wickham [trl, cre, cph], Sridhar Ratnakumar [aut], Trent Mick [aut], ActiveState [cph] (R/appdir.r, R/cache.r, R/data.r, R/log.r translated from appdirs), Eddy Petrisor [ctb], Trevor Davis [trl, aut] (ORCID: <https://orcid.org/0000-0001-6341-4639>), Gabor Csardi [ctb], Gregory Jefferis [ctb], Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "rcmdcheck": {
       "Package": "rcmdcheck",
@@ -5288,7 +5288,7 @@
       "NeedsCompilation": "no",
       "Author": "Gábor Csárdi [cre, aut]",
       "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "reactR": {
       "Package": "reactR",
@@ -5801,7 +5801,7 @@
       "NeedsCompilation": "yes",
       "Author": "Hadley Wickham [aut, cre, cph] (ORCID: <https://orcid.org/0000-0003-4757-117X>), Peter Danenberg [aut, cph], Gábor Csárdi [aut], Manuel Eugster [aut, cph], Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "rpart": {
       "Package": "rpart",
@@ -5976,7 +5976,7 @@
       "NeedsCompilation": "no",
       "Author": "Gábor Csárdi [aut, cre], Jeroen Ooms [ctb], R Consortium [fnd], Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
       "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "s2": {
       "Package": "s2",
@@ -6577,7 +6577,7 @@
       "Author": "Marek Gagolewski [aut, cre, cph] (<https://orcid.org/0000-0003-0637-6028>), Bartek Tartanus [ctb], Unicode, Inc. and others [ctb] (ICU4C source code, Unicode Character Database)",
       "Maintainer": "Marek Gagolewski <marek@gagolewski.com>",
       "License_is_FOSS": "yes",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "stringr": {
       "Package": "stringr",
@@ -6852,7 +6852,7 @@
       "NeedsCompilation": "yes",
       "Author": "Hadley Wickham [aut, cre], Posit Software, PBC [cph, fnd], R Core team [ctb] (Implementation of utils::recover())",
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "textshaping": {
       "Package": "textshaping",
@@ -7191,7 +7191,7 @@
       "NeedsCompilation": "no",
       "Author": "Yihui Xie [aut, cre, cph] (ORCID: <https://orcid.org/0000-0003-0645-5666>), Posit Software, PBC [cph, fnd], Christophe Dervieux [ctb] (ORCID: <https://orcid.org/0000-0003-4474-2498>), Devon Ryan [ctb] (ORCID: <https://orcid.org/0000-0002-8549-0971>), Ethan Heinzen [ctb], Fernando Cagua [ctb]",
       "Maintainer": "Yihui Xie <xie@yihui.name>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "tune": {
       "Package": "tune",
@@ -7672,7 +7672,7 @@
       "NeedsCompilation": "no",
       "Author": "Hadley Wickham [aut, cre], Posit Software, PBC [cph, fnd]",
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "warp": {
       "Package": "warp",
@@ -7787,7 +7787,7 @@
       "NeedsCompilation": "no",
       "Author": "Jim Hester [aut], Lionel Henry [aut, cre], Kirill Müller [aut], Kevin Ushey [aut], Hadley Wickham [aut], Winston Chang [aut], Jennifer Bryan [ctb], Richard Cotton [ctb], Posit Software, PBC [cph, fnd]",
       "Maintainer": "Lionel Henry <lionel@posit.co>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "wk": {
       "Package": "wk",
@@ -8048,7 +8048,7 @@
       "NeedsCompilation": "no",
       "Author": "Gábor Csárdi [aut, cre], Fathi Boudra [aut], Rex Dieter [aut], Kevin Krammer [aut], Jeremy White [aut], Posit Software, PBC [cph, fnd]",
       "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "xtable": {
       "Package": "xtable",
@@ -8105,7 +8105,7 @@
       "NeedsCompilation": "yes",
       "Author": "Hadley Wickham [cre] (ORCID: <https://orcid.org/0000-0003-4757-117X>), Shawn Garbett [ctb] (ORCID: <https://orcid.org/0000-0003-4079-5621>), Jeremy Stephens [aut, ctb], Kirill Simonov [aut], Yihui Xie [ctb] (ORCID: <https://orcid.org/0000-0003-0645-5666>), Zhuoer Dong [ctb], Jeffrey Horner [ctb], reikoch [ctb], Will Beasley [ctb] (ORCID: <https://orcid.org/0000-0002-5613-5006>), Brendan O'Connor [ctb], Michael Quinn [ctb], Charlie Gao [ctb], Gregory R. Warnes [ctb], Zhian N. Kamvar [ctb]",
       "Maintainer": "Hadley Wickham <hadley@posit.co>",
-      "Repository": "CRAN"
+      "Repository": "RSPM"
     },
     "yardstick": {
       "Package": "yardstick",
