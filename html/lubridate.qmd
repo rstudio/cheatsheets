@@ -168,6 +168,10 @@ day(d) <- 1
 d
 ```
 
+```{r}
+dt <- as_datetime("2018-01-31 11:59:59")
+```
+
 -   `date(x)`: Date component.
 
     ```{r}
@@ -261,13 +265,13 @@ d
 -   `dst(x)`: Is it daylight savings?
 
     ```{r}
-    dst(d)
+    dst(dt)
     ```
 
 -   `leap_year(x)`: Is it a leap year?
 
     ```{r}
-    leap_year(d)
+    leap_year(dt)
     ```
 
 -   `update(object, ..., simple = FALSE)`
