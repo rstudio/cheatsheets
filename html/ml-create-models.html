@@ -216,8 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="cell">
-<style type="text/css">
+<style>
 .package-pills {
   display: flex;
   flex-wrap: wrap;
@@ -243,7 +242,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   margin-left: 3px;
 }
 </style>
-</div>
 
 <div class="no-row-height column-margin column-container"><div class="cell">
 <img src="images/logo-parsnip.png" height="138" alt="Hex logo for recipes, drawing of a cartoon parsnip smiling."> <br><br><a href="../ml-create-models.pdf">
@@ -266,38 +264,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rand_forest</span>(<span class="at">mtry =</span> <span class="dv">10</span>, <span class="at">trees =</span> <span class="dv">2000</span>) <span class="sc">|&gt;</span> <span class="co"># Define type of model</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"ranger"</span>, <span class="at">importance =</span> <span class="st">"impurity"</span>) <span class="sc">|&gt;</span> <span class="co"># Select an engine</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_mode</span>(<span class="st">"regression"</span>) <span class="co"># Set the mode</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Random Forest Model Specification (regression)
-
-Main Arguments:
-  mtry = 10
-  trees = 2000
-
-Engine-Specific Arguments:
-  importance = impurity
-
-Computational engine: ranger </code></pre>
-</div>
 </div>
 <p><code>set_engine(object, engine, ...)</code> - Specifies which package or system will be used to fit the model, along with any arguments specific to that software.</p>
 <p><code>set_args(object, ...)</code> - Modifies the arguments of a model specification</p>
 <p><code>set_mode(object, mode, …)</code> - Changes the model’s mode.</p>
 <p><code>show_engines(x)</code> - The possible engines for a model can depend on what packages are loaded. Some parsnip extension add engines to existing models.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_engines</span>(<span class="st">"linear_reg"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 2
-  engine   mode               
-  &lt;chr&gt;    &lt;chr&gt;              
-1 lm       regression         
-2 glm      regression         
-3 glmnet   regression         
-4 stan     regression         
-5 spark    regression         
-6 keras    regression         
-7 brulee   regression         
-8 quantreg quantile regression</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_engines</span>(<span class="st">"linear_reg"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="legends" class="level2">
@@ -495,59 +468,25 @@ Computational engine: ranger </code></pre>
 <section id="operations" class="level2">
 <h2 class="anchored" data-anchor-id="operations">Operations</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>lm_spec <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>lm_spec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Linear Regression Model Specification (regression)
-
-Computational engine: lm </code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>lm_spec <span class="ot">&lt;-</span> <span class="fu">linear_reg</span>() <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_engine</span>(<span class="st">"lm"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>lm_spec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="methods" class="level3">
 <h3 class="anchored" data-anchor-id="methods">Methods</h3>
 <ul>
 <li><p><code>fit(object, ...)</code> - Estimates parameters for a given model from a set of data.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lm_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(lm_spec, mpg <span class="sc">~</span> ., <span class="at">data =</span> mtcars)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>lm_fit</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>parsnip model object
-
-
-Call:
-stats::lm(formula = mpg ~ ., data = data)
-
-Coefficients:
-(Intercept)          cyl         disp           hp         drat           wt  
-   12.30337     -0.11144      0.01334     -0.02148      0.78711     -3.71530  
-       qsec           vs           am         gear         carb  
-    0.82104      0.31776      2.52023      0.65541     -0.19942  </code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lm_fit <span class="ot">&lt;-</span> <span class="fu">fit</span>(lm_spec, mpg <span class="sc">~</span> ., <span class="at">data =</span> mtcars)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>lm_fit</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 <li><p><code>predict(object, ...)</code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(lm_fit, mtcars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 32 × 1
-   .pred
-   &lt;dbl&gt;
- 1  22.6
- 2  22.1
- 3  26.3
- 4  21.2
- 5  17.7
- 6  20.4
- 7  14.4
- 8  22.5
- 9  24.4
-10  18.7
-# ℹ 22 more rows</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(lm_fit, mtcars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 <li><p><code>autoplot(object, ...)</code> - Uses ggplot2 to draw a particular plot for an object of a particular class</p></li>
 <li><p><code>update(object, ...)</code> - Updates and (by default) re-fit a model. It does this by extracting the call stored in the object, updating the call and evaluating that call.</p></li>
@@ -558,55 +497,15 @@ Coefficients:
 <ul>
 <li><p><code>augment(x, ...)</code> - Augment data with model results</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(lm_fit, mtcars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 32 × 13
-   .pred  .resid   mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear
-   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
- 1  22.6 -1.60    21       6  160    110  3.9   2.62  16.5     0     1     4
- 2  22.1 -1.11    21       6  160    110  3.9   2.88  17.0     0     1     4
- 3  26.3 -3.45    22.8     4  108     93  3.85  2.32  18.6     1     1     4
- 4  21.2  0.163   21.4     6  258    110  3.08  3.22  19.4     1     0     3
- 5  17.7  1.01    18.7     8  360    175  3.15  3.44  17.0     0     0     3
- 6  20.4 -2.28    18.1     6  225    105  2.76  3.46  20.2     1     0     3
- 7  14.4 -0.0863  14.3     8  360    245  3.21  3.57  15.8     0     0     3
- 8  22.5  1.90    24.4     4  147.    62  3.69  3.19  20       1     0     4
- 9  24.4 -1.62    22.8     4  141.    95  3.92  3.15  22.9     1     0     4
-10  18.7  0.501   19.2     6  168.   123  3.92  3.44  18.3     1     0     4
-# ℹ 22 more rows
-# ℹ 1 more variable: carb &lt;dbl&gt;</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">augment</span>(lm_fit, mtcars)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 <li><p><code>glance(x, ...)</code> - Construct a single row summary “glance” of a model fit</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(lm_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 12
-  r.squared adj.r.squared sigma statistic     p.value    df logLik   AIC   BIC
-      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1     0.869         0.807  2.65      13.9 0.000000379    10  -69.9  164.  181.
-# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(lm_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 <li><p><code>tidy(x, ...)</code> - Turn an object into a tidy tibble</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lm_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 11 × 5
-   term        estimate std.error statistic p.value
-   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
- 1 (Intercept)  12.3      18.7        0.657  0.518 
- 2 cyl          -0.111     1.05      -0.107  0.916 
- 3 disp          0.0133    0.0179     0.747  0.463 
- 4 hp           -0.0215    0.0218    -0.987  0.335 
- 5 drat          0.787     1.64       0.481  0.635 
- 6 wt           -3.72      1.89      -1.96   0.0633
- 7 qsec          0.821     0.731      1.12   0.274 
- 8 vs            0.318     2.10       0.151  0.881 
- 9 am            2.52      2.06       1.23   0.234 
-10 gear          0.655     1.49       0.439  0.665 
-11 carb         -0.199     0.829     -0.241  0.812 </code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(lm_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ul>
 </section>
@@ -616,40 +515,15 @@ Coefficients:
 <li><p><code>repair_call(x, data)</code> - When the user passes a formula to fit() and the underlying model function uses a formula, the call object produced by fit() may not be usable by other functions.</p></li>
 <li><p><code>control_parsnip(verbosity = 1L, catch = FALSE)</code> - Pass options to the fit.model_spec() function to control its output and computations.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">control_parsnip</span>(<span class="at">verbosity =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>parsnip control object
- - verbose level 2 </code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">control_parsnip</span>(<span class="at">verbosity =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 <li><p><code>show_engines(x)</code> - The possible engines for a model can depend on what packages are loaded. Some parsnip extension add engines to existing models.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_engines</span>(<span class="st">"linear_reg"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 2
-  engine   mode               
-  &lt;chr&gt;    &lt;chr&gt;              
-1 lm       regression         
-2 glm      regression         
-3 glmnet   regression         
-4 stan     regression         
-5 spark    regression         
-6 keras    regression         
-7 brulee   regression         
-8 quantreg quantile regression</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">show_engines</span>(<span class="st">"linear_reg"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 <li><p><code>translate(x, ...)</code> - Translates a model specification into a code object that is specific to a particular engine (e.g.&nbsp;R package). It translates generic parameters to their counterparts.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">translate</span>(lm_spec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Linear Regression Model Specification (regression)
-
-Computational engine: lm 
-
-Model fit template:
-stats::lm(formula = missing_arg(), data = missing_arg(), weights = missing_arg())</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">translate</span>(lm_spec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 <li><p><code>multi_predict(object, ...)</code> - For some models, predictions can be made on sub-models in the model object.</p></li>
 </ul>
@@ -659,30 +533,11 @@ stats::lm(formula = missing_arg(), data = missing_arg(), weights = missing_arg()
 <ul>
 <li><p><code>extract_spec_parsnip(x, ...)</code> - Returns a parsnip model specification.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">extract_spec_parsnip</span>(lm_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Linear Regression Model Specification (regression)
-
-Computational engine: lm 
-
-Model fit template:
-stats::lm(formula = missing_arg(), data = missing_arg(), weights = missing_arg())</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">extract_spec_parsnip</span>(lm_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 <li><p><code>extract_fit_engine(x, ...)</code> - Returns the engine specific fit embedded within a parsnip model fit. For example, when using linear_reg() with the “lm” engine, this returns the underlying lm object.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">extract_fit_engine</span>(lm_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-stats::lm(formula = mpg ~ ., data = data)
-
-Coefficients:
-(Intercept)          cyl         disp           hp         drat           wt  
-   12.30337     -0.11144      0.01334     -0.02148      0.78711     -3.71530  
-       qsec           vs           am         gear         carb  
-    0.82104      0.31776      2.52023      0.65541     -0.19942  </code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">extract_fit_engine</span>(lm_fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 <li><p><code>extract_parameter_dials(x, parameter, ...)</code> - Returns a single dials parameter object.</p></li>
 <li><p><code>extract_parameter_set_dials(x, ...)</code> - Returns a set of dials parameter objects.</p></li>

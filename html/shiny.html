@@ -166,26 +166,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#building-an-app" id="toc-building-an-app" class="nav-link active" data-scroll-target="#building-an-app">Building an App</a></li>
+  <li><a href="#build-an-app" id="toc-build-an-app" class="nav-link active" data-scroll-target="#build-an-app">Build an App</a></li>
   <li><a href="#share" id="toc-share" class="nav-link" data-scroll-target="#share">Share</a></li>
+  <li><a href="#shinylive" id="toc-shinylive" class="nav-link" data-scroll-target="#shinylive">Shinylive</a></li>
   <li><a href="#outputs" id="toc-outputs" class="nav-link" data-scroll-target="#outputs">Outputs</a></li>
   <li><a href="#inputs" id="toc-inputs" class="nav-link" data-scroll-target="#inputs">Inputs</a></li>
   <li><a href="#reactivity" id="toc-reactivity" class="nav-link" data-scroll-target="#reactivity">Reactivity</a>
   <ul class="collapse">
-  <li><a href="#create-your-own-reactive-values" id="toc-create-your-own-reactive-values" class="nav-link" data-scroll-target="#create-your-own-reactive-values">Create Your own Reactive Values</a></li>
+  <li><a href="#create-reactive-values" id="toc-create-reactive-values" class="nav-link" data-scroll-target="#create-reactive-values">Create Reactive Values</a></li>
   <li><a href="#create-reactive-expressions" id="toc-create-reactive-expressions" class="nav-link" data-scroll-target="#create-reactive-expressions">Create Reactive Expressions</a></li>
   <li><a href="#react-based-on-event" id="toc-react-based-on-event" class="nav-link" data-scroll-target="#react-based-on-event">React Based on Event</a></li>
   <li><a href="#render-reactive-output" id="toc-render-reactive-output" class="nav-link" data-scroll-target="#render-reactive-output">Render Reactive Output</a></li>
   <li><a href="#perform-side-effects" id="toc-perform-side-effects" class="nav-link" data-scroll-target="#perform-side-effects">Perform Side Effects</a></li>
-  <li><a href="#remove-reactivity" id="toc-remove-reactivity" class="nav-link" data-scroll-target="#remove-reactivity">Remove Reactivity</a></li>
+  <li><a href="#remove-reactive-dependencies" id="toc-remove-reactive-dependencies" class="nav-link" data-scroll-target="#remove-reactive-dependencies">Remove Reactive Dependencies</a></li>
   </ul></li>
-  <li><a href="#ui" id="toc-ui" class="nav-link" data-scroll-target="#ui">UI</a></li>
-  <li><a href="#layouts" id="toc-layouts" class="nav-link" data-scroll-target="#layouts">Layouts</a>
+  <li><a href="#user-interfaces-ui" id="toc-user-interfaces-ui" class="nav-link" data-scroll-target="#user-interfaces-ui">User Interfaces (UI)</a>
   <ul class="collapse">
   <li><a href="#page-layouts" id="toc-page-layouts" class="nav-link" data-scroll-target="#page-layouts">Page layouts</a></li>
-  <li><a href="#user-interface-layouts" id="toc-user-interface-layouts" class="nav-link" data-scroll-target="#user-interface-layouts">User interface layouts</a></li>
+  <li><a href="#ui-layouts" id="toc-ui-layouts" class="nav-link" data-scroll-target="#ui-layouts">UI layouts</a></li>
+  <li><a href="#cards" id="toc-cards" class="nav-link" data-scroll-target="#cards">Cards</a></li>
+  <li><a href="#accordions" id="toc-accordions" class="nav-link" data-scroll-target="#accordions">Accordions</a></li>
+  <li><a href="#tooltips" id="toc-tooltips" class="nav-link" data-scroll-target="#tooltips">Tooltips</a></li>
+  <li><a href="#value-boxes" id="toc-value-boxes" class="nav-link" data-scroll-target="#value-boxes">Value boxes</a></li>
   </ul></li>
   <li><a href="#themes" id="toc-themes" class="nav-link" data-scroll-target="#themes">Themes</a></li>
+  <li><a href="#custom-ui" id="toc-custom-ui" class="nav-link" data-scroll-target="#custom-ui">Custom UI</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/rstudio/cheatsheets/edit/main/html/shiny.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/rstudio/cheatsheets/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
 </nav>
@@ -233,72 +238,90 @@ Translations (PDF)
 <li><a href="../translations/turkish/shiny_tr.pdf"><i class="bi bi-file-pdf"></i>Turkish</a></li>
 <li><a href="../translations/vietnamese/shiny_vi.pdf"><i class="bi bi-file-pdf"></i>Vietnamese</a></li>
 </ul>
-</div></div><section id="building-an-app" class="level2">
-<h2 class="anchored" data-anchor-id="building-an-app">Building an App</h2>
+</div></div><section id="build-an-app" class="level2">
+<h2 class="anchored" data-anchor-id="build-an-app">Build an App</h2>
 <p>A <strong>Shiny</strong> app is a web page (<code>ui</code>) connected to a computer running a live R session (<code>server</code>).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Users can manipulate the UI, which will cause the server to update the UI’s display (by running R code).</p>
-<p>Save your template as <code>app.R</code>. Keep your app in a directory along with optional extra files.</p>
+<p>Users can manipulate the UI, which will cause the server to update the UI’s displays (by running R code).</p>
 <ul>
-<li><strong>app-name:</strong> The directory name is the app name</li>
-<li><strong>app.R</strong></li>
-<li>DESCRIPTION and README: (optional) used in showcase mode</li>
-<li>R/: (optional) directory of supplemental .R files that are sourced automatically, must be named <code>R</code></li>
-<li>www/: (optional) directory of files to share with web browsers (images, CSS, .js, etc.), must be named <code>www</code></li>
+<li>The <strong>UI</strong> is a collection of input, output, and layout elements.</li>
+<li>The <strong>server</strong> determines how to render outputs given inputs.</li>
+<li>An <strong>app</strong> is a combination of UI and server.</li>
 </ul>
-<p>Launch apps stored in a directory with <code>runApp(&lt;path to directory&gt;)</code>.</p>
-<p>To generate the template, type <code>shinyApp</code> and press <code>Tab</code> in the RStudio IDE or go to <strong>File &gt; New Project &gt; New Directory &gt; Shiny Application</strong>.</p>
+<p>Create <code>*Input()</code> UI elements and read them with <code>input$&lt;id&gt;</code>. Match <code>*Output()</code> elements with <code>render*()</code> functions.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># app.R</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#In ui nest R functions to build an HTML interface</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">numericInput</span>(<span class="at">inputId =</span> <span class="st">"n"</span>, <span class="st">"Sample size"</span>, <span class="at">value =</span> <span class="dv">25</span>),</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotOutput</span>(<span class="at">outputId =</span> <span class="st">"hist"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Customize the UI with Layout Functions</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Add Inputs with *Input() functions</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Add Outputs with *Output() functions</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Tell the server how to render outputs and respond to inputs with R</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output, session) {</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>hist <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">hist</span>(<span class="fu">rnorm</span>(input<span class="sc">$</span>n))</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrap code in render*() functions before saving to output</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Refer to UI inputs with input$&lt;id&gt; and outputs with output$&lt;id&gt;</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Call shinyApp() to combine ui and server into an interactive app!</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">page_fluid</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sliderInput</span>(<span class="st">"n"</span>, <span class="st">"Sample size"</span>, <span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">25</span>),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotOutput</span>(<span class="st">"hist"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>hist <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">hist</span>(<span class="fu">rnorm</span>(input<span class="sc">$</span>n))</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>See annotated examples of Shiny apps by running <code>runExample(&lt;example name&gt;)</code>. Run <code>runExample()</code> with no arguments for a list of example names.</p>
+<p>Save <code>shinyApp()</code> to <code>app.R</code>. Keep your app in a directory along with optional supporting code, images, etc.</p>
+<ul>
+<li><strong>app-name:</strong> The directory name is the app name</li>
+<li><strong>app.R</strong></li>
+<li>R/: (optional) directory of supplemental .R files that are sourced automatically</li>
+<li>www/: (optional) directory of files to share with web browsers (images, CSS, .js, etc.)</li>
+</ul>
+<p>Launch an <code>app.R</code> with <code>runApp("path/to/app-name")</code>.</p>
+<p>Get inspiration and examples from <a href="https://shiny.posit.co/r/gallery">shiny.posit.co/r/gallery</a>, <a href="https://shinylive.io/r/examples/">shinylive.io/r/examples</a>, or by running <code>runExample()</code> in the R console.</p>
+<p>Build with AI assistance at <a href="https://gallery.shinyapps.io/assistant">gallery.shinyapps.io/assistant</a>.</p>
 </section>
 <section id="share" class="level2">
 <h2 class="anchored" data-anchor-id="share">Share</h2>
-<p>Share your app in three ways:</p>
+<p>Share your app in four ways:</p>
 <ol type="1">
 <li><p>Host it on <a href="https://connect.posit.cloud/">Posit Connect Cloud</a>, a cloud based service from Posit. To deploy Shiny apps:</p>
 <ul>
 <li>Create a free or professional account at <a href="https://connect.posit.cloud/">connect.posit.cloud</a></li>
 <li>Publish from RStudio, GitHub, or from VS Code or Positron using the <a href="https://marketplace.visualstudio.com/items?itemName=Posit.publisher">Posit Publisher extension</a></li>
 </ul></li>
-<li><p>Purchase Posit Connect, a publishing platform for R and Python. <a href="https://posit.co/products/enterprise/connect/">posit.co/products/enterprise/connect/</a></p></li>
-<li><p>Build your own Shiny Server. <a href="https://posit.co/products/open-source/shiny-server/">posit.co/products/open-source/shinyserver/</a></p></li>
+<li><p>Purchase Posit Connect, a publishing platform for R and Python. <a href="https://posit.co/products/enterprise/connect/">posit.co/connect</a></p></li>
+<li><p>Host your own Shiny Server. <a href="https://posit.co/products/open-source/shiny-server/">posit.co/products/open-source/shinyserver</a></p></li>
+<li><p>Export to Shinylive, a technology for running apps entirely in the browser. <a href="https://posit-dev.github.io/r-shinylive/">posit-dev.github.io/r-shinylive</a></p></li>
 </ol>
+</section>
+<section id="shinylive" class="level2">
+<h2 class="anchored" data-anchor-id="shinylive">Shinylive</h2>
+<p>Shinylive apps use WebAssembly to run entirely in a browser—no need for a server to run R.</p>
+<ul>
+<li>Edit and/or host apps at <a href="https://shinylive.io/r">shinylive.io/r</a>.</li>
+<li>Export an app to Shinylive with <code>shinylive::export("app-name", "site")</code>. Then deploy to a hosting site like Github or Netlify.</li>
+<li>Embed Shinylive apps in Quarto sites, blogs, etc.</li>
+</ul>
+<p>To embed a Shinylive app in a Quarto doc, include the below syntax.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">filters:</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">- shinylive</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>An embedded Shinylive app:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{shinylive-r}</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#| standalone: true</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># [App.py code here...]</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="outputs" class="level2">
 <h2 class="anchored" data-anchor-id="outputs">Outputs</h2>
-<p><code>render*()</code> and <code>*Output()</code> functions work together to add R output to the UI.</p>
+<p>Reactively render R output. Match a <code>render*()</code> function to its corresponding <code>*Output()</code> function.</p>
 <table class="caption-top table">
 <caption>Table of render*() functions and their associated *Output() functions.</caption>
 <colgroup>
-<col style="width: 62%">
-<col style="width: 37%">
+<col style="width: 48%">
+<col style="width: 51%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -308,57 +331,63 @@ Translations (PDF)
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>DT::renderDataTable(expr, options, searchDelay, callback, escape, env, quoted, outputArgs)</code></td>
-<td><code>dataTableOutput(outputId)</code></td>
+<td><code>renderPlot(expr, …)</code></td>
+<td><code>plotOutput(id, width, height, …)</code></td>
 </tr>
 <tr class="even">
-<td><code>renderImage(expr, env, quoted, deleteFile, outputArgs)</code></td>
-<td><code>imageOutput(outputId, width, height, click, dblclick, hover, brush, inline)</code></td>
+<td><code>renderTable(expr, striped, …)</code></td>
+<td><code>tableOutput(id, …)</code></td>
 </tr>
 <tr class="odd">
-<td><code>renderPlot(expr, width, height, res, …, alt, env, quoted, execOnResixe, outputArgs</code></td>
-<td><code>plotOutput(outputId, width, height, click, dblclick, hover, brush, inline)</code></td>
+<td><code>renderPrint(expr, …)</code></td>
+<td><code>verbatimTextOutput(id, …)</code></td>
 </tr>
 <tr class="even">
-<td><code>renderPrint(expr, env, quoted, width, outputArgs)</code></td>
-<td><code>verbatimTextOutput(outputId, placeholder)</code></td>
+<td><code>renderText(expr, …)</code></td>
+<td><code>textOutput(id, …)</code></td>
 </tr>
 <tr class="odd">
-<td><code>renderTable(expr, striped, hover, bordered, spacing, width, align, rownames, colnames, digits, na, …, env, quoted, outputArgs)</code></td>
-<td><code>tableOutput(outputId)</code></td>
+<td><code>renderUI(expr, …)</code></td>
+<td><code>uiOutput(id, …)</code></td>
 </tr>
 <tr class="even">
-<td><code>renderText(expr, env, quoted, outputArgs, sep)</code></td>
-<td><code>textOutput(outputId, container, inline)</code></td>
-</tr>
-<tr class="odd">
-<td><code>renderUI(expr, env, quoted, outputArgs)</code></td>
-<td><code>uiOutput(outputId, inline, container, …)</code><br>
-<code>htmlOutput(outputId, inline, container, …)</code></td>
+<td><code>renderImage(expr, …)</code></td>
+<td><code>imageOutput(id, …)</code></td>
 </tr>
 </tbody>
 </table>
-<p>These are the core output types. See <a href="https://www.htmlwidgets.org/">htmlwidgets.org</a> for many more options.</p>
+<p>See the output gallery at <a href="https://shiny.posit.co/r/components/">shiny.posit.co/r/components</a>.</p>
+<p>More from the <a href="https://www.htmlwidgets.org/">htmlwidgets.org</a> ecosystem:</p>
+<ul>
+<li><code>renderLeaflet(expr, …)</code> with <code>leafletOutput(id, …)</code></li>
+<li><code>renderPlotly(expr, …)</code> with <code>plotlyOutput(id, …)</code></li>
+</ul>
 </section>
 <section id="inputs" class="level2">
 <h2 class="anchored" data-anchor-id="inputs">Inputs</h2>
 <p>Collect values from the user.</p>
-<p>Access the current value of an input object with <code>input$&lt;inputId&gt;</code>. Input values are <strong>reactive</strong>.</p>
+<p>Access the current value of an input object with <code>input$&lt;id&gt;</code>. Input values are <strong>reactive</strong>.</p>
 <ul>
-<li><p><code>actionButton(inputId, label, icon, width, ...)</code></p></li>
-<li><p><code>actionLink(inputId, label, icon, ...)</code></p></li>
-<li><p><code>checkboxGroupInput(inputId, label, choices, selected, inline, width, choiceNames, choiceValues)</code></p></li>
-<li><p><code>checkboxInput(inputId, label, value, width)</code></p></li>
-<li><p><code>dateInput(inputId, label, value, min, max, format, startview, weekstart, language, width, autoclose, datesdisabled, daysofweekdisabled)</code></p></li>
-<li><p><code>dateRangeInput(inputId, label, start, end, min, max, format, startview, weekstart, language, separator, width, autoclose)</code></p></li>
-<li><p><code>fileInput(inputId, label, multiple, accept, width, buttonLabel, placeholder)</code></p></li>
-<li><p><code>numericInput(inputId, label, value, min, max, step, width)</code></p></li>
-<li><p><code>passwordInput(inputId, label, value, width, placeholder)</code></p></li>
-<li><p><code>radioButtons(inputId, label, choices, selected, inline, width, choiceNames, choiceValues)</code></p></li>
-<li><p><code>selectInput(inputId, label, choices, selected, multiple, selectize, width, size)</code>: Also <code>selectizeInput()</code></p></li>
-<li><p><code>sliderInput(inputId, label, min, max, value, step, round, format, locale, ticks, animate, width, sep, pre, post, timeFormat, timezone, dragRange)</code></p></li>
-<li><p><code>textInput(inputId, label, value, width, placeholder)</code>: Also <code>textAreaInput()</code></p></li>
+<li><p><code>actionButton(id, label, ...)</code></p></li>
+<li><p><code>actionLink(id, label, ...)</code></p></li>
+<li><p><code>checkboxGroupInput(id, label, choices, selected, ...)</code></p></li>
+<li><p><code>checkboxInput(id, label, value, ...)</code></p></li>
+<li><p><code>dateInput(id, label, value, ...)</code></p></li>
+<li><p><code>dateRangeInput(id, label, start, end, ...)</code></p></li>
+<li><p><code>fileInput(id, label, ...)</code></p></li>
+<li><p><code>numericInput(id, label, value, ...)</code></p></li>
+<li><p><code>radioButtons(id, label, choices, selected, ...)</code></p></li>
+<li><p><code>selectInput(id, label, choices, selected, multiple, ...)</code>. Also <code>selectizeInput()</code></p></li>
+<li><p><code>sliderInput(id, label, min, max, value, ...)</code></p></li>
+<li><p><code>textInput(id, label, value, ...)</code>. Also <code>textAreaInput()</code></p></li>
 </ul>
+<p>More from the <strong>bslib</strong> package:</p>
+<ul>
+<li><p><code>input_dark_mode(id, mode)</code></p></li>
+<li><p><code>input_switch(id, label, value, ...)</code></p></li>
+<li><p><code>input_task_button(id, label, value, ...)</code></p></li>
+</ul>
+<p>See the input gallery at <a href="https://shiny.posit.co/r/components/">shiny.posit.co/r/components</a>.</p>
 <!-- page 2 -->
 </section>
 <section id="reactivity" class="level2">
@@ -419,302 +448,285 @@ Translations (PDF)
 </section>
 </div>
 </div>
-<section id="create-your-own-reactive-values" class="level3">
-<h3 class="anchored" data-anchor-id="create-your-own-reactive-values">Create Your own Reactive Values</h3>
+<section id="create-reactive-values" class="level3">
+<h3 class="anchored" data-anchor-id="create-reactive-values">Create Reactive Values</h3>
 <ul>
-<li><p><code>*Input()</code> functions: Each input function creates a reactive value stored as <code>input$&lt;inputId&gt;</code>.</p>
+<li><p><code>*Input()</code> functions: Create a reactive value <code>input$&lt;id&gt;</code> from user input.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># *Input() example</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">"a"</span>,<span class="st">""</span>,<span class="st">"A"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">page_fluid</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">"a"</span>, <span class="st">""</span>, <span class="st">"A"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
-<li><p><code>reactiveVal():</code> Creates a single reactive values object.</p>
-<p><code>reactiveValues(...)</code>: Creates a list of reactive values whose values you can set.</p>
+<li><p><code>reactiveVal(value)</code>: Create a reactive value from a given value. Useful for managing state.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reactiveVal example</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input,output){</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  rv <span class="ot">&lt;-</span> <span class="fu">reactiveValues</span>()</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  rv<span class="sc">$</span>number <span class="ot">&lt;-</span> <span class="dv">5</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> \(input, output) {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">isolate</span>(input<span class="sc">$</span>a))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  rv <span class="ot">&lt;-</span> <span class="fu">reactiveVal</span>(<span class="cn">NULL</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">isolate</span>(<span class="fu">rv</span>()))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ul>
 </section>
 <section id="create-reactive-expressions" class="level3">
 <h3 class="anchored" data-anchor-id="create-reactive-expressions">Create Reactive Expressions</h3>
+<p><code>reactive(x)</code>:</p>
 <ul>
-<li><p><code>reactive(x, env, quoted, label, domain)</code>:</p>
-<ul>
-<li><p>Reactive expressions:</p>
-<ul>
-<li><p>cache their value to reduce computation</p></li>
-<li><p>can be called elsewhere</p></li>
-<li><p>notify dependencies when invalidated</p></li>
-</ul></li>
-</ul>
-<p>Call the expression with function syntax, e.g.&nbsp;<code>re()</code>.</p>
+<li><p>Calculate a (reactive) value based on other reactive values. Useful for encapsulating reactive logic needed across multiple outputs.</p></li>
+<li><p>Call the expression with function syntax, e.g.&nbsp;<code>re()</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">"a"</span>,<span class="st">""</span>,<span class="st">"A"</span>),</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">"z"</span>,<span class="st">""</span>,<span class="st">"Z"</span>),</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textOutput</span>(<span class="st">"b"</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input,output){</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  re <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(input<span class="sc">$</span>a,input<span class="sc">$</span>z)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>b <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">re</span>()</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">page_fluid</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">"a"</span>, <span class="st">""</span>, <span class="st">"A"</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">"z"</span>, <span class="st">""</span>, <span class="st">"Z"</span>),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textOutput</span>(<span class="st">"b"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> \(input, output) {</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  re <span class="ot">&lt;-</span> <span class="fu">reactive</span>({</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(input<span class="sc">$</span>a, input<span class="sc">$</span>z)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>b <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">re</span>()</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ul>
 </section>
 <section id="react-based-on-event" class="level3">
 <h3 class="anchored" data-anchor-id="react-based-on-event">React Based on Event</h3>
-<ul>
-<li><p><code>eventReactive(eventExpr, valueExpr, event.env, event.quoted, value.env, value.quoted, ..., label, domain, ignoreNULL, ignoreInit)</code>: Creates reactive expression with code in 2nd argument that only invalidates when reactive values in 1st argument change.</p>
+<p><code>eventReactive(eventExpr, valueExpr)</code>: Creates reactive expression with code in 2nd argument that only invalidates when reactive values in 1st argument change.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">"a"</span>,<span class="st">""</span>,<span class="st">"A"</span>),</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">actionButton</span>(<span class="st">"go"</span>,<span class="st">"Go"</span>),</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textOutput</span>(<span class="st">"b"</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input,output){</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  re <span class="ot">&lt;-</span> <span class="fu">eventReactive</span>(</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    input<span class="sc">$</span>go,{input<span class="sc">$</span>a}</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>b <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">re</span>()</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">page_fluid</span>(</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">"a"</span>, <span class="st">""</span>, <span class="st">"A"</span>),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">actionButton</span>(<span class="st">"go"</span>, <span class="st">"Go"</span>),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textOutput</span>(<span class="st">"b"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> \(input, output) {</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  re <span class="ot">&lt;-</span> <span class="fu">eventReactive</span>(input<span class="sc">$</span>go, {</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    input<span class="sc">$</span>a</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>b <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">re</span>()</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 </section>
 <section id="render-reactive-output" class="level3">
 <h3 class="anchored" data-anchor-id="render-reactive-output">Render Reactive Output</h3>
+<p><code>render*()</code> functions:</p>
 <ul>
-<li><p><code>render*()</code> functions: (see front page) Builds an object to display. Will rerun code in body to rebuild the object whenever a reactive value in the code changes. Save the results to <code>output$&lt;outputId&gt;</code>.</p>
+<li><p>Produces results for a corresponding <code>*Output()</code> UI container. Re-render occurs when reactive dependencies change.</p></li>
+<li><p>Save the results to <code>output$&lt;id&gt;</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">"a"</span>,<span class="st">""</span>,<span class="st">"A"</span>),</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textOutput</span>(<span class="st">"b"</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input,output){</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>b <span class="ot">&lt;-</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">renderText</span>({</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>      input<span class="sc">$</span>a</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">page_fluid</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">"a"</span>, <span class="st">""</span>, <span class="st">"A"</span>),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textOutput</span>(<span class="st">"b"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> \(input, output) {</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>b <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    input<span class="sc">$</span>a</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ul>
 </section>
 <section id="perform-side-effects" class="level3">
 <h3 class="anchored" data-anchor-id="perform-side-effects">Perform Side Effects</h3>
 <ul>
-<li><p><code>observe(x, env)</code>: Creates an observer from the given expression.</p></li>
-<li><p><code>observeEvent(eventExpr, handlerExpr, event.env, event.quoted, handler.env, handler.quoted, ..., label, suspended, priority, domain, autoDestroy, ignoreNULL, ignoreInit, once)</code>: Runs code in 2nd argument when reactive values in 1st argument change. Alternative to <code>observe``()</code>.</p>
+<li><p><code>observe(x)</code>: Observe changes to reactive values.</p></li>
+<li><p><code>observeEvent(eventExpr, handlerExpr)</code>: Runs code in 2nd argument when 1st argument changes.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(<span class="fu">textInput</span>(<span class="st">"a"</span>,<span class="st">""</span>,<span class="st">"A"</span>), <span class="fu">actionButton</span>(<span class="st">"go"</span>,<span class="st">"Go"</span>))</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input,output){</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>go, {</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(input<span class="sc">$</span>a)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">page_fluid</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">"a"</span>, <span class="st">""</span>, <span class="st">"A"</span>),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">actionButton</span>(<span class="st">"go"</span>, <span class="st">"Go"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> \(input, output) {</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">observe</span>(<span class="fu">print</span>(input<span class="sc">$</span>a))</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">observeEvent</span>(input<span class="sc">$</span>go, {</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(input<span class="sc">$</span>a)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ul>
 </section>
-<section id="remove-reactivity" class="level3">
-<h3 class="anchored" data-anchor-id="remove-reactivity">Remove Reactivity</h3>
-<ul>
-<li><p><code>isolate(expr)</code>: Runs a code block. Returns a <strong>non-reactive</strong> copy of the results.</p>
+<section id="remove-reactive-dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="remove-reactive-dependencies">Remove Reactive Dependencies</h3>
+<p><code>isolate(expr)</code>: Prevent reactive values from invalidating a reactive expression.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">"a"</span>,<span class="st">""</span>,<span class="st">"A"</span>),</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textOutput</span>(<span class="st">"b"</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input,output){</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>b <span class="ot">&lt;-</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">renderText</span>({</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>      <span class="fu">isolate</span>({input<span class="sc">$</span>a})</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-</ul>
-</section>
-</section>
-<section id="ui" class="level2">
-<h2 class="anchored" data-anchor-id="ui">UI</h2>
-<p>An app’s UI is an HTML document.</p>
-<p>Use Shiny’s functions to assemble this HTML with R.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fluidPage</span>(</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">"a"</span>,<span class="st">""</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> bslib<span class="sc">::</span><span class="fu">page_fluid</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textInput</span>(<span class="st">"a"</span>, <span class="st">""</span>, <span class="st">"A"</span>),</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">actionButton</span>(<span class="st">"go"</span>, <span class="st">"Go"</span>),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textOutput</span>(<span class="st">"b"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> \(input, output) {</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>b <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    input<span class="sc">$</span>go</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">isolate</span>(input<span class="sc">$</span>a)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Returns HTML:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"container-fluid"</span><span class="dt">&gt;</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> class</span><span class="op">=</span><span class="st">"form-group shiny-input-container"</span><span class="dt">&gt;</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">label</span><span class="ot"> for</span><span class="op">=</span><span class="st">"a"</span><span class="dt">&gt;&lt;/</span><span class="kw">label</span><span class="dt">&gt;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">input</span><span class="ot"> id</span><span class="op">=</span><span class="st">"a"</span><span class="ot"> type</span><span class="op">=</span><span class="st">"text"</span><span class="ot"> class</span><span class="op">=</span><span class="st">"form-control"</span><span class="ot"> value</span><span class="op">=</span><span class="st">""</span><span class="dt">/&gt;</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Add static HTML elements with <strong>tags</strong>, a list of functions that parallel common HTML tags, e.g.&nbsp;<code>tags$a()</code>. Unnamed arguments will be passed into the tag; named arguments will become tag attributes.</p>
-<p>Run <code>names(tags)</code> for a complete list. <code>tags$h1("Header")</code> -&gt; <code>&lt;h1&gt;Header&lt;/h1&gt;</code></p>
-<p>The most common tags have wrapper functions. You do not need to prefix their names with <code>tags$</code>.</p>
+</section>
+</section>
+<section id="user-interfaces-ui" class="level2">
+<h2 class="anchored" data-anchor-id="user-interfaces-ui">User Interfaces (UI)</h2>
+<p>Design delightful UI with the <strong>bslib</strong> package. It provides layouts, components, themes, &amp; more.</p>
+<section id="page-layouts" class="level3">
+<h3 class="anchored" data-anchor-id="page-layouts">Page layouts</h3>
+<ul>
+<li><p><code>page_sidebar()</code> - Screen-filling sidebar layout</p></li>
+<li><p><code>page_fillable()</code> - Screen-filling page layout</p></li>
+<li><p><code>page_fixed()</code> - Constrained width page</p></li>
+<li><p><code>page_fluid()</code> - Basic full-width page</p></li>
+<li><p><code>page_navbar()</code> - Multi-page app with a top nav bar</p></li>
+</ul>
+</section>
+<section id="ui-layouts" class="level3">
+<h3 class="anchored" data-anchor-id="ui-layouts">UI layouts</h3>
+<section id="multiple-columns" class="level4">
+<h4 class="anchored" data-anchor-id="multiple-columns">Multiple columns</h4>
+<ul>
+<li><p><code>layout_columns()</code> - Bootstrap’s 12-column grid</p></li>
+<li><p><code>layout_column_wrap()</code> - Equal-width columns</p></li>
+<li><p><code>layout_sidebar()</code> - Resizable 2-column layout</p></li>
+</ul>
+</section>
+<section id="multiple-panels" class="level4">
+<h4 class="anchored" data-anchor-id="multiple-panels">Multiple panels</h4>
+<p>Navigate a set of <code>nav_panel()</code>s in various ways with <code>navset_card_*</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">h1</span>(<span class="st">"Header 1"</span>), <span class="co"># &lt;h1&gt;Header 1&lt;/h1&gt;</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hr</span>(), <span class="co"># &lt;hr&gt;</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">br</span>(), <span class="co"># &lt;br&gt;</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">p</span>(<span class="fu">strong</span>(<span class="st">"bold"</span>)), <span class="co"># &lt;p&gt;&lt;strong&gt;bold&lt;/strong&gt;&lt;/p&gt;</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">p</span>(<span class="fu">em</span>(<span class="st">"italic"</span>)), <span class="co"># &lt;p&gt;&lt;em&gt;italic&lt;/em&gt;&lt;/p&gt;</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">p</span>(<span class="fu">code</span>(<span class="st">"code"</span>)), <span class="co"># &lt;p&gt;&lt;code&gt;code&lt;/code&gt;&lt;/p&gt;</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">a</span>(<span class="at">href=</span><span class="st">""</span>, <span class="st">"link"</span>), <span class="co"># &lt;a href=""&gt;link&lt;/a&gt;</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">HTML</span>(<span class="st">"&lt;p&gt;Raw html&lt;/p&gt;"</span>) <span class="co"># display raw html</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">navset_card_underline</span>(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nav_panel</span>(<span class="st">"One"</span>, <span class="st">"1st panel"</span>),</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nav_panel</span>(<span class="st">"Two"</span>, <span class="st">"2nd panel"</span>),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nav_menu</span>(<span class="st">"Menu"</span>, <span class="fu">nav_panel</span>(<span class="st">"3"</span>, <span class="st">"3rd"</span>))</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="cards" class="level3">
+<h3 class="anchored" data-anchor-id="cards">Cards</h3>
+<p>Visually group UI elements together with the <code>card()</code> component.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">card</span>(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">full_screen =</span> T,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">card_header</span>(<span class="st">"A title"</span>),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotOutput</span>(<span class="st">"my_output"</span>),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">card_footer</span>(<span class="st">"A footer"</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="accordions" class="level3">
+<h3 class="anchored" data-anchor-id="accordions">Accordions</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">accordion</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">open =</span> <span class="fu">c</span>(<span class="st">"One"</span>, <span class="st">"Two"</span>),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">accordion_panel</span>(</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"One"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"1st panel"</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">accordion_panel</span>(</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Two"</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"2nd panel"</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">accordion_panel</span>(</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Three"</span>,</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"3rd panel"</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Tip: place within <code>sidebar()</code> to group similar inputs.</p>
+</section>
+<section id="tooltips" class="level3">
+<h3 class="anchored" data-anchor-id="tooltips">Tooltips</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tooltip</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">icon</span>(<span class="st">"info-circle"</span>),</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Tooltip message"</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="value-boxes" class="level3">
+<h3 class="anchored" data-anchor-id="value-boxes">Value boxes</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">value_box</span>(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Title"</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Value"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">showcase =</span> <span class="fu">icon</span>()</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="themes" class="level2">
+<h2 class="anchored" data-anchor-id="themes">Themes</h2>
+<p>Choose from over a dozen pre-packaged themes with the <strong>bslib</strong> package to customize how your app looks and behaves.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bslib)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>theme <span class="ot">&lt;-</span> <span class="fu">bs_theme</span>(</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">bootswatch =</span> <span class="st">"darkly"</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">page_fluid</span>(</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">theme =</span> theme,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Quickly change main colors and fonts by customizing individual arguments. Change in real-time by adding <code>bs_themer()</code> to your UI.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bs_theme</span>(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">bg =</span> <span class="st">"#222"</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fg =</span> <span class="st">"white"</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">primary =</span> <span class="st">"purple"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">base_font =</span> <span class="fu">font_google</span>(<span class="st">"Inter"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="custom-ui" class="level2">
+<h2 class="anchored" data-anchor-id="custom-ui">Custom UI</h2>
+<p>Shiny UI is powered by HTML, CSS, and JS. If you know these web technologies, you can customize UI to your heart’s content. Start small by modifying/authoring HTML and including CSS/JS snippets. Or, go fully custom with <code>htmlTemplate()</code>.</p>
+<p>Add HTML elements with <strong>tags</strong>, a list of functions that parallel common HTML tags, e.g.&nbsp;<code>tags$a()</code>. Unnamed arguments are treated as children and named arguments become HTML attributes.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">page_fluid</span>(<span class="at">class =</span> <span class="st">"pt-3"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;div class="container-fluid pt-3"&gt;&lt;/div&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To include a CSS file, use <code>includeCSS()</code>, or</p>
 <ol type="1">
 <li><p>Place the file in the <code>www</code> subdirectory</p></li>
 <li><p>Link to it with:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>tags<span class="sc">$</span><span class="fu">head</span>(</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  tags<span class="sc">$</span><span class="fu">link</span>(</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">rel =</span> <span class="st">"stylesheet"</span>,</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">"text/css"</span>,</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">href =</span> <span class="st">"&lt;file name&gt;"</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>tags<span class="sc">$</span><span class="fu">head</span>(tags<span class="sc">$</span><span class="fu">link</span>(<span class="at">href =</span> <span class="st">"&lt;file name&gt;"</span>, <span class="at">rel =</span> <span class="st">"stylesheet"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ol>
-<p>To include JavaScript, use <code>includeScript()</code>, or</p>
+<p>To include JS, use <code>includeScript()</code>, or</p>
 <ol type="1">
 <li><p>Place the file in the <code>www</code> subdirectory</p></li>
 <li><p>Link to it with:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tags<span class="sc">$</span><span class="fu">head</span>(tags<span class="sc">$</span><span class="fu">script</span>(<span class="at">src =</span> <span class="st">"&lt;file name&gt;"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>tags<span class="sc">$</span><span class="fu">head</span>(tags<span class="sc">$</span><span class="fu">script</span>(<span class="at">src =</span> <span class="st">"&lt;file name&gt;"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ol>
 <p>To include an image:</p>
 <ol type="1">
 <li><p>Place the file in the <code>www</code> subdirectory</p></li>
-<li><p>Link to it with:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">img</span>(<span class="at">src =</span> <span class="st">"&lt;file name&gt;"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
+<li><p>Link to it with <code>img(src = "&lt;file name&gt;")</code>.</p></li>
 </ol>
-</section>
-<section id="layouts" class="level2">
-<h2 class="anchored" data-anchor-id="layouts">Layouts</h2>
-<p>Use the <strong>bslib</strong> package to lay out the your app and its components.</p>
-<section id="page-layouts" class="level3">
-<h3 class="anchored" data-anchor-id="page-layouts">Page layouts</h3>
-<section id="dashboard-layouts" class="level4">
-<h4 class="anchored" data-anchor-id="dashboard-layouts">Dashboard layouts</h4>
-<ul>
-<li><p><code>page_sidebar()</code> - A sidebar page</p></li>
-<li><p><code>page_navbar()</code> - Multi-page app with a top navigation bar</p></li>
-<li><p><code>page_fillable()</code> - A screen-filling page layout</p></li>
-</ul>
-</section>
-<section id="basic-layouts" class="level4">
-<h4 class="anchored" data-anchor-id="basic-layouts">Basic layouts</h4>
-<ul>
-<li><p><code>page()</code></p></li>
-<li><p><code>page_fluid()</code></p></li>
-<li><p><code>page_fixed()</code></p></li>
-</ul>
-</section>
-</section>
-<section id="user-interface-layouts" class="level3">
-<h3 class="anchored" data-anchor-id="user-interface-layouts">User interface layouts</h3>
-<section id="multiple-columns" class="level4">
-<h4 class="anchored" data-anchor-id="multiple-columns">Multiple columns</h4>
-<ul>
-<li><p><code>layout_columns()</code> - Organize UI elements into Bootstrap’s 12-column CSS grid</p></li>
-<li><p><code>layout_column_wrap()</code> - Organize elements into a grid of equal-width columns</p></li>
-</ul>
-</section>
-<section id="multiple-panels" class="level4">
-<h4 class="anchored" data-anchor-id="multiple-panels">Multiple panels</h4>
-<ul>
-<li><p><code>navset_tab()</code> - Tabbed navigation container</p></li>
-<li><p><code>navset_pill()</code> - Creates a navigation container that behaves exactly like <code>navset_tab()</code>, but the tab toggles are <em>pills</em> or button-shaped</p></li>
-<li><p><code>navset_underline()</code> - Creates a navigation container that behaves exactly like <code>navset_tab()</code> and <code>navset_pill()</code>, but the active/focused navigation links are styled with an underline</p></li>
-<li><p><code>nav_panel()</code> - Content to display when given item is selected</p></li>
-<li><p><code>nav_menu()</code> - Create a menu of nav items</p></li>
-<li><p><code>nav_item()</code> - Place arbitrary content in the nav panel</p></li>
-<li><p><code>nav_spacer()</code> - Add spacing between nav items</p></li>
-</ul>
-<p>Also dynamically update nav containers with <code>nav_select()</code>, <code>nav_insert()</code>, <code>nav_remove()</code>, <code>nav_show()</code>, <code>nav_hide()</code>.</p>
-</section>
-<section id="sidebar-layout" class="level4">
-<h4 class="anchored" data-anchor-id="sidebar-layout">Sidebar layout</h4>
-<ul>
-<li><p><code>sidebar()</code></p></li>
-<li><p><code>layout_sidebar()</code></p></li>
-<li><p><code>toggle_sidebar()</code></p></li>
-</ul>
-</section>
-</section>
-</section>
-<section id="themes" class="level2">
-<h2 class="anchored" data-anchor-id="themes">Themes</h2>
-<p>Use the <strong>bslib</strong> package to add existing themes to your Shiny app ui, or make your own.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bslib)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">theme =</span> <span class="fu">bs_theme</span>(</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">boothswatch =</span> <span class="st">"darkly"</span>,</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    ...</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ul>
-<li><code>bootswatch_themes()</code>: Get a list of themes.</li>
-</ul>
-<p>Build your own theme by customizing individual arguments.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bs_theme</span>(</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">bg =</span> <span class="st">"#558AC5"</span>,</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">fg =</span> <span class="st">"#F9B02D"</span>,</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  ...</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ul>
-<li><p><code>?bs_theme</code> for a full list of arguments.</p></li>
-<li><p><code>bs_themer()</code>: Place within the server function ot use the interactive theming widget.</p></li>
-</ul>
 <hr>
 <p>CC BY SA Posit Software, PBC • <a href="mailto:info@posit.co">info@posit.co</a> • <a href="https://posit.co">posit.co</a></p>
-<p>Learn more at <a href="https://shiny.rstudio.com/">shiny.rstudio.com</a></p>
-<p>Updated: 2026-07.</p>
+<p>Learn more at <a href="https://shiny.posit.co/">shiny.posit.co</a></p>
+<p>Updated: 2026-08.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"shiny"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"shiny"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] '1.14.0'</code></pre>
 </div>
