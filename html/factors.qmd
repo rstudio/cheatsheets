@@ -146,7 +146,7 @@ Use `unclass()` to see its structure.
 -   `fct_rev(f)`: Reverse level order.
 
     ```{r}
-    f4 <- fact(c( a",   "b","c"))
+    f4 <- factor(c("a", "b", "c"))
     fct_rev(f4)
     ```
 
@@ -218,7 +218,7 @@ Use `unclass()` to see its structure.
 -   `fct_drop(f, only)`: Drop unused levels.
 
     ```{r}
-    f5 <- facto(c(  "a","  b",c( "a",  "b","x"))
+    f5 <- factor(c("a", "b"), c("a", "b", "x"))
     f6 <- fct_drop(f5)
     ```
 

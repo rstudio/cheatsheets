@@ -48,53 +48,52 @@ Summary functions take vectors as input and return one value back (see Summary F
 
 -   `summarize(.data, ...)`: Compute table of summaries.
 
-    ```{r}
-    mtcars |> summarize(avg = mean(mpg))
-    ```
+```{r}
+mtcars |> summarize(avg = mean(mpg))
+```
 
 -   `count(.data, ..., wt = NULL, sort = FLASE, name = NULL)`: Count number of rows in each group defined by the variables in `...`.
     Also `tally()`, `add_count()`, and `add_tally()`.
 
-    ```{r}
-    mtcars |> count(cyl)
-    ```
+```{r}
+mtcars |> count(cyl)
+```
 
 ## Group Cases
 
 -   Use `group_by(.data, ..., .add = FALSE, .drop = TRUE)` to created a "grouped" copy of a table grouped by columns in `...`.
     dplyr functions will manipulate each "group" separately and combine the results.
 
-    ```{r}
-    mtcars |>
-      group_by(cyl) |>
-      summarize(avg = mean(mpg))
-    ```
+```{r}
+mtcars |>
+  group_by(cyl) |>
+  summarize(avg = mean(mpg))
+```
 
 -   Alternate grouping syntax with `.by` as an argument:
 
-    ```{r}
-    mtcars |>
-      summarize(avg = mean(mpg), .by = cyl)
-    ```
+```{r}
+mtcars |>
+  summarize(avg = mean(mpg), .by = cyl)
+```
 
 -   Use `rowwise(.data, ...)` to group data into individual rows.
     dplyr functions will compute results for each row.
     Also apply functions to list-columns.
     See tidyr cheatsheet for list-column workflow.
 
-    ```{r}
-    starwars |>
-      rowwise() |>
-      mutate(film_count = length(films))
-    ```
+```{r}
+starwars |>
+  rowwise() |>
+  mutate(film_count = length(films))
+```
 
 -   `ungroup(x, ...)`: Returns ungrouped copy of table.
 
-    ```{r}
-    #| include: false
-    g_mtcars <- mtcars |> group_by(cyl)
-    ungroup(g_mtcars)
-    ```
+```{r}
+g_mtcars <- mtcars |> group_by(cyl)
+ungroup(g_mtcars)
+```
 
 ## Manipulate Cases
 
@@ -104,40 +103,40 @@ Row functions return a subset of rows as a new table.
 
 -   `filter(.data, ..., .preserve = FALSE)`: Extract rows that meet logical criteria.
 
-    ```{r}
-    mtcars |> filter(mpg > 20)
-    ```
+```{r}
+mtcars |> filter(mpg > 20)
+```
 
 -   `distinct(.data, ..., .keep_all = FALSE)`: Remove rows with duplicate values.
 
-    ```{r}
-    mtcars |> distinct(gear)
-    ```
+```{r}
+mtcars |> distinct(gear)
+```
 
 -   `slice(.data, ...,, .preserve = FALSE)`: Select rows by position.
 
-    ```{r}
-    mtcars |> slice(10:15)
-    ```
+```{r}
+mtcars |> slice(10:15)
+```
 
 -   `slice_sample(.data, ..., n, prop, weight_by = NULL, replace = FALSE)`: Randomly select rows.
     Use `n` to select a number of rows and `prop` to select a fraction of rows.
 
-    ```{r}
-    mtcars |> slice_sample(n = 5, replace = TRUE)
-    ```
+```{r}
+mtcars |> slice_sample(n = 5, replace = TRUE)
+```
 
 -   `slice_min(.data, order_by, ..., n, prop, with_ties = TRUE)` and `slice_max()`: Select rows with the lowest and highest values.
 
-    ```{r}
-    mtcars |> slice_min(mpg, prop = 0.25)
-    ```
+```{r}
+mtcars |> slice_min(mpg, prop = 0.25)
+```
 
 -   `slice_head(.data, ..., n, prop)` and `slice_tail()`: Select the first or last rows.
 
-    ```{r}
-    mtcars |> slice_head(n = 5)
-    ```
+```{r}
+mtcars |> slice_head(n = 5)
+```
 
 #### Logical and boolean operations to use with `filter()`
 
@@ -160,18 +159,18 @@ Row functions return a subset of rows as a new table.
 
 -   `arrange(.data, ..., .by_group = FALSE)`: Order rows by values of a column or columns (low to high), use with `desc()` to order from high to low.
 
-    ```{r}
-    mtcars |> arrange(mpg)
-    mtcars |> arrange(desc(mpg))
-    ```
+```{r}
+mtcars |> arrange(mpg)
+mtcars |> arrange(desc(mpg))
+```
 
 ### Add Cases
 
 -   `add_row(.data, ..., .before = NULL, .after = NULL)`: Add one or more rows to a table.
 
-    ```{r}
-    cars |> add_row(speed = 1, dist = 1)
-    ```
+```{r}
+cars |> add_row(speed = 1, dist = 1)
+```
 
 ## Manipulate Variables
 
@@ -181,21 +180,21 @@ Column functions return a set of columns as a new vector or table.
 
 -   `pull(.data, var = -1, name = NULL, ...)`: Extract column values as a vector, by name or index.
 
-    ```{r}
-    mtcars |> pull(wt)
-    ```
+```{r}
+mtcars |> pull(wt)
+```
 
 -   `select(.data, ...)`: Extract columns as a table.
 
-    ```{r}
-    mtcars |> select(mpg, wt)
-    ```
+```{r}
+mtcars |> select(mpg, wt)
+```
 
 -   `relocate(.data, ..., .before = NULL, .after = NULL)`: Move columns to new position.
 
-    ```{r}
-    mtcars |> relocate(mpg, cyl, after = last_col())
-    ```
+```{r}
+mtcars |> relocate(mpg, cyl, after = last_col())
+```
 
 #### Use these helpers with `select()` and `across()`
 
@@ -221,17 +220,17 @@ df <- tibble(x_1 = c(1, 2), x_2 = c(3, 4), y = c(4, 5))
 
 -   `across(.cols, .fun, ..., .name = NULL)`: summarize or mutate multiple columns in the same way.
 
-    ```{r}
-    df |> summarize(across(everything(), mean))
-    ```
+```{r}
+df |> summarize(across(everything(), mean))
+```
 
 -   `c_across(.cols)`: Compute across columns in row-wise data.
 
-    ```{r}
-    d |> 
-      rowwise() |>
-      mutate(x_total = sum(c_across(1:2)))
-    ```
+```{r}
+df |>
+  rowwise() |>
+  mutate(x_total = sum(c_across(1:2)))
+```
 
 ### Make New Variables
 
@@ -241,17 +240,17 @@ Vectorized functions take vectors as input and return vectors of the same length
 -   `mutate(.data, ..., .keep = "all", .before = NULL, .after = NULL)`: Compute new column(s).
     Also `add_column()`.
 
-    ```{r}
-    mtcars |> mutate(gpm = 1 / mpg)
-    mtcars |> mutate(mtcars, gpm = 1 / mpg, .keep = "none")
-    ```
+```{r}
+mtcars |> mutate(gpm = 1 / mpg)
+mtcars |> mutate(mtcars, gpm = 1 / mpg, .keep = "none")
+```
 
 -   `rename(.data, ...)`: Rename columns.
     Use `rename_with()` to rename with a function.
 
-    ```{r}
-    mtcars |> rename(miles_per_gallon = mpg)
-    ```
+```{r}
+mtcars |> rename(miles_per_gallon = mpg)
+```
 
 <!-- PAGE 2 -->
 
@@ -298,16 +297,16 @@ Vectorized functions take vectors as input and return vectors of the same length
 
 -   `dplyr::case_when()`: multi-case `if_else()`
 
-    ```{r}
-    starwars |>
-      mut
-    ate(type = case_when(
-          height > 200 | mass > 200 ~ "large",
-          species == "Droid" ~ "robot",
-          TRUE ~ "other"
-    )    
-     ))
-    ```
+```{r}
+starwars |>
+  mutate(
+    type = case_when(
+      height > 200 | mass > 200 ~ "large",
+      species == "Droid" ~ "robot",
+      TRUE ~ "other"
+    )
+  )
+```
 
 -   `dplyr::coalesce()`: first non-NA values by element across a set of vectors
 
@@ -368,15 +367,15 @@ To work with the rownames, first move them into a column.
 
 -   `tibble::rownames_to_column()`: Move row names into col.
 
-    ```{r}
-    a <- rownames_to_column(mtcars, var = "C")
-    ```
+```{r}
+a <- rownames_to_column(mtcars, var = "C")
+```
 
 -   `tibble::columns_to_rownames()`: Move col into row names.
 
-    ```{r}
-    column_to_rownames(a, var = "C")
-    ```
+```{r}
+column_to_rownames(a, var = "C")
+```
 
 -   Also `tibble::has_rownames()` and `tibble::remove_rownames()`.
 
@@ -429,22 +428,22 @@ Use a **"Nest Join"** to inner join one table to another into a nested data fram
 
 -   Use `by = join_by(col1, col2, …)` to specify one or more common columns to match on.
 
-    ```{r}
-    left_join(x, y, by = join_by(A))
-    left_join(x, y, by = join_by(A, B))
-    ```
+```{r}
+left_join(x, y, by = join_by(A))
+left_join(x, y, by = join_by(A, B))
+```
 
 -   Use a logical statement, `by = join_by(col1 == col2)`, to match on columns that have different names in each table.
 
-    ```{r}
-    left_join(x, y, by = join_by(C == D))
-    ```
+```{r}
+left_join(x, y, by = join_by(C == D))
+```
 
 -   Use `suffix` to specify the suffix to give to unmatched columns that have the same name in both tables.
 
-    ```{r}
-    left_join(x, y, by = join_by(C == D), suffix = c("1", "2"))
-    ```
+```{r}
+left_join(x, y, by = join_by(C == D), suffix = c("1", "2"))
+```
 
 ### Set Operations
 
