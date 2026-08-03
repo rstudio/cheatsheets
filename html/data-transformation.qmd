@@ -14,9 +14,9 @@ execute:
 #| column: margin
 source("common.R")
 use_cheatsheet_logo(
-  "dplyr", 
+  "dplyr",
   alt = "Hex logo for dplyr - three different brightly coloured cartoon pairs of pliers that appear as spaceships flying through a black background, with coloured spots representing stars and planets."
-  )
+)
 sheet_name <- tools::file_path_sans_ext(knitr::current_input())
 pdf_preview_link(sheet_name)
 translation_list(sheet_name)
@@ -38,7 +38,6 @@ library(dplyr)
 ```{r}
 #| label: other-used-packages
 #| include: false
-
 library(tibble)
 ```
 
@@ -93,7 +92,6 @@ Summary functions take vectors as input and return one value back (see Summary F
 
     ```{r}
     #| include: false
-
     g_mtcars <- mtcars |> group_by(cyl)
     ungroup(g_mtcars)
     ```
@@ -230,7 +228,7 @@ df <- tibble(x_1 = c(1, 2), x_2 = c(3, 4), y = c(4, 5))
 -   `c_across(.cols)`: Compute across columns in row-wise data.
 
     ```{r}
-    df |> 
+    d |> 
       rowwise() |>
       mutate(x_total = sum(c_across(1:2)))
     ```
@@ -302,11 +300,13 @@ Vectorized functions take vectors as input and return vectors of the same length
 
     ```{r}
     starwars |>
-      mutate(type = case_when(
-        height > 200 | mass > 200 ~ "large",
-        species == "Droid" ~ "robot",
-        TRUE ~ "other"
-      ))
+      mut
+    ate(type = case_when(
+          height > 200 | mass > 200 ~ "large",
+          species == "Droid" ~ "robot",
+          TRUE ~ "other"
+    )    
+     ))
     ```
 
 -   `dplyr::coalesce()`: first non-NA values by element across a set of vectors
@@ -384,17 +384,17 @@ To work with the rownames, first move them into a column.
 
 ```{r}
 x <- tribble(
-   ~A,  ~B, ~C,
-  "a", "t",  1,
-  "b", "u",  2,
-  "c", "v",  3
+  ~A  , ~B  , ~C ,
+  "a" , "t" ,  1 ,
+  "b" , "u" ,  2 ,
+  "c" , "v" ,  3
 )
 
 y <- tribble(
-   ~A,  ~B, ~D,
-  "a", "t",  3,
-  "b", "u",  2,
-  "d", "w",  1
+  ~A  , ~B  , ~D ,
+  "a" , "t" ,  3 ,
+  "b" , "u" ,  2 ,
+  "d" , "w" ,  1
 )
 ```
 
@@ -463,7 +463,6 @@ Updated: `r format(Sys.Date(), "%Y-%m")`.
 
 ```{r}
 #| output: true
-
 packageVersion("dplyr")
 ```
 

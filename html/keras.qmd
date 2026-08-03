@@ -17,7 +17,7 @@ source("common.R")
 use_cheatsheet_logo(
   "keras3",
   alt = "Hex logo for keras3. It is a very large white K with a red background. It has the name of the package in smaller letters on the right."
-  )
+)
 sheet_name <- tools::file_path_sans_ext(knitr::current_input())
 pdf_preview_link(sheet_name)
 translation_list(sheet_name)
@@ -39,7 +39,7 @@ It also makes getting started with Keras faster by automatically creating a work
 
 - `keras_input()` / `keras_model()`: Defines a Functional Model with inputs and outputs.
 
-    ```r
+    ```{r}
     inputs <- keras_input(<input-shape>)
     outputs <- inputs |> 
       layer_dense() |> 
@@ -48,7 +48,7 @@ It also makes getting started with Keras faster by automatically creating a work
     ```
 - `keras_model_sequential()`: Define a Sequential Model composed of a linear stack of layers
 
-    ```r
+    ```{r}
     model <- keras_model_sequential(<input-shape>) |> 
       layer_dense() |> 
       layer_...
@@ -68,11 +68,12 @@ It also makes getting started with Keras faster by automatically creating a work
 - `compile()`: Configure aspects of the model such as optimizer, loss, metrics, 
 weights and others.
 
-    ```r
-    model |> compile(
-      loss = "categorical_crossentropy", 
-      optimizer = "rmsprop", 
-      metrics = "accuracy"
+    ```{r}
+    mode
+ l |> compile(
+        loss = "categorical_crossentroy", 
+        optimizer = "rmsprp", 
+        metrics = "accuracy"
       )
     ```
     
@@ -80,7 +81,7 @@ weights and others.
 
 - `fit()`: Trains the model for a fixed number of dataset iterations (epochs)
 
-    ```r
+    ```{r}
     model |> 
       fit(<x>, <y>, epochs = 30, batch_size = 128, validation_split = 0.2)
     ```
@@ -90,7 +91,7 @@ weights and others.
 
 - `evaluate(<model>)`: Returns the loss and metrics
     
-    ```r
+    ```{r}
     model |> 
       evaluate(<x test>,<y test>)
     ```
@@ -101,35 +102,39 @@ weights and others.
 
 Train image recognizer on MNIST data a.k.a. deep learning’s ‘hello world’ example 
 
-```r
+```{r}
 library(keras3)
 
 # Input layer: use MNIST images
 .[.[x_train, y_train], .[x_test, y_test]] <- dataset_mnist()
 
 # Rescale and categorize
-x_train <- x_train/255
-x_test <- x_test/255
+x_train <- x_train / 255
+x_test <- x_test / 255
 num_classes <- 10
 y_train <- to_categorical(y_train, num_classes)
 y_test <- to_categorical(y_test, num_classes)
 
 # Define the model and layers
 model <- keras_model_sequential(
-  input_shape = c(28, 28, 1)) |>
+  input_shape = c(28, 28, 1)
+) |>
   layer_conv_2d(
-    filters = 32, kernel_size = c(3, 3),
-    activation = "relu") |>
+    filters = 32,
+    kernel_size = c(3, 3),
+    activation = "relu"
+  ) |>
   layer_max_pooling_2d(pool_size = c(2, 2)) |>
   layer_conv_2d(
     filters = 64,
     kernel_size = c(3, 3),
-    activation = "relu") |>
+    activation = "relu"
+  ) |>
   layer_max_pooling_2d(pool_size = c(2, 2)) |>
   layer_flatten() |>
   layer_dropout(rate = 0.5) |>
   layer_dense(units = num_classes, activation = "softmax")
-  
+
 # Inspect the model
 summary(model)
 
@@ -141,24 +146,25 @@ model |>
     loss = "categorical_crossentropy",
     optimizer = optimizer_rmsprop(),
     metrics = c("accuracy")
-    )
-    
+  )
+
 # Fit the model
-model |> 
+model |>
   fit(
-    x_train, y_train, 
-    epochs = 30, 
-    batch_size = 128, 
+    x_train,
+    y_train,
+    epochs = 30,
+    batch_size = 128,
     validation_split = 0.2
-    )
-  
+  )
+
 # Evaluate and predict
-model |> 
+model |>
   evaluate(x_test, y_test)
-  
+
 model |>
   predict(x_test)
-  
+
 # Save the full model
 save_model(model, "mnist-classifier.keras")
 
@@ -283,11 +289,12 @@ text or integers via a table-based vocabulary lookup
 - `layer_feature_space()`: Main function to specify the how the features are 
 to be pre-processed
 
-    ```r
+    ```{r}
     feature_space <- layer_feature_space(
-      features = list(float_var = feature_float_normalized(),
-      string_var = feature_string_categorical(),
-      int_var = feature_integer_categorical())
+      features = l
+    ist(float_var = feature_float_normalized(),
+        string_var = feature_string_categorical(),
+        int_var = feature_integer_categoricl())
       )
     ```
 
@@ -306,7 +313,7 @@ to be pre-processed
 - `adapt()`: Calculates the the normalizations, bins, and other conversions 
 against the data set 
 
-    ```r
+    ```{r}
     adapt(feature_space, <TF dataset>)
     ```
     
@@ -505,25 +512,37 @@ method
 ## Learn more
 
 ::: {.columns}
-:::{.column width="70%"}
 
-::: {style="font-size: 120%;"}
+::: {.column width="70%"}
+
+
 [Deep Learning with R, Third Edition](https://www.manning.com/books/deep-learning-with-r-third-edition) 
-:::
 
-::: {style="font-size: 90%;"}
 *By François Chollet & Tomasz Kalinowski* <br/>
 *2025*
-:::
 
-::: {style="font-size: 70%;"}
-[https://www.manning.com/books/deep-learning-with-r-third-edition](https://www.manning.com/books/deep-learning-with-r-third-edition)
-:::
+<https://www.manning.com/books/deep-learning-with-r-third-edition>
 
 :::
+
 :::{.column width="30%"}
 
 [![](images/keras-book.png){width="600" fig-align="center" fig-alt="A diagram that provides a conceptual overview of how a CNN works"}](https://www.manning.com/books/deep-learning-with-r-third-edition)
 
 :::
+
 :::
+
+------------------------------------------------------------------------
+
+CC BY SA Posit Software, PBC • [info\@posit.co](mailto:info@posit.co) • [posit.co](https://posit.co)
+
+Updated: `r format(Sys.Date(), "%Y-%m")`.
+
+```{r}
+#| output: true
+#| eval: true
+packageVersion("keras")
+```
+
+------------------------------------------------------------------------

@@ -14,7 +14,7 @@ execute:
 #| column: margin
 source("common.R")
 use_cheatsheet_logo(
-  "forcats", 
+  "forcats",
   alt = "Hex logo for forcats - drawing of four black cats lounging in a cardboard box. On one side of the box it says 'for' and on the adjacent side is says 'cats'."
 )
 sheet_name <- tools::file_path_sans_ext(knitr::current_input())
@@ -31,7 +31,6 @@ library(forcats)
 ```{r}
 #| label: other-used-packages
 #| include: false
-
 library(ggplot2)
 ```
 
@@ -48,7 +47,6 @@ R will display:
 ```{r}
 #| echo: false
 #| output: true
-
 f <- factor(c("a", "c", "b", "a"), levels = c("a", "b", "c"))
 f
 ```
@@ -58,7 +56,6 @@ R will store:
 ```{r}
 #| echo: false
 #| output: true
-
 unclass(f)
 ```
 
@@ -94,7 +91,6 @@ Use `unclass()` to see its structure.
 
     ```{r}
     #| include: false
-
     f <- factor(c("a", "c", "b", "a"), levels = c("a", "b", "c"))
     ```
 
@@ -150,7 +146,7 @@ Use `unclass()` to see its structure.
 -   `fct_rev(f)`: Reverse level order.
 
     ```{r}
-    f4 <- factor(c("a","b","c"))
+    f4 <- fact(c( a",   "b","c"))
     fct_rev(f4)
     ```
 
@@ -178,7 +174,7 @@ Use `unclass()` to see its structure.
     ggplot(
       diamonds,
       aes(carat, price, color = fct_reorder2(color, carat, price))
-      ) + 
+   ) + 
       geom_smooth()
     ```
 
@@ -222,7 +218,7 @@ Use `unclass()` to see its structure.
 -   `fct_drop(f, only)`: Drop unused levels.
 
     ```{r}
-    f5 <- factor(c("a","b"),c("a","b","x"))
+    f5 <- facto(c(  "a","  b",c( "a",  "b","x"))
     f6 <- fct_drop(f5)
     ```
 
@@ -249,7 +245,6 @@ Updated: `r format(Sys.Date(), "%Y-%m")`.
 
 ```{r}
 #| output: true
-
 packageVersion("forcats")
 ```
 
