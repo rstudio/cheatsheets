@@ -12,7 +12,7 @@ jobs:
       contents: write
     steps:
       - name: Check out repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -33,6 +33,10 @@ jobs:
           CODENAME=$(lsb_release -cs)
           echo "Using PPM binary repo for Ubuntu $CODENAME"
           echo "RENV_CONFIG_REPOS_OVERRIDE=https://packagemanager.posit.co/cran/__linux__/${CODENAME}/latest" >> "$GITHUB_ENV"
+          # renv 1.2.3 can install packages out of dependency order when running
+          # jobs in parallel, producing spurious "dependency failed" errors
+          # (e.g. gt <-> bitops). Force serial installs. See rstudio/renv#2273.
+          echo "RENV_CONFIG_INSTALL_JOBS=1" >> "$GITHUB_ENV"
 
       - name: Install R Dependencies
         uses: r-lib/actions/setup-renv@v2
