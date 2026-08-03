@@ -187,12 +187,14 @@ f <- ggplot(mpg, aes(class, hwy))
 
 -   `f + geom_boxplot()`: Draw a box plot.
     `aes()` arguments: `x`, `y`, `lower`, `middle`, `upper`, `ymax`, `ymin`, `alpha`, `color`, `fill`, `group`, `linetype`, `shape`, `linewidth`, `weight`.
+    Style individual parts with `median.*`, `box.*`, `whisker.*`, and `staple.*` arguments.
 
 -   `f + geom_dotplot(binaxis ="y", stackdir = "center")`: Draw a dot plot.
     `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `group`.
 
 -   `f + geom_violin(scale = "area")`: Draw a violin plot.
     `aes()` arguments: `x`, `y`, `alpha`, `color`, `fill`, `group`, `linetype`, `linewidth`, `weight`.
+    Use `quantiles` to compute quantile lines and `quantile.colour`/`quantile.linetype`/`quantile.linewidth` to style them (blank by default).
 
 ### Two Variables - Both Discrete
 
@@ -462,6 +464,8 @@ u <- d + geom_bar()
 -   `π + coord_sf()`: `xlim`, `ylim`, `crs`.
     Ensures all layers use a common Coordinate Reference System.
 
+-   Use `reverse = "none"` (default), `"x"`, `"y"`, or `"xy"` with any coord to flip an axis direction.
+
 ## Position Adjustments
 
 Position adjustments determine how to arrange geoms that would otherwise occupy the same space.
@@ -504,12 +508,28 @@ s + geom_bar(position = position_dodge(width = 1))
 
 -   `u + theme_void()`: Empty theme.
 
--   `u + theme()`: Customize aspects of the theme such as axis, legend, panel, and facet properties.
+-   Customize complete themes with `ink` (foreground), `paper` (background), and `accent` color arguments that propagate to layer defaults (e.g., `theme_gray(ink =, paper =, accent =)`).
+
+```{r}
+u + theme_gray(paper = "cornsilk", ink = "navy", accent = "tomato")
+```
+
+-   `u + theme()`: Customize aspects of the theme such as axis, legend, panel, and facet properties. Use `theme(geom = element_geom(...))` to set the same defaults without switching themes, and `from_theme(accent)` inside `aes()` to map a layer to them.
 
 ```{r}
 u + labs(title = "Title") + theme(plot.title.position = "plot")
 
 u + theme(panel.background = element_rect(fill = "blue"))
+```
+
+-   `u + theme_sub_panel()`: Shortcut for clusters of `theme()` settings that share a prefix. Also `theme_sub_axis()`, `theme_sub_legend()`, `theme_sub_plot()`, `theme_sub_strip()`, and directional variants like `theme_sub_axis_x()`.
+
+```{r}
+u +
+  theme_sub_panel(
+    background = element_rect(fill = NA),
+    spacing.x = unit(5, "mm")
+  )
 ```
 
 ## Faceting
@@ -549,6 +569,12 @@ t + labs(x = "New x axis label",
   caption = "Add a caption below plot",
   alt = "Add alt text to the plot",
   <Aes> = "New <Aes> legend title")
+```
+
+Or label variables from a named vector (e.g., from a data dictionary), keyed by variable name rather than aesthetic.
+
+```
+t + labs(dictionary = c(cty = "City mileage (mpg)", hwy = "Highway mileage (mpg)"))
 ```
 
 -   `t + annotate(geom = "text", x = 8, y = 9, label = "A")`: Places a geom with manually selected aesthetics.
