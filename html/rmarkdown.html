@@ -844,7 +844,7 @@ more text</code></pre></td>
 <td>Markdown for Github</td>
 </tr>
 <tr class="odd">
-<td><code>ioslides_presentations</code></td>
+<td><code>ioslides_presentation</code></td>
 <td>ioslides HTML slides</td>
 </tr>
 <tr class="even">
@@ -948,7 +948,7 @@ more text</code></pre></td>
 </tr>
 <tr class="odd">
 <td>highlight</td>
-<td>Syntax highlighting (“tango”, “pygments”, “kate”, “zenburn”, “textmate”)</td>
+<td>Syntax highlighting (“tango”, “pygments”, “kate”, “zenburn”, “textmate”, “arrow”, “rstudio”, or a custom “.theme” file)</td>
 <td>X</td>
 <td>X</td>
 <td>X</td>
@@ -987,6 +987,14 @@ more text</code></pre></td>
 <td></td>
 </tr>
 <tr class="even">
+<td>math_method</td>
+<td>Engine for rendering math in HTML (“mathjax”, “katex”, “r-katex”, “mathml”, “webtex”)</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
 <td>reference_docx/_doc</td>
 <td>docx/pptx file containing styles to copy in the output (e.g.&nbsp;“file.docx”, “file.pptx”)</td>
 <td></td>
@@ -994,7 +1002,7 @@ more text</code></pre></td>
 <td>X</td>
 <td>X</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>theme</td>
 <td>Theme options (see Bootswatch and Custom Themes below)</td>
 <td>X</td>
@@ -1002,7 +1010,7 @@ more text</code></pre></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>toc</td>
 <td>Add a table of contents at start of document (TRUE or FALSE)</td>
 <td>X</td>
@@ -1010,7 +1018,7 @@ more text</code></pre></td>
 <td>X</td>
 <td>X</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>toc_depth</td>
 <td>The lowest level of headings to add to table of contents (e.g.&nbsp;2, 3)</td>
 <td>X</td>
@@ -1018,7 +1026,7 @@ more text</code></pre></td>
 <td>X</td>
 <td>X</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>toc_float</td>
 <td>Float the table of contents to the left of the main document content (TRUE or FALSE)</td>
 <td>X</td>
@@ -1035,7 +1043,7 @@ more text</code></pre></td>
 <h2 class="anchored" data-anchor-id="more-header-options">More Header Options</h2>
 <section id="parameters" class="level3">
 <h3 class="anchored" data-anchor-id="parameters">Parameters</h3>
-<p>Parameterize your documents to ruse with new inputs (e.g.&nbsp;data, values, etc.).</p>
+<p>Parameterize your documents to reuse with new inputs (e.g.&nbsp;data, values, etc.).</p>
 <ol type="1">
 <li><p><strong>Add parameters</strong> in the header as sub-values of <code>params</code>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>

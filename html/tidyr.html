@@ -255,10 +255,11 @@ Translations (PDF)
 <section id="construct-a-tibble" class="level3">
 <h3 class="anchored" data-anchor-id="construct-a-tibble">Construct a Tibble</h3>
 <ul>
-<li><p><code>tibble(...)</code>: Construct by columns.</p>
+<li><code>tibble(...)</code>: Construct by columns.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -269,16 +270,19 @@ Translations (PDF)
 2     2 b    
 3     3 c    </code></pre>
 </div>
-</div></li>
-<li><p><code>tribble(...)</code>: Construct by rows.</p>
+</div>
+<ul>
+<li><code>tribble(...)</code>: Construct by rows.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tribble</span>(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>x, <span class="sc">~</span>y,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>   <span class="dv">1</span>, <span class="st">"a"</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>   <span class="dv">2</span>, <span class="st">"b"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>   <span class="dv">3</span>, <span class="st">"c"</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>x , <span class="sc">~</span>y  ,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>   <span class="dv">1</span> , <span class="st">"a"</span> ,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>   <span class="dv">2</span> , <span class="st">"b"</span> ,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>   <span class="dv">3</span> , <span class="st">"c"</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
+</div>
+<ul>
 <li><p><code>as_tibble(x, ...)</code>: Convert a data frame to a tibble.</p></li>
 <li><p><code>enframe(x, name = "name", value = "value")</code>: Convert a named vector to a tibble. Also <code>deframe()</code>.</p></li>
 <li><p><code>is_tibble(x)</code>: Test whether x is a tibble.</p></li>
@@ -500,12 +504,12 @@ Translations (PDF)
 <p>Drop or replace explicit missing values (<code>NA</code>).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>x1, <span class="sc">~</span>x2,</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"A"</span>,   <span class="dv">1</span>,</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"B"</span>,  <span class="cn">NA</span>,</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"C"</span>,  <span class="cn">NA</span>,</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"D"</span>,   <span class="dv">3</span>,</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"E"</span>,  <span class="cn">NA</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>x1 , <span class="sc">~</span>x2 ,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"A"</span> ,   <span class="dv">1</span> ,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"B"</span> , <span class="cn">NA</span>  ,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"C"</span> , <span class="cn">NA</span>  ,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"D"</span> ,   <span class="dv">3</span> ,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"E"</span> , <span class="cn">NA</span></span>
 <span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
@@ -513,7 +517,7 @@ Translations (PDF)
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">drop_na</span>(x, x2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
-<li><p><code>fill(data, ..., .direction = "down")</code>: Fill in <code>NA</code>s in … columns using the next or previous value.</p>
+<li><p><code>fill(data, ..., .direction = "down")</code>: Fill in <code>NA</code>s in … columns using the next or previous value. Use <code>.by</code> to fill within groups without a separate <code>group_by()</code> call.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fill</span>(x, x2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
@@ -559,97 +563,114 @@ Translations (PDF)
 <section id="create-tibbles-with-list-columns" class="level3">
 <h3 class="anchored" data-anchor-id="create-tibbles-with-list-columns">Create Tibbles With List-Columns</h3>
 <ul>
-<li><p><code>tibble::tribble(...)</code>: Makes list-columns when needed.</p>
+<li><code>tibble::tribble(...)</code>: Makes list-columns when needed.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tribble</span>(</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>max, <span class="sc">~</span>seq,</span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>     <span class="dv">3</span>,  <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>     <span class="dv">4</span>,  <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>     <span class="dv">5</span>,  <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>max , <span class="sc">~</span>seq ,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>     <span class="dv">3</span> , <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>  ,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>     <span class="dv">4</span> , <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>  ,</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>     <span class="dv">5</span> , <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span></span>
 <span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-<li><p><code>tibble::tibble(...)</code>: Saves list input as list-columns.</p>
+</div>
+<ul>
+<li><code>tibble::tibble(...)</code>: Saves list input as list-columns.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">max =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>),</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">max =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">seq =</span> <span class="fu">list</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-<li><p><code>tibble::enframe(x, name = "name", value = "value")</code>: Convert multi-level list to a tibble with list-cols.</p>
+</div>
+<ul>
+<li><code>tibble::enframe(x, name = "name", value = "value")</code>: Convert multi-level list to a tibble with list-cols.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">enframe</span>(<span class="fu">list</span>(<span class="st">"3"</span> <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="st">"4"</span> <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="st">"5"</span> <span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), <span class="st">"max"</span>, <span class="st">"seq"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-</ul>
+</div>
 </section>
 <section id="output-list-columns-from-other-functions" class="level3">
 <h3 class="anchored" data-anchor-id="output-list-columns-from-other-functions">Output List-Columns From Other Functions</h3>
 <ul>
-<li><p><code>dplyr::mutate()</code>, <code>transmute()</code>, and <code>summarise()</code> will output list-columns if they return a list.</p>
+<li><code>dplyr::mutate()</code>, <code>transmute()</code>, and <code>summarise()</code> will output list-columns if they return a list.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">|&gt;</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">|&gt;</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">q =</span> <span class="fu">list</span>(<span class="fu">quantile</span>(mpg)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-</ul>
+</div>
 </section>
 <section id="reshape-nested-data" class="level3">
 <h3 class="anchored" data-anchor-id="reshape-nested-data">Reshape Nested Data</h3>
 <ul>
-<li><p><code>unnest(data, cols, ..., keep_empty = FALSE)</code>: Flatten nested columns back to regular columns. The inverse of <code>nest()</code>.</p>
+<li><code>unnest(data, cols, ..., keep_empty = FALSE)</code>: Flatten nested columns back to regular columns. The inverse of <code>nest()</code>.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>n_storms <span class="sc">|&gt;</span> <span class="fu">unnest</span>(data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-<li><p><code>unnest_longer(data, col, values_to = NULL, indices_to = NULL)</code>: Turn each element of a list-column into a row.</p>
+</div>
+<ul>
+<li><code>unnest_longer(data, col, values_to = NULL, indices_to = NULL)</code>: Turn each element of a list-column into a row.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">|&gt;</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, films) <span class="sc">|&gt;</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_longer</span>(films)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-<li><p><code>unnest_wider(data, col)</code>: Turn each element of a list-column into a regular column.</p>
+</div>
+<ul>
+<li><code>unnest_wider(data, col)</code>: Turn each element of a list-column into a regular column.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">|&gt;</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, films) <span class="sc">|&gt;</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest_wider</span>(films, <span class="at">names_sep =</span> <span class="st">"_"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-<li><p><code>hoist(.data, .col, ..., remove = TRUE)</code>: Selectively pull list components out into their own top-level columns. Uses <code>purrr::pluck()</code> syntax for selecting from lists.</p>
+</div>
+<ul>
+<li><code>hoist(.data, .col, ..., remove = TRUE)</code>: Selectively pull list components out into their own top-level columns. Uses <code>purrr::pluck()</code> syntax for selecting from lists.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">|&gt;</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(name, films) <span class="sc">|&gt;</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hoist</span>(films, <span class="at">first_film =</span> <span class="dv">1</span>, <span class="at">second_film =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-</ul>
+</div>
 </section>
 <section id="transform-nested-data" class="level3">
 <h3 class="anchored" data-anchor-id="transform-nested-data">Transform Nested Data</h3>
 <p>A vectorized function takes a vector, transforms each element in parallel, and returns a vector of the same length. By themselves vectorized functions cannot work with lists, such as list-columns.</p>
 <ul>
 <li><p><code>dplyr::rowwise(.data, ...)</code>: Group data so that each row is one group, and within the groups, elements of list-columns appear directly (accessed with <code>[[</code>), not as lists of length one. <strong>When you use rowwise(), dplyr functions will seem to apply functions to list-columns in a vectorized fashion.</strong></p></li>
-<li><p>Apply a function to a list-column and <strong>create a new list-column.</strong> In this example, <code>dim()</code> returns two values per row and so is wrapped with <code>list()</code> to tell <code>mutate()</code> to create a list-column.</p>
+<li><p>Apply a function to a list-column and <strong>create a new list-column.</strong> In this example, <code>dim()</code> returns two values per row and so is wrapped with <code>list()</code> to tell <code>mutate()</code> to create a list-column.</p></li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>n_storms <span class="sc">|&gt;</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">list</span>(<span class="fu">dim</span>(data))) <span class="co"># dim() returns two values per row, wrap with list to tell mutate to create a list-column</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-<li><p>Apply a function to a list-column and <strong>create a regular column.</strong> In this example, <code>nrow()</code> returns one integer per row.</p>
+</div>
+<ul>
+<li>Apply a function to a list-column and <strong>create a regular column.</strong> In this example, <code>nrow()</code> returns one integer per row.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>n_storms <span class="sc">|&gt;</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n =</span> <span class="fu">nrow</span>(data)) <span class="co"># nrow() returns one integer per row</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-<li><p>Collapse <strong>multiple list-columns</strong> into a single list-column. In this example, <code>append()</code> returns a list for each row, so col type must be list.</p>
+</div>
+<ul>
+<li>Collapse <strong>multiple list-columns</strong> into a single list-column. In this example, <code>append()</code> returns a list for each row, so col type must be list.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">|&gt;</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">transport =</span> <span class="fu">list</span>(<span class="fu">append</span>(vehicles, starships))) <span class="co"># append() returns a list for each row, so col type must be list</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-<li><p>Apply a function to <strong>multiple list-columns.</strong> In this example, <code>length()</code> returns one integer per row.</p>
+</div>
+<ul>
+<li>Apply a function to <strong>multiple list-columns.</strong> In this example, <code>length()</code> returns one integer per row.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">|&gt;</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n_transports =</span> <span class="fu">length</span>(<span class="fu">c</span>(vehicles, starships)))</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># length() returns one integer per row</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-<li><p>See <strong>purrr</strong> package for more list functions.</p></li>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n_transports =</span> <span class="fu">length</span>(<span class="fu">c</span>(vehicles, starships))) <span class="co"># length() returns one integer per row</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li>See <strong>purrr</strong> package for more list functions.</li>
 </ul>
 <hr>
 <p>CC BY SA Posit Software, PBC • <a href="mailto:info@posit.co">info@posit.co</a> • <a href="https://posit.co">posit.co</a></p>

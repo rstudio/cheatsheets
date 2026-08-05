@@ -553,21 +553,27 @@ NA,11,12</code></pre>
 <ul>
 <li><p>Column specifications define what data type each column of a file will be imported as.</p></li>
 <li><p>Use the <code>col_types</code> argument of <code>read_excel()</code> to set the column specification.</p></li>
-<li><p>Guess column types: To guess a column type, <code>read_excel()</code> looks at the first 1000 rows of data. Increase with the <code>guess_max</code> argument.</p>
+<li><p>Guess column types: To guess a column type, <code>read_excel()</code> looks at the first 1000 rows of data. Increase with the <code>guess_max</code> argument.</p></li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(path, <span class="at">guess_max =</span> <span class="cn">Inf</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-<li><p>Set all columns to same type, e.g.&nbsp;character:</p>
+</div>
+<ul>
+<li>Set all columns to same type, e.g.&nbsp;character:</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(path, <span class="at">col_types =</span> <span class="st">"text"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-<li><p>Set each column individually:</p>
+</div>
+<ul>
+<li>Set each column individually:</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  path,</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_types =</span> <span class="fu">c</span>(<span class="st">"text"</span>, <span class="st">"guess"</span>, <span class="st">"gue       ss"</span>,<span class="st">"numeric"</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_types =</span> <span class="fu">c</span>(<span class="st">"text"</span>, <span class="st">"guess"</span>, <span class="st">"guess"</span>, <span class="st">"numeric"</span>)</span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
+</div>
+<ul>
 <li><p><strong>Column types:</strong></p>
 <table class="caption-top table">
 <caption>Table with 5 columns. Column headers are various data types (logical, numeric, text, date, and list). The data in two rows show examples of data for the given column type.</caption>
@@ -689,19 +695,25 @@ NA,11,12</code></pre>
 <p>Column specifications define what data type each column of a file will be imported as.</p>
 <p>Use the <code>col_types</code> argument of <code>read_sheet()</code><strong>/</strong><code>range_read()</code> to set the column specification.</p>
 <ul>
-<li><p>Guess column types: To guess a column type <code>read_sheet()</code>/<code>range_read()</code> looks at the first 1000 rows of data. Increase with <code>guess_max</code>.</p>
+<li>Guess column types: To guess a column type <code>read_sheet()</code>/<code>range_read()</code> looks at the first 1000 rows of data. Increase with <code>guess_max</code>.</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_sheet</span>(path, <span class="at">guess_max =</span> <span class="cn">Inf</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-<li><p>Set all columns to same type, e.g.&nbsp;character:</p>
+</div>
+<ul>
+<li>Set all columns to same type, e.g.&nbsp;character:</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_sheet</span>(path, <span class="at">col_types =</span> <span class="st">"c"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
-<li><p>Set each column individually:</p>
+</div>
+<ul>
+<li>Set each column individually:</li>
+</ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># col types: skip, guess, integer, logical, character</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_sheets</span>(ss, <span class="at">col_types =</span> <span class="st">"_?ilc"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div></li>
+</div>
+<ul>
 <li><p>Column types:</p>
 <ul>
 <li><p>skipped my lunch 🥙 🍱 and: “_” or “-”</p></li>

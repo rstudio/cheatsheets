@@ -361,9 +361,9 @@ Translations (PDF)
 </div>
 <ul>
 <li><p><code>f + geom_col()</code>: Draw a bar plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>.</p></li>
-<li><p><code>f + geom_boxplot()</code>: Draw a box plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>lower</code>, <code>middle</code>, <code>upper</code>, <code>ymax</code>, <code>ymin</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>shape</code>, <code>linewidth</code>, <code>weight</code>.</p></li>
+<li><p><code>f + geom_boxplot()</code>: Draw a box plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>lower</code>, <code>middle</code>, <code>upper</code>, <code>ymax</code>, <code>ymin</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>shape</code>, <code>linewidth</code>, <code>weight</code>. Style individual parts with <code>median.*</code>, <code>box.*</code>, <code>whisker.*</code>, and <code>staple.*</code> arguments.</p></li>
 <li><p><code>f + geom_dotplot(binaxis ="y", stackdir = "center")</code>: Draw a dot plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>.</p></li>
-<li><p><code>f + geom_violin(scale = "area")</code>: Draw a violin plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>, <code>weight</code>.</p></li>
+<li><p><code>f + geom_violin(scale = "area")</code>: Draw a violin plot. <code>aes()</code> arguments: <code>x</code>, <code>y</code>, <code>alpha</code>, <code>color</code>, <code>fill</code>, <code>group</code>, <code>linetype</code>, <code>linewidth</code>, <code>weight</code>. Use <code>quantiles</code> to compute quantile lines and <code>quantile.colour</code>/<code>quantile.linetype</code>/<code>quantile.linewidth</code> to style them (blank by default).</p></li>
 </ul>
 </section>
 <section id="two-variables---both-discrete" class="level3">
@@ -554,6 +554,7 @@ Translations (PDF)
 <li><p><code>u + coord_polar(theta = "x", direction = 1)</code>: <code>theta</code>, <code>start</code>, <code>direction</code>. Polar coordinates.</p></li>
 <li><p><code>u + coord_trans(y = "sqrt")</code>: <code>x</code>, <code>y</code>, <code>xlim</code>, <code>ylim</code>. Transformed Cartesian coordinates. Set <code>xtrans</code> and <code>ytrans</code> to the name of a window function.</p></li>
 <li><p><code>π + coord_sf()</code>: <code>xlim</code>, <code>ylim</code>, <code>crs</code>. Ensures all layers use a common Coordinate Reference System.</p></li>
+<li><p>Use <code>reverse = "none"</code> (default), <code>"x"</code>, <code>"y"</code>, or <code>"xy"</code> with any coord to flip an axis direction.</p></li>
 </ul>
 </section>
 <section id="position-adjustments" class="level2">
@@ -585,18 +586,34 @@ Translations (PDF)
 <li><p><code>u + theme_linedraw()</code>: Uses only black lines.</p></li>
 <li><p><code>u + theme_minimal()</code>: Minimal theme.</p></li>
 <li><p><code>u + theme_void()</code>: Empty theme.</p></li>
-<li><p><code>u + theme()</code>: Customize aspects of the theme such as axis, legend, panel, and facet properties.</p></li>
+<li><p>Customize complete themes with <code>ink</code> (foreground), <code>paper</code> (background), and <code>accent</code> color arguments that propagate to layer defaults (e.g., <code>theme_gray(ink =, paper =, accent =)</code>).</p></li>
 </ul>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>u <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Title"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title.position =</span> <span class="st">"plot"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>u <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"blue"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>u <span class="sc">+</span> <span class="fu">theme_gray</span>(<span class="at">paper =</span> <span class="st">"cornsilk"</span>, <span class="at">ink =</span> <span class="st">"navy"</span>, <span class="at">accent =</span> <span class="st">"tomato"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li><code>u + theme()</code>: Customize aspects of the theme such as axis, legend, panel, and facet properties. Use <code>theme(geom = element_geom(...))</code> to set the same defaults without switching themes, and <code>from_theme(accent)</code> inside <code>aes()</code> to map a layer to them.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>u <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Title"</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title.position =</span> <span class="st">"plot"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>u <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"blue"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li><code>u + theme_sub_panel()</code>: Shortcut for clusters of <code>theme()</code> settings that share a prefix. Also <code>theme_sub_axis()</code>, <code>theme_sub_legend()</code>, <code>theme_sub_plot()</code>, <code>theme_sub_strip()</code>, and directional variants like <code>theme_sub_axis_x()</code>.</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>u <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_sub_panel</span>(</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="cn">NA</span>),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">spacing.x =</span> <span class="fu">unit</span>(<span class="dv">5</span>, <span class="st">"mm"</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="faceting" class="level2">
 <h2 class="anchored" data-anchor-id="faceting">Faceting</h2>
 <p>Facets divide a plot into subplots based on the values of one or more discrete variables.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(cty, hwy)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li><p><code>t + facet_grid(. ~ fl)</code>: Facet into a column based on fl.</p></li>
@@ -621,6 +638,8 @@ Translations (PDF)
   caption = "Add a caption below plot",
   alt = "Add alt text to the plot",
   &lt;Aes&gt; = "New &lt;Aes&gt; legend title")</code></pre>
+<p>Or label variables from a named vector (e.g., from a data dictionary), keyed by variable name rather than aesthetic.</p>
+<pre><code>t + labs(dictionary = c(cty = "City mileage (mpg)", hwy = "Highway mileage (mpg)"))</code></pre>
 <ul>
 <li><p><code>t + annotate(geom = "text", x = 8, y = 9, label = "A")</code>: Places a geom with manually selected aesthetics.</p></li>
 <li><p><code>p + guides(x = guide_axis(n.dodge = 2))</code>: Avoid crowded or overlapping labels with <code>guide_axis(n.dodge or angle)</code>.</p></li>
@@ -640,7 +659,7 @@ Translations (PDF)
 <p>Learn more at <a href="https://ggplot2.tidyverse.org">ggplot2.tidyverse.org</a>.</p>
 <p>Updated: 2026-08.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"ggplot2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">packageVersion</span>(<span class="st">"ggplot2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] '4.0.3'</code></pre>
 </div>

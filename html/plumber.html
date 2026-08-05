@@ -237,7 +237,7 @@ Translations (PDF)
 </ul>
 </div></div><section id="introduction-to-rest-apis" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-to-rest-apis">Introduction to REST APIs</h2>
-<p>Web APIs use <strong>HTTP</strong> to communcation between <strong>client</strong> and <strong>server</strong>.</p>
+<p>Web APIs use <strong>HTTP</strong> to communicate between <strong>client</strong> and <strong>server</strong>.</p>
 <section id="http" class="level3">
 <h3 class="anchored" data-anchor-id="http">HTTP</h3>
 <p>HTTP is built around a <strong>request</strong> and a <strong>response</strong>. A <strong>client</strong> makes a request to a <strong>server</strong>, which handles the request and provides a response. Requests and responses are specially formatted text containing details and data about the exchange between client and server.</p>
@@ -273,7 +273,7 @@ Translations (PDF)
 <section id="plumber-build-apis-with-r" class="level2">
 <h2 class="anchored" data-anchor-id="plumber-build-apis-with-r">Plumber: Build APIs with R</h2>
 <p>Plumber uses special comments to turn any arbitrary R code into API endpoints. The example below defines a function that takes the <code>msg</code> argument and returns it embedded in additional text.</p>
-<p>Plumber comments begin with <code>#*</code> and <code>@</code> decoators define API characteristics. In HTTP methods such as <code>@get</code> the <code>/&lt;path&gt;</code> defines the location of the endpoint.</p>
+<p>Plumber comments begin with <code>#*</code> and <code>@</code> decorators define API characteristics. In HTTP methods such as <code>@get</code> the <code>/&lt;path&gt;</code> defines the location of the endpoint.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plumber)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -324,7 +324,7 @@ Translations (PDF)
 <p>Define the endpoint description, opt out of the log filter, define the parser, HTTP method and endpoint path, and serializer:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#* Convert request body to uppercase</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#* @prempt log</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#* @preempt log</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#* @parser json</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#* @post /uppercase</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#* @serializer json</span></span>
@@ -464,7 +464,7 @@ Translations (PDF)
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#* @get /echo</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(<span class="at">msg =</span> <span class="st">""</span>) {</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">msg =</span> <span class="fu">paste0</span>(<span class="st">"The messahe is: '"</span>, msg, <span class="st">"'"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">msg =</span> <span class="fu">paste0</span>(<span class="st">"The message is: '"</span>, msg, <span class="st">"'"</span>)</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
@@ -589,7 +589,7 @@ Translations (PDF)
 <tr class="even">
 <td><code>res$removeCookie()</code></td>
 <td><code>removeCookie("foo")</code></td>
-<td>Removes an HTTP cooki4</td>
+<td>Removes an HTTP cookie</td>
 </tr>
 <tr class="odd">
 <td><code>res$body</code></td>

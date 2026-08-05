@@ -248,7 +248,7 @@ Translations (PDF)
 </div></li>
 <li><p><code>map2(.x, .y, .f, ...)</code>: Apply a function pairs of elements from two lists or vectors, return a list.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(x, y, \(x, y) x<span class="sc">*</span>y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">map2</span>(x, y, \(x,  y ) x<span class="sc">*</span>y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><code>imap(.x, .f, ...)</code> is shorthand for <code>map2(.x, names(.x), .f)</code> or <code>map2(.x, seq_along(.x), .f)</code> depending on whether <code>.x</code> is named or not.</p></li>
 <li><p><code>pmap(.l, .f, ...)</code>: Apply a function to groups of elements from a list of lists or vectors, return a list.</p>

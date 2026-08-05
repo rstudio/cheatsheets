@@ -331,6 +331,7 @@ writing documentation, and checking your package." width="1059">
 <li><p>Create a new package project with <code>create_package("path/to/name")</code>.</p></li>
 <li><p>Create R files with <code>use_r("file-name")</code>.</p></li>
 <li><p>Follow the tidyverse style guide at <a href="style.tidyverse.org" title="Tidyverse style guide">style.tidyverse.org</a></p></li>
+<li><p>Automatically format your code with <code>use_air()</code>, which configures your project to use <a href="https://posit-dev.github.io/air/">Air</a>, a fast R code formatter.</p></li>
 <li><p>Put your cursor on a function and press <code>F2</code> to go to its definition</p></li>
 <li><p>Find a function or file with the keyboard shortcut <code>Ctrl+.</code></p></li>
 </ul>
@@ -397,7 +398,7 @@ writing documentation, and checking your package." width="1059">
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#' Add together two numbers</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#' </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#'</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param x A number.</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#' @param y A number.</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#' @returns The sum of `x` and `y`</span></span>
@@ -433,7 +434,7 @@ writing documentation, and checking your package." width="1059">
 <ul>
 <li>Create a vignette that is included with your package with <code>use_vignette()</code>.</li>
 <li>Create an article that only appears on the website with <code>use_article()</code>.</li>
-<li>Write the body of your vignettes in R Markdown.</li>
+<li>Write the body of your vignettes in R Markdown or include a <code>.qmd</code> extension in the name (e.g.&nbsp;<code>use_vignette("intro.qmd")</code>) to write it in Quarto instead.</li>
 </ul>
 </section>
 <section id="websites-with-pkgdown" class="level2">
@@ -509,7 +510,7 @@ writing documentation, and checking your package." width="1059">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="images/install-load.png" class="img-fluid figure-img" alt="A diagram describing the functions that move a package between different states. The description below describes this in detail. " width="1013"></p>
+<p><img src="images/install-load.png" class="img-fluid figure-img" alt="A diagram describing the functions that move a package between different states. The description below describes this in detail. "></p>
 </figure>
 </div>
 </div>
@@ -520,7 +521,7 @@ writing documentation, and checking your package." width="1059">
 <li><code>library()</code>: Installed in Library to loaded in Memory.</li>
 <li><code>install.packages()</code>: Binary from CRAN repository to installed in Library.</li>
 <li><code>install.packages(type = "source")</code>: Source code from CRAN repository to Bundle, to installed in Library.</li>
-<li><code>install_github()</code>: Source code from GitHub repository to Bundle to installed in Library.</li>
+<li><code>pak::pak("owner/repo")</code>: Source code from GitHub (or other remotes) repository to bundle to installed in Library.</li>
 <li><code>install()</code>: Local source code to bundle to installed in Library.</li>
 <li><code>build()</code>: Local source to Bundle.</li>
 <li><code>build(binary = TRUE)</code>: Local source to Binary.</li>
