@@ -24,7 +24,7 @@ translation_list(sheet_name)
 
 ## Introduction to REST APIs
 
-Web APIs use **HTTP** to communcation between **client** and **server**.
+Web APIs use **HTTP** to communicate between **client** and **server**.
 
 ### HTTP
 
@@ -74,7 +74,7 @@ curl -v "http://httpbin.org/get"
 Plumber uses special comments to turn any arbitrary R code into API endpoints.
 The example below defines a function that takes the `msg` argument and returns it embedded in additional text.
 
-Plumber comments begin with `#*` and `@` decoators define API characteristics.
+Plumber comments begin with `#*` and `@` decorators define API characteristics.
 In HTTP methods such as `@get` the `/<path>` defines the location of the endpoint.
 
 ```{r}
@@ -148,7 +148,7 @@ Define the endpoint description, opt out of the log filter, define the parser, H
 #| eval: false
 
 #* Convert request body to uppercase
-#* @prempt log
+#* @preempt log
 #* @parser json
 #* @post /uppercase
 #* @serializer json
@@ -283,7 +283,7 @@ library(plumber)
 #* @get /echo
 function(msg = "") {
   list(
-    msg = paste0("The messahe is: '", msg, "'")
+    msg = paste0("The message is: '", msg, "'")
   )
 }
 
@@ -334,7 +334,7 @@ Each object has several components, the most helpful of which are outlined below
 | `res$headers`        | `list(header = "abc")`    | HTTP headers to include in the response   |
 | `res$setHeader()`    | `setHeader("foo", "bar")` | Sets an HTTP header                       |
 | `res$setCookie()`    | `setCookie("foo", "bar")` | Sets an HTTP cookie on the client         |
-| `res$removeCookie()` | `removeCookie("foo")`     | Removes an HTTP cooki4                    |
+| `res$removeCookie()` | `removeCookie("foo")`     | Removes an HTTP cookie                    |
 | `res$body`           | `"{\"a\":[1]}"`           | Serialized output                         |
 | `res$status`         | `200`                     | The response HTTP status code             |
 | `res$toResponse()`   | `toResponse()`            | A list of `status`, `headers`, and `body` |

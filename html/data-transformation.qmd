@@ -107,6 +107,19 @@ Row functions return a subset of rows as a new table.
 mtcars |> filter(mpg > 20)
 ```
 
+-   `filter_out(.data, ..., .preserve = FALSE)`: Drop rows that meet logical criteria (the complement to `filter()`).
+    Missing values in the dropped condition are kept by default, so you don't need to guard against `NA` explicitly.
+
+```{r}
+mtcars |> filter_out(mpg > 20)
+```
+
+-   Use `when_any()` and `when_all()` inside `filter()` to combine multiple conditions.
+
+```{r}
+mtcars |> filter(when_any(mpg > 30, hp > 300))
+```
+
 -   `distinct(.data, ..., .keep_all = FALSE)`: Remove rows with duplicate values.
 
 ```{r}
@@ -295,7 +308,12 @@ Vectorized functions take vectors as input and return vectors of the same length
 
 ### Miscellaneous
 
--   `dplyr::case_when()`: multi-case `if_else()`
+-   `dplyr::if_else()`: element-wise if() + else()
+
+-   `dplyr::na_if()`: replace specific values with NA
+
+-   `dplyr::case_when()`: multi-case `if_else()`.
+    Use `.unmatched = "error"` to error on any unmatched cases instead of silently returning `NA`.
 
 ```{r}
 starwars |>
@@ -308,11 +326,30 @@ starwars |>
   )
 ```
 
+-   `dplyr::replace_when()`: replace values based on a logical condition, like a targeted `case_when()`.
+
+```{r}
+starwars |> mutate(name = replace_when(name, height > 200 ~ "Tall"))
+```
+
 -   `dplyr::coalesce()`: first non-NA values by element across a set of vectors
 
--   `dplyr::if_else()`: element-wise if() + else()
+-   `dplyr::recode_values()`: recode values into a new column, using either a formula interface (like `case_when()`) or `from`/`to` lookup vectors.
 
--   `dplyr::na_if()`: replace specific values with NA
+```{r}
+starwars |>
+  mutate(size = recode_values(species, "Droid" ~ "robot", default = "other"))
+```
+
+-   `dplyr::replace_values()`: replace specific values within an existing column, similar to `coalesce()`, `na_if()`, or `tidyr::replace_na()`.
+
+```{r}
+starwars |> mutate(species = replace_values(species, NA ~ "Unknown"))
+```
+
+
+
+
 
 -   `pmax()`: element-wise max()
 

@@ -108,7 +108,6 @@ read_*(
         ```{r}
         #| label: write-file-csv
         #| echo: false
-
         write_file("A,B,C\n1,2,3\n4,5,NA", file = "file.csv")
         ```
 
@@ -438,27 +437,27 @@ read_excel(path, sheet = NULL, range = NULL)
 -   Guess column types: To guess a column type, `read_excel()` looks at the first 1000 rows of data.
     Increase with the `guess_max` argument.
 
-    ```{r}
-    #| eval: false
-    read_excel(path, guess_max = Inf)
-    ```
+```{r}
+#| eval: false
+read_excel(path, guess_max = Inf)
+```
 
 -   Set all columns to same type, e.g. character:
 
-    ```{r}
-    #| eval: false
-    read_excel(path, col_types = "text")
-    ```
+```{r}
+#| eval: false
+read_excel(path, col_types = "text")
+```
 
 -   Set each column individually:
 
-    ```{r}
-    #| eval: false
-    read_excel(
-      path,
-      col_types = c("text", "guess", "gue       ss","numeric")
-    )
-    ```
+```{r}
+#| eval: false
+read_excel(
+  path,
+  col_types = c("text", "guess", "guess", "numeric")
+)
+```
 
 -   **Column types:**
 
@@ -515,12 +514,11 @@ Same as `range_read()`.
 
 -   It will look like the following when imported:
 
-    ```{r}
-    #| echo: false
-
-    write_file("x1,x2,x3,x4,x5\nx, ,z,8, \ny,7, ,9,10", file = "googlesheet.csv")
-    read_csv("googlesheet.csv", show_col_types = FALSE)
-    ```
+```{r}
+#| echo: false
+write_file("x1,x2,x3,x4,x5\nx, ,z,8, \ny,7, ,9,10", file = "googlesheet.csv")
+read_csv("googlesheet.csv", show_col_types = FALSE)
+```
 
 ### Sheet metadata
 
@@ -553,25 +551,25 @@ Use the `col_types` argument of `read_sheet()`**/**`range_read()` to set the col
 -   Guess column types: To guess a column type `read_sheet()`/`range_read()` looks at the first 1000 rows of data.
     Increase with `guess_max`.
 
-    ```{r}
-    #| eval: false
-    read_sheet(path, guess_max = Inf)
-    ```
+```{r}
+#| eval: false
+read_sheet(path, guess_max = Inf)
+```
 
 -   Set all columns to same type, e.g. character:
 
-    ```{r}
-    #| eval: false
-    read_sheet(path, col_types = "c")
-    ```
+```{r}
+#| eval: false
+read_sheet(path, col_types = "c")
+```
 
 -   Set each column individually:
 
-    ```{r}
-    #| eval: false
-    # col types: skip, guess, integer, logical, character
-    read_sheets(ss, col_types = "_?ilc")
-    ```
+```{r}
+#| eval: false
+# col types: skip, guess, integer, logical, character
+read_sheets(ss, col_types = "_?ilc")
+```
 
 -   Column types:
 
