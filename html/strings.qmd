@@ -38,10 +38,11 @@ see <- function(rx) str_view("abc ABC 123\t.!?\\(){}\n", rx)
 ## Detect Matches
 
 -   `str_detect(string, pattern, negate = FALSE)`: Detect the presence of a pattern match in a string.
-    Also `str_like()`.
+    Also `str_like()` for SQL `LIKE`-style wildcard matching (always case-sensitive) and `str_ilike()` for case-insensitive `ILIKE`-style matching.
 
     ```{r}
     str_detect(fruit, "a")
+    str_ilike(fruit, "AP%")
     ```
 
 -   `str_starts(string, pattern, negate = FALSE)`: Detect the presence of a pattern match at the beginning of a string.
@@ -111,6 +112,13 @@ see <- function(rx) str_view("abc ABC 123\t.!?\\(){}\n", rx)
     str_to_title(sentences)
     ```
 
+-   `str_to_camel(string)`: onvert strings between programming case styles (`camelCase`, `snake_case`, `kebab-case`).
+    Also `str_to_snake(string)` and `str_to_kebab(string)`.
+
+    ```{r}
+    str_to_camel("convert this string")
+    ```
+
 ## Subset Strings
 
 -   `str_sub(string, start = 1L, end = -1L)`: Extract substrings from a character vector.
@@ -154,7 +162,7 @@ see <- function(rx) str_view("abc ABC 123\t.!?\\(){}\n", rx)
     str_flatten(fruit, ", ")
     ```
 
--   `str_dup(string, times)`: Repeat strings times times.
+-   `str_dup(string, times, sep = "")`: Repeat strings times times, optionally separated by `sep`.
     Also `str_unique()` to remove duplicates.
 
     ```{r}

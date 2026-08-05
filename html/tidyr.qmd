@@ -16,8 +16,9 @@ editor_options:
 #| column: margin
 source("common.R")
 use_cheatsheet_logo(
-  "tidyr", 
-  alt = "Hex logo for tidyr - three different brightly coloured cartoon brooms that appear as spaceships flying through a black background, with coloured spots representing stars and planets.")
+  "tidyr",
+  alt = "Hex logo for tidyr - three different brightly coloured cartoon brooms that appear as spaceships flying through a black background, with coloured spots representing stars and planets."
+)
 sheet_name <- tools::file_path_sans_ext(knitr::current_input())
 pdf_preview_link(sheet_name)
 translation_list(sheet_name)
@@ -65,25 +66,24 @@ They inherit the data frame class, but have improved behaviors:
 
 -   `tibble(...)`: Construct by columns.
 
-    ```{r}
-    #| output: true
-
-    tibble(
-      x = 1:3, 
-      y = c("a", "b", "c")
-    )
-    ```
+```{r}
+#| output: true
+tibble(
+  x = 1:3,
+  y = c("a", "b", "c")
+)
+```
 
 -   `tribble(...)`: Construct by rows.
 
-    ```{r}
-    tribble(
-      ~x, ~y,
-       1, "a",
-       2, "b",
-       3, "c"
-    )
-    ```
+```{r}
+tribble(
+  ~x , ~y  ,
+   1 , "a" ,
+   2 , "b" ,
+   3 , "c"
+)
+```
 
 -   `as_tibble(x, ...)`: Convert a data frame to a tibble.
 
@@ -216,12 +216,12 @@ Drop or replace explicit missing values (`NA`).
 
 ```{r}
 x <- tribble(
-  ~x1, ~x2,
-  "A",   1,
-  "B",  NA,
-  "C",  NA,
-  "D",   3,
-  "E",  NA
+  ~x1 , ~x2 ,
+  "A" ,   1 ,
+  "B" , NA  ,
+  "C" , NA  ,
+  "D" ,   3 ,
+  "E" , NA
 )
 ```
 
@@ -234,6 +234,7 @@ x <- tribble(
 
 -   `fill(data, ..., .direction = "down")`: Fill in `NA`s in ...
     columns using the next or previous value.
+    Use `.by` to fill within groups without a separate `group_by()` call.
 
     ```{r}
     fill(x, x2)
@@ -285,73 +286,73 @@ Use a nested data frame to:
 
 -   `tibble::tribble(...)`: Makes list-columns when needed.
 
-    ```{r}
-    tribble(
-      ~max, ~seq,
-         3,  1:3,
-         4,  1:4,
-         5,  1:5
-    )
-    ```
+```{r}
+tribble(
+  ~max , ~seq ,
+     3 , 1:3  ,
+     4 , 1:4  ,
+     5 , 1:5
+)
+```
 
 -   `tibble::tibble(...)`: Saves list input as list-columns.
 
-    ```{r}
-    tibble(
-      max = c(3,4,5),
-      seq = list(1:3, 1:4, 1:5)
-    )
-    ```
+```{r}
+tibble(
+  max = c(3, 4, 5),
+  seq = list(1:3, 1:4, 1:5)
+)
+```
 
 -   `tibble::enframe(x, name = "name", value = "value")`: Convert multi-level list to a tibble with list-cols.
 
-    ```{r}
-    enframe(list("3" = 1:3, "4" = 1:4, "5" = 1:5), "max", "seq")
-    ```
+```{r}
+enframe(list("3" = 1:3, "4" = 1:4, "5" = 1:5), "max", "seq")
+```
 
 ### Output List-Columns From Other Functions
 
 -   `dplyr::mutate()`, `transmute()`, and `summarise()` will output list-columns if they return a list.
 
-    ```{r}
-    mtcars |>
-      group_by(cyl) |>
-      summarise(q = list(quantile(mpg)))
-    ```
+```{r}
+mtcars |>
+  group_by(cyl) |>
+  summarise(q = list(quantile(mpg)))
+```
 
 ### Reshape Nested Data
 
 -   `unnest(data, cols, ..., keep_empty = FALSE)`: Flatten nested columns back to regular columns.
     The inverse of `nest()`.
 
-    ```{r}
-    n_storms |> unnest(data)
-    ```
+```{r}
+n_storms |> unnest(data)
+```
 
 -   `unnest_longer(data, col, values_to = NULL, indices_to = NULL)`: Turn each element of a list-column into a row.
 
-    ```{r}
-    starwars |>
-      select(name, films) |>
-      unnest_longer(films)
-    ```
+```{r}
+starwars |>
+  select(name, films) |>
+  unnest_longer(films)
+```
 
 -   `unnest_wider(data, col)`: Turn each element of a list-column into a regular column.
 
-    ```{r}
-    starwars |>
-      select(name, films) |>
-      unnest_wider(films, names_sep = "_")
-    ```
+```{r}
+starwars |>
+  select(name, films) |>
+  unnest_wider(films, names_sep = "_")
+```
 
 -   `hoist(.data, .col, ..., remove = TRUE)`: Selectively pull list components out into their own top-level columns.
     Uses `purrr::pluck()` syntax for selecting from lists.
 
-    ```{r}
-    starwars |>
-      select(name, films) |>
-      hoist(films, first_film = 1, second_film = 2)
-    ```
+```{r}
+starwars |>
+  select(name, films) |>
+  hoist(films, first_film = 1, second_film = 2)
+```
 
 ### Transform Nested Data
 
@@ -363,37 +364,36 @@ By themselves vectorized functions cannot work with lists, such as list-columns.
 
 -   Apply a function to a list-column and **create a new list-column.** In this example, `dim()` returns two values per row and so is wrapped with `list()` to tell `mutate()` to create a list-column.
 
-    ```{r}
-    n_storms |>
-      rowwise() |>
-      mutate(n = list(dim(data))) # dim() returns two values per row, wrap with list to tell mutate to create a list-column
-    ```
+```{r}
+n_storms |>
+  rowwise() |>
+  mutate(n = list(dim(data))) # dim() returns two values per row, wrap with list to tell mutate to create a list-column
+```
 
 -   Apply a function to a list-column and **create a regular column.** In this example, `nrow()` returns one integer per row.
 
-    ```{r}
-    n_storms |>
-      rowwise() |>
-      mutate(n = nrow(data)) # nrow() returns one integer per row
-    ```
+```{r}
+n_storms |>
+  rowwise() |>
+  mutate(n = nrow(data)) # nrow() returns one integer per row
+```
 
 -   Collapse **multiple list-columns** into a single list-column.
     In this example, `append()` returns a list for each row, so col type must be list.
 
-    ```{r}
-    starwars |>
-      rowwise() |>
-      mutate(transport = list(append(vehicles, starships))) # append() returns a list for each row, so col type must be list
-    ```
+```{r}
+starwars |>
+  rowwise() |>
+  mutate(transport = list(append(vehicles, starships))) # append() returns a list for each row, so col type must be list
+```
 
 -   Apply a function to **multiple list-columns.** In this example, `length()` returns one integer per row.
 
-    ```{r}
-    starwars |>
-      rowwise() |>
-      mutate(n_transports = length(c(vehicles, starships)))
-      # length() returns one integer per row
-    ```
+```{r}
+starwars |>
+  rowwise() |>
+  mutate(n_transports = length(c(vehicles, starships))) # length() returns one integer per row
+```
 
 -   See **purrr** package for more list functions.
 
