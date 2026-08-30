@@ -1,0 +1,87 @@
+---
+title: "Formatting messages with cli  :: Cheatsheet"
+description: " "
+image-alt: ""
+execute:
+  eval: true
+  output: true
+  warning: true
+  error: true
+---
+
+```{r setup, include = FALSE}
+options(cli.num_colors = 256)
+fansi::set_knit_hooks(knitr::knit_hooks)
+```
+
+<!-- overall structure: https://github.com/r-lib/cli/issues/544 -->
+
+<!--- rendering issue: https://github.com/quarto-dev/quarto-cli/discussions/3957 -->
+
+cli offers a range of tools for building attractive command line interfaces (CLIs). This cheatsheet covers features of cli useful for raising errors, warnings and messages in R functions, and printing messages with rich text formatting to the console. For more advanced features, see the [cli package docs](https://cli.r-lib.org)
+
+```{r}
+library(cli)
+```
+
+## Raising conditions
+
+These functions wrap the abort(), warn() and inform() functions from [rlang](https://rlang.r-lib.org/reference/abort.html), and apply default styling to messages.
+```{r}
+cli_abort("This is an Error!")
+cli_warn("This is a Warning")
+cli_inform("This is a Message")
+```
+
+For longer messages with multiple lines, you can pass in a named vector. Each element of the vector is a new line of text, with the names specifying (optional) bullet style:
+
+```{r}
+cli_abort(c("This is an Error.",
+  "i" = "This is more information about the Error",
+  " " = "continuing onto the next line"))
+```
+
+The first element of a vector passed to `cli_abort()` has the `"!"` bullet attached by default. 
+
+<!--- wrap lines --->
+
+The following [`cli_bullets()`](https://cli.r-lib.org/reference/cli_bullets.html) are available by default:
+
+```{r}
+cli_bullets(c(
+        "noindent",
+  " " = "indent",
+  "*" = "bullet",
+  ">" = "arrow",
+  "v" = "success",
+  "x" = "danger",
+  "!" = "warning",
+  "i" = "info"
+))
+```
+
+## Inline Markup
+
+<!--- https://cli.r-lib.org/reference/inline-markup.html#classes -->
+
+Text within a line can be styled according to classes defined in the default theme [`builtin_theme()`](https://cli.r-lib.org/reference/builtin_theme.html):
+
+```{r}
+cli_bullets(c(
+  "A Function Argument: {.arg path}",
+  "A Package Name: {.pkg cli}",
+  "A URL: {.url https://example.com}."
+)
+)
+
+```
+
+## Command Substitution
+
+<!---https://cli.r-lib.org/reference/inline-markup.html --->
+
+## Pluralization
+
+## Themes
+
+<!--- https://cli.r-lib.org/reference/builtin_theme.html -->
