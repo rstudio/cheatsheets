@@ -29,8 +29,7 @@ translation_list(sheet_name)
 
 ## Overview
 
-Posit Team is the bundle of Posit's most popular products including: Workbench, Connect, and Package Manager.
-Together, this bundle delivers an end-to-end toolchain for data science teams committed to R and Python, improving every step of a data scientist's workflow, from developing insights, to deploying data products, to managing environments.
+Posit Team bundles Posit's premier data science tools, including:
 
 -   **Posit Workbench:** Development environment for creating insights.
 
@@ -38,13 +37,15 @@ Together, this bundle delivers an end-to-end toolchain for data science teams co
 
 -   **Posit Package Manager:** R and Python package repository management.
 
-## 1. Opening a New Session in Posit Workbench
+## 1. Open New Session in Posit Workbench
 
-![Posit Workbench - New Session Options](images/posit-workbench-session.png){fig-align="center"}
+Open a new development session by clicking **+ New Session**.
 
--   Current integrated development environments (IDEs) include **Jupyter Notebook, JupyterLab, RStudio Pro,** and **Visual Studio Code**.
+![Posit Workbench - Create a new session dialog](images/posit-workbench-new-session.png){fig-align="center"}
 
--   Cluster options may vary depending on how Posit Workbench is configured in your environment.
+-   Available IDEs include **Positron Pro, RStudio Pro, JupyterLab, VS Code,** and **Jupyter Notebook**.
+
+-   **Cluster Options:** May vary depending on how Posit Workbench is configured in your environment.
 
 ## 2. Configure Package Repositories
 
@@ -70,10 +71,6 @@ To set your R repositories to Posit Package Manager, run:
 options(repos = c(CRAN = "https://your-package-manager-url.com"))
 ```
 
-::: callout-tip
-To ensure this persists across sessions, add this line to your `.Rprofile` file.
-:::
-
 To set your Python repositories to Posit Package Manager, run:
 
 ```{bash}
@@ -81,19 +78,24 @@ pip config set global.index-url https://your-package-manager-url.com
 ```
 
 ::: callout-tip
-To ensure this persists across sessions, add this line to your `.bashrc` or `.bash_profile` file.
+Talk to your administrator about configuring your repositories to ensure they persist across sessions.
 :::
 
 ### Obtaining Package Manager URL
 
-To obtain the URL for your Posit Package Manager, click the `SETUP` button within the user interface of Posit Package Manager and scroll to **Repository URL:**.
+Obtain your repository URL by clicking the **SETUP** button on Posit Package Manager:
+
+![The SETUP button in Posit Package Manager](images/ppm-setup-button.png){fig-align="center"}
+
+![Example Posit Package Manager Repository URL](images/ppm-repository-url.png){fig-align="center"}
+
 You can also leverage Posit Public Package Manager for CRAN, PyPI, and Bioconductor packages: <https://p3m.dev/>
 
 ## 3. Access Your Data
 
-Access your data within Posit Team no matter where it lives and what format it is in, including:
+Access your data within Posit Team no matter where it lives and what format it's in:
 
--   **Flat files:** examples including `data.csv`, `data.txt`, `data.parquet`.
+-   **Local or Shared Directory:** Examples including `data.csv`, `data.txt`, `data.parquet`.
 
 -   **APIs:** Interact with APIs using packages such as {requests} in Python or {httr2} and {jsonlite} in R.
 
@@ -101,7 +103,11 @@ Access your data within Posit Team no matter where it lives and what format it i
 
 -   **Databases:** Connect to a variety of database types using DBI/DB-API/ODBC.
 
-### Database Interface (DBI) Example in R
+::: callout-important
+Never hard code credentials! Use environment variables or talk to your administrator about setting up a DSN.
+:::
+
+### DBI (Database Interface) Example in R
 
 Below is an example of connecting to a PostgreSQL database using the DBI package in R:
 
@@ -109,29 +115,32 @@ Below is an example of connecting to a PostgreSQL database using the DBI package
 con <- DBI::dbConnect(
   RPostgres::Postgres(),
   hostname = "db.company.com",
-  port = 5432)
+  port = 5432
+)
 ```
 
-### Python Database API (DB-API) Example in Python
+### DB-API (Python Database API) Example in Python
 
-Below is an example of connecting to a PostgreSQL database using the `psycopg2` package in Python:
+Below is an example of connecting to a database using the `sqlite3` package in Python:
 
 ```{python}
 con = sqlite3.connect('example.db')
 ```
 
-### Connecting to a Database using Open Database Connectivity (ODBC)
+### ODBC (Open Database Connectivity)
 
 Below is an example of connecting to a PostgreSQL database using the `odbc` package in R:
 
 ```{r}
-con <- DBI::dbConnect(odbc::odbc(),
+con <- DBI::dbConnect(
+  odbc::odbc(),
   driver = "PostgreSQL Driver",
   database = "test_db",
   UID = Sys.getenv("DB_USER"),
   PWD = Sys.getenv("DB_PASSWORD"),
   host = "localhost",
-  port = 5432)
+  port = 5432
+)
 ```
 
 Below is an example of connecting to a PostgreSQL database using the `pyodbc` package in Python:
@@ -146,7 +155,9 @@ con = pyodbc.connect(
   pwd = os.getenv('DB_PASSWORD'))
 ```
 
-### Posit Professional ODBC Drivers
+### Posit's Professional ODBC Drivers
+
+![Databases supported by Posit's professional ODBC drivers, including Athena, BigQuery, Cassandra, Databricks, Hive, Impala, MongoDB, MySQL, Netezza, Oracle, PostgreSQL, Redshift, Teradata, Salesforce, Spark, Snowflake, and SQL Server](images/posit-odbc-drivers.png){fig-align="center"}
 
 A full list of Posit provided professional ODBC drivers can be found here: <https://docs.posit.co/pro-drivers/>
 
@@ -154,15 +165,17 @@ A full list of Posit provided professional ODBC drivers can be found here: <http
 
 Posit Workbench includes multiple options for running your R and Python code, including:
 
--   Support for multiple R and Python versions.
+-   Support for multiple Python and R versions.
 
--   Support for virtual environments (e.g., `venv`) and project-oriented workflows.
+-   Leverage virtual environments (e.g., `renv`, `venv`) and project-oriented workflows.
 
--   Submit long-running Python/R jobs to Posit Workbench server to run in independent sessions using **Workbench Jobs** within RStudio Pro (<https://docs.posit.co/ide/server-pro/user/rstudio-pro/guide/workbench-jobs.html>) and VS Code (<https://docs.posit.co/ide/server-pro/user/vs-code/guide/workbench-jobs.html>).
+-   **RStudio and Positron:** Submit long-running Python/R jobs to Posit Workbench server to run in independent sessions using **Workbench Jobs** (<https://docs.posit.co/ide/server-pro/user/rstudio-pro/guide/workbench-jobs.html>).
 
-## 5. Supported Content on Posit Connect
+![Launching a Workbench Job from RStudio Pro](images/workbench-job-launcher.png){fig-align="center"}
 
-Currently supported content on Posit Connect includes:
+## 5. Supported Content Types on Posit Connect
+
+Currently supported content types on Posit Connect include:
 
 ### Documents
 
@@ -172,19 +185,19 @@ Currently supported content on Posit Connect includes:
 
 -   Jupyter Notebooks
 
-    ::: callout-important
-    Most documents are considered "static." However, documents created with Voilà or R Markdown that include Shiny components are considered "interactive."
-    :::
+-   Voilà
 
 ### Applications
 
 -   Shiny (R and Python)
 
--   Bokeh
-
 -   Streamlit
 
+-   Bokeh
+
 -   Dash
+
+-   Panel
 
 ### APIs
 
@@ -194,53 +207,53 @@ Currently supported content on Posit Connect includes:
 
 -   Flask
 
--   Tensorflow
-
--   plumbertableau
-
--   FastAPI Tableau
+-   TensorFlow
 
 -   Vetiver
+
+-   Node.js
 
 ### Pins
 
 -   Pins
 
-## 6. Publishing Content to Posit Connect
+## 6. Publish your Content to Posit Connect
 
-Connect supports multiple methods for publishing content, including:
+Methods for publishing to Posit Connect include:
 
 -   **`rsconnect`:** Publish content directly from R using the rsconnect R package.
 -   **Command Line Interface (CLI):** Publish content using the CLI within the `rsconnect-python` package.
 -   **Push Button Deployment:** Publish content with the click of a button using push button deployment. This is natively available within RStudio Pro and Jupyter Notebooks. You can also access push button deployment using the **Posit Publisher** extension in Visual Studio Code.
--   **Git:** Publish directly from a Git repository
+-   **Git:** Publish directly from a Git repository.
 
-::: callout-tip
-For Git deployment, content will automatically fetch from the associated remote Git repository and re-deploy.
-This allows for integration with Git-centric workflows and continuous deployment automation.
-:::
-
-## 7. Share and Control Content on Posit Connect
+## 7. Share and Control your Content on Posit Connect
 
 ::: callout-important
 Your Posit Connect configuration and license may restrict which options are available to your content.
 :::
 
-As the owner of content published to Posit Connect, you have access to the *content* *settings*.
+Content controls are accessed by clicking the content settings icon.
 These settings include:
 
-### Info and Content Metadata
+### General
 
-Easily modify the content's title and metadata.
-You can also add a thumbnail to your content and get a glimpse into usage data.
+Easily modify the content's title and description, customize the **Content URL**, add a thumbnail, manage tags, and lock or delete content.
 
-::: callout-tip
-The Posit Connect API Cookbook contains numerous recipes for accessing and reporting usage data: <https://pos.it/cookbook>.
+![General content settings on Posit Connect](images/connect-general-settings.png){fig-align="center"}
+
+::: callout-note
+Share content by sharing the **Content URL**, which can be customized.
 :::
 
-### Access Controls
+### Source
 
-Control who has access to your content.
+View content bundles, language and Quarto versions, and package dependencies for your content.
+
+![Source settings showing the active bundle, R and Quarto versions, and R package list](images/connect-source-settings.png){fig-align="center"}
+
+### Access
+
+Configure who can access your content.
 Options include:
 
 -   **Anyone - no login required:** Content is public and open to anyone.
@@ -249,90 +262,77 @@ Options include:
 
 -   **Specific users or groups:** Content is available to specific users (or user groups) defined by the content's owner.
 
-::: callout-note
-To share content on Posit Connect with others, all you need to share is the **Content URL** which can be customized.
-:::
+![Access settings for sharing content on Posit Connect](images/connect-access-settings.png){fig-align="center"}
 
 ### Runtime Settings
 
-Runtime settings allow publishers to easily tune and scale their applications and APIs.
-These settings include:
+Tune and scale applications and APIs by modifying the number of processes (e.g., Python and R sessions) and connections per process.
 
--   **Processes and Connections:** Interactive or scheduled content requires a **process** to execute the code.
-    Examples include an R or Python process.
-    Depending on the number of users accessing your content (**Connections**), you can modify the maximum and minimum number of processes for your content.
+![Runtime settings with minimum processes, maximum processes, and maximum connections per process](images/connect-runtime-processes.png){fig-align="center"}
 
-    ::: callout-tip
-    Content will remain running if the minimum processes is set to greater than 0.
-    This is great for content with a long start up time.
-    :::
+In the above configuration, the content can accommodate up to 100 concurrent connections (20 x 5).
+There will also be at least one process always running, meaning the content never goes to sleep.
 
--   **Timeout Configurations:** Control the time thresholds for content startup, idle time, and time since last data sent/received.
+#### Other Runtime Settings
 
--   **Process Execution:** Content is initially configured to run on the server as a Unix user configured by your Posit Connect administrator, defaulting to the `rstudio-connect` user.
-    Your content may need to run as a different Unix user due to resource permissions and constraints.
+Easily modify how your content runs by modifying any of the below settings.
+Note: some options may not be available depending on how Posit Connect is configured in your environment.
 
--   **Execution Environment:** Specify the image used to create the content execution container.
+-   **CPU and RAM Settings:** Modify the initial and maximum number of CPUs and amount of RAM content can use.
 
--   **CPU and RAM Configurations:** Easily modify initial and max amount of CPU and RAM content can use.
+-   **Timeout Settings:** Control the time thresholds for content startup, idle time, and time since last data sent/received.
 
--   **GPU Configurations:** Your administrator can set application defaults or upper limits for both AMD and NVIDIA GPUs.
+-   **Environment Management, Process Execution, and Execution Environment:** Control the environment management strategy, which Unix user runs the content, and the image used to create the content execution container.
 
--   **Environment Management:** Administrators and content owners can configure the application-level default environment management strategy for a piece of content
+![CPU and RAM settings](images/connect-cpu-ram-settings.png){fig-align="center"}
 
-### Schedule and Email
+![Timeout settings](images/connect-timeout-settings.png){fig-align="center"}
 
-Static documents that were published with accompanying source code can be configured to execute on a schedule of your choosing including:
+![Other runtime settings including environment management, process execution, and execution environment](images/connect-other-runtime-settings.png){fig-align="center"}
 
--   By Minute
+### Schedule
 
--   Hourly
+Documents can be configured to execute on a schedule of your choosing.
 
--   Daily
-
--   Weekly
-
--   Semimonthly
-
--   Monthly
-
--   Yearly
+![Schedule type options](images/connect-schedule-settings.png){fig-align="center"}
 
 Scheduled reports can be configured to send an email to targeted recipients upon successful completion.
 
+![Email configuration options](images/connect-email-settings.png){fig-align="center"}
+
 ::: callout-tip
-You can customize the email sent by Connect using R Markdown ([pos.it/rmd_email](https://pos.it/rmd_email)) and Quarto ([pos.it/qmd_email](https://pos.it/qmd_email)).
+Learn how to send custom and conditional emails with R Markdown ([pos.it/rmd_email](https://pos.it/rmd_email)) and Quarto ([pos.it/qmd_email](https://pos.it/qmd_email)).
 :::
 
-### Tags
+### Monitor
 
-Tags help organize, discover, and filter content more easily on the Connect dashboard.
-Please work with your administrator to establish a tag schema that best suits your team.
+View the number of visitors to your content and logs.
+
+![Usage monitoring dashboard showing total visits, unique visitors, and daily visits](images/connect-monitor-usage.png){fig-align="center"}
 
 ### Environment Variables
 
-Securely pass configuration options to your content on Posit Connect as environment variables including **API Keys** and **Passwords**.
+Securely pass configuration options to your content as environment variables including **API Keys** and **Passwords**.
+
+![Environment variables panel with an API key](images/connect-env-vars.png){fig-align="center"}
 
 ::: callout-caution
 Always avoid hard-coding API keys, passwords, or tokens in the source code of content published to Posit Connect.
 This is a major security concern!
 :::
 
-## Other Resources
+## Need Help? Want to Learn More?
 
--   Questions about sales and licensing?
-    Contact sales\@posit.co
+-   Learn more about Posit Team through free on-demand courses and live workshops at **Posit Academy**: <https://academy.posit.co>
 
--   Experiencing technical issues?
-    Contact support\@posit.co
+-   **Posit Community:** Open forum for any open source or Posit Team question: <https://forum.posit.co>
 
--   Other questions?
-    Contact info\@posit.co
+-   Posit Team docs: <https://docs.posit.co>
 
--   Posit Team documentation: <https://docs.posit.co>
+-   Release notes: <https://docs.posit.co/release-notes.html>
 
--   Posit Team release notes: <https://docs.posit.co/release-notes.html>
+-   Questions about sales and licensing: sales\@posit.co
 
--   **Posit Community**: Posit Community is an open forum for any open source or Posit Team quetsions: <https://forum.posit.co>
+-   Technical issues: support\@posit.co
 
--   **Monthly End-to-End Workflow Demos with Posit Team**: Join our monthly Posit Team Demos on the last Wednesday of every month: <https://pos.it/team-demo>
+-   Other questions? info\@posit.co
