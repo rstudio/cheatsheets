@@ -11903,7 +11903,7 @@
          x="279.43484"
          y="17.366638"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333359px;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458335"
-         id="tspan6149">st_point(x, c(numeric vector), dim = &quot;XYZ&quot;) </tspan><tspan
+         id="tspan6149">st_point(x = c(numeric vector), dim = &quot;XYZ&quot;) </tspan><tspan
          sodipodi:role="line"
          x="279.43484"
          y="22.658306"
